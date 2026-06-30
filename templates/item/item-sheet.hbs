@@ -1,0 +1,106 @@
+<form class="{{cssClass}} flexcol vtmlarp-item-sheet" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}">
+    <div class="header-fields flexcol">
+      <input name="name" type="text" value="{{item.name}}" placeholder="Name">
+      <span class="item-type">{{vtmCapitalize item.type}}</span>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="details">Details</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab" data-group="primary" data-tab="description">
+      {{editor system.description target="system.description" button=true engine="prosemirror" owner=owner}}
+      <label>Source <input type="text" name="system.source" value="{{system.source}}" placeholder="e.g. Laws of the Night Revised, p.123"></label>
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="details">
+
+      {{#if (eq item.type "attribute")}}
+      <label>Category
+        <select name="system.category">
+          <option value="physical" {{#if (eq system.category "physical")}}selected{{/if}}>Physical</option>
+          <option value="social" {{#if (eq system.category "social")}}selected{{/if}}>Social</option>
+          <option value="mental" {{#if (eq system.category "mental")}}selected{{/if}}>Mental</option>
+        </select>
+      </label>
+      <label><input type="checkbox" name="system.negative" {{#if system.negative}}checked{{/if}}> Negative Trait</label>
+      {{/if}}
+
+      {{#if (eq item.type "ability")}}
+      <label>Category
+        <select name="system.category">
+          <option value="talent" {{#if (eq system.category "talent")}}selected{{/if}}>Talent</option>
+          <option value="skill" {{#if (eq system.category "skill")}}selected{{/if}}>Skill</option>
+          <option value="knowledge" {{#if (eq system.category "knowledge")}}selected{{/if}}>Knowledge</option>
+        </select>
+      </label>
+      <label>Rating <input type="number" name="system.rating" value="{{system.rating}}"></label>
+      {{/if}}
+
+      {{#if (eq item.type "discipline")}}
+      <label>Clan Affinity <input type="text" name="system.clanAffinity" value="{{system.clanAffinity}}"></label>
+      <label>Rating <input type="number" name="system.rating" value="{{system.rating}}"></label>
+      <label>Retest Ability <input type="text" name="system.retestAbility" value="{{system.retestAbility}}"></label>
+      {{/if}}
+
+      {{#if (eq item.type "power")}}
+      <label>Discipline <input type="text" name="system.discipline" value="{{system.discipline}}"></label>
+      <label>Level
+        <select name="system.level">
+          <option value="basic" {{#if (eq system.level "basic")}}selected{{/if}}>Basic</option>
+          <option value="intermediate" {{#if (eq system.level "intermediate")}}selected{{/if}}>Intermediate</option>
+          <option value="advanced" {{#if (eq system.level "advanced")}}selected{{/if}}>Advanced</option>
+        </select>
+      </label>
+      <label>Challenge Type
+        <select name="system.challengeType">
+          <option value="physical" {{#if (eq system.challengeType "physical")}}selected{{/if}}>Physical</option>
+          <option value="social" {{#if (eq system.challengeType "social")}}selected{{/if}}>Social</option>
+          <option value="mental" {{#if (eq system.challengeType "mental")}}selected{{/if}}>Mental</option>
+          <option value="static" {{#if (eq system.challengeType "static")}}selected{{/if}}>Static</option>
+          <option value="none" {{#if (eq system.challengeType "none")}}selected{{/if}}>None</option>
+        </select>
+      </label>
+      <label>Retest Ability <input type="text" name="system.retestAbility" value="{{system.retestAbility}}"></label>
+      <label>Blood Cost <input type="text" name="system.bloodCost" value="{{system.bloodCost}}"></label>
+      <label>Duration <input type="text" name="system.duration" value="{{system.duration}}"></label>
+      {{/if}}
+
+      {{#if (eq item.type "background")}}
+      <label>Rating <input type="number" name="system.rating" value="{{system.rating}}"></label>
+      {{/if}}
+
+      {{#if (eq item.type "merit")}}
+      <label>Cost (Traits) <input type="number" name="system.cost" value="{{system.cost}}"></label>
+      <label>Category <input type="text" name="system.category" value="{{system.category}}"></label>
+      {{/if}}
+
+      {{#if (eq item.type "flaw")}}
+      <label>Bonus (Free Traits) <input type="number" name="system.bonus" value="{{system.bonus}}"></label>
+      <label>Category <input type="text" name="system.category" value="{{system.category}}"></label>
+      {{/if}}
+
+      {{#if (eq item.type "virtue")}}
+      <label>Rating <input type="number" name="system.rating" value="{{system.rating}}"></label>
+      {{/if}}
+
+      {{#if (eq item.type "ritual")}}
+      <label>Path <input type="text" name="system.path" value="{{system.path}}"></label>
+      <label>Level <input type="number" name="system.level" value="{{system.level}}"></label>
+      <label>Blood Cost <input type="text" name="system.bloodCost" value="{{system.bloodCost}}"></label>
+      {{/if}}
+
+      {{#if (eq item.type "gear")}}
+      <label>Quantity <input type="number" name="system.quantity" value="{{system.quantity}}"></label>
+      <label>Trait Bonus <input type="text" name="system.traitBonus" value="{{system.traitBonus}}"></label>
+      {{/if}}
+
+    </div>
+  </section>
+</form>

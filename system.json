@@ -1,0 +1,85 @@
+{
+  "id": "vtmlarp",
+  "title": "Mind's Eye Theatre: Laws of the Night",
+  "description": "An unofficial Foundry VTT system for Mind's Eye Theatre: Vampire the Masquerade (Laws of the Night Revised), a trait-bidding, Rock-Paper-Scissors based live-action roleplaying game.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "authors": [
+    { "name": "VTMLARP Project" }
+  ],
+  "esmodules": ["scripts/vtmlarp.mjs"],
+  "styles": ["css/vtmlarp.css"],
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": {}
+    },
+    "Item": {
+      "attribute": {},
+      "ability": {},
+      "discipline": {},
+      "power": {},
+      "background": {},
+      "merit": {},
+      "flaw": {},
+      "virtue": {},
+      "ritual": {},
+      "gear": {}
+    }
+  },
+  "packs": [
+    {
+      "name": "disciplines",
+      "label": "Disciplines & Powers",
+      "path": "packs/disciplines",
+      "type": "Item",
+      "system": "vtmlarp"
+    },
+    {
+      "name": "clans",
+      "label": "Clans",
+      "path": "packs/clans",
+      "type": "JournalEntry",
+      "system": "vtmlarp"
+    },
+    {
+      "name": "backgrounds",
+      "label": "Backgrounds",
+      "path": "packs/backgrounds",
+      "type": "Item",
+      "system": "vtmlarp"
+    },
+    {
+      "name": "merits-flaws",
+      "label": "Merits & Flaws",
+      "path": "packs/merits-flaws",
+      "type": "Item",
+      "system": "vtmlarp"
+    },
+    {
+      "name": "rules-reference",
+      "label": "Rules Reference",
+      "path": "packs/rules-reference",
+      "type": "JournalEntry",
+      "system": "vtmlarp"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
+  "primaryTokenAttribute": "health",
+  "url": "",
+  "manifest": "",
+  "download": ""
+}

@@ -1,0 +1,14 @@
+<div class="vtmlarp-challenge-card">
+  <h3>{{actorName}} - {{challengeType}} Challenge</h3>
+  <p><strong>Traits Bid:</strong> {{traitsBid}}</p>
+  <p><strong>Gesture:</strong> {{gesture}}</p>
+  {{#if opponentName}}
+  <p><strong>Opponent:</strong> {{opponentName}} ({{opponentGesture}})</p>
+  {{/if}}
+  {{#if result}}
+  <p class="result result-{{result}}"><strong>Result: {{result}}</strong></p>
+  {{/if}}
+  {{#if retest}}
+  <p><strong>Retest:</strong> {{retest}}</p>
+  {{/if}}
+</div>

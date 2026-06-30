@@ -1,0 +1,79 @@
+const GESTURES = ["rock", "paper", "scissors", "bomb"];
+
+function beats(a, b) {
+  if (a === b) return "tie";
+  const wins = { rock: "scissors", paper: "rock", scissors: "paper", bomb: "rock" };
+  // Bomb beats Rock and Scissors, loses to Paper (a common MET house variant).
+  if (a === "bomb") return (b === "paper") ? "lose" : "win";
+  if (b === "bomb") return (a === "paper") ? "win" : "lose";
+  return (wins[a] === b) ? "win" : "lose";
+}
+
+/**
+ * A lightweight tool for logging a Trait-bidding challenge to chat.
+ * The actual Rock-Paper-Scissors throw happens face to face between players;
+ * this tool tracks trait totals, records the announced gesture, and posts
+ * a shareable result card so the table can see who won and what was bid.
+ */
+export class ChallengeApp extends Application {
+  constructor(actor, options = {}) {
+    super(options);
+    this.actor = actor;
+  }
+
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      id: "vtmlarp-challenge",
+      classes: ["vtmlarp", "challenge-app"],
+      template: "systems/vtmlarp/templates/apps/challenge.hbs",
+      width: 420,
+      height: "auto",
+      title: "Resolve Challenge"
+    });
+  }
+
+  /** @override */
+  getData(options) {
+    return {
+      actor: this.actor,
+      gestures: GESTURES,
+      challengeTypes: ["physical", "social", "mental", "static"]
+    };
+  }
+
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+    html.find("form").on("submit", this._onSubmit.bind(this));
+  }
+
+  async _onSubmit(event) {
+    event.preventDefault();
+    const fd = new FormDataExtended(event.currentTarget).object;
+    const { challengeType, traitsBid, gesture, opponentName, opponentGesture, retest } = fd;
+
+    let result = "";
+    if (opponentGesture) {
+      const outcome = beats(gesture, opponentGesture);
+      result = outcome === "tie" ? "Tied" : (outcome === "win" ? "Won" : "Lost");
+    }
+
+    const content = await renderTemplate("systems/vtmlarp/templates/apps/challenge-card.hbs", {
+      actorName: this.actor.name,
+      challengeType,
+      traitsBid,
+      gesture,
+      opponentName,
+      opponentGesture,
+      result,
+      retest
+    });
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content
+    });
+
+    this.close();
+  }
+}

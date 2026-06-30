@@ -1,0 +1,156 @@
+.vtmlarp.sheet {
+  font-family: "Signika", sans-serif;
+  color: #1a1a1a;
+}
+
+.vtmlarp .sheet-header {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #5c0a0a;
+  padding-bottom: 6px;
+}
+
+.vtmlarp .profile-img {
+  width: 96px;
+  height: 96px;
+  border: 2px solid #5c0a0a;
+  object-fit: cover;
+}
+
+.vtmlarp .header-grid {
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.vtmlarp .header-grid label {
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vtmlarp .sheet-tabs {
+  border-bottom: 1px solid #999;
+  margin-bottom: 6px;
+}
+
+.vtmlarp .sheet-tabs .item.active {
+  color: #5c0a0a;
+  border-bottom: 2px solid #5c0a0a;
+}
+
+.vtmlarp .pools, .vtmlarp .virtues {
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.vtmlarp .pool input, .vtmlarp .virtue input {
+  width: 40px;
+}
+
+.vtmlarp .health-track {
+  gap: 4px;
+}
+
+.vtmlarp .health-box {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #555;
+  padding: 4px 2px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.vtmlarp .health-box .label { display: block; font-weight: bold; }
+.vtmlarp .health-box .state { display: block; text-transform: capitalize; }
+
+.vtmlarp .health-box.state-ok { background: #e9f7e9; }
+.vtmlarp .health-box.state-bashing { background: #fff3cd; }
+.vtmlarp .health-box.state-lethal { background: #f8d7da; }
+.vtmlarp .health-box.state-aggravated { background: #5c0a0a; color: #fff; }
+
+.vtmlarp .open-challenge {
+  margin-top: 10px;
+  width: auto;
+  padding: 6px 14px;
+}
+
+.vtmlarp .trait-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.vtmlarp .trait-chip {
+  border: 1px solid #5c0a0a;
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 12px;
+  background: #fdf6f6;
+}
+
+.vtmlarp .trait-chip.spent {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.vtmlarp .trait-chip.negative {
+  border-color: #333;
+  background: #eee;
+}
+
+.vtmlarp .trait-chip a {
+  margin-left: 4px;
+  color: inherit;
+}
+
+.vtmlarp .rated-trait-table {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.vtmlarp .rated-trait-table td {
+  padding: 2px 4px;
+}
+
+.vtmlarp .item-list {
+  list-style: none;
+  margin: 0 0 12px 0;
+  padding: 0;
+}
+
+.vtmlarp .item-list .item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #ddd;
+  padding: 3px 0;
+}
+
+.vtmlarp .item-list .item-img {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border: none;
+}
+
+.vtmlarp .item-list .item-name { flex: 1; }
+.vtmlarp .item-list .item-meta, .vtmlarp .item-list .item-rating {
+  font-size: 11px;
+  color: #555;
+}
+
+.vtmlarp .hint {
+  font-size: 11px;
+  font-style: italic;
+  color: #777;
+}
+
+.vtmlarp-challenge fieldset {
+  border: 1px solid #999;
+  margin: 8px 0;
+}
+
+.vtmlarp-challenge-card .result-Won { color: #1a7a1a; }
+.vtmlarp-challenge-card .result-Lost { color: #a51212; }
+.vtmlarp-challenge-card .result-Tied { color: #8a6d00; }
