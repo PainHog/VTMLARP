@@ -4,7 +4,7 @@ Each subfolder here corresponds to a compendium pack declared in `system.json`. 
 
 - `attributes/` — the 27 named Physical/Social/Mental Traits (e.g. Brawny, Charismatic, Clever) plus their Negative-Trait counterparts, as Attribute items (92 files: 20 positive + 10/11/10 negative per category)
 - `abilities/` — the 30 core Abilities (Talents/Skills/Knowledges) as Ability items
-- `disciplines/` — Discipline and Power items (drag onto a character's Powers tab)
+- `disciplines/` — Discipline and Power items (drag onto a character's Powers tab). Includes Sabbat-sourced content from the Sabbat Guide: Dark Thaumaturgy (Fires of the Inferno, Path of Phobos, Taking of the Spirit, and Dark Thaumaturgical Rituals), the Kiasyd Discipline Mytherceria, and the Blood Brothers' Sanguinus.
 - `clans/` — Clan write-ups as Journal Entries
 - `antitribu/` — Sabbat antitribu clans and unique Sabbat bloodlines (e.g. Assamite antitribu, Blood Brothers, Kiasyd, Panders, Salubri antitribu, Serpents of the Light) as Journal Entries, following the same schema as `clans/`
 - `backgrounds/` — Background items (Allies, Contacts, Fame, Generation, Herd, Influence, Mentor, Resources, Retainers)
