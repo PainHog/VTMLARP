@@ -66,7 +66,17 @@ export class VTMPowerData extends BaseItemData {
       bloodCost: new fields.StringField({ required: false, blank: true, initial: "" }),
       retestAbility: new fields.StringField({ required: false, blank: true, initial: "" }),
       duration: new fields.StringField({ required: false, blank: true, initial: "" }),
-      system_: new fields.StringField({ required: false, blank: true, initial: "" })
+      system_: new fields.StringField({ required: false, blank: true, initial: "" }),
+      activation: new fields.StringField({
+        required: true,
+        initial: "challenge",
+        // passive: always on, no action needed (e.g. Auspex: Heightened Senses)
+        // toggle: switched on/off and stays on until the player turns it off (e.g. Obfuscate, many Chimerstry illusions)
+        // reflexive: a quick declared action with no challenge, but not always-on (e.g. Celerity bursts)
+        // challenge: requires winning a Trait challenge each time it's used
+        choices: ["passive", "toggle", "reflexive", "challenge"]
+      }),
+      active: new fields.BooleanField({ required: true, initial: false })
     };
   }
 }

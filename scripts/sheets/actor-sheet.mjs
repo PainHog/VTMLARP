@@ -31,6 +31,8 @@ export class VTMActorSheet extends ActorSheet {
       (context.itemsByType[item.type] ??= []).push(item);
     }
 
+    context.activePowers = (context.itemsByType.power ?? []).filter(item => item.system.active);
+
     context.isCharacter = this.actor.type === "character";
     return context;
   }
@@ -48,6 +50,7 @@ export class VTMActorSheet extends ActorSheet {
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".rated-trait-control").on("click", this._onRatedTraitControl.bind(this));
     html.find(".open-challenge").on("click", () => new ChallengeApp(this.actor).render(true));
+    html.find(".power-toggle").on("click", this._onTogglePower.bind(this));
   }
 
   async _onToggleTrait(event) {
@@ -101,6 +104,32 @@ export class VTMActorSheet extends ActorSheet {
     const current = this.actor.system.health[level];
     const next = DAMAGE_CYCLE[(DAMAGE_CYCLE.indexOf(current) + 1) % DAMAGE_CYCLE.length];
     await this.actor.update({ [`system.health.${level}`]: next });
+  }
+
+  /**
+   * Toggle a passive/toggle-activation power on or off. This only flips the power's own
+   * "active" state and, on activation, deducts a flat numeric Blood cost if one is set.
+   * It never resolves a Trait challenge - powers with activation "challenge" (anything
+   * contested against another party) are not given a toggle and must still be played out
+   * with the Challenge tool, since only the table's actual Rock-Paper-Scissors throw can
+   * decide a contested outcome.
+   */
+  async _onTogglePower(event) {
+    event.preventDefault();
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
+    if (!item || !["passive", "toggle"].includes(item.system.activation)) return;
+
+    const turningOn = !item.system.active;
+    await item.update({ "system.active": turningOn });
+
+    if (turningOn && item.system.bloodCost) {
+      const cost = Number(item.system.bloodCost);
+      if (Number.isInteger(cost) && cost > 0) {
+        const current = this.actor.system.blood.value;
+        await this.actor.update({ "system.blood.value": Math.max(0, current - cost) });
+      }
+    }
   }
 
   _onItemEdit(event) {

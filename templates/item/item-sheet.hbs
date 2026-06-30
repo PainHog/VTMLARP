@@ -70,6 +70,17 @@
       <label>Retest Ability <input type="text" name="system.retestAbility" value="{{system.retestAbility}}"></label>
       <label>Blood Cost <input type="text" name="system.bloodCost" value="{{system.bloodCost}}"></label>
       <label>Duration <input type="text" name="system.duration" value="{{system.duration}}"></label>
+      <label>Activation
+        <select name="system.activation">
+          <option value="passive" {{#if (eq system.activation "passive")}}selected{{/if}}>Passive (always on)</option>
+          <option value="toggle" {{#if (eq system.activation "toggle")}}selected{{/if}}>Toggle (on/off)</option>
+          <option value="reflexive" {{#if (eq system.activation "reflexive")}}selected{{/if}}>Reflexive (quick, no challenge)</option>
+          <option value="challenge" {{#if (eq system.activation "challenge")}}selected{{/if}}>Challenge (won each use)</option>
+        </select>
+      </label>
+      {{#if (or (eq system.activation "toggle") (eq system.activation "passive"))}}
+      <label><input type="checkbox" name="system.active" {{#if system.active}}checked{{/if}} {{#if (eq system.activation "passive")}}disabled{{/if}}> Currently Active</label>
+      {{/if}}
       {{/if}}
 
       {{#if (eq item.type "background")}}

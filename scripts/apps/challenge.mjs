@@ -3,9 +3,9 @@ const GESTURES = ["rock", "paper", "scissors", "bomb"];
 function beats(a, b) {
   if (a === b) return "tie";
   const wins = { rock: "scissors", paper: "rock", scissors: "paper", bomb: "rock" };
-  // Bomb beats Rock and Scissors, loses to Paper (a common MET house variant).
-  if (a === "bomb") return (b === "paper") ? "lose" : "win";
-  if (b === "bomb") return (a === "paper") ? "win" : "lose";
+  // Bomb beats Rock and Paper, loses to Scissors (scissors cut the fuse) - common MET house variant.
+  if (a === "bomb") return (b === "scissors") ? "lose" : "win";
+  if (b === "bomb") return (a === "scissors") ? "win" : "lose";
   return (wins[a] === b) ? "win" : "lose";
 }
 
