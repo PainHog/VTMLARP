@@ -6,6 +6,7 @@ Each subfolder here corresponds to a compendium pack declared in `system.json`. 
 - `abilities/` — the 30 core Abilities (Talents/Skills/Knowledges) as Ability items
 - `disciplines/` — Discipline and Power items (drag onto a character's Powers tab)
 - `clans/` — Clan write-ups as Journal Entries
+- `antitribu/` — Sabbat antitribu clans and unique Sabbat bloodlines (e.g. Assamite antitribu, Blood Brothers, Kiasyd, Panders, Salubri antitribu, Serpents of the Light) as Journal Entries, following the same schema as `clans/`
 - `backgrounds/` — Background items (Allies, Contacts, Fame, Generation, Herd, Influence, Mentor, Resources, Retainers)
 - `merits-flaws/` — Merit and Flaw items
 - `rules-reference/` — Player-safe Journal entries for rules lookups: challenges (full trait-bidding mechanics), combat/weapons, archetypes, healing & damage, status, social rituals (Sabbat Auctoritas/Ignoblis Ritae, Vaulderie, Monomacy), and experience/advancement costs. Safe to expose to players.
