@@ -7,7 +7,8 @@ Each subfolder here corresponds to a compendium pack declared in `system.json`. 
 - `clans/` — Clan write-ups as Journal Entries
 - `backgrounds/` — Background items (Allies, Contacts, Fame, Generation, Herd, Influence, Mentor, Resources, Retainers)
 - `merits-flaws/` — Merit and Flaw items
-- `rules-reference/` — Journal entries for rules lookups (challenges, combat, frenzy, etc.)
+- `rules-reference/` — Player-safe Journal entries for rules lookups (challenges, combat/weapons, archetypes). Safe to expose to players.
+- `rules-reference-st/` — Storyteller-only Journal entries (diablerie, derangements, frenzy/Rötschreck difficulty tables). Keep this compendium's visibility restricted to GMs — these cover ST-adjudicated material that players shouldn't be able to look up and game (e.g. exact frenzy difficulty numbers, derangement triggers).
 
 ## Workflow
 
