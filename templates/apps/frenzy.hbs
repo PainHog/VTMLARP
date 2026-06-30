@@ -1,0 +1,13 @@
+<form class="vtmlarp-frenzy flexcol">
+  <p class="hint">Frenzy is a static test against a Storyteller-set Difficulty, not a contest with another player, so it can be resolved here automatically.</p>
+
+  <label>Trigger <input type="text" name="trigger" placeholder="e.g. frenzy from anger, Rötschreck"></label>
+
+  <label>Difficulty (stimulus count) <input type="number" name="difficulty" value="1" min="1"></label>
+
+  <p>Self-Control/Instinct: {{selfControlInstinct}} &nbsp; Willpower: {{willpower}}</p>
+
+  <label><input type="checkbox" name="spendWillpower" {{#unless willpower}}disabled{{/unless}}> Spend 1 Willpower to automatically resist</label>
+
+  <button type="submit"><i class="fas fa-burst"></i> Resolve</button>
+</form>

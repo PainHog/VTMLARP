@@ -13,6 +13,17 @@
     <input type="number" name="traitsBid" value="1" min="0">
   </label>
 
+  {{#if equipmentBonuses.length}}
+  <fieldset>
+    <legend>Equipment Bonuses (factor in manually)</legend>
+    <ul class="equipment-bonus-list">
+      {{#each equipmentBonuses as |b|}}
+      <li>{{b}}</li>
+      {{/each}}
+    </ul>
+  </fieldset>
+  {{/if}}
+
   <label>Your Gesture
     <select name="gesture">
       {{#each gestures as |g|}}

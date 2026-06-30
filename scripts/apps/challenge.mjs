@@ -34,10 +34,15 @@ export class ChallengeApp extends Application {
 
   /** @override */
   getData(options) {
+    const equipmentBonuses = this.actor.items
+      .filter(i => i.type === "gear" && i.system.traitBonus)
+      .map(i => `${i.name}: ${i.system.traitBonus}`);
+
     return {
       actor: this.actor,
       gestures: GESTURES,
-      challengeTypes: ["physical", "social", "mental", "static"]
+      challengeTypes: ["physical", "social", "mental", "static"],
+      equipmentBonuses
     };
   }
 

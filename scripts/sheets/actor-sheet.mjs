@@ -1,4 +1,10 @@
 import { ChallengeApp } from "../apps/challenge.mjs";
+import { FrenzyApp } from "../apps/frenzy.mjs";
+
+const CREATABLE_TYPES = {
+  discipline: "Discipline", power: "Power", background: "Background",
+  merit: "Merit", flaw: "Flaw", ritual: "Ritual", gear: "Gear"
+};
 
 const HEALTH_LEVELS = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled", "incapacitated"];
 const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
@@ -50,7 +56,9 @@ export class VTMActorSheet extends ActorSheet {
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".rated-trait-control").on("click", this._onRatedTraitControl.bind(this));
     html.find(".open-challenge").on("click", () => new ChallengeApp(this.actor).render(true));
+    html.find(".open-frenzy").on("click", () => new FrenzyApp(this.actor).render(true));
     html.find(".power-toggle").on("click", this._onTogglePower.bind(this));
+    html.find(".item-create").on("click", this._onItemCreate.bind(this));
   }
 
   async _onToggleTrait(event) {
@@ -102,8 +110,39 @@ export class VTMActorSheet extends ActorSheet {
     event.preventDefault();
     const level = event.currentTarget.dataset.level;
     const current = this.actor.system.health[level];
-    const next = DAMAGE_CYCLE[(DAMAGE_CYCLE.indexOf(current) + 1) % DAMAGE_CYCLE.length];
+    const idx = DAMAGE_CYCLE.indexOf(current);
+
+    // Shift-click heals with Blood instead of worsening: 1 Blood Trait heals one box
+    // of bashing or lethal damage. This only spends the character's own Blood pool
+    // and isn't contested by anyone, so it's safe to automate. Aggravated damage
+    // cannot be healed this way and must be healed through other means (rest, etc.).
+    if (event.shiftKey) {
+      if (current === "ok" || current === "aggravated") return;
+      const blood = this.actor.system.blood.value;
+      if (blood <= 0) {
+        ui.notifications?.warn("Not enough Blood to heal.");
+        return;
+      }
+      await this.actor.update({
+        [`system.health.${level}`]: "ok",
+        "system.blood.value": blood - 1
+      });
+      return;
+    }
+
+    const next = DAMAGE_CYCLE[(idx + 1) % DAMAGE_CYCLE.length];
     await this.actor.update({ [`system.health.${level}`]: next });
+  }
+
+  /** Create a brand-new embedded Item of the requested type directly on the actor. */
+  async _onItemCreate(event) {
+    event.preventDefault();
+    const { type } = event.currentTarget.dataset;
+    const label = CREATABLE_TYPES[type] ?? type;
+    await this.actor.createEmbeddedDocuments("Item", [{
+      name: `New ${label}`,
+      type
+    }]);
   }
 
   /**
