@@ -1,0 +1,325 @@
+{
+  "_id": "cbc3e04a04f145a2",
+  "name": "Priest (Sample Sabbat NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Pack Priest",
+    "clan": "Malkavian antitribu",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 8,
+    "nature": "Architect",
+    "demeanor": "Celebrant",
+    "title": "Priest",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Brutal",
+            "spent": false
+          },
+          {
+            "name": "Energetic",
+            "spent": false
+          },
+          {
+            "name": "Energetic",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Stalwart",
+            "spent": false
+          },
+          {
+            "name": "Stalwart",
+            "spent": false
+          },
+          {
+            "name": "Tenacious",
+            "spent": false
+          },
+          {
+            "name": "Tenacious",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Dignified",
+            "spent": false
+          },
+          {
+            "name": "Dignified",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Astute",
+            "spent": false
+          },
+          {
+            "name": "Attentive",
+            "spent": false
+          },
+          {
+            "name": "Dedicated",
+            "spent": false
+          },
+          {
+            "name": "Dedicated",
+            "spent": false
+          },
+          {
+            "name": "Disciplined",
+            "spent": false
+          },
+          {
+            "name": "Disciplined",
+            "spent": false
+          },
+          {
+            "name": "Vigilant",
+            "spent": false
+          },
+          {
+            "name": "Vigilant",
+            "spent": false
+          },
+          {
+            "name": "Wise",
+            "spent": false
+          },
+          {
+            "name": "Wise",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Fire Dancing",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Hearth Wisdom",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Medicine",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Rituals",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 10,
+      "max": 10
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Caine",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Mentor",
+        "rating": 1,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>When you were alive, you seemed to be just one more working-class woman attending your local evangelical church. One night the survivors of a pack from a failed crusade sheltered in your basement and discovered that all on your own, you'd reinvented most of the trappings of classical infernalism. Beneath your calm exterior, you were angry enough at the world to try everything you could think of that might summon demons. The survivors consulted briefly and offered you the Embrace into the spiritual side of the Sabbat. You accepted. Now you throw yourself without reserve into the war. You want to see humanity crushed and the worthy few, yourself included, elevated to supreme power. God Himself can't hide from you forever. When you find Him, you'll pull Him down and crush him, too. In the meantime, you train yourself and your packmates to make fullest use of your blessed nature.</p>\n<h2>Roleplaying Hints</h2><p>They're all going to get what's coming to them. You'll see to it. You're halfway to union with the First Rebel, the man who showed by his example how to exist free of subservience and fear. You love your condition and wish to help those around you do the same. By yourself you were nothing, but these wonderful people helped you find your way. In return, you owe them all the counsel you can provide. Alarmists say the Final Nights are here. If it's time for the consummation of the war, you'll make sure your troops go into battle blessed and ready.</p>\n<h2>Stat Block (as printed)</h2>\n<p><strong>Clan:</strong> Malkavian antitribu<br><strong>Nature:</strong> Architect<br><strong>Demeanor:</strong> Celebrant<br><strong>Generation:</strong> 8th (originally 11th)<br><strong>Embrace:</strong> 1940<br><strong>Apparent Age:</strong> 40</p>\n<p><strong>Physical:</strong> Brawny, Brutal, Energetic x2, Ferocious x2, Stalwart x2, Tenacious x2<br>\n<strong>Social:</strong> Charismatic x2, Commanding x2, Dignified x2, Eloquent x3, Ingratiating x2<br>\n<strong>Mental:</strong> Astute, Attentive, Dedicated x2, Disciplined x2, Vigilant x2, Wise x2</p>\n<p><strong>Abilities:</strong> Alertness 1, Brawl 1, Empathy 1, Etiquette 2, Fire Dancing 2, Firearms 1, Hearth Wisdom 2, Intimidation 1, Leadership 2, Medicine 1, Occult 2, Rituals 3, Sabbat Lore 2, Survival 1</p>\n<p><strong>Disciplines:</strong> Auspex 3, Dementation 4, Fortitude 1, Obfuscate 1</p>\n<p><strong>Backgrounds:</strong> Contacts x2, Mentor x1<br>\n<strong>Virtues:</strong> Conviction 5, Instinct 3, Courage 3<br>\n<strong>Path of Enlightenment:</strong> Caine 3<br>\n<strong>Willpower:</strong> 10<br>\n<strong>Status:</strong> Battle-Scarred, Blessed, Devoted, Enlightened, Enriched, Initiated</p>",
+    "notes": "",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Priest (Sample Sabbat NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Sabbat Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

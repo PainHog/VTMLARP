@@ -1,0 +1,338 @@
+{
+  "_id": "e364d4fc56bb4c78",
+  "name": "Ductus (Sample Sabbat NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Pack Leader",
+    "clan": "Brujah antitribu",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 9,
+    "nature": "Fanatic",
+    "demeanor": "Curmudgeon",
+    "title": "Ductus",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Robust",
+            "spent": false
+          },
+          {
+            "name": "Robust",
+            "spent": false
+          },
+          {
+            "name": "Rugged",
+            "spent": false
+          },
+          {
+            "name": "Rugged",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charming",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Condescending",
+            "spent": false
+          },
+          {
+            "name": "Condescending",
+            "spent": false
+          },
+          {
+            "name": "Empathetic",
+            "spent": false
+          },
+          {
+            "name": "Empathetic",
+            "spent": false
+          },
+          {
+            "name": "Expressive",
+            "spent": false
+          },
+          {
+            "name": "Expressive",
+            "spent": false
+          },
+          {
+            "name": "Expressive",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Attentive",
+            "spent": false
+          },
+          {
+            "name": "Attentive",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Dedicated",
+            "spent": false
+          },
+          {
+            "name": "Dedicated",
+            "spent": false
+          },
+          {
+            "name": "Insightful",
+            "spent": false
+          },
+          {
+            "name": "Insightful",
+            "spent": false
+          },
+          {
+            "name": "Insightful",
+            "spent": false
+          },
+          {
+            "name": "Wise",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      {
+        "name": "Lame",
+        "spent": false
+      },
+      {
+        "name": "Eloquent",
+        "spent": false
+      }
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Animal Ken",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Medicine",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Cathari",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>You didn't seek out your position: Your pack pushed it on you with the support of the bishop, after a series of disastrous failures wiped out many of your pack's veterans. You saw yourself as more of a scholar. Much to your surprise, you thrived as a leader. Now you just hope you won't get promoted out of this position. You like your pack and guide them through a steady stream of successes. Your followers eat well, rest securely, and from time to time, strike a blow at one of the sect's enemies. Not long ago you planned and executed the successful assassination of an autarkis elder your pack located passing through town. You decided that intrigue suits you and yours, and you're trying to persuade the bishop to let you undertake some covert operations in the city the archbishop has marked for the next crusade.</p>\n<h2>Roleplaying Hints</h2><p>The world chewed you up, swallowed your joys and dumped you on the streets. Payback time. The bitches and sons of bitches can never suffer too much. You take great pleasure in making mortals hurt in ways that they can't cure and can't stop. Your second great pleasure is helping others escape the bonds of the human condition. Some of them have gone on to pass you in the hierarchy, and that's fine. Let them have sect power; you're satisfied with your lot.</p>\n<h2>Stat Block (as printed)</h2>\n<p><strong>Clan:</strong> Brujah antitribu<br><strong>Nature:</strong> Fanatic<br><strong>Demeanor:</strong> Curmudgeon<br><strong>Generation:</strong> 9th<br><strong>Embrace:</strong> 1933<br><strong>Apparent Age:</strong> 70</p>\n<p><strong>Physical:</strong> Enduring x2, Robust x2, Rugged x2, Tireless x2, Lame [N]<br>\n<strong>Social:</strong> Charming, Commanding x2, Condescending x2, Eloquent [N], Empathetic x2, Expressive x3, Intimidating x2, Persuasive<br>\n<strong>Mental:</strong> Attentive x2, Clever, Cunning x2, Dedicated x2, Insightful x3, Wise</p>\n<p><strong>Abilities:</strong> Alertness 2, Animal Ken 1, Brawl 2, Dodge 2, Empathy 3, Etiquette 1, Expression 3, Firearms 1, Intimidation 1, Leadership 2, Medicine 1, Occult 1, Security 2, Survival 2</p>\n<p><strong>Disciplines:</strong> Celerity 5, Fortitude 2, Potence 2, Presence 4</p>\n<p><strong>Backgrounds:</strong> Allies x3, Contacts x3<br>\n<strong>Virtues:</strong> Conviction 4, Instinct 4, Courage 4<br>\n<strong>Path of Enlightenment:</strong> Cathari 3<br>\n<strong>Willpower:</strong> 9<br>\n<strong>Status:</strong> Battle-Scarred, Blooded, Enriched, Feared, Initiated, Undefeated</p>\n<p><em>(OCR note: \"Roht x2\" in the source has been read as \"Robust x2,\" and \"Eloquent [N]\" denotes a Negative Trait, per standard MET Trait lists.)</em></p>",
+    "notes": "",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Ductus (Sample Sabbat NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Sabbat Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "_id": "0c8b59ca31924a42",
+  "name": "Grimaldi Fixer (Sample Sabbat NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Revenant Fixer",
+    "clan": "Grimaldi",
+    "bloodline": "Revenant",
+    "sect": "Sabbat",
+    "generation": 13,
+    "nature": "Caregiver",
+    "demeanor": "Survivor",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Agile",
+            "spent": false
+          },
+          {
+            "name": "Brutal",
+            "spent": false
+          },
+          {
+            "name": "Brutal",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Rugged",
+            "spent": false
+          },
+          {
+            "name": "Rugged",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charming",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Diplomatic",
+            "spent": false
+          },
+          {
+            "name": "Elegant",
+            "spent": false
+          },
+          {
+            "name": "Expressive",
+            "spent": false
+          },
+          {
+            "name": "Magnetic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Astute",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          },
+          {
+            "name": "Creative",
+            "spent": false
+          },
+          {
+            "name": "Creative",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Insightful",
+            "spent": false
+          },
+          {
+            "name": "Insightful",
+            "spent": false
+          },
+          {
+            "name": "Knowledgeable",
+            "spent": false
+          },
+          {
+            "name": "Reflective",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Computer",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Drive",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Repair",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Rituals",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Camarilla Lore",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Honorable Accord",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Bureaucracy",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Finance",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence: High Society",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Legal",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Police",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Street",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Transportation",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Underworld",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>You could settle down, hold one job and get comfortably rich if you wanted to. You prefer to move around and deal with fresh situations as they come up. This temperamental quirk makes you valuable to your family and to the Sabbat. After living in a town for a few years, you usually know everybody who matters in a crisis. The vampires, revenants and ghouls you bail out of crises seldom see you doing very much, they just notice you on your cell phone or stopping in to visit a few offices, and then the crisis goes away. You know how to settle fears through a combination of calm words, carefully phrased promises and great quantities of money.</p>\n<h2>Roleplaying Hints</h2><p>You get things done. That's the long and the short of it. Your family and the vampires can't rule the world if everyone's in jail, on the lam or dead, and you're the guy that keeps them at liberty. Cleaning up messes may seem like lower-class janitor work, but you don't mind: It's always a fresh chance to see how people tick when all their usual props fail. You'd never mention this part, but if you ever do decide to settle down, you'll have a whole lot of favors to collect.</p>\n<h2>Stat Block (as printed)</h2>\n<p><strong>Clan:</strong> Grimaldi (revenant family)<br><strong>Nature:</strong> Caregiver<br><strong>Demeanor:</strong> Survivor<br><strong>Apparent Age:</strong> Early middle age</p>\n<p><strong>Physical:</strong> Agile, Brutal x2, Enduring, Ferocious x2, Rugged x2, Tireless<br>\n<strong>Social:</strong> Charismatic x2, Charming, Commanding x2, Diplomatic, Elegant, Expressive, Magnetic<br>\n<strong>Mental:</strong> Astute, Clever, Creative x2, Determined, Insightful x2, Knowledgeable, Reflective</p>\n<p><strong>Abilities:</strong> Alertness 3, Brawl 2, Computer 2, Dodge 3, Drive 3, Empathy 3, Etiquette 3, Expression 2, Finance 3, Firearms 2, Intimidation 3, Investigation 3, Law 2, Leadership 1, Medicine 1, Occult 1, Politics 2, Repair 1, Rituals 1, Security 2, Stealth 2, Streetwise 3, Subterfuge 3, Camarilla Lore 3, Sabbat Lore 4</p>\n<p><strong>Disciplines:</strong> Celerity 2, Dominate 2, Fortitude 2</p>\n<p><strong>Backgrounds:</strong> Allies x3, Contacts x5, Influence: Bureaucracy x4, Influence: Finance x4, Influence: High Society x2, Influence: Legal x4, Influence: Police x3, Influence: Street x3, Influence: Transportation x4, Influence: Underworld x4, Resources x4<br>\n<strong>Virtues:</strong> Conscience 3, Self-Control 4, Courage 4<br>\n<strong>Path of Enlightenment:</strong> Honorable Accord 4<br>\n<strong>Willpower:</strong> 8</p>\n<p><em>(Revenant ghoul, not an Embraced vampire; Generation/Embrace year not given in the source for this template.)</em></p>",
+    "notes": "",
+    "npcType": "ghoul"
+  },
+  "prototypeToken": {
+    "name": "Grimaldi Fixer (Sample Sabbat NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Sabbat Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
