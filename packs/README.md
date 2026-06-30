@@ -11,6 +11,7 @@ Each subfolder here corresponds to a compendium pack declared in `system.json`. 
 - `merits-flaws/` — Merit and Flaw items
 - `rules-reference/` — Player-safe Journal entries for rules lookups: challenges (full trait-bidding mechanics), combat/weapons, archetypes, healing & damage, status, social rituals (Sabbat Auctoritas/Ignoblis Ritae, Vaulderie, Monomacy), and experience/advancement costs. Safe to expose to players.
 - `rules-reference-st/` — Storyteller-only Journal entries (diablerie, derangements, frenzy/Rötschreck difficulty tables, feeding & hunger difficulty tables). Keep this compendium's visibility restricted to GMs — these cover ST-adjudicated material that players shouldn't be able to look up and game (e.g. exact frenzy/hunger difficulty numbers, derangement triggers).
+- `paths-of-enlightenment/` — Sabbat Paths of Enlightenment as Journal Entries (Caine, Cathari, Death and the Soul, Evil Revelations, the Feral Heart, Honorable Accord, Lilith, Power and the Inner Voice). Alternate Morality codes most Sabbat vampires follow instead of Humanity — no schema changes needed; a vampire following a Path just sets `morality.path` on their actor to the Path's name. Each entry documents the Path's two Virtues, its core philosophy, and a paraphrased hierarchy of sin ("Following the Path") describing the escalating acts that cost a Path Trait, mirroring how Humanity's hierarchy of sin works in the core book.
 
 ## Workflow
 
