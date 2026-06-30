@@ -1,0 +1,31 @@
+{
+  "_id": "zKG5mSoyPstUeC99",
+  "name": "The Darkness Within (Obtenebration, Elder)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+  "system": {
+    "description": "<p>Spend a Blood Trait and a Willpower Trait to expel a cloud of liquid shadow that envelops a target within 50 steps, inflicting the effects of Shroud of Night. Each turn the victim must win a Static Physical Challenge against a five-Trait difficulty or lose a Blood Trait to the cloud. You must maintain concentration to sustain it; if attacked, the cloud rushes back to you. Voluntarily recalling it lets you absorb up to half the drained Blood Traits (counts as drinking from the victim for bond purposes).</p>",
+    "source": "Sabbat Guide, Disciplines",
+    "discipline": "Obtenebration",
+    "level": "advanced",
+    "challengeType": "physical",
+    "bloodCost": "1 Blood Trait, 1 Willpower Trait",
+    "retestAbility": "",
+    "duration": "Until cloud is recalled or you are attacked",
+    "activation": "toggle"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

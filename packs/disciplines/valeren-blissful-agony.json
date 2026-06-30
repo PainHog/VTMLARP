@@ -1,0 +1,31 @@
+{
+  "_id": "EfvuP1uRr6YICtu8",
+  "name": "Blissful Agony (Valeren, Elder)",
+  "type": "power",
+  "img": "icons/skills/melee/strike-fist-punch-orange.webp",
+  "system": {
+    "description": "<p>Touch the victim, spend a Blood Trait, and defeat him in a Mental Challenge to inflict agony surpassing Burning Touch. For the rest of the scene he is treated as Wounded for penalty purposes (Incapacitated if he reaches actual Wounded state). You may optionally inflict lethal damage by maintaining contact and spending one Blood Trait per health level, which the victim may negate with a Simple Test per level; this damage heals normally for mortals but vanishes by next sunset for vampires. Inflicting more health levels than the victim has Willpower Traits forces a Rotschreck check against your Mental Traits.</p>",
+    "source": "Sabbat Guide, Disciplines",
+    "discipline": "Valeren",
+    "level": "advanced",
+    "challengeType": "mental",
+    "bloodCost": "1+ Blood Traits",
+    "retestAbility": "Awareness",
+    "duration": "Rest of the scene",
+    "activation": "challenge"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

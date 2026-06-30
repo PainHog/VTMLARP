@@ -1,0 +1,31 @@
+{
+  "_id": "HioRRdzHzmA4KR1V",
+  "name": "Valediction",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p>Spend three turns speaking the full invocation, then win a Mental Challenge against your victim on the third turn. Spend any number of Willpower Traits; for that many nights, the subject reverts to the generation she possessed at her Embrace, immediately losing Traits in excess of that generation's maximums, vomiting up excess Blood Pool, and losing access to any high-level Disciplines the generation shift denies her. Only affects Cainites.</p>",
+    "source": "Sabbat Guide, Disciplines",
+    "discipline": "Thaumaturgy (Path of the Father's Vengeance)",
+    "level": "advanced",
+    "challengeType": "mental",
+    "bloodCost": "Any number of Willpower Traits",
+    "retestAbility": "Occult (or Vampire Lore)",
+    "duration": "Number of nights equal to Willpower Traits spent",
+    "activation": "challenge"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

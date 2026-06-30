@@ -1,0 +1,31 @@
+{
+  "_id": "oRRCQ5WMO5AHO4Ze",
+  "name": "Burning Touch",
+  "type": "power",
+  "img": "icons/skills/melee/strike-fist-punch-orange.webp",
+  "system": {
+    "description": "<p>Touch your victim and spend a Blood Trait; your third eye glows red-orange as the subject suffers Wounded-state penalties for the rest of the turn (or, if already Wounded, must defeat you in a Mental Challenge or suffer Incapacitated penalties). Used for interrogation, it grants you and fellow interrogators a free retest on the next interrogation- or torture-related challenge against that target.</p>",
+    "source": "Sabbat Guide, Disciplines",
+    "discipline": "Valeren",
+    "level": "intermediate",
+    "challengeType": "mental",
+    "bloodCost": "1 Blood Trait",
+    "retestAbility": "Awareness",
+    "duration": "Rest of the turn",
+    "activation": "challenge"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
