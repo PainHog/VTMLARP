@@ -2,9 +2,10 @@
 
 Each subfolder here corresponds to a compendium pack declared in `system.json`. Foundry v12 reads these folders directly as "source" compendiums — one JSON file per document, no build/compile step required.
 
+- `abilities/` — the 30 core Abilities (Talents/Skills/Knowledges) as Ability items
 - `disciplines/` — Discipline and Power items (drag onto a character's Powers tab)
 - `clans/` — Clan write-ups as Journal Entries
-- `backgrounds/` — Background items
+- `backgrounds/` — Background items (Allies, Contacts, Fame, Generation, Herd, Influence, Mentor, Resources, Retainers)
 - `merits-flaws/` — Merit and Flaw items
 - `rules-reference/` — Journal entries for rules lookups (challenges, combat, frenzy, etc.)
 
