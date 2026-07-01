@@ -1,0 +1,31 @@
+{
+  "_id": "541781db5bce4fcf",
+  "name": "Memory Rift (Combination Discipline)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+  "system": {
+    "description": "<p><strong>Prerequisites:</strong> Advanced Obfuscate, Intermediate Presence. Combining Vanish From the Mind's Eye with raw charisma, the user erases herself entirely from a target's memory, the target's mind substituting the most logical alternative explanation (a police officer forgetting he was pushed and instead recalling that he tripped). Requires spending a Blood Trait and a Mental Trait, plus a Social Test against the target retested with Subterfuge; multiple targets may be affected in a scene but each requires its own expenditure and test. On success, the target ignores the user and forgets she was ever present by dawn. The user may take no aggressive action against the target afterward and must leave the area within five minutes, staying out of the target's sensory range for a full hour of game time; failing to do so causes the memories to flood back at dawn, ruining the effect. It can be uncovered by memory-probing Dominate powers, though such attempts are three Traits down unless the seeker already knows what to look for.</p><p><em>Costs 5 Experience Traits to learn.</em></p>",
+    "source": "The Anarch Guide, p.54-64",
+    "discipline": "Combination Discipline (Obfuscate/Presence)",
+    "level": "advanced",
+    "challengeType": "social",
+    "bloodCost": "1 Blood Trait, 1 Mental Trait",
+    "retestAbility": "Subterfuge",
+    "duration": "Until dawn (contingent on staying away)",
+    "activation": "challenge"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
