@@ -165,10 +165,20 @@
       </h3>
       <ol class="item-list">
         {{#each itemsByType.power as |item|}}
-        <li class="item {{#if item.system.active}}power-active{{/if}}" data-item-id="{{item.id}}">
+        {{#with (lookup ../powerPrereqStatus item.id) as |prereq|}}
+        <li class="item {{#if item.system.active}}power-active{{/if}} {{#if prereq}}{{#unless prereq.met}}prereq-unmet{{/unless}}{{/if}}" data-item-id="{{item.id}}">
           <img src="{{item.img}}" class="item-img">
           <span class="item-name">{{item.name}}</span>
           <span class="item-meta">{{item.system.discipline}} - {{item.system.level}} - {{item.system.activation}}</span>
+          {{#if item.system.prerequisites}}
+          <span class="item-prereqs" title="Prerequisites: {{item.system.prerequisites}}">
+            {{#if prereq.met}}
+            <i class="fas fa-check-circle prereq-ok" title="Prerequisites met: {{item.system.prerequisites}}"></i>
+            {{else}}
+            <i class="fas fa-exclamation-triangle prereq-warn" title="Missing prerequisites: {{prereq.missing.[0]}}"></i>
+            {{/if}}
+          </span>
+          {{/if}}
           {{#if (eq item.system.activation "passive")}}
           <span class="item-status">Always On</span>
           {{else if (eq item.system.activation "toggle")}}
@@ -179,6 +189,7 @@
           <a class="item-edit"><i class="fas fa-edit"></i></a>
           <a class="item-delete"><i class="fas fa-trash"></i></a>
         </li>
+        {{/with}}
         {{/each}}
       </ol>
 

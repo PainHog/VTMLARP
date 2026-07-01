@@ -51,6 +51,7 @@
 
       {{#if (eq item.type "power")}}
       <label>Discipline <input type="text" name="system.discipline" value="{{system.discipline}}"></label>
+      <label>Prerequisites <input type="text" name="system.prerequisites" value="{{system.prerequisites}}" placeholder="e.g. Animalism (2), Dominate (2)"></label>
       <label>Level
         <select name="system.level">
           <option value="basic" {{#if (eq system.level "basic")}}selected{{/if}}>Basic</option>

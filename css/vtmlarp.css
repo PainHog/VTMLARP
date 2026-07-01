@@ -3,6 +3,11 @@
   color: #1a1a1a;
 }
 
+.vtmlarp .item-list .item.prereq-unmet { background: rgba(165, 18, 18, 0.08); }
+.vtmlarp .item-list .item-prereqs { margin: 0 4px; }
+.vtmlarp .item-list .prereq-ok { color: #1a7a1a; }
+.vtmlarp .item-list .prereq-warn { color: #a51212; }
+
 .vtmlarp .sheet-header {
   display: flex;
   gap: 8px;

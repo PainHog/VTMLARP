@@ -1,5 +1,6 @@
 import { ChallengeApp } from "../apps/challenge.mjs";
 import { FrenzyApp } from "../apps/frenzy.mjs";
+import { checkPrerequisites } from "../apps/prerequisites.mjs";
 
 const CREATABLE_TYPES = {
   discipline: "Discipline", power: "Power", background: "Background",
@@ -38,6 +39,13 @@ export class VTMActorSheet extends ActorSheet {
     }
 
     context.activePowers = (context.itemsByType.power ?? []).filter(item => item.system.active);
+
+    const disciplineItems = context.itemsByType.discipline ?? [];
+    context.powerPrereqStatus = {};
+    for (const power of context.itemsByType.power ?? []) {
+      if (!power.system.prerequisites) continue;
+      context.powerPrereqStatus[power.id] = checkPrerequisites(power.system.prerequisites, disciplineItems);
+    }
 
     context.isCharacter = this.actor.type === "character";
     return context;

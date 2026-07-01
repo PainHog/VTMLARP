@@ -76,7 +76,11 @@ export class VTMPowerData extends BaseItemData {
         // challenge: requires winning a Trait challenge each time it's used
         choices: ["passive", "toggle", "reflexive", "challenge"]
       }),
-      active: new fields.BooleanField({ required: true, initial: false })
+      active: new fields.BooleanField({ required: true, initial: false }),
+      // Comma-separated list of "Discipline Name" or "Discipline Name (rating)" prerequisites,
+      // e.g. "Animalism (2), Dominate (2)" for a combination Discipline. Free text so it can
+      // describe "or" conditions (e.g. "Fortitude or Potence") that a strict structured field can't.
+      prerequisites: new fields.StringField({ required: false, blank: true, initial: "" })
     };
   }
 }
