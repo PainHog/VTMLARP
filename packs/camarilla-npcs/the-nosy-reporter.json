@@ -1,0 +1,114 @@
+{
+  "_id": "26ac3aa295aa4ed8",
+  "name": "The Nosy Reporter (Sample Camarilla NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Tabloid TV Journalist",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "Competitor",
+    "demeanor": "Visionary",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": []
+      },
+      "social": {
+        "priority": "primary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [],
+      "skills": [],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 3,
+      "max": 3
+    },
+    "blood": {
+      "value": 0,
+      "max": 0,
+      "perTurn": 0
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>You're on the front line of the ratings war. Every night you and your crew hunt down the eleven o'clock homicide, accident, or fire to make the couch potatoes tune in. You have the instincts of a bloodhound and a heart made of stone when you report on it all. Maybe someday you'll find the big story that makes it all make sense. Yeah, right. Hurry up, we're live.</p><h2>Stat Block (as printed)</h2><p><strong>Nature:</strong> Competitor<br><strong>Demeanor:</strong> Visionary</p><p><strong>Physical:</strong> Quick, Steady, Tenacious<br><strong>Social:</strong> Charismatic x3, Charming x2, Dignified x2, Persuasive x2, Callous (N)<br><strong>Mental:</strong> Dedicated, Determined, Observant x3, Shortsighted (N)</p><p><strong>Abilities:</strong> Computer 1, Dodge 1, Investigation 3</p><p><strong>Backgrounds:</strong> Influence: Media 2, Resources 2<br><strong>Virtues:</strong> (3, 4, 4)<br><strong>Path:</strong> Humanity 4<br><strong>Willpower:</strong> 3</p>",
+    "notes": "",
+    "npcType": "mortal"
+  },
+  "prototypeToken": {
+    "name": "The Nosy Reporter (Sample Camarilla NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Camarilla Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

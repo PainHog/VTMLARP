@@ -1,0 +1,114 @@
+{
+  "_id": "6f367211583745a0",
+  "name": "The Frightened Child (Sample Camarilla NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Lost Mortal Child",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "Child",
+    "demeanor": "Child",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": []
+      },
+      "social": {
+        "priority": "primary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [],
+      "skills": [],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 0,
+      "max": 0
+    },
+    "blood": {
+      "value": 0,
+      "max": 0,
+      "perTurn": 0
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>You're lost. Your daddy rushed off a while ago, and you're alone. Maybe the funny man chased him away &mdash; the one standing in the corner, looking at you all surprised. Maybe he's lost too. If you go and ask him nicely, he might tell you where your daddy went, or at least take you home. Mind your manners now, like mommy taught you, and everything will be just fine.</p><h2>Stat Block (as printed)</h2><p><strong>Nature:</strong> Child<br><strong>Demeanor:</strong> Child</p><p><strong>Physical:</strong> Agile, Quick, Resilient, Puny (N)<br><strong>Social:</strong> Friendly, Genial, Ingratiating<br><strong>Mental:</strong> Attentive, Clever, Creative</p><p><strong>Abilities:</strong> Awareness 3</p><p><strong>Backgrounds:</strong> Mentor 2<br><strong>Virtues:</strong> (5, 2, 3)<br><strong>Path:</strong> Humanity 5<br><strong>Willpower:</strong> 0</p>",
+    "notes": "",
+    "npcType": "mortal"
+  },
+  "prototypeToken": {
+    "name": "The Frightened Child (Sample Camarilla NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Camarilla Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
