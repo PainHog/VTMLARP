@@ -1,0 +1,31 @@
+{
+  "_id": "AnHTmt9OBGhnuKon",
+  "name": "Awaken the Forest Giants (Thaumaturgy (The Green Path), Advanced)",
+  "type": "power",
+  "img": "icons/magic/nature/tree-attack-ent-arms.webp",
+  "system": {
+    "description": "<p>By touching a tree, spending a Willpower Trait, and concentrating, you awaken it to walk and fight on your behalf. You must spend a Blood Trait for every two turns you wish it active; when the time expires it takes root permanently and cannot be animated again that night. An animated tree has 10 Physical Traits plus twice your Occult rating in Traits, a Brawl rating equal to your own, immunity to bashing damage, and halved non-aggravated lethal damage.</p>",
+    "source": "Camarilla Guide, Disciplines",
+    "discipline": "Thaumaturgy (The Green Path)",
+    "level": "advanced",
+    "challengeType": "mental",
+    "bloodCost": "1+ per two turns active",
+    "retestAbility": "Occult",
+    "duration": "Two turns per Blood Trait spent",
+    "activation": "toggle"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

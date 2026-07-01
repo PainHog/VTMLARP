@@ -1,0 +1,31 @@
+{
+  "_id": "gAACTP9gyv1plBAr",
+  "name": "Prison of Water (Thaumaturgy (Neptune's Might), Basic)",
+  "type": "power",
+  "img": "icons/magic/water/orb-water-bubbles.webp",
+  "system": {
+    "description": "<p>You animate a sufficient body of water to imprison a subject, spending Blood Traits to invest the prison with two Physical Traits each (plus your Occult rating). The subject must win a Physical Test against the prison's Traits to break free; you may instead crush the subject, inflicting one health level of lethal damage per successful challenge, or automatically drown a mortal. You must maintain line of sight to both the water source and the subject to sustain the effect.</p>",
+    "source": "Camarilla Guide, Disciplines",
+    "discipline": "Thaumaturgy (Neptune's Might)",
+    "level": "basic",
+    "challengeType": "physical",
+    "bloodCost": "1+",
+    "retestAbility": "Occult",
+    "duration": "As long as line of sight is maintained",
+    "activation": "toggle"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
