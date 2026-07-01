@@ -76,3 +76,44 @@ From Laws of Elysium's closing chapters, "Storytelling for Elders" (running an a
 - `rules-reference/abombwe-discipline-long-night-crossover.json` — "Abombwe (The Long Night Crossover)": the appendix's closing crossover addendum, reproduced in full — the Master-level Abombwe power Devil-Channel (Hands/Torso/Throat/Feet variants) and Taking the Skin, both tied to the clans/bloodlines of the separate *The Long Night* sourcebook rather than to Laws of Elysium's own elders.
 
 The bulk of "Storytelling for Elders" (chronicle scale/scope/theme guidance, the sample "new primogen" chronicle, advice on integrating elders into a running chronicle, and general character-advancement pep-talk) was excluded as pure Storyteller narrative-craft prose with no distinct mechanics beyond the two pieces captured above, consistent with this project's established convention for GM-advice chapters.
+
+## Laws of Elysium: New Paths of Enlightenment and Master-level Discipline powers
+
+From Laws of Elysium's Paths of Enlightenment and Disciplines sections (covering non-clan-specific and clan-specific Paths, and new Master/Elder-tier Discipline powers). Because the item schema (`VTMPowerData`) only allows `level` values of `basic`/`intermediate`/`advanced`, all these Master-tier powers are stored with `"level": "advanced"` and the true tier is called out in the display `name` (e.g. "Quickness (Celerity, Master)").
+
+**Paths of Enlightenment** (`paths-of-enlightenment/`):
+
+- `path-of-harmony.json` — Path of Harmony, with its Hierarchy of Sins centered on communing with nature and riding the Beast's wave rather than suppressing or indulging it.
+- `path-of-blood-assamite.json` — Assamite clan-specific Path of Blood (the "climb to Alamut" enlightenment paralleling Golconda), Hierarchy of Sins, and Path Traits (Avenger, Disrespect, Failure, Traitor).
+- `path-of-paradox.json` — Ravnos clan-specific Path of Paradox (the "weig"/reality-as-illusion philosophy), Hierarchy of Sins, and Path Traits (Release, Concern, Knowledge, Failure, Boredom).
+- `path-of-typhon.json` — Setite clan-specific Path of Typhon, Hierarchy of Sins, and Path Traits (Control, Weakness, Purity, Mortal Feelings, Knowledge of Set).
+- `path-of-ecstasy.json` — Path of Ecstasy (Setite-associated but not clan-locked in the source text), Hierarchy of Sins, and Path Traits (Innocence, Luxury, Corruption, Addiction, Beauty).
+- `path-of-the-warrior.json` — Path of the Warrior (Setite-associated), Hierarchy of Sins, and Path Traits (Failure, Mental or Physical Development, Discipline Development, Pain, Refusal).
+
+Skipped as pre-existing duplicates already present in `paths-of-enlightenment/` under the same names (from other sourcebooks, with different but equivalent content): `path-of-honorable-accord.json` and `path-of-power-and-the-inner-voice.json`. `path-of-humanity.json` was likewise found already present (added concurrently by another pass over a different sourcebook) and was not touched.
+
+**Master-level Discipline powers** (`packs/disciplines/`, filename pattern `elder-<discipline>-<power-slug>.json`):
+
+- Animalism: `elder-animalism-animal-succulence.json`, `elder-animalism-conquer-the-beast.json`
+- Auspex: `elder-auspex-clairvoyance.json`, `elder-auspex-soul-scan.json`, `elder-auspex-bring-forth-the-dawn.json`
+- Celerity: `elder-celerity-quickness.json`, `elder-celerity-velocity.json`
+- Chimerstry: `elder-chimerstry-pseudo-blindness.json`, `elder-chimerstry-mass-reality.json`
+- Dementation: `elder-dementation-kindred-spirits.json`, `elder-dementation-mind-of-a-killer.json`
+- Dominate: `elder-dominate-obedience.json`, `elder-dominate-rationale.json`
+- Fortitude: `elder-fortitude-imperviousness.json`, `elder-fortitude-invulnerability.json`
+- Melpominee: `elder-melpominee-the-missing-voice.json` (an added Basic-level power per the source), `elder-melpominee-arts-traumatic-essence.json` (Master)
+- Mytherceria: `elder-mytherceria-darkling-trickery.json` (added Basic/level-2 power), `elder-mytherceria-riddle-phantastique.json`, `elder-mytherceria-spikes.json` (both Master)
+- Necromancy: `elder-necromancy-insight.json` (added Basic power), `elder-necromancy-torment.json`, `elder-necromancy-spirit-possession.json` (both Master)
+- Obeah: `elder-obeah-anesthetic-touch.json` (added Basic/level-2 power), `elder-obeah-pain-for-pleasure.json`, `elder-obeah-vitae-block.json` (both Master)
+- Obfuscate: `elder-obfuscate-cloak-the-aura.json`, `elder-obfuscate-conceal.json`
+- Obtenebration: `elder-obtenebration-eyes-of-the-night.json`, `elder-obtenebration-shadow-step.json`
+- Potence: `elder-potence-force.json`, `elder-potence-demolition.json`
+- Presence: `elder-presence-love.json`, `elder-presence-mind-numb.json`, `elder-presence-flesh-of-marble.json`, `elder-presence-form-of-the-ghost.json`
+- Quietus: `elder-quietus-weakness.json` (added Basic power), `elder-quietus-taste-of-death.json`, `elder-quietus-foul-blood.json` (both Master)
+- Serpentis: `elder-serpentis-temptation.json`, `elder-serpentis-obsession.json`
+- Spiritus: `elder-spiritus-summon-spirit-beasts.json` (added Basic power), `elder-spiritus-engling-fury.json`, `elder-spiritus-spirit-form.json` (both Master)
+- Thanatosis: `elder-thanatosis-hags-wrinkles.json` (added Basic/level-2 power), `elder-thanatosis-compress.json`, `elder-thanatosis-dust-to-dust.json` (both Master)
+- Thaumaturgy, Path of Conjuring: `elder-thaumaturgy-conjuring-summoning-the-spirit.json` (Basic), `elder-thaumaturgy-conjuring-permanency.json` (Basic), `elder-thaumaturgy-conjuring-magic-of-the-smith.json` (Intermediate), `elder-thaumaturgy-conjuring-power-over-life.json` (Advanced)
+- Thaumaturgy, Spirit Thaumaturgy: `elder-thaumaturgy-spirit-thaumaturgy-evil-eye.json` (Basic), `elder-thaumaturgy-spirit-thaumaturgy-spirit-eyes.json` (Basic), `elder-thaumaturgy-spirit-thaumaturgy-spirit-slave.json` (Intermediate), `elder-thaumaturgy-spirit-thaumaturgy-journey.json` (Intermediate), `elder-thaumaturgy-spirit-thaumaturgy-fetishes.json` (Advanced)
+
+The book's generic Thaumaturgy `Rituals` list, `Clan Assamite Rituals`, and the Corruption/Vicissitude/Visceratika Paths beyond the disciplines explicitly named above were out of scope for this pass and largely already exist in this pack from other sourcebooks (e.g. `thaumaturgical-rituals-principal-focus-of-vitae-infusion.json`, `thaumaturgical-rituals-the-open-passage.json`, `thaumaturgical-rituals-blood-contract.json`, `thaumaturgical-rituals-wake-with-evenings-freshness.json`, `storytellers-thaumaturgical-rituals-stone-slumber.json`).
