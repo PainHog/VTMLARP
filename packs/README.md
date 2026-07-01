@@ -196,3 +196,29 @@ The actual new game-mechanics content for this arc of the book is the "NEW DISCI
 - `brujah-character-creation-guidance.json` — "Brujah Character Creation Guidance (Brujah)": Storyteller guidance on the Alternate Identity Background (from Guide to the Sabbat) and the Military Force Background (from the Vampire Storytellers Handbook) as they apply to Brujah gang-leader/entourage concepts. Included because it is Brujah-specific usage guidance for existing published Backgrounds, not a re-statement of another book's full mechanics; no new Background item was created since the mechanics themselves live in those other sourcebooks.
 
 Excluded as pure narrative-craft with no extractable mechanics: all of Chapter Three's pregenerated character archetypes (see above).
+
+## Clanbook: Followers of Set, tail of Chapter Two ("After Such Knowledge") through Chapter Three ("Broken Images"), lines 2150–2976 (end of file)
+
+Read the remainder of Chapter Two (cult leadership, symbols of faith, and the "Divine Power"/"Advanced Serpentis"/"Advanced Obfuscate and Presence"/"Combination Powers"/"Setite Thaumaturgy" sections) plus the entirety of Chapter Three. Chapter Three turned out to consist wholly of pregenerated character archetypes (Psychiatrist, Mystic Artist, Superspy, Entrepreneur) with OCR-garbled trait-list character sheets referencing only pre-existing Disciplines/Merits/Backgrounds — no new named mechanics, so nothing was extracted from it, per established policy.
+
+All genuinely new mechanical content in this range was new-tier Discipline powers clustered at the tail of Chapter Two, before Chapter Three's archetype section begins. Checked `packs/disciplines/`, `packs/merits-flaws/` and `packs/backgrounds/` first; confirmed the existing `elder-serpentis-temptation.json` and `elder-serpentis-obsession.json` (from Laws of Elysium) already cover this book's "Temptation" and "Obsession" Presence-power variants, so those were not duplicated.
+
+**New Discipline powers** (`packs/disciplines/`), all Elder-tier (book calls them dot-6/7/8; encoded as `advanced` per the schema's tier cap, with the true tier noted in each item's name), tagged "(Setite)":
+
+- `setite-serpentis-cobra-fangs.json` — Cobra Fangs (Serpentis, Advanced): grants Form of the Cobra's venomous bite without the full transformation.
+- `setite-serpentis-divine-image.json` — Divine Image (Serpentis, Elder): physical metamorphosis into one of four Setite godforms (Set, Sobek, Wepwawet, Renenet or Taweret).
+- `setite-serpentis-heart-thief.json` — Heart Thief (Serpentis, Elder): rapidly rips out another vampire's heart, granting the effects of The Heart of Darkness.
+- `setite-serpentis-shadow-of-apep.json` — Shadow of Apep (Serpentis, Elder): transformation into a shadow-serpent immune to physical harm; restricted to Set's direct childer.
+- `setite-obfuscate-mental-maze.json` — Mental Maze (Obfuscate, Elder): traps a victim's sense of direction within an area.
+- `setite-obfuscate-confusion-of-the-eye.json` — Confusion of the Eye (Obfuscate, Elder): makes a victim perceive one person as someone else.
+- `setite-presence-phobia.json` — Phobia (Presence, Advanced): instills an irrational, potentially permanent fear.
+- `setite-presence-corruption.json` — Corruption (Presence, Elder): links a victim's Beast to pleasure/pain, forcing frenzy checks for indulgence.
+- `setite-combination-true-loves-face.json` — True Love's Face (Obfuscate + Presence combination power): makes the Setite appear as the victim's true love.
+- `setite-combination-typhonic-beast.json` — Typhonic Beast (Potence + Serpentis combination power): transformation into Set's totem beast with combined Discipline benefits.
+- `setite-combination-weigh-the-heart.json` — Weigh the Heart (Auspex + Serpentis combination power): reveals a target's Nature and hidden secrets/guilts.
+
+**Rules reference** (`packs/rules-reference/`):
+
+- `setite-thaumaturgy-and-divine-power.json` — "Setite Thaumaturgy and Divine Power (Setite)": documents the four Setite blood-magic traditions (Akhu, Wanga, Sadhana, Nahuallotl) as reflavorings of existing published Paths/rituals (no new Path mechanics are given in the source), plus Storyteller/character guidance on how Setites use Obfuscate, Presence, Serpentis, Animalism and Thaumaturgy to play at being living gods before their blood cults, and the clan's "Osiris" social sanction against cult leaders who exploit their Herd without giving back.
+
+No new Merits, Flaws or Backgrounds were introduced in this range of the source text, so none were added.
