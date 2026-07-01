@@ -1,0 +1,32 @@
+{
+  "_id": "6ec5487b8fd74e55",
+  "name": "Forced March (Celerity, Fortitude) (Assamite)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p>A combination Discipline allowing continuous rapid overland travel on foot without the exhausting effects of combat Celerity use. You may reduce out-of-game travel times by a factor equal to the number of Celerity powers you possess. Each hour (or fraction thereof) of travel costs a number of Blood Traits equal to half the number of Celerity powers you have. You may use this power a maximum number of times per night equal to the number of Fortitude powers you possess. It is of no benefit in combat. Costs 6 Experience Traits to learn.</p>",
+    "source": "Clanbook: Assamite, Chapter Two",
+    "discipline": "Celerity, Fortitude",
+    "level": "advanced",
+    "challengeType": "none",
+    "bloodCost": "Half the number of Celerity powers possessed, per hour of travel",
+    "retestAbility": "",
+    "duration": "Per hour of travel",
+    "activation": "toggle",
+    "prerequisites": "Celerity (Swiftness), Fortitude (Mettle)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

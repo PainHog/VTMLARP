@@ -1,0 +1,31 @@
+{
+  "_id": "08259e0e0ebf4c7b",
+  "name": "Selective Silence (Quietus, Advanced) (Assamite)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p>Unlike the indiscriminate Silence of Death, this technique lets you silence only the specific individuals or objects you choose. You exhale a thin mist of blood that clings to your chosen subjects. Spend two Blood Traits and make a Static Mental Challenge (retest Stealth) against a difficulty of seven Traits for each object or individual you want to silence, up to a maximum number of subjects equal to 3 plus your Stealth Ability Traits. Each subject must be within 20 yards of you. Larger objects count as more than one subject (a heavy machine gun counts as two, a car as three, a small aircraft as five); nothing larger than a private jet or an elephant can be silenced this way. Each subject is completely silenced for a number of minutes equal to your permanent Willpower &mdash; nothing it does generates sound, though secondary effects (like a bullet breaking the sound barrier) still do.</p>",
+    "source": "Clanbook: Assamite, Chapter Two",
+    "discipline": "Quietus",
+    "level": "advanced",
+    "challengeType": "static",
+    "bloodCost": "2 Blood Traits",
+    "retestAbility": "Stealth",
+    "duration": "Minutes equal to permanent Willpower",
+    "activation": "challenge"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
