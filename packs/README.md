@@ -413,3 +413,21 @@ Read the "=== DISCIPLINES ===" and "=== COMBINATION DISCIPLINES ===" sections of
 **Excluded as pure narrative content per established policy:** the pregenerated player-character templates, the "Grave Robbers" sample coterie, and the four named Survivors NPCs (Chapter Three) — all narrative/example content with full classic-system stat blocks, excluded consistent with prior passes; the "Ravnos of Note" NPC roster was already covered in a prior pass (see above).
 
 Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1220 files parsed cleanly with zero collisions.
+
+## Clanbook: Toreador, Chapter Two closing material and Chapter Three "The Registry"
+
+Read the remainder of Chapter Two (Sects/Cliques/Social Networks narrative, the "Other Kindred/Others" bestiary-flavor section on mages/Lupines/faeries/ghosts/Cathayans/hunters, and the "New Discipline Powers" section) plus the entirety of Chapter Three, "The Registry."
+
+**Included**, as 5 new elder-tier Discipline power items in `packs/disciplines/`:
+
+- `toreador-elder-crocodiles-tongue.json` ("Crocodile's Tongue (Auspex, Elder)") — instinctively phrases the character's point in terms the listener already wants to hear.
+- `toreador-elder-absent-sway.json` ("Absent Sway (Presence, Elder)") — imbues a work of art or a claimed area with a residual emotion that affects anyone who later views/enters it.
+- `toreador-elder-bliss.json` ("Bliss (Dominate/Presence, Elder)") — a combination power letting a Toreador on the Path of Humanity draw calm/resolve from an aesthetic trance to temporarily raise a Virtue, or project that calm onto another.
+- `toreador-elder-soul-painting.json` ("Soul Painting (Auspex/Presence, Elder)") — a combination power that reveals a studied subject's true Nature/Virtues/Path rating through a completed work of art.
+- `toreador-elder-doubletalk.json` ("Doubletalk (Auspex/Celerity/Obfuscate, Elder)") — a combination power hiding a full sentence inside an innocuous conversational filler sound.
+
+True tiers (Elder) are recorded in each item's `name` per convention, since `VTMPowerData.level` only supports basic/intermediate/advanced; combination-power prerequisites are recorded in the `prerequisites` field.
+
+**Excluded as pure narrative/cultural-flavor prose or pregenerated templates, per established policy:** the "Sects, Cliques, and Social Networks" essay (the Electron Artists/Watchers factions are in-character rumor/flavor with no reusable mechanics or lasting stat-block significance); the "Other Kindred" bestiary-flavor section (mages, Lupines, faeries, ghosts, the walking dead, Cathayans, hunters) — atmospheric setting color with no new mechanics; and all of Chapter Three, "The Registry," which (unlike other clanbooks' named-NPC galleries) consists entirely of two pregenerated player-character templates (the Folk Artist and the Reclusive Author) with garbled OCR'd classic-system character sheets and no independent canon significance — no named canon NPCs with lasting setting significance appear anywhere in this chapter, so no lore JournalEntry was warranted.
+
+Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1226 files parsed cleanly with zero collisions.
