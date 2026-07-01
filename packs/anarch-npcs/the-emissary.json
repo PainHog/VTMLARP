@@ -1,0 +1,320 @@
+{
+  "_id": "b709e40224744af0",
+  "name": "The Emissary (Sample Anarch NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Anarch Liaison to the Camarilla Court",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Anarch",
+    "generation": 11,
+    "nature": "Soldier",
+    "demeanor": "Architect",
+    "title": "Emissary",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Nimble",
+            "spent": false
+          },
+          {
+            "name": "Agile",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Vigorous",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Dignified",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Beguiling",
+            "spent": false
+          },
+          {
+            "name": "Beguiling",
+            "spent": false
+          },
+          {
+            "name": "Charming",
+            "spent": false
+          },
+          {
+            "name": "Charming",
+            "spent": false
+          },
+          {
+            "name": "Diplomatic",
+            "spent": false
+          },
+          {
+            "name": "Diplomatic",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Alert",
+            "spent": false
+          },
+          {
+            "name": "Alert",
+            "spent": false
+          },
+          {
+            "name": "Vigilant",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Knowledgeable",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Awareness",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 2,
+        "temporary": 2
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Herd",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence: High Society",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Finance",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Media",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Political",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>Designer business suits, gourmet cuisine, suites at fine hotels&mdash;this was the world you knew before you were Embraced. Your sire was one of the original wealthy rags-to-riches financiers in life, and still fancied himself a great philanthropist and philosophical &ldquo;friend of the common man,&rdquo; although in truth he was more prone to armchair debates about human rights than taking action. Still, as far as you could see the others of your clan were little better than loudmouthed rabble, so you stayed close to your sire and were rewarded for your loyal service with a rising star in the Camarilla. However, something never sat quite right with you about your role. A couple of years after your release, you went in search of that elusive something you felt was missing from your stagnant unlife and your diplomatic duties for your clan. You found what you were missing when a firebrand you met at a nightclub told you the truth about Kindred society. After five consecutive nights of deep debate at that same location, you cast your lot with the Anarch Movement, to your sire's eternal shame and frustration. Now you serve the area's anarchs as their loyal emissary to the local court, using your Camarilla connections to smooth over rough incidents and ensure that your brethren are treated fairly by the prince. That alone keeps you quite busy, but you secretly hope that greater good will come of the endless boons, secrets and mortal contacts&mdash;that you might one day inspire another to break free as you did from the archaic restraints placed upon him by the elders.</p><h2>Stat Block (as printed)</h2><p><strong>Clan:</strong> Brujah<br><strong>Nature:</strong> Soldier<br><strong>Demeanor:</strong> Architect<br><strong>Generation:</strong> 11th</p><p><strong>Physical (8):</strong> Tough x2, Nimble, Agile, Enduring x2, Tireless, Vigorous<br><strong>Social (10):</strong> Dignified, Intimidating, Beguiling x2, Charming x2, Diplomatic x2, Ingratiating x2<br><strong>Mental (8):</strong> Determined x3, Alert x2, Vigilant, Cunning, Knowledgeable</p><p><strong>Abilities:</strong> Awareness, Academics x2, Dodge x2, Firearms x2, Melee, Finance x2, Intimidation x2, Investigation x3, Leadership, Subterfuge x3, Etiquette x3, Politics x3</p><p><strong>Disciplines:</strong> Celerity (Alacrity, Swiftness, Rapidity); Potence (Prowess, Might); Presence (Awe, Dread Gaze, Entrancement)</p><p><strong>Backgrounds:</strong> Herd, Retainers x2, Resources x3, Influence: High Society x2, Influence: Finance x3, Influence: Media x2, Influence: Political x3<br><strong>Merits:</strong> Eidetic Memory<br><strong>Flaws:</strong> Sire's Resentment<br><strong>Virtues:</strong> Conscience 3, Self-Control 4, Courage 2<br><strong>Path:</strong> Humanity 3<br><strong>Reputation:</strong> Advocate, Champion, Committed, Connected, Respected, Speaker<br><strong>Blood:</strong> 12 (may spend 1/round)<br><strong>Willpower:</strong> 5</p>",
+    "notes": "",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "The Emissary (Sample Anarch NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Anarchs Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

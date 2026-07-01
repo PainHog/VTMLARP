@@ -1,0 +1,295 @@
+{
+  "_id": "f5834b306c1c4afc",
+  "name": "Nomadic Pack Leader (Sample Anarch NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Caitiff Circuit Preacher Guiding a Wandering Anarch Gang",
+    "clan": "Caitiff",
+    "bloodline": "",
+    "sect": "Anarch",
+    "generation": 12,
+    "nature": "Penitent",
+    "demeanor": "Director",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Wiry",
+            "spent": false
+          },
+          {
+            "name": "Stalwart",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Friendly",
+            "spent": false
+          },
+          {
+            "name": "Friendly",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Magnetic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Insightful",
+            "spent": false
+          },
+          {
+            "name": "Insightful",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Intuitive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      {
+        "name": "Clumsy",
+        "spent": false
+      }
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Awareness",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Academics",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 2,
+      "max": 2
+    },
+    "blood": {
+      "value": 11,
+      "max": 11,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Allies",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Street",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Church",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Medicine",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>You still tend to the needs of the poor and downtrodden, even after it happened and you were damned forever. But that was a long time ago, and even through all your trials the Lord never told you to give up, so now you put the other circuit preachers' tips to a different use&mdash;helping you keep an eye out for your new &ldquo;flock,&rdquo; a scruffy gang of anarchs and other castoffs you guide from city to city. Despite your own state as one of the damned, you remain a real people person, and take care to ensure that everyone who follows you keeps his nose clean, his language respectful and most importantly his eyes open as you carry the message of libertas from city to city. If others are willing to listen, you are willing to tell them who to speak with in your group. Together you wander wherever the road takes you, using the cheapest way to get from here to there. Once your group even splurged and crossed over to Europe; it was exhilarating, but much more oppressive there as well, and coming home never felt quite so good. You're a natural-born leader; it is a shame you have such a dismal pedigree. Your own status as one of the Devil's own, as evidenced by your inability to face across (cross a running body of water), deeply troubles you, and this inner guilt and anguish give your eyes a perpetual sad cast behind your cheerful smile and friendly voice. Never let it show, though&mdash;the Movement is more important than your personal troubles, and as you see it, redemption will only come to those who have faith and persevere as stoically as possible.</p><h2>Stat Block (as printed)</h2><p><strong>Clan:</strong> Caitiff<br><strong>Nature:</strong> Penitent<br><strong>Demeanor:</strong> Director<br><strong>Generation:</strong> 12th</p><p><strong>Physical (10):</strong> Brawny x2, Enduring x2, Ferocious x2, Wiry, Stalwart, Tough x2, Clumsy (N)<br><strong>Social (7):</strong> Commanding x2, Friendly x2, Ingratiating, Charismatic, Magnetic<br><strong>Mental (7):</strong> Insightful x2, Observant, Clever x2, Determined, Cunning, Intuitive</p><p><strong>Abilities:</strong> Academics, Awareness, Brawl x2, Dodge, Medicine x2, Intimidation, Leadership x2, Melee x2, Streetwise x3</p><p><strong>Disciplines:</strong> Potence (Prowess, Might, Vigor); Auspex (Heightened Senses); Animalism (Feral Whispers); Dominate (Command, Mesmerism, Forgetful Mind)</p><p><strong>Backgrounds:</strong> Contacts x2, Allies x2, Influence: Street x2, Influence: Church x3, Influence: Medicine x2<br><strong>Merits:</strong> Calm Heart, Natural Leader<br><strong>Flaws:</strong> Deep Sleeper, Repelled by Crosses<br><strong>Virtues:</strong> Conscience 4, Self-Control 5, Courage 4<br><strong>Path:</strong> Humanity 4<br><strong>Reputation:</strong> Committed, Compassionate, True Believer<br><strong>Blood:</strong> 11 (may spend 1/round)<br><strong>Willpower:</strong> 2</p>",
+    "notes": "",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Nomadic Pack Leader (Sample Anarch NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Anarchs Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
