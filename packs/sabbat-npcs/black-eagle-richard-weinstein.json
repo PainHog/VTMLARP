@@ -1,0 +1,137 @@
+{
+  "_id": "3da347ad42864237",
+  "name": "Richard B. Weinstein, Ductus (Black Eagle Consulting) (Lasombra)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Sabbat Pack Ductus, Cold War-Era Engineer and Occultist",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 11,
+    "nature": "Visionary",
+    "demeanor": "Director",
+    "title": "Ductus",
+    "coterie": "Black Eagle Consulting, Inc.",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          { "name": "Quick", "spent": false },
+          { "name": "Tough", "spent": false },
+          { "name": "Tough", "spent": false }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          { "name": "Commanding", "spent": false },
+          { "name": "Commanding", "spent": false },
+          { "name": "Enigmatic", "spent": false },
+          { "name": "Persuasive", "spent": false }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          { "name": "Knowledgeable", "spent": false },
+          { "name": "Knowledgeable", "spent": false },
+          { "name": "Knowledgeable", "spent": false },
+          { "name": "Observant", "spent": false },
+          { "name": "Observant", "spent": false },
+          { "name": "Resourceful", "spent": false }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        { "name": "Alertness", "rating": 2, "notes": "" },
+        { "name": "Intimidation", "rating": 3, "notes": "" },
+        { "name": "Leadership", "rating": 4, "notes": "" }
+      ],
+      "skills": [
+        { "name": "Security", "rating": 3, "notes": "" },
+        { "name": "Stealth", "rating": 2, "notes": "" }
+      ],
+      "knowledges": [
+        { "name": "Computer", "rating": 5, "notes": "" },
+        { "name": "Occult", "rating": 4, "notes": "" },
+        { "name": "Sabbat Lore", "rating": 3, "notes": "" },
+        { "name": "Science", "rating": 4, "notes": "Physics/engineering" }
+      ]
+    },
+    "willpower": {
+      "value": 7,
+      "max": 7
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": { "rating": 3, "temporary": 3 },
+      "selfControlInstinct": { "rating": 3, "temporary": 3 },
+      "courage": { "rating": 4, "temporary": 4 }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      { "name": "Resources", "rating": 3, "notes": "Black Eagle Consulting, Inc." },
+      { "name": "Contacts", "rating": 3, "notes": "" }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Ductus of the Sabbat pack Black Eagle Consulting, Inc., and its eldest surviving member. A WWII-era Los Alamos/Navy computer engineer turned occultist after meeting Jack Parsons, Embraced in 1954. He suffers conflicting, multiple mortal-life memories he no longer bothers trying to reconcile.</p><p>Black Eagle Consulting is a Sabbat pack posing as a technology and security consulting firm, using modern communications to stay loosely connected across long distances rather than sharing a fixed haven. Originated in 1877 attacking telegraph stations, and has continuously updated its membership and methods with each new communications technology: radio in the 1920s, film and TV in the '30s-'50s, and computer networking since 1980. Pack members maintain Vinculum ratings of 4-7 with each other. The Black Eagles straddle the line between factionless views and the Kings and Queens of Shadow, willing to work among mortals without ideological commitment to doing so. Their &quot;dirty tricks&quot; against targets include automatic signal splitting (copying private communications to interested outside parties such as princes, bishops, intelligence agencies, churches, and the press), signal destruction (losing or forging messages in transit), and framing (planting fingerprints, hair, or blood traces to implicate a target in mundane crimes).</p><h2>Roleplaying Hints</h2><p>Weinstein leads with quiet technical authority, treating the pack's operations like an engineering problem to be solved methodically. He rarely raises his voice, preferring to let results speak.</p><p><strong>Disciplines (as printed):</strong> Celerity 1, Dominate 4, Obtenebration 2.</p>",
+    "notes": "Convert Disciplines to owned power Items: Celerity 1, Dominate 4, Obtenebration 2.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Richard B. Weinstein, Ductus",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Clanbook: Lasombra, Sample Brood: Black Eagle Consulting, Inc.",
+      "tag": "(Lasombra)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

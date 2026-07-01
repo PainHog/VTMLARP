@@ -1,0 +1,33 @@
+{
+  "_id": "f3af6b061bd846e9",
+  "name": "Shroud of Absence (Dominate + Obtenebration, Combination Discipline)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p>A refinement of Shroud of Night, this combination power creates a region into which nobody looks or thinks to linger, rather than a visible cloud of blackness. Spend a Blood Trait to create a blind spot roughly ten feet across that moves at your walking speed. Anyone wishing to see inside the Shroud must defeat you in a Willpower Challenge.</p><p><strong>System (MET):</strong> Static Social Challenge against seven Traits to create the Shroud. Anyone seeking to peer inside must win a Willpower Challenge against you, its creator (you may spend Social Traits to raise your Willpower total for this purpose).</p>",
+    "source": "Clanbook: Lasombra, Combination Disciplines",
+    "discipline": "Dominate, Obtenebration",
+    "level": "advanced",
+    "challengeType": "social",
+    "bloodCost": "1 Blood Trait",
+    "retestAbility": "Occult",
+    "duration": "Until dismissed or the creator moves out of range",
+    "activation": "challenge",
+    "active": true,
+    "prerequisites": "Dominate, Obtenebration"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

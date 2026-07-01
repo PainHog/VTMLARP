@@ -1,0 +1,131 @@
+{
+  "_id": "40be3f3c9d4e4d27",
+  "name": "Angelica Shawn (Black Eagle Consulting) (Lasombra)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Diablerist Fugitive Turned Black Eagle Operative",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 11,
+    "nature": "Survivor",
+    "demeanor": "Bravo",
+    "title": "",
+    "coterie": "Black Eagle Consulting, Inc.",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          { "name": "Ferocious", "spent": false },
+          { "name": "Quick", "spent": false },
+          { "name": "Tough", "spent": false }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          { "name": "Cunning", "spent": false },
+          { "name": "Cunning", "spent": false },
+          { "name": "Enigmatic", "spent": false },
+          { "name": "Intimidating", "spent": false },
+          { "name": "Persuasive", "spent": false }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          { "name": "Observant", "spent": false },
+          { "name": "Vigilant", "spent": false }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        { "name": "Alertness", "rating": 3, "notes": "" },
+        { "name": "Intimidation", "rating": 3, "notes": "" },
+        { "name": "Streetwise", "rating": 3, "notes": "" },
+        { "name": "Subterfuge", "rating": 3, "notes": "" }
+      ],
+      "skills": [
+        { "name": "Melee", "rating": 3, "notes": "" },
+        { "name": "Stealth", "rating": 3, "notes": "" }
+      ],
+      "knowledges": [
+        { "name": "Occult", "rating": 3, "notes": "" },
+        { "name": "Sabbat Lore", "rating": 2, "notes": "" },
+        { "name": "Streetwise Lore", "rating": 2, "notes": "" }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Night",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": { "rating": 3, "temporary": 3 },
+      "selfControlInstinct": { "rating": 3, "temporary": 3 },
+      "courage": { "rating": 4, "temporary": 4 }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A transgender woman Embraced in the 1950s from prison after offering herself to a Vicissitude-using Sabbat pack in exchange for the power to alter her form. She later diablerized that pack's leader and fled, eventually joining the Black Eagles through a shared interest in mortal targets. Her generation improved from 12th to 11th as a result of the diablerie.</p><p>See Richard B. Weinstein's entry for the pack's shared background as Black Eagle Consulting, Inc.</p><h2>Roleplaying Hints</h2><p>Angelica is guarded and pragmatic, having survived by seizing power when it was offered — even at terrible cost. She follows the Path of Night and measures her actions against its Hierarchy of Sins rather than Humanity.</p><p><strong>Disciplines (as printed):</strong> Dominate 3, Obtenebration 3, Potence 2.<br><strong>Morality:</strong> Path of Night 4.</p>",
+    "notes": "Convert Disciplines to owned power Items: Dominate 3, Obtenebration 3, Potence 2. Originally 12th generation; improved to 11th generation via diablerie per her background.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Angelica Shawn",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Clanbook: Lasombra, Sample Brood: Black Eagle Consulting, Inc.",
+      "tag": "(Lasombra)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "_id": "5384b84ca2b3400b",
+  "name": "Zarathustra (Lasombra)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Fifth-Generation Antiochene Methuselah",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 5,
+    "nature": "Judge",
+    "demeanor": "Caregiver",
+    "title": "Elder of Antioch",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          { "name": "Enduring", "spent": false },
+          { "name": "Enduring", "spent": false },
+          { "name": "Quick", "spent": false },
+          { "name": "Tough", "spent": false },
+          { "name": "Tough", "spent": false }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          { "name": "Diplomatic", "spent": false },
+          { "name": "Diplomatic", "spent": false },
+          { "name": "Eloquent", "spent": false },
+          { "name": "Eloquent", "spent": false },
+          { "name": "Enigmatic", "spent": false },
+          { "name": "Persuasive", "spent": false },
+          { "name": "Persuasive", "spent": false },
+          { "name": "Shrewd", "spent": false }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          { "name": "Knowledgeable", "spent": false },
+          { "name": "Knowledgeable", "spent": false },
+          { "name": "Knowledgeable", "spent": false },
+          { "name": "Patient", "spent": false },
+          { "name": "Wise", "spent": false },
+          { "name": "Wise", "spent": false }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        { "name": "Alertness", "rating": 3, "notes": "" },
+        { "name": "Empathy", "rating": 4, "notes": "" },
+        { "name": "Leadership", "rating": 5, "notes": "" },
+        { "name": "Subterfuge", "rating": 5, "notes": "" }
+      ],
+      "skills": [
+        { "name": "Etiquette", "rating": 5, "notes": "" },
+        { "name": "Finance", "rating": 4, "notes": "" },
+        { "name": "Trade Negotiation", "rating": 4, "notes": "" }
+      ],
+      "knowledges": [
+        { "name": "Bureaucracy", "rating": 4, "notes": "" },
+        { "name": "History", "rating": 5, "notes": "Antioch and the region" },
+        { "name": "Linguistics", "rating": 5, "notes": "Greek, Turkish, Arabic, English, and others" },
+        { "name": "Politics", "rating": 4, "notes": "" }
+      ]
+    },
+    "willpower": {
+      "value": 10,
+      "max": 10
+    },
+    "blood": {
+      "value": 20,
+      "max": 20,
+      "perTurn": 3
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": { "rating": 4, "temporary": 4 },
+      "selfControlInstinct": { "rating": 5, "temporary": 5 },
+      "courage": { "rating": 4, "temporary": 4 }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      { "name": "Resources", "rating": 5, "notes": "Merchant/shipping interests across generations" },
+      { "name": "Contacts", "rating": 5, "notes": "" },
+      { "name": "Retainers", "rating": 4, "notes": "Lineage descendants, over a hundred at its peak" },
+      { "name": "Influence", "rating": 4, "notes": "Antioch and its diaspora" }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Fifth-generation Lasombra, a native of Antioch (modern Turkey), Embraced by a post-Thera-dispersal veteran while traveling with Alexander the Great's army. Settled permanently in Antioch, protecting and improving the city through every subsequent political upheaval (the Crusades, the Ottoman conquest, Turkish nationalism) by focusing solely on Antioch's interests. His lineage has included over a hundred members at its peak; roughly forty remain after crusade losses and Sunni nationalist hunting. He oversees merchant and shipping interests in Antioch's tradition, with lineage members now running Chicago brokerages and Shanghai commodity exchanges.</p><p>He survived early Sabbat purges of Methuselahs through prudence, bribery, and occasional strategic redirection of Sabbat war parties at rivals, withdrawing into shadow via arts unknown to neonates when necessary. He serves on Courts of Blood once or twice a century for both Sabbat and antitribu, always adjudicating within the participants' own accepted code rather than his own views, and quietly mentors promising neonates toward independence from the Sabbat without telling other vampires how to run their affairs.</p><h2>Roleplaying Hints</h2><p>Zarathustra is patient beyond mortal comprehension, speaks in measured diplomatic tones, and never reveals more of his true power than a situation requires. He judges by each party's own code rather than imposing his own.</p><p><strong>Disciplines (as printed, converted to owned Discipline Items at Storyteller discretion):</strong> Dominate, Obtenebration, Potence, plus additional Methuselah-tier mastery per Storyteller discretion (Auspex and Obfuscate suggested for his shadow-craft and information-gathering).</p>",
+    "notes": "Sect: technically outside both Camarilla and Sabbat structures; serves as an independent arbiter respected by both. Convert Disciplines to owned power Items at very high (Elder/Methuselah) ratings.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Zarathustra (Lasombra)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Clanbook: Lasombra, Lasombra of Note",
+      "tag": "(Lasombra)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

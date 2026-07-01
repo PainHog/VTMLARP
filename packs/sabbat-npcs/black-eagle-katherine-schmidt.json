@@ -1,0 +1,127 @@
+{
+  "_id": "c3c7c850e66f4a02",
+  "name": "Katherine Schmidt (Black Eagle Consulting) (Lasombra)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Disillusioned Scientific Illustrator Turned Sabbat Artist",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 12,
+    "nature": "Artist",
+    "demeanor": "Bon Vivant",
+    "title": "",
+    "coterie": "Black Eagle Consulting, Inc.",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          { "name": "Agile", "spent": false }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          { "name": "Charismatic", "spent": false },
+          { "name": "Creative", "spent": false },
+          { "name": "Enigmatic", "spent": false }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          { "name": "Creative", "spent": false },
+          { "name": "Creative", "spent": false },
+          { "name": "Observant", "spent": false },
+          { "name": "Observant", "spent": false },
+          { "name": "Perceptive", "spent": false }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        { "name": "Alertness", "rating": 2, "notes": "" },
+        { "name": "Expression", "rating": 4, "notes": "" }
+      ],
+      "skills": [
+        { "name": "Crafts", "rating": 4, "notes": "Illustration" },
+        { "name": "Stealth", "rating": 2, "notes": "" }
+      ],
+      "knowledges": [
+        { "name": "Occult", "rating": 3, "notes": "" },
+        { "name": "Science", "rating": 3, "notes": "" }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": { "rating": 3, "temporary": 3 },
+      "selfControlInstinct": { "rating": 2, "temporary": 2 },
+      "courage": { "rating": 3, "temporary": 3 }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A scientific and technical illustrator Embraced in 1997 after two separate unnerving encounters with Sabbat vampires — one of whom spared her out of admiration for her art — left her disillusioned with science and drawn to surrealist and horrific subject matter. The Black Eagles recruited her for her artistic talent.</p><p>See Richard B. Weinstein's entry for the pack's shared background as Black Eagle Consulting, Inc.</p><h2>Roleplaying Hints</h2><p>Katherine is the newest and most conventionally human-seeming of the pack, still processing her transformation through her art. She is observant and curious rather than jaded.</p><p><strong>Disciplines (as printed):</strong> Dominate 2, Obtenebration 1, Potence 1.</p>",
+    "notes": "Convert Disciplines to owned power Items: Dominate 2, Obtenebration 1, Potence 1.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Katherine Schmidt",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Clanbook: Lasombra, Sample Brood: Black Eagle Consulting, Inc.",
+      "tag": "(Lasombra)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "_id": "00b59ea00983443f",
+  "name": "Lin Baloh, the Bloodthirsty Prophet (Lasombra)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Asian Sabbat Doctrinal Coordinator",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 11,
+    "nature": "Competitor",
+    "demeanor": "Guru",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          { "name": "Ferocious", "spent": false },
+          { "name": "Ferocious", "spent": false },
+          { "name": "Ferocious", "spent": false },
+          { "name": "Ferocious", "spent": false },
+          { "name": "Quick", "spent": false },
+          { "name": "Quick", "spent": false },
+          { "name": "Quick", "spent": false },
+          { "name": "Tough", "spent": false },
+          { "name": "Tough", "spent": false },
+          { "name": "Tough", "spent": false },
+          { "name": "Tough", "spent": false }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          { "name": "Charismatic", "spent": false },
+          { "name": "Charismatic", "spent": false },
+          { "name": "Charismatic", "spent": false },
+          { "name": "Cunning", "spent": false },
+          { "name": "Cunning", "spent": false },
+          { "name": "Cunning", "spent": false },
+          { "name": "Cunning", "spent": false }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          { "name": "Observant", "spent": false },
+          { "name": "Observant", "spent": false },
+          { "name": "Observant", "spent": false },
+          { "name": "Vigilant", "spent": false },
+          { "name": "Vigilant", "spent": false },
+          { "name": "Vigilant", "spent": false }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        { "name": "Alertness", "rating": 3, "notes": "" },
+        { "name": "Athletics", "rating": 4, "notes": "" },
+        { "name": "Brawl", "rating": 3, "notes": "" },
+        { "name": "Dodge", "rating": 3, "notes": "" },
+        { "name": "Expression", "rating": 3, "notes": "" },
+        { "name": "Intimidation", "rating": 4, "notes": "" },
+        { "name": "Leadership", "rating": 4, "notes": "" },
+        { "name": "Streetwise", "rating": 3, "notes": "" },
+        { "name": "Subterfuge", "rating": 2, "notes": "" }
+      ],
+      "skills": [
+        { "name": "Drive", "rating": 2, "notes": "" },
+        { "name": "Firearms", "rating": 3, "notes": "" },
+        { "name": "Security", "rating": 3, "notes": "" },
+        { "name": "Stealth", "rating": 3, "notes": "" }
+      ],
+      "knowledges": [
+        { "name": "Finance", "rating": 1, "notes": "" },
+        { "name": "Investigation", "rating": 3, "notes": "" },
+        { "name": "Linguistics", "rating": 3, "notes": "English, Japanese, Vietnamese" }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": { "rating": 2, "temporary": 2 },
+      "selfControlInstinct": { "rating": 3, "temporary": 3 },
+      "courage": { "rating": 5, "temporary": 5 }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      { "name": "Contacts", "rating": 3, "notes": "" }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Grew up in a Chinese-Jewish family in Nanking amid the Taiping Rebellion; his father and brothers died fighting for the rebels. Fell into opium addiction and violent drug-fueled rages, catching the attention of Nanking's antitribu Lasombra brood, who kept him as a ghoul for over a decade. Won the Embrace by orchestrating his own sire's death during a warehouse fire, then in 1889 led a shock-troop pack that converted half of Nanking's antitribu brood to the Sabbat (the other half perished). Invited into the Friends of the Night unusually young for the honor, he keeps the scattered Asian Sabbat in doctrinal contact using extensive Vinculum-bond networks that held together through WWII. He believes Gehenna approaches and prepares accordingly, currently preparing to abandon Humanity for the Path of Night (Hot Path).</p><p><strong>Sire:</strong> Unknown.</p><h2>Roleplaying Hints</h2><p>Lin Baloh speaks with the fervor of a man convinced the end is near, driving those around him to prepare rather than despair. His long doctrinal reach across Asia and history of decisive violence should come through in his confidence and command presence.</p><p><strong>Stat Block (as printed):</strong><br><strong>Physical:</strong> Strength 4, Dexterity 3, Stamina 4<br><strong>Social:</strong> Charisma 3, Manipulation 4, Appearance 2<br><strong>Mental:</strong> Perception 3, Intelligence 3, Wits 3<br><strong>Disciplines:</strong> Animalism 1, Celerity 2, Dominate 4, Fortitude 2, Obtenebration 3, Potence 3<br><strong>Virtues:</strong> Conscience 2, Self-Control 3, Courage 5<br><strong>Morality:</strong> Humanity 3 (preparing to adopt Path of Night, Hot Path)<br><strong>Willpower:</strong> 8</p>",
+    "notes": "Convert Disciplines to owned power Items: Animalism 1, Celerity 2, Dominate 4, Fortitude 2, Obtenebration 3, Potence 3 (dot ratings preserved as printed).",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Lin Baloh, the Bloodthirsty Prophet",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Clanbook: Lasombra, Lasombra of Note",
+      "tag": "(Lasombra)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
