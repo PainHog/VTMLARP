@@ -1,0 +1,210 @@
+{
+  "_id": "8f90c19da2ad451a",
+  "name": "The Good Cop (Sample Camarilla NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Honest Beat Cop",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "Judge",
+    "demeanor": "Conformist",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Steady",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Dignified",
+            "spent": false
+          },
+          {
+            "name": "Dignified",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Patient",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [],
+      "knowledges": [
+        {
+          "name": "Law",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 3,
+      "max": 3
+    },
+    "blood": {
+      "value": 0,
+      "max": 0,
+      "perTurn": 0
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Influence: Police",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>To protect and serve&mdash;you believe in that. The system's corrupt as hell, and it'd be easy to let this one slide. But someone has to watch out for the innocents, and that someone is you. All you have is a badge, a gun and the knowledge that you are right. Be careful out there. Don't be afraid to call for backup if things look bad. Here's hoping you never find out the truth about the world you serve.</p><h2>Stat Block (as printed)</h2><p><strong>Nature:</strong> Judge<br><strong>Demeanor:</strong> Conformist</p><p><strong>Physical (7):</strong> Brawny x2, Quick x2, Steady, Tough x2<br><strong>Social (5):</strong> Dignified x2, Intimidating x2, Persuasive<br><strong>Mental (3):</strong> Observant x2, Patient</p><p><strong>Abilities:</strong> Brawl 2, Dodge 2, Firearms 2, Law 2</p><p><strong>Backgrounds:</strong> Influence: Police x2, Resources x2<br><strong>Virtues:</strong> Conscience 4, Self-Control 4, Courage 4<br><strong>Path:</strong> Humanity 4<br><strong>Willpower:</strong> 3</p>",
+    "notes": "",
+    "npcType": "mortal"
+  },
+  "prototypeToken": {
+    "name": "The Good Cop (Sample Camarilla NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Camarilla Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

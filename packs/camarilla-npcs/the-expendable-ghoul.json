@@ -1,0 +1,226 @@
+{
+  "_id": "fdd2faafb79a4a14",
+  "name": "The Expendable Ghoul (Sample Camarilla NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Muscle Ghoul",
+    "clan": "",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 13,
+    "nature": "Conformist",
+    "demeanor": "Bravo",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Brutal",
+            "spent": false
+          },
+          {
+            "name": "Brutal",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Disciplined",
+            "spent": false
+          },
+          {
+            "name": "Disciplined",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      {
+        "name": "Callous",
+        "spent": false
+      },
+      {
+        "name": "Predictable",
+        "spent": false
+      },
+      {
+        "name": "Violent",
+        "spent": false
+      }
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "skills": [],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 2,
+      "max": 2
+    },
+    "blood": {
+      "value": 3,
+      "max": 3,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Influence: Street",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Mentor",
+        "rating": 1,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>You were in a gang once. You used drugs once. Now you're in the best gang and you take the best drug of all. So maybe you don't go out and party a lot anymore, it doesn't matter. You're stronger, tougher and better than you ever were before, and everyone knows that you are as bad as they come. Well, they would if they ever saw you. But it doesn't matter. You are the elite, the invincible, the best you will ever be. After all, she told you so.</p><h2>Stat Block (as printed)</h2><p><strong>Nature:</strong> Conformist<br><strong>Demeanor:</strong> Bravo</p><p><strong>Physical (10):</strong> Brawny x3, Brutal x2, Quick x2, Tough x3<br><strong>Social (3):</strong> Intimidating, Callous (N)<br><strong>Mental (5):</strong> Determined x3, Disciplined x2, Predictable (N), Violent (N)</p><p><strong>Abilities:</strong> Brawl 3, Dodge 2, Firearms 3, Intimidation 1</p><p><strong>Disciplines:</strong> Potence (Prowess)</p><p><strong>Backgrounds:</strong> Influence: Street x1, Mentor x1<br><strong>Virtues:</strong> Conscience 2, Self-Control 4, Courage 4<br><strong>Path:</strong> Humanity 3<br><strong>Blood:</strong> 3<br><strong>Willpower:</strong> 2</p>",
+    "notes": "",
+    "npcType": "ghoul"
+  },
+  "prototypeToken": {
+    "name": "The Expendable Ghoul (Sample Camarilla NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Camarilla Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

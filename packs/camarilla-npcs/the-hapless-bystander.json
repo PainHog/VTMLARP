@@ -1,0 +1,216 @@
+{
+  "_id": "441723ebe58a44ce",
+  "name": "The Hapless Bystander (Sample Camarilla NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ordinary Mortal Caught in the Crossfire",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "Survivor",
+    "demeanor": "Conformist",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Energetic",
+            "spent": false
+          },
+          {
+            "name": "Energetic",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Friendly",
+            "spent": false
+          },
+          {
+            "name": "Friendly",
+            "spent": false
+          },
+          {
+            "name": "Genial",
+            "spent": false
+          },
+          {
+            "name": "Genial",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Patient",
+            "spent": false
+          },
+          {
+            "name": "Rational",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      {
+        "name": "Naive",
+        "spent": false
+      }
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Brawl",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Computer",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Drive",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Finance or Streetwise",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 3,
+      "max": 3
+    },
+    "blood": {
+      "value": 0,
+      "max": 0,
+      "perTurn": 0
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Resources",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>You didn't see anything. You don't know anything. Why is he asking you? You were just minding your own business, doing what you do every day to get by, nothing special, and you didn't see anything, okay? You just want to get your paycheck, go home, watch TV and go to bed. You don't want any trouble, okay?</p><h2>Stat Block (as printed)</h2><p><strong>Nature:</strong> Survivor<br><strong>Demeanor:</strong> Conformist</p><p><strong>Physical (5):</strong> Energetic x2, Quick x2, Tough<br><strong>Social (6):</strong> Friendly x2, Genial x2, Ingratiating x2, Na&iuml;ve (N)<br><strong>Mental (5):</strong> Observant x2, Patient, Rational</p><p><strong>Abilities:</strong> Brawl 1, Computer 1, Dodge 1, Drive 1, Finance or Streetwise 1</p><p><strong>Backgrounds:</strong> Resources x2<br><strong>Virtues:</strong> Conscience 4, Self-Control 5, Courage 3<br><strong>Path:</strong> Humanity 4<br><strong>Willpower:</strong> 3</p>",
+    "notes": "",
+    "npcType": "mortal"
+  },
+  "prototypeToken": {
+    "name": "The Hapless Bystander (Sample Camarilla NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Camarilla Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

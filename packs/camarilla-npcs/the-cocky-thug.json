@@ -1,0 +1,226 @@
+{
+  "_id": "1d6c9c32af9144b4",
+  "name": "The Cocky Thug (Sample Camarilla NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Overconfident Street Thug",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "Bravo",
+    "demeanor": "Bravo",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Brutal",
+            "spent": false
+          },
+          {
+            "name": "Brutal",
+            "spent": false
+          },
+          {
+            "name": "Brutal",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Reflective",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      {
+        "name": "Callous",
+        "spent": false
+      },
+      {
+        "name": "Violent",
+        "spent": false
+      }
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 2,
+      "max": 2
+    },
+    "blood": {
+      "value": 0,
+      "max": 0,
+      "perTurn": 0
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Influence: Underworld",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 1,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>Hey, you're not a bad guy. You just want something, and you're going to get it, right? Here's your gun, here's your knife, and nobody needs to get hurt if you pay attention. You're cool. You have it all under control. Maybe you're as funny, as witty and as cool as you think you are. Probably not. Who's going to argue, hey?</p><h2>Stat Block (as printed)</h2><p><strong>Nature:</strong> Bravo<br><strong>Demeanor:</strong> Bravo</p><p><strong>Physical (10):</strong> Brawny x2, Brutal x3, Quick x2, Tough x2<br><strong>Social (5):</strong> Intimidating x5, Callous (N)<br><strong>Mental (3):</strong> Determined x2, Reflective, Violent (N)</p><p><strong>Abilities:</strong> Brawl 2, Dodge 2, Firearms 2, Streetwise 2</p><p><strong>Backgrounds:</strong> Influence: Underworld x1, Resources x1<br><strong>Virtues:</strong> Conscience 3, Self-Control 3, Courage 4<br><strong>Path:</strong> Humanity 3<br><strong>Willpower:</strong> 2</p>",
+    "notes": "",
+    "npcType": "mortal"
+  },
+  "prototypeToken": {
+    "name": "The Cocky Thug (Sample Camarilla NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Camarilla Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

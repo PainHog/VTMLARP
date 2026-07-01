@@ -1,0 +1,226 @@
+{
+  "_id": "37308ba346d6438f",
+  "name": "The Realistic Ghoul (Sample Camarilla NPC)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Long-Term Domitor's Ghoul",
+    "clan": "",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 13,
+    "nature": "Survivor",
+    "demeanor": "Conformist",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Ingratiating",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Rational",
+            "spent": false
+          },
+          {
+            "name": "Rational",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Knowledgeable",
+            "spent": false
+          },
+          {
+            "name": "Knowledgeable",
+            "spent": false
+          },
+          {
+            "name": "Knowledgeable",
+            "spent": false
+          },
+          {
+            "name": "Rational",
+            "spent": false
+          },
+          {
+            "name": "Shrewd",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Drive",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Computer",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Knowledge (Thanatology)",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Lore (Kindred)",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 3,
+      "max": 3
+    },
+    "blood": {
+      "value": 3,
+      "max": 3,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Influence: Health",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Influence: Street",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Mentor",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Roleplaying Hints</h2><p>You've done this for a while. The blood that was your salvation and glory is now a routine part of your existence&mdash;a central one, but routine nonetheless. You don't get excited about it anymore. You've stood by your domitor through a lot, and though you have suffered terribly, you've somehow managed to get through it all in one piece. Your domitor keeps you around out of habit and maybe because he hopes your luck will rub off on him. Luck never had anything to do with it, though. It was the hunger for the blood and the will to live. That was all. You don't understand how the Kindred can underestimate that delicious power flowing through their veins. Maybe someday you'll have the will to break free and show them. Someday.</p><h2>Stat Block (as printed)</h2><p><strong>Nature:</strong> Survivor<br><strong>Demeanor:</strong> Conformist</p><p><strong>Physical (3):</strong> Enduring x3<br><strong>Social (7):</strong> Ingratiating x3, Observant x2, Rational x2<br><strong>Mental (5):</strong> Knowledgeable x3, Rational, Shrewd</p><p><strong>Abilities:</strong> Computer 1, Drive 2, Firearms 3, Investigation 3, Knowledge (Thanatology) 3, Lore (Kindred) 2</p><p><strong>Disciplines:</strong> Fortitude (Endurance); Potence (Prowess)</p><p><strong>Backgrounds:</strong> Influence: Health x1, Influence: Street x1, Mentor x3<br><strong>Virtues:</strong> Conscience 2, Self-Control 4, Courage 4<br><strong>Path:</strong> Humanity 3<br><strong>Blood:</strong> 3<br><strong>Willpower:</strong> 3</p>",
+    "notes": "",
+    "npcType": "ghoul"
+  },
+  "prototypeToken": {
+    "name": "The Realistic Ghoul (Sample Camarilla NPC)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "MET Mind's Eye Theatre Camarilla Guide"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
