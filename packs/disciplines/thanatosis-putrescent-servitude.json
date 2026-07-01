@@ -1,0 +1,31 @@
+{
+  "_id": "K7QQ2i8bDeD8kPSr",
+  "name": "Putrescent Servitude (Thanatosis, Ascendant)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p>To raise a corpse dead no longer than your Physical Traits divided by three (round up) in weeks, feed it two Blood Traits; it rises with its living Physical Traits, three Mental Traits, one Social Trait, Basic Fortitude, and three extra Bruised health levels, obeying only you, and 'dies' again at the third sunrise unless fed more blood (one Trait per extra night). To enslave a living mortal, ghoul them normally then win two Mental Challenges (Medical may retest); success strips their free will, though they may attempt to break free once per night with a Willpower Trait and a Mental Challenge (bidding three extra Traits). Subjugated mortals lose three Mental and Social Traits (minimum one), gain three Bruised health levels and delayed injury penalties, and gain first-level Potence like any ghoul; the effect ends if denied vampiric blood for a month or if the master dies.</p>",
+    "source": "Camarilla Guide, Disciplines",
+    "discipline": "Thanatosis",
+    "level": "advanced",
+    "challengeType": "mental",
+    "bloodCost": "Two Blood Traits (corpses) or one Blood Trait plus two Mental Challenges (mortals)",
+    "retestAbility": "Medical (retest, for mortal subjugation)",
+    "duration": "Three nights (corpses, extendable) / until freed or slain (mortals)",
+    "activation": "reflexive"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

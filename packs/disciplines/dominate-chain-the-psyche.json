@@ -1,0 +1,31 @@
+{
+  "_id": "FpoJV8B1Da0absR3",
+  "name": "Chain the Psyche (Dominate, Elder)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p>When issuing a Dominate command, spend a Blood Trait and decide how many future attempts to resist or recover memories you wish to crush, spending one Mental Trait per attempt (these Traits are unavailable the rest of the night, though Willpower expenditure restores them normally). If the subject tries to disobey or recover memories within that limit, agonizing pain incapacitates him for 10 minutes; the power fades once all guarded attempts have been used.</p>",
+    "source": "Camarilla Guide, Disciplines",
+    "discipline": "Dominate",
+    "level": "advanced",
+    "challengeType": "mental",
+    "bloodCost": "One Blood Trait, plus one Mental Trait per resisted attempt crushed",
+    "retestAbility": "",
+    "duration": "Until the set number of resistance attempts are exhausted",
+    "activation": "toggle"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

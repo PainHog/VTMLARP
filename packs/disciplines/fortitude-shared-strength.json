@@ -1,0 +1,31 @@
+{
+  "_id": "KGAsLIOEbdcGXjQn",
+  "name": "Shared Strength (Fortitude, Master)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p>Spend a Willpower Trait and mark the target with a drop of vitae, then spend one Blood Trait per level of Fortitude you wish to grant and win a Static Physical Challenge against three times the Blood Traits spent. Success bestows that many levels of Fortitude on the target for the rest of the night (only the net increase counts if they already have some); failure allows a Survival retest. Only one instance of this power may be active on a given target at a time.</p>",
+    "source": "Camarilla Guide, Disciplines",
+    "discipline": "Fortitude",
+    "level": "advanced",
+    "challengeType": "physical",
+    "bloodCost": "One Blood Trait per level of Fortitude granted, per target",
+    "retestAbility": "One Willpower Trait, plus Survival for retest",
+    "duration": "Rest of the night",
+    "activation": "challenge"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
