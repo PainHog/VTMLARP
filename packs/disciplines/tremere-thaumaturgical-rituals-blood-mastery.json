@@ -1,0 +1,33 @@
+{
+  "_id": "65979709e0ac4b3f",
+  "name": "Blood Mastery (Thaumaturgical Rituals, Basic)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p>By mixing and slowly burning a trace of your own blood with a Blood Trait taken from your victim, you guarantee automatic victory in the very next challenge you bring against that victim &mdash; one automatic success and no more, usable only where a test would normally apply. The effect cannot be stacked, saved for a called shot, or invoked twice against the same subject at once, and it expires unused at sunrise.</p>",
+    "source": "Clanbook: Tremere, Chapter Two: Inside the Pyramid",
+    "discipline": "Thaumaturgical Rituals",
+    "level": "basic",
+    "challengeType": "none",
+    "bloodCost": "1 Blood Trait (yours) + 1 Blood Trait (victim's)",
+    "retestAbility": "Occult",
+    "duration": "Until used or sunrise",
+    "activation": "reflexive",
+    "active": false,
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

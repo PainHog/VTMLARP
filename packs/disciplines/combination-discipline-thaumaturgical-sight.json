@@ -1,0 +1,33 @@
+{
+  "_id": "40c5fb81d2974a40",
+  "name": "Thaumaturgical Sight (Combination Discipline)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+  "system": {
+    "description": "<p><strong>Prerequisites:</strong> Basic Auspex, Basic Thaumaturgy. This power augments Aura Perception, letting you notice the use of any blood magic in your line of sight &mdash; Thaumaturgy, koldunic sorcery, Assamite or Setite blood sorcery, active rituals, and enchanted objects alike &mdash; distinguishing it from the different signature of living magic. To puzzle out the specifics of a given effect, you pit a Static Mental Challenge (difficulty eight Traits, Occult for retests) against the source; success reveals the name of the power (and its target, if you already know that power yourself). You may sustain the sight beyond one turn by spending a Mental Trait at the start of each subsequent turn, or a Blood Trait to renew it after it lapses. A botch while activating this power costs a permanent Willpower Trait, as with any Thaumaturgy.</p><p><em>Costs 3 Experience Traits to learn.</em></p>",
+    "source": "Clanbook: Tremere, Chapter Two: Inside the Pyramid",
+    "discipline": "Combination Discipline (Auspex/Thaumaturgy)",
+    "level": "basic",
+    "challengeType": "mental",
+    "bloodCost": "",
+    "retestAbility": "Occult",
+    "duration": "One turn per Mental Trait spent (renewable)",
+    "activation": "toggle",
+    "active": false,
+    "prerequisites": "Auspex (1), Thaumaturgy (1)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
