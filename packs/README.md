@@ -497,6 +497,18 @@ Read the appended Chapter Three continuation at the end of the reference file (r
 
 Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1294 files parsed cleanly with zero collisions.
 
+## Clanbook: Cappadocian, Chapter Four "Legio" through the appendices (end of book)
+
+Read Chapter Four ("Legio") and both appendices ("Noteworthy Seekers" and "Of Historical Note") from lines 1091-3388 of the reference text.
+
+**Included:**
+
+- `packs/clans/cappadocian-noteworthy-seekers.json` ("Cappadocian Noteworthy Seekers (Clanbook Lore)") — 5 lore-only JournalEntry pages, following the `ravnos-of-note-npcs.json` precedent: Ignazio Giovanni (a ghoul-turned-vampire enforcer serving Venice's Lasombra prince and Doge), Lazarus (Cappadocius' estranged, Egypt-dwelling childe, now the reclusive most-powerful Infitiore, tangled in the Caias/Japheth rivalry), Lord Camden (Ventrue prince Mithras' Cappadocian chamberlain in London, a Road of the Bones radical experimenting to pinpoint the moment of death), Troglodytia (a hideously decomposed information/artifact broker allied with the Nosferatu), and The Samedi: Thibault's Confession (summarizing Appendix II's water-damaged in-fiction letter, which confirms the Samedi are the degenerate remnant of Clan Cappadocian left after the Giovanni's diablerie/usurpation).
+
+**Excluded as pure pregenerated player-character templates per established recurring policy:** all seven Chapter Four "Legio" character sheets (Master of Secrets, Lost Crusader, Prodigal Necromancer, Black Sheep, Learned Scholar, Prophet, Chamberlain) — unnamed generic Quote/Prelude/Concept/Roleplaying Tips/Equipment templates with classic dot-rating stat blocks, no independent canon significance beyond their archetype. No named Cappadocian in either appendix carried an accompanying full stat block (Appendix I is prose-only profiles; Appendix II is a single in-fiction letter followed by a blank, nameless Dark Ages character sheet template), so no full Actor "npc" documents were built for this section.
+
+Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1315 files parsed cleanly with zero collisions.
+
 ## Clanbook: Baali, Chapter Four "A Hideous Throng" through the appendices (end of book)
 
 Read Chapter Four, "Appendix: To Reign in Hell," and "Appendix II: Of Interest to Scholars and Chirurgeons" from the end of the reference file (lines 1209-2992).
