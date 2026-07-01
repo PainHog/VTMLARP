@@ -508,3 +508,21 @@ Read Chapter Four, "Appendix: To Reign in Hell," and "Appendix II: Of Interest t
 **Excluded as pure pregenerated player-character templates per established recurring policy:** all six Chapter Four character sheets (Student of Flesh, Harbinger of Angels, Judas Goat, Dark Avatar, Brood Mother, Champion of Chaos, Vile Temptress) — unnamed generic Quote/Prelude/Concept/Roleplaying Hints/Equipment templates with classic dot-rating stat blocks, no independent canon significance beyond their archetype. No new Merits, Flaws, rituals, or Discipline powers were present in either appendix's actual text (the back-cover blurb references such content, but it belongs to earlier chapters already covered); both appendices are pure named-NPC/lore prose.
 
 Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1301 files parsed cleanly with zero collisions.
+
+## Clanbook: Baali, Chapters Two and Three ("Dissonant Echoes" / "Descent into Darkness")
+
+Read Chapter Two (clan history/lore, mostly narrative) and Chapter Three (clan culture, new Traits, Roads, Merits/Flaws, and Discipline powers) from lines 1-1209 of the reference text.
+
+**Included:**
+
+- 2 new Daimoinon powers in `packs/disciplines/`: `daimoinon-glimpse-the-gulf-beyond.json` (Advanced/Elder, a terror-based Willpower-and-sanity attack via Stamina + Occult) and `daimoinon-open-the-way.json` (Advanced/Methuselah, the ritual by which a Baali attempts to release his Antediluvian-tier master into the world, ending the character's playability).
+- `packs/disciplines/combination-discipline-i-am-legion.json` ("I Am Legion," Daimoinon 3/Obfuscate 2) — lets a Baali temporarily host a bound demon/spirit that can answer incriminating questions truthfully without exposing the Baali.
+- 2 new Merits in `packs/merits-flaws/`: `merit-apostate.json` (2-Trait, lets a converted-to-Baali character swap Obfuscate or Presence for an ancestral clan Discipline) and `merit-unholy-aura.json` (7-Trait, True Faith holders must resist fleeing/being harmed in the Baali's presence).
+- 4 new Flaws in `packs/merits-flaws/`: `flaw-lord-of-flies.json` (2-Trait), `flaw-carrion-comfort.json` (3-Trait, cold/dead blood only), `flaw-infernal-aura.json` (3-Trait, True Faith holders sense the Baali nearby), `flaw-touched-from-beyond.json` (1- to 4-Trait, permanent demonic physical marks).
+- 2 new Knowledge Abilities in `packs/abilities/`: `ability-demonology.json` and `ability-plague-breeding.json`, both with full Dabbler-through-Visionary rating descriptions.
+- `packs/paths-of-enlightenment/road-of-the-hive.json` ("Road of the Hive," Via Hyron) — the Baali's original, loyalty-and-unity-focused Road, with its full Hierarchy of Sins table.
+- `packs/clans/baali-lore.json` ("Baali Lore (Clanbook Lore)") — 3 lore-only JournalEntry pages: The Orders of Ba'al (Destroyer/Celestial/Swarm/Mystery/Multitude sub-cult overview plus shaitan/al'shaitan terminology), Azaneal and the Angellis Ater (the Lasombra-Baali infernalist hybrid strain), and The D'habi (the bloodline's shared revenant/ghoul family), following the lore-only-institution precedent (`nosferatu-venerable-npcs.json`, `tremere-pyramid-institutions.json`).
+
+**Excluded as pure narrative/historical prose per established policy:** Chapter One's fiction vignette (not read per task scope); Chapter Two's clan-history and cult-relations narrative (the Baali's founding myths, the numbered "orders" origin stories beyond their crunchy overview, clan-relations "quotes" section, the D'habi's narrative backstory beyond the stat-relevant portions folded into the lore page, and the "Blood and Shadows: Legacy of Azaneal" fiction insert); and Chapter Three's discursive Road commentary, sect/clan-relations material, and the "Baali and the Infernal"/ghoul-investment sections, which are Storyteller flavor and worldbuilding color rather than standalone crunch.
+
+Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1308 files parsed cleanly with zero collisions.
