@@ -1,0 +1,362 @@
+{
+  "_id": "9790818a49e24f42",
+  "name": "João Bilé (Ventrue)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "The Man Behind the Curtain",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 9,
+    "nature": "Competitor",
+    "demeanor": "Conformist",
+    "title": "",
+    "coterie": "Bilé's Gambit",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Robust",
+            "spent": false
+          },
+          {
+            "name": "Stalwart",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          },
+          {
+            "name": "Rugged",
+            "spent": false
+          },
+          {
+            "name": "Steady",
+            "spent": false
+          },
+          {
+            "name": "Wiry",
+            "spent": false
+          },
+          {
+            "name": "Vigorous",
+            "spent": false
+          },
+          {
+            "name": "Tenacious",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Charming",
+            "spent": false
+          },
+          {
+            "name": "Dignified",
+            "spent": false
+          },
+          {
+            "name": "Magnetic",
+            "spent": false
+          },
+          {
+            "name": "Ingratiating",
+            "spent": false
+          },
+          {
+            "name": "Beguiling",
+            "spent": false
+          },
+          {
+            "name": "Alluring",
+            "spent": false
+          },
+          {
+            "name": "Diplomatic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Shrewd",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Discerning",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Wily",
+            "spent": false
+          },
+          {
+            "name": "Rational",
+            "spent": false
+          },
+          {
+            "name": "Vigilant",
+            "spent": false
+          },
+          {
+            "name": "Knowledgeable",
+            "spent": false
+          },
+          {
+            "name": "Insightful",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          },
+          {
+            "name": "Wise",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Style",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Crafts",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Drive",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Performance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Computer",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 1,
+        "temporary": 1
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Embraced nearly a century ago in Brazil by Thérése Maurier, João Bilé is the true, concealed head of a Ventrue brood that has deliberately obscured its own internal hierarchy the better to manipulate a newly opened city. Rather than presenting himself as the elder he is, Bilé poses as an aged counselor and personal servant to his own childe, Michael Brandeis, allowing him to operate from the shadows while directing his three childer &mdash; two of whom, Robin and Margarida, are unaware of each other's existence or of Bilé's true role &mdash; as instruments in a scheme to seize control of the city's Ventrue-aligned resources.</p><h2>Roleplaying Hints</h2><p>Play Bilé as unfailingly deferential in public, the very picture of a loyal old family retainer, while missing nothing and steering every conversation exactly where he intends it to go. In private with his childer he is controlling, manipulative, and occasionally cruel, viewing them as pieces on a board rather than as kin.</p><p><strong>Disciplines (as printed, dot-rating, convert to owned Discipline Items at Storyteller discretion):</strong> Auspex 1, Dominate 4, Fortitude 4, Presence 3.</p>",
+    "notes": "Sire: Thérése Maurier. Embrace: 1911. Childer: Michael Brandeis, Robin Withers, Margarida Cordeiro (secret sire to all three). Part of Sample Brood: Bilé's Gambit, Clanbook: Ventrue, Chapter Three.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "João Bilé (Ventrue)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Clanbook: Ventrue, Chapter Three (Sample Brood: Bilé's Gambit)",
+      "tag": "(Ventrue)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
