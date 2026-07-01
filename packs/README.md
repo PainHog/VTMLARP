@@ -241,3 +241,18 @@ Read the opening fiction ("The Healing Power of Medicine/Religion"), Chapter One
 - "Setite Symbols of Faith and Recognition" — the covert non-serpent iconography (crocodile/hippo/black pig, Big Dipper, storms/deserts/eclipses/beer/lettuce) Setites use to mark property and recognize each other without giving away clan affiliation to outsiders.
 
 **Explicitly not duplicated:** a parallel Chapter Three effort by another concurrent pass already built dedicated `packs/disciplines/setite-*.json` items for every Discipline power in this chapter's back half (Cobra Fangs, Divine Image, Heart Thief, Shadow of Apep, Mental Maze, Confusion of the Eye, Phobia, Corruption, and the three combination powers) and a `packs/rules-reference/setite-thaumaturgy-and-divine-power.json` covering the four Setite Thaumaturgy traditions (Akhu, Wanga, Sadhana, Nahuallotl) and "playing god" cult-leadership guidance; this pass originally drafted equivalent pages independently but removed them after discovering the overlap, keeping only the doctrinal/organizational content above.
+
+## Clanbook: Gangrel, opening fiction through Chapter One ("Stone, Steppe, and Sea: A History of the Gangrel Clan"), lines 1–5663
+
+Read the opening fiction (skipped: badly garbled OCR from a stylized font, pure narrative) and all of Chapter One, a first-person picaresque history of the clan from Ennoia's mythic origins through the modern nights. Checked `packs/clans/gangrel.json` and `packs/clans/dark-ages-gangrel.json` first; confirmed the chapter's already-documented content (City Gangrel/Country Gangrel split, Path of the Feral Heart) is covered by those files and by `packs/antitribu/gangrel-antitribu.json` and `packs/paths-of-enlightenment/path-of-the-feral-heart.json`, and did not duplicate it.
+
+**Excluded as pure narrative/historical saga with no reusable mechanical value:** the overwhelming majority of the chapter — the Ennoia/Ravana creation myth and Jyhad, the clan's drift through Mesopotamia, Greece, Rome, the barbarian migrations, the Mongol invasions (aside from the Anda, see below), the Rroma/Ravnos entanglement, the Inquisition, the Anarch Revolt and Convention of Thorns, and the entire 20th-century march through the World Wars, the Cold War, civil rights, suburbia, and the '90s — all first-person anecdote and named-individual color (Torvus Bloodbeard, Karsh, Xaviar, Zeke J., Marcus Sextus, etc.) with no dot-ratings, dice pools, or reusable systems.
+
+**Included (new, non-duplicated organizational/lore content), all in one new file** `clans/gangrel-clanbook-lore-history.json` ("Gangrel Clan Lore: History (Clanbook: Gangrel)"), 4 pages:
+
+- "The Invicti" — Constanus's self-appointed vigilante brood (3rd–6th century Rome), which parlayed "protecting the undead" from mortal hunters into becoming the clan's premier political faction before its destruction in a mysterious fire c. 600 AD.
+- "The Anda (Extinct Mongol Gangrel Bloodline)" — the Gobi-descended, Mongol-blooded bloodline wiped out by the Cathayans after the fall of the Mongol dynasty in China.
+- "The Waelkyrige" — the Scandinavian Valkyrie-themed Gangrel faction under "Brunhilde," active from the Nazi era into rumored modern-nights activity in werewolf-contested wilderness.
+- "The Chronicle of Secrets (Gehenna Prophecy)" — the clan's in-universe Gehenna-prophecy text and its two named couplets (the "Wild Ones" and the "Time of Thin Blood"), framed as an open-ended Storyteller hook.
+
+No new Disciplines, Merits, Flaws, Backgrounds, or dot-rated mechanics appear in this chapter, so none were added.
