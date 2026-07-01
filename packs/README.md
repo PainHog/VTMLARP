@@ -388,3 +388,13 @@ This range is the tail end of Chapter Two (per the source's own page headers, th
 **Excluded as pure narrative/cultural-flavor prose with no reusable mechanical value:** none of substance — this short chapter-tail range is almost entirely mechanical (Merits, Flaws, Discipline application advice, and feeding tactics) rather than narrative saga, so nothing meaningful was cut beyond the framing sentences connecting each subsection.
 
 Ran a full JSON-parse and global `_id`-uniqueness check across every file (top-level and nested pages) in `packs/` before committing; all files parsed cleanly with zero collisions.
+
+## Clanbook: Ravnos, "Ravnos of Note" (Chapter Three)
+
+Read the "Ravnos of Note" NPC roster near the end of Chapter Three in the Ravnos clanbook reference text, following the established lore-only named-NPC precedent set by `packs/clans/nosferatu-venerable-npcs.json`.
+
+**Included**, as one new JournalEntry in `packs/clans/`:
+
+- `ravnos-of-note-npcs.json` ("Ravnos of Note (Clanbook Lore)") — nine pages, each expanding the source's summary into full lore prose: **Durga Syn** (the cursed nature priestess who warred against Baba Yaga for centuries and survived the Week of Nightmares), **Mata Hari** (the historical spy secretly Embraced by an admiring Ravnos), **Marcia Felicia Licinia** (the vanished medieval French Ravnos whose writings resurfaced post-Week of Nightmares), **Spirit Creek** (the touring-band kumpaniya/information network led by Doug Schoeneck), **Anansi** (the East African trickster-descended lineage elder), **The Flesh-Eater** (the unconfirmed Ravnos-among-the-Kuei-jin rumor), **Seven Phoenix Triad** (the Darwin-based jati working through Hong Kong proxies), **Amaravati** (the Assamite-allied Middle Eastern ancient presumed destroyed in the Week of Nightmares), and **Rafael Schliemann** (the Rio de Janeiro slave-trade network operator).
+
+Ran a full JSON-parse and global `_id`-uniqueness check across every file (top-level and nested pages) in `packs/` before committing; all 1211 files parsed cleanly with zero collisions.
