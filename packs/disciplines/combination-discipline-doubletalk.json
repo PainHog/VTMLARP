@@ -1,0 +1,33 @@
+{
+  "_id": "578f587b5f924e5d",
+  "name": "Doubletalk (Combination Discipline)",
+  "type": "power",
+  "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+  "system": {
+    "description": "<p><strong>Prerequisites:</strong> Basic Auspex, Basic Celerity, Basic Obfuscate. A trick passed among the Toreador for centuries, Doubletalk lets a character speak a full sentence very quickly and softly between words spoken normally, so it sounds to most listeners like a conversational placeholder ('uh,' 'er,' 'hmmm'). Someone familiar with the power can hear the hidden sentence; true masters can compress entire soliloquies into a single grunt. This is not one of the clan's great secrets &mdash; some Tremere and Malkavians have also mastered the technique.</p><p><strong>System:</strong> To listen for Doubletalk, the player rolls Perception + Subterfuge (difficulty 5); success means the character hears what was said (a failure means nothing heard, a botch means she misinterprets it). To speak Doubletalk, the player rolls Intelligence + Expression (difficulty 6); success lets the character seamlessly insert the phrase (a failure means she isn't understood, a botch means she blurts it out at normal speed).</p><p><strong>MET System:</strong> Players should agree on a hand signal (such as tugging the left earlobe) to clarify what's spoken normally versus secretly. Listening for Doubletalk requires a Static Mental Challenge (difficulty five Traits); speaking it requires a Static Mental Challenge (difficulty six Traits). A single challenge covers the entire conversation in either case.</p><p><em>Costs five Experience Traits to learn (10 experience points in the tabletop system).</em></p>",
+    "source": "Clanbook: Toreador, Chapter Two",
+    "discipline": "Combination Discipline (Auspex/Celerity/Obfuscate)",
+    "level": "basic",
+    "challengeType": "mental",
+    "bloodCost": "",
+    "retestAbility": "Subterfuge",
+    "duration": "One conversation",
+    "activation": "challenge",
+    "active": true,
+    "prerequisites": "Auspex (1), Celerity (1), Obfuscate (1)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
