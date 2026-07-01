@@ -1,0 +1,33 @@
+{
+  "_id": "42c3968b22f64113",
+  "name": "King of the Mountain (Fortitude, Elder)",
+  "type": "power",
+  "img": "icons/magic/nature/wolf-paw-glow-green.webp",
+  "system": {
+    "description": "<p>Spend three Blood Traits to activate for one hour. The vampire uses full Trait totals on all defensive actions (offense still splits the pool as normal). Attackers must win an initial Physical Challenge (ties favor the defender); if the attacker fails, their weapon shatters (unless enchanted) and they take the damage instead; if they tie, the weapon shatters but they take no damage; if they win, they must still win a Simple Test to actually land damage (Superior Potence skips this last test).</p>",
+    "source": "Clanbook: Gangrel",
+    "discipline": "Fortitude",
+    "level": "advanced",
+    "challengeType": "physical",
+    "bloodCost": "3",
+    "retestAbility": "",
+    "duration": "One hour",
+    "activation": "toggle",
+    "active": false,
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
