@@ -1,0 +1,32 @@
+{
+  "_id": "bc34c17f71f44f27",
+  "name": "Clotho's Gift (Temporis, Advanced)",
+  "type": "power",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "description": "<p>Spending three Blood Traits and succeeding at a Static Physical Challenge (retest with Occult), the vampire gains one extra action per Trait successfully risked, for a number of turns equal to half his Temporis level (rounded down), even permitting multiple uses per turn of Disciplines like Dominate or Thaumaturgy. Each Discipline use during this period inflicts one health level of unsoakable lethal damage. Use of Elder-level or greater Temporis, or attempting Clotho's Gift a second time while active, destroys the vampire instantly.</p>",
+    "source": "Storytellers Guide, p.??",
+    "discipline": "Temporis",
+    "level": "advanced",
+    "challengeType": "physical",
+    "bloodCost": "3",
+    "retestAbility": "Occult",
+    "duration": "Levels in Temporis / 2 (round down) turns",
+    "activation": "challenge",
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

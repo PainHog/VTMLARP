@@ -1,0 +1,32 @@
+{
+  "_id": "48a85239c42440f1",
+  "name": "Lapse (Temporis, Intermediate)",
+  "type": "power",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "description": "<p>The vampire spends two Blood Traits and engages in a Static Physical Challenge against the target's Willpower. Each Trait successfully risked slows the target for one round in combat, or one minute out of combat, taking effect the round after application; successive uses stack. Affected targets must bid double the normal Traits for any challenge involving speed of motion or thought, though damage dealt by attacks is unaffected. Characters with Celerity can sacrifice half their extra actions (rounded down) to remove the penalty from the rest.</p>",
+    "source": "Storytellers Guide, p.??",
+    "discipline": "Temporis",
+    "level": "intermediate",
+    "challengeType": "physical",
+    "bloodCost": "2",
+    "retestAbility": "Occult",
+    "duration": "1 round or 1 minute per Trait risked, cumulative",
+    "activation": "challenge",
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
