@@ -157,3 +157,42 @@ Excluded as pure narrative/historical saga with no reusable mechanical value: th
 No new standalone Ritual pack entries were created: the "Assamite Paths and Rituals" section of the source is an equivalence list mapping existing Thaumaturgy-pack rituals/paths to Assamite in-caste names and cost modifiers (captured in the rules-reference entry above), not new ritual mechanics of its own, aside from the "Awakening of the Steel" path (captured as Discipline powers above, matching how other combat-oriented Thaumaturgy paths in this pack are already modeled).
 
 Excluded as pure narrative/atmosphere with no extractable mechanics: the caste-lore introduction sections' scene-setting (physical descriptions, havens, suggested concepts, faction quotes on other clans), the Laws of Haqim's full text and interpretive debate (referenced but not restated as a new game system — no dice mechanics attach to the Laws themselves in this range), the Sisterhood of the Erinyes / Web of Knives / Leopards of Zion / Thousand-Meter Club social-organization writeups (informal, no formal membership mechanics beyond roleplaying guidance), the loyalist/schismatic/antitribu/dispossessed faction political narrative, and the "Vaults and Grimoires" library-lore sidebar. The file ends at line 2324 mid-header for Chapter Three ("Sons and Daughters of Haqim" sample characters), which contains no further mechanical content within the read range.
+
+## Clanbook: Brujah (opening fiction through Chapter Two, lines 1–1791)
+
+New supplementary JournalEntry `packs/clans/brujah-clanbook-lore.json` ("Brujah Clanbook Lore"), added alongside (not replacing) the existing `packs/clans/brujah.json` and `packs/clans/dark-ages-brujah.json`. Covers Chapter One ("Millennia of Conflict") and Chapter Two ("Unlife Among the Brujah") of Clanbook: Brujah. Five pages:
+
+- **Ideological Camps: Iconoclasts, Idealists, and Individualists** — the clan's informal self-description taxonomy (young rebels vs. deliberate elders vs. independent non-joiners), presented as behavioral reputations rather than organized factions.
+- **Rants: Brujah Gatherings** — the clan's closest thing to a recurring institution: who can call one, typical structure, and its five named varieties (Policy Rants, Debates, Prestige Rants, Rally Rants, Spite Rants), each with its distinct purpose and behavior pattern.
+- **Raves: Brujah Parties** — the clan's modern social-gathering counterpart to rants, their function as neutral ground between rival Brujah, and their role as a common venue for a childe's ceremonial release from Accounting.
+- **Brujah in Camarilla Office** — clan-specific flavor and behavioral notes for the offices Brujah most commonly (Prince, rare; Sheriff and Scourge, common) or distinctively (Primogen-as-Devil's-Advocate, Harpy) occupy.
+- **The Brujah Antitribu** — the Sabbat-aligned antitribu's relationship to the Traditions and to the Camarilla Brujah, plus the unconfirmed True Brujah/Black Hand rumor.
+
+Excluded as pure narrative/historical saga with no reusable mechanical value: the opening fiction ("A Night Like Any Other"); the Antediluvians Brujah and Troile and the "Division of Blood" myth-cycle; the fall of Carthage and the Promethians (a one-off historical faction with no surviving structure or ongoing mechanical hook); the Dark Ages Irish monastic sub-story; the Transylvanian anarch-rebellion saga and the rise of the "first anarchs"; the laundry list of named historical Brujah vignettes (Ibn-El-Sayyid, the "Real" Robin Hood, Bankim Hapsa, Foccart/Attucks, Etheyra, Iancu the Bloody, Catherine Minot, Ybalb, Malchus Feith, Salvador Garcia); the New World/frontier/Anarch Free State history including the MacNeil/Sebastian revolt, its slow collapse, and the Cathayan invasion of San Francisco; and the Russian "Brujah Council"/Baba Yaga saga — all one-off history with no ongoing institution, rule, or reusable game structure (the Anarch Free State and Brujah Council are explicitly narrated as collapsed/defunct by book's end). Also excluded: the "From the Notebooks of Horace Kaplan" essay's extended inter-clan opinion/gossip sections (Ventrue, Toreador, Tremere, Tzimisce, Nosferatu, Malkavian, Ravnos, Setite, Lasombra, Sabbat, Camarilla, Inconnu commentary) — pure characterized opinion with no mechanical content.
+
+Noted but not converted into Item-type mechanics (out of scope for a lore JournalEntry and not force-fit into this system's Discipline/Merit schema): the book's new Discipline powers (Burning Wrath [Celerity/Potence], Iron Heart [Potence/Presence], Pulse of Undeath [Auspex/Potence], The Gentle Rebuke and Relentless Pursuit [Potence, classic dot-6], Stutter-Step [Celerity, classic dot-7]) and new Merits/Flaws (Compassionate, Dynamic Personality, Obvious Predator, Uncontrollable) are summarized in-text within the Antitribu/Camps pages where relevant to clan flavor, but were not built out as standalone `packs/disciplines/` or `packs/merits-flaws/` Items, since the source presents them using classic V:tM dot-level Discipline numbering (levels 6–7) that doesn't map cleanly onto this system's existing basic/intermediate/advanced Discipline-power schema without inventing an unsourced conversion.
+
+## Clanbook: Brujah, Chapter Three ("The Rabble's Ranks") plus tail-end mechanics from Chapter Two
+
+Chapter Three (lines 1791–2478, end of file) consists entirely of pregenerated Brujah character templates (the Confederate, the Harpy-to-Be, the Paladin, LaBelle Dame Sans Merci, the Anachronism, and others) presented as narrative preludes plus OCR-garbled character-sheet trait lists using only pre-existing Traits/Disciplines/Backgrounds. No new mechanics appear in this range, so nothing was extracted from it per the "narrative examples to skip" policy.
+
+The actual new game-mechanics content for this arc of the book is the "NEW DISCIPLINE POWERS" and "NEW MERITS AND FLAWS" sections at the tail of Chapter Two (lines ~1697–1774), immediately preceding Chapter Three's start:
+
+**New Discipline powers** (`packs/disciplines/`), all Master-tier (book calls them "level six/seven," encoded as `advanced` per the schema's tier cap with the true tier noted in the item name):
+
+- `brujah-potence-gentle-nudge.json` — Gentle Nudge (Potence, Master): a touch-based power that hurls a target 20 feet away without direct damage.
+- `brujah-potence-relentless-pursuit.json` — Relentless Pursuit (Potence, Master): superhuman leaping (25 ft vertical / 40 ft horizontal).
+- `brujah-celerity-stutter-step.json` — Stutter-Step (Celerity, Master): grants bonus defensive Physical Traits and a "Stutter" retest for one turn.
+
+**New Merits/Flaws** (`packs/merits-flaws/`), all tagged "(Brujah)":
+
+- `merit-compassionate-brujah.json` (4-Trait Mental Merit) — allows a Willpower-fueled retest on failed Conscience rolls.
+- `merit-dynamic-personality-brujah.json` (5-Trait Social Merit) — buys Allies/Contacts/Herd/Retainers Traits more efficiently with Experience.
+- `flaw-obvious-predator-brujah.json` (2-Trait Social Flaw) — loses ties in social challenges with mortals (except Intimidation).
+- `flaw-uncontrollable-brujah.json` (5-Trait Mental Flaw) — always loses ties when resisting frenzy.
+
+**Rules reference** (`packs/rules-reference/`):
+
+- `brujah-character-creation-guidance.json` — "Brujah Character Creation Guidance (Brujah)": Storyteller guidance on the Alternate Identity Background (from Guide to the Sabbat) and the Military Force Background (from the Vampire Storytellers Handbook) as they apply to Brujah gang-leader/entourage concepts. Included because it is Brujah-specific usage guidance for existing published Backgrounds, not a re-statement of another book's full mechanics; no new Background item was created since the mechanics themselves live in those other sourcebooks.
+
+Excluded as pure narrative-craft with no extractable mechanics: all of Chapter Three's pregenerated character archetypes (see above).
