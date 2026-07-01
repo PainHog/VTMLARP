@@ -496,3 +496,15 @@ Read the appended Chapter Three continuation at the end of the reference file (r
 **Excluded as pure narrative/example content per established policy:** the preceding pregenerated player-character templates (Eyes of the Ephors, Domain Raider, Remover, Historian, Vitaephile, Diablerist) mentioned as omitted/cut off in the retrieved fetch — standard pregen templates with Quote/Prelude/Concept/Roleplaying Hints/Equipment sections, narrative/example content excluded per established policy.
 
 Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1294 files parsed cleanly with zero collisions.
+
+## Clanbook: Baali, Chapter Four "A Hideous Throng" through the appendices (end of book)
+
+Read Chapter Four, "Appendix: To Reign in Hell," and "Appendix II: Of Interest to Scholars and Chirurgeons" from the end of the reference file (lines 1209-2992).
+
+**Included:**
+
+- `packs/clans/baali-clanbook-lore.json` ("Infamous Baali Through the Ages (Clanbook Lore)") — 5 lore-only JournalEntry pages, following the `ravnos-of-note-npcs.json` precedent: Shaitan (the Impostor of Toledo, the current pretender to that name and his Black School of infernalism), Cybele (Shaitan's childe, Moloch's ancient adversary and possible bearer of the "Decani" mantle), Azaneal (the modern unifier of the Baali bloodline, ruler of Chorazin, seeker of Namtaru's body), Ma-ri-ah (the veiled protégé of Anaduk the Black, servant of Anoster Lord of Despair, enemy of Toreador), and The Sleepers Stir (setting lore on the awakening Antediluvians/"Sleepers," true names, and the bloodline's fractured response).
+
+**Excluded as pure pregenerated player-character templates per established recurring policy:** all six Chapter Four character sheets (Student of Flesh, Harbinger of Angels, Judas Goat, Dark Avatar, Brood Mother, Champion of Chaos, Vile Temptress) — unnamed generic Quote/Prelude/Concept/Roleplaying Hints/Equipment templates with classic dot-rating stat blocks, no independent canon significance beyond their archetype. No new Merits, Flaws, rituals, or Discipline powers were present in either appendix's actual text (the back-cover blurb references such content, but it belongs to earlier chapters already covered); both appendices are pure named-NPC/lore prose.
+
+Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1301 files parsed cleanly with zero collisions.
