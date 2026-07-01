@@ -1,0 +1,32 @@
+{
+  "_id": "508dc69ad3524638",
+  "name": "Corporeal Home (Necromancy, Advanced)",
+  "type": "power",
+  "img": "icons/containers/boxes/box-simple-tan.webp",
+  "system": {
+    "description": "<p>This necromantic ability allows the user to bind a spirit into a physical object &mdash; a bowl, pouch, box, or locket &mdash; preventing it from breaking contact with the necromancer. The necromancer must first summon the spirit with Call Forth the Host, then bind it in an unbroken ritual requiring eight hours of concentration.</p><p><strong>System:</strong> Win a Mental Challenge (retest with Occult) against the spirit's Willpower (harder than the challenge to merely summon it) to bind the spirit into its new receptacle. Once bound, the spirit cannot break contact with the necromancer, though bound spirits are often hostile toward their captor (a few serve gladly). The binding holds for one week, after which the challenge to renew the imprisonment grows harder with each prior use of this power against the same spirit.</p>",
+    "source": "Clanbook: Cappadocian, Chapter Three: Observations and Conclusions",
+    "discipline": "Necromancy",
+    "level": "advanced",
+    "challengeType": "mental",
+    "bloodCost": "",
+    "retestAbility": "Occult",
+    "duration": "One week",
+    "activation": "challenge",
+    "prerequisites": "Necromancy (Call Forth the Host)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
