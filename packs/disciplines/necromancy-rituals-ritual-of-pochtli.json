@@ -1,0 +1,33 @@
+{
+  "_id": "3b74d2582f044c37",
+  "name": "Ritual of Pochtli (Necromancy Rituals, Basic) (Giovanni) (Pisanob/Ghiberti)",
+  "type": "power",
+  "img": "icons/magic/unholy/hand-fire-skeleton-pointing.webp",
+  "system": {
+    "description": "<p>A meta-ritual developed jointly by the Pisanob and Ghiberti families. It cannot be cast alone, only in conjunction with another Necromantic ritual or the heavily ritualized use of a Necromancy path. Two or more participating Necromancers each cut themselves with a knife shaped like blasphemous Egyptian hieroglyphs or Aztec symbols and drink only from their own cut.</p><p>Every participant must know this ritual, know Necromancy in the Pisanob or Ghiberti style, and immediately activate the same ritual or path power after casting this one. Each individual who succeeds at this ritual adds his successive power to the following Necromancy effect &mdash; for example, tripling the duration of a jointly cast Summon Soul if three casters each succeed at both challenges. No more than five participants may combine in this ritual.</p>",
+    "source": "Clanbook: Giovanni, Chapter Two: It Runs in the Family",
+    "discipline": "Necromancy Rituals",
+    "level": "basic",
+    "challengeType": "mental",
+    "bloodCost": "1 Blood Trait (from the ritual cut)",
+    "retestAbility": "Occult",
+    "duration": "Instant (modifies the following power)",
+    "activation": "challenge",
+    "active": true,
+    "prerequisites": "Necromancy (Pisanob or Ghiberti style)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
