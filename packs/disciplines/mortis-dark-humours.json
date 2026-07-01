@@ -1,0 +1,32 @@
+{
+  "_id": "efcbc9fc0e064209",
+  "name": "Dark Humours (Mortis, Intermediate, Path of the Four Humours)",
+  "type": "power",
+  "img": "icons/magic/death/undead-skeleton-shield-blue.webp",
+  "system": {
+    "description": "<p>You can direct each of the Four Humours much as regular Cainites direct blood. Once prepared, bringing it into contact with a victim (by touch, coating a weapon, or introducing it into food or drink) subjects them to its effect, at the cost of altering your own balance to behave contrary to that humour.</p><p>Select a Humour, expend two Blood Traits to transform it, then deliver it to a victim. The victim must win a Static Physical Challenge against your Physical Traits or fall under the humour's sway until the next sunrise; winning renders the humour inert.</p><p>Phlegm: the victim becomes lethargic, one Trait down on all Physical Challenges. Blood: the victim becomes prone to excessive bleeding, taking an additional level of damage each time they receive lethal or aggravated damage; blood prepared this way no longer functions as vitae. Black Bile: causes a level of aggravated damage to anyone (other than you) who comes into contact with it, and a second level the following turn unless a Static Physical Challenge (difficulty five Traits) is won. Yellow Bile: the victim is plagued with melancholy visions, loses a Willpower Trait, and may not spend Willpower while affected.</p>",
+    "source": "Faith and Fire, Disciplines",
+    "discipline": "Mortis (Path of the Four Humours)",
+    "level": "intermediate",
+    "challengeType": "physical",
+    "bloodCost": "2 Blood Traits",
+    "retestAbility": "Occult",
+    "duration": "Until next sunrise",
+    "activation": "challenge",
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

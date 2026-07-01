@@ -1,0 +1,32 @@
+{
+  "_id": "3674ceb241c646f8",
+  "name": "Call the Athanatos (Mortis, Intermediate, Cadaverous Animation)",
+  "type": "power",
+  "img": "icons/magic/death/undead-skeleton-shield-blue.webp",
+  "system": {
+    "description": "<p>You can convert a corpse into a monstrous, unliving killer. Creating an Athanatos takes five minutes and two Blood Traits spread across the corpse in unholy glyphs. You may expend Mental Traits to grant it greater combat prowess \u2014 each Mental Trait spent grants two Brutal Physical Traits \u2014 and it retains any greater Archery, Brawl, Dodge or Melee Traits the corpse possessed in life. Once prepared, win a Static Physical Challenge (difficulty seven Traits). If you succeed, the body animates and immediately attempts to kill the nearest thing, possibly you. To direct it, you must defeat it in a Social Challenge; otherwise it attacks the most opportune targets until controlled, defeated or destroyed. You may attempt to regain control once per turn as an activity. If it passes more than 100 yards from you it becomes free until you close within a few yards and reassert control. You must succeed in a Social Challenge to end its rampage. An Athanatos lasts until daylight and is useless outside combat.</p>",
+    "source": "Faith and Fire, Disciplines",
+    "discipline": "Mortis (Cadaverous Animation)",
+    "level": "intermediate",
+    "challengeType": "physical",
+    "bloodCost": "2 Blood Traits, optional Mental Traits",
+    "retestAbility": "Occult",
+    "duration": "Until daylight",
+    "activation": "challenge",
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_id": "706f3bbd3dbc40a4",
+  "name": "Curse of Life (Mortis, Intermediate, Corpse in the Monster)",
+  "type": "power",
+  "img": "icons/magic/death/undead-skeleton-shield-blue.webp",
+  "system": {
+    "description": "<p>You must be able to see your target. Expend a Willpower Trait and engage your target in a Mental Challenge. If you win, you may inflict any of the many frailties of the living upon her undead body until the next sunset. The character is distracted to the point she is three Traits down in all challenges and cannot expend Blood Traits to augment her Physical Traits. The victim may expend a Willpower Trait to ignore the distracting aspects for a scene, but the blood limitation remains for the duration.</p>",
+    "source": "Faith and Fire, Disciplines",
+    "discipline": "Mortis (Corpse in the Monster)",
+    "level": "intermediate",
+    "challengeType": "mental",
+    "bloodCost": "1 Willpower Trait",
+    "retestAbility": "Medicine",
+    "duration": "Until next sunset",
+    "activation": "challenge",
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

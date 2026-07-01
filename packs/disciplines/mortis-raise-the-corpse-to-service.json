@@ -1,0 +1,32 @@
+{
+  "_id": "1d6173d0cfb3403c",
+  "name": "Raise the Corpse to Service (Mortis, Intermediate, Cadaverous Animation)",
+  "type": "power",
+  "img": "icons/magic/death/undead-skeleton-shield-blue.webp",
+  "system": {
+    "description": "<p>You can animate a corpse \u2014 freshly killed or a moldering skeleton \u2014 into a shambling servant. Expend a Blood Trait, dripping it into the body's mouth over three turns, and perform a Static Physical Challenge (difficulty five Traits). Success creates an animated corpse capable of performing the functions of a simple manservant. It cannot speak but can communicate through rudimentary gestures. It continues to decay until only a skeleton is left. Corpses so prepared last three days, and may be raised again after they cease to function.</p>",
+    "source": "Faith and Fire, Disciplines",
+    "discipline": "Mortis (Cadaverous Animation)",
+    "level": "intermediate",
+    "challengeType": "physical",
+    "bloodCost": "1 Blood Trait",
+    "retestAbility": "Occult",
+    "duration": "Three days",
+    "activation": "challenge",
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

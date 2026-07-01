@@ -1,0 +1,32 @@
+{
+  "_id": "14bb9ed805fa4282",
+  "name": "Gift of the Corpse (Mortis, Intermediate, Corpse in the Monster)",
+  "type": "power",
+  "img": "icons/magic/death/undead-skeleton-shield-blue.webp",
+  "system": {
+    "description": "<p>By taking the aspects of the dead upon yourself, you can temporarily avoid some of the vulnerabilities to which Cainites are subject. Expend a Willpower Trait and perform a Static Mental Challenge (difficulty seven Traits). If you succeed, your Cainite nature is submerged for two turns, and you are closer to being an animated corpse than a vampire. Holy artifacts and ground have no effect on you; you are immune to R\u00f6tschreck and frenzy. Sunlight causes at most bashing damage, fire only causes lethal damage, and a stake in the heart is no different from a stake in the liver. At the beginning of the third turn, make a Simple Test; if you win, the effect continues another turn. Gift of the Corpse does not interfere with the use of any vampiric abilities. Should the effect end while you are exposed to circumstances it protects against, they immediately take effect.</p><p>Those with Soulsight or similar abilities may notice an alien appearance in your halo.</p>",
+    "source": "Faith and Fire, Disciplines",
+    "discipline": "Mortis (Corpse in the Monster)",
+    "level": "intermediate",
+    "challengeType": "static",
+    "bloodCost": "1 Willpower Trait",
+    "retestAbility": "Medicine",
+    "duration": "Two turns, extendable",
+    "activation": "challenge",
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
