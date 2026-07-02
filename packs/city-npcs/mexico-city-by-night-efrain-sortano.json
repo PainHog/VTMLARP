@@ -1,0 +1,260 @@
+{
+  "_id": "6e0b91ce772d4f12",
+  "name": "Efraín Sortano (Tzimisce, The Zookeeper)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Priscus of Metamorphosis, Chapultepec Zoo's Cainite master, teacher of Vicissitude and shapeshifting",
+    "clan": "Tzimisce",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 8,
+    "nature": "Pedagogue",
+    "demeanor": "Deviant",
+    "title": "Priscus (representing the Path of Metamorphosis)",
+    "coterie": "University of Night",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Strong",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Erudite",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Instruction",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Body Crafts",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Fire Dancing",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Science",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 14,
+      "max": 14,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Metamorphosis",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Black Hand Membership",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 4,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Embraced more than two centuries ago and inspired by the naturalist Alexander Humboldt, Efraín Sortano claims Chapultepec Zoo as his personal domain — any Cainite who wishes to hunt or feed there must join him in a Vaulderie. He uses Vicissitude and, later, Gangrel shapeshifting to study the animal world in pursuit of the Path of Metamorphosis, has performed five prestigious diableries, and sired both the pain scientist Dr. Vermudo de Sancha and the self-styled Barren Virgin, Ana Rita Montaña.</p><h2>Roleplaying Hints</h2><p>Sortano prefers animals to Cainites (except his students), rarely holds fully human form anymore, and commands the loyalty of the city's feral cats, dogs, bats, and rats as Contacts. He possesses the unique combination power Shape of All Beasts (Protean + Vicissitude), letting him take the form of any animal between the size of a tiger and a rabbit at will.</p>",
+    "notes": "Sire: Fyodor Andreyev. Childer include Dr. Vermudo de Sancha and Ana Rita Montaña. Most recent diablerie (1978) destroyed a priscus who threatened him.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Efraín Sortano",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapters Three and Five",
+      "tag": "(Tzimisce, The Zookeeper)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

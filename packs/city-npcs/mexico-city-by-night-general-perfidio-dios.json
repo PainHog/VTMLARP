@@ -1,0 +1,254 @@
+{
+  "_id": "9acb5ddadd864a2f",
+  "name": "General Perfidio Díos, The Mocker (Malkavian antitribu)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Satirist-bishop who wages political and economic subversion against the Camarilla through slapstick and conspiracy",
+    "clan": "Malkavian antitribu",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 11,
+    "nature": "Architect",
+    "demeanor": "Trickster",
+    "title": "Bishop",
+    "coterie": "Partido Devolucionario Institucional (PDI)",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Empathy",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Instruction",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Firearms",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Performance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Professional Skill (comedy)",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Economics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Expert Knowledge (conspiracy theory)",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 4,
+      "max": 4
+    },
+    "blood": {
+      "value": 11,
+      "max": 11,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 2
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Influence",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Andrés de Hojeto mocked the Díaz dictatorship as \"General Perfidio\" until police beat him nearly to death; his sire Diego Diego, reminded of his own devoured father, Embraced him instead. The Creation Rites' trauma unhinged Andrés' mind entirely, and he re-emerged as General Perfidio Díos, waging a one-Cainite satirical war first on the Díaz regime, then on the Camarilla, eventually founding the coven that became the Partido Devolucionario Institucional and earning a bishopric.</p><h2>Roleplaying Hints</h2><p>Perfidio argues (correctly, and to real strategic effect) that Sabbat coalitions should fracture a Camarilla city's political and economic stability before ever invading with fangs bared — but undercuts his own credibility by insisting with equal fervor that the Ventrue Antediluvian wrote NAFTA and that snake-men from the Hollow Earth have infiltrated the PRI.</p>",
+    "notes": "Sire: Diego Diego. Pack/coven: co-leads the PDI with Caridad de Flores as pack priest.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "General Perfidio Díos",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapter Three: Characters",
+      "tag": "(Malkavian antitribu, The Mocker)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

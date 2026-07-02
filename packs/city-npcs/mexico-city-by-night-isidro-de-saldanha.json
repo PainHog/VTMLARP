@@ -1,0 +1,235 @@
+{
+  "_id": "a52defaf45f84d68",
+  "name": "Captain Isidro de Saldanha (Lasombra, Bishop with a Badge)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Former federal police captain, founder and bishop of Las Emblemas, the Sabbat's Masquerade cover-up coven",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 13,
+    "nature": "Autocrat",
+    "demeanor": "Soldier",
+    "title": "Bishop, ductus of Las Emblemas",
+    "coterie": "Las Emblemas (The Badges)",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Strong",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Area Knowledge (Mexico City)",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Underworld Lore",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 4,
+      "max": 4
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A federal police captain under Porfirio Díaz who broke strikes and took bribes with a clear conscience, Isidro was Embraced in 1906 by Don Vicente Ortiz y Peralta after proving unbreakable under a year of the Cainite's testing (a test that cost Isidro his wife and mistress, handed over as his first meal). He built Las Emblemas, the coven responsible for covering up Sabbat indiscretions across Mexico City — erasing witnesses, destroying evidence, Dominating officials, and framing mortal patsies — and was rewarded first as ductus, then bishop, when Regent Galbraith declared the coven Founded and ordered all Sabbat to cooperate with its cover-up work under pain of violating the Code of Milan.</p><h2>Roleplaying Hints</h2><p>Isidro genuinely believes in order and protecting the powerful from the rabble — an irony given his job protecting rabble-like Sabbat packs from mortal authority. He supports the Ultra-Conservative faction, hoping a centralized Sabbat would rein in the sect's crazier fringes, and treats his handful of Emblemas deputies (recruited once or twice a decade) with gruff, violent discipline.</p>",
+    "notes": "Sire: Don Vicente Ortiz y Peralta. Members bear a ritual forearm brand marking Las Emblemas' authority, though it commands far less respect than the Black Hand's mark.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Captain Isidro de Saldanha",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapter Three: Characters",
+      "tag": "(Lasombra, Bishop with a Badge)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

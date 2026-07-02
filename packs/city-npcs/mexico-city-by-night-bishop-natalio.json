@@ -1,0 +1,261 @@
+{
+  "_id": "4235dbbc9cdc4ed1",
+  "name": "Bishop Natalio, El Insurgente (Brujah antitribu)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Revolutionary bishop building a youth movement among the shantytowns against the coming Gehenna",
+    "clan": "Brujah antitribu",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 9,
+    "nature": "Survivor",
+    "demeanor": "Pedagogue",
+    "title": "Bishop",
+    "coterie": "El Grito de Dolor",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Strong",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Fire Dancing",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Herd",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Rituals",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Embraced amid revolutionary fervor in 1899, Natalio is a true believer convinced the Final Nights are already underway. Rather than challenge the sect's cardinals directly, he organizes neonates and ancillae — the sect's most disposable members and its most receptive audience — into covens and packs across Mexico City's shantytowns, using the Vaulderie and Mexican revolutionary imagery (ice-pick assassinations echoing Trotsky's murder, the ritual creation of \"La Malinche\" figures) to forge loyalty independent of the Path-of-Enlightenment orthodoxy other Sabbat preach.</p><h2>Roleplaying Hints</h2><p>As many as a dozen packs look to Natalio for leadership, foremost his own large coven El Grito de Dolor. He is aware of the rogue vampire La Malinche (whom his own ritus created and who then escaped), considers the ravenous Hungry Sisters bloodline a threat to his shantytown herds, and is quietly recruiting the Malkavian antitribu Eliza Villanova as a potential ally against Gehenna.</p>",
+    "notes": "Sire: Eva la Prima. A mortal industrial accident left his face scarred and right arm mangled; he has never had it repaired by a Fiend's touch.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Bishop Natalio",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapter Three: Characters",
+      "tag": "(Brujah antitribu, El Insurgente)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

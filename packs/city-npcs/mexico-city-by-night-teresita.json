@@ -1,0 +1,265 @@
+{
+  "_id": "37728be6611548d3",
+  "name": "Teresita, Godmother to the Damned (Nosferatu antitribu)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Black Hand dominion, Mexico City's ranking Black Hand authority, trainer of the Niños Heroes cadets",
+    "clan": "Nosferatu antitribu",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 8,
+    "nature": "Creep Show",
+    "demeanor": "Caretaker",
+    "title": "Dominion, Black Hand (acting seraph candidate)",
+    "coterie": "Los Niños Heroes",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Strong",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      "Hideous"
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Instruction",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Black Hand Lore",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Camarilla Lore",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Computer",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 14,
+      "max": 14,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Power and the Inner Voice",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Alternate Identity",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Black Hand Membership",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Rituals",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Embraced in 1672 by the Camarilla archon Gerhardt the Lizard, who used her small size to infiltrate pipes and treated her as disposable, Teresita betrayed her sire to a Sabbat pack and spent decades proving herself until she became a Black Hand dominion. She trains potential Black Hand cadets (Los Niños Heroes) using the martyred boy soldiers of Mexican legend as models, and is Mexico City's ranking Black Hand authority whenever no seraph is present, lobbying to become the vacant seraph seat since Izhim ur-Baal's departure.</p><h2>Roleplaying Hints</h2><p>Teresita treats her cadets and soldiers with the affectionate menace of a strict nanny — \"darling child,\" cheek-pinches, and casual bone-crushing for failure — and secretly maintains a covert online persona as a Nosferatu anarch to trade gossip via SchreckNet, trafficking in information about Sabbat she personally judges to have failed or betrayed the sect.</p>",
+    "notes": "Sire: Gerhardt the Lizard (destroyed). Stands 3'8\" tall. If her SchreckNet double-dealing were ever exposed it would end any chance of her becoming seraph.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Teresita",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapter Three: Characters",
+      "tag": "(Nosferatu antitribu, Godmother to the Damned)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "_id": "ff57bb37242b4aa7",
+  "name": "Pablo Salamanca y Grimaldi (Grimaldi Revenant, Revenant in the Know)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "President of El Grupo Salamanca, secretly sabotaging the Sabbat's finances to free his revenant family",
+    "clan": "",
+    "bloodline": "Grimaldi (revenant)",
+    "sect": "Sabbat (revenant family)",
+    "generation": 0,
+    "nature": "Architect",
+    "demeanor": "Conformist",
+    "title": "President, El Grupo Salamanca",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Drive",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 3,
+      "max": 3,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 4,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Pablo heads the Salamanca branch of the Grimaldi revenant family, which has bankrolled and laundered the Sabbat's affairs in Mexico since before Independence. Blood-bound thrall to the Tzimisce Rafaela Lapaz for 60 years, Pablo watched her burn alive, powerless, when the 1985 earthquake exposed her haven to the sun — the shock of watching his \"perfect monster\" die as a terrified weakling broke his blood bond to her forever. He now runs El Grupo Salamanca, the family's financial and legal-services empire, from the Torre Latinoamericana.</p><h2>Roleplaying Hints</h2><p>Pablo plays the powerless family functionary the Sabbat takes for granted while secretly engineering their deaths: he goads Cainites into disastrous raids and duels, and has built a covert supply network that lures American refugee neonates to Mexico so Salamanca relatives can drain and destroy them, freeing kin from blood bonds one thrall at a time. He suspects Regent Galbraith is an impostor and is quietly protecting that secret because a weak regent suits his sabotage.</p>",
+    "notes": "Revenant family: Grimaldi (Salamanca branch). Not a vampire — statted with the npc/vampire schema fields left blank or zeroed where inapplicable (clan, generation, blood pool represents residual vitae dependency rather than a vampire's blood pool). Former domitor Rafaela Lapaz's fleshcrafting transformed his nipples into small fanged, tongued mouths.",
+    "npcType": "ghoul"
+  },
+  "prototypeToken": {
+    "name": "Pablo Salamanca y Grimaldi",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapter Three: Characters",
+      "tag": "(Grimaldi Revenant)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

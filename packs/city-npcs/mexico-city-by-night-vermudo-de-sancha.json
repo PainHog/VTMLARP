@@ -1,0 +1,234 @@
+{
+  "_id": "bdceba6242894717",
+  "name": "Dr. Vermudo de Sancha (Tzimisce, Pain Scientist)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Former UNAM medical professor turned Sabbat interrogator and Path of Death and the Soul researcher",
+    "clan": "Tzimisce",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 10,
+    "nature": "Scientist",
+    "demeanor": "Monster",
+    "title": "",
+    "coterie": "University of Night",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Striking",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Interrogation",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Body Crafts",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Science",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Death and the Soul",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 2,
+        "temporary": 2
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Herd",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Vermudo de Sancha taught medicine at UNAM and was ghouled, then Embraced, by Efraín Sortano after his obsession with vivisection cost him his mortal career. He drifted from Sortano's Metamorphosist research into the Path of Death and the Soul, earning the nickname El Torcedor (\"the Twister\") for his fervent study of how pain and mutilation reshape the mind, and now serves the Sabbat as its foremost interrogator when Disciplines alone cannot break a subject.</p><h2>Roleplaying Hints</h2><p>De Sancha remains courteous, even solicitous, while inflicting horrific and carefully documented mutilations — he considers himself a scientist advancing vampiric medicine, not a sadist, and extends genuine Hippocratic care to any Cainite or kine who comes to him willingly for medical help.</p>",
+    "notes": "Sire: Efraín Sortano. Embraced Father Yoel Rosen as a test subject to pit mortal faith against the Curse of Caine; the experiment broke the priest's mind instead.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Dr. Vermudo de Sancha",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapter Three: Characters",
+      "tag": "(Tzimisce, Pain Scientist)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

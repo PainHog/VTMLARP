@@ -1,0 +1,261 @@
+{
+  "_id": "d28d869bda1a432e",
+  "name": "La Viuda Blanca, The White Widow (Harbinger of Skulls)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ancient Lazarene occultist obsessed with the coming apocalypse, custodian of a vanished Tremere chantry's secrets",
+    "clan": "Harbinger of Skulls",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 8,
+    "nature": "Judge",
+    "demeanor": "Visionary",
+    "title": "",
+    "coterie": "Los Hechiceros del Teocalli",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      "Hideous"
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Crafts",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Performance",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Science",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Death and the Soul",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Rituals",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Once a pagan mortal witch drawn into the lands of the dead, the White Widow was eventually spat back into the world of the living centuries later, emerging in a birthing ward with a hunger for infant blood. Found half-delirious before the Templo Mayor's tzompantli (skull wall) by the koldun Esteban del Agua y Tierra, she was baptized into the Harbinger of Skulls bloodline and bonded to him as a pack of two through the Vaulderie. In 2000 the pair broke into the sealed chantry of the vanished Tremere antitribu Elena Vasquez, and the Widow now presides over its library and laboratories from beneath a teocalli gentlemen's club.</p><h2>Roleplaying Hints</h2><p>The Widow is convinced a great storm of death is coming to consume all life and unlife, and intends to be \"front and center\" when it arrives — potentially helping it along. She quietly recruits neonates she believes will matter in the coming apocalypse, unbeknownst to the Sabbat cardinals who leave her alone as an apolitical occult asset.</p>",
+    "notes": "Sire and Embrace date unknown. Merit/Flaw: Prey Exclusion (feeds only from children and infants). Pack-bonded (Vaulderie) with Esteban del Agua y Tierra.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "La Viuda Blanca",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapter Three: Characters",
+      "tag": "(Harbinger of Skulls, The White Widow)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

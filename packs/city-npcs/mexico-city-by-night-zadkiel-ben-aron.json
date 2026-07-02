@@ -1,0 +1,253 @@
+{
+  "_id": "93b513846758400e",
+  "name": "Zadkiel ben Aron (Lasombra, The Abyss Mystic)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Abyss mystic and spiritual advisor, sole survivor of the Schichiriel lineage",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 9,
+    "nature": "Guru",
+    "demeanor": "Deviant",
+    "title": "Rabbi (self-styled; honorary bishop)",
+    "coterie": "The Schichiriel",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Instruction",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Performance",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Cryptography",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Expert Knowledge (Talmud)",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Night",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 2,
+        "temporary": 2
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Rituals",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Zadkiel was born to a family of hidden Sephardic Jews (conversos) who fled Iberia's expulsions to Brazil, and was drawn as a young rabbi-lawyer into the Schichiriel, a Lasombra antitribu lineage practicing an abyssal, heretical Kabbalah that sought divinity through the negative emanations (qliphoth) of God. In 1803 the Lasombra cardinal Charles Delmare (later Charles VI) annihilated the Schichiriel; Zadkiel alone survived by selling himself into Charles' service, then relocated to Mexico City decades later to become the city's leading teacher of abyss mysticism and Path of Night.</p><h2>Roleplaying Hints</h2><p>Zadkiel rarely resumes human form, preferring to stalk the city as a birdlike shadow. He counsels any Cainite who suffers under undeath regardless of sect, dissects the selfish passions of those he meets, and never commands another except in self-defense, believing every soul must find and endure its own choices. He maintains a cool, distant solidarity with fellow teacher-neutral Efraín Sortano and keeps five bound abyssal Retainers (Strength/Dexterity 5, Mental Traits 2 each) in the flooded well beneath his storm-drain haven.</p>",
+    "notes": "Merit: Controllable Night Sight (sees in darkness/shadow as light; light obscures him as darkness; can toggle at will — see Clanbook: Lasombra). Sire: Aron ben Aretz. Ratings above 5 from the original stat block have been capped to this system's 1-5 scale.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Zadkiel ben Aron",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Mexico City by Night, Chapter Three: Characters",
+      "tag": "(Lasombra, Abyss Mystic)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
