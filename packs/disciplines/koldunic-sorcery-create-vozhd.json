@@ -1,0 +1,34 @@
+{
+  "_id": "395afdaa743f4728",
+  "name": "Create Vozhd (Koldunic Sorcery, Advanced)",
+  "type": "power",
+  "img": "icons/magic/death/undead-ghoul-worg-approach.webp",
+  "system": {
+    "description": "<p>Combined with Vicissitude, this ritual lets a koldun assemble a vozhd war-ghoul from a mass of living victims. The Tzimisce must gather at least 15 ghouls, human or animal (20 or more is common), and force-feed all of them a concoction of one another's blood. A continuous chant is then maintained while Vicissitude reshapes the assembled ghouls into a single composite creature; the caster need not personally sculpt the flesh, though most prefer to. The casting requires (number of ghouls used minus 7) hours of unbroken chanting, and if this stretches past dawn the koldun must resist the day's pull to slumber.</p><p><strong>System:</strong> Requires a minimum of 15 sacrificial ghouls each fed a portion of the shared blood mixture, an uninterrupted chant for the ritual's full duration, and a Vicissitude score sufficient to reshape the mass. If the chant is broken before completion, the ritual fails and the ghouls die without transformation.</p>",
+    "source": "Libellus Sanguinis I: Masters of the State, Book Two: Tzimisce",
+    "discipline": "Koldunic Sorcery",
+    "level": "advanced",
+    "challengeType": "static",
+    "bloodCost": "1 Blood Point per ghoul (feeding mixture)",
+    "retestAbility": "",
+    "duration": "(Ghouls used - 7) hours to cast; permanent result",
+    "system_": "",
+    "activation": "challenge",
+    "active": false,
+    "prerequisites": "Koldunic Sorcery (6), Vicissitude"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
