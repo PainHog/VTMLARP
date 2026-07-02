@@ -1,0 +1,33 @@
+{
+  "_id": "e71331f9134c46ed",
+  "name": "Prophecy (Auspex 4 / Dementation 3, Combination Discipline)",
+  "type": "power",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
+  "system": {
+    "description": "<p>For some, madness is a link to the storms of destiny. By opening her mind to the inherent lunacy of the world and observing the mind-shattering patterns of fate &mdash; usually through ritual implements such as thrown bones, billows of smoke, entrails, or the tides &mdash; the Malkavian seer can predict the future. She may be bombarded by images or simply gain instinctual feelings, and can keep the insight to herself, use it to aid others, or use it to do them harm. Malkavian oracles often use this power to trace the fate of others, though the results usually manifest only through cryptic warnings.</p><p><strong>System:</strong> The player phrases a question or subject for the divination (\"Who betrays the prince?\" \"What is the fate of my childe?\"), spends two Blood Traits, and rolls Perception + Awareness (difficulty 8); the process takes about an hour. For simple information, a single success brings a quick flash of a dominant emotion, while five successes bring a true vision of the future. Applied to an impending action (facing an enemy, traveling dangerous land), the successes form a pool that can be spent to reduce the difficulty of subsequent rolls tied to that action, one success per roll. Used on another Malkavian's behalf, the difficulty rises by up to two to reflect the subject's own instinctual sense; relaying the results to the subject in a way she can actually use requires successes from a pool equal to 10 minus the subject's Willpower.</p>",
+    "source": "Libellus Sanguinis IV: Thieves in the Night, Book Three: Madmen",
+    "discipline": "Auspex, Dementation",
+    "level": "advanced",
+    "challengeType": "mental",
+    "bloodCost": "2",
+    "retestAbility": "Awareness",
+    "duration": "Instant (see below)",
+    "activation": "challenge",
+    "active": false,
+    "prerequisites": "Auspex (4), Dementation (3)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
