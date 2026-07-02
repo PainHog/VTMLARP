@@ -1,0 +1,33 @@
+{
+  "_id": "2aa47e6c77e940c1",
+  "name": "Loki's Gift (Protean, Elder)",
+  "type": "power",
+  "img": "icons/magic/nature/wolf-paw-glow-green.webp",
+  "system": {
+    "description": "<p>The vampire can assume the exact form of the last creature (human, Cainite or animal) whose blood she has drunk. She gains none of the target's Disciplines, knowledge or Abilities, but otherwise becomes a perfect physical imitation, letting her briefly pass as someone else or, in animal form, shed the telltale stench of undeath.</p><p><strong>System:</strong> After drinking the target's blood, the player spends two Blood Traits to transform (taking two turns, or one turn for a third Blood Trait) and rolls Manipulation + Subterfuge. Each success sustains the disguise for roughly an hour; the player may spend an additional Blood Trait to extend the deception by another hour, blood permitting. A botch means the transformation fails and the vampire can never again imitate that particular target. The assumed form holds up against all detection, including supernatural senses that would reveal a vampire's true nature, though it will not conceal the vampire's actual emotional state from senses that read emotion. The transformation automatically ends at dawn.</p>",
+    "source": "Libellus Sanguinis III: Wolves at the Door, Book One: Animals",
+    "discipline": "Protean",
+    "level": "advanced",
+    "challengeType": "social",
+    "bloodCost": "2 (3 to halve transformation time), plus 1 per additional hour",
+    "retestAbility": "",
+    "duration": "One hour per success, extendable",
+    "activation": "toggle",
+    "active": false,
+    "prerequisites": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
