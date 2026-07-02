@@ -1,0 +1,251 @@
+{
+  "_id": "ffcfdbdb89804ffa",
+  "name": "Badr-al-Budur",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Assamite assassin-for-hire operating across Milwaukee's factions",
+    "clan": "Assamite",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 9,
+    "nature": "Competitor",
+    "demeanor": "Loner",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Strong",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          },
+          {
+            "name": "Wily",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Drive",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Toxicology",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 15,
+      "max": 15,
+      "perTurn": 3
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 0,
+        "temporary": 0
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Descended from Fatimah, the first woman inducted into the Assamite ranks after the Clan's masters at Alamut needed a mortal assassin's skills badly enough to overlook her gender, Badr-al-Budur carries on that fight for standing among her own Clan while plying her trade across the Jyhad. Milwaukee's endless internecine warfare provides her with steady, lucrative employment; Anarchs hire her to kill Elders, Elders hire her to kill Anarchs, and everyone hires her to kill everyone else. She requires payment in the blood of Kindred of the 9th generation or older, and Assamite tradition dictates that if she fails a contract, no Assamite will ever accept it again &mdash; and that hiring her means she learns things about her employer she could one day be paid to use against him.</p><h2>Roleplaying Hints</h2><p>Say little, and avoid engaging with Kindred society at all. If a character's enemy comes up in conversation, quietly start angling for a contract.</p>",
+    "notes": "Sire: Ma'aruf. Haven: a small condominium near the university. Disciplines as printed: Celerity 3, Dominate 1, Fortitude 1, Obfuscate 3, Quietus 3 (capped above to this system's 1-5 scale). Independent of Milwaukee's Camarilla/Anarch/Sabbat conflict; sells her services to any faction.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Badr-al-Budur",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Milwaukee by Night, Chapter Three: The Kindred",
+      "tag": "(Assamite, independent)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

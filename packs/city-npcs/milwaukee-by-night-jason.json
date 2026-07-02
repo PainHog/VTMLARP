@@ -1,0 +1,252 @@
+{
+  "_id": "c398cfb6c5924d4c",
+  "name": "Jason (\"The World's Voice\")",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Malkavian representative on the Council of Elders",
+    "clan": "Malkavian",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 7,
+    "nature": "Conformist",
+    "demeanor": "Caregiver",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          },
+          {
+            "name": "Wily",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
+        ]
+      },
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Drive",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Music",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 14,
+      "max": 14,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Sentenced to hang for a murder committed at his sire Jacob's instigation in 1903, Jason was Embraced the night before his execution and has served as Jacob's pawn and mouthpiece for decades. He sits on Milwaukee's Council of Elders as its only openly acknowledged Malkavian, chosen precisely because he is one of the few of his Clan sane enough (and compliant enough) to hold the seat. Jason genuinely tries to be a fair voice on the Council, swinging his support between Sir Edward Scott and Gracis Nostinus depending on the night, and holds the balance of power between the two factions. He distrusts Parovich instinctively, without knowing why, and feels a quiet, unwanted responsibility for Milwaukee's other Malkavians, Jacob and Milo.</p><h2>Roleplaying Hints</h2><p>Speak quietly and rarely. Listen intently to others, and when you do speak, mirror back what was just said to you as though wholeheartedly agreeing &mdash; you do not really exist except through other people.</p>",
+    "notes": "Sire: Jacob. Haven: a grand penthouse hidden behind a drab tenement facade. Disciplines as printed: Auspex 5, Dominate 4, Fortitude 3, Obfuscate 3 (capped above to this system's 1-5 scale). Secretly a pawn of his own sire, Jacob, in Jacob's private war against his split personality, Esau.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Jason (\"The World's Voice\")",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Milwaukee by Night, Chapter Three: The Kindred",
+      "tag": "(Malkavian, Council of Elders)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

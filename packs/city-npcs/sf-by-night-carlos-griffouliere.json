@@ -1,0 +1,229 @@
+{
+  "_id": "2fbd03e161f2460c",
+  "name": "Carlos Griffouliere",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Disillusioned Sabbat information-gatherer secretly planning to defect to the Camarilla",
+    "clan": "Lasombra (soon antitribu)",
+    "bloodline": "",
+    "sect": "Sabbat (wavering)",
+    "generation": 10,
+    "nature": "Caregiver",
+    "demeanor": "Bon Vivant",
+    "title": "",
+    "coterie": "Killing Spree",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Drive",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Performance",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 7,
+      "max": 7
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Generation",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Herd",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A charismatic Puerto Rican socialite Embraced by the Sabbat scout Antonio Molina, Carlos Griffouliere never lost his underlying decency despite the Vinculum his pack leader Viridian imposed on him. Within a decade he grew immune to the blood bond's effects, and while the Sabbat prizes his leadership and information-gathering skill, his heart is no longer with the sect. Consuela Martinez recruited him for Killing Spree's San Francisco mission, an arrangement he tolerates only until he has gathered enough on the Sabbat's California operations to defect to the Camarilla.</p><h2>Roleplaying Hints</h2><p>Griffouliere is oddly jovial for a vampire, genuinely likes mortals and Kindred alike, and treats everyone as a potential informant in his growing network. He has no loyalty to Martinez and plans to betray her the moment it benefits him.</p>",
+    "notes": "Sire: Antonio Molina. Merits: Unbondable. Nominal commander: Consuela Martinez (whom he intends to betray). Disciplines (as printed): Celerity 2, Dominate 2, Fortitude 2, Obtenebration 4, Potence 3.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Carlos Griffouliere",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "San Francisco by Night, Chapter Five: Honored Shen",
+      "tag": "(Lasombra, Sabbat)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

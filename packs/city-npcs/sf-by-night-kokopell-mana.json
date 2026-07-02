@@ -1,0 +1,204 @@
+{
+  "_id": "f51e2625a80041b6",
+  "name": "Kokopell Mana the Kachina, Nosferatu Primogen",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Nosferatu primogen who believes herself a Hopi fertility kachina",
+    "clan": "Nosferatu",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 7,
+    "nature": "Visionary",
+    "demeanor": "Survivor",
+    "title": "Primogen",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Linguistics",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 20,
+      "max": 20,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 8
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Herd",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 4,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Kokopell Mana remembers only fragments of her mortal life before an unknown Nosferatu Embraced her; she awoke believing herself the Humpback Locust Woman, a kachina spirit of the Hopi, and has never let go of that identity. She wandered from the desert Southwest to San Francisco seeking her fellow kachina, found instead a Nosferatu clan that welcomed her as kin, and settled into the city's underbelly. She first appeared in Kindred records in 1911.</p><h2>Roleplaying Hints</h2><p>Kokopell Mana treats the Camarilla clans as a squabbling but beloved family and views the Kuei-jin invasion as an existential threat akin to the mythic Spider Clan's conquest of Pal\u00e1tkwapi. She has sworn never to let another home fall, and allies closely with Prince Winder (whom she calls the new Warrior Mother) and Luna Demian.</p>",
+    "notes": "Sire: Unknown. Disciplines (as printed): Animalism 4, Auspex 3, Celerity 1, Fortitude 2, Obfuscate 6, Potence 5. Uses Obfuscate constantly to move unseen.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Kokopell Mana the Kachina",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "San Francisco by Night, Chapter Five: Honored Shen",
+      "tag": "(Nosferatu, Primogen)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

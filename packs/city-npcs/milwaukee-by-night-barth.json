@@ -1,0 +1,264 @@
+{
+  "_id": "5bf9ed9cbea64a96",
+  "name": "Barth (\"Derik Dark\")",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Neutral radio DJ who passes coded messages to Milwaukee's Kindred",
+    "clan": "Toreador",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 10,
+    "nature": "Confidant",
+    "demeanor": "Jester",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Alluring",
+            "spent": false
+          },
+          {
+            "name": "Magnetic",
+            "spent": false
+          }
+        ]
+      },
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Strong",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          },
+          {
+            "name": "Wily",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Drive",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Music",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Repair",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Finance",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 13,
+      "max": 13,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Fame",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Embraced in 1934 by Sondra after she heard him spinning tall tales in Louisiana, Barth reinvented himself in Milwaukee as \"Derik Dark,\" a late-night radio DJ whose show airs every weeknight from 10 p.m. to 2 a.m. on WBIT. He has carved out a rare neutral niche in Milwaukee's Jyhad, using coded announcements between songs to pass along news of Kindred parties, rumbles, and warnings to whoever is listening. Friendly with the Blood Brothers and on good terms with Lucina (whom he quietly keeps informed of especially destructive Anarch plans), Barth fears the Union may target him precisely because his neutrality and older blood make him a tempting kill for a gang that needs strength.</p><h2>Roleplaying Hints</h2><p>Loud, warm, and larger than life on the air; quieter and hungrier for stories and information in private.</p>",
+    "notes": "Sire: Sondra. Haven: a middle-class apartment in East Downtown. Disciplines as printed: Auspex 2, Celerity 3, Presence 3 (capped above to this system's 1-5 scale). Hosts a nightly radio show (WBIT, 10 p.m.-2 a.m.) used as a covert Kindred communication channel.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Barth (\"Derik Dark\")",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Milwaukee by Night, Chapter Three: The Kindred",
+      "tag": "(Toreador, independent)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

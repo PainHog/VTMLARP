@@ -1,0 +1,199 @@
+{
+  "_id": "84cb67dce5934f30",
+  "name": "Mirko Mirkonen",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ancient Gangrel berserker who hunts Cathayans in San Francisco's parks",
+    "clan": "Gangrel",
+    "bloodline": "",
+    "sect": "Camarilla (nominal)",
+    "generation": 9,
+    "nature": "Judge",
+    "demeanor": "Bravo",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Blind Fighting",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Investigation",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Born in Iceland in 835 CE, Mirko Mirkonen was Embraced by the ancient Gangrel warlord Stilgar the Reaver and spent a millennium seeking out wars across Europe, occasionally falling into torpor from his wounds only to emerge reinvigorated. Though only a nominal Camarilla supporter, his hatred of the patricidal Sabbat led him to help destroy a Tremere antitribu infiltrator near Chicago, earning him a declined offer of Archon status. He drifted west and now partners with fellow Gangrel Gustavo Morales, hunting lone Cathayans through San Francisco's parks.</p><h2>Roleplaying Hints</h2><p>Relaxed and easygoing outside of combat, Mirkonen transforms into a berserker in battle, living for conflict and taking pride in his ability to both deal and withstand enormous damage. He and Morales are folk heroes among the city's Kindred for reclaiming the parks and the Richmond district from Kuei-jin control.</p>",
+    "notes": "Sire: Stilgar the Reaver. Partner: Gustavo Morales. Disciplines (as printed): Animalism 5, Fortitude 5, Obfuscate 2, Potence 5, Protean 4. Develops a taste for Cathayan blood, which he suspects he may regret.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Mirko Mirkonen",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "San Francisco by Night, Chapter Five: Honored Shen",
+      "tag": "(Gangrel)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

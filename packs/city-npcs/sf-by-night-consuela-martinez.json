@@ -1,0 +1,249 @@
+{
+  "_id": "1edc353f41d94775",
+  "name": "Consuela Maria Martinez, Sabbat Templar and Pack Leader of Killing Spree",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Sabbat Templar sent to sabotage Camarilla-Quincunx diplomacy in San Francisco",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 9,
+    "nature": "Perfectionist",
+    "demeanor": "Autocrat",
+    "title": "",
+    "coterie": "Killing Spree (pack leader)",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Drive",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Performance",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Camarilla Lore",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Enigmas",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Power and the Inner Voice",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Purchased as a bride by the Lasombra Don Guzman, who instead Embraced her after feeding on her cruel parents, Consuela Martinez was bred by her sire specifically to counter Camarilla diplomacy on the Sabbat's behalf. Assigned nearly three years ago to break down talks between the Camarilla and the Quincunx, she leads the pack Killing Spree in San Francisco, though she finds herself relying more on the subtler Misery Lords than her own bloodthirsty followers.</p><h2>Roleplaying Hints</h2><p>Martinez is regal, stern, and utterly calculating &mdash; every word and action serves a strategy. Guzman has promised her the Bishopric of San Francisco if she can turn the Camarilla and the Quincunx against one another before her six-month deadline expires.</p>",
+    "notes": "Sire: Sergio Guzman. Subordinate ally: Scarlet Carson O'Toole (The Misery Lords). Disciplines (as printed): Auspex 1, Celerity 3, Dominate 4, Fortitude 3, Obtenebration 5, Potence 5.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Consuela Maria Martinez",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "San Francisco by Night, Chapter Five: Honored Shen",
+      "tag": "(Lasombra, Sabbat Templar)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

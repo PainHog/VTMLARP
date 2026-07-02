@@ -1,0 +1,244 @@
+{
+  "_id": "7c40a95e3b1d48af",
+  "name": "Boss Callihan",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Anarch boss of Staten Island, secretly Blood Bound to the harpy Hellene Panhard",
+    "clan": "Ventrue antitribu",
+    "bloodline": "",
+    "sect": "Anarch Movement (nominally Camarilla)",
+    "generation": 10,
+    "nature": "Conniver",
+    "demeanor": "Judge",
+    "title": "Anarch Boss",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "History",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 1,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A corrupt Tammany Hall-era financier who bought his way into the Sabbat via a Ventrue sire, Douglas &ldquo;Boss&rdquo; Callihan grew disillusioned with the sect's lack of refinement and defected to the nascent anarch movement, rising to become one of New York's most prominent anarch bosses. He deliberately kept his anarchs out of the Battle of New York hoping to seize the spoils once the Sabbat and Camarilla exhausted each other, but the Camarilla's swift victory left the anarchs relegated to Staten Island. In its aftermath, Callihan hired an Assamite to assassinate ascending Prince Calebros and destabilize rival domains for an anarch land-grab; the harpy Hellene Panhard uncovered the plot, intercepted the assassin, and extracted a blood bond from Callihan in exchange for her silence. He now waits, chafing, for the political situation to loosen enough to move against the Camarilla again.</p><h2>Roleplaying Hints</h2><p>The anarch cause is secondary to your own advancement; you tell the anarchs what they want to hear in exchange for their loyalty as a personal army, and you would drop the movement in a heartbeat for a better opportunity &mdash; though you keep that fact carefully hidden.</p>",
+    "notes": "Sire: Thomas Albee. Secretly Blood Bound to the Camarilla harpy Hellene Panhard after she uncovered his plot to have Prince Calebros assassinated. Ratings above 5 from the original stat block have been capped to fit this system's 1-5 scale.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Boss Callihan",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "New York by Night, 2nd Edition, Chapter Three: All the Beautiful Monsters",
+      "tag": "(Anarch Boss)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

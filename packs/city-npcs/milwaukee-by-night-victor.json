@@ -1,0 +1,253 @@
+{
+  "_id": "5667acf2dde54234",
+  "name": "Victor (\"The Assassin\")",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Tremere enforcer who truly runs Milwaukee's Clan operations",
+    "clan": "Tremere",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 9,
+    "nature": "Curmudgeon",
+    "demeanor": "Bravo",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Strong",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Drive",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Computer",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 14,
+      "max": 14,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Mentor",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A former CIA assassin Embraced in 1950 after his final mortal target proved to be a Tremere elder waiting for him, Victor now serves the Clan as its enforcer in Milwaukee. Officially subordinate to Carna on the Council, Victor in truth directs Milwaukee's entire Tremere operation: Dr. Mortius reports research needs to him, Victor relays orders to Carna, and Carna's continued good standing with Vienna depends entirely on Victor's reports. He is here to protect the secrecy of the Marquette null-zone investigation and to eliminate any Kindred who tries to seize whatever magic is hidden there for themselves.</p><h2>Roleplaying Hints</h2><p>Relaxed and calm on the surface, but radiating quiet menace. Make subtle threats and let hints about your body count do the intimidating rather than open aggression.</p>",
+    "notes": "Sire: Duke Traska. Haven: several, all in wealthy, well-hidden areas. Disciplines as printed: Auspex 3, Dominate 3, Obfuscate 1, Thaumaturgy 3 (capped above to this system's 1-5 scale). Rituals: Defense of Sacred Haven, Wake with Evening's Freshness, Deflection of Wooden Doom, The Watcher, Bladed Hands (the latter two his own creations).",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Victor (\"The Assassin\")",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Milwaukee by Night, Chapter Three: The Kindred",
+      "tag": "(Tremere, hidden power)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

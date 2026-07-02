@@ -1,0 +1,257 @@
+{
+  "_id": "328558d7702640ba",
+  "name": "Carna (\"The Princess Witch\")",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Tremere Council representative and secretly unraveling elder",
+    "clan": "Tremere",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 8,
+    "nature": "Conformist",
+    "demeanor": "Director",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Alluring",
+            "spent": false
+          }
+        ]
+      },
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Music",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 5,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 15,
+      "max": 15,
+      "perTurn": 3
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 1
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Herd",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Taken from a peasant life by a mortal prince who abused and eventually Embraced her out of drunken spite, Carna became the first female Tremere and rose to become Prince of Marseille before the Clan sent her to watch over its secret investigation of Milwaukee's magical \"null zone\" at Marquette University. She holds Milwaukee's Tremere seat on the Council of Elders, but the real authority over the Clan's local operation rests with her subordinate, the assassin Victor, who reports to her only what she needs to know. Over 600 years old and repeating the same doomed pattern of love and violence with every lover she takes (she has developed a ritual, Curse of Clytaemnestra, expressly to destroy those who spurn her), Carna is growing tired of the endless Jyhad and has quietly begun to question the Tremere Clan's demands of her &mdash; a dangerous line of thought for any Tremere.</p><h2>Roleplaying Hints</h2><p>Flirtatious and sultry with male characters while secretly scheming to dominate everyone in the room. When finally pushed into open conflict, drop the warmth entirely and show the cold-blooded killer underneath.</p>",
+    "notes": "Sire: the Prince Bourdona. Haven: several, favoring a suite in the Hyatt Regency. Disciplines as printed: Auspex 4, Dominate 5, Thaumaturgy 5 (capped above to this system's 1-5 scale). Rituals: Defense of Sacred Haven, Wake with Evening's Freshness, Deflection of Wooden Doom, Ritual of Darkness, Curse of Clytaemnestra (the last two her own creations).",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Carna (\"The Princess Witch\")",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Milwaukee by Night, Chapter Three: The Kindred",
+      "tag": "(Tremere, Council of Elders)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

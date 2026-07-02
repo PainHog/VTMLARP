@@ -1,0 +1,237 @@
+{
+  "_id": "9b29509df1a441e0",
+  "name": "Lucina",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Toreador leader and moral crusader on the Council",
+    "clan": "Toreador",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 8,
+    "nature": "Fanatic",
+    "demeanor": "Child",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Alluring",
+            "spent": false
+          },
+          {
+            "name": "Magnetic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Clever",
+            "spent": false
+          }
+        ]
+      },
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Music",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Bureaucracy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 5,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 15,
+      "max": 15,
+      "perTurn": 3
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 4,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Born a Missouri farm girl in 1863 and lured away by a Toreador dance partner who Embraced her only to abandon her six months later as \"mundane,\" Lucina has spent her unlife trying to prove her sire wrong. She leads Milwaukee's Toreador (loosely; they are notoriously fickle), holds a seat on the Council of Elders, and has appointed herself guardian of the city's museums, concert halls, and cultural institutions against Anarch vandalism &mdash; her ghouls guard these sites around the clock. She despises Sir Edward Scott and the Anarchs as a matter of principle, generally allies with Gracis Nostinus in Council votes, and dreams of reforming the Toreador Clan into a genuine force for art and beauty rather than hedonism.</p><h2>Roleplaying Hints</h2><p>Sweet, demure, and girlish on the surface &mdash; she still appears to be a teenager. Lash out suddenly and fiercely at anyone who crosses her on a matter she cares about; her innocent facade hides real fanaticism and power.</p>",
+    "notes": "Sire: Hansen. Haven: a permanent room on the 16th floor of the Hyatt Regency. Disciplines as printed: Auspex 4, Celerity 2, Presence 4, Protean 3 (capped above to this system's 1-5 scale). Close ally of Barth the DJ and Louis Detonas.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Lucina",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Milwaukee by Night, Chapter Three: The Kindred",
+      "tag": "(Toreador, Council of Elders)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

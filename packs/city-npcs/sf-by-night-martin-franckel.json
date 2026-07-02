@@ -1,0 +1,229 @@
+{
+  "_id": "883119a927424986",
+  "name": "Martin Franckel",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Diablerist Tremere thaumaturge, research assistant to Regent Luna Demian",
+    "clan": "Tremere",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 12,
+    "nature": "Fanatic",
+    "demeanor": "Geek",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Drive",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Computer",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Science",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Herd",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 1,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A UCLA engineering student Embraced on a whim by the anarch Tremere Almiro Suarez, Martin Franckel diablerized his sire in a fit of rage after learning his Embrace served no grander purpose. He fled to San Francisco, where Regent Luna Demian took him in despite noticing the diablerie marks on his aura, and made him her research assistant. Franckel staged a faux movie shoot to cover the closing of San Francisco's bridges long enough to ward them against the Kuei-jin.</p><h2>Roleplaying Hints</h2><p>Franckel is a Thaumaturgical obsessive who struggles to relate to anyone who doesn't share his passion for magical theory. Only he and Demian know how to cast the Ward Versus Cathayans locally &mdash; a secret that makes him a prime target for Kuei-jin abduction.</p>",
+    "notes": "Sire: Almiro Suarez (diablerized). Mentor: Luna Demian. Disciplines (as printed): Auspex 3, Dominate 2, Thaumaturgy 4 (Path of Blood 4, Path of Technomancy 4). Rituals: Purity of Flesh, Donning the Mask of Shadows, Telecommunication, Ward Versus Cathayans.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Martin Franckel",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "San Francisco by Night, Chapter Five: Honored Shen",
+      "tag": "(Tremere)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
