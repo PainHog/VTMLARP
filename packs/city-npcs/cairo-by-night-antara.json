@@ -1,0 +1,363 @@
+{
+  "_id": "009e7f6f8b774fc6",
+  "name": "Antara, the Shepherd of Wolves",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Warrior-Poet Assamite Elder, Founder of Banu Yashkur",
+    "clan": "Assamite",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 6,
+    "nature": "Traditionalist",
+    "demeanor": "Judge",
+    "title": "Founder, Banu Yashkur",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Rugged",
+            "spent": false
+          },
+          {
+            "name": "Vigorous",
+            "spent": false
+          },
+          {
+            "name": "Robust",
+            "spent": false
+          },
+          {
+            "name": "Tenacious",
+            "spent": false
+          },
+          {
+            "name": "Enduring",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Dignified",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Wise",
+            "spent": false
+          },
+          {
+            "name": "Vigilant",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          },
+          {
+            "name": "Shrewd",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Performance",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Ride",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 5,
+          "notes": "theology"
+        },
+        {
+          "name": "Area Knowledge",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "History",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 30,
+      "max": 30,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Herd",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 5,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Once a legendary pre-Islamic Bedouin warrior-poet whose exploits earned him a place in the Muallaqat hung at the Kaaba, Antar ibn Shaddad was Embraced by Nabonidus, founder of the Tal'mahe'Ra order called the Rawis, and given leave to found an Assamite line in Egypt. His sire also permitted the Embrace of Antara's beloved wife Abla &mdash; but Setite manipulation convinced her, falsely, that Antara had died fighting in Persia, and she greeted the sunrise in grief while he was away. Antara has carried that loss for over a millennium.</p><p>At the infamous Conclave of Tyre in 1496, Antara &mdash; recognized across Cainite society as a voice of reason despite his clan &mdash; negotiated the Camarilla's terms for peace with the Assamites, submitting his own clan to the Tremere's blood curse rather than see the Anarch Revolt's carnage continue. His clanmates have never forgiven him for that humiliation, particularly since Ur-Shulgi broke the curse and left Antara looking, in retrospect, needlessly submissive. His political rival Tel'aat el-Ali has spent decades turning younger Assamites against him, and Antara's decision to step down from the Consultative Council seat in favor of his childe Imanna was seen by many as further weakness rather than grace.</p><h2>Roleplaying Hints</h2><p>Speak in cultured, measured tones of genuine nobility to all you meet &mdash; save the Followers of Set and the Baali, whom you afford neither courtesy nor mercy. You believe utterly in cooperative reason as Cairo's only hope against the coming Final Nights, even as you privately mourn how alone that conviction has left you.</p>",
+    "notes": "Sire: Nabonidus (destroyed with Enoch). Wife/childe: Abla (met the sun after Setite manipulation convinced her Antara was dead). Childe: Imanna, Voice of the Night (his successor as councilor of Banu Yashkur). Rival: Tel'aat el-Ali. Seeks the aid of the paranoid elder Toreador Muhandis, who refuses him, believing him an unwitting tool of hostile powers.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Antara, the Shepherd of Wolves",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Cairo by Night, Chapter Four: Dead Among the Dead",
+      "tag": "(Assamite, Warrior caste)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
