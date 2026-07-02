@@ -1,0 +1,165 @@
+{
+  "_id": "a2052cab0ad54feb",
+  "name": "Victor Girard (Ghoul Media Fixer)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ghouled Media Fixer and Former Right Hand of Don Sebastian",
+    "clan": "Ghoul",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 8,
+    "nature": "Conniver",
+    "demeanor": "Bon Vivant",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Alluring",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Farsighted",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Alertness",
+          "rating": 0,
+          "notes": ""
+        }
+      ],
+      "skills": [],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 3,
+      "max": 3
+    },
+    "blood": {
+      "value": 1,
+      "max": 1,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 2,
+        "temporary": 2
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Born Victor Kleinberger, a gifted salesman who parlayed hustling Persian rugs into a real-estate empire before losing it all in the Depression, Victor Girard vanished from public life in 1932 only to resurface as the Ghouled business fixer of Don Sebastian, managing the industrial and press interests that made wartime Los Angeles the \"arsenal of democracy\" (alongside the Glass Walker Garou Don Alonzo). Marked by the anarchs as a target during the 1944 Revolt, Victor evaded capture and hid for years in the town of Girard (later renamed Woodland Hills) before offering his services to the fledgling Free States as their liaison to the press, radio, and television \u2014 a role Jeremy MacNeil reluctantly accepted out of necessity to protect the Masquerade.</p><h2>Roleplaying Hints</h2><p>Victor lusts for the influence he once held as Don Sebastian's right hand and has resigned himself to never achieving it directly. Instead, he quietly uses his media contacts to set the Free States' feuding communities against each other, hoping that if the chaos grows bad enough, Jeremy will be forced to declare himself prince (restoring Victor's old role) or the Free States will collapse entirely and let the Camarilla \u2014 and Victor's usefulness to it \u2014 return.</p>",
+    "notes": "Ghoul, not a full vampire; presented here as a full NPC because of his lasting political significance. Jeremy MacNeil watches him closely, suspicious he may contact the Camarilla. Haven: a secluded house in Woodland Hills.",
+    "npcType": "ghoul"
+  },
+  "prototypeToken": {
+    "name": "Victor Girard (Ghoul Media Fixer)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Los Angeles by Night, Chapter Four: The Damned",
+      "tag": "(Ghoul, Press Liaison)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

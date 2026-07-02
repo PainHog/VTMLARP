@@ -1,0 +1,259 @@
+{
+  "_id": "8cd4223360774ee9",
+  "name": "Smiling Jack (Brujah Iconoclast)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Legendary Wandering Brujah Iconoclast and Anarch Agitator",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Anarch (Independent)",
+    "generation": 10,
+    "nature": "Bravo",
+    "demeanor": "Rebel",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Strong",
+            "spent": false
+          },
+          {
+            "name": "Strong",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Magnetic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Athletics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Law",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 7,
+      "max": 7
+    },
+    "blood": {
+      "value": 11,
+      "max": 11,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 1,
+        "temporary": 1
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A 10th-generation Brujah of unknown origin who claims to have been a Caribbean pirate (he was actually never more than a second mate, valued for his strength and loyalty rather than leadership), Smiling Jack was Embraced by a Brujah named Mama Lion fighting Ventrue expansion into the Caribbean. He fought the Spanish for centuries, gained a reputation across the Americas as an itinerant anarch agitator and thorn in the side of princes everywhere, and was among the most active fighters during the destruction of Don Sebastian in 1944. He now uses the Free States as a base from which to strike at Camarilla princes throughout the country.</p><h2>Roleplaying Hints</h2><p>An unrepentant Iconoclast who delights in stirring anarchy wherever he goes, Smiling Jack commands greater personal reputation among the anarchs than even Jeremy MacNeil, who dislikes his presence (fearing he will draw Camarilla retaliation to the Free States) but dares not order him to leave. Only Jack's standing with the younger Brujah Iconoclasts and his personal magnetism protect him from an \"accident.\" He dabbles in minor Thaumaturgy (Lure of Flames) picked up on his travels.</p>",
+    "notes": "A recurring, setting-spanning figure in Brujah anarch lore across many By Night sourcebooks; Storytellers should treat him as itinerant, appearing wherever anarch trouble is brewing rather than tied permanently to Los Angeles.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Smiling Jack (Brujah Iconoclast)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Los Angeles by Night, Chapter Four: The Damned",
+      "tag": "(Brujah, Wandering Iconoclast)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
