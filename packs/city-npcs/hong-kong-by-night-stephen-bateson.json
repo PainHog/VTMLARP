@@ -1,0 +1,214 @@
+{
+  "_id": "b866561338454c3c",
+  "name": "Stephen Bateson, \"The Flunky\" (Tzimisce)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Sabbat Tzimisce scout posing as a Tremere “flunky” within Thrace's own Chantry",
+    "clan": "Tzimisce",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 8,
+    "nature": "Conniver",
+    "demeanor": "Conformist",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting (impersonations)",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Body Alteration",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Drive",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Camarilla Lore",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Clan Lore (Tremere)",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Honorable Accord",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Herd",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Posing as a Tremere sent from London to assist Oliver Thrace with the Hong Kong Chantry, Stephen Bateson is in fact a Tzimisce Sabbat scout, Embraced by a Tzimisce priscus from Toronto and trained for 20 years in Thaumaturgy and other Disciplines before being sent to Hong Kong with forged Tremere credentials. His natural talent for impersonation let him disarm Thrace completely. Bateson serves a dual purpose: spying on Thrace toward his eventual downfall, and &mdash; using Vicissitude to alter his features to appear Oriental &mdash; insinuating himself into the fringes of Kuei-jin society to learn of an impending age of bloodshed uncannily reminiscent of Gehenna, information the Sabbat would find very useful. His long abstinence from the Vaulderie is weakening his ties to the Sabbat, leaving him to wonder if the risk is worth the payoff.</p><h2>Image</h2><p>Short (5'5\") and slim, dark-brown hair and eyes. As “Stephen Bateson, Tremere” he dresses conservatively and deferentially; his Oriental persona is shorter, stockier, and dresses as a Hong Kong white-collar worker.</p><h2>Roleplaying Hints</h2><p>Knows his good joss will eventually run out; has planned an escape but accepts he might not survive discovery. Finds the gamble and the potentially explosive information exhilarating.</p><h2>Haven</h2><p>Lives in the Tremere Chantry but keeps several boltholes throughout Hong Kong and Kowloon.</p>",
+    "notes": "Disciplines (as printed): Animalism 2, Auspex 2, Obfuscate 1, Thaumaturgy 3 (Blood 3, Elemental Mastery 2, Lure of Flames 2, Movement of Mind 2, Spirit Thaumaturgy 1), Vicissitude 3. Rites: Defense of the Sacred Haven, Communicate with Kindred Sire, Deflection of Wooden Doom. Sire: Rowena Alden (Toronto Tzimisce priscus). Conceals most Abilities/Disciplines from Thrace.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Stephen Bateson, \"The Flunky\" (Tzimisce)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "World of Darkness: Hong Kong (Hong Kong by Night), Chapter Four: The Spirits' Children",
+      "tag": "(Tzimisce, Sabbat spy)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

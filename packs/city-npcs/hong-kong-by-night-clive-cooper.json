@@ -1,0 +1,184 @@
+{
+  "_id": "6efbdb1c4ae7489b",
+  "name": "Clive Cooper, \"Lord of the Subways\" (Nosferatu)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Nosferatu “Lord of the Subways,” a self-exiled information broker hiding from the Nictuku in Hong Kong's tunnels",
+    "clan": "Nosferatu",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 8,
+    "nature": "Conniver",
+    "demeanor": "Loner",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": []
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Firearms",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Computer",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Embraced as part of a London Nosferatu scheme to exploit a Tremere-Ventrue feud, Clive Cooper fled to Hong Kong after his sire fell to a Blood Hunt. His decade-long flight around the world taught him enough about his clan's Antediluvian founder and the legendary Nictuku to frighten him badly; he has never presented himself to Tai-pan Pedder, hoping obscurity would protect him from both. Cooper has made Hong Kong's subway and sewer systems his second home, trading the information he gathers there for favors among the city's shen, and has befriended one of the Nezumi (rat-folk) as a fellow tunnel-dweller. From his Kuei-jin contacts he has come to believe the Cathayan vampires may hold secrets that could help him fight the Nictuku should they ever surface, and &mdash; unlike most Kindred fleeing the handover &mdash; he welcomes Hong Kong's new era as an opportunity to gather more such secrets.</p><h2>Image</h2><p>Corpselike and desiccated, with greenish-yellow pus oozing from his eyes and skin sloughed away in patches to expose bone and stringy muscle. Wears a skeleton T-shirt, torn jeans, and expensive running shoes.</p><h2>Roleplaying Hints</h2><p>“Trust no one” is his motto; believes Gehenna and the Nictuku are inevitable but hopes they stay out of Asia. Ever wary that old enemies from London, New York, Atlanta, or San Francisco might have tracked him down.</p><h2>Haven</h2><p>Numerous maintenance tunnels and boltholes along the MTR (Mass Transit Railway), some shared with his Nezumi friend Brian Ang.</p>",
+    "notes": "Disciplines (as printed): Animalism 3, Auspex 1, Obfuscate 4, Potence 2. Sire: John Bullock (London, fell to a Blood Hunt). Secret: has located the crypts of several newly arrived Kuei-jin and has not yet decided what to do with the information.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Clive Cooper, \"Lord of the Subways\" (Nosferatu)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "World of Darkness: Hong Kong (Hong Kong by Night), Chapter Four: The Spirits' Children",
+      "tag": "(Nosferatu)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
