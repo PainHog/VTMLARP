@@ -1,0 +1,235 @@
+{
+  "_id": "c3d926665565494c",
+  "name": "Lazarus (Father Iago, Malkavian Elder)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Excommunicated 11th-century priest turned blasphemous, globe-wandering Malkavian preacher",
+    "clan": "Malkavian",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 6,
+    "nature": "Deviant",
+    "demeanor": "Fanatic",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Magnetic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Erudite",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Camarilla Lore",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Theology",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 20,
+      "max": 20,
+      "perTurn": 3
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": "capped for LARP play; book lists 7"
+      },
+      {
+        "name": "Resources",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Once Father Iago, personal priest to Countess Matilde of Tuscany during the excommunication of Holy Roman Emperor Henry IV, Iago was moved to pity by the emperor's three days begging forgiveness in the snow before Pope Gregory VII &mdash; a sympathy that made an enemy of a pale advisor arguing Henry should be left to die of exposure. That advisor Embraced Iago that same night. Horrified at nearly killing his own patroness in the first flush of the Kindred Beast, Iago fled into the world, his sanity and faith eroding with every feeding until he renamed himself Lazarus and began preaching an increasingly blasphemous creed across the centuries. He appears in New Orleans most years for Mardi Gras, staging shocking public spectacles &mdash; one recent float featured mock crucifixion victims that onlookers swore occasionally bled or moaned. Prince Marcel tolerates his visits but works to keep the Masquerade-endangering theatrics from drawing too much attention.</p><h2>Roleplaying Hints</h2><p>Talks easily and at length once started, ranting on whatever crosses your mind whether or not it makes sense, all the while glancing over your shoulder for pursuers real or imagined.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor at Storyteller discretion):</strong> Auspex 5, Celerity 2, Chimerstry 2, Dominate 5, Necromancy 2, Obfuscate 3, Presence 6, Thaumaturgy 3 (Weather Control 3, Elemental Mastery 2).</p>",
+    "notes": "Sire: Le Fanu. Sixth-level Presence lets him convince victims of things they'd never normally believe; he fears he is being followed and uses his powers sparingly. Haven: monasteries around the world. Secrets rating: B+. Ratings above 5 from the original stat block have been capped to fit this system's 1-5 scale.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Lazarus",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "New Orleans by Night, Chapter Four: Characters",
+      "tag": "(Malkavian Elder)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

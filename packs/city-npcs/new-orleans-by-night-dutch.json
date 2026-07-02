@@ -1,0 +1,252 @@
+{
+  "_id": "921b715ce27e4750",
+  "name": "Dutch (Brujah Clan Leader of New Orleans)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Idealist Brujah who came to New Orleans chasing a second Carthage",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 9,
+    "nature": "Conniver",
+    "demeanor": "Bravo",
+    "title": "Clan Leader (Brujah)",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Blunt",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Streetwise",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Firearms",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "New Orleans Knowledge",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 1,
+        "temporary": 1
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Herd",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Dutch, an Idealist Brujah from California, arrived in New Orleans in 1951 hoping to build a second Carthage alongside then-Prince Doran. He instead found the local Brujah rabble-rousing with no higher purpose, confronted and displaced the clan's previous leader, and drove off or destroyed those who would not follow him. Realizing the city was built to serve the Ventrue and Tremere rather than any Brujah utopia, Dutch briefly considered contesting the princeship after Doran's 1955 assassination but backed down rather than lose his grip on the clan. He now heads the Underground Society, ostensibly to help refugee Kindred find their footing in the city but really to build a base of loyal newcomers he can call on later. He is the lone dissenting voice on the Prince's Council, and quietly protects Marcel's neglected childe Christopher, whom Dutch hopes to eventually steer toward the throne.</p><h2>Roleplaying Hints</h2><p>Calm, deliberate, and unusually rational for a Brujah &mdash; you see your ambitions as restoring what belongs to your clan, not as revolution for its own sake.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor at Storyteller discretion):</strong> Celerity 4, Dominate 2, Fortitude 1, Obfuscate 2, Potence 3, Presence 3, Protean 2.</p>",
+    "notes": "Sire: MacNeil. Leads the Underground Society and the lone dissenter on the Prince's Council. Haven: several throughout the lower dock areas. Secrets rating: B+.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Dutch",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "New Orleans by Night, Chapter Four: Characters",
+      "tag": "(Brujah Clan Leader)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

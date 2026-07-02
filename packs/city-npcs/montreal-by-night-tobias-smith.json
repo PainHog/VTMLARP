@@ -1,0 +1,306 @@
+{
+  "_id": "f62ff31f759b42d4",
+  "name": "Tobias Smith (Lasombra, of the Lost Angels)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Austere Lasombra templar and secret lover of Archbishop Valez, veteran of the Sabbat civil war",
+    "clan": "Lasombra",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 7,
+    "nature": "Autist",
+    "demeanor": "Traditionalist",
+    "title": "",
+    "coterie": "The Lost Angels",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Dexterous",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          },
+          {
+            "name": "Enigmatic",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Erudite",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Intrigue",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Sense Deception",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Debate",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Meditation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Clan Knowledge (Lasombra)",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Kindred Lore",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Theology",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 9,
+      "max": 9,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Power and the Inner Voice",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies (templars)",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Contacts (Mexican Sabbat)",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Mentor (Cardinal Desmoines)",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Pack Recognition",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Tobias Smith was Embraced in Malta in the late 1880s and rose through the Sabbat's ranks as a templar to Cardinal Desmoines during World War I and afterward in Mexico City. He might have been named cardinal himself had he not become fatally infatuated with Carolina Valez, whom he watched from afar for a month before kidnapping her and forcing her through the Creation Rites &mdash; then abandoning her out of guilt before she rose, leaving her to be discovered by other Sabbat. He has quietly watched over and advanced her ever since, following her from Mexico to Los Angeles to Montreal as a member of the Lost Angels, though he has never confessed his feelings, seeing the attachment as a weakness.</p><h2>Roleplaying Hints</h2><p>You only speak when you have to, waiting for the crucial moment. Words are power. Your stern, dour manner makes young Sabbat call you cynical, but your intensity usually silences such talk.</p><h2>Secrets</h2><p>Smith knows of Josefina, Valez's mortal granddaughter, and protects the secret. Both the Shepherds and Ezekiel respect Tobias; Ezekiel has repeatedly asked him to found a new coven together, but Smith refuses, unwilling to abandon Valez even though her secret could destroy them both.</p>",
+    "notes": "Embraced 1889. Apparent age: mid-40s. Uses Obtenebration to appear more imposing. Path of Power and the Inner Voice 7. Ratings above 5 capped for this system. Disciplines (as printed): Auspex 3, Celerity 2, Dominate 5, Obfuscate 2, Obtenebration 5, Potence 2, Presence 4.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Tobias Smith",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Montreal by Night, Chapter Five: Covens",
+      "tag": "(Lasombra, of the Lost Angels)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

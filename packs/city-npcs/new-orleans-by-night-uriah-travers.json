@@ -1,0 +1,232 @@
+{
+  "_id": "41b35a60c6014768",
+  "name": "Uriah Travers (Gangrel Outcast, self-styled Abomination)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Insane Gangrel outcast who believes himself a vampire-werewolf hybrid",
+    "clan": "Gangrel",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 8,
+    "nature": "Autist",
+    "demeanor": "Loner",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Feral",
+            "spent": false
+          },
+          {
+            "name": "Feral",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Blunt",
+            "spent": false
+          },
+          {
+            "name": "Unsettling",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Wary",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      {
+        "name": "Delusional",
+        "spent": false
+      }
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 5,
+          "notes": "capped for LARP play; book lists 8"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Herbalism",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Tracking",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Traps",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Kindred Lore",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Lupine Lore",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Naturalist",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "New Orleans Knowledge",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 7,
+      "max": 7
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 8
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Uriah Travers grew up alongside Jared, who upon being Embraced into the Gangrel discovered he could not leave his mortal friend behind, and kept Uriah at his side long after becoming Kindred. Unbeknownst to either of them, Uriah carried Black Spiral Kinfolk blood; when a Malkavian later Embraced Uriah in hopes of using him to infiltrate the Lupines, the Black Spiral Dancers slew his sire on sight but inexplicably spared him. The trauma broke something in Uriah's mind: he now believes himself to be an Abomination, both vampire and werewolf at once, and manifests his Protean powers as a man-wolf Crinos-like form rather than the traditional bat shape of his clan. Shunned by the Gangrel and rejected by the Garou alike, Uriah lives alone in a cabin deep in the northern Atchafalaya/Teche country, where he has become the region's foremost authority on Cajun Country's secrets &mdash; secrets that even the local Uktena defer to him on. He served as Roxy's protector after her sire Jared was destroyed in a Blood Hunt, and remains one of her few trusted confidants.</p><h2>Roleplaying Hints</h2><p>Calmer and less overtly mad than most of your clan's reputation would suggest &mdash; until the subject of your supposed dual nature comes up, at which point you become erratic and fiercely defensive of the delusion.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor at Storyteller discretion):</strong> Auspex 2, Celerity 4, Fortitude 3, Obfuscate 2, Potence 2, Protean 4 (manifests as a man-wolf/Crinos-like form rather than the usual bat or wolf shapes).</p>",
+    "notes": "Sire: Restewin. Believed by his clan and by his own tormented mind to be the sole vampire-werewolf Abomination in Cajun Country. Haven: a small cabin in the northern Teche. Secrets rating: A+ (only Uriah himself knows more of the region than any other Kindred).",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Uriah Travers",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "New Orleans by Night, Chapter Four: Characters",
+      "tag": "(Gangrel Outcast)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

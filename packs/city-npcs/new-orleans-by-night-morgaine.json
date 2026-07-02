@@ -1,0 +1,242 @@
+{
+  "_id": "7c09d54f568c46c5",
+  "name": "Morgaine (Toreador Clan Leader of New Orleans)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ancient, possibly Druidic Toreador sculptor who leads through intimidation",
+    "clan": "Toreador",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 8,
+    "nature": "Bravo",
+    "demeanor": "Director",
+    "title": "Clan Leader (Toreador)",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Graceful",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Beautiful",
+            "spent": false
+          },
+          {
+            "name": "Beautiful",
+            "spent": false
+          },
+          {
+            "name": "Terrifying",
+            "spent": false
+          },
+          {
+            "name": "Terrifying",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Artistic",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Artistic Expression",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Music",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Sculpture",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Occult",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Camarilla Lore",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "New Orleans Knowledge",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 13,
+      "max": 13,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 1,
+        "temporary": 1
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Herd",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Morgaine's true name and origin have long since faded even from her own memory; rumor holds she once studied with Wiccans or even ancient Druids, and her uncanny ability to terrify with a glance lends the stories credibility. The most visible Toreador in New Orleans, she makes a point of personally meeting &mdash; and seducing &mdash; the most attractive newcomers to the city. A gifted musician and sculptor (some of her clay work hangs in museums under assumed names), she carries Play-Doh with her at all times, ostensibly for stress relief but really because idle hands invite the Beast. She owns the Lamp Light but keeps her true home in the Garden District, and leads New Orleans' Toreador more through fear of her volatility than through any consensus of the clan, a fact that quietly rankles some of her clanmates. She is conspicuously absent from the Prince's Council, a standing detail that weakens that body's claim to speak for the city.</p><h2>Roleplaying Hints</h2><p>Outgoing and endlessly chatty about trivialities, but you turn abruptly serious &mdash; sparks practically flying from your eyes &mdash; the moment real business is at hand.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor at Storyteller discretion):</strong> Auspex 4, Celerity 3, Dominate 4, Necromancy 1, Obfuscate 1, Presence 5, Protean 4, Thaumaturgy 2 (Lure of Flames 1, Movement of the Mind 1, Weather Control 1, Path of Conjuring 1, Path of Corruption 1).</p>",
+    "notes": "Sire: Jacques. Known rituals: Defense of the Sacred Haven, Wake with Morning's Freshness, Deflection of Wooden Doom, Rebirth of Mortal Vanity, Ward versus Ghouls. Haven: Garden District (owns the club the Lamp Light). Secrets rating: B.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Morgaine",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "New Orleans by Night, Chapter Four: Characters",
+      "tag": "(Toreador Clan Leader)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
