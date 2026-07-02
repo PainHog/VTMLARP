@@ -1,0 +1,239 @@
+{
+  "_id": "ff963a28ca314612",
+  "name": "Hrothulf",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ancient barbarian warrior, killer of Gracis Nostinus's sire Marius",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 7,
+    "nature": "Martyr",
+    "demeanor": "Loner",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Farsighted",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      "Grim"
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Drive",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 5,
+          "notes": "capped for LARP play; book lists 7"
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Medicine",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 20,
+      "max": 20,
+      "perTurn": 5
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 6,
+        "temporary": 6
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Embraced by the Roman patrician Marius around 380 A.D. as a captured barbarian chieftain, Hrothulf spent 50 years enslaved and Blood Bound to Marius, tormented and mocked for his illiteracy and \"savagery\" despite Marius's own reliance on Hrothulf's strength. When Marius's Blood Bond finally frayed and Marius mocked him once too often over a misread passage, Hrothulf killed him in a sudden frenzy &mdash; wounding Marius's other childe Gracis Nostinus in the same violent episode when Gracis tried to avenge his sire. Hrothulf has wandered the world since, eventually settling in Milwaukee's Outlands, an isolated home the Lupine have learned to avoid. He considers his killing of Marius a genuinely heroic act (equating Marius with history's great tyrants) and now wars quietly, subtly, with Gracis, who has never stopped seeking revenge.</p><h2>Roleplaying Hints</h2><p>Speaks quietly, almost shyly, with poor grammar and the occasional lapse into an ancient Germanic tongue &mdash; but his enormous physical presence means he rarely needs to raise his voice to be intimidating. Slow to anger.</p>",
+    "notes": "Sire/victim: Marius, killed by Hrothulf circa 412 A.D. after 50 years of Blood Bondage. Blood-brother and rival: Gracis Nostinus. Haven: a suburban home deep in the Outlands. Disciplines as printed: Animalism 3, Celerity 4, Dominate 2, Fortitude 6, Potence 4, Presence 3, Protean 3 (capped above to this system's 1-5 scale).",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Hrothulf",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Milwaukee by Night, Chapter Three: The Kindred",
+      "tag": "(Ventrue, Outlands)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

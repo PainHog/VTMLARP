@@ -1,0 +1,246 @@
+{
+  "_id": "f5e77dd06b074c60",
+  "name": "Akawa (\"The Elder\")",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Leader of the Blood Brothers Anarch gang",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Anarch",
+    "generation": 8,
+    "nature": "Plotter",
+    "demeanor": "Survivor",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 5,
+          "notes": "capped for LARP play; book lists 5"
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Animal Ken",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Linguistics",
+          "rating": 5,
+          "notes": "capped for LARP play; book lists 5"
+        },
+        {
+          "name": "Occult",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 15,
+      "max": 15,
+      "perTurn": 3
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 5,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Embraced against his will in 1770 by Sir Edward Scott (who fed on him while fleeing pursuers and does not recall the encounter), Akawa is a Plains Indian warrior turned Anarch elder who now leads the Blood Brothers, one of Milwaukee's two dominant Anarch gangs. He has learned Scott's true identity as his sire but has said nothing &mdash; a secret he holds in reserve, believing \"this will be his undoing.\" A calm, deliberate tactician among the more impulsive Anarchs, Akawa can shapeshift into a wolf form and prefers this guise when leading the Blood Brothers. He commands total loyalty from his gang, including his volatile childe Wrecker, and wages a running turf war against Turk's rival gang, the Union.</p><h2>Roleplaying Hints</h2><p>Serious and grim, speaking in old-fashioned turns of phrase (\"sunrises\" instead of \"days,\" \"the final sleep\" instead of death). Calm, observant, and in control &mdash; his patience and plotting are worthy of an Elder twice his age.</p>",
+    "notes": "Sire: Sir Edward Scott (unaware of the connection). Childe: Wrecker. Haven: none fixed; moves with the Blood Brothers. Disciplines as printed: Animalism 2, Celerity 4, Fortitude 3, Potence 3, Presence 2, Protean 4 (capped above to this system's 1-5 scale).",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Akawa (\"The Elder\")",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Milwaukee by Night, Chapter Three: The Kindred",
+      "tag": "(Brujah, Blood Brothers)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
