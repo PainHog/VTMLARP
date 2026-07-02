@@ -1,0 +1,33 @@
+{
+  "_id": "42b060cb6f414461",
+  "name": "Manifold Guise (Obfuscate, Elder, Dark Ages)",
+  "type": "power",
+  "img": "icons/magic/perception/silhouette-multiple-worried.webp",
+  "system": {
+    "description": "<p>Most Cainites believe Obfuscate is only good for hiding, but the Nosferatu also wield it as a tool of survival and a means to confuse the enemy. Manifold Guise lets the vampire drape his countenance (or that of another person present) over everyone around him &mdash; a superb way to elude a party of hunters bent on his destruction. As with Mask of a Thousand Faces, those affected do not feel different, but by outward appearance and voice they all become the chosen template. The mask cannot be wiped or cleaned away; the Cainite must leave the area or stop using the power for it to fade.</p><p><strong>System:</strong> The player rolls Manipulation + Subterfuge (difficulty 7); success lets the character cast his own appearance upon everyone within the immediate area, or the appearance of someone he is looking at. The only way for people to tell each other apart is behavior typical of a known ally or enemy, requiring a resisted Perception + Alertness roll (difficulty 6) against the vampire's successes. Successes also increase the affected radius (1: five yards; 2: 10 yards; 3: 30 yards; 4: 100 yards; 5+: 500 yards). The effect is always centered on the vampire; anyone who moves out of range reverts to normal, while anyone who moves in is newly affected.</p><p><em>Costs 25 Experience Traits to learn.</em></p><p><strong>MET:</strong> Win a Social Challenge (retest Subterfuge) to impose a single chosen face and voice &mdash; the Nosferatu's own or another's present &mdash; on everyone within the power's radius (set by Traits bid), until she leaves the area or stops maintaining the toggle.</p>",
+    "source": "Libellus Sanguinis IV: Thieves in the Night, Book Two: Lepers",
+    "discipline": "Obfuscate (Dark Ages)",
+    "level": "advanced",
+    "challengeType": "social",
+    "bloodCost": "",
+    "retestAbility": "Subterfuge",
+    "duration": "Until the vampire leaves the area or ends it",
+    "activation": "toggle",
+    "active": true,
+    "prerequisites": "Obfuscate (6)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_id": "eb7a4153c8ac42fc",
+  "name": "Repel the Angry Dead (Sielanic Thaumaturgy: Path of the Protector of the Dead, Basic)",
+  "type": "power",
+  "img": "icons/magic/death/skull-worn-white.webp",
+  "system": {
+    "description": "<p>The vampire can banish a hostile ghost from a designated area, such as the home of one of the wraith's relatives. In some cases the banishment is only temporary, or requires performing some further action to appease the ghost.</p><p><strong>System:</strong> The vampire must first locate the angry wraith using See the Dead, then spend a blood point and roll Willpower. The successes determine the number of hours the banished ghost remains away from the location. A second Willpower roll (difficulty 8) lets the vampire learn, with a single success, what would be needed to ensure the ghost's permanent removal.</p>",
+    "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+    "discipline": "Thaumaturgy",
+    "level": "basic",
+    "challengeType": "static",
+    "bloodCost": "1 blood point",
+    "retestAbility": "Willpower",
+    "duration": "See system",
+    "activation": "challenge",
+    "active": false,
+    "prerequisites": "See the Dead"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

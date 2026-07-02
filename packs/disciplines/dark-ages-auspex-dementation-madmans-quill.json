@@ -1,0 +1,33 @@
+{
+  "_id": "0b888e4113774858",
+  "name": "Madman's Quill (Combination Discipline)",
+  "type": "power",
+  "img": "icons/tools/scribal/ink-quill-black.webp",
+  "system": {
+    "description": "<p><strong>Prerequisites:</strong> Advanced Auspex, Basic Dementation. A Cainite using Madman's Quill weaves a contagious madness into a work of art or manuscript &mdash; the swirls of a pen or brush, the lines of a carving, the notes of a tune, the tiles of a mosaic &mdash; encoding the Malkavian's own lunacy to transmit it to kine and Cainite observers, making the target insane or easily manipulated by the clever, damning forgery.</p><p><strong>System:</strong> The Malkavian chooses a single active Dementation power he knows (most except Eyes of Chaos qualify) to encode into the item. The player spends one blood point and rolls Manipulation + Crafts, Linguistics, or Music (depending on medium) against a difficulty of 5 + the power's level; the process takes a number of hours equal to the encoded power's level. Successes determine how long the item remains cursed (1: one week; 2: one month; 3: three months; 4: one year; 5+: indefinite). Anyone (other than the creator) who observes the item for two minutes or more is affected by the encoded power as though the Malkavian were present, and also gains a derangement focused on the item; the derangement and encoding both end if the item is destroyed or the duration lapses. A Perception + Occult roll (difficulty 8) can reveal the item is cursed to someone who resists the encoded effect outright.</p><p><em>This single ability encodes any applicable Dementation power and costs 15 Experience Traits to learn (once).</em></p><p><strong>MET:</strong> Spend one Blood Trait and win a Static Social Challenge (retest Crafts, Linguistics, or Performance, as appropriate) over a scene of crafting time to bind one known active Dementation power into a manuscript or artwork; anyone who studies the item thereafter triggers that power as if the Malkavian had used it on them directly, and gains an appropriate derangement until the working expires or the item is destroyed.</p>",
+    "source": "Libellus Sanguinis IV: Thieves in the Night, Book Three: Madmen",
+    "discipline": "Combination Discipline (Auspex/Dementation)",
+    "level": "advanced",
+    "challengeType": "social",
+    "bloodCost": "1",
+    "retestAbility": "Crafts, Linguistics, or Performance",
+    "duration": "One week to indefinite (see system)",
+    "activation": "challenge",
+    "active": true,
+    "prerequisites": "Auspex (4), Dementation (2)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_id": "12ba2c6e37dd43ff",
+  "name": "Blood Apocrypha (Combination Discipline)",
+  "type": "power",
+  "img": "icons/magic/unholy/silhouette-hand-explosion-blood.webp",
+  "system": {
+    "description": "<p><strong>Prerequisites:</strong> Basic Auspex, Basic Obfuscate. In an attempt to create a secret language all their own, various Nosferatu broods have developed methods of coding their speech and messages using the nuances of expending blood within the body. One faction uses Blood Apocrypha for private dialogue &mdash; the two discoursing Cainites must be close enough to smell and taste the atomized blood, kissing being the safest route. A second method, scripting, lets the writer draw blood pictographs with his own vitae on cloth; the recipient must expend a taste of blood to read it, or breathe blood vapors upon the parchment to highlight the text. In neither case does Blood Apocrypha supply the coded message itself &mdash; it is merely the ink; the vampire must also know the code being used.</p><p><strong>System:</strong> Whether the message is spoken or scripted, and whether the vampire is sender or receiver, the player must spend one blood point for the character to relate or retrieve the message. In spoken communication, face to face, no roll is necessary. For written missives, the sender's player rolls Perception + Subterfuge (difficulty 5) to determine how long the message survives (1 success: two days; 2: four days; 3: one week; 4: one month; 5+: indefinitely). Reading the message requires blood expenditure but no roll, and succeeds unless the message has expired.</p><p><em>Costs 10 Experience Traits to learn.</em></p><p><strong>MET:</strong> Spend one Blood Trait to send or receive a Blood Apocrypha message with another Nosferatu who knows the same code (typically limited to members of the same brood or family). Written messages require a Static Mental Challenge (retest Subterfuge) to set their duration.</p>",
+    "source": "Libellus Sanguinis IV: Thieves in the Night, Book Two: Lepers",
+    "discipline": "Combination Discipline (Auspex/Obfuscate)",
+    "level": "basic",
+    "challengeType": "mental",
+    "bloodCost": "1",
+    "retestAbility": "Subterfuge",
+    "duration": "Varies (see system)",
+    "activation": "reflexive",
+    "active": true,
+    "prerequisites": "Auspex (1), Obfuscate (1)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

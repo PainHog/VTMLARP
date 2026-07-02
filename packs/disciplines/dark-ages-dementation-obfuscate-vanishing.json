@@ -1,0 +1,33 @@
+{
+  "_id": "748369ecb7024777",
+  "name": "The Vanishing (Combination Discipline)",
+  "type": "power",
+  "img": "icons/magic/perception/silhouette-shadow-worried.webp",
+  "system": {
+    "description": "<p><strong>Prerequisites:</strong> Advanced Dementation, Advanced Obfuscate. It is common knowledge that to cross a Malkavian is to invite a fate worse than destruction. With this offshoot of Dementation, the Malkavian can cause its target to become a living, or unliving, ghost. With a simple word, the target literally fades from view, possibly never to be seen or heard from again. Note: this power is distinct from the unrelated Obfuscate power Vanish from the Mind's Eye.</p><p><strong>System:</strong> The Malkavian must lock gazes with the victim and curse him; the player rolls Manipulation + Stealth (difficulty equal to the target's Willpower rating). Successes determine the effect's duration (1: one turn; 2: one scene; 3: one night; 4: one week; 5+: one month). For that time, the target fades from view (swallowed by shadows, devoured by demons, or swept away by angels, depending on the Malkavian's outlook), rendered delirious and able to do nothing but babble to herself and seek shelter from the sun. Sufficient successes can eventually doom the victim to torpor.</p><p><em>Costs 20 Experience Traits to learn.</em></p><p><strong>MET:</strong> Lock eyes with the victim and win a Social Challenge (retest Stealth) against her Willpower; on success the target vanishes from the perception of others for a duration set by Traits bid, rendered delirious and unable to act except to babble and seek shelter, potentially slipping into torpor if the curse is severe enough.</p>",
+    "source": "Libellus Sanguinis IV: Thieves in the Night, Book Three: Madmen",
+    "discipline": "Combination Discipline (Dementation/Obfuscate)",
+    "level": "advanced",
+    "challengeType": "social",
+    "bloodCost": "",
+    "retestAbility": "Stealth",
+    "duration": "One turn to one month (see system)",
+    "activation": "challenge",
+    "active": true,
+    "prerequisites": "Dementation (4), Obfuscate (5)"
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
