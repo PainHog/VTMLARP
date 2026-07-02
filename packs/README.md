@@ -569,3 +569,15 @@ Read lines 791-1929 of the reference text (Chapter Four's Valeren powers and Mer
 **Excluded as pure narrative/pregen-template content per established policy:** Chapter Four's introductory fiction and flavor text; all of Chapter Five's six pregen character templates (full character-sheet blocks with no reusable crunch); Appendix One's connecting narrative between NPC entries.
 
 Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1342 files parsed cleanly with zero collisions.
+
+## Libellus Sanguinis I, Book Three: Patricians - The Ventrue (final section, end of book)
+
+Read the remaining Ventrue history/politics section of the reference text (lines 1742-1760): the Fall of Rome's aftermath, France and the Grand Court, the tragedy of Alexander and Lorraine, the Duchy of Normandy/England conquest, the Holy Roman Empire under Frederick Barbarossa, the Crusader States, and Ventrue relations with the Tremere (Meerlinda at Glastonbury) and Tzimisce. Almost entirely narrative political history with no explicit Discipline/Merit/Flaw mechanics, as expected for this closing section; confirmed via `packs/**/*.json` glob that Camilla, Lysander, Hardestadt, the Council of Ephors, Fabrizio Ulfila, Anushin-Rawan, Jan Pieterzoon, and the Bilé's Gambit brood were already covered by earlier Ventrue clanbook work this session, so only the genuinely new named figures from this final section were added. The trailing blank Dark Ages character sheet template was excluded as not a named pregen character.
+
+**Included:**
+
+- `packs/clans/ventrue-libellus-sanguinis-lore.json` ("Ventrue of Note (Libellus Sanguinis I Lore)") — 5 lore-only JournalEntry pages: Alexander (founder/ruler of the Grand Court of Paris, broken by grief), Lorraine and the Rose (the Toreador neonate tortured to death and drained into a soul-bearing rose, a recurring mystical artifact hook), Countess Saviarre (the mysterious figure who rules the Grand Court in Alexander's name after his breakdown), Mithras (the newly awakened Ventrue elder in England, destabilizing the Grand Court's balance), and Meerlinda (a brief Tremere cross-reference page for the witch resisting Mithras at Glastonbury, included for context despite being outside the Ventrue clan proper).
+
+**Excluded as pure narrative/historical prose per established policy:** the Fall of Rome summary, the Ventrue-Toreador Crusader States alliance, the Holy Roman Empire/Frederick Barbarossa centralization project, the Eastern Lords' Tremere alliance against the Tzimisce, and the Tzimisce-as-dark-mirror commentary — none introduced new named canon NPCs beyond those already captured above or in prior packs. The trailing blank Dark Ages character sheet template was also excluded.
+
+Ran `git pull` before committing, then a full JSON-parse and global `_id`-uniqueness check (including nested JournalEntry pages) across every file in `packs/`; all 1344 files parsed cleanly with zero collisions.
