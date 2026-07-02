@@ -1,0 +1,345 @@
+{
+  "_id": "27d0bef9b1054d8d",
+  "name": "Martin (Nosferatu Spymaster)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Lawrence Meeks' third childe, current unofficial head of the prince's spy network",
+    "clan": "Nosferatu",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 9,
+    "nature": "Conformist",
+    "demeanor": "Loner",
+    "title": "Head of the Spy Network",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Deceptive",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Alert",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Quick-Witted",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Acting",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Diplomacy",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intrigue",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Mimicry",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Scan",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Search",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Sense Deception",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Bribery",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Camouflage",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Fast Talk",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Hypnotism",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Interrogation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Lockpicking",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Pickpocket",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Research",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Tracking",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Bureaucracy",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Cryptography",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Faerie Lore",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Kindred Lore",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Lupine Lore",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Mage Lore",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "New Orleans Knowledge",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Psychology",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Spirit Lore",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 1,
+        "temporary": 1
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Mentor",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 1,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Lawrence Meeks' youngest and most gifted childe, Martin inherited leadership of the prince's spy network when his sire retired to Baton Rouge in 1885. Prince Doran stripped him of the post without explanation in 1915, appointing the young Ventrue Marcel instead, and Martin was in Lafayette investigating a supposed assassination plot when Doran was murdered soon after. Reinstated as spymaster once Marcel took the throne, Martin serves the new prince out of duty rather than affection, and privately suspects Marcel had a hand in Doran's death.</p><h2>Roleplaying Hints</h2><p>Short, direct, and always on business for the prince &mdash; you have none of your sire's patience for idle conversation.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor at Storyteller discretion):</strong> Animalism 3, Auspex 3, Celerity 3, Obfuscate 3, Potence 3, Thaumaturgy 1.</p>",
+    "notes": "Sire: Lawrence Meeks. Haven: An abandoned warehouse near the docks of the Inner Harbor Navigation Canal. Secrets rating: A-.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Martin",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "New Orleans by Night, Chapter Four: Characters",
+      "tag": "(Spy Network)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
