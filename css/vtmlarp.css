@@ -499,8 +499,16 @@ body.game .application input::placeholder { color: #6b6259; }
 /* Animated challenge "clash" reveal                                     */
 /* -------------------------------------------------------------------- */
 
-.vtmlarp-challenge-card {
+/* Chat messages always keep their normal white/light background - these
+   cards get their own dark text colors here rather than the sheet's light
+   theme variables, since sheet text would be nearly invisible in chat. */
+
+.vtmlarp-challenge-card, .vtmlarp-frenzy-card {
   padding: 8px;
+  background: #f7f4ee;
+  border: 1px solid var(--vtm-red);
+  border-radius: 4px;
+  color: #201a14;
 }
 
 .vtmlarp-challenge-card .vtm-clash-header,
@@ -510,7 +518,7 @@ body.game .application input::placeholder { color: #6b6259; }
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--vtm-text-dim);
+  color: #6b6259;
   margin-bottom: 6px;
 }
 
@@ -530,7 +538,8 @@ body.game .application input::placeholder { color: #6b6259; }
 .vtmlarp-challenge-card .vtm-combatant-name {
   display: block;
   font-size: 12px;
-  color: var(--vtm-text);
+  color: #201a14;
+  font-weight: bold;
   margin-bottom: 2px;
 }
 
@@ -599,7 +608,7 @@ body.game .application input::placeholder { color: #6b6259; }
 .vtmlarp-frenzy-card .vtm-retest {
   text-align: center;
   font-size: 11px;
-  color: var(--vtm-text-dim);
+  color: #6b6259;
 }
 
 @keyframes vtm-slide-in-left {
