@@ -116,7 +116,16 @@
   font-family: "Signika", sans-serif;
   color: var(--vtm-text);
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+
+.vtmlarp .sheet-header { flex: 0 0 auto; }
+.vtmlarp .sheet-tabs { flex: 0 0 auto; }
+.vtmlarp .sheet-body { flex: 1 1 auto; overflow-y: auto; min-height: 0; }
+.vtmlarp .sheet-body .tab { display: none; }
+.vtmlarp .sheet-body .tab.active { display: block; }
 
 .vtmlarp.sheet h1,
 .vtmlarp.sheet h2,

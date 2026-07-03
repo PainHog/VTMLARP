@@ -10,6 +10,26 @@ const CREATABLE_TYPES = {
 const HEALTH_LEVELS = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled", "incapacitated"];
 const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
 
+const CLAN_OPTIONS = [
+  "Assamite", "Brujah", "Followers of Set", "Gangrel", "Giovanni", "Lasombra",
+  "Malkavian", "Nosferatu", "Ravnos", "Toreador", "Tremere", "Tzimisce", "Ventrue",
+  "Baali", "Cappadocian", "Salubri", "Caitiff"
+];
+
+const SECT_OPTIONS = [
+  "Camarilla", "Sabbat", "Anarch Movement", "Independent Alliance", "Inconnu", "Ashirra"
+];
+
+const GENERATION_OPTIONS = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+const ARCHETYPE_OPTIONS = [
+  "Architect", "Autocrat", "Bon Vivant", "Bravo", "Caregiver", "Cavalier",
+  "Celebrant", "Conformist", "Conniver", "Curmudgeon", "Deviant", "Director",
+  "Fanatic", "Gallant", "Judge", "Loner", "Martyr", "Masochist", "Monster",
+  "Pedagogue", "Perfectionist", "Rebel", "Rogue", "Survivor", "Thrill-Seeker",
+  "Traditionalist", "Trickster", "Visionary"
+];
+
 export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -50,6 +70,10 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     }
 
     context.isCharacter = this.actor.type === "character";
+    context.CLAN_OPTIONS = CLAN_OPTIONS;
+    context.SECT_OPTIONS = SECT_OPTIONS;
+    context.GENERATION_OPTIONS = GENERATION_OPTIONS;
+    context.ARCHETYPE_OPTIONS = ARCHETYPE_OPTIONS;
     return context;
   }
 
