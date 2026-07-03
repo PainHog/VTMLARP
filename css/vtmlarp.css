@@ -113,11 +113,17 @@ body.game .application .editor-content.ProseMirror {
   color: var(--vtm-field-text) !important;
   border: 1px solid var(--vtm-field-border) !important;
   border-radius: 2px;
+  /* Foundry's core dark UI theme sets color-scheme: dark on an ancestor,
+     which makes browsers render the NATIVE dropdown popup for <select>
+     using the OS dark palette regardless of our color/background - that's
+     why option text looked washed-out/translucent until hovered. Forcing
+     light color-scheme on the control itself fixes the popup rendering. */
+  color-scheme: light;
 }
 
-/* Native <option> popups don't always inherit the <select>'s styling - the
-   browser renders them with its own default colors unless told otherwise,
-   which is why dropdown text can look invisible until hovered/selected. */
+/* Belt-and-braces: also set colors directly on <option>, since some
+   browsers do partially honor author styles here once color-scheme allows
+   it, and this keeps the fallback correct everywhere. */
 body.game .application select option {
   background: var(--vtm-field-bg) !important;
   color: var(--vtm-field-text) !important;
