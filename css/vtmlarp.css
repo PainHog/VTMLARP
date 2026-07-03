@@ -98,14 +98,13 @@ body.game .application .directory-item:hover, body.game .application .compendium
 }
 
 /* -------------------------------------------------------------------- */
-/* Form fields — every control uses ONE consistent dark-on-dark scheme.   */
-/* A prior "light parchment" version of this rule mixed light and dark    */
-/* controls; Chromium's ambient color-scheme:dark (set by Foundry's core  */
-/* theme) doesn't fully honor an author override to color-scheme:light,   */
-/* which produced washed-out near-unreadable text on ALL form fields, not */
-/* just <select> popups. Going dark-on-dark everywhere, matching what the */
-/* browser is actually already rendering in, is the version that renders */
-/* correctly and consistently across every control type.                 */
+/* Form fields — plain white background, plain black text, no dark-mode   */
+/* tricks at all. Both a light-forced and dark-forced version of this     */
+/* rule ran into browser-specific native-widget rendering quirks (a       */
+/* color-scheme override not being fully honored produces washed-out,     */
+/* barely-readable text). White-background/black-text is the one         */
+/* combination every browser renders exactly as told, with no ambiguity,  */
+/* so form controls simply don't participate in the dark theme at all.    */
 /* -------------------------------------------------------------------- */
 
 body.game .application input[type="text"],
@@ -114,16 +113,15 @@ body.game .application input[type="search"],
 body.game .application select,
 body.game .application textarea,
 body.game .application .editor-content.ProseMirror {
-  background: #17110d !important;
-  color: #f7f4ee !important;
+  background: #ffffff !important;
+  color: #000000 !important;
   border: 1px solid var(--vtm-red) !important;
   border-radius: 2px;
-  color-scheme: dark;
 }
 
 body.game .application select option {
-  background: #17110d !important;
-  color: #f7f4ee !important;
+  background: #ffffff !important;
+  color: #000000 !important;
 }
 
 body.game .application input[type="text"]:focus,
@@ -136,7 +134,7 @@ body.game .application textarea:focus {
   box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
 }
 
-body.game .application input::placeholder { color: #a89c8c; }
+body.game .application input::placeholder { color: #666666; }
 
 /* -------------------------------------------------------------------- */
 /* Base sheet                                                            */
@@ -204,10 +202,9 @@ body.game .application input::placeholder { color: #a89c8c; }
 .vtmlarp .sheet-header .header-fields input[name="name"] {
   font-size: 20px;
   font-weight: bold;
-  background: #17110d !important;
-  color: #f7f4ee !important;
+  background: #ffffff !important;
+  color: #000000 !important;
   border: 1px solid var(--vtm-red) !important;
-  color-scheme: dark;
 }
 
 .vtmlarp .profile-img {
