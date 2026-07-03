@@ -74,7 +74,19 @@ body.game .application .window-content em {
   color: var(--vtm-text) !important;
 }
 
-/* Journal Entry viewer / pages */
+/* Journal Entry viewer / pages - a wildcard descendant selector on top of
+   the named classes below, since Foundry's journal page content can be
+   wrapped in class names that vary by version/page-type, and a narrower
+   list of specific tags wasn't reliably reaching every element (some
+   journal text was still rendering with a core-set dark color). This is
+   the most bulletproof way to guarantee every descendant text node picks
+   up a light, readable color regardless of what wraps it. */
+body.game .application .journal-entry-page *,
+body.game .application .journal-page-content *,
+body.game .application .journal-entry-content * {
+  color: var(--vtm-text) !important;
+}
+
 body.game .application.journal-sheet .window-content,
 body.game .application .journal-entry-content,
 body.game .application .journal-entry-page,
