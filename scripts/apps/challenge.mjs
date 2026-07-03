@@ -63,20 +63,26 @@ export class ChallengeApp extends foundry.appv1.api.Application {
     const fd = new FormDataExtended(form).object;
     const { challengeType, traitsBid, gesture, opponentName, opponentGesture, retest } = fd;
 
+    const actorName = this.actor.name;
+    const opponentLabel = opponentName || "Opponent";
+
     let result = "";
+    let resultLabel = "";
     if (opponentGesture) {
       const outcome = beats(gesture, opponentGesture);
       result = outcome === "tie" ? "Tied" : (outcome === "win" ? "Won" : "Lost");
+      resultLabel = result === "Tied" ? "Tied" : (result === "Won" ? `${actorName} Wins!` : `${opponentLabel} Wins!`);
     }
 
     const content = await renderTemplate("systems/vtmlarp/templates/apps/challenge-card.hbs", {
-      actorName: this.actor.name,
+      actorName,
       challengeType,
       traitsBid,
       gesture,
       opponentName,
       opponentGesture,
       result,
+      resultLabel,
       retest
     });
 
