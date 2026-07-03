@@ -106,34 +106,44 @@ body.game .application .directory-item:hover, body.game .application .compendium
 body.game .application input[type="text"],
 body.game .application input[type="number"],
 body.game .application input[type="search"],
-body.game .application select,
 body.game .application textarea,
 body.game .application .editor-content.ProseMirror {
   background: var(--vtm-field-bg) !important;
   color: var(--vtm-field-text) !important;
   border: 1px solid var(--vtm-field-border) !important;
   border-radius: 2px;
-  /* Foundry's core dark UI theme sets color-scheme: dark on an ancestor,
-     which makes browsers render the NATIVE dropdown popup for <select>
-     using the OS dark palette regardless of our color/background - that's
-     why option text looked washed-out/translucent until hovered. Forcing
-     light color-scheme on the control itself fixes the popup rendering. */
-  color-scheme: light;
 }
 
-/* Belt-and-braces: also set colors directly on <option>, since some
-   browsers do partially honor author styles here once color-scheme allows
-   it, and this keeps the fallback correct everywhere. */
+/* <select> gets its own dark-on-dark treatment, NOT the light parchment
+   style used above. Chromium's native <select> dropdown popup only
+   reliably honors author colors when color-scheme:dark actually matches
+   what the browser/OS is already rendering in - forcing color-scheme:light
+   while the browser is in dark mode gets partially ignored, producing a
+   washed-out/near-invisible popup (pale text on a pale background). Going
+   dark-on-dark here is the version that actually renders correctly. */
+body.game .application select {
+  background: #17110d !important;
+  color: #f7f4ee !important;
+  border: 1px solid var(--vtm-red) !important;
+  border-radius: 2px;
+  color-scheme: dark;
+}
+
 body.game .application select option {
-  background: var(--vtm-field-bg) !important;
-  color: var(--vtm-field-text) !important;
+  background: #17110d !important;
+  color: #f7f4ee !important;
 }
 
 body.game .application input[type="text"]:focus,
 body.game .application input[type="number"]:focus,
 body.game .application input[type="search"]:focus,
-body.game .application select:focus,
 body.game .application textarea:focus {
+  outline: none;
+  border-color: var(--vtm-red-bright) !important;
+  box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
+}
+
+body.game .application select:focus {
   outline: none;
   border-color: var(--vtm-red-bright) !important;
   box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
