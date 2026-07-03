@@ -29,48 +29,53 @@
 /* should not break any core window's structure.                         */
 /* -------------------------------------------------------------------- */
 
-/* Everything below is scoped under body.game so it NEVER touches the Setup/
-   lobby screen (world list, system list, etc.) - only windows opened while
-   actually playing inside a world using this system. */
+/* NOTE: an earlier version of this stylesheet scoped everything below under
+   "body.game" to avoid the theme bleeding into the Setup/lobby screen. That
+   assumption about which class Foundry puts on <body> turned out to be
+   wrong for this version, silently making every single one of these rules
+   match nothing at all - which is why dropdowns, journal/compendium text,
+   and dialog windows never actually got themed despite many version bumps.
+   Scoping removed; if Setup-screen bleed becomes a real problem later, it
+   needs a different, verified mechanism rather than guessing at body classes. */
 
-body.game .application .window-header {
+.application .window-header {
   background: linear-gradient(180deg, #1a1a1a 0%, #000 100%) !important;
   border-bottom: 1px solid var(--vtm-red-dim) !important;
   color: var(--vtm-text) !important;
 }
 
-body.game .application .window-header .window-title { color: var(--vtm-text) !important; }
+.application .window-header .window-title { color: var(--vtm-text) !important; }
 
-body.game .application .window-content {
+.application .window-content {
   background: radial-gradient(ellipse at top, #1c1616 0%, #0c0a0a 60%, #060505 100%) !important;
   color: var(--vtm-text) !important;
 }
 
-body.game .application .window-content a { color: var(--vtm-text-dim); }
-body.game .application .window-content a:hover { color: var(--vtm-red-bright); }
+.application .window-content a { color: var(--vtm-text-dim); }
+.application .window-content a:hover { color: var(--vtm-red-bright); }
 
-body.game .application .window-content h1,
-body.game .application .window-content h2,
-body.game .application .window-content h3,
-body.game .application .window-content h4 {
+.application .window-content h1,
+.application .window-content h2,
+.application .window-content h3,
+.application .window-content h4 {
   color: var(--vtm-red-bright);
   border-bottom-color: var(--vtm-border);
 }
 
-body.game .application .window-content hr { border-color: var(--vtm-border); }
+.application .window-content hr { border-color: var(--vtm-border); }
 
 /* Force light, readable text on every common text-bearing element inside our
    dark windows - background-color alone doesn't fix contrast when a core
    Foundry style has already set an explicit dark text color on a specific
    element (labels, list items, hint text, etc. all commonly do this). */
-body.game .application .window-content p,
-body.game .application .window-content span,
-body.game .application .window-content label,
-body.game .application .window-content li,
-body.game .application .window-content dt,
-body.game .application .window-content dd,
-body.game .application .window-content strong,
-body.game .application .window-content em {
+.application .window-content p,
+.application .window-content span,
+.application .window-content label,
+.application .window-content li,
+.application .window-content dt,
+.application .window-content dd,
+.application .window-content strong,
+.application .window-content em {
   color: var(--vtm-text) !important;
 }
 
@@ -81,31 +86,31 @@ body.game .application .window-content em {
    journal text was still rendering with a core-set dark color). This is
    the most bulletproof way to guarantee every descendant text node picks
    up a light, readable color regardless of what wraps it. */
-body.game .application .journal-entry-page *,
-body.game .application .journal-page-content *,
-body.game .application .journal-entry-content * {
+.application .journal-entry-page *,
+.application .journal-page-content *,
+.application .journal-entry-content * {
   color: var(--vtm-text) !important;
 }
 
-body.game .application.journal-sheet .window-content,
-body.game .application .journal-entry-content,
-body.game .application .journal-entry-page,
-body.game .application .journal-page-content,
-body.game .application .journal-sidebar {
+.application.journal-sheet .window-content,
+.application .journal-entry-content,
+.application .journal-entry-page,
+.application .journal-page-content,
+.application .journal-sidebar {
   background: transparent !important;
   color: var(--vtm-text) !important;
 }
 
-body.game .application .journal-sidebar {
+.application .journal-sidebar {
   background: var(--vtm-bg-panel) !important;
   border-right: 1px solid var(--vtm-border) !important;
 }
 
-body.game .application .directory-item, body.game .application .compendium-list .pack {
+.application .directory-item, .application .compendium-list .pack {
   color: var(--vtm-text-dim) !important;
 }
 
-body.game .application .directory-item:hover, body.game .application .compendium-list .pack:hover {
+.application .directory-item:hover, .application .compendium-list .pack:hover {
   background: rgba(138, 3, 3, 0.15);
 }
 
@@ -119,34 +124,34 @@ body.game .application .directory-item:hover, body.game .application .compendium
 /* so form controls simply don't participate in the dark theme at all.    */
 /* -------------------------------------------------------------------- */
 
-body.game .application input[type="text"],
-body.game .application input[type="number"],
-body.game .application input[type="search"],
-body.game .application select,
-body.game .application textarea,
-body.game .application .editor-content.ProseMirror {
+.application input[type="text"],
+.application input[type="number"],
+.application input[type="search"],
+.application select,
+.application textarea,
+.application .editor-content.ProseMirror {
   background: #ffffff !important;
   color: #000000 !important;
   border: 1px solid var(--vtm-red) !important;
   border-radius: 2px;
 }
 
-body.game .application select option {
+.application select option {
   background: #ffffff !important;
   color: #000000 !important;
 }
 
-body.game .application input[type="text"]:focus,
-body.game .application input[type="number"]:focus,
-body.game .application input[type="search"]:focus,
-body.game .application select:focus,
-body.game .application textarea:focus {
+.application input[type="text"]:focus,
+.application input[type="number"]:focus,
+.application input[type="search"]:focus,
+.application select:focus,
+.application textarea:focus {
   outline: none;
   border-color: var(--vtm-red-bright) !important;
   box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
 }
 
-body.game .application input::placeholder { color: #666666; }
+.application input::placeholder { color: #666666; }
 
 /* -------------------------------------------------------------------- */
 /* Base sheet                                                            */
