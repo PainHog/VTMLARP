@@ -12,9 +12,9 @@
   --vtm-red: #8a0303;
   --vtm-red-bright: #b8121a;
   --vtm-red-dim: #4a0808;
-  --vtm-text: #e8e4de;
-  --vtm-text-dim: #a8a29a;
-  --vtm-text-muted: #7a756e;
+  --vtm-text: #f4f2ee;
+  --vtm-text-dim: #cfc9c0;
+  --vtm-text-muted: #a39c92;
   --vtm-field-bg: #ece4d3;
   --vtm-field-text: #201a14;
   --vtm-field-border: #8a0303;
@@ -29,52 +29,71 @@
 /* should not break any core window's structure.                         */
 /* -------------------------------------------------------------------- */
 
-.application .window-header {
+/* Everything below is scoped under body.game so it NEVER touches the Setup/
+   lobby screen (world list, system list, etc.) - only windows opened while
+   actually playing inside a world using this system. */
+
+body.game .application .window-header {
   background: linear-gradient(180deg, #1a1a1a 0%, #000 100%) !important;
   border-bottom: 1px solid var(--vtm-red-dim) !important;
   color: var(--vtm-text) !important;
 }
 
-.application .window-header .window-title { color: var(--vtm-text) !important; }
+body.game .application .window-header .window-title { color: var(--vtm-text) !important; }
 
-.application .window-content {
+body.game .application .window-content {
   background: radial-gradient(ellipse at top, #1c1616 0%, #0c0a0a 60%, #060505 100%) !important;
   color: var(--vtm-text) !important;
 }
 
-.application .window-content a { color: var(--vtm-text-dim); }
-.application .window-content a:hover { color: var(--vtm-red-bright); }
+body.game .application .window-content a { color: var(--vtm-text-dim); }
+body.game .application .window-content a:hover { color: var(--vtm-red-bright); }
 
-.application .window-content h1,
-.application .window-content h2,
-.application .window-content h3,
-.application .window-content h4 {
+body.game .application .window-content h1,
+body.game .application .window-content h2,
+body.game .application .window-content h3,
+body.game .application .window-content h4 {
   color: var(--vtm-red-bright);
   border-bottom-color: var(--vtm-border);
 }
 
-.application .window-content hr { border-color: var(--vtm-border); }
+body.game .application .window-content hr { border-color: var(--vtm-border); }
+
+/* Force light, readable text on every common text-bearing element inside our
+   dark windows - background-color alone doesn't fix contrast when a core
+   Foundry style has already set an explicit dark text color on a specific
+   element (labels, list items, hint text, etc. all commonly do this). */
+body.game .application .window-content p,
+body.game .application .window-content span,
+body.game .application .window-content label,
+body.game .application .window-content li,
+body.game .application .window-content dt,
+body.game .application .window-content dd,
+body.game .application .window-content strong,
+body.game .application .window-content em {
+  color: var(--vtm-text) !important;
+}
 
 /* Journal Entry viewer / pages */
-.application.journal-sheet .window-content,
-.application .journal-entry-content,
-.application .journal-entry-page,
-.application .journal-page-content,
-.application .journal-sidebar {
+body.game .application.journal-sheet .window-content,
+body.game .application .journal-entry-content,
+body.game .application .journal-entry-page,
+body.game .application .journal-page-content,
+body.game .application .journal-sidebar {
   background: transparent !important;
   color: var(--vtm-text) !important;
 }
 
-.application .journal-sidebar {
+body.game .application .journal-sidebar {
   background: var(--vtm-bg-panel) !important;
   border-right: 1px solid var(--vtm-border) !important;
 }
 
-.application .directory-item, .application .compendium-list .pack {
-  color: var(--vtm-text-dim);
+body.game .application .directory-item, body.game .application .compendium-list .pack {
+  color: var(--vtm-text-dim) !important;
 }
 
-.application .directory-item:hover, .application .compendium-list .pack:hover {
+body.game .application .directory-item:hover, body.game .application .compendium-list .pack:hover {
   background: rgba(138, 3, 3, 0.15);
 }
 
@@ -84,29 +103,29 @@
 /* than blending into the background.                                    */
 /* -------------------------------------------------------------------- */
 
-.application input[type="text"],
-.application input[type="number"],
-.application input[type="search"],
-.application select,
-.application textarea,
-.application .editor-content.ProseMirror {
+body.game .application input[type="text"],
+body.game .application input[type="number"],
+body.game .application input[type="search"],
+body.game .application select,
+body.game .application textarea,
+body.game .application .editor-content.ProseMirror {
   background: var(--vtm-field-bg) !important;
   color: var(--vtm-field-text) !important;
   border: 1px solid var(--vtm-field-border) !important;
   border-radius: 2px;
 }
 
-.application input[type="text"]:focus,
-.application input[type="number"]:focus,
-.application input[type="search"]:focus,
-.application select:focus,
-.application textarea:focus {
+body.game .application input[type="text"]:focus,
+body.game .application input[type="number"]:focus,
+body.game .application input[type="search"]:focus,
+body.game .application select:focus,
+body.game .application textarea:focus {
   outline: none;
   border-color: var(--vtm-red-bright) !important;
   box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
 }
 
-.application input::placeholder { color: #8a7f6a; }
+body.game .application input::placeholder { color: #6b6259; }
 
 /* -------------------------------------------------------------------- */
 /* Base sheet                                                            */
@@ -423,17 +442,53 @@
 
 .vtmlarp-challenge, .vtmlarp-frenzy {
   color: var(--vtm-text);
+  padding: 8px 10px;
+}
+
+.vtmlarp-challenge label, .vtmlarp-frenzy label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--vtm-text-dim);
+}
+
+.vtmlarp-challenge label select,
+.vtmlarp-challenge label input,
+.vtmlarp-frenzy label select,
+.vtmlarp-frenzy label input {
+  display: block;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.vtmlarp-challenge .hint, .vtmlarp-frenzy .hint {
+  margin: 0 0 8px 0;
 }
 
 .vtmlarp-challenge fieldset {
   border: 1px solid var(--vtm-border);
   border-radius: 4px;
-  margin: 8px 0;
-  padding: 6px;
+  margin: 6px 0;
+  padding: 4px 8px 6px 8px;
 }
+
+.vtmlarp-challenge fieldset label { margin-bottom: 4px; }
 
 .vtmlarp-challenge legend {
   color: var(--vtm-red-bright);
+  font-size: 11px;
+  padding: 0 4px;
+}
+
+.vtmlarp-challenge .equipment-bonus-list {
+  margin: 2px 0;
+  padding-left: 16px;
+  font-size: 11px;
+}
+
+.vtmlarp-challenge button, .vtmlarp-frenzy button {
+  margin-top: 6px;
+  width: 100%;
 }
 
 .vtmlarp-challenge-card .result-Won { color: #4caf50; font-weight: bold; }

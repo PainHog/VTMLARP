@@ -34,12 +34,14 @@ export class FrenzyApp extends foundry.appv1.api.Application {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
-    html.find("form").on("submit", this._onSubmit.bind(this));
+    const root = html instanceof HTMLElement ? html : html[0];
+    root.querySelector("button[type='submit']")?.addEventListener("click", this._onSubmit.bind(this));
   }
 
   async _onSubmit(event) {
     event.preventDefault();
-    const fd = new FormDataExtended(event.currentTarget).object;
+    const form = event.currentTarget.closest("form");
+    const fd = new FormDataExtended(form).object;
     const difficulty = Number(fd.difficulty) || 1;
     const spendWillpower = !!fd.spendWillpower;
     const trigger = fd.trigger || "";

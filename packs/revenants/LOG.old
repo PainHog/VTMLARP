@@ -1,7 +1,15 @@
-2026/07/03-00:33:41.619746 7f029d3fc6c0 Recovering log #3
-2026/07/03-00:33:41.623610 7f029d3fc6c0 Delete type=3 #2
-2026/07/03-00:33:41.623629 7f029d3fc6c0 Delete type=0 #3
-2026/07/03-00:33:41.625593 7f029cbfb6c0 Level-0 table #7: started
-2026/07/03-00:33:41.627602 7f029cbfb6c0 Level-0 table #7: 13611 bytes OK
-2026/07/03-00:33:41.628402 7f029cbfb6c0 Delete type=0 #5
-2026/07/03-00:33:41.628498 7f029cbfb6c0 Manual compaction at level-0 from '!journal!IoQt3QoDDJZ8X4dz' @ 72057594037927935 : 1 .. '!journal.pages!wABwn8FJtAN2e88I.xjHMA8cp8VmV2Zet' @ 0 : 0; will stop at (end)
+2026/07/03-00:52:05.570586 7f6e477fe6c0 Recovering log #6
+2026/07/03-00:52:05.575873 7f6e477fe6c0 Delete type=0 #6
+2026/07/03-00:52:05.575911 7f6e477fe6c0 Delete type=3 #4
+2026/07/03-00:52:05.578145 7f6e46ffd6c0 Level-0 table #11: started
+2026/07/03-00:52:05.580542 7f6e46ffd6c0 Level-0 table #11: 13611 bytes OK
+2026/07/03-00:52:05.581494 7f6e46ffd6c0 Delete type=0 #9
+2026/07/03-00:52:05.581654 7f6e46ffd6c0 Manual compaction at level-0 from '!journal!IoQt3QoDDJZ8X4dz' @ 72057594037927935 : 1 .. '!journal.pages!wABwn8FJtAN2e88I.xjHMA8cp8VmV2Zet' @ 0 : 0; will stop at (end)
+2026/07/03-00:52:05.581733 7f6e46ffd6c0 Manual compaction at level-1 from '!journal!IoQt3QoDDJZ8X4dz' @ 72057594037927935 : 1 .. '!journal.pages!wABwn8FJtAN2e88I.xjHMA8cp8VmV2Zet' @ 0 : 0; will stop at '!journal.pages!wABwn8FJtAN2e88I.xjHMA8cp8VmV2Zet' @ 16 : 1
+2026/07/03-00:52:05.581737 7f6e46ffd6c0 Compacting 1@1 + 1@2 files
+2026/07/03-00:52:05.584157 7f6e46ffd6c0 Generated table #12@1: 12 keys, 13611 bytes
+2026/07/03-00:52:05.584170 7f6e46ffd6c0 Compacted 1@1 + 1@2 files => 13611 bytes
+2026/07/03-00:52:05.584966 7f6e46ffd6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/07/03-00:52:05.585027 7f6e46ffd6c0 Delete type=2 #7
+2026/07/03-00:52:05.585126 7f6e46ffd6c0 Delete type=2 #11
+2026/07/03-00:52:05.585257 7f6e46ffd6c0 Manual compaction at level-1 from '!journal.pages!wABwn8FJtAN2e88I.xjHMA8cp8VmV2Zet' @ 16 : 1 .. '!journal.pages!wABwn8FJtAN2e88I.xjHMA8cp8VmV2Zet' @ 0 : 0; will stop at (end)

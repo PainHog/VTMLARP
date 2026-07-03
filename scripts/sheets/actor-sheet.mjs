@@ -11,9 +11,17 @@ const HEALTH_LEVELS = ["bruised", "hurt", "injured", "wounded", "mauled", "cripp
 const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
 
 const CLAN_OPTIONS = [
+  // The 13 core clans
   "Assamite", "Brujah", "Followers of Set", "Gangrel", "Giovanni", "Lasombra",
   "Malkavian", "Nosferatu", "Ravnos", "Toreador", "Tremere", "Tzimisce", "Ventrue",
-  "Baali", "Cappadocian", "Salubri", "Caitiff"
+  // Rare/independent clans with their own clanbooks in this system
+  "Baali", "Cappadocian", "Salubri",
+  // Bloodlines with dedicated compendium content (packs/antitribu)
+  "Blood Brothers", "Harbingers of Skulls", "Kiasyd", "Panders",
+  // Other canonical bloodlines (categorization only for now - no dedicated
+  // Discipline/mechanics content built yet)
+  "Gargoyle", "Daughters of Cacophony", "True Brujah", "Nagaraja", "Samedi", "Lamia",
+  "Caitiff"
 ];
 
 const SECT_OPTIONS = [
