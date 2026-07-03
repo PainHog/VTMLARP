@@ -54,3 +54,23 @@ verify no duplicate `_id` values across the whole repo → commit and push.
 
 Every document `_id` must be generated with Python's `uuid.uuid4().hex[:16]`
 (never a low-entropy RNG) to avoid collisions across concurrently-built content.
+
+## To-do / future work
+
+- **Compendium linking from character sheet dropdowns**: add a small button/link
+  next to header dropdown fields (Clan, Sect, etc.) on the actor sheet that
+  jumps to the relevant compendium entry (e.g. a link icon next to the Clan
+  field opens that clan's lore JournalEntry). Requires resolving a dropdown
+  value to a specific compendium document UUID, which isn't a 1:1 mapping
+  today (clan lore lives across many differently-named JournalEntry packs
+  built book-by-book) — will need either a lookup table maintained by hand,
+  or a naming/flag convention added to lore JournalEntries so they can be
+  found programmatically by clan/topic.
+- **General informational hyperlinking**: broader pass to add inline links
+  from sheet text/hints to relevant lore JournalEntry pages (e.g. "history of
+  the Sabbat" style topics), so players can read background info without
+  hunting through compendiums manually. Same lookup-table/convention
+  prerequisite as above.
+- Full ApplicationV2/DocumentSheetV2 migration (see Foundry version notes
+  above) — the V1 Application framework the sheets currently use will be
+  removed in v16.

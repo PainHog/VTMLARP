@@ -115,6 +115,14 @@ body.game .application .editor-content.ProseMirror {
   border-radius: 2px;
 }
 
+/* Native <option> popups don't always inherit the <select>'s styling - the
+   browser renders them with its own default colors unless told otherwise,
+   which is why dropdown text can look invisible until hovered/selected. */
+body.game .application select option {
+  background: var(--vtm-field-bg) !important;
+  color: var(--vtm-field-text) !important;
+}
+
 body.game .application input[type="text"]:focus,
 body.game .application input[type="number"]:focus,
 body.game .application input[type="search"]:focus,
