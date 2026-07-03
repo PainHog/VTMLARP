@@ -38,44 +38,44 @@
    Scoping removed; if Setup-screen bleed becomes a real problem later, it
    needs a different, verified mechanism rather than guessing at body classes. */
 
-.application .window-header {
+.app.window-app .window-header {
   background: linear-gradient(180deg, #1a1a1a 0%, #000 100%) !important;
   border-bottom: 1px solid var(--vtm-red-dim) !important;
   color: var(--vtm-text) !important;
 }
 
-.application .window-header .window-title { color: var(--vtm-text) !important; }
+.app.window-app .window-header .window-title { color: var(--vtm-text) !important; }
 
-.application .window-content {
+.app.window-app .window-content {
   background: radial-gradient(ellipse at top, #1c1616 0%, #0c0a0a 60%, #060505 100%) !important;
   color: var(--vtm-text) !important;
 }
 
-.application .window-content a { color: var(--vtm-text-dim); }
-.application .window-content a:hover { color: var(--vtm-red-bright); }
+.app.window-app .window-content a { color: var(--vtm-text-dim); }
+.app.window-app .window-content a:hover { color: var(--vtm-red-bright); }
 
-.application .window-content h1,
-.application .window-content h2,
-.application .window-content h3,
-.application .window-content h4 {
+.app.window-app .window-content h1,
+.app.window-app .window-content h2,
+.app.window-app .window-content h3,
+.app.window-app .window-content h4 {
   color: var(--vtm-red-bright);
   border-bottom-color: var(--vtm-border);
 }
 
-.application .window-content hr { border-color: var(--vtm-border); }
+.app.window-app .window-content hr { border-color: var(--vtm-border); }
 
 /* Force light, readable text on every common text-bearing element inside our
    dark windows - background-color alone doesn't fix contrast when a core
    Foundry style has already set an explicit dark text color on a specific
    element (labels, list items, hint text, etc. all commonly do this). */
-.application .window-content p,
-.application .window-content span,
-.application .window-content label,
-.application .window-content li,
-.application .window-content dt,
-.application .window-content dd,
-.application .window-content strong,
-.application .window-content em {
+.app.window-app .window-content p,
+.app.window-app .window-content span,
+.app.window-app .window-content label,
+.app.window-app .window-content li,
+.app.window-app .window-content dt,
+.app.window-app .window-content dd,
+.app.window-app .window-content strong,
+.app.window-app .window-content em {
   color: var(--vtm-text) !important;
 }
 
@@ -86,9 +86,9 @@
    journal text was still rendering with a core-set dark color). This is
    the most bulletproof way to guarantee every descendant text node picks
    up a light, readable color regardless of what wraps it. */
-.application .journal-entry-page *,
-.application .journal-page-content *,
-.application .journal-entry-content * {
+.app.window-app .journal-entry-page *,
+.app.window-app .journal-page-content *,
+.app.window-app .journal-entry-content * {
   color: var(--vtm-text) !important;
 }
 
@@ -97,30 +97,30 @@
    .editor-content div - only the ProseMirror class is added while actively
    editing. The read-mode wrapper was never covered above, so compendium
    item descriptions kept the core dark-on-dark text. */
-.application .editor-content,
-.application .editor-content * {
+.app.window-app .editor-content,
+.app.window-app .editor-content * {
   color: var(--vtm-text) !important;
 }
 
-.application.journal-sheet .window-content,
-.application .journal-entry-content,
-.application .journal-entry-page,
-.application .journal-page-content,
-.application .journal-sidebar {
+.app.window-app.journal-sheet .window-content,
+.app.window-app .journal-entry-content,
+.app.window-app .journal-entry-page,
+.app.window-app .journal-page-content,
+.app.window-app .journal-sidebar {
   background: transparent !important;
   color: var(--vtm-text) !important;
 }
 
-.application .journal-sidebar {
+.app.window-app .journal-sidebar {
   background: var(--vtm-bg-panel) !important;
   border-right: 1px solid var(--vtm-border) !important;
 }
 
-.application .directory-item, .application .compendium-list .pack {
+.app.window-app .directory-item, .app.window-app .compendium-list .pack {
   color: var(--vtm-text-dim) !important;
 }
 
-.application .directory-item:hover, .application .compendium-list .pack:hover {
+.app.window-app .directory-item:hover, .app.window-app .compendium-list .pack:hover {
   background: rgba(138, 3, 3, 0.15);
 }
 
@@ -134,12 +134,12 @@
 /* so form controls simply don't participate in the dark theme at all.    */
 /* -------------------------------------------------------------------- */
 
-.application input[type="text"],
-.application input[type="number"],
-.application input[type="search"],
-.application select,
-.application textarea,
-.application .editor-content.ProseMirror {
+.app.window-app input[type="text"],
+.app.window-app input[type="number"],
+.app.window-app input[type="search"],
+.app.window-app select,
+.app.window-app textarea,
+.app.window-app .editor-content.ProseMirror {
   background: #ffffff !important;
   color: #000000 !important;
   border: 1px solid var(--vtm-red) !important;
@@ -155,11 +155,11 @@
    (not the whole document, which would fight the app's real dark theme)
    forces the browser to render that native popup in light colors that
    actually match the background/color we set on the options below. */
-.application select {
+.app.window-app select {
   color-scheme: light;
 }
 
-.application select option {
+.app.window-app select option {
   background: #ffffff !important;
   color: #000000 !important;
 }
@@ -167,27 +167,27 @@
 /* Belt-and-suspenders: guarantee the win for the specific dropdowns added
    to the character sheet header, in case any core Foundry rule targeting
    <select> by attribute ever out-specifies the generic selector above. */
-.application select[name="system.clan"],
-.application select[name="system.sect"],
-.application select[name="system.generation"],
-.application select[name="system.nature"],
-.application select[name="system.demeanor"] {
+.app.window-app select[name="system.clan"],
+.app.window-app select[name="system.sect"],
+.app.window-app select[name="system.generation"],
+.app.window-app select[name="system.nature"],
+.app.window-app select[name="system.demeanor"] {
   background: #ffffff !important;
   color: #000000 !important;
   color-scheme: light;
 }
 
-.application input[type="text"]:focus,
-.application input[type="number"]:focus,
-.application input[type="search"]:focus,
-.application select:focus,
-.application textarea:focus {
+.app.window-app input[type="text"]:focus,
+.app.window-app input[type="number"]:focus,
+.app.window-app input[type="search"]:focus,
+.app.window-app select:focus,
+.app.window-app textarea:focus {
   outline: none;
   border-color: var(--vtm-red-bright) !important;
   box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
 }
 
-.application input::placeholder { color: #666666; }
+.app.window-app input::placeholder { color: #666666; }
 
 /* -------------------------------------------------------------------- */
 /* Base sheet                                                            */
