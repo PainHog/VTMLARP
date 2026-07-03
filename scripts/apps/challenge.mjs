@@ -15,7 +15,7 @@ function beats(a, b) {
  * this tool tracks trait totals, records the announced gesture, and posts
  * a shareable result card so the table can see who won and what was bid.
  */
-export class ChallengeApp extends Application {
+export class ChallengeApp extends foundry.appv1.api.Application {
   constructor(actor, options = {}) {
     super(options);
     this.actor = actor;

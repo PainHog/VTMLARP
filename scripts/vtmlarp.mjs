@@ -27,11 +27,16 @@ Hooks.once("init", () => {
     gear: VTMGearData
   };
 
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("vtmlarp", VTMActorSheet, { types: ["character", "npc"], makeDefault: true });
+  const ActorsCollection = foundry.documents.collections.Actors;
+  const ItemsCollection = foundry.documents.collections.Items;
+  const BaseActorSheet = foundry.appv1.sheets.ActorSheet;
+  const BaseItemSheet = foundry.appv1.sheets.ItemSheet;
 
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("vtmlarp", VTMItemSheet, { makeDefault: true });
+  ActorsCollection.unregisterSheet("core", BaseActorSheet);
+  ActorsCollection.registerSheet("vtmlarp", VTMActorSheet, { types: ["character", "npc"], makeDefault: true });
+
+  ItemsCollection.unregisterSheet("core", BaseItemSheet);
+  ItemsCollection.registerSheet("vtmlarp", VTMItemSheet, { makeDefault: true });
 
   Handlebars.registerHelper("vtmCapitalize", str => typeof str === "string" ? str.charAt(0).toUpperCase() + str.slice(1) : str);
 });

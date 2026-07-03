@@ -1,4 +1,4 @@
-export class VTMItemSheet extends ItemSheet {
+export class VTMItemSheet extends foundry.appv1.sheets.ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["vtmlarp", "sheet", "item"],
@@ -16,7 +16,8 @@ export class VTMItemSheet extends ItemSheet {
   /** @override */
   async getData(options) {
     const context = await super.getData(options);
-    context.system = context.item.system;
+    context.item = this.item;
+    context.system = this.item.system;
     return context;
   }
 }

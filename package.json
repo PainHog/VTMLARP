@@ -1,0 +1,11 @@
+{
+  "name": "vtmlarp",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:packs": "node tools/build-packs.mjs"
+  },
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^3.0.4"
+  }
+}

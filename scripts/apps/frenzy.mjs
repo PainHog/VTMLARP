@@ -5,7 +5,7 @@
  * automatically. Compares the character's Self-Control/Instinct rating to
  * the Difficulty; Willpower can be spent instead to automatically resist.
  */
-export class FrenzyApp extends Application {
+export class FrenzyApp extends foundry.appv1.api.Application {
   constructor(actor, options = {}) {
     super(options);
     this.actor = actor;

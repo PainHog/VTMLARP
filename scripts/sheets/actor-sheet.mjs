@@ -10,7 +10,7 @@ const CREATABLE_TYPES = {
 const HEALTH_LEVELS = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled", "incapacitated"];
 const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
 
-export class VTMActorSheet extends ActorSheet {
+export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["vtmlarp", "sheet", "actor"],
@@ -25,6 +25,8 @@ export class VTMActorSheet extends ActorSheet {
   /** @override */
   async getData(options) {
     const context = await super.getData(options);
+    context.actor = this.actor;
+    context.system = this.actor.system;
     const sys = context.system;
 
     context.healthLevels = HEALTH_LEVELS.map(level => ({
