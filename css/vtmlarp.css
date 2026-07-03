@@ -92,6 +92,16 @@
   color: var(--vtm-text) !important;
 }
 
+/* Item-sheet / actor-sheet description fields render through Foundry's
+   {{editor}} helper, which wraps the enriched read-only HTML in a plain
+   .editor-content div - only the ProseMirror class is added while actively
+   editing. The read-mode wrapper was never covered above, so compendium
+   item descriptions kept the core dark-on-dark text. */
+.application .editor-content,
+.application .editor-content * {
+  color: var(--vtm-text) !important;
+}
+
 .application.journal-sheet .window-content,
 .application .journal-entry-content,
 .application .journal-entry-page,
@@ -136,9 +146,35 @@
   border-radius: 2px;
 }
 
+/* Foundry's core stylesheet sets color-scheme: dark on the document root,
+   which makes Chromium/Firefox render the NATIVE <select> dropdown popup
+   (the list of <option>s when the box is clicked open) using dark-mode
+   system colors, ignoring our authored option background/color above -
+   the closed box picks up our white/black fine, but the open popup list
+   does not. Scoping color-scheme: light to just the <select> element
+   (not the whole document, which would fight the app's real dark theme)
+   forces the browser to render that native popup in light colors that
+   actually match the background/color we set on the options below. */
+.application select {
+  color-scheme: light;
+}
+
 .application select option {
   background: #ffffff !important;
   color: #000000 !important;
+}
+
+/* Belt-and-suspenders: guarantee the win for the specific dropdowns added
+   to the character sheet header, in case any core Foundry rule targeting
+   <select> by attribute ever out-specifies the generic selector above. */
+.application select[name="system.clan"],
+.application select[name="system.sect"],
+.application select[name="system.generation"],
+.application select[name="system.nature"],
+.application select[name="system.demeanor"] {
+  background: #ffffff !important;
+  color: #000000 !important;
+  color-scheme: light;
 }
 
 .application input[type="text"]:focus,
