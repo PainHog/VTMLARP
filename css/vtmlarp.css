@@ -98,30 +98,22 @@ body.game .application .directory-item:hover, body.game .application .compendium
 }
 
 /* -------------------------------------------------------------------- */
-/* Form fields — light "parchment" landing zones against the dark chrome, */
-/* so buttons/inputs/dropdowns read as distinct clickable targets rather  */
-/* than blending into the background.                                    */
+/* Form fields — every control uses ONE consistent dark-on-dark scheme.   */
+/* A prior "light parchment" version of this rule mixed light and dark    */
+/* controls; Chromium's ambient color-scheme:dark (set by Foundry's core  */
+/* theme) doesn't fully honor an author override to color-scheme:light,   */
+/* which produced washed-out near-unreadable text on ALL form fields, not */
+/* just <select> popups. Going dark-on-dark everywhere, matching what the */
+/* browser is actually already rendering in, is the version that renders */
+/* correctly and consistently across every control type.                 */
 /* -------------------------------------------------------------------- */
 
 body.game .application input[type="text"],
 body.game .application input[type="number"],
 body.game .application input[type="search"],
+body.game .application select,
 body.game .application textarea,
 body.game .application .editor-content.ProseMirror {
-  background: var(--vtm-field-bg) !important;
-  color: var(--vtm-field-text) !important;
-  border: 1px solid var(--vtm-field-border) !important;
-  border-radius: 2px;
-}
-
-/* <select> gets its own dark-on-dark treatment, NOT the light parchment
-   style used above. Chromium's native <select> dropdown popup only
-   reliably honors author colors when color-scheme:dark actually matches
-   what the browser/OS is already rendering in - forcing color-scheme:light
-   while the browser is in dark mode gets partially ignored, producing a
-   washed-out/near-invisible popup (pale text on a pale background). Going
-   dark-on-dark here is the version that actually renders correctly. */
-body.game .application select {
   background: #17110d !important;
   color: #f7f4ee !important;
   border: 1px solid var(--vtm-red) !important;
@@ -137,19 +129,14 @@ body.game .application select option {
 body.game .application input[type="text"]:focus,
 body.game .application input[type="number"]:focus,
 body.game .application input[type="search"]:focus,
+body.game .application select:focus,
 body.game .application textarea:focus {
   outline: none;
   border-color: var(--vtm-red-bright) !important;
   box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
 }
 
-body.game .application select:focus {
-  outline: none;
-  border-color: var(--vtm-red-bright) !important;
-  box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
-}
-
-body.game .application input::placeholder { color: #6b6259; }
+body.game .application input::placeholder { color: #a89c8c; }
 
 /* -------------------------------------------------------------------- */
 /* Base sheet                                                            */
@@ -217,9 +204,10 @@ body.game .application input::placeholder { color: #6b6259; }
 .vtmlarp .sheet-header .header-fields input[name="name"] {
   font-size: 20px;
   font-weight: bold;
-  background: var(--vtm-field-bg) !important;
-  color: var(--vtm-field-text) !important;
-  border: 1px solid var(--vtm-field-border) !important;
+  background: #17110d !important;
+  color: #f7f4ee !important;
+  border: 1px solid var(--vtm-red) !important;
+  color-scheme: dark;
 }
 
 .vtmlarp .profile-img {
