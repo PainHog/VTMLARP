@@ -1,6 +1,6 @@
 /* =========================================================================
    Mind's Eye Theatre: Laws of the Night — Dark Theme
-   Palette: black/near-black backgrounds, blood-red accents, white/gray text
+   Palette: black/near-black chrome, blood-red accents, parchment input fields
    ========================================================================= */
 
 :root {
@@ -15,22 +15,98 @@
   --vtm-text: #e8e4de;
   --vtm-text-dim: #a8a29a;
   --vtm-text-muted: #7a756e;
+  --vtm-field-bg: #ece4d3;
+  --vtm-field-text: #201a14;
+  --vtm-field-border: #8a0303;
 }
 
-/* Window chrome (title bar + content area) for any app carrying our class */
-.app.vtmlarp {
-  color: var(--vtm-text);
+/* -------------------------------------------------------------------- */
+/* Global window chrome — applies to ANY Foundry app window while a       */
+/* VTMLARP world is active (this system's CSS is loaded world-wide), so   */
+/* core windows we don't have custom sheets for (Journal Entry viewer,    */
+/* Compendium browsers, item/actor directories) get the dark theme too.   */
+/* Only colors/backgrounds/borders are touched, never layout, so this     */
+/* should not break any core window's structure.                         */
+/* -------------------------------------------------------------------- */
+
+.application .window-header {
+  background: linear-gradient(180deg, #1a1a1a 0%, #000 100%) !important;
+  border-bottom: 1px solid var(--vtm-red-dim) !important;
+  color: var(--vtm-text) !important;
 }
 
-.app.vtmlarp .window-header {
-  background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
-  border-bottom: 1px solid var(--vtm-red-dim);
+.application .window-header .window-title { color: var(--vtm-text) !important; }
+
+.application .window-content {
+  background: radial-gradient(ellipse at top, #1c1616 0%, #0c0a0a 60%, #060505 100%) !important;
+  color: var(--vtm-text) !important;
 }
 
-.app.vtmlarp .window-content {
-  background: radial-gradient(ellipse at top, #1a1414 0%, #0a0808 60%, #050505 100%);
-  color: var(--vtm-text);
+.application .window-content a { color: var(--vtm-text-dim); }
+.application .window-content a:hover { color: var(--vtm-red-bright); }
+
+.application .window-content h1,
+.application .window-content h2,
+.application .window-content h3,
+.application .window-content h4 {
+  color: var(--vtm-red-bright);
+  border-bottom-color: var(--vtm-border);
 }
+
+.application .window-content hr { border-color: var(--vtm-border); }
+
+/* Journal Entry viewer / pages */
+.application.journal-sheet .window-content,
+.application .journal-entry-content,
+.application .journal-entry-page,
+.application .journal-page-content,
+.application .journal-sidebar {
+  background: transparent !important;
+  color: var(--vtm-text) !important;
+}
+
+.application .journal-sidebar {
+  background: var(--vtm-bg-panel) !important;
+  border-right: 1px solid var(--vtm-border) !important;
+}
+
+.application .directory-item, .application .compendium-list .pack {
+  color: var(--vtm-text-dim);
+}
+
+.application .directory-item:hover, .application .compendium-list .pack:hover {
+  background: rgba(138, 3, 3, 0.15);
+}
+
+/* -------------------------------------------------------------------- */
+/* Form fields — light "parchment" landing zones against the dark chrome, */
+/* so buttons/inputs/dropdowns read as distinct clickable targets rather  */
+/* than blending into the background.                                    */
+/* -------------------------------------------------------------------- */
+
+.application input[type="text"],
+.application input[type="number"],
+.application input[type="search"],
+.application select,
+.application textarea,
+.application .editor-content.ProseMirror {
+  background: var(--vtm-field-bg) !important;
+  color: var(--vtm-field-text) !important;
+  border: 1px solid var(--vtm-field-border) !important;
+  border-radius: 2px;
+}
+
+.application input[type="text"]:focus,
+.application input[type="number"]:focus,
+.application input[type="search"]:focus,
+.application select:focus,
+.application textarea:focus {
+  outline: none;
+  border-color: var(--vtm-red-bright) !important;
+  box-shadow: 0 0 5px rgba(184, 18, 26, 0.7);
+}
+
+.application input::placeholder { color: #8a7f6a; }
 
 /* -------------------------------------------------------------------- */
 /* Base sheet                                                            */
@@ -41,25 +117,6 @@
   color: var(--vtm-text);
   background: transparent;
 }
-
-.vtmlarp.sheet input,
-.vtmlarp.sheet select,
-.vtmlarp.sheet textarea {
-  background: var(--vtm-bg-inset);
-  color: var(--vtm-text);
-  border: 1px solid var(--vtm-border);
-  border-radius: 2px;
-}
-
-.vtmlarp.sheet input:focus,
-.vtmlarp.sheet select:focus,
-.vtmlarp.sheet textarea:focus {
-  outline: none;
-  border-color: var(--vtm-red-bright);
-  box-shadow: 0 0 4px rgba(184, 18, 26, 0.6);
-}
-
-.vtmlarp.sheet input::placeholder { color: var(--vtm-text-muted); }
 
 .vtmlarp.sheet h1,
 .vtmlarp.sheet h2,
@@ -75,15 +132,15 @@
 .vtmlarp.sheet a:hover { color: var(--vtm-red-bright); text-shadow: 0 0 4px rgba(184, 18, 26, 0.5); }
 
 .vtmlarp.sheet button {
-  background: linear-gradient(180deg, #2a1010 0%, #150808 100%);
-  color: var(--vtm-text);
-  border: 1px solid var(--vtm-red);
+  background: linear-gradient(180deg, #2a1010 0%, #150808 100%) !important;
+  color: var(--vtm-text) !important;
+  border: 1px solid var(--vtm-red) !important;
   border-radius: 3px;
 }
 
 .vtmlarp.sheet button:hover {
-  background: linear-gradient(180deg, var(--vtm-red-dim) 0%, #200909 100%);
-  border-color: var(--vtm-red-bright);
+  background: linear-gradient(180deg, var(--vtm-red-dim) 0%, #200909 100%) !important;
+  border-color: var(--vtm-red-bright) !important;
   box-shadow: 0 0 6px rgba(184, 18, 26, 0.5);
 }
 
@@ -108,10 +165,9 @@
 .vtmlarp .sheet-header .header-fields input[name="name"] {
   font-size: 20px;
   font-weight: bold;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--vtm-border);
-  color: var(--vtm-text);
+  background: var(--vtm-field-bg) !important;
+  color: var(--vtm-field-text) !important;
+  border: 1px solid var(--vtm-field-border) !important;
 }
 
 .vtmlarp .profile-img {
@@ -374,3 +430,133 @@
 .vtmlarp-challenge-card .result-Won { color: #4caf50; font-weight: bold; }
 .vtmlarp-challenge-card .result-Lost { color: var(--vtm-red-bright); font-weight: bold; }
 .vtmlarp-challenge-card .result-Tied { color: #d4a72c; font-weight: bold; }
+
+/* -------------------------------------------------------------------- */
+/* Animated challenge "clash" reveal                                     */
+/* -------------------------------------------------------------------- */
+
+.vtmlarp-challenge-card {
+  padding: 8px;
+}
+
+.vtmlarp-challenge-card .vtm-clash-header,
+.vtmlarp-frenzy-card .vtm-clash-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--vtm-text-dim);
+  margin-bottom: 6px;
+}
+
+.vtmlarp-challenge-card .vtm-clash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.vtmlarp-challenge-card .vtm-combatant {
+  flex: 1;
+  text-align: center;
+}
+
+.vtmlarp-challenge-card .vtm-combatant-name {
+  display: block;
+  font-size: 12px;
+  color: var(--vtm-text);
+  margin-bottom: 2px;
+}
+
+.vtmlarp-challenge-card .vtm-gesture {
+  display: block;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.vtmlarp-challenge-card .vtm-gesture-left {
+  animation: vtm-slide-in-left 0.45s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+
+.vtmlarp-challenge-card .vtm-gesture-right {
+  animation: vtm-slide-in-right 0.45s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+
+.vtmlarp-challenge-card .vtm-gesture-unknown { opacity: 0.4; }
+
+.vtmlarp-challenge-card .vtm-vs {
+  font-weight: bold;
+  color: var(--vtm-red-bright);
+  font-size: 14px;
+  text-shadow: 0 0 6px rgba(184, 18, 26, 0.7);
+}
+
+.vtmlarp-challenge-card .vtm-clash {
+  animation: vtm-impact-flash 0.35s 0.4s ease-out both;
+  border-radius: 6px;
+}
+
+.vtmlarp-challenge-card .vtm-result-banner,
+.vtmlarp-frenzy-card .vtm-result-banner {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px;
+  margin-top: 4px;
+  border-radius: 4px;
+  animation: vtm-pop-in 0.35s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+
+.vtmlarp-challenge-card .vtm-result-banner { animation-delay: 0.55s; }
+.vtmlarp-frenzy-card .vtm-result-banner { animation-delay: 0.15s; }
+
+.vtmlarp-challenge-card .vtm-result-banner.result-Won,
+.vtmlarp-frenzy-card .vtm-result-banner.result-Resisted {
+  color: #4caf50;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+}
+
+.vtmlarp-challenge-card .vtm-result-banner.result-Lost,
+.vtmlarp-frenzy-card .vtm-result-banner[class*="result-Frenzy"] {
+  color: var(--vtm-red-bright);
+  text-shadow: 0 0 10px rgba(184, 18, 26, 0.7);
+}
+
+.vtmlarp-challenge-card .vtm-result-banner.result-Tied {
+  color: #d4a72c;
+  text-shadow: 0 0 10px rgba(212, 167, 44, 0.6);
+}
+
+.vtmlarp-challenge-card .vtm-retest,
+.vtmlarp-frenzy-card .vtm-retest {
+  text-align: center;
+  font-size: 11px;
+  color: var(--vtm-text-dim);
+}
+
+@keyframes vtm-slide-in-left {
+  0% { transform: translateX(-50px) scale(0.4); opacity: 0; }
+  65% { transform: translateX(4px) scale(1.15); opacity: 1; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+@keyframes vtm-slide-in-right {
+  0% { transform: translateX(50px) scale(0.4); opacity: 0; }
+  65% { transform: translateX(-4px) scale(1.15); opacity: 1; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+@keyframes vtm-impact-flash {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 26px 8px rgba(184, 18, 26, 0.65); }
+}
+
+@keyframes vtm-pop-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  70% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}

@@ -1,7 +1,9 @@
 <div class="vtmlarp-frenzy-card">
-  <h3>{{actorName}} - Frenzy Check</h3>
-  {{#if trigger}}<p><strong>Trigger:</strong> {{trigger}}</p>{{/if}}
-  <p><strong>Difficulty:</strong> {{difficulty}}</p>
-  <p class="result result-{{outcome}}"><strong>{{outcome}}</strong></p>
-  <p>{{detail}}</p>
+  <div class="vtm-clash-header">
+    <span>Frenzy / Rötschreck Check</span>
+    <span>Difficulty {{difficulty}}</span>
+  </div>
+  {{#if trigger}}<p class="vtm-retest"><strong>Trigger:</strong> {{trigger}}</p>{{/if}}
+  <div class="vtm-result-banner result-{{outcome}}">{{outcome}}</div>
+  <p class="vtm-retest">{{detail}}</p>
 </div>

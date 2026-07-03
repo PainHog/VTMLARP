@@ -39,4 +39,7 @@ Hooks.once("init", () => {
   ItemsCollection.registerSheet("vtmlarp", VTMItemSheet, { makeDefault: true });
 
   Handlebars.registerHelper("vtmCapitalize", str => typeof str === "string" ? str.charAt(0).toUpperCase() + str.slice(1) : str);
+
+  const GESTURE_EMOJI = { rock: "✊", paper: "✋", scissors: "✌️", bomb: "💣" };
+  Handlebars.registerHelper("vtmGestureEmoji", gesture => GESTURE_EMOJI[gesture] ?? "?");
 });
