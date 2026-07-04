@@ -238,32 +238,41 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
    * a normal embedded Item via the default behavior.
    */
   async _onDropItemCreate(itemData) {
-    const items = Array.isArray(itemData) ? itemData : [itemData];
-    const passthrough = [];
-    const updates = {};
+    try {
+      const items = Array.isArray(itemData) ? itemData : [itemData];
+      const passthrough = [];
+      const updates = {};
 
-    const pushTrait = (path, entry) => {
-      const current = updates[path] ?? foundry.utils.getProperty(this.actor.system, path) ?? [];
-      updates[path] = [...current, entry];
-    };
+      const pushTrait = (path, entry) => {
+        const current = updates[path] ?? foundry.utils.getProperty(this.actor.system, path) ?? [];
+        updates[path] = [...current, entry];
+      };
 
-    for (const data of items) {
-      if (data.type === "attribute") {
-        const category = ["physical", "social", "mental"].includes(data.system?.category)
-          ? data.system.category : "physical";
-        const path = data.system?.negative ? "negativeTraits" : `attributes.${category}.traits`;
-        pushTrait(path, { name: data.name, spent: false });
-      } else if (data.type === "ability") {
-        const key = { talent: "talents", skill: "skills", knowledge: "knowledges" }[data.system?.category] ?? "talents";
-        pushTrait(`abilities.${key}`, { name: data.name, rating: Number(data.system?.rating) || 1, notes: "" });
-      } else {
-        passthrough.push(data);
+      for (const data of items) {
+        if (data.type === "attribute") {
+          const category = ["physical", "social", "mental"].includes(data.system?.category)
+            ? data.system.category : "physical";
+          const path = data.system?.negative ? "negativeTraits" : `attributes.${category}.traits`;
+          pushTrait(path, { name: data.name, spent: false });
+        } else if (data.type === "ability") {
+          const key = { talent: "talents", skill: "skills", knowledge: "knowledges" }[data.system?.category] ?? "talents";
+          pushTrait(`abilities.${key}`, { name: data.name, rating: Number(data.system?.rating) || 1, notes: "" });
+        } else {
+          passthrough.push(data);
+        }
       }
-    }
 
-    if (Object.keys(updates).length) {
-      await this.actor.update(Object.fromEntries(Object.entries(updates).map(([k, v]) => [`system.${k}`, v])));
+      if (Object.keys(updates).length) {
+        await this.actor.update(Object.fromEntries(Object.entries(updates).map(([k, v]) => [`system.${k}`, v])));
+      }
+      if (passthrough.length) return await super._onDropItemCreate(passthrough);
+    } catch (err) {
+      // A drag/drop that visibly "does nothing" is otherwise impossible to
+      // diagnose - createEmbeddedDocuments failures (e.g. schema validation
+      // rejections) throw here rather than showing a console error, so
+      // surface them as a notification instead of swallowing them silently.
+      console.error("VTMLARP | Item drop failed:", err);
+      ui.notifications?.error(`Failed to add item to ${this.actor.name}: ${err.message}`);
     }
-    if (passthrough.length) return super._onDropItemCreate(passthrough);
   }
 }
