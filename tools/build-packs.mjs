@@ -54,7 +54,13 @@ for (const pack of system.packs) {
 
   for (const file of sourceFiles) {
     const doc = JSON.parse(readFileSync(path.join(sourceDir, file), "utf8"));
-    assignKeys(doc, collection, null);
+    // Folder documents (used to organize a pack's entries into an expandable
+    // tree in the compendium sidebar) live in their own top-level "folders"
+    // collection regardless of what type of pack they organize. There's no
+    // data field that marks a document as a Folder (its own "type" field
+    // instead names which kind of document it *contains*, e.g. "Item"), so
+    // this relies on the "_folder-" source filename convention instead.
+    assignKeys(doc, file.startsWith("_folder-") ? "folders" : collection, null);
     writeFileSync(path.join(stagingDir, file), JSON.stringify(doc));
   }
 
