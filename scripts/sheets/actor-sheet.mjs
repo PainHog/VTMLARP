@@ -225,9 +225,45 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     await this.actor.items.get(itemId)?.delete();
   }
 
-  /** @override */
+  /**
+   * Attribute and Ability compendium entries are reference lookups, not
+   * embeddable Items - the sheet represents attributes/abilities as plain
+   * named traits on the actor's own data (system.attributes.*.traits,
+   * system.abilities.*), with no item-list section to display a raw
+   * "attribute"/"ability" Item. Dropping one straight through would create
+   * an Item that never appears anywhere on the sheet, silently going
+   * nowhere. Convert these two types into the matching trait entry instead
+   * of creating an Item; every other type (background, merit, discipline,
+   * power, etc.) still has a real item-list section, so it's created as
+   * a normal embedded Item via the default behavior.
+   */
   async _onDropItemCreate(itemData) {
     const items = Array.isArray(itemData) ? itemData : [itemData];
-    return super._onDropItemCreate(items);
+    const passthrough = [];
+    const updates = {};
+
+    const pushTrait = (path, entry) => {
+      const current = updates[path] ?? foundry.utils.getProperty(this.actor.system, path) ?? [];
+      updates[path] = [...current, entry];
+    };
+
+    for (const data of items) {
+      if (data.type === "attribute") {
+        const category = ["physical", "social", "mental"].includes(data.system?.category)
+          ? data.system.category : "physical";
+        const path = data.system?.negative ? "negativeTraits" : `attributes.${category}.traits`;
+        pushTrait(path, { name: data.name, spent: false });
+      } else if (data.type === "ability") {
+        const key = { talent: "talents", skill: "skills", knowledge: "knowledges" }[data.system?.category] ?? "talents";
+        pushTrait(`abilities.${key}`, { name: data.name, rating: Number(data.system?.rating) || 1, notes: "" });
+      } else {
+        passthrough.push(data);
+      }
+    }
+
+    if (Object.keys(updates).length) {
+      await this.actor.update(Object.fromEntries(Object.entries(updates).map(([k, v]) => [`system.${k}`, v])));
+    }
+    if (passthrough.length) return super._onDropItemCreate(passthrough);
   }
 }
