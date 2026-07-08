@@ -79,6 +79,10 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
         max: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 })
       }),
 
+      experience: new fields.SchemaField({
+        value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 })
+      }),
+
       blood: new fields.SchemaField({
         value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 10 }),
         max: new fields.NumberField({ required: true, integer: true, min: 0, initial: 10 }),

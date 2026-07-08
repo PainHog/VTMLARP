@@ -120,8 +120,33 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
       ok: { callback: (e, btn) => btn.form.elements.trait.value }
     }).catch(() => null);
     if (!name) return;
+
+    // Per Laws of the Night Revised's Experience cost table: a new Attribute
+    // Trait costs 1 Experience. Negative Traits aren't a purchase (they're a
+    // self-imposed penalty), so they're free.
+    const update = {};
+    if (path.startsWith("attributes.") && path.endsWith(".traits")) {
+      if (!this._spendXP(update, 1)) return;
+    }
+
     const list = foundry.utils.getProperty(this.actor.system, path) ?? [];
-    await this.actor.update({ [`system.${path}`]: [...list, { name, spent: false }] });
+    update[`system.${path}`] = [...list, { name, spent: false }];
+    await this.actor.update(update);
+  }
+
+  /**
+   * Deduct `cost` Experience into the given update payload if the actor can
+   * afford it, warning and returning false otherwise. Callers should bail
+   * out without applying any other change when this returns false.
+   */
+  _spendXP(update, cost) {
+    const current = this.actor.system.experience.value;
+    if (current < cost) {
+      ui.notifications?.warn(`${this.actor.name} doesn't have enough Experience (needs ${cost}, has ${current}).`);
+      return false;
+    }
+    update["system.experience.value"] = current - cost;
+    return true;
   }
 
   async _onDeleteTrait(event) {
@@ -132,20 +157,43 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     await this.actor.update({ [`system.${path}`]: updated });
   }
 
+  /**
+   * Per Laws of the Night Revised's Experience cost table: a new Ability
+   * Trait costs 1 Experience up to rating 5, 2 Experience for ratings 6-10
+   * (it gets harder to find things you don't already know); a new
+   * Background Trait costs 1 Experience regardless of rating. Anything
+   * else (e.g. free-form rated lists this control might be reused for
+   * later) is left uncosted.
+   */
+  _ratedTraitCost(path, newRating) {
+    if (path.startsWith("abilities.")) return newRating <= 5 ? 1 : 2;
+    if (path === "backgrounds") return 1;
+    return 0;
+  }
+
   async _onRatedTraitControl(event) {
     event.preventDefault();
     const { action, path, index } = event.currentTarget.dataset;
     const list = foundry.utils.duplicate(foundry.utils.getProperty(this.actor.system, path) ?? []);
+    const update = {};
+
     if (action === "add") {
+      const cost = this._ratedTraitCost(path, 1);
+      if (cost > 0 && !this._spendXP(update, cost)) return;
       list.push({ name: "New Trait", rating: 1, notes: "" });
     } else if (action === "remove") {
       list.splice(Number(index), 1);
     } else if (action === "increase") {
-      list[Number(index)].rating += 1;
+      const newRating = list[Number(index)].rating + 1;
+      const cost = this._ratedTraitCost(path, newRating);
+      if (cost > 0 && !this._spendXP(update, cost)) return;
+      list[Number(index)].rating = newRating;
     } else if (action === "decrease") {
       list[Number(index)].rating = Math.max(0, list[Number(index)].rating - 1);
     }
-    await this.actor.update({ [`system.${path}`]: list });
+
+    update[`system.${path}`] = list;
+    await this.actor.update(update);
   }
 
   async _onCycleHealth(event) {
