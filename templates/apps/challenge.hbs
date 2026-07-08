@@ -13,6 +13,11 @@
     <input type="number" name="traitsBid" value="1" min="0">
   </label>
 
+  {{#if fullBidEnabled}}
+  <label><input type="checkbox" name="fullBid"> Full-Bid: use entire trait pool for this Challenge Type</label>
+  <p class="hint">Remaining pools — Physical: {{pools.physical}}, Social: {{pools.social}}, Mental: {{pools.mental}}</p>
+  {{/if}}
+
   {{#if equipmentBonuses.length}}
   <fieldset>
     <legend>Equipment Bonuses (factor in manually)</legend>

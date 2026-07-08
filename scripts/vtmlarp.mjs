@@ -42,4 +42,16 @@ Hooks.once("init", () => {
 
   const GESTURE_EMOJI = { rock: "✊", paper: "✋", scissors: "✌️", bomb: "💣" };
   Handlebars.registerHelper("vtmGestureEmoji", gesture => GESTURE_EMOJI[gesture] ?? "?");
+
+  // House rule: instead of bidding a hand-picked subset of individual traits,
+  // a player can bid their whole remaining trait pool of the matching
+  // category (Physical/Social/Mental) at once against the opponent's pool.
+  game.settings.register("vtmlarp", "fullBidTraitRule", {
+    name: "Full-Bid Trait Rule",
+    hint: "Allow players to bid their entire remaining trait pool of a category (Physical/Social/Mental) at once in a Challenge, instead of only individually-selected traits.",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false
+  });
 });
