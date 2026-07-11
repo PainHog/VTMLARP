@@ -1,0 +1,17 @@
+<div class="vtmlarp-vaulderie-card">
+  <h3><i class="fas fa-tint"></i> Vaulderie Draw Results</h3>
+  {{#each draws as |d|}}
+  <div class="vaulderie-result-row">
+    <strong>{{d.name}}</strong> contributed {{d.traits}} and drew back:
+    {{#if d.breakdown.length}}
+    <ul>
+      {{#each d.breakdown as |b|}}
+      <li>{{b.count}} of {{b.name}}'s <span class="hint">(first Vaulderie between these two: Vinculum {{b.suggestedFirstVinculum}} toward {{b.name}}; if not the first, resolve with a Static Challenge against the existing Vinculum rating instead)</span></li>
+      {{/each}}
+    </ul>
+    {{else}}
+    <span class="hint">only her own cards back.</span>
+    {{/if}}
+  </div>
+  {{/each}}
+</div>

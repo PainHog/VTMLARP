@@ -1,5 +1,6 @@
 import { ChallengeApp } from "../apps/challenge.mjs";
 import { FrenzyApp } from "../apps/frenzy.mjs";
+import { VaulderieApp } from "../apps/vaulderie.mjs";
 import { checkPrerequisites } from "../apps/prerequisites.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -270,6 +271,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".rated-trait-control", "click", this._onRatedTraitControl.bind(this));
     on(".open-challenge", "click", () => new ChallengeApp(this.actor).render(true));
     on(".open-frenzy", "click", () => new FrenzyApp(this.actor).render(true));
+    on(".open-vaulderie", "click", () => new VaulderieApp(this.actor).render(true));
     on(".power-toggle", "click", this._onTogglePower.bind(this));
     on(".item-create", "click", this._onItemCreate.bind(this));
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));

@@ -129,7 +129,10 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
 
       bloodBonds: new fields.ArrayField(new fields.SchemaField({
         name: new fields.StringField({ required: true, initial: "" }),
-        level: new fields.NumberField({ required: true, integer: true, min: 1, max: 3, initial: 1 }),
+        // 1-3 covers an ordinary Blood Bond (3 = Full Bond); Sabbat's
+        // Vinculum, resolved through the Vaulderie rite, uses the full 1-10
+        // scale, so this can't be capped at 3 the way an ordinary bond is.
+        level: new fields.NumberField({ required: true, integer: true, min: 1, max: 10, initial: 1 }),
         notes: new fields.StringField({ required: false, blank: true, initial: "" })
       })),
 

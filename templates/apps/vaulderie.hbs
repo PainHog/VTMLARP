@@ -1,0 +1,22 @@
+<form class="vtmlarp-vaulderie flexcol">
+  <p class="hint">Add every participant and how many Blood Traits each contributes to the cup, then perform the rite. This shuffles a virtual deck (one card per Blood Trait contributed) and has each participant draw back the same number of cards they put in - exactly the physical index-card version, just resolved online for everyone to see at once.</p>
+
+  <div class="vaulderie-participants">
+    {{#each participants as |p i|}}
+    <div class="vaulderie-row">
+      <select name="participants.{{i}}.actorId">
+        <option value="">— Select participant —</option>
+        {{#each ../actorOptions as |a|}}
+        <option value="{{a.id}}" {{#if (eq p.actorId a.id)}}selected{{/if}}>{{a.name}}</option>
+        {{/each}}
+      </select>
+      <label>Blood Traits <input type="number" name="participants.{{i}}.traits" value="{{p.traits}}" min="1" class="tiny"></label>
+      <a class="vaulderie-remove-participant" data-index="{{i}}" title="Remove"><i class="fas fa-times"></i></a>
+    </div>
+    {{/each}}
+  </div>
+
+  <a class="vaulderie-add-participant"><i class="fas fa-plus"></i> Add Participant</a>
+
+  <button type="submit" class="vtm-submit"><i class="fas fa-tint"></i> Perform Vaulderie</button>
+</form>

@@ -178,6 +178,7 @@
       <div class="flexrow">
         <button type="button" class="open-challenge"><i class="fas fa-hand-rock"></i> Resolve Challenge</button>
         <button type="button" class="open-frenzy"><i class="fas fa-burst"></i> Frenzy / Rötschreck Check</button>
+        <button type="button" class="open-vaulderie"><i class="fas fa-tint"></i> Vaulderie</button>
       </div>
 
       {{#if activePowers.length}}
@@ -398,16 +399,12 @@
         {{/each}}
       </div>
 
-      <h3>Blood Bonds <a class="simple-list-add" data-path="bloodBonds"><i class="fas fa-plus"></i></a></h3>
+      <h3>Blood Bonds <span class="hint">1-3 = ordinary Blood Bond (3 = Full Bond); Sabbat Vinculum uses the full 1-10 scale, resolved via the Vaulderie tool</span> <a class="simple-list-add" data-path="bloodBonds"><i class="fas fa-plus"></i></a></h3>
       <div class="simple-list">
         {{#each system.bloodBonds as |b i|}}
         <div class="simple-list-row">
           <input type="text" name="system.bloodBonds.{{i}}.name" value="{{b.name}}" placeholder="Bonded to whom" class="tiny">
-          <select name="system.bloodBonds.{{i}}.level">
-            <option value="1" {{#if (eq b.level 1)}}selected{{/if}}>1 drink</option>
-            <option value="2" {{#if (eq b.level 2)}}selected{{/if}}>2 drinks</option>
-            <option value="3" {{#if (eq b.level 3)}}selected{{/if}}>3 drinks (Full Bond)</option>
-          </select>
+          <input type="number" name="system.bloodBonds.{{i}}.level" value="{{b.level}}" min="1" max="10" class="tiny" title="1-3: ordinary bond (3 = Full Bond). 1-10: Sabbat Vinculum.">
           <input type="text" name="system.bloodBonds.{{i}}.notes" value="{{b.notes}}" placeholder="Notes" class="wide">
           <a class="simple-list-remove" data-path="bloodBonds" data-index="{{i}}"><i class="fas fa-times"></i></a>
         </div>

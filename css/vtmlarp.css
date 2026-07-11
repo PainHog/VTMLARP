@@ -782,11 +782,12 @@
 
 #vtmlarp-challenge .window-content,
 #vtmlarp-challenge-response .window-content,
-#vtmlarp-frenzy .window-content {
+#vtmlarp-frenzy .window-content,
+#vtmlarp-vaulderie .window-content {
   display: block !important;
 }
 
-.vtmlarp-challenge, .vtmlarp-frenzy {
+.vtmlarp-challenge, .vtmlarp-frenzy, .vtmlarp-vaulderie {
   color: var(--vtm-text);
   padding: 8px 10px !important;
   display: flex !important;
@@ -798,7 +799,7 @@
   font-size: 13px !important;
 }
 
-.vtmlarp-challenge label, .vtmlarp-frenzy label {
+.vtmlarp-challenge label, .vtmlarp-frenzy label, .vtmlarp-vaulderie label {
   display: block;
   margin: 0 0 6px 0 !important;
   padding: 0 !important;
@@ -810,13 +811,15 @@
 .vtmlarp-challenge label select,
 .vtmlarp-challenge label input,
 .vtmlarp-frenzy label select,
-.vtmlarp-frenzy label input {
+.vtmlarp-frenzy label input,
+.vtmlarp-vaulderie label select,
+.vtmlarp-vaulderie label input {
   display: block;
   width: 100%;
   margin: 2px 0 0 0 !important;
 }
 
-.vtmlarp-challenge .hint, .vtmlarp-frenzy .hint {
+.vtmlarp-challenge .hint, .vtmlarp-frenzy .hint, .vtmlarp-vaulderie .hint {
   margin: 0 0 8px 0 !important;
   padding: 0 !important;
 }
@@ -842,7 +845,7 @@
   font-size: 13px;
 }
 
-.vtmlarp-challenge button, .vtmlarp-frenzy button {
+.vtmlarp-challenge button, .vtmlarp-frenzy button, .vtmlarp-vaulderie button {
   margin-top: 6px;
   width: 100%;
 }
@@ -859,7 +862,7 @@
    cards get their own dark text colors here rather than the sheet's light
    theme variables, since sheet text would be nearly invisible in chat. */
 
-.vtmlarp-challenge-card, .vtmlarp-frenzy-card {
+.vtmlarp-challenge-card, .vtmlarp-frenzy-card, .vtmlarp-vaulderie-card {
   position: relative;
   padding: 8px;
   background: #f7f4ee;
@@ -869,9 +872,14 @@
   overflow: hidden;
 }
 
+.vtmlarp-vaulderie-card h3 { margin: 0 0 6px 0; color: var(--vtm-red); }
+.vtmlarp-vaulderie-card .vaulderie-result-row { margin-bottom: 8px; }
+.vtmlarp-vaulderie-card ul { margin: 2px 0 0 0; padding-left: 18px; }
+.vtmlarp-vaulderie-card .hint { color: #55493c; font-style: italic; }
+
 /* A small, faint corner flourish - chat messages must stay easily readable,
    so this stays low-opacity and tucked away from any text. */
-.vtmlarp-challenge-card::before, .vtmlarp-frenzy-card::before {
+.vtmlarp-challenge-card::before, .vtmlarp-frenzy-card::before, .vtmlarp-vaulderie-card::before {
   content: "";
   position: absolute;
   top: -6px;
