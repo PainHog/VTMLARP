@@ -217,8 +217,8 @@
   },
   "items": [
     {
-      "_id": "fa48554ed0214c52",
-      "name": "Potence — 1 Basic — Prowess",
+      "_id": "1a8f90de060a490d",
+      "name": "Prowess",
       "type": "power",
       "img": "icons/skills/melee/strike-fist-punch-orange.webp",
       "system": {
@@ -230,7 +230,34 @@
         "bloodCost": "",
         "retestAbility": "",
         "duration": "Permanent / once per session",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9acfb2a26bf34924",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

@@ -290,8 +290,8 @@
   },
   "items": [
     {
-      "_id": "ececc26a041340a0",
-      "name": "Auspex — 1 Basic — Heightened Senses",
+      "_id": "525e649b93df4e4e",
+      "name": "Heightened Senses",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -304,7 +304,7 @@
         "retestAbility": "Investigation",
         "duration": "At will",
         "activation": "passive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -321,20 +321,16 @@
       }
     },
     {
-      "_id": "72f7f9b3f86f4914",
-      "name": "Presence — 1 Basic — Awe",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "4fa49d38e3c04a3d",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>By spending a Social Trait during a Social Challenge, you gain an automatic retest, usable once per challenge (or once per target in a mass challenge at the same cost).</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Presence",
-        "level": "basic",
-        "challengeType": "social",
-        "bloodCost": "1 Social Trait",
-        "retestAbility": "Leadership",
-        "duration": "One challenge",
-        "activation": "reflexive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
@@ -350,8 +346,64 @@
       }
     },
     {
-      "_id": "14bbbab372b24725",
-      "name": "Vicissitude — 1 Basic — Fleshcraft",
+      "_id": "ce1043c60e1a49cc",
+      "name": "Dread Gaze",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By hissing and baring your vampiric features in a Social Challenge, you strike terror into a victim who, if defeated, flees and avoids you for the rest of the scene or hour, risking an extra Trait to act against you if cornered.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "cbc776d07c6248f1",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d5d8a885ed294440",
+      "name": "Fleshcraft",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -363,7 +415,34 @@
         "bloodCost": "",
         "retestAbility": "Crafts: Body Crafts",
         "duration": "Permanent (heals as aggravated wound on weaker generations)",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "7a6962f8e0724da6",
+      "name": "Vicissitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

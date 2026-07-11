@@ -284,8 +284,8 @@
   },
   "items": [
     {
-      "_id": "f2cee9dadfcc4ea5",
-      "name": "Auspex — 1 Basic — Heightened Senses",
+      "_id": "0b69e0636f8a4438",
+      "name": "Heightened Senses",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -298,7 +298,7 @@
         "retestAbility": "Investigation",
         "duration": "At will",
         "activation": "passive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -315,8 +315,8 @@
       }
     },
     {
-      "_id": "29c252b082044b3a",
-      "name": "Auspex — 1 Basic — Aura Perception",
+      "_id": "c3e48d1acfd349e3",
+      "name": "Aura Perception",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -328,7 +328,9 @@
         "bloodCost": "",
         "retestAbility": "Investigation",
         "duration": "Instant",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -344,8 +346,8 @@
       }
     },
     {
-      "_id": "3eb327c14fa540ac",
-      "name": "Auspex — 2 Intermediate — The Spirit's Touch",
+      "_id": "1b2da4d76e954e9d",
+      "name": "The Spirit's Touch",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -358,7 +360,7 @@
         "retestAbility": "Investigation",
         "duration": "Instant, repeatable",
         "activation": "challenge",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -375,78 +377,16 @@
       }
     },
     {
-      "_id": "e63300adab7e4487",
-      "name": "Thaumaturgy (Path of Blood) — 1 Basic — A Taste for Blood",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "08ee772ab0e94325",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>By tasting a single Blood Trait of a subject's vitae, you learn how much blood remains in their system, how recently they fed, their generation, and whether they are a diablerist.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Thaumaturgy (Path of Blood)",
-        "level": "basic",
-        "challengeType": "none",
-        "bloodCost": "1 Blood Trait (tasted)",
-        "retestAbility": "Occult",
-        "duration": "Instant",
-        "activation": "reflexive"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "6f684572a9794ac2",
-      "name": "Thaumaturgy (Path of Blood) — 1 Basic — Blood Rage",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
-      "system": {
-        "description": "<p>By gaining a firm touch on a subject (possibly via a Physical Challenge), you force them to expend a single Blood Trait in any fashion you mentally dictate, even beyond their normal limits.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Thaumaturgy (Path of Blood)",
-        "level": "basic",
-        "challengeType": "physical",
-        "bloodCost": "",
-        "retestAbility": "Occult",
-        "duration": "Instant",
-        "activation": "challenge"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "9eaf4a24d906430d",
-      "name": "Thaumaturgy (Path of Blood) — 2 Intermediate — Blood of Potency",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
-      "system": {
-        "description": "<p>By concentrating your vitae for the scene or an hour, you spend two Mental Traits per generation (up to three generations) to gain a temporary, more potent virtual generation, raising your Blood Trait maximum and Dominate's reach.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Thaumaturgy (Path of Blood)",
-        "level": "intermediate",
-        "challengeType": "none",
-        "bloodCost": "",
-        "retestAbility": "Occult",
-        "duration": "Scene or one hour",
-        "activation": "reflexive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

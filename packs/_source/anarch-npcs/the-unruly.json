@@ -266,8 +266,8 @@
   },
   "items": [
     {
-      "_id": "d9369fb47b66499d",
-      "name": "Celerity — 1 Basic — Alacrity",
+      "_id": "010086d8466f4961",
+      "name": "Alacrity",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -279,7 +279,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "None (innate)",
         "duration": "One turn",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -295,8 +297,33 @@
       }
     },
     {
-      "_id": "851d49f577804d11",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "d1b1f78b7a1c497e",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "7ba8145931cc472b",
+      "name": "Endurance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -308,7 +335,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -324,8 +353,33 @@
       }
     },
     {
-      "_id": "6604c0c7988b48b7",
-      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "_id": "a522e846ef3249d7",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "2193c845300c4cdf",
+      "name": "Cloak of Shadows",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -337,7 +391,9 @@
         "bloodCost": "",
         "retestAbility": "Stealth",
         "duration": "While still and silent",
-        "activation": "toggle"
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -353,8 +409,8 @@
       }
     },
     {
-      "_id": "4ef4b51531fd4e98",
-      "name": "Obfuscate — 1 Basic — Unseen Presence",
+      "_id": "eee5fb8a4a914abc",
+      "name": "Unseen Presence",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -366,7 +422,9 @@
         "bloodCost": "",
         "retestAbility": "Stealth",
         "duration": "Until concealment is broken",
-        "activation": "toggle"
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -382,20 +440,16 @@
       }
     },
     {
-      "_id": "57c38bd4a80e40f9",
-      "name": "Obfuscate — 2 Intermediate — Mask of a Thousand Faces",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "6a1f9471e6c54f4a",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>Your features appear bland and unremarkable to onlookers, or by spending a Mental Trait you can assume a specific guise, copying another's appearance up to the Social Traits you can afford to match, lasting until you sleep, are knocked out, or die.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Obfuscate",
-        "level": "intermediate",
-        "challengeType": "none",
-        "bloodCost": "",
-        "retestAbility": "Stealth",
-        "duration": "Until unconsciousness, torpor, or death",
-        "activation": "toggle"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
@@ -411,8 +465,8 @@
       }
     },
     {
-      "_id": "d0227bf3064e45f3",
-      "name": "Potence — 1 Basic — Prowess",
+      "_id": "68c5da7d17894f46",
+      "name": "Prowess",
       "type": "power",
       "img": "icons/skills/melee/strike-fist-punch-orange.webp",
       "system": {
@@ -424,7 +478,9 @@
         "bloodCost": "",
         "retestAbility": "",
         "duration": "Permanent / once per session",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -440,8 +496,8 @@
       }
     },
     {
-      "_id": "16fbae28d76e477f",
-      "name": "Potence — 1 Basic — Might",
+      "_id": "fca70c1b17384dd0",
+      "name": "Might",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -453,7 +509,9 @@
         "bloodCost": "",
         "retestAbility": "Brawl (or appropriate combat Ability)",
         "duration": "One challenge",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -469,20 +527,16 @@
       }
     },
     {
-      "_id": "a48556fc105f4fab",
-      "name": "Potence — 2 Intermediate — Vigor",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "b4009c0991b441c5",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Potence",
-        "level": "intermediate",
-        "challengeType": "physical",
-        "bloodCost": "",
-        "retestAbility": "Brawl (or appropriate combat Ability)",
-        "duration": "One challenge",
-        "activation": "passive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

@@ -281,20 +281,22 @@
   },
   "items": [
     {
-      "_id": "0288f6c04e964456",
-      "name": "Animalism — 1 Basic — Feral Whispers",
+      "_id": "461c7eb3ef5d433c",
+      "name": "Beckoning",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By meeting an animal's gaze and making a related sound, you can communicate with it and, through a Social Challenge, command it to perform simple tasks for the rest of the evening.</p>",
+        "description": "<p>By uttering an animal call, you summon nearby animals of a chosen type to your side, favorably disposed toward you, by spending a Social Trait per animal summoned.</p>",
         "source": "Laws of the Night Revised, Disciplines",
         "discipline": "Animalism",
         "level": "basic",
         "challengeType": "social",
         "bloodCost": "",
         "retestAbility": "Animal Ken",
-        "duration": "One scene",
-        "activation": "challenge"
+        "duration": "Until threatened or scene ends",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -310,20 +312,16 @@
       }
     },
     {
-      "_id": "fe9af466ae12449d",
-      "name": "Celerity — 1 Basic — Alacrity",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "0bf05f08ab5447e3",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>By spending a Blood Trait, you preempt any physical action taken in the same turn that you are aware of, acting before your opponent can complete their move.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Celerity",
-        "level": "basic",
-        "challengeType": "physical",
-        "bloodCost": "1 Blood Trait",
-        "retestAbility": "None (innate)",
-        "duration": "One turn",
-        "activation": "reflexive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
@@ -339,8 +337,8 @@
       }
     },
     {
-      "_id": "d6b069fcaf0546be",
-      "name": "Celerity — 1 Basic — Swiftness",
+      "_id": "1a9114375d7b4b7b",
+      "name": "Swiftness",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -352,7 +350,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "None (innate)",
         "duration": "One turn",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -368,20 +368,22 @@
       }
     },
     {
-      "_id": "224171236c96482f",
-      "name": "Dominate — 1 Basic — Command",
+      "_id": "2d782f425485467e",
+      "name": "Legerity",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By meeting your subject's gaze and speaking a single emphasized word of command, you win a Mental Challenge to force immediate, unquestioning obedience to a simple order lasting no more than ten minutes.</p>",
+        "description": "<p>By spending a Blood Trait, you gain a further additional action at the end of the turn, on top of any gained from Swiftness.</p>",
         "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Dominate",
-        "level": "basic",
-        "challengeType": "mental",
-        "bloodCost": "",
-        "retestAbility": "Intimidation",
-        "duration": "Up to 10 minutes",
-        "activation": "challenge"
+        "discipline": "Celerity",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -397,8 +399,33 @@
       }
     },
     {
-      "_id": "cafc13c698bc4cd6",
-      "name": "Dominate — 1 Basic — Mesmerism",
+      "_id": "3145fe41b5c34489",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c34ef60950964450",
+      "name": "Mesmerism",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -410,7 +437,9 @@
         "bloodCost": "",
         "retestAbility": "Intimidation",
         "duration": "Until command is fulfilled",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -426,8 +455,8 @@
       }
     },
     {
-      "_id": "847685cf2e684fee",
-      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "_id": "7b3ced4d6d92484e",
+      "name": "Forgetful Mind",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -439,7 +468,9 @@
         "bloodCost": "",
         "retestAbility": "Intimidation",
         "duration": "Instant, permanent until overwritten",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -455,20 +486,22 @@
       }
     },
     {
-      "_id": "c38eb951f5a141b1",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "5f22f66f9ce44b8a",
+      "name": "Obedience",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Fortitude",
-        "level": "basic",
+        "description": "<p>Rather than requiring eye contact, you may use Dominate through skin-to-skin contact alone (a Physical Challenge may be needed on unwilling subjects). The touch need not be maintained while issuing the command, but only one command may be given per contact; using Dominate again requires touching the subject anew.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
         "challengeType": "none",
         "bloodCost": "",
-        "retestAbility": "Survival",
-        "duration": "Permanent (passive)",
-        "activation": "passive"
+        "retestAbility": "",
+        "duration": "Instant, per command",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -484,8 +517,33 @@
       }
     },
     {
-      "_id": "e730ba6ca39b46a9",
-      "name": "Fortitude — 1 Basic — Mettle",
+      "_id": "73b933a4c59e451b",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e9727bc782974fbd",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -497,7 +555,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -513,20 +573,22 @@
       }
     },
     {
-      "_id": "e626b45e59584a82",
-      "name": "Obtenebration — 1 Basic — Shadow Play",
+      "_id": "07eebd3b0ac945c3",
+      "name": "Brace for Impact",
       "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
       "system": {
-        "description": "<p>By spending a Blood Trait, you animate nearby shadows for a scene or hour, granting yourself a bonus Trait in stealth or ranged combat for concealment, a bonus Trait in intimidation, or afflicting a victim with Clumsy and slow asphyxiating damage.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Obtenebration",
-        "level": "basic",
-        "challengeType": "physical",
-        "bloodCost": "1 Blood Trait",
-        "retestAbility": "Occult",
-        "duration": "Scene or one hour",
-        "activation": "reflexive"
+        "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Athletics",
+        "duration": "Instantaneous (per impact)",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": "Fortitude (3), Potence (3)"
       },
       "effects": [],
       "folder": null,
@@ -542,20 +604,16 @@
       }
     },
     {
-      "_id": "1ac85975de4247d3",
-      "name": "Obtenebration — 1 Basic — Shroud of Night",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "9c6b83508b704aca",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>By spending a Blood Trait, you summon a roughly ten-foot sphere of light-absorbing, sound-muffling darkness (placeable at range for an extra Blood Trait) that disorients and can strangle mortals caught within, lasting a scene or hour.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Obtenebration",
-        "level": "basic",
-        "challengeType": "none",
-        "bloodCost": "1-2 Blood Traits",
-        "retestAbility": "Occult",
-        "duration": "Scene or one hour",
-        "activation": "reflexive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
@@ -571,12 +629,13 @@
       }
     },
     {
-      "_id": "7041a544c94d4fdd",
-      "name": "Obtenebration — 1 Basic — Smothering Darkness",
+      "_id": "a39de49bf1b9456c",
+      "name": "Smothering Darkness",
       "type": "power",
       "img": "icons/magic/air/wind-tornado-blue.webp",
       "system": {
         "description": "<p>A combination power blending Obtenebration and Obfuscate. The Magister summons fluttering shadows that behave like moths drawn to flame, flocking to the nearest light sources — torches, candles, oil lamps — and dousing them. An entire area can be plunged into darkness almost instantly, leaving anyone unprepared for the dark completely helpless. Each success produces one shadow, which douses any flame up to the size of a torch before vanishing; larger fires require multiple shadows to extinguish. Shadows in excess of the available flames flap about causing confusion and fear before dissipating into whatever dark place spawned them. They cause no direct damage, though they may collide with people in their flight.</p>",
+        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters",
         "discipline": "Obtenebration",
         "level": "basic",
         "challengeType": "mental",
@@ -584,8 +643,8 @@
         "retestAbility": "Occult",
         "duration": "Until all nearby light sources are doused",
         "activation": "challenge",
-        "prerequisites": "Obtenebration (2), Obfuscate (1)",
-        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters"
+        "active": false,
+        "prerequisites": "Obtenebration (2), Obfuscate (1)"
       },
       "effects": [],
       "folder": null,
@@ -601,20 +660,22 @@
       }
     },
     {
-      "_id": "f0b3474d8aff4250",
-      "name": "Potence — 1 Basic — Prowess",
+      "_id": "ff7248ba5b314944",
+      "name": "Dark Steel",
       "type": "power",
-      "img": "icons/skills/melee/strike-fist-punch-orange.webp",
+      "img": "icons/magic/air/wind-tornado-blue.webp",
       "system": {
-        "description": "<p>Your unarmed and clubbing attacks inflict lethal rather than bashing damage if you choose. Once per game session you may also restore all of your used Brawny, Ferocious, Stalwart, Tough, and Wiry Physical Traits at once. Prowess costs nothing and isn't an action - it can be used at any time.</p>",
-        "source": "Laws of the Night Revised, p.150",
-        "discipline": "Potence",
-        "level": "basic",
+        "description": "<p>A combination power blending Obtenebration and Potence. Where Arms of Ahriman lets a Lasombra summon tentacles of pure shadow to grip and strike, this bastardized variant grants those pseudopods far greater strength and endurance, catching Cainites used to the ordinary manifestation off guard. Each success summons one tentacle, emerging from any nearby patch of shadow (beneath furniture, from within the vampire's own cloak, and so on). Every tentacle is eight feet long and has Strength and Dexterity equal to twice the wielder's Obtenebration rating. The vampire may feed a tentacle additional Blood Points, one for one, raising its ratings further. A Dark Steel tentacle deals Strength+2 crushing damage, has six health levels of its own, and — like the wielder — takes extra harm from fire and sunlight.</p>",
+        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters",
+        "discipline": "Obtenebration",
+        "level": "intermediate",
         "challengeType": "physical",
-        "bloodCost": "",
-        "retestAbility": "",
-        "duration": "Permanent / once per session",
-        "activation": "passive"
+        "bloodCost": "2 Blood Points, plus 1 per point of tentacle enhancement",
+        "retestAbility": "Occult",
+        "duration": "One scene or until dismissed",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Obtenebration (3), Potence (3)"
       },
       "effects": [],
       "folder": null,
@@ -630,20 +691,22 @@
       }
     },
     {
-      "_id": "6d8ad0ce26c7472c",
-      "name": "Potence — 2 Intermediate — Vigor",
+      "_id": "51eed79793474933",
+      "name": "Arms of the Abyss",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
+        "description": "<p>By spending a Blood Trait plus a Social Trait per tentacle, you summon six-foot shadow tentacles with three Physical Traits and four health levels each, which you can direct to grab, strike, or hold items while you act normally.</p>",
         "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Potence",
+        "discipline": "Obtenebration",
         "level": "intermediate",
         "challengeType": "physical",
-        "bloodCost": "",
-        "retestAbility": "Brawl (or appropriate combat Ability)",
-        "duration": "One challenge",
-        "activation": "passive"
+        "bloodCost": "1+ Blood Traits",
+        "retestAbility": "Occult",
+        "duration": "One scene",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -659,8 +722,33 @@
       }
     },
     {
-      "_id": "f0db78d9ad6a4e21",
-      "name": "Potence — 1 Basic — Might",
+      "_id": "42f445d177e948ee",
+      "name": "Obtenebration",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "edf5aac773e147c9",
+      "name": "Might",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -672,7 +760,96 @@
         "bloodCost": "",
         "retestAbility": "Brawl (or appropriate combat Ability)",
         "duration": "One challenge",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "333d0d53ffef4095",
+      "name": "Vigor",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "210d7ea0bf994421",
+      "name": "Intensity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>In challenges of strength, you may use Potence itself as your bid Trait, which can never be lost outright, though wounds or Negative Traits can still force you to risk other Traits.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b327d09374b34471",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

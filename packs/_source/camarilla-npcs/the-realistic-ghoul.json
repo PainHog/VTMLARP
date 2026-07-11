@@ -205,8 +205,8 @@
   },
   "items": [
     {
-      "_id": "9ae8a8f624ab46e0",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "96daeae6eb1f4c90",
+      "name": "Endurance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -218,7 +218,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -234,8 +236,33 @@
       }
     },
     {
-      "_id": "4b647318575f4965",
-      "name": "Potence — 1 Basic — Prowess",
+      "_id": "3f0b73d4c26c4f27",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8fa037097883462c",
+      "name": "Prowess",
       "type": "power",
       "img": "icons/skills/melee/strike-fist-punch-orange.webp",
       "system": {
@@ -247,7 +274,34 @@
         "bloodCost": "",
         "retestAbility": "",
         "duration": "Permanent / once per session",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a05b1a4b71d34568",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

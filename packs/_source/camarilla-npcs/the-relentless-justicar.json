@@ -378,8 +378,8 @@
   },
   "items": [
     {
-      "_id": "6eb5905824bf436b",
-      "name": "Auspex — 1 Basic — Heightened Senses",
+      "_id": "cae46f3954c84345",
+      "name": "Heightened Senses",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -392,7 +392,7 @@
         "retestAbility": "Investigation",
         "duration": "At will",
         "activation": "passive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -409,8 +409,8 @@
       }
     },
     {
-      "_id": "da166605365c4ac3",
-      "name": "Auspex — 1 Basic — Aura Perception",
+      "_id": "353191f0c6204991",
+      "name": "Aura Perception",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -422,7 +422,9 @@
         "bloodCost": "",
         "retestAbility": "Investigation",
         "duration": "Instant",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -438,8 +440,8 @@
       }
     },
     {
-      "_id": "834dbda688b3470d",
-      "name": "Auspex — 2 Intermediate — The Spirit's Touch",
+      "_id": "b2ef2ff0ec474145",
+      "name": "The Spirit's Touch",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -452,7 +454,7 @@
         "retestAbility": "Investigation",
         "duration": "Instant, repeatable",
         "activation": "challenge",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -469,8 +471,33 @@
       }
     },
     {
-      "_id": "83f34b547ea44930",
-      "name": "Celerity — 1 Basic — Alacrity",
+      "_id": "2c61fe5cb3cd4a82",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "08c98878a9644c7f",
+      "name": "Alacrity",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -482,7 +509,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "None (innate)",
         "duration": "One turn",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -498,8 +527,8 @@
       }
     },
     {
-      "_id": "343709056d194d46",
-      "name": "Celerity — 1 Basic — Swiftness",
+      "_id": "b98c8e79fabc4eb8",
+      "name": "Swiftness",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -511,7 +540,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "None (innate)",
         "duration": "One turn",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -527,8 +558,8 @@
       }
     },
     {
-      "_id": "798cea175e9047e6",
-      "name": "Celerity — 2 Intermediate — Rapidity",
+      "_id": "db6d24043a5e49c5",
+      "name": "Rapidity",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -541,7 +572,7 @@
         "retestAbility": "None (innate)",
         "duration": "One turn",
         "activation": "reflexive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -558,8 +589,33 @@
       }
     },
     {
-      "_id": "ce00bdf0e213496f",
-      "name": "Dementation — 1 Basic — Passion",
+      "_id": "46ee19ddc62c4363",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "68bcb20726aa45ec",
+      "name": "Passion",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -571,7 +627,9 @@
         "bloodCost": "",
         "retestAbility": "Empathy",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -587,8 +645,8 @@
       }
     },
     {
-      "_id": "b6ab361296934dee",
-      "name": "Dementation — 1 Basic — The Haunting",
+      "_id": "207892495236442e",
+      "name": "The Haunting",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -600,7 +658,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "Empathy",
         "duration": "Rest of the evening",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -616,8 +676,8 @@
       }
     },
     {
-      "_id": "915a12cee9d4446b",
-      "name": "Dementation — 2 Intermediate — Eyes of Chaos",
+      "_id": "ab95d0f2c95e4301",
+      "name": "Eyes of Chaos",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -629,7 +689,9 @@
         "bloodCost": "",
         "retestAbility": "Empathy",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -645,8 +707,33 @@
       }
     },
     {
-      "_id": "cd26d24e7b68403d",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "06f7aea482a944bb",
+      "name": "Dementation",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3e12da0e634745db",
+      "name": "Endurance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -658,7 +745,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -674,8 +763,8 @@
       }
     },
     {
-      "_id": "3d0513a7e2a64b60",
-      "name": "Fortitude — 1 Basic — Mettle",
+      "_id": "c7d84776cbc24c16",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -687,7 +776,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -703,8 +794,8 @@
       }
     },
     {
-      "_id": "8680320b01b5454e",
-      "name": "Fortitude — 2 Intermediate — Resilience",
+      "_id": "1028cb75bb32463d",
+      "name": "Resilience",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -716,7 +807,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Instant",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -732,8 +825,33 @@
       }
     },
     {
-      "_id": "7e66907595934575",
-      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "_id": "6bf65196f8b9417d",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c01dab7220544c7f",
+      "name": "Cloak of Shadows",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -745,7 +863,9 @@
         "bloodCost": "",
         "retestAbility": "Stealth",
         "duration": "While still and silent",
-        "activation": "toggle"
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -761,8 +881,8 @@
       }
     },
     {
-      "_id": "5362f0dfcf66443e",
-      "name": "Obfuscate — 1 Basic — Unseen Presence",
+      "_id": "c228d1a7c47c493a",
+      "name": "Unseen Presence",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -774,7 +894,9 @@
         "bloodCost": "",
         "retestAbility": "Stealth",
         "duration": "Until concealment is broken",
-        "activation": "toggle"
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -790,20 +912,16 @@
       }
     },
     {
-      "_id": "ffd73dc1386c4393",
-      "name": "Obfuscate — 2 Intermediate — Mask of a Thousand Faces",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "ee70d05d65a94909",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>Your features appear bland and unremarkable to onlookers, or by spending a Mental Trait you can assume a specific guise, copying another's appearance up to the Social Traits you can afford to match, lasting until you sleep, are knocked out, or die.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Obfuscate",
-        "level": "intermediate",
-        "challengeType": "none",
-        "bloodCost": "",
-        "retestAbility": "Stealth",
-        "duration": "Until unconsciousness, torpor, or death",
-        "activation": "toggle"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

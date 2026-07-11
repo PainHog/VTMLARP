@@ -93,8 +93,8 @@
   },
   "items": [
     {
-      "_id": "ea28a5b1b6664a11",
-      "name": "Auspex — 1 Basic — Heightened Senses",
+      "_id": "917fcd8b55334f0a",
+      "name": "Heightened Senses",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -107,7 +107,7 @@
         "retestAbility": "Investigation",
         "duration": "At will",
         "activation": "passive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -124,8 +124,8 @@
       }
     },
     {
-      "_id": "04bb1533604947b9",
-      "name": "Auspex — 1 Basic — Aura Perception",
+      "_id": "0c75a641caa74743",
+      "name": "Aura Perception",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -137,7 +137,9 @@
         "bloodCost": "",
         "retestAbility": "Investigation",
         "duration": "Instant",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -153,8 +155,33 @@
       }
     },
     {
-      "_id": "d0dce1012d0540db",
-      "name": "Presence — 1 Basic — Awe",
+      "_id": "6d94039256904437",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4f6505cbc9ac4922",
+      "name": "Awe",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -166,7 +193,34 @@
         "bloodCost": "1 Social Trait",
         "retestAbility": "Leadership",
         "duration": "One challenge",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "f0846c69314c4040",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

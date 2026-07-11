@@ -304,8 +304,8 @@
   },
   "items": [
     {
-      "_id": "6c5b7e0f41fc4af1",
-      "name": "Auspex — 1 Basic — Heightened Senses",
+      "_id": "39fcdd3e591b4ced",
+      "name": "Heightened Senses",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -318,7 +318,7 @@
         "retestAbility": "Investigation",
         "duration": "At will",
         "activation": "passive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -335,50 +335,21 @@
       }
     },
     {
-      "_id": "5efad64a502a4803",
-      "name": "Auspex — 1 Basic — Aura Perception",
+      "_id": "0029de90a80b4c8d",
+      "name": "The Spirit's Touch",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By concentrating on a visible subject and besting them in a Static Mental Challenge, you read the colors of their aura to learn their emotional state, general nature, whether they're under magical influence, have committed diablerie, or just lied; it can also reveal nearby ghosts.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Auspex",
-        "level": "basic",
-        "challengeType": "mental",
-        "bloodCost": "",
-        "retestAbility": "Investigation",
-        "duration": "Instant",
-        "activation": "challenge"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "7ba8c974ba9f4297",
-      "name": "Auspex — 1 Basic — Soulsight",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
-      "system": {
-        "description": "<p>Look at your target and perform a Static Mental Challenge (difficulty equal to the target's Mental Traits). If you succeed, ask one question: what manner of creature the target is, whether affected by magic, whether they committed diablerie recently, their current emotional state, or whether their last utterance was a lie; the target must answer truthfully. Expending a Mental Trait and winning or tying a Mental Challenge lets you see nearby ghosts as pale, indistinct auras.</p>",
+        "description": "<p>Maintain physical contact with an object or location and concentrate for a turn, expending a Mental Trait, then ask the Narrator one question about who last touched it, whether it was involved in stressful situations, or what strong emotions drove its user. May be used repeatedly for greater insight; objects of powerful emotional resonance may force a derangement upon the user for the scene.</p>",
         "source": "Faith and Fire, Disciplines",
         "discipline": "Auspex",
-        "level": "basic",
+        "level": "intermediate",
         "challengeType": "mental",
         "bloodCost": "",
         "retestAbility": "Investigation",
-        "duration": "Instant",
+        "duration": "Instant, repeatable",
         "activation": "challenge",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -395,8 +366,64 @@
       }
     },
     {
-      "_id": "f9b563ae2be94a2b",
-      "name": "Dementation — 1 Basic — Passion",
+      "_id": "ccfdb39752a24909",
+      "name": "Artist's Intent",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-detection-alt-red.webp",
+      "system": {
+        "description": "<p>By this gift, a Toreador may penetrate the &quot;soul&quot; of an inanimate artwork she examines, interpreting the piece, gleaning the artist's state of mind, the relationship between artist and work, and the stages of the creative process, revealed as a series of progressively paler images looking back into the work's history. Some Toreador use this to critique or authenticate a piece; others monitor their proteges' work for unspoken rebellion or sadness, or seek the &quot;real&quot; story behind a letter proposing an alliance. The power does not function on &quot;living&quot; art still in the act of performance &mdash; a play, a song, or a story being told &mdash; since such work depends on the performer's ongoing intent rather than a fixed, finished creation.</p><p><strong>System:</strong> The character examines the work and the number of successes determines how much she perceives: a single success yields only general feelings with no historical context; two successes offer a vague sense of the work's history; three successes reveal specific details and a fuzzy timeline; four successes grant a definite sense of the artist's emotional state and a reasonable timeline; five successes let the Toreador see the work in stages, feeling what the artist felt at every step of its creation. The difficulty rises for pieces with multiple artists or a long creation span; examining something as vast as a cathedral or castle risks leaving the Toreador a gibbering wreck from informational overload.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book One: Artisans (Toreador)",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Perception",
+        "duration": "Instant (per work examined)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Auspex"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "83f6bc0b6d844c73",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "dc813981a74841da",
+      "name": "Passion",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -408,7 +435,9 @@
         "bloodCost": "",
         "retestAbility": "Empathy",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -424,37 +453,8 @@
       }
     },
     {
-      "_id": "502fcda6867c4d6c",
-      "name": "Dementation — 1 Basic — The Haunting",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
-      "system": {
-        "description": "<p>By spending a Blood Trait and winning a Social Challenge, you afflict the victim with fleeting, subconscious-drawn nightmares, inflicting the Schizophrenia derangement for the rest of the evening.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Dementation",
-        "level": "basic",
-        "challengeType": "social",
-        "bloodCost": "1 Blood Trait",
-        "retestAbility": "Empathy",
-        "duration": "Rest of the evening",
-        "activation": "challenge"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "1978ef1b92b8418b",
-      "name": "Dementation — 2 Intermediate — Eyes of Chaos",
+      "_id": "51ba9e43db524e6c",
+      "name": "Eyes of Chaos",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -466,7 +466,9 @@
         "bloodCost": "",
         "retestAbility": "Empathy",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -482,12 +484,68 @@
       }
     },
     {
-      "_id": "b03d90249773481a",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "cfb104387ac34307",
+      "name": "Lunatic Eruption",
+      "type": "power",
+      "img": "icons/skills/social/diplomacy-handshake.webp",
+      "system": {
+        "description": "<p>Spend eight Willpower Traits and make a Static Mental Challenge against a 12-Trait difficulty to plunge an entire city (or a 30-mile radius) into temporary mass insanity: mortals riot and rampage, vampires frenzy, and other supernatural beings suffer analogous effects until the next sunrise. Any Cainite caught in the blast radius must make a Self-control/Instincts Virtue Test against a five-Trait difficulty or instantly frenzy; once recovered, she is down three Traits resisting further frenzy triggers that night.</p>",
+        "source": "Sabbat Guide, Disciplines",
+        "discipline": "Dementation",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Until next sunrise",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "484b7b3a1cbe450b",
+      "name": "Dementation",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9f9e1b9f2c6348b0",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
+        "description": "<p>You gain one additional health level, functioning as an extra Healthy level on your health chart, which can be lost and healed normally.</p>",
         "source": "Laws of the Night Revised, Disciplines",
         "discipline": "Fortitude",
         "level": "basic",
@@ -495,7 +553,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -511,20 +571,72 @@
       }
     },
     {
-      "_id": "074fce6c339f4f4f",
-      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "_id": "a739eeafb27442b1",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "66c2fb1d3d2e41d3",
+      "name": "Unseen Presence",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By remaining completely still and silent in shadow or behind cover, you fade from notice to all but those using Auspex or similar senses; any movement, speech, or interaction breaks the concealment immediately.</p>",
+        "description": "<p>Once hidden from sight, you may move about at a walk and remain unnoticed, automatically becoming visible only if you speak, make loud noise, or interact with your surroundings.</p>",
         "source": "Laws of the Night Revised, Disciplines",
         "discipline": "Obfuscate",
         "level": "basic",
         "challengeType": "none",
         "bloodCost": "",
         "retestAbility": "Stealth",
-        "duration": "While still and silent",
-        "activation": "toggle"
+        "duration": "Until concealment is broken",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ff7bae1ae15a4fac",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

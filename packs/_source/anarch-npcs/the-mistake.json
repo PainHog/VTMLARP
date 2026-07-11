@@ -260,8 +260,8 @@
   },
   "items": [
     {
-      "_id": "e32956414c684b63",
-      "name": "Dementation — 1 Basic — Passion",
+      "_id": "3f6abaafd21d44b4",
+      "name": "Passion",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -273,7 +273,9 @@
         "bloodCost": "",
         "retestAbility": "Empathy",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -289,8 +291,33 @@
       }
     },
     {
-      "_id": "e2412c8738994890",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "27e60efb54954ce2",
+      "name": "Dementation",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "21dbc0d5ada74dbd",
+      "name": "Endurance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -302,7 +329,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -318,8 +347,33 @@
       }
     },
     {
-      "_id": "47fc6e8a37c84c76",
-      "name": "Melpominee — 1 Basic — The Missing Voice",
+      "_id": "db934623853440e8",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "defa58b7d7e24ec8",
+      "name": "The Missing Voice",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -331,7 +385,9 @@
         "bloodCost": "",
         "retestAbility": "Performance",
         "duration": "At will",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -347,8 +403,8 @@
       }
     },
     {
-      "_id": "6201035e451a47c0",
-      "name": "Melpominee — 1 Basic — Phantom Speaker",
+      "_id": "4d72abd7ec3d42fa",
+      "name": "Phantom Speaker",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -360,7 +416,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "Performance",
         "duration": "One turn",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -376,20 +434,16 @@
       }
     },
     {
-      "_id": "223b06bfca5e4764",
-      "name": "Melpominee — 2 Intermediate — Madrigal",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "c7f581414dcf4f13",
+      "name": "Melpominee",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>By singing for a full turn and winning a Social Challenge against everyone in hearing range you choose to affect, you sweep your audience into an overwhelming wave of emotion that they roleplay as long as you continue singing.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Melpominee",
-        "level": "intermediate",
-        "challengeType": "social",
-        "bloodCost": "",
-        "retestAbility": "Performance",
-        "duration": "While performance continues",
-        "activation": "challenge"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
@@ -405,8 +459,8 @@
       }
     },
     {
-      "_id": "07a09ca23b5740db",
-      "name": "Presence — 1 Basic — Awe",
+      "_id": "7708c10301724d47",
+      "name": "Awe",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -418,7 +472,34 @@
         "bloodCost": "1 Social Trait",
         "retestAbility": "Leadership",
         "duration": "One challenge",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "411865aaa71d4ceb",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

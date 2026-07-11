@@ -180,20 +180,22 @@
   },
   "items": [
     {
-      "_id": "b7a0af0f6c6f4f16",
-      "name": "Dominate — 1 Basic — Command",
+      "_id": "9e03829789bf4f1b",
+      "name": "Mesmerism",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By meeting your subject's gaze and speaking a single emphasized word of command, you win a Mental Challenge to force immediate, unquestioning obedience to a simple order lasting no more than ten minutes.</p>",
+        "description": "<p>By meeting your subject's gaze and winning a Mental Challenge, you implant a more complex command, optionally tied to a specific trigger event, to be carried out immediately or later.</p>",
         "source": "Laws of the Night Revised, Disciplines",
         "discipline": "Dominate",
         "level": "basic",
         "challengeType": "mental",
         "bloodCost": "",
         "retestAbility": "Intimidation",
-        "duration": "Up to 10 minutes",
-        "activation": "challenge"
+        "duration": "Until command is fulfilled",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -209,20 +211,47 @@
       }
     },
     {
-      "_id": "74d124dc35404d5b",
-      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "_id": "704c62f231ac4b15",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "7ba7dad9b8ff4a28",
+      "name": "Unseen Presence",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By remaining completely still and silent in shadow or behind cover, you fade from notice to all but those using Auspex or similar senses; any movement, speech, or interaction breaks the concealment immediately.</p>",
+        "description": "<p>Once hidden from sight, you may move about at a walk and remain unnoticed, automatically becoming visible only if you speak, make loud noise, or interact with your surroundings.</p>",
         "source": "Laws of the Night Revised, Disciplines",
         "discipline": "Obfuscate",
         "level": "basic",
         "challengeType": "none",
         "bloodCost": "",
         "retestAbility": "Stealth",
-        "duration": "While still and silent",
-        "activation": "toggle"
+        "duration": "Until concealment is broken",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -238,20 +267,78 @@
       }
     },
     {
-      "_id": "4e0832361f7b49e6",
-      "name": "Obtenebration — 1 Basic — Shadow Play",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "670c93b7c3354382",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>By spending a Blood Trait, you animate nearby shadows for a scene or hour, granting yourself a bonus Trait in stealth or ranged combat for concealment, a bonus Trait in intimidation, or afflicting a victim with Clumsy and slow asphyxiating damage.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "580782759c004427",
+      "name": "Smothering Darkness",
+      "type": "power",
+      "img": "icons/magic/air/wind-tornado-blue.webp",
+      "system": {
+        "description": "<p>A combination power blending Obtenebration and Obfuscate. The Magister summons fluttering shadows that behave like moths drawn to flame, flocking to the nearest light sources — torches, candles, oil lamps — and dousing them. An entire area can be plunged into darkness almost instantly, leaving anyone unprepared for the dark completely helpless. Each success produces one shadow, which douses any flame up to the size of a torch before vanishing; larger fires require multiple shadows to extinguish. Shadows in excess of the available flames flap about causing confusion and fear before dissipating into whatever dark place spawned them. They cause no direct damage, though they may collide with people in their flight.</p>",
+        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters",
         "discipline": "Obtenebration",
         "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Occult",
+        "duration": "Until all nearby light sources are doused",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Obtenebration (2), Obfuscate (1)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "84ec82dd3c004c7d",
+      "name": "Dark Steel",
+      "type": "power",
+      "img": "icons/magic/air/wind-tornado-blue.webp",
+      "system": {
+        "description": "<p>A combination power blending Obtenebration and Potence. Where Arms of Ahriman lets a Lasombra summon tentacles of pure shadow to grip and strike, this bastardized variant grants those pseudopods far greater strength and endurance, catching Cainites used to the ordinary manifestation off guard. Each success summons one tentacle, emerging from any nearby patch of shadow (beneath furniture, from within the vampire's own cloak, and so on). Every tentacle is eight feet long and has Strength and Dexterity equal to twice the wielder's Obtenebration rating. The vampire may feed a tentacle additional Blood Points, one for one, raising its ratings further. A Dark Steel tentacle deals Strength+2 crushing damage, has six health levels of its own, and — like the wielder — takes extra harm from fire and sunlight.</p>",
+        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters",
+        "discipline": "Obtenebration",
+        "level": "intermediate",
         "challengeType": "physical",
-        "bloodCost": "1 Blood Trait",
+        "bloodCost": "2 Blood Points, plus 1 per point of tentacle enhancement",
         "retestAbility": "Occult",
-        "duration": "Scene or one hour",
-        "activation": "reflexive"
+        "duration": "One scene or until dismissed",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Obtenebration (3), Potence (3)"
       },
       "effects": [],
       "folder": null,
@@ -267,49 +354,72 @@
       }
     },
     {
-      "_id": "d9f51a76f9f04c50",
-      "name": "Obtenebration — 1 Basic — Shroud of Night",
+      "_id": "dd9b0d8cc429431a",
+      "name": "Obtenebration",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d3118484252a45aa",
+      "name": "Might",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By spending a Blood Trait, you summon a roughly ten-foot sphere of light-absorbing, sound-muffling darkness (placeable at range for an extra Blood Trait) that disorients and can strangle mortals caught within, lasting a scene or hour.</p>",
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
         "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Obtenebration",
-        "level": "basic",
-        "challengeType": "none",
-        "bloodCost": "1-2 Blood Traits",
-        "retestAbility": "Occult",
-        "duration": "Scene or one hour",
-        "activation": "reflexive"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "8bee34b2aec64278",
-      "name": "Potence — 1 Basic — Prowess",
-      "type": "power",
-      "img": "icons/skills/melee/strike-fist-punch-orange.webp",
-      "system": {
-        "description": "<p>Your unarmed and clubbing attacks inflict lethal rather than bashing damage if you choose. Once per game session you may also restore all of your used Brawny, Ferocious, Stalwart, Tough, and Wiry Physical Traits at once. Prowess costs nothing and isn't an action - it can be used at any time.</p>",
-        "source": "Laws of the Night Revised, p.150",
         "discipline": "Potence",
         "level": "basic",
         "challengeType": "physical",
         "bloodCost": "",
-        "retestAbility": "",
-        "duration": "Permanent / once per session",
-        "activation": "passive"
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8e6d56f825eb4714",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

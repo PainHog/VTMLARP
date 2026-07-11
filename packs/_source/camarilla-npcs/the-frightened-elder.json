@@ -310,8 +310,8 @@
   },
   "items": [
     {
-      "_id": "9cc6c37fecd04277",
-      "name": "Dominate — 1 Basic — Command",
+      "_id": "e6934dc3f5d14420",
+      "name": "Command",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -323,7 +323,9 @@
         "bloodCost": "",
         "retestAbility": "Intimidation",
         "duration": "Up to 10 minutes",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -339,8 +341,8 @@
       }
     },
     {
-      "_id": "1c72394556654099",
-      "name": "Dominate — 1 Basic — Mesmerism",
+      "_id": "d4eea3db50fd4daf",
+      "name": "Mesmerism",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -352,7 +354,9 @@
         "bloodCost": "",
         "retestAbility": "Intimidation",
         "duration": "Until command is fulfilled",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -368,8 +372,8 @@
       }
     },
     {
-      "_id": "fabdcd096882420f",
-      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "_id": "8352bf3e0a59428a",
+      "name": "Forgetful Mind",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -381,7 +385,9 @@
         "bloodCost": "",
         "retestAbility": "Intimidation",
         "duration": "Instant, permanent until overwritten",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -397,8 +403,33 @@
       }
     },
     {
-      "_id": "404553982caa4f08",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "78672aec2d95454b",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "0e4aa9da6162428d",
+      "name": "Endurance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -410,7 +441,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -426,8 +459,8 @@
       }
     },
     {
-      "_id": "a6cd30a1e2cc4dc7",
-      "name": "Fortitude — 1 Basic — Mettle",
+      "_id": "ac06321fc64940d3",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -439,7 +472,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -455,8 +490,33 @@
       }
     },
     {
-      "_id": "599891444425474a",
-      "name": "Presence — 1 Basic — Awe",
+      "_id": "1f51811f8f1d4923",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "6c78c61d5bb840bf",
+      "name": "Awe",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -468,7 +528,9 @@
         "bloodCost": "1 Social Trait",
         "retestAbility": "Leadership",
         "duration": "One challenge",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -484,8 +546,8 @@
       }
     },
     {
-      "_id": "a15feb27172e4c06",
-      "name": "Presence — 1 Basic — Dread Gaze",
+      "_id": "54e87b2087464528",
+      "name": "Dread Gaze",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -497,7 +559,9 @@
         "bloodCost": "",
         "retestAbility": "Leadership",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -513,8 +577,8 @@
       }
     },
     {
-      "_id": "53721b58e68e45ec",
-      "name": "Presence — 2 Intermediate — Entrancement",
+      "_id": "5f84d7ad00174be8",
+      "name": "Entrancement",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -526,7 +590,34 @@
         "bloodCost": "",
         "retestAbility": "Leadership",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9ef9e212182648bb",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

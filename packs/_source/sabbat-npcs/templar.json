@@ -282,20 +282,22 @@
   },
   "items": [
     {
-      "_id": "d643e2038bda4c5f",
-      "name": "Animalism — 1 Basic — Feral Whispers",
+      "_id": "06df16cb9688497d",
+      "name": "Beckoning",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By meeting an animal's gaze and making a related sound, you can communicate with it and, through a Social Challenge, command it to perform simple tasks for the rest of the evening.</p>",
+        "description": "<p>By uttering an animal call, you summon nearby animals of a chosen type to your side, favorably disposed toward you, by spending a Social Trait per animal summoned.</p>",
         "source": "Laws of the Night Revised, Disciplines",
         "discipline": "Animalism",
         "level": "basic",
         "challengeType": "social",
         "bloodCost": "",
         "retestAbility": "Animal Ken",
-        "duration": "One scene",
-        "activation": "challenge"
+        "duration": "Until threatened or scene ends",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -311,20 +313,16 @@
       }
     },
     {
-      "_id": "e253cd08ec73423c",
-      "name": "Fortitude — 1 Basic — Endurance",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "c796965f4b1240f1",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Fortitude",
-        "level": "basic",
-        "challengeType": "none",
-        "bloodCost": "",
-        "retestAbility": "Survival",
-        "duration": "Permanent (passive)",
-        "activation": "passive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
@@ -340,8 +338,8 @@
       }
     },
     {
-      "_id": "b3e0bccc577943df",
-      "name": "Fortitude — 1 Basic — Mettle",
+      "_id": "af143d0daf3449b0",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -353,7 +351,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -369,12 +369,13 @@
       }
     },
     {
-      "_id": "5d448e1d19af40f9",
-      "name": "Fortitude — 2 Intermediate — Brace for Impact",
+      "_id": "605ae7c9483f4d10",
+      "name": "Brace for Impact",
       "type": "power",
       "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
       "system": {
         "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)",
         "discipline": "Fortitude",
         "level": "intermediate",
         "challengeType": "static",
@@ -382,8 +383,8 @@
         "retestAbility": "Athletics",
         "duration": "Instantaneous (per impact)",
         "activation": "reflexive",
-        "prerequisites": "Fortitude (3), Potence (3)",
-        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)"
+        "active": false,
+        "prerequisites": "Fortitude (3), Potence (3)"
       },
       "effects": [],
       "folder": null,
@@ -399,20 +400,22 @@
       }
     },
     {
-      "_id": "b34a3efbb12b43ce",
-      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "_id": "8f8dd251c8954805",
+      "name": "Resistance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By remaining completely still and silent in shadow or behind cover, you fade from notice to all but those using Auspex or similar senses; any movement, speech, or interaction breaks the concealment immediately.</p>",
+        "description": "<p>When you suffer lethal or bashing damage, you may make a Simple Test (improved by spending a stamina-related Physical Trait) to remove one level of that damage entirely; usable once per attack, and may be combined with Resilience.</p>",
         "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Obfuscate",
-        "level": "basic",
-        "challengeType": "none",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "physical",
         "bloodCost": "",
-        "retestAbility": "Stealth",
-        "duration": "While still and silent",
-        "activation": "toggle"
+        "retestAbility": "Survival",
+        "duration": "Instant",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -428,8 +431,33 @@
       }
     },
     {
-      "_id": "0cebd5e69d524fc3",
-      "name": "Obfuscate — 1 Basic — Unseen Presence",
+      "_id": "58dcae0775b440c2",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8e00ce9454ad42fc",
+      "name": "Unseen Presence",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -441,7 +469,9 @@
         "bloodCost": "",
         "retestAbility": "Stealth",
         "duration": "Until concealment is broken",
-        "activation": "toggle"
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -457,8 +487,8 @@
       }
     },
     {
-      "_id": "e47acc5ace534bc8",
-      "name": "Obfuscate — 2 Intermediate — Mask of a Thousand Faces",
+      "_id": "5f753d8421674816",
+      "name": "Mask of a Thousand Faces",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -470,7 +500,9 @@
         "bloodCost": "",
         "retestAbility": "Stealth",
         "duration": "Until unconsciousness, torpor, or death",
-        "activation": "toggle"
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -486,49 +518,22 @@
       }
     },
     {
-      "_id": "eab6b8948b4d4c36",
-      "name": "Potence — 1 Basic — Prowess",
-      "type": "power",
-      "img": "icons/skills/melee/strike-fist-punch-orange.webp",
-      "system": {
-        "description": "<p>Your unarmed and clubbing attacks inflict lethal rather than bashing damage if you choose. Once per game session you may also restore all of your used Brawny, Ferocious, Stalwart, Tough, and Wiry Physical Traits at once. Prowess costs nothing and isn't an action - it can be used at any time.</p>",
-        "source": "Laws of the Night Revised, p.150",
-        "discipline": "Potence",
-        "level": "basic",
-        "challengeType": "physical",
-        "bloodCost": "",
-        "retestAbility": "",
-        "duration": "Permanent / once per session",
-        "activation": "passive"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "425cd1c92ae041cc",
-      "name": "Potence — 2 Intermediate — Vigor",
+      "_id": "e419aa2c30ba4e82",
+      "name": "Vanish from the Mind's Eye",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
+        "description": "<p>You gain the benefits of Unseen Presence even while speaking or moving, and may declare a mass Mental Challenge against onlookers (bidding a Mental Trait per onlooker) at the end of a turn to fade from view entirely, regardless of their Auspex.</p>",
         "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Potence",
+        "discipline": "Obfuscate",
         "level": "intermediate",
-        "challengeType": "physical",
+        "challengeType": "mental",
         "bloodCost": "",
-        "retestAbility": "Brawl (or appropriate combat Ability)",
-        "duration": "One challenge",
-        "activation": "passive"
+        "retestAbility": "Stealth",
+        "duration": "Until concealment is broken",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -544,8 +549,33 @@
       }
     },
     {
-      "_id": "8c33cd7db7cc4dff",
-      "name": "Potence — 1 Basic — Might",
+      "_id": "53d85fb4f9a04d37",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9c35e9f8b5ff4c56",
+      "name": "Might",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -557,7 +587,96 @@
         "bloodCost": "",
         "retestAbility": "Brawl (or appropriate combat Ability)",
         "duration": "One challenge",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "99c8669d038e418f",
+      "name": "Vigor",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d116ec8d3212467b",
+      "name": "Gentle Nudge",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Facetiously named, this power allows the Kindred to physically knock another character away from herself with the slightest of touches. Although this power does no damage in and of itself, its use is quite humbling &mdash; to be hurled away from an elder in a social setting has its embarrassing repercussions. Some Kindred use this power surreptitiously, touching their victims and sending them reeling across the room; others use it as a not-so-subtle display of their might, giving their victim a casual slap with overwhelming results.</p><p><strong>System:</strong> The player spends a Blood Trait and must succeed in a physical challenge to touch the target (this may be done surreptitiously, but the player may not make use of other Potence benefits). The challenge is not required if the subject allows the player to touch him (a handshake, a &ldquo;friendly&rdquo; hand on the shoulder, etc). This power hurls the victim 20 feet directly away from the invoking character. If the subject strikes a wall or other solid obstacle, he suffers two health levels of bashing damage. Otherwise, the character needs to win a static physical challenge against six Traits to remain standing.</p>",
+        "source": "Clanbook: Brujah, Chapter Two",
+        "discipline": "Potence",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "One Blood Trait",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Potence (6, Master tier)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "50f410df8ce54948",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

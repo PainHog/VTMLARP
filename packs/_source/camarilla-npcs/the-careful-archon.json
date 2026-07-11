@@ -343,8 +343,8 @@
   },
   "items": [
     {
-      "_id": "827587c05d944e2f",
-      "name": "Auspex — 1 Basic — Heightened Senses",
+      "_id": "9a3d7654c04a4d1b",
+      "name": "Heightened Senses",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -357,7 +357,7 @@
         "retestAbility": "Investigation",
         "duration": "At will",
         "activation": "passive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -374,8 +374,8 @@
       }
     },
     {
-      "_id": "d65d4bd8e5b04a0a",
-      "name": "Auspex — 1 Basic — Aura Perception",
+      "_id": "d990dd5bda6e4ff6",
+      "name": "Aura Perception",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -387,7 +387,9 @@
         "bloodCost": "",
         "retestAbility": "Investigation",
         "duration": "Instant",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -403,8 +405,8 @@
       }
     },
     {
-      "_id": "dfa1db3550e3404b",
-      "name": "Auspex — 2 Intermediate — The Spirit's Touch",
+      "_id": "7006a838bcbf43f4",
+      "name": "The Spirit's Touch",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -417,7 +419,7 @@
         "retestAbility": "Investigation",
         "duration": "Instant, repeatable",
         "activation": "challenge",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -434,8 +436,33 @@
       }
     },
     {
-      "_id": "5c2cdd2b41db43c9",
-      "name": "Celerity — 1 Basic — Alacrity",
+      "_id": "e900b71896224528",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "066ed70c9ee34efd",
+      "name": "Alacrity",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -447,7 +474,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "None (innate)",
         "duration": "One turn",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -463,8 +492,8 @@
       }
     },
     {
-      "_id": "4253e37e7c064add",
-      "name": "Celerity — 1 Basic — Swiftness",
+      "_id": "0e15ad39bcd54d3d",
+      "name": "Swiftness",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -476,7 +505,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "None (innate)",
         "duration": "One turn",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -492,8 +523,8 @@
       }
     },
     {
-      "_id": "033959f47c874418",
-      "name": "Celerity — 2 Intermediate — Rapidity",
+      "_id": "2966495715d8483a",
+      "name": "Rapidity",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -506,7 +537,7 @@
         "retestAbility": "None (innate)",
         "duration": "One turn",
         "activation": "reflexive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -523,8 +554,33 @@
       }
     },
     {
-      "_id": "fd905c4ab9c34032",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "9301980e54d24a7e",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b5f0eeecc69a4d66",
+      "name": "Endurance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -536,7 +592,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -552,8 +610,8 @@
       }
     },
     {
-      "_id": "0960e065516041b5",
-      "name": "Fortitude — 1 Basic — Mettle",
+      "_id": "713b72cb9a4548c7",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -565,7 +623,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -581,8 +641,8 @@
       }
     },
     {
-      "_id": "ff5bb516af804ce2",
-      "name": "Fortitude — 2 Intermediate — Resilience",
+      "_id": "a150df50aaac4824",
+      "name": "Resilience",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -594,7 +654,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Instant",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -610,8 +672,33 @@
       }
     },
     {
-      "_id": "4e6da12ac4874699",
-      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "_id": "46b7f29c60804ce0",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "84a940c7aec34874",
+      "name": "Cloak of Shadows",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -623,7 +710,9 @@
         "bloodCost": "",
         "retestAbility": "Stealth",
         "duration": "While still and silent",
-        "activation": "toggle"
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -639,8 +728,8 @@
       }
     },
     {
-      "_id": "3ee222b04b8c4298",
-      "name": "Obfuscate — 1 Basic — Unseen Presence",
+      "_id": "013966f5562a44b7",
+      "name": "Unseen Presence",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -652,7 +741,9 @@
         "bloodCost": "",
         "retestAbility": "Stealth",
         "duration": "Until concealment is broken",
-        "activation": "toggle"
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -668,8 +759,33 @@
       }
     },
     {
-      "_id": "7b4bcc9ca803466f",
-      "name": "Presence — 1 Basic — Awe",
+      "_id": "20481232ab254c40",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b20349f301ac4dc9",
+      "name": "Awe",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -681,7 +797,9 @@
         "bloodCost": "1 Social Trait",
         "retestAbility": "Leadership",
         "duration": "One challenge",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -697,8 +815,8 @@
       }
     },
     {
-      "_id": "beb5574bb8af46a0",
-      "name": "Presence — 1 Basic — Dread Gaze",
+      "_id": "53ca2a5bbebf44a4",
+      "name": "Dread Gaze",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -710,7 +828,65 @@
         "bloodCost": "",
         "retestAbility": "Leadership",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d179b51136a14c3a",
+      "name": "Entrancement",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Social Challenge, you render the target favorably disposed toward you for the rest of the scene or an hour, unable to insult or attack you unless you act against them first.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "860af4bf5f68404b",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

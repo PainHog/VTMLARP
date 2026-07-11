@@ -325,37 +325,8 @@
   },
   "items": [
     {
-      "_id": "25ac4bf775ed4468",
-      "name": "Dominate — 1 Basic — Command",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
-      "system": {
-        "description": "<p>By meeting your subject's gaze and speaking a single emphasized word of command, you win a Mental Challenge to force immediate, unquestioning obedience to a simple order lasting no more than ten minutes.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Dominate",
-        "level": "basic",
-        "challengeType": "mental",
-        "bloodCost": "",
-        "retestAbility": "Intimidation",
-        "duration": "Up to 10 minutes",
-        "activation": "challenge"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "0d7b58c00fc64ffb",
-      "name": "Dominate — 1 Basic — Mesmerism",
+      "_id": "1d513e68b33241cc",
+      "name": "Mesmerism",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -367,7 +338,9 @@
         "bloodCost": "",
         "retestAbility": "Intimidation",
         "duration": "Until command is fulfilled",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -383,8 +356,8 @@
       }
     },
     {
-      "_id": "8c4880578f434dfc",
-      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "_id": "81eae3f27c4043d8",
+      "name": "Forgetful Mind",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -396,7 +369,9 @@
         "bloodCost": "",
         "retestAbility": "Intimidation",
         "duration": "Instant, permanent until overwritten",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -412,20 +387,22 @@
       }
     },
     {
-      "_id": "63cb21bd39f84249",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "a540a311b8bc479a",
+      "name": "Obedience",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Fortitude",
-        "level": "basic",
+        "description": "<p>Rather than requiring eye contact, you may use Dominate through skin-to-skin contact alone (a Physical Challenge may be needed on unwilling subjects). The touch need not be maintained while issuing the command, but only one command may be given per contact; using Dominate again requires touching the subject anew.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
         "challengeType": "none",
         "bloodCost": "",
-        "retestAbility": "Survival",
-        "duration": "Permanent (passive)",
-        "activation": "passive"
+        "retestAbility": "",
+        "duration": "Instant, per command",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -441,8 +418,33 @@
       }
     },
     {
-      "_id": "39b46ecddeb549a7",
-      "name": "Fortitude — 1 Basic — Mettle",
+      "_id": "4ce235c318194def",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b1b4e7a909b042cb",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -454,7 +456,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -470,12 +474,13 @@
       }
     },
     {
-      "_id": "c35f7f65d65a4e0b",
-      "name": "Fortitude — 2 Intermediate — Brace for Impact",
+      "_id": "24a58c55225842c8",
+      "name": "Brace for Impact",
       "type": "power",
       "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
       "system": {
         "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)",
         "discipline": "Fortitude",
         "level": "intermediate",
         "challengeType": "static",
@@ -483,8 +488,8 @@
         "retestAbility": "Athletics",
         "duration": "Instantaneous (per impact)",
         "activation": "reflexive",
-        "prerequisites": "Fortitude (3), Potence (3)",
-        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)"
+        "active": false,
+        "prerequisites": "Fortitude (3), Potence (3)"
       },
       "effects": [],
       "folder": null,
@@ -500,20 +505,22 @@
       }
     },
     {
-      "_id": "f2d4ddaa3a764609",
-      "name": "Presence — 1 Basic — Awe",
+      "_id": "07002cb01fb646d1",
+      "name": "Resistance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By spending a Social Trait during a Social Challenge, you gain an automatic retest, usable once per challenge (or once per target in a mass challenge at the same cost).</p>",
+        "description": "<p>When you suffer lethal or bashing damage, you may make a Simple Test (improved by spending a stamina-related Physical Trait) to remove one level of that damage entirely; usable once per attack, and may be combined with Resilience.</p>",
         "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Presence",
-        "level": "basic",
-        "challengeType": "social",
-        "bloodCost": "1 Social Trait",
-        "retestAbility": "Leadership",
-        "duration": "One challenge",
-        "activation": "reflexive"
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Instant",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -529,8 +536,33 @@
       }
     },
     {
-      "_id": "a6460aa751b04112",
-      "name": "Presence — 1 Basic — Dread Gaze",
+      "_id": "92539b16c73147c8",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d8c088664ea24fd2",
+      "name": "Dread Gaze",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -542,7 +574,9 @@
         "bloodCost": "",
         "retestAbility": "Leadership",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -558,20 +592,22 @@
       }
     },
     {
-      "_id": "98ad1ad68a6841b7",
-      "name": "Presence — 2 Intermediate — Entrancement",
+      "_id": "493ea071f08041ef",
+      "name": "Command the Wary Steed",
       "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "img": "icons/creatures/mammals/horse-brown-galloping.webp",
       "system": {
-        "description": "<p>By winning a Social Challenge, you render the target favorably disposed toward you for the rest of the scene or an hour, unable to insult or attack you unless you act against them first.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
+        "description": "<p>Through use of this power the Cainite can cause enemies' mounts to rear and bolt, singly or en masse, by the strength of his gaze alone, or bolster the courage and tractability of allied steeds for greater control in battle.</p><p><strong>System:</strong> The player spends a Willpower point and rolls Manipulation + Animal Ken (difficulty 7). Enemy mounts become terrified and nigh uncontrollable: Ride roll difficulties increase by three and mounted combat becomes impossible. Friendly mounts become far more pliant (-2 difficulty on all Ride rolls) and may be coerced into situations they would normally avoid.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Three: Zealots",
         "discipline": "Presence",
         "level": "intermediate",
         "challengeType": "social",
         "bloodCost": "",
-        "retestAbility": "Leadership",
-        "duration": "Scene or one hour",
-        "activation": "challenge"
+        "retestAbility": "Manipulation",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Presence (3), Animalism (2)"
       },
       "effects": [],
       "folder": null,
@@ -587,8 +623,64 @@
       }
     },
     {
-      "_id": "5f71dba9e92344dc",
-      "name": "Vicissitude — 1 Basic — Fleshcraft",
+      "_id": "c3b3e01355224214",
+      "name": "Melusine's Song",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-detection-alt-red.webp",
+      "system": {
+        "description": "<p>Named for the legendary (and supposedly fae) progenitor of the houses of Anjou and Lusignan, this power lets a Toreador sway others through song. If the Artisan can phrase her request in the form of a song, her words take on the weight of a nigh-irresistible command.</p><p><strong>System:</strong> The player states the suggestion she wishes to weave into the song and describes the song's nature. Everyone within earshot must resist or unknowingly submit to the request. The effect lasts as long as the Toreador continues singing or until the target leaves her presence; commands requiring the victim to leave the singer's presence can be resisted once more after the enchanting voice fades. Listeners outside the Toreador's immediate presence may notice something odd about the performance, though it registers as little more than an exceptionally fine one; other Toreador within earshot are immediately entranced. As a side benefit, knowledge of this power makes the character a superlative singer even when the power itself is not invoked.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book One: Artisans (Toreador)",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "2 Blood Traits and 1 Willpower Trait",
+        "retestAbility": "Performance",
+        "duration": "As long as the Toreador continues singing, or until the target leaves her presence",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Presence"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5b33a98e1e114c70",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ecc480f65f8d42f9",
+      "name": "Fleshcraft",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -600,7 +692,9 @@
         "bloodCost": "",
         "retestAbility": "Crafts: Body Crafts",
         "duration": "Permanent (heals as aggravated wound on weaker generations)",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -616,20 +710,47 @@
       }
     },
     {
-      "_id": "328dacbe6a964fd3",
-      "name": "Vicissitude — 1 Basic — Malleable Visage",
+      "_id": "ffd46697f02f4eb2",
+      "name": "Horrid Form",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By spending a Blood Trait and time sculpting your flesh, you alter your own cosmetic appearance, or win a Static Mental Challenge (difficulty equal to the subject's Social Traits) to convincingly duplicate someone else's looks, or take on up to three Repugnant Negative Traits.</p>",
+        "description": "<p>By spending two Blood Traits, you warp into an eight-foot rubbery, spiked monstrosity gaining the Physical Traits Brawny, Dexterous, Enduring, Ferocious, Quick, and Stalwart along with Negative Social Traits Bestial, Feral, and Repugnant, inflicting lethal brawling damage with a bonus health level of harm until you choose to revert.</p>",
         "source": "Laws of the Night Revised, Disciplines",
         "discipline": "Vicissitude",
-        "level": "basic",
-        "challengeType": "mental",
-        "bloodCost": "1 Blood Trait",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "2 Blood Traits",
         "retestAbility": "Crafts: Body Crafts",
-        "duration": "Until changed again",
-        "activation": "reflexive"
+        "duration": "Until you choose to revert",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e0101a8f471e48ad",
+      "name": "Vicissitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

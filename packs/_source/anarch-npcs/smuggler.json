@@ -260,8 +260,8 @@
   },
   "items": [
     {
-      "_id": "304a293a7402460b",
-      "name": "Auspex — 1 Basic — Heightened Senses",
+      "_id": "378b1600df7b4f95",
+      "name": "Heightened Senses",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -274,7 +274,7 @@
         "retestAbility": "Investigation",
         "duration": "At will",
         "activation": "passive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -291,8 +291,33 @@
       }
     },
     {
-      "_id": "b871499b68b54db6",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "a2c4f9e033294002",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1a3b26d624f24b06",
+      "name": "Endurance",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -304,7 +329,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -320,8 +347,8 @@
       }
     },
     {
-      "_id": "4a00bb62bacc4ec0",
-      "name": "Fortitude — 1 Basic — Mettle",
+      "_id": "e862d584ec544f28",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -333,7 +360,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -349,20 +378,16 @@
       }
     },
     {
-      "_id": "8829e05a839c410b",
-      "name": "Fortitude — 2 Intermediate — Resilience",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "05d5b9dd04964100",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>When you suffer aggravated damage, you may make a Simple Test (improved by spending a stamina-related Physical Trait) to reduce one level of that damage to lethal damage; usable once per attack.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Fortitude",
-        "level": "intermediate",
-        "challengeType": "physical",
-        "bloodCost": "",
-        "retestAbility": "Survival",
-        "duration": "Instant",
-        "activation": "reflexive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
@@ -378,8 +403,8 @@
       }
     },
     {
-      "_id": "0d980b39bda54b8d",
-      "name": "Protean — 1 Basic — Eyes of the Beast",
+      "_id": "caea14feaf254c5e",
+      "name": "Eyes of the Beast",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -391,7 +416,9 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "At will",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -407,8 +434,8 @@
       }
     },
     {
-      "_id": "aaff848c3b654954",
-      "name": "Protean — 1 Basic — Feral Claws",
+      "_id": "64ab2b0841294fd5",
+      "name": "Feral Claws",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -420,7 +447,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "Survival",
         "duration": "At will",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -436,20 +465,16 @@
       }
     },
     {
-      "_id": "0d57916df6ed4b93",
-      "name": "Protean — 2 Intermediate — Earth Meld",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "ff73c7e4788a4449",
+      "name": "Protean",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>By spending a Blood Trait and a full turn, you sink into raw soil, becoming undetectable and immune to daylight while you sleep undisturbed, rising again at will or if the soil is disturbed.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Protean",
-        "level": "intermediate",
-        "challengeType": "none",
-        "bloodCost": "1 Blood Trait",
-        "retestAbility": "Survival",
-        "duration": "Until you choose to rise",
-        "activation": "reflexive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

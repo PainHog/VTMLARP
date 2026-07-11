@@ -388,37 +388,8 @@
   },
   "items": [
     {
-      "_id": "91c8222d8fef48e3",
-      "name": "Celerity — 1 Basic — Alacrity",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
-      "system": {
-        "description": "<p>By spending a Blood Trait, you preempt any physical action taken in the same turn that you are aware of, acting before your opponent can complete their move.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Celerity",
-        "level": "basic",
-        "challengeType": "physical",
-        "bloodCost": "1 Blood Trait",
-        "retestAbility": "None (innate)",
-        "duration": "One turn",
-        "activation": "reflexive"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "5e1b637716854285",
-      "name": "Celerity — 1 Basic — Swiftness",
+      "_id": "16050e56f4484bc6",
+      "name": "Swiftness",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -430,7 +401,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "None (innate)",
         "duration": "One turn",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -446,20 +419,22 @@
       }
     },
     {
-      "_id": "e51541443e0f4bc0",
-      "name": "Dominate — 1 Basic — Command",
+      "_id": "ed237d54e44e4201",
+      "name": "Legerity",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>By meeting your subject's gaze and speaking a single emphasized word of command, you win a Mental Challenge to force immediate, unquestioning obedience to a simple order lasting no more than ten minutes.</p>",
+        "description": "<p>By spending a Blood Trait, you gain a further additional action at the end of the turn, on top of any gained from Swiftness.</p>",
         "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Dominate",
-        "level": "basic",
-        "challengeType": "mental",
-        "bloodCost": "",
-        "retestAbility": "Intimidation",
-        "duration": "Up to 10 minutes",
-        "activation": "challenge"
+        "discipline": "Celerity",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -475,8 +450,33 @@
       }
     },
     {
-      "_id": "a4dbb0c1f8964491",
-      "name": "Dominate — 1 Basic — Mesmerism",
+      "_id": "3bc79364634c4353",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c3cef10160804e5c",
+      "name": "Mesmerism",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -488,7 +488,9 @@
         "bloodCost": "",
         "retestAbility": "Intimidation",
         "duration": "Until command is fulfilled",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -504,20 +506,22 @@
       }
     },
     {
-      "_id": "0d33c104ebed4d79",
-      "name": "Fortitude — 1 Basic — Endurance",
+      "_id": "edb97252c3934cd8",
+      "name": "Forgetful Mind",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
-        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
         "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Fortitude",
-        "level": "basic",
-        "challengeType": "none",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
         "bloodCost": "",
-        "retestAbility": "Survival",
-        "duration": "Permanent (passive)",
-        "activation": "passive"
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -533,8 +537,33 @@
       }
     },
     {
-      "_id": "4fe1976b172a4959",
-      "name": "Fortitude — 1 Basic — Mettle",
+      "_id": "29fb1e9640d64322",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ac65e60a05884563",
+      "name": "Mettle",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -546,7 +575,65 @@
         "bloodCost": "",
         "retestAbility": "Survival",
         "duration": "Permanent (passive)",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "fe6cd14747d54bf9",
+      "name": "Brace for Impact",
+      "type": "power",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+      "system": {
+        "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Athletics",
+        "duration": "Instantaneous (per impact)",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": "Fortitude (3), Potence (3)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "83729e0935c84134",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

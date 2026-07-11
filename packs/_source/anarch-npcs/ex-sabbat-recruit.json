@@ -262,8 +262,8 @@
   },
   "items": [
     {
-      "_id": "37896eb169864d99",
-      "name": "Potence — 1 Basic — Prowess",
+      "_id": "8ebf056a747144a6",
+      "name": "Prowess",
       "type": "power",
       "img": "icons/skills/melee/strike-fist-punch-orange.webp",
       "system": {
@@ -275,7 +275,9 @@
         "bloodCost": "",
         "retestAbility": "",
         "duration": "Permanent / once per session",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -291,8 +293,8 @@
       }
     },
     {
-      "_id": "cb04909589c246fc",
-      "name": "Potence — 1 Basic — Might",
+      "_id": "772f08008f524f9d",
+      "name": "Might",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -304,7 +306,9 @@
         "bloodCost": "",
         "retestAbility": "Brawl (or appropriate combat Ability)",
         "duration": "One challenge",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -320,8 +324,33 @@
       }
     },
     {
-      "_id": "0389556e998c4bf9",
-      "name": "Obtenebration — 1 Basic — Shadow Play",
+      "_id": "7017041993574b43",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a2941e0288394b5d",
+      "name": "Shadow Play",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -333,7 +362,9 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "Occult",
         "duration": "Scene or one hour",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -349,8 +380,8 @@
       }
     },
     {
-      "_id": "479f424714914e7a",
-      "name": "Obtenebration — 1 Basic — Shroud of Night",
+      "_id": "f2bc7e6c5c6a4bbf",
+      "name": "Shroud of Night",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -362,7 +393,34 @@
         "bloodCost": "1-2 Blood Traits",
         "retestAbility": "Occult",
         "duration": "Scene or one hour",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "70b9f786c93a49d8",
+      "name": "Obtenebration",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,

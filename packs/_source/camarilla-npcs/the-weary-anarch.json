@@ -293,8 +293,8 @@
   },
   "items": [
     {
-      "_id": "9a016592fda54be6",
-      "name": "Celerity — 1 Basic — Alacrity",
+      "_id": "789df81a5ad940d1",
+      "name": "Alacrity",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -306,66 +306,8 @@
         "bloodCost": "1 Blood Trait",
         "retestAbility": "None (innate)",
         "duration": "One turn",
-        "activation": "reflexive"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "14e55685ca6b47fe",
-      "name": "Celerity — 1 Basic — Swiftness",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
-      "system": {
-        "description": "<p>By spending a Blood Trait, you gain one additional action at the end of the turn, after all basic actions resolve.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Celerity",
-        "level": "basic",
-        "challengeType": "physical",
-        "bloodCost": "1 Blood Trait",
-        "retestAbility": "None (innate)",
-        "duration": "One turn",
-        "activation": "reflexive"
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "systemId": "vtmlarp",
-        "systemVersion": "0.1.0",
-        "coreVersion": "12",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      }
-    },
-    {
-      "_id": "3eb7b31094504b94",
-      "name": "Celerity — 2 Intermediate — Rapidity",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
-      "system": {
-        "description": "<p>In addition to the benefits of Swiftness, spending a Blood Trait lets you use the Bomb in challenges depending on speed or agility (not strength), after warning your opponent of the ability and how it works.</p>",
-        "source": "Faith and Fire, Disciplines",
-        "discipline": "Celerity",
-        "level": "intermediate",
-        "challengeType": "physical",
-        "bloodCost": "1 Blood Trait",
-        "retestAbility": "None (innate)",
-        "duration": "One turn",
         "activation": "reflexive",
-        "active": true,
+        "active": false,
         "prerequisites": ""
       },
       "effects": [],
@@ -382,8 +324,64 @@
       }
     },
     {
-      "_id": "a7ddb9efb2e043fd",
-      "name": "Potence — 1 Basic — Prowess",
+      "_id": "ff1c38aff0e54f13",
+      "name": "Swiftness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain one additional action at the end of the turn, after all basic actions resolve.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "04eda489da394d14",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b97e6dc06fdf4def",
+      "name": "Prowess",
       "type": "power",
       "img": "icons/skills/melee/strike-fist-punch-orange.webp",
       "system": {
@@ -395,7 +393,9 @@
         "bloodCost": "",
         "retestAbility": "",
         "duration": "Permanent / once per session",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -411,8 +411,8 @@
       }
     },
     {
-      "_id": "68c9cf939f12475b",
-      "name": "Potence — 1 Basic — Might",
+      "_id": "854acd93ee0943d0",
+      "name": "Might",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -424,7 +424,9 @@
         "bloodCost": "",
         "retestAbility": "Brawl (or appropriate combat Ability)",
         "duration": "One challenge",
-        "activation": "passive"
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -440,20 +442,16 @@
       }
     },
     {
-      "_id": "9dd6fa522be84fa5",
-      "name": "Potence — 2 Intermediate — Vigor",
-      "type": "power",
-      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "_id": "63b24aa8ee794b47",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
       "system": {
-        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
-        "source": "Laws of the Night Revised, Disciplines",
-        "discipline": "Potence",
-        "level": "intermediate",
-        "challengeType": "physical",
-        "bloodCost": "",
-        "retestAbility": "Brawl (or appropriate combat Ability)",
-        "duration": "One challenge",
-        "activation": "passive"
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
@@ -469,8 +467,8 @@
       }
     },
     {
-      "_id": "01da979c4b8a4012",
-      "name": "Presence — 1 Basic — Awe",
+      "_id": "2919d5510fca4c5b",
+      "name": "Awe",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -482,7 +480,9 @@
         "bloodCost": "1 Social Trait",
         "retestAbility": "Leadership",
         "duration": "One challenge",
-        "activation": "reflexive"
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
       },
       "effects": [],
       "folder": null,
@@ -498,8 +498,8 @@
       }
     },
     {
-      "_id": "a49bee8f654a4a08",
-      "name": "Presence — 1 Basic — Dread Gaze",
+      "_id": "0e10512a0ea44fc8",
+      "name": "Dread Gaze",
       "type": "power",
       "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
       "system": {
@@ -511,7 +511,34 @@
         "bloodCost": "",
         "retestAbility": "Leadership",
         "duration": "Scene or one hour",
-        "activation": "challenge"
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a83d1ef240304129",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
       },
       "effects": [],
       "folder": null,
