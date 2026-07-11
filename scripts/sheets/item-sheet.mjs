@@ -43,24 +43,15 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     return context;
   }
 
-  /** @override */
-  _onRender(context, options) {
-    super._onRender(context, options);
-
-    // ApplicationV2 doesn't auto-activate ProseMirror editors or the
-    // portrait-image FilePicker the way V1's FormApplication did - both
-    // need to be wired up by hand on every render.
-    for (const editorDiv of this.element.querySelectorAll(".editor")) {
-      this._activateEditor(editorDiv);
-    }
-
-    this.element.querySelector("img[data-edit]")?.addEventListener("click", event => {
-      const target = event.currentTarget.dataset.edit;
-      new foundry.applications.apps.FilePicker({
-        type: "image",
-        current: foundry.utils.getProperty(this.item, target),
-        callback: path => this.item.update({ [target]: path })
-      }).render(true);
-    });
+  /**
+   * ApplicationV2's built-in tab-switch handler recalculates the window's
+   * height to fit whichever tab is now showing (updatePosition defaults to
+   * true), which visibly resizes and repositions the whole window every
+   * time a tab is clicked. This sheet's tabs are similar enough in height
+   * that a fixed size reads better than that jumpiness.
+   * @override
+   */
+  changeTab(tab, group, options = {}) {
+    return super.changeTab(tab, group, { ...options, updatePosition: false });
   }
 }

@@ -1,7 +1,7 @@
 <form class="{{cssClass}} flexcol vtmlarp-item-sheet" autocomplete="off">
 
   <header class="sheet-header">
-    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" data-action="editImage" title="{{item.name}}">
     <div class="header-fields flexcol">
       <input name="name" type="text" value="{{item.name}}" placeholder="Name">
       <span class="item-type">{{vtmCapitalize item.type}}</span>
@@ -15,7 +15,7 @@
 
   <section class="sheet-body">
     <div class="tab {{#if tabs.description.active}}active{{/if}}" data-group="primary" data-tab="description">
-      {{editor system.description target="system.description" button=true engine="prosemirror" owner=owner}}
+      <prose-mirror name="system.description" value="{{system.description}}" {{#unless owner}}disabled{{/unless}} toggled button></prose-mirror>
       <label>Source <input type="text" name="system.source" value="{{system.source}}" placeholder="e.g. Laws of the Night Revised, p.123"></label>
     </div>
 
