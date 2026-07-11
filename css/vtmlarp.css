@@ -46,8 +46,20 @@
 
 .app.window-app .window-header .window-title { color: var(--vtm-text) !important; }
 
+/* A large, very low-opacity bat silhouette watermark behind every window's
+   content - the fill's own alpha (baked into the SVG, not a CSS opacity on
+   the whole layer) is what keeps it faint, since this is stacked as a second
+   background alongside the gradient below rather than a separate element. */
 .app.window-app .window-content {
-  background: radial-gradient(ellipse at top, #1c1616 0%, #0c0a0a 60%, #060505 100%) !important;
+  /* The first-listed background layer paints on top, so the (semi-transparent)
+     bat image must come before the (fully opaque) gradient - the other way
+     around, the gradient completely hides it. */
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20200%20100%27%3E%3Cpath%20fill%3D%27%238a0303%27%20fill-opacity%3D%270.06%27%20d%3D%27M100%2C58%20C100%2C50%2096%2C42%2088%2C40%20L92%2C25%20L82%2C38%20C70%2C36%2058%2C40%2048%2C48%20C38%2C40%2024%2C32%208%2C30%20C14%2C44%2026%2C56%2040%2C58%20L24%2C50%20L44%2C62%20L30%2C58%20L52%2C68%20C64%2C64%2074%2C60%2086%2C60%20C88%2C64%2092%2C66%20100%2C68%20C108%2C66%20112%2C64%20114%2C60%20C126%2C60%20136%2C64%20148%2C68%20L170%2C58%20L156%2C62%20L176%2C50%20L160%2C58%20C174%2C56%20186%2C44%20192%2C30%20C176%2C32%20162%2C40%20152%2C48%20C142%2C40%20130%2C36%20118%2C38%20L108%2C25%20L112%2C40%20C104%2C42%20100%2C50%20100%2C58%20Z%27/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at top, #1c1616 0%, #0c0a0a 60%, #060505 100%)
+    !important;
+  background-repeat: no-repeat !important;
+  background-position: center 40%, center center !important;
+  background-size: 65% auto, auto !important;
   color: var(--vtm-text) !important;
 }
 
@@ -252,6 +264,7 @@
 /* -------------------------------------------------------------------- */
 
 .vtmlarp .sheet-header {
+  position: relative;
   display: flex;
   gap: 10px;
   border-bottom: 2px solid var(--vtm-red);
@@ -259,6 +272,26 @@
   background: linear-gradient(180deg, #1e1414 0%, #100a0a 100%);
   border-radius: 4px 4px 0 0;
 }
+
+/* Decorative bat silhouettes flanking the header - purely ornamental
+   (pointer-events: none so they never intercept clicks), a small bit of
+   "vampiry" flair on the one part of the sheet every player looks at first. */
+.vtmlarp .sheet-header::before,
+.vtmlarp .sheet-header::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 50px;
+  height: 25px;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20200%20100%27%3E%3Cpath%20fill%3D%27%23b8121a%27%20d%3D%27M100%2C58%20C100%2C50%2096%2C42%2088%2C40%20L92%2C25%20L82%2C38%20C70%2C36%2058%2C40%2048%2C48%20C38%2C40%2024%2C32%208%2C30%20C14%2C44%2026%2C56%2040%2C58%20L24%2C50%20L44%2C62%20L30%2C58%20L52%2C68%20C64%2C64%2074%2C60%2086%2C60%20C88%2C64%2092%2C66%20100%2C68%20C108%2C66%20112%2C64%20114%2C60%20C126%2C60%20136%2C64%20148%2C68%20L170%2C58%20L156%2C62%20L176%2C50%20L160%2C58%20C174%2C56%20186%2C44%20192%2C30%20C176%2C32%20162%2C40%20152%2C48%20C142%2C40%20130%2C36%20118%2C38%20L108%2C25%20L112%2C40%20C104%2C42%20100%2C50%20100%2C58%20Z%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.vtmlarp .sheet-header::before { left: 8px; }
+.vtmlarp .sheet-header::after { right: 8px; }
 
 .vtmlarp .sheet-header .header-fields input[name="name"] {
   font-size: 24px;
@@ -622,11 +655,28 @@
    theme variables, since sheet text would be nearly invisible in chat. */
 
 .vtmlarp-challenge-card, .vtmlarp-frenzy-card {
+  position: relative;
   padding: 8px;
   background: #f7f4ee;
   border: 1px solid var(--vtm-red);
   border-radius: 4px;
   color: #201a14;
+  overflow: hidden;
+}
+
+/* A small, faint corner flourish - chat messages must stay easily readable,
+   so this stays low-opacity and tucked away from any text. */
+.vtmlarp-challenge-card::before, .vtmlarp-frenzy-card::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 46px;
+  height: 23px;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20200%20100%27%3E%3Cpath%20fill%3D%27%238a0303%27%20fill-opacity%3D%270.5%27%20d%3D%27M100%2C58%20C100%2C50%2096%2C42%2088%2C40%20L92%2C25%20L82%2C38%20C70%2C36%2058%2C40%2048%2C48%20C38%2C40%2024%2C32%208%2C30%20C14%2C44%2026%2C56%2040%2C58%20L24%2C50%20L44%2C62%20L30%2C58%20L52%2C68%20C64%2C64%2074%2C60%2086%2C60%20C88%2C64%2092%2C66%20100%2C68%20C108%2C66%20112%2C64%20114%2C60%20C126%2C60%20136%2C64%20148%2C68%20L170%2C58%20L156%2C62%20L176%2C50%20L160%2C58%20C174%2C56%20186%2C44%20192%2C30%20C176%2C32%20162%2C40%20152%2C48%20C142%2C40%20130%2C36%20118%2C38%20L108%2C25%20L112%2C40%20C104%2C42%20100%2C50%20100%2C58%20Z%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
 }
 
 .vtmlarp-challenge-card .vtm-clash-header,
