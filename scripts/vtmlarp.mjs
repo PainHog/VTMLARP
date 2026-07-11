@@ -5,6 +5,7 @@ import {
 } from "./documents/item.mjs";
 import { VTMActorSheet } from "./sheets/actor-sheet.mjs";
 import { VTMItemSheet } from "./sheets/item-sheet.mjs";
+import { ChallengeResponseApp } from "./apps/challenge-response.mjs";
 
 Hooks.once("init", () => {
   console.log("VTMLARP | Initializing Mind's Eye Theatre: Laws of the Night system");
@@ -42,16 +43,30 @@ Hooks.once("init", () => {
 
   const GESTURE_EMOJI = { rock: "✊", paper: "✋", scissors: "✌️", bomb: "💣" };
   Handlebars.registerHelper("vtmGestureEmoji", gesture => GESTURE_EMOJI[gesture] ?? "?");
+});
 
-  // House rule: instead of bidding a hand-picked subset of individual traits,
-  // a player can bid their whole remaining trait pool of the matching
-  // category (Physical/Social/Mental) at once against the opponent's pool.
-  game.settings.register("vtmlarp", "fullBidTraitRule", {
-    name: "Full-Bid Trait Rule",
-    hint: "Allow players to bid their entire remaining trait pool of a category (Physical/Social/Mental) at once in a Challenge, instead of only individually-selected traits.",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: false
+Hooks.once("ready", () => {
+  // A Challenge's opponent side is resolved on the responding player's (or,
+  // for an unowned NPC, any GM's) own client rather than the challenger's -
+  // this system is played online, not face to face, so the challenger must
+  // never see the opponent's gesture before it's thrown. ChallengeApp emits
+  // this event; every connected client receives it and only the intended
+  // recipient(s) actually pop the response dialog.
+  game.socket.on("system.vtmlarp", data => {
+    if (data.action !== "challengeRequest") return;
+    if (!data.targetUserIds.includes(game.user.id)) return;
+
+    const challengerActor = game.actors.get(data.challengerActorId);
+    const opponentActor = game.actors.get(data.opponentActorId);
+    if (!challengerActor || !opponentActor) return;
+
+    new ChallengeResponseApp({
+      challengerActor,
+      challengerName: data.challengerName,
+      challengeType: data.challengeType,
+      challengerGesture: data.challengerGesture,
+      opponentActor,
+      retest: data.retest
+    }).render(true);
   });
 });

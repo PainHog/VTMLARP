@@ -1,0 +1,13 @@
+<form class="vtmlarp-challenge flexcol">
+  <p class="hint">{{challengerName}} has challenged {{#if opponentActorName}}{{opponentActorName}}{{else}}you{{/if}} to a {{challengeType}} Challenge. Choose your gesture - their throw stays hidden until you submit.</p>
+
+  <label>Your Gesture
+    <select name="gesture">
+      {{#each gestures as |g|}}
+      <option value="{{g}}">{{vtmCapitalize g}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <button type="submit" class="vtm-submit"><i class="fas fa-bullhorn"></i> Throw</button>
+</form>

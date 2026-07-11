@@ -1,5 +1,5 @@
 <form class="vtmlarp-challenge flexcol">
-  <p class="hint">Throw Rock-Paper-Scissors face to face with your opponent as normal, then log the result here for the table's record.</p>
+  <p class="hint">For a Physical/Social/Mental Challenge, pick your opponent and gesture below - they'll get a private popup to choose their own gesture, and the result posts to chat once both sides are in. Each side's Traits Bid is always their full remaining pool of the matching Attribute category.</p>
 
   <label>Challenge Type
     <select name="challengeType">
@@ -8,15 +8,6 @@
       {{/each}}
     </select>
   </label>
-
-  <label>Traits Bid
-    <input type="number" name="traitsBid" value="1" min="0">
-  </label>
-
-  {{#if fullBidEnabled}}
-  <label><input type="checkbox" name="fullBid"> Full-Bid: use entire trait pool for this Challenge Type</label>
-  <p class="hint">Remaining pools — Physical: {{pools.physical}}, Social: {{pools.social}}, Mental: {{pools.mental}}</p>
-  {{/if}}
 
   {{#if equipmentBonuses.length}}
   <fieldset>
@@ -31,10 +22,12 @@
 
   <div class="static-only" style="display:none;">
     <p class="hint">Static Challenge: no opposing throw - your Traits Bid must exceed the Difficulty (a tie is not enough) to succeed.</p>
+    <label>Traits Bid <input type="number" name="traitsBid" value="1" min="0"></label>
     <label>Difficulty <input type="number" name="difficulty" value="1" min="1"></label>
   </div>
 
   <div class="rps-only">
+    <p class="hint">Your Traits Bid (<span class="own-pool-hint"></span>) and your opponent's are pulled automatically from each side's current pool.</p>
     <label>Your Gesture
       <select name="gesture">
         {{#each gestures as |g|}}
@@ -43,22 +36,17 @@
       </select>
     </label>
 
-    <fieldset>
-      <legend>Opponent (optional)</legend>
-      <label>Name <input type="text" name="opponentName" placeholder="Opponent name"></label>
-      <label>Their Traits Bid <input type="number" name="opponentTraitsBid" value="1" min="0"></label>
-      <label>Their Gesture
-        <select name="opponentGesture">
-          <option value="">-</option>
-          {{#each gestures as |g|}}
-          <option value="{{g}}">{{vtmCapitalize g}}</option>
-          {{/each}}
-        </select>
-      </label>
-    </fieldset>
+    <label>Opponent
+      <select name="opponentActorId">
+        <option value="">— Select an opponent —</option>
+        {{#each actorOptions as |a|}}
+        <option value="{{a.id}}">{{a.name}}</option>
+        {{/each}}
+      </select>
+    </label>
   </div>
 
   <label>Retest Used <input type="text" name="retest" placeholder="e.g. Willpower, Brawl Ability"></label>
 
-  <button type="submit" class="vtm-submit"><i class="fas fa-bullhorn"></i> Post Result to Chat</button>
+  <button type="submit" class="vtm-submit"><i class="fas fa-bullhorn"></i> Send Challenge</button>
 </form>
