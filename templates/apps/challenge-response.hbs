@@ -1,6 +1,15 @@
 <form class="vtmlarp-challenge flexcol">
   <p class="hint">{{challengerName}} has challenged {{#if opponentActorName}}{{opponentActorName}}{{else}}you{{/if}} to a {{challengeType}} Challenge. Choose your gesture - their throw stays hidden until you submit.</p>
 
+  {{#if retest}}
+  <fieldset class="block-retest">
+    <legend>Retest Declared: {{retest}}</legend>
+    <p class="hint">A retest can be blocked by an opponent who can match its conditions (e.g., Dodge blocking a Firearms retest). Blocking skips the throw entirely and ends the Challenge in your favor.</p>
+    <label><input type="checkbox" name="block"> Block this retest</label>
+    <label>With what <input type="text" name="blockSource" placeholder="e.g. Dodge"></label>
+  </fieldset>
+  {{/if}}
+
   <label>Your Gesture
     <select name="gesture">
       {{#each gestures as |g|}}

@@ -33,6 +33,7 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
     context.challengerName = this.request.challengerName;
     context.challengeType = this.request.challengeType;
     context.opponentActorName = this.request.opponentActor?.name ?? "";
+    context.retest = this.request.retest;
     return context;
   }
 
@@ -46,6 +47,22 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
     event.preventDefault();
     const form = event.currentTarget.closest("form");
     const fd = new FormDataExtended(form).object;
+
+    // Retests can be blocked by an opponent who can match its conditions
+    // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw
+    // entirely rather than resolving a gesture exchange.
+    if (this.request.retest && fd.block) {
+      const opponentName = this.request.opponentActor?.name ?? "Opponent";
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this.request.challengerActor }),
+        content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${this.request.challengeType} Challenge - Retest Blocked</span></div>`
+          + `<p>${this.request.challengerName}'s retest (<strong>${this.request.retest}</strong>) was blocked by ${opponentName}`
+          + (fd.blockSource ? ` using <strong>${fd.blockSource}</strong>` : "") + `.</p>`
+          + `<div class="vtm-result-banner result-Lost">${opponentName} Wins (retest blocked)!</div></div>`
+      });
+      this.close();
+      return;
+    }
 
     await resolveAndPostGestureChallenge({
       challengerActor: this.request.challengerActor,
