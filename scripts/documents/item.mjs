@@ -56,7 +56,12 @@ export class VTMPowerData extends BaseItemData {
       level: new fields.StringField({
         required: true,
         initial: "basic",
-        choices: ["basic", "intermediate", "advanced"]
+        // "elder" covers the rare Elder-tier powers (e.g. Loki's Gift,
+        // Song in the Dark) beyond the normal Basic/Intermediate/Advanced
+        // progression - it was missing here even though several compendium
+        // entries legitimately use it, which silently failed schema
+        // validation (and therefore drag-and-drop onto a sheet) for them.
+        choices: ["basic", "intermediate", "advanced", "elder"]
       }),
       challengeType: new fields.StringField({
         required: true,

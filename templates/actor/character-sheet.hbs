@@ -29,9 +29,9 @@
             {{/each}}
           </select>
         </label>
-        <label>Free Traits
+        <label>Gen. Traits Spent
           <input type="number" name="system.freeTraits" value="{{system.freeTraits}}" min="0"
-            title="Background/Free Traits spent (1 per Generation purchased below 13th, at creation).">
+            title="Character-creation only, separate from Experience: 1 Background/Free Trait spent per Generation purchased below 13th. Not touched again after creation.">
         </label>
         <label>Nature
           <select name="system.nature">
@@ -92,7 +92,8 @@
         </div>
         <div class="pool">
           <label>Experience</label>
-          <input type="number" name="system.experience.value" value="{{system.experience.value}}">
+          <input type="number" name="system.experience.value" value="{{system.experience.value}}"
+            title="Ongoing: earned after each session, spent on new Attributes/Abilities/Backgrounds/Disciplines. Separate from Gen. Traits Spent, which is a one-time creation cost.">
         </div>
       </div>
 
