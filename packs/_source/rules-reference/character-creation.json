@@ -1,0 +1,189 @@
+{
+  "_id": "9b2d10b4317f4b02",
+  "name": "Character Creation",
+  "pages": [
+    {
+      "_id": "1736edba2a0b4059",
+      "name": "Overview",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Building a Kindred character in Laws of the Night follows five steps. Work through them in order - each step builds on the choices made in the last, and a Storyteller should sign off on the finished sheet before play begins.</p><ol><li><strong>Concept</strong> - who is this character, and what do they want?</li><li><strong>Attributes</strong> - prioritize Physical, Social, and Mental, then choose Traits.</li><li><strong>Advantages</strong> - Abilities, Disciplines, and Backgrounds.</li><li><strong>Last Touches</strong> - Blood, Willpower, Virtues, Morality, Negative Traits, Flaws, and Free Traits.</li><li><strong>Spark of Life</strong> - the personality and history no rule can capture.</li></ol><p>This guide covers the standard process for a @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla}-aligned neonate. If your character belongs to a different sect or background, check whether a variant applies before you start: @UUID[Compendium.vtmlarp.rules-reference.JournalEntry.e2fd61ed1e78443b]{Anarch Character Creation}, @UUID[Compendium.vtmlarp.rules-reference.JournalEntry.9a7d2932a2da4f93]{Elder Character Creation}, @UUID[Compendium.vtmlarp.rules-reference.JournalEntry.d0d67acc59904d61]{Dark Ages Character Creation}, and @UUID[Compendium.vtmlarp.rules-reference.JournalEntry.c864a831ec7b4c67]{Brujah Character Creation Guidance} are all built on top of these same five steps, adjusted for their circumstances.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp"
+      }
+    },
+    {
+      "_id": "113eb1efdc1c4822",
+      "name": "Step One: Concept",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Start with a basic idea to build the character around - not just a job or a clan, but a person with wants and problems. What did they do before the Embrace? What do they want now that they're Kindred? What's standing in their way?</p><p>From the concept, work out:</p><ul><li><strong>Clan</strong> - which clan the character's sire belonged to shapes their Disciplines, clan weakness, and often their social circle. Browse the Clans compendium for the full list.</li><li><strong>Nature and Demeanor</strong> - the character's true personality (Nature) versus the face they show the world (Demeanor). These can match or differ.</li><li><strong>Path of Enlightenment</strong> - most characters follow Humanity, but some clans and circumstances call for one of the alternate Paths. Consult your Storyteller before choosing one of the alternate Paths - see the Paths of Enlightenment compendium.</li><li><strong>Sect</strong> - @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla}, @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat}, @UUID[Compendium.vtmlarp.sects.JournalEntry.f6a3258d39874a5c]{Anarch Movement}, or something rarer. See the Sects compendium for what each one actually means day to day.</li><li><strong>Name</strong> - and, if you like, a mortal name left behind.</li></ul>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 100,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp"
+      }
+    },
+    {
+      "_id": "4cf4fa5a08c84360",
+      "name": "Step Two: Attributes",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Prioritize your three Attribute categories - Physical, Social, and Mental - based on your concept. Whichever fits your character best is Primary, the next is Secondary, and the last is Tertiary.</p><p>Then choose specific Traits (adjectives) to fill each category:</p><ul><li><strong>Primary category:</strong> 7 Traits</li><li><strong>Secondary category:</strong> 5 Traits</li><li><strong>Tertiary category:</strong> 3 Traits</li></ul><p>You can take the same Trait more than once to show exceptional depth in one area. A full list of Attribute Traits is in the Attributes compendium, sorted by Physical/Social/Mental category.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 200,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp"
+      }
+    },
+    {
+      "_id": "dfa22a86164b41e8",
+      "name": "Step Three: Advantages",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Abilities:</strong> Choose 5 Ability Traits total (you can put more than one Trait into the same Ability to raise its rating). See the Abilities compendium for the full list of Talents, Skills, and Knowledges.</p><p><strong>Disciplines:</strong> Choose 3 Basic-level Disciplines from your clan's specialties, taken in order (you must have the first Basic level of a Discipline before taking a second Basic-level power in it). @UUID[Compendium.vtmlarp.clans.JournalEntry.SNuXttNqxzJ6uPXv]{Caitiff} may choose any three Basic Disciplines, though a Storyteller may restrict this to the eight common Disciplines (Animalism, Auspex, Celerity, Dominate, Fortitude, Obfuscate, Potence, Presence) without a strong reason otherwise. <em>@UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} characters begin with 4 Basic Disciplines instead of 3.</em> Powers themselves live in the Disciplines & Powers compendium.</p><p><strong>Backgrounds:</strong> Choose 5 Background Traits, representing ties to mortal or Cainite resources. No single Background can normally exceed 5, and a Storyteller will scrutinize anything above 3 closely. <em>Sabbat characters begin with no Backgrounds at all - they must spend Free Traits to buy any.</em> See the Backgrounds compendium for the full list.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 300,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp"
+      }
+    },
+    {
+      "_id": "9d78a8d872964fb9",
+      "name": "Step Four: Last Touches",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Blood and Willpower:</strong> Your starting Blood Pool maximum, Blood spent per turn, and starting/maximum Willpower are all set by Generation - see the Generation reference and \"Apply to Blood/Willpower\" button on the character sheet's Main tab.</p><p><strong>Virtue Traits:</strong> Split 7 Traits across Conscience/Conviction, Self-Control/Instinct, and Courage - each must end up between 1 and 5. If your Path uses Conscience and Self-Control (most notably Humanity), you start with 1 free Trait in each of those plus Courage, on top of the 7 you distribute; if your Path instead uses Conviction or Instinct, you get no free Trait there and must spend at least one of your 7 on it yourself.</p><p><strong>Morality Trait:</strong> Average your Conscience/Conviction and Self-Control/Instinct ratings, rounded up. You may trade away 1 Morality Trait for 2 Free Traits, once only, at creation - this counts as taking two Negative Traits and is a genuinely risky trade, since low Morality edges a character toward the Wassail.</p><p><strong>Negative Traits:</strong> Up to 5, no more than 3 in any one Attribute category. Each is worth 1 Free Trait.</p><p><strong>@UUID[Compendium.vtmlarp.rules-reference-st.JournalEntry.yEPxZHRgMGIQ2JJQ]{Derangements}:</strong> You may take one at character creation (Storyteller approval required) for 2 Free Traits - it counts as two Negative Traits. Malkavians automatically start with one in addition to any taken this way, and can never cure that original derangement. Browse the Derangements compendium before picking one.</p><p><strong>Flaws:</strong> Up to 7 Traits' worth total, each Flaw granting Free Traits equal to its own listed cost. See the Merits & Flaws compendium.</p><p><strong>Free Traits:</strong> Everyone starts with 5, plus whatever was earned above from Negative Traits, Flaws, a Derangement, or trading away a Morality Trait. Spend them 1-for-1 on an extra Attribute Trait, Ability Trait, Ability specialization, or (with Storyteller approval) Background Trait - or save some to buy Merits later. Track this pool in the \"Gen. Traits Spent\" field in the sheet header if any of it went toward lowering starting Generation.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 400,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp"
+      }
+    },
+    {
+      "_id": "a849f42454914c70",
+      "name": "Step Five: Spark of Life",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Everything mechanical is now on the sheet, but a character isn't real until she has quirks, a voice, and a history that goes beyond the stat block. Think about: how does she carry herself? What does she sound like? What unresolved relationships - sire, childer, old mortal ties - follow her into the game? What does she actually want in this city, and what's standing between her and it?</p><p>A character is only ever fully realized once play begins - use this step to get comfortable enough to start, not to answer every question in advance.</p>",
+        "markdown": ""
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 500,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp"
+      }
+    }
+  ],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp"
+  }
+}

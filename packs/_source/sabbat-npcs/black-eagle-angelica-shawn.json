@@ -17,45 +17,111 @@
       "physical": {
         "priority": "secondary",
         "traits": [
-          { "name": "Ferocious", "spent": false },
-          { "name": "Quick", "spent": false },
-          { "name": "Tough", "spent": false }
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
         ]
       },
       "social": {
         "priority": "primary",
         "traits": [
-          { "name": "Cunning", "spent": false },
-          { "name": "Cunning", "spent": false },
-          { "name": "Enigmatic", "spent": false },
-          { "name": "Intimidating", "spent": false },
-          { "name": "Persuasive", "spent": false }
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Enigmatic",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
         ]
       },
       "mental": {
         "priority": "tertiary",
         "traits": [
-          { "name": "Observant", "spent": false },
-          { "name": "Vigilant", "spent": false }
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Vigilant",
+            "spent": false
+          }
         ]
       }
     },
     "negativeTraits": [],
     "abilities": {
       "talents": [
-        { "name": "Alertness", "rating": 3, "notes": "" },
-        { "name": "Intimidation", "rating": 3, "notes": "" },
-        { "name": "Streetwise", "rating": 3, "notes": "" },
-        { "name": "Subterfuge", "rating": 3, "notes": "" }
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
       ],
       "skills": [
-        { "name": "Melee", "rating": 3, "notes": "" },
-        { "name": "Stealth", "rating": 3, "notes": "" }
+        {
+          "name": "Melee",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        }
       ],
       "knowledges": [
-        { "name": "Occult", "rating": 3, "notes": "" },
-        { "name": "Sabbat Lore", "rating": 2, "notes": "" },
-        { "name": "Streetwise Lore", "rating": 2, "notes": "" }
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise Lore",
+          "rating": 2,
+          "notes": ""
+        }
       ]
     },
     "willpower": {
@@ -72,9 +138,18 @@
       "rating": 4
     },
     "virtues": {
-      "conscienceConviction": { "rating": 3, "temporary": 3 },
-      "selfControlInstinct": { "rating": 3, "temporary": 3 },
-      "courage": { "rating": 4, "temporary": 4 }
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
     },
     "health": {
       "bruised": "ok",
@@ -87,7 +162,7 @@
     },
     "backgrounds": [],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>A transgender woman Embraced in the 1950s from prison after offering herself to a Vicissitude-using Sabbat pack in exchange for the power to alter her form. She later diablerized that pack's leader and fled, eventually joining the Black Eagles through a shared interest in mortal targets. Her generation improved from 12th to 11th as a result of the diablerie.</p><p>See Richard B. Weinstein's entry for the pack's shared background as Black Eagle Consulting, Inc.</p><h2>Roleplaying Hints</h2><p>Angelica is guarded and pragmatic, having survived by seizing power when it was offered — even at terrible cost. She follows the Path of Night and measures her actions against its Hierarchy of Sins rather than Humanity.</p><p><strong>Disciplines (as printed):</strong> Dominate 3, Obtenebration 3, Potence 2.<br><strong>Morality:</strong> Path of Night 4.</p>",
+    "biography": "<h2>Background</h2><p>A transgender woman Embraced in the 1950s from prison after offering herself to a Vicissitude-using @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} pack in exchange for the power to alter her form. She later diablerized that pack's leader and fled, eventually joining the Black Eagles through a shared interest in mortal targets. Her generation improved from 12th to 11th as a result of the diablerie.</p><p>See Richard B. Weinstein's entry for the pack's shared background as Black Eagle Consulting, Inc.</p><h2>Roleplaying Hints</h2><p>Angelica is guarded and pragmatic, having survived by seizing power when it was offered \u2014 even at terrible cost. She follows the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.n1ghtP4thOfN1ght]{Path of Night} and measures her actions against its Hierarchy of Sins rather than Humanity.</p><p><strong>Disciplines (as printed):</strong> Dominate 3, Obtenebration 3, Potence 2.<br><strong>Morality:</strong> Path of Night 4.</p>",
     "notes": "Convert Disciplines to owned power Items: Dominate 3, Obtenebration 3, Potence 2. Originally 12th generation; improved to 11th generation via diablerie per her background.",
     "npcType": "vampire"
   },

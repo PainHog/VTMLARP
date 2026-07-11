@@ -17,61 +17,182 @@
       "physical": {
         "priority": "primary",
         "traits": [
-          { "name": "Agile", "spent": false },
-          { "name": "Agile", "spent": false },
-          { "name": "Dexterous", "spent": false },
-          { "name": "Dexterous", "spent": false },
-          { "name": "Ferocious", "spent": false },
-          { "name": "Quick", "spent": false },
-          { "name": "Quick", "spent": false },
-          { "name": "Tireless", "spent": false }
+          {
+            "name": "Agile",
+            "spent": false
+          },
+          {
+            "name": "Agile",
+            "spent": false
+          },
+          {
+            "name": "Dexterous",
+            "spent": false
+          },
+          {
+            "name": "Dexterous",
+            "spent": false
+          },
+          {
+            "name": "Ferocious",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
         ]
       },
       "social": {
         "priority": "secondary",
         "traits": [
-          { "name": "Charismatic", "spent": false },
-          { "name": "Cold", "spent": false },
-          { "name": "Enigmatic", "spent": false },
-          { "name": "Enigmatic", "spent": false },
-          { "name": "Intimidating", "spent": false },
-          { "name": "Intimidating", "spent": false }
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Cold",
+            "spent": false
+          },
+          {
+            "name": "Enigmatic",
+            "spent": false
+          },
+          {
+            "name": "Enigmatic",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
         ]
       },
       "mental": {
         "priority": "tertiary",
         "traits": [
-          { "name": "Cunning", "spent": false },
-          { "name": "Cunning", "spent": false },
-          { "name": "Observant", "spent": false },
-          { "name": "Observant", "spent": false },
-          { "name": "Vigilant", "spent": false }
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Vigilant",
+            "spent": false
+          }
         ]
       }
     },
     "negativeTraits": [],
     "abilities": {
       "talents": [
-        { "name": "Alertness", "rating": 4, "notes": "" },
-        { "name": "Athletics", "rating": 4, "notes": "" },
-        { "name": "Brawl", "rating": 4, "notes": "" },
-        { "name": "Dodge", "rating": 4, "notes": "" },
-        { "name": "Intimidation", "rating": 3, "notes": "" },
-        { "name": "Streetwise", "rating": 3, "notes": "" },
-        { "name": "Subterfuge", "rating": 3, "notes": "" }
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
       ],
       "skills": [
-        { "name": "Firearms", "rating": 4, "notes": "" },
-        { "name": "Melee", "rating": 4, "notes": "" },
-        { "name": "Security", "rating": 3, "notes": "" },
-        { "name": "Stealth", "rating": 4, "notes": "" },
-        { "name": "Survival", "rating": 3, "notes": "" }
+        {
+          "name": "Firearms",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 3,
+          "notes": ""
+        }
       ],
       "knowledges": [
-        { "name": "Investigation", "rating": 3, "notes": "" },
-        { "name": "Linguistics", "rating": 4, "notes": "Spanish, English, Latin, and others" },
-        { "name": "Occult", "rating": 3, "notes": "" },
-        { "name": "Sabbat Lore", "rating": 4, "notes": "" }
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 4,
+          "notes": "Spanish, English, Latin, and others"
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 4,
+          "notes": ""
+        }
       ]
     },
     "willpower": {
@@ -88,9 +209,18 @@
       "rating": 6
     },
     "virtues": {
-      "conscienceConviction": { "rating": 3, "temporary": 3 },
-      "selfControlInstinct": { "rating": 4, "temporary": 4 },
-      "courage": { "rating": 5, "temporary": 5 }
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
     },
     "health": {
       "bruised": "ok",
@@ -102,13 +232,25 @@
       "incapacitated": "ok"
     },
     "backgrounds": [
-      { "name": "Contacts", "rating": 5, "notes": "" },
-      { "name": "Resources", "rating": 4, "notes": "" },
-      { "name": "Allies", "rating": 3, "notes": "Fatima and others" }
+      {
+        "name": "Contacts",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": "Fatima and others"
+      }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>The most famous independent Lasombra. Took part in the Assamite assault that destroyed her sire, Cardinal Monçada, believing his death would bring her peace; it hasn't — his mental presence is gone, but his legacy of ideas remains. She now seeks out other vampires' company more than her contract work strictly requires, listening to how neonates and elders define their purpose, and has stepped back from her longtime partner Fatima. Lucita-spotting is a centuries-old Lasombra hobby; most rumored sightings are false, and a few neonates or ancillae impersonate her for status — she finds this amusing and lets the penalties for being caught weed out the crowd.</p><h2>Roleplaying Hints</h2><p>Portray Lucita as a deeply capable independent operator, quietly working through the ideological wreckage her sire left in her. She is polite but guarded, more curious about how other vampires justify their existences than she once was, and dangerous if crossed.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor):</strong> Dominate, Fortitude, Obtenebration, Potence — high ratings befitting an 8th-generation independent elder.</p>",
-    "notes": "Sire: Cardinal Monçada (destroyed). Partner: Fatima (estranged). Convert Disciplines by adding owned power Items from the disciplines compendium at Storyteller discretion to match her renowned mastery of Dominate, Fortitude, Obtenebration, and Potence.",
+    "biography": "<h2>Background</h2><p>The most famous independent @UUID[Compendium.vtmlarp.clans.JournalEntry.phgt6OMwTAoAaKfR]{Lasombra}. Took part in the @UUID[Compendium.vtmlarp.clans.JournalEntry.WaQFCEXFzv8YeAgX]{Assamite} assault that destroyed her sire, Cardinal Mon\u00e7ada, believing his death would bring her peace; it hasn't \u2014 his mental presence is gone, but his legacy of ideas remains. She now seeks out other vampires' company more than her contract work strictly requires, listening to how neonates and elders define their purpose, and has stepped back from her longtime partner Fatima. Lucita-spotting is a centuries-old Lasombra hobby; most rumored sightings are false, and a few neonates or ancillae impersonate her for status \u2014 she finds this amusing and lets the penalties for being caught weed out the crowd.</p><h2>Roleplaying Hints</h2><p>Portray Lucita as a deeply capable independent operator, quietly working through the ideological wreckage her sire left in her. She is polite but guarded, more curious about how other vampires justify their existences than she once was, and dangerous if crossed.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor):</strong> Dominate, Fortitude, Obtenebration, Potence \u2014 high ratings befitting an 8th-generation independent elder.</p>",
+    "notes": "Sire: Cardinal Mon\u00e7ada (destroyed). Partner: Fatima (estranged). Convert Disciplines by adding owned power Items from the disciplines compendium at Storyteller discretion to match her renowned mastery of Dominate, Fortitude, Obtenebration, and Potence.",
     "npcType": "vampire"
   },
   "prototypeToken": {
