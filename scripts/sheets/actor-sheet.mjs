@@ -140,8 +140,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     classes: ["vtmlarp", "sheet", "actor"],
     position: { width: 820, height: 880 },
     window: { resizable: true },
-    form: { submitOnChange: true },
-    dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }]
+    form: { submitOnChange: true }
   };
 
   static PARTS = {
@@ -277,6 +276,25 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
     on(".apply-generation", "click", this._onApplyGeneration.bind(this));
+
+    // ApplicationV2 doesn't auto-wire a "dragDrop" static option into actual
+    // drag/drop event listeners the way V1's FormApplication did (that
+    // binding lived in FormApplication.activateListeners, which no longer
+    // runs) - the underlying _onDragStart/_onDrop/_onDropItemCreate pipeline
+    // is still inherited from ActorSheetV2, but something has to actually
+    // attach it to the DOM on every render.
+    new foundry.applications.ux.DragDrop.implementation({
+      dragSelector: ".item-list .item",
+      dropSelector: null,
+      permissions: {
+        dragstart: () => this.isEditable,
+        drop: () => this.isEditable
+      },
+      callbacks: {
+        dragstart: this._onDragStart.bind(this),
+        drop: this._onDrop.bind(this)
+      }
+    }).bind(this.element);
   }
 
   /** Open the compendium JournalEntry backing a Clan/Path lore link button. */
@@ -530,6 +548,27 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     event.preventDefault();
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     await this.actor.items.get(itemId)?.delete();
+  }
+
+  /** Set the drag payload when picking up an item row from one of the sheet's item-lists. */
+  _onDragStart(event) {
+    const itemId = event.currentTarget.closest(".item")?.dataset.itemId;
+    const item = this.actor.items.get(itemId);
+    if (!item) return;
+    event.dataTransfer.setData("text/plain", JSON.stringify(item.toDragData()));
+  }
+
+  /** Resolve a drop (from a compendium, another actor, or the sidebar) into a real Item and hand it to _onDropItemCreate. */
+  async _onDrop(event) {
+    let data;
+    try {
+      data = JSON.parse(event.dataTransfer.getData("text/plain"));
+    } catch (err) {
+      return;
+    }
+    if (data?.type !== "Item") return;
+    const item = await Item.implementation.fromDropData(data);
+    if (item) await this._onDropItemCreate(item.toObject());
   }
 
   /**
