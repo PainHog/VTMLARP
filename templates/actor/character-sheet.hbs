@@ -61,6 +61,15 @@
         </label>
         <label>Title <input type="text" name="system.title" value="{{system.title}}"></label>
         <label>Coterie <input type="text" name="system.coterie" value="{{system.coterie}}" placeholder="Coterie/pack name"></label>
+        {{#unless isCharacter}}
+        <label>NPC Type
+          <select name="system.npcType">
+            {{#each NPC_TYPE_OPTIONS as |t|}}
+            <option value="{{t}}" {{#if (eq ../system.npcType t)}}selected{{/if}}>{{vtmCapitalize t}}</option>
+            {{/each}}
+          </select>
+        </label>
+        {{/unless}}
       </div>
     </div>
   </header>

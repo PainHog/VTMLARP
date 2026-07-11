@@ -172,6 +172,7 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     }
 
     context.isCharacter = this.actor.type === "character";
+    context.NPC_TYPE_OPTIONS = ["vampire", "ghoul", "mortal", "spirit", "other"];
     context.CLAN_OPTIONS = CLAN_OPTIONS;
     context.SECT_OPTIONS = SECT_OPTIONS;
     context.GENERATION_OPTIONS = GENERATION_OPTIONS;

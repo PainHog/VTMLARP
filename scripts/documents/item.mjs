@@ -71,7 +71,6 @@ export class VTMPowerData extends BaseItemData {
       bloodCost: new fields.StringField({ required: false, blank: true, initial: "" }),
       retestAbility: new fields.StringField({ required: false, blank: true, initial: "" }),
       duration: new fields.StringField({ required: false, blank: true, initial: "" }),
-      system_: new fields.StringField({ required: false, blank: true, initial: "" }),
       activation: new fields.StringField({
         required: true,
         initial: "challenge",
