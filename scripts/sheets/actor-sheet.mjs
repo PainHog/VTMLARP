@@ -611,7 +611,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       if (Object.keys(updates).length) {
         await this.actor.update(Object.fromEntries(Object.entries(updates).map(([k, v]) => [`system.${k}`, v])));
       }
-      if (passthrough.length) return await super._onDropItemCreate(passthrough);
+      // ActorSheetV2 doesn't provide a _onDropItemCreate of its own to fall
+      // back to (that was a V1 FormApplication pipeline method) - passthrough
+      // types are just embedded normally.
+      if (passthrough.length) return await this.actor.createEmbeddedDocuments("Item", passthrough);
     } catch (err) {
       // A drag/drop that visibly "does nothing" is otherwise impossible to
       // diagnose - createEmbeddedDocuments failures (e.g. schema validation
