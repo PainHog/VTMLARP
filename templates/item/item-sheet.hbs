@@ -15,7 +15,7 @@
 
   <section class="sheet-body">
     <div class="tab {{#if tabs.description.active}}active{{/if}}" data-group="primary" data-tab="description">
-      <prose-mirror name="system.description" value="{{system.description}}" {{#unless owner}}disabled{{/unless}} toggled button></prose-mirror>
+      <prose-mirror name="system.description" {{#unless owner}}disabled{{/unless}} toggled button>{{{system.description}}}</prose-mirror>
       <label>Source <input type="text" name="system.source" value="{{system.source}}" placeholder="e.g. Laws of the Night Revised, p.123"></label>
     </div>
 

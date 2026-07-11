@@ -373,9 +373,14 @@
 /* Base sheet                                                            */
 /* -------------------------------------------------------------------- */
 
+/* ApplicationV2's own core CSS sets a larger baseline font-size on its
+   root ".application" element than V1's ".app.window-app" ever did, and
+   wins the cascade over these plain rules (loaded/ordered differently
+   than the old V1 defaults) - !important pins our intended size back
+   down regardless of that, on both sheet generations. */
 .vtmlarp.sheet {
   font-family: "Signika", sans-serif;
-  font-size: 15px;
+  font-size: 15px !important;
   color: var(--vtm-text);
   background: transparent;
   display: flex;
@@ -387,7 +392,7 @@
 .vtmlarp.sheet select,
 .vtmlarp.sheet textarea,
 .vtmlarp.sheet button {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .vtmlarp .sheet-header { flex: 0 0 auto; }
