@@ -28,6 +28,42 @@ const SECT_OPTIONS = [
   "Camarilla", "Sabbat", "Anarch Movement", "Independent Alliance", "Inconnu", "Ashirra"
 ];
 
+// Maps a Clan/Bloodline dropdown value to the JournalEntry that actually
+// covers it, since clan lore isn't consistently one-pack-one-entry-per-clan
+// (most live in "clans" as a bare-named overview entry alongside many
+// differently-titled sub-topic entries; a few bloodlines instead live in
+// "antitribu"). Sect has no equivalent lore entry in any compendium yet, so
+// there's no lookup for it - the link is simply omitted when unmapped.
+const CLAN_LORE_LOOKUP = {
+  "Assamite": { pack: "clans", name: "Assamite" },
+  "Brujah": { pack: "clans", name: "Brujah" },
+  "Followers of Set": { pack: "clans", name: "Followers of Set" },
+  "Gangrel": { pack: "clans", name: "Gangrel" },
+  "Giovanni": { pack: "clans", name: "Giovanni" },
+  "Lasombra": { pack: "clans", name: "Lasombra" },
+  "Malkavian": { pack: "clans", name: "Malkavian" },
+  "Nosferatu": { pack: "clans", name: "Nosferatu" },
+  "Ravnos": { pack: "clans", name: "Ravnos" },
+  "Toreador": { pack: "clans", name: "Toreador" },
+  "Tremere": { pack: "clans", name: "Tremere" },
+  "Tzimisce": { pack: "clans", name: "Tzimisce" },
+  "Ventrue": { pack: "clans", name: "Ventrue" },
+  "Baali": { pack: "clans", name: "Baali" },
+  "Cappadocian": { pack: "clans", name: "Cappadocian (Dark Ages)" },
+  "Salubri": { pack: "clans", name: "Salubri" },
+  "Blood Brothers": { pack: "antitribu", name: "Blood Brothers" },
+  "Harbingers of Skulls": { pack: "antitribu", name: "Harbingers of Skulls" },
+  "Kiasyd": { pack: "antitribu", name: "Kiasyd" },
+  "Panders": { pack: "antitribu", name: "Panders" },
+  "Gargoyle": { pack: "clans", name: "Gargoyles" },
+  "Daughters of Cacophony": { pack: "clans", name: "Daughters of Cacophony" },
+  "True Brujah": { pack: "clans", name: "True Brujah" },
+  "Nagaraja": { pack: "clans", name: "Nagaraja" },
+  "Samedi": { pack: "clans", name: "Samedi" },
+  "Lamia": { pack: "clans", name: "Lamia (Dark Ages)" },
+  "Caitiff": { pack: "clans", name: "Caitiff" }
+};
+
 const GENERATION_OPTIONS = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 const ARCHETYPE_OPTIONS = [
@@ -137,12 +173,23 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.PATH_OPTIONS = PATH_OPTIONS.includes(sys.morality.path)
       ? PATH_OPTIONS : [sys.morality.path, ...PATH_OPTIONS].filter(Boolean);
     context.generationInfo = GENERATION_TABLE[sys.generation] ?? null;
+
+    // Lore-linking buttons next to Clan and Path dropdowns - only rendered
+    // when a mapping actually exists, since coverage isn't complete (e.g.
+    // Sect has no matching compendium entry at all yet).
+    context.clanLoreEntry = CLAN_LORE_LOOKUP[sys.clan] ?? null;
+    context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : null;
     return context;
   }
 
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+
+    // Available to everyone (not just owners with edit rights) - opening a
+    // lore entry to read isn't an edit.
+    html.find(".open-lore").on("click", this._onOpenLore.bind(this));
+
     if (!this.isEditable) return;
 
     html.find(".trait-toggle").on("click", this._onToggleTrait.bind(this));
@@ -161,6 +208,25 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find(".simple-list-add").on("click", this._onSimpleListAdd.bind(this));
     html.find(".simple-list-remove").on("click", this._onSimpleListRemove.bind(this));
     html.find(".apply-generation").on("click", this._onApplyGeneration.bind(this));
+  }
+
+  /** Open the compendium JournalEntry backing a Clan/Path lore link button. */
+  async _onOpenLore(event) {
+    event.preventDefault();
+    const { pack: packName, name } = event.currentTarget.dataset;
+    const pack = game.packs.get(`vtmlarp.${packName}`);
+    if (!pack) {
+      ui.notifications?.warn(`Compendium "${packName}" not found.`);
+      return;
+    }
+    const index = await pack.getIndex();
+    const entry = index.find(e => e.name === name);
+    if (!entry) {
+      ui.notifications?.warn(`No compendium entry found for "${name}".`);
+      return;
+    }
+    const doc = await pack.getDocument(entry._id);
+    doc.sheet.render(true);
   }
 
   /** Add a blank entry to one of the plain object-array lists (Derangements, Blood Bonds, Boons). */

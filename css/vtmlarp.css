@@ -325,6 +325,25 @@
   letter-spacing: 0.04em;
 }
 
+.vtmlarp .dropdown-with-lore {
+  align-items: center;
+  gap: 4px;
+}
+
+.vtmlarp .open-lore {
+  color: var(--vtm-red-bright);
+  flex: 0 0 auto;
+}
+
+.vtmlarp .open-lore:hover {
+  text-shadow: 0 0 4px rgba(184, 18, 26, 0.7);
+}
+
+.vtmlarp .pool .open-lore {
+  color: var(--vtm-red-bright);
+  margin-left: 2px;
+}
+
 /* -------------------------------------------------------------------- */
 /* Tabs                                                                  */
 /* -------------------------------------------------------------------- */

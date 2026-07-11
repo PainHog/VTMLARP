@@ -6,12 +6,17 @@
       <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name">
       <div class="flexrow header-grid">
         <label>Clan
-          <select name="system.clan">
-            <option value="">—</option>
-            {{#each CLAN_OPTIONS as |c|}}
-            <option value="{{c}}" {{#if (eq ../system.clan c)}}selected{{/if}}>{{c}}</option>
-            {{/each}}
-          </select>
+          <span class="flexrow dropdown-with-lore">
+            <select name="system.clan">
+              <option value="">—</option>
+              {{#each CLAN_OPTIONS as |c|}}
+              <option value="{{c}}" {{#if (eq ../system.clan c)}}selected{{/if}}>{{c}}</option>
+              {{/each}}
+            </select>
+            {{#if clanLoreEntry}}
+            <a class="open-lore" data-pack="{{clanLoreEntry.pack}}" data-name="{{clanLoreEntry.name}}" title="Open {{clanLoreEntry.name}} lore"><i class="fas fa-book"></i></a>
+            {{/if}}
+          </span>
         </label>
         <label>Bloodline <input type="text" name="system.bloodline" value="{{system.bloodline}}" placeholder="e.g. Antitribu, Caitiff"></label>
         <label>Sect
@@ -89,6 +94,9 @@
             <option value="{{p}}" {{#if (eq ../system.morality.path p)}}selected{{/if}}>{{p}}</option>
             {{/each}}
           </select>
+          {{#if pathLoreEntry}}
+          <a class="open-lore" data-pack="{{pathLoreEntry.pack}}" data-name="{{pathLoreEntry.name}}" title="Open {{pathLoreEntry.name}} lore"><i class="fas fa-book"></i></a>
+          {{/if}}
         </div>
         <div class="pool">
           <label>Experience</label>
