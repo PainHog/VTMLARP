@@ -121,10 +121,16 @@
         </div>
       </div>
 
-      <h3>Health <span class="hint">Click to take damage. Shift-click to heal a bashing/lethal box by spending 1 Blood.</span></h3>
+      <h3>Health
+        <span class="hint">Click to take damage. Shift-click to heal a bashing/lethal box by spending 1 Blood.</span>
+        <a class="health-level-add" title="Add a bonus Healthy level (e.g. from basic Fortitude)"><i class="fas fa-plus"></i></a>
+        <a class="health-level-remove" title="Remove the last bonus Healthy level"><i class="fas fa-minus"></i></a>
+      </h3>
       <div class="health-track flexrow">
         {{#each healthLevels as |level|}}
-        <div class="health-box state-{{level.state}}" data-level="{{level.key}}" title="{{level.label}} ({{level.state}}) - click to cycle, shift-click to heal with Blood">
+        <div class="health-box state-{{level.state}} {{#if level.bonus}}health-box-bonus{{/if}}"
+          data-level="{{level.key}}" {{#if level.bonus}}data-bonus-index="{{level.bonusIndex}}"{{/if}}
+          title="{{level.label}} ({{level.state}}) - click to cycle, shift-click to heal with Blood">
           <span class="label">{{level.label}}</span>
           <span class="state">{{level.state}}</span>
         </div>

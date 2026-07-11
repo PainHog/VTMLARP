@@ -40,6 +40,21 @@ function healthTrackSchema() {
   return new fields.SchemaField(fieldsObj);
 }
 
+/**
+ * Extra Health Levels from sources like basic Fortitude ("you gain one
+ * additional health level, which functions just like an extra Healthy line
+ * on your health level chart") genuinely add boxes to the track, rather
+ * than being some abstract bonus - this array holds those bonus boxes,
+ * each tracked with the same damage-state string as the 7 fixed levels.
+ */
+function bonusHealthLevelField() {
+  return new fields.StringField({
+    required: true,
+    initial: "ok",
+    choices: ["ok", "bashing", "lethal", "aggravated"]
+  });
+}
+
 function virtueSchema() {
   return new fields.SchemaField({
     rating: new fields.NumberField({ required: true, integer: true, min: 0, max: 5, initial: 1 }),
@@ -101,6 +116,7 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
       }),
 
       health: healthTrackSchema(),
+      bonusHealth: new fields.ArrayField(bonusHealthLevelField()),
 
       backgrounds: new fields.ArrayField(ratedTraitField()),
 

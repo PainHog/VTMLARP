@@ -95,18 +95,30 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.system = this.actor.system;
     const sys = context.system;
 
-    context.healthLevels = HEALTH_LEVELS.map(level => ({
+    // Bonus Health Levels (e.g. from basic Fortitude) act as extra "Healthy"
+    // boxes ahead of the fixed 7-level track, per the rulebook.
+    const bonusLevels = (sys.bonusHealth ?? []).map((state, i) => ({
+      key: `bonus-${i}`, label: "Healthy", state, bonus: true, bonusIndex: i
+    }));
+    const fixedLevels = HEALTH_LEVELS.map(level => ({
       key: level,
       label: level.charAt(0).toUpperCase() + level.slice(1),
-      state: sys.health[level]
+      state: sys.health[level],
+      bonus: false
     }));
+    context.healthLevels = [...bonusLevels, ...fixedLevels];
 
     context.itemsByType = {};
     for (const item of this.actor.items) {
       (context.itemsByType[item.type] ??= []).push(item);
     }
 
-    context.activePowers = (context.itemsByType.power ?? []).filter(item => item.system.active);
+    // Passive powers are always in effect by definition (there's no toggle
+    // for them - the "active" flag only gets set by actually clicking the
+    // toggle control on a toggle-type power), so they belong in this summary
+    // too even though system.active stays at its default false for them.
+    context.activePowers = (context.itemsByType.power ?? [])
+      .filter(item => item.system.active || item.system.activation === "passive");
 
     const disciplineItems = context.itemsByType.discipline ?? [];
     context.powerPrereqStatus = {};
@@ -137,6 +149,8 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find(".trait-add").on("click", this._onAddTrait.bind(this));
     html.find(".trait-delete").on("click", this._onDeleteTrait.bind(this));
     html.find(".health-box").on("click", this._onCycleHealth.bind(this));
+    html.find(".health-level-add").on("click", this._onAddHealthLevel.bind(this));
+    html.find(".health-level-remove").on("click", this._onRemoveHealthLevel.bind(this));
     html.find(".item-edit").on("click", this._onItemEdit.bind(this));
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".rated-trait-control").on("click", this._onRatedTraitControl.bind(this));
@@ -283,8 +297,14 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   async _onCycleHealth(event) {
     event.preventDefault();
-    const level = event.currentTarget.dataset.level;
-    const current = this.actor.system.health[level];
+    const { level, bonusIndex } = event.currentTarget.dataset;
+    // A bonus (extra "Healthy") box lives in the system.bonusHealth array by
+    // index instead of a named system.health.<level> field.
+    const isBonus = bonusIndex !== undefined;
+    const path = isBonus ? `bonusHealth.${bonusIndex}` : `health.${level}`;
+    const current = isBonus
+      ? this.actor.system.bonusHealth[Number(bonusIndex)]
+      : this.actor.system.health[level];
     const idx = DAMAGE_CYCLE.indexOf(current);
 
     // Shift-click heals with Blood instead of worsening: 1 Blood Trait heals one box
@@ -299,14 +319,33 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
         return;
       }
       await this.actor.update({
-        [`system.health.${level}`]: "ok",
+        [`system.${path}`]: "ok",
         "system.blood.value": blood - 1
       });
       return;
     }
 
     const next = DAMAGE_CYCLE[(idx + 1) % DAMAGE_CYCLE.length];
-    await this.actor.update({ [`system.health.${level}`]: next });
+    await this.actor.update({ [`system.${path}`]: next });
+  }
+
+  /**
+   * Add or remove a bonus "Healthy" box (e.g. granted by basic Fortitude,
+   * which the rulebook says "functions just like an extra Healthy line on
+   * your health level chart"). New boxes are added undamaged; removing one
+   * always drops the last box in the list.
+   */
+  async _onAddHealthLevel(event) {
+    event.preventDefault();
+    const list = this.actor.system.bonusHealth ?? [];
+    await this.actor.update({ "system.bonusHealth": [...list, "ok"] });
+  }
+
+  async _onRemoveHealthLevel(event) {
+    event.preventDefault();
+    const list = this.actor.system.bonusHealth ?? [];
+    if (!list.length) return;
+    await this.actor.update({ "system.bonusHealth": list.slice(0, -1) });
   }
 
   /** Create a brand-new embedded Item of the requested type directly on the actor. */
