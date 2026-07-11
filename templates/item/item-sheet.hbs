@@ -9,17 +9,17 @@
   </header>
 
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="details">Details</a>
+    <a class="item {{#if tabs.description.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="description">Description</a>
+    <a class="item {{#if tabs.details.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="details">Details</a>
   </nav>
 
   <section class="sheet-body">
-    <div class="tab" data-group="primary" data-tab="description">
+    <div class="tab {{#if tabs.description.active}}active{{/if}}" data-group="primary" data-tab="description">
       {{editor system.description target="system.description" button=true engine="prosemirror" owner=owner}}
       <label>Source <input type="text" name="system.source" value="{{system.source}}" placeholder="e.g. Laws of the Night Revised, p.123"></label>
     </div>
 
-    <div class="tab" data-group="primary" data-tab="details">
+    <div class="tab {{#if tabs.details.active}}active{{/if}}" data-group="primary" data-tab="details">
 
       {{#if (eq item.type "attribute")}}
       <label>Category
