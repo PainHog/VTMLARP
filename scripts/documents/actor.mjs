@@ -90,7 +90,7 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
       }),
 
       morality: new fields.SchemaField({
-        path: new fields.StringField({ required: true, initial: "Humanity" }),
+        path: new fields.StringField({ required: true, initial: "Path of Humanity" }),
         rating: new fields.NumberField({ required: true, integer: true, min: 0, max: 10, initial: 7 })
       }),
 
@@ -105,6 +105,28 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
       backgrounds: new fields.ArrayField(ratedTraitField()),
 
       freeTraits: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+
+      derangements: new fields.ArrayField(new fields.SchemaField({
+        name: new fields.StringField({ required: true, initial: "" }),
+        description: new fields.StringField({ required: false, blank: true, initial: "" })
+      })),
+
+      bloodBonds: new fields.ArrayField(new fields.SchemaField({
+        name: new fields.StringField({ required: true, initial: "" }),
+        level: new fields.NumberField({ required: true, integer: true, min: 1, max: 3, initial: 1 }),
+        notes: new fields.StringField({ required: false, blank: true, initial: "" })
+      })),
+
+      boons: new fields.ArrayField(new fields.SchemaField({
+        who: new fields.StringField({ required: true, initial: "" }),
+        type: new fields.StringField({
+          required: true, initial: "minor", choices: ["minor", "major", "blood"]
+        }),
+        direction: new fields.StringField({
+          required: true, initial: "owed", choices: ["owed", "owedToMe"]
+        }),
+        notes: new fields.StringField({ required: false, blank: true, initial: "" })
+      })),
 
       biography: new fields.HTMLField({ required: false, blank: true, initial: "" }),
       notes: new fields.HTMLField({ required: false, blank: true, initial: "" })

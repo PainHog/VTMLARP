@@ -481,6 +481,43 @@
   color: var(--vtm-text-muted);
 }
 
+.vtmlarp .generation-reference {
+  margin: -4px 0 10px 0;
+  padding: 4px 8px;
+  background: var(--vtm-bg-inset);
+  border: 1px solid var(--vtm-border);
+  border-radius: 4px;
+}
+
+.vtmlarp .generation-reference .apply-generation {
+  margin-left: 8px;
+  color: var(--vtm-red-bright);
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.vtmlarp .simple-list {
+  margin-bottom: 12px;
+}
+
+.vtmlarp .simple-list-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--vtm-border);
+}
+
+.vtmlarp .simple-list-row input.tiny,
+.vtmlarp .simple-list-row select {
+  flex: 0 0 auto;
+  width: 150px;
+}
+
+.vtmlarp .simple-list-row input.wide {
+  flex: 1 1 auto;
+}
+
 /* -------------------------------------------------------------------- */
 /* Item sheet                                                            */
 /* -------------------------------------------------------------------- */
@@ -652,6 +689,19 @@
   border-radius: 6px;
 }
 
+.vtmlarp-challenge-card .vtm-static-test {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.vtmlarp-challenge-card .vtm-static-vs {
+  display: block;
+  font-weight: bold;
+  color: #6b6259;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
 .vtmlarp-challenge-card .vtm-result-banner,
 .vtmlarp-frenzy-card .vtm-result-banner {
   text-align: center;
@@ -675,7 +725,8 @@
 }
 
 .vtmlarp-challenge-card .vtm-result-banner.result-Lost,
-.vtmlarp-frenzy-card .vtm-result-banner[class*="result-Frenzy"] {
+.vtmlarp-frenzy-card .vtm-result-banner[class*="result-Frenzy"],
+.vtmlarp-frenzy-card .vtm-result-banner[class*="Rötschreck"] {
   color: var(--vtm-red-bright);
   text-shadow: 0 0 10px rgba(184, 18, 26, 0.7);
 }

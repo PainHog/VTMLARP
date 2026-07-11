@@ -38,6 +38,44 @@ const ARCHETYPE_OPTIONS = [
   "Traditionalist", "Trickster", "Visionary"
 ];
 
+const PATH_OPTIONS = [
+  "Path of Humanity", "Path of Blood (Assamite)", "Path of Caine", "Path of Cathari",
+  "Path of Death and the Soul", "Path of Ecstasy", "Path of Evil Revelations",
+  "Path of Harmony", "Path of Honorable Accord", "Path of Lilith",
+  "Path of Night: Variants (Lasombra)", "Path of Night",
+  "Mayaparisatya: The Path of Paradox (True)", "Path of Paradox (Ravnos)",
+  "Path of Power and the Inner Voice", "Path of the Feral Heart", "Path of the Warrior",
+  "Path of Typhon (Setite)", "Road of the Beast (Dark Ages)", "Road of Heaven (Dark Ages)",
+  "Road of Humanity (Dark Ages)", "Road of Kings (Dark Ages)", "Road of Sin (Dark Ages)",
+  "Road of the Bones (Dark Ages)", "Road of the Hive (Dark Ages, Baali)"
+];
+
+// The Generation chart from Laws of the Night Revised (Character Creation and
+// Traits, p. 95): Max. Traits (in your primary Attribute category), Max.
+// Abilities (highest level in any one Ability), Blood Pool max/per-turn spend,
+// and starting/max Willpower. Only 5th-13th generation are included - lower
+// generations are vanishingly rare for MET player characters, and the
+// scanned sourcebook table's column alignment becomes unreliable below 5th,
+// so those rows are left for Storyteller judgment rather than risking wrong
+// numbers.
+const GENERATION_TABLE = {
+  13: { maxTraits: 10, maxAbilities: 5, bloodMax: 10, bloodPerTurn: 1, willpowerStart: 2, willpowerMax: 6 },
+  12: { maxTraits: 10, maxAbilities: 5, bloodMax: 11, bloodPerTurn: 1, willpowerStart: 2, willpowerMax: 8 },
+  11: { maxTraits: 11, maxAbilities: 5, bloodMax: 12, bloodPerTurn: 1, willpowerStart: 4, willpowerMax: 8 },
+  10: { maxTraits: 12, maxAbilities: 5, bloodMax: 13, bloodPerTurn: 1, willpowerStart: 4, willpowerMax: 10 },
+  9: { maxTraits: 13, maxAbilities: 5, bloodMax: 14, bloodPerTurn: 2, willpowerStart: 6, willpowerMax: 10 },
+  8: { maxTraits: 14, maxAbilities: 5, bloodMax: 15, bloodPerTurn: 3, willpowerStart: 6, willpowerMax: 12 },
+  7: { maxTraits: 16, maxAbilities: 6, bloodMax: 20, bloodPerTurn: 5, willpowerStart: 7, willpowerMax: 14 },
+  6: { maxTraits: 18, maxAbilities: 7, bloodMax: 30, bloodPerTurn: 6, willpowerStart: 8, willpowerMax: 16 },
+  5: { maxTraits: 20, maxAbilities: 8, bloodMax: 40, bloodPerTurn: 8, willpowerStart: 9, willpowerMax: 18 }
+};
+
+const SIMPLE_LIST_DEFAULTS = {
+  derangements: { name: "", description: "" },
+  bloodBonds: { name: "", level: 1, notes: "" },
+  boons: { who: "", type: "minor", direction: "owed", notes: "" }
+};
+
 export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -82,6 +120,11 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.SECT_OPTIONS = SECT_OPTIONS;
     context.GENERATION_OPTIONS = GENERATION_OPTIONS;
     context.ARCHETYPE_OPTIONS = ARCHETYPE_OPTIONS;
+    // Always include the actor's current Path, even if it predates this list
+    // or is a homebrew Path, so the dropdown never silently swaps it out.
+    context.PATH_OPTIONS = PATH_OPTIONS.includes(sys.morality.path)
+      ? PATH_OPTIONS : [sys.morality.path, ...PATH_OPTIONS].filter(Boolean);
+    context.generationInfo = GENERATION_TABLE[sys.generation] ?? null;
     return context;
   }
 
@@ -101,6 +144,48 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find(".open-frenzy").on("click", () => new FrenzyApp(this.actor).render(true));
     html.find(".power-toggle").on("click", this._onTogglePower.bind(this));
     html.find(".item-create").on("click", this._onItemCreate.bind(this));
+    html.find(".simple-list-add").on("click", this._onSimpleListAdd.bind(this));
+    html.find(".simple-list-remove").on("click", this._onSimpleListRemove.bind(this));
+    html.find(".apply-generation").on("click", this._onApplyGeneration.bind(this));
+  }
+
+  /** Add a blank entry to one of the plain object-array lists (Derangements, Blood Bonds, Boons). */
+  async _onSimpleListAdd(event) {
+    event.preventDefault();
+    const { path } = event.currentTarget.dataset;
+    const list = foundry.utils.getProperty(this.actor.system, path) ?? [];
+    await this.actor.update({ [`system.${path}`]: [...list, { ...SIMPLE_LIST_DEFAULTS[path] }] });
+  }
+
+  async _onSimpleListRemove(event) {
+    event.preventDefault();
+    const { path, index } = event.currentTarget.dataset;
+    const list = foundry.utils.getProperty(this.actor.system, path);
+    const updated = list.filter((_, i) => i !== Number(index));
+    await this.actor.update({ [`system.${path}`]: updated });
+  }
+
+  /**
+   * Set Blood/Willpower max (and clamp current values down if they now
+   * exceed the new max) from the Generation chart. Opt-in via a button
+   * rather than automatic, since Storytellers may run a compressed Blood
+   * Pool or otherwise deviate from the chart on purpose.
+   */
+  async _onApplyGeneration(event) {
+    event.preventDefault();
+    const info = GENERATION_TABLE[this.actor.system.generation];
+    if (!info) {
+      ui.notifications?.warn("No Generation chart data below 5th generation - set Blood/Willpower manually.");
+      return;
+    }
+    const sys = this.actor.system;
+    await this.actor.update({
+      "system.blood.max": info.bloodMax,
+      "system.blood.perTurn": info.bloodPerTurn,
+      "system.blood.value": Math.min(sys.blood.value, info.bloodMax),
+      "system.willpower.max": info.willpowerMax,
+      "system.willpower.value": Math.min(sys.willpower.value, info.willpowerMax)
+    });
   }
 
   async _onToggleTrait(event) {

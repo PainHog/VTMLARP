@@ -68,8 +68,18 @@ export class ChallengeApp extends foundry.appv1.api.Application {
     const root = html instanceof HTMLElement ? html : html[0];
     root.querySelector("button[type='submit']")?.addEventListener("click", this._onSubmit.bind(this));
 
-    const fullBidCheckbox = root.querySelector("input[name='fullBid']");
     const challengeTypeSelect = root.querySelector("select[name='challengeType']");
+    const staticOnly = root.querySelector(".static-only");
+    const rpsOnly = root.querySelector(".rps-only");
+    const syncChallengeType = () => {
+      const isStatic = challengeTypeSelect?.value === "static";
+      if (staticOnly) staticOnly.style.display = isStatic ? "" : "none";
+      if (rpsOnly) rpsOnly.style.display = isStatic ? "none" : "";
+    };
+    challengeTypeSelect?.addEventListener("change", syncChallengeType);
+    syncChallengeType();
+
+    const fullBidCheckbox = root.querySelector("input[name='fullBid']");
     const traitsBidInput = root.querySelector("input[name='traitsBid']");
     if (!fullBidCheckbox || !challengeTypeSelect || !traitsBidInput) return;
 
@@ -108,9 +118,20 @@ export class ChallengeApp extends foundry.appv1.api.Application {
       await this.actor.update({ [`system.attributes.${challengeType}.traits`]: updated });
     }
 
+    // Static Challenges (an Ability used against a set Difficulty, no
+    // opposing throw) resolve like a Virtue Test: the bid must exceed the
+    // Difficulty, a tie is not enough. Physical/Social/Mental Challenges
+    // stay a face-to-face Rock-Paper-Scissors clash as normal.
+    const isStatic = challengeType === "static";
+    const difficulty = isStatic ? (Number(fd.difficulty) || 1) : null;
+
     let result = "";
     let resultLabel = "";
-    if (opponentGesture) {
+    if (isStatic) {
+      const success = (Number(traitsBid) || 0) > difficulty;
+      result = success ? "Won" : "Lost";
+      resultLabel = success ? `${actorName} Succeeds!` : `${actorName} Fails!`;
+    } else if (opponentGesture) {
       const outcome = beats(gesture, opponentGesture);
       result = outcome === "tie" ? "Tied" : (outcome === "win" ? "Won" : "Lost");
       resultLabel = result === "Tied" ? "Tied" : (result === "Won" ? `${actorName} Wins!` : `${opponentLabel} Wins!`);
@@ -121,6 +142,8 @@ export class ChallengeApp extends foundry.appv1.api.Application {
       challengeType,
       traitsBid,
       fullBid,
+      isStatic,
+      difficulty,
       gesture,
       opponentName,
       opponentGesture,

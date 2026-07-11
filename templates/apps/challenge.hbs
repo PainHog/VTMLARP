@@ -29,26 +29,33 @@
   </fieldset>
   {{/if}}
 
-  <label>Your Gesture
-    <select name="gesture">
-      {{#each gestures as |g|}}
-      <option value="{{g}}">{{vtmCapitalize g}}</option>
-      {{/each}}
-    </select>
-  </label>
+  <div class="static-only" style="display:none;">
+    <p class="hint">Static Challenge: no opposing throw - your Traits Bid must exceed the Difficulty (a tie is not enough) to succeed.</p>
+    <label>Difficulty <input type="number" name="difficulty" value="1" min="1"></label>
+  </div>
 
-  <fieldset>
-    <legend>Opponent (optional)</legend>
-    <label>Name <input type="text" name="opponentName" placeholder="Opponent name"></label>
-    <label>Their Gesture
-      <select name="opponentGesture">
-        <option value="">-</option>
+  <div class="rps-only">
+    <label>Your Gesture
+      <select name="gesture">
         {{#each gestures as |g|}}
         <option value="{{g}}">{{vtmCapitalize g}}</option>
         {{/each}}
       </select>
     </label>
-  </fieldset>
+
+    <fieldset>
+      <legend>Opponent (optional)</legend>
+      <label>Name <input type="text" name="opponentName" placeholder="Opponent name"></label>
+      <label>Their Gesture
+        <select name="opponentGesture">
+          <option value="">-</option>
+          {{#each gestures as |g|}}
+          <option value="{{g}}">{{vtmCapitalize g}}</option>
+          {{/each}}
+        </select>
+      </label>
+    </fieldset>
+  </div>
 
   <label>Retest Used <input type="text" name="retest" placeholder="e.g. Willpower, Brawl Ability"></label>
 

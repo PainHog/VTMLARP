@@ -1,9 +1,14 @@
 /**
- * Frenzy is resolved as a static/uncontested test against a Difficulty (the
- * stimulus the Storyteller assigns) - there is no opposing party throwing
- * gestures against you, so unlike a Trait challenge this is safe to resolve
- * automatically. Compares the character's Self-Control/Instinct rating to
- * the Difficulty; Willpower can be spent instead to automatically resist.
+ * Frenzy and Rötschreck are both resolved as a static/uncontested Virtue Test
+ * against a Difficulty (the stimulus the Storyteller assigns) - there is no
+ * opposing party throwing gestures against you, so unlike a Trait challenge
+ * this is safe to resolve automatically. Standard frenzy (anger, hunger,
+ * provocation) tests Self-Control/Instinct; Rötschreck (fire/sunlight) tests
+ * Courage instead - the rulebook's own worked example resolves them the same
+ * way, just against a different Virtue. Per that example, a tie is NOT
+ * enough to resist ("his Self-Control of two Traits is insufficient" when
+ * tied with the stimulus) - the Virtue rating must exceed the Difficulty.
+ * Willpower can be spent instead to automatically resist either one.
  */
 export class FrenzyApp extends foundry.appv1.api.Application {
   constructor(actor, options = {}) {
@@ -27,6 +32,7 @@ export class FrenzyApp extends foundry.appv1.api.Application {
     return {
       actor: this.actor,
       selfControlInstinct: this.actor.system.virtues.selfControlInstinct.rating,
+      courage: this.actor.system.virtues.courage.rating,
       willpower: this.actor.system.willpower.value
     };
   }
@@ -45,6 +51,10 @@ export class FrenzyApp extends foundry.appv1.api.Application {
     const difficulty = Number(fd.difficulty) || 1;
     const spendWillpower = !!fd.spendWillpower;
     const trigger = fd.trigger || "";
+    const isRotschreck = fd.virtue === "courage";
+    const virtueKey = isRotschreck ? "courage" : "selfControlInstinct";
+    const virtueLabel = isRotschreck ? "Courage" : "Self-Control/Instinct";
+    const failLabel = isRotschreck ? "Rötschreck!" : "Frenzy!";
 
     let outcome, detail;
     if (spendWillpower && this.actor.system.willpower.value > 0) {
@@ -52,10 +62,11 @@ export class FrenzyApp extends foundry.appv1.api.Application {
       outcome = "Resisted";
       detail = "Spent 1 Willpower Trait to automatically resist.";
     } else {
-      const rating = this.actor.system.virtues.selfControlInstinct.rating;
-      const resisted = rating >= difficulty;
-      outcome = resisted ? "Resisted" : "Frenzy!";
-      detail = `Self-Control/Instinct ${rating} vs Difficulty ${difficulty}.`;
+      const rating = this.actor.system.virtues[virtueKey].rating;
+      // A tie does not resist - the Virtue rating must exceed the Difficulty.
+      const resisted = rating > difficulty;
+      outcome = resisted ? "Resisted" : failLabel;
+      detail = `${virtueLabel} ${rating} vs Difficulty ${difficulty}.`;
     }
 
     const content = await renderTemplate("systems/vtmlarp/templates/apps/frenzy-card.hbs", {

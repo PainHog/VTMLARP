@@ -5,7 +5,14 @@
 
   <label>Difficulty (stimulus count) <input type="number" name="difficulty" value="1" min="1"></label>
 
-  <p>Self-Control/Instinct: {{selfControlInstinct}} &nbsp; Willpower: {{willpower}}</p>
+  <label>Virtue Being Tested
+    <select name="virtue">
+      <option value="selfControlInstinct">Self-Control/Instinct ({{selfControlInstinct}}) — standard frenzy</option>
+      <option value="courage">Courage ({{courage}}) — Rötschreck (fire/sunlight)</option>
+    </select>
+  </label>
+
+  <p>Willpower: {{willpower}}</p>
 
   <label><input type="checkbox" name="spendWillpower" {{#unless willpower}}disabled{{/unless}}> Spend 1 Willpower to automatically resist</label>
 

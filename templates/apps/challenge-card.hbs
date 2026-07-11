@@ -4,6 +4,12 @@
     <span>{{traitsBid}} Traits Bid{{#if fullBid}} (Full-Bid){{/if}}</span>
   </div>
 
+  {{#if isStatic}}
+  <div class="vtm-static-test">
+    <span class="vtm-combatant-name">{{actorName}}</span>
+    <span class="vtm-static-vs">{{traitsBid}} vs Difficulty {{difficulty}}</span>
+  </div>
+  {{else}}
   <div class="vtm-clash">
     <div class="vtm-combatant">
       <span class="vtm-combatant-name">{{actorName}}</span>
@@ -19,6 +25,7 @@
       {{/if}}
     </div>
   </div>
+  {{/if}}
 
   {{#if result}}
   <div class="vtm-result-banner result-{{result}}">{{resultLabel}}</div>

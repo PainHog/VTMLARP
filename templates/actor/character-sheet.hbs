@@ -29,6 +29,10 @@
             {{/each}}
           </select>
         </label>
+        <label>Free Traits
+          <input type="number" name="system.freeTraits" value="{{system.freeTraits}}" min="0"
+            title="Background/Free Traits spent (1 per Generation purchased below 13th, at creation).">
+        </label>
         <label>Nature
           <select name="system.nature">
             <option value="">—</option>
@@ -58,6 +62,7 @@
     <a class="item" data-tab="backgrounds">Backgrounds</a>
     <a class="item" data-tab="meritsflaws">Merits &amp; Flaws</a>
     <a class="item" data-tab="gear">Gear</a>
+    <a class="item" data-tab="social">Social</a>
     <a class="item" data-tab="bio">Biography</a>
   </nav>
 
@@ -77,15 +82,28 @@
           (per turn <input type="number" name="system.blood.perTurn" value="{{system.blood.perTurn}}" class="tiny">)
         </div>
         <div class="pool">
-          <label>{{system.morality.path}} Rating</label>
+          <label>Path Rating</label>
           <input type="number" name="system.morality.rating" value="{{system.morality.rating}}">
-          <input type="text" name="system.morality.path" value="{{system.morality.path}}" class="tiny" title="Path name (change if not on Humanity)">
+          <select name="system.morality.path" class="tiny">
+            {{#each PATH_OPTIONS as |p|}}
+            <option value="{{p}}" {{#if (eq ../system.morality.path p)}}selected{{/if}}>{{p}}</option>
+            {{/each}}
+          </select>
         </div>
         <div class="pool">
           <label>Experience</label>
           <input type="number" name="system.experience.value" value="{{system.experience.value}}">
         </div>
       </div>
+
+      {{#if generationInfo}}
+      <p class="hint generation-reference">
+        Gen {{system.generation}} reference — Blood {{generationInfo.bloodMax}}/{{generationInfo.bloodPerTurn}} per turn,
+        Willpower {{generationInfo.willpowerStart}}/{{generationInfo.willpowerMax}},
+        Max Traits {{generationInfo.maxTraits}}, Max Abilities {{generationInfo.maxAbilities}}
+        <a class="apply-generation" title="Set Blood/Willpower max from this Generation (clamps current values down if needed)"><i class="fas fa-sync"></i> Apply to Blood/Willpower</a>
+      </p>
+      {{/if}}
 
       <div class="virtues flexrow">
         <div class="virtue">
@@ -321,6 +339,55 @@
         </li>
         {{/each}}
       </ol>
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="social">
+      <h3>Derangements <a class="simple-list-add" data-path="derangements"><i class="fas fa-plus"></i></a></h3>
+      <div class="simple-list">
+        {{#each system.derangements as |d i|}}
+        <div class="simple-list-row">
+          <input type="text" name="system.derangements.{{i}}.name" value="{{d.name}}" placeholder="Derangement name" class="tiny">
+          <input type="text" name="system.derangements.{{i}}.description" value="{{d.description}}" placeholder="Trigger/description" class="wide">
+          <a class="simple-list-remove" data-path="derangements" data-index="{{i}}"><i class="fas fa-times"></i></a>
+        </div>
+        {{/each}}
+      </div>
+
+      <h3>Blood Bonds <a class="simple-list-add" data-path="bloodBonds"><i class="fas fa-plus"></i></a></h3>
+      <div class="simple-list">
+        {{#each system.bloodBonds as |b i|}}
+        <div class="simple-list-row">
+          <input type="text" name="system.bloodBonds.{{i}}.name" value="{{b.name}}" placeholder="Bonded to whom" class="tiny">
+          <select name="system.bloodBonds.{{i}}.level">
+            <option value="1" {{#if (eq b.level 1)}}selected{{/if}}>1 drink</option>
+            <option value="2" {{#if (eq b.level 2)}}selected{{/if}}>2 drinks</option>
+            <option value="3" {{#if (eq b.level 3)}}selected{{/if}}>3 drinks (Full Bond)</option>
+          </select>
+          <input type="text" name="system.bloodBonds.{{i}}.notes" value="{{b.notes}}" placeholder="Notes" class="wide">
+          <a class="simple-list-remove" data-path="bloodBonds" data-index="{{i}}"><i class="fas fa-times"></i></a>
+        </div>
+        {{/each}}
+      </div>
+
+      <h3>Boons <a class="simple-list-add" data-path="boons"><i class="fas fa-plus"></i></a></h3>
+      <div class="simple-list">
+        {{#each system.boons as |bo i|}}
+        <div class="simple-list-row">
+          <select name="system.boons.{{i}}.direction">
+            <option value="owed" {{#if (eq bo.direction "owed")}}selected{{/if}}>I owe</option>
+            <option value="owedToMe" {{#if (eq bo.direction "owedToMe")}}selected{{/if}}>Owed to me</option>
+          </select>
+          <input type="text" name="system.boons.{{i}}.who" value="{{bo.who}}" placeholder="Who" class="tiny">
+          <select name="system.boons.{{i}}.type">
+            <option value="minor" {{#if (eq bo.type "minor")}}selected{{/if}}>Minor</option>
+            <option value="major" {{#if (eq bo.type "major")}}selected{{/if}}>Major</option>
+            <option value="blood" {{#if (eq bo.type "blood")}}selected{{/if}}>Blood</option>
+          </select>
+          <input type="text" name="system.boons.{{i}}.notes" value="{{bo.notes}}" placeholder="Notes" class="wide">
+          <a class="simple-list-remove" data-path="boons" data-index="{{i}}"><i class="fas fa-times"></i></a>
+        </div>
+        {{/each}}
+      </div>
     </div>
 
     <div class="tab" data-group="primary" data-tab="bio">
