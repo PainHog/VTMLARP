@@ -44,20 +44,30 @@
             title="Character-creation only, separate from Experience: 1 Background/Free Trait spent per Generation purchased below 13th. Not touched again after creation.">
         </label>
         <label>Nature
-          <select name="system.nature">
-            <option value="">—</option>
-            {{#each ARCHETYPE_OPTIONS as |a|}}
-            <option value="{{a}}" {{#if (eq ../system.nature a)}}selected{{/if}}>{{a}}</option>
-            {{/each}}
-          </select>
+          <span class="flexrow dropdown-with-lore">
+            <select name="system.nature">
+              <option value="">—</option>
+              {{#each ARCHETYPE_OPTIONS as |a|}}
+              <option value="{{a}}" {{#if (eq ../system.nature a)}}selected{{/if}}>{{a}}</option>
+              {{/each}}
+            </select>
+            {{#if archetypeLoreEntry}}
+            <a class="open-lore" data-pack="{{archetypeLoreEntry.pack}}" data-name="{{archetypeLoreEntry.name}}" title="Open Archetypes lore"><i class="fas fa-book"></i></a>
+            {{/if}}
+          </span>
         </label>
         <label>Demeanor
-          <select name="system.demeanor">
-            <option value="">—</option>
-            {{#each ARCHETYPE_OPTIONS as |a|}}
-            <option value="{{a}}" {{#if (eq ../system.demeanor a)}}selected{{/if}}>{{a}}</option>
-            {{/each}}
-          </select>
+          <span class="flexrow dropdown-with-lore">
+            <select name="system.demeanor">
+              <option value="">—</option>
+              {{#each ARCHETYPE_OPTIONS as |a|}}
+              <option value="{{a}}" {{#if (eq ../system.demeanor a)}}selected{{/if}}>{{a}}</option>
+              {{/each}}
+            </select>
+            {{#if archetypeLoreEntry}}
+            <a class="open-lore" data-pack="{{archetypeLoreEntry.pack}}" data-name="{{archetypeLoreEntry.name}}" title="Open Archetypes lore"><i class="fas fa-book"></i></a>
+            {{/if}}
+          </span>
         </label>
         <label>Title <input type="text" name="system.title" value="{{system.title}}"></label>
         <label>Coterie <input type="text" name="system.coterie" value="{{system.coterie}}" placeholder="Coterie/pack name"></label>
@@ -130,15 +140,21 @@
 
       <div class="virtues flexrow">
         <div class="virtue">
-          <label>Conscience/Conviction</label>
+          <label>Conscience/Conviction
+            <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
+          </label>
           <input type="number" name="system.virtues.conscienceConviction.rating" value="{{system.virtues.conscienceConviction.rating}}">
         </div>
         <div class="virtue">
-          <label>Self-Control/Instinct</label>
+          <label>Self-Control/Instinct
+            <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
+          </label>
           <input type="number" name="system.virtues.selfControlInstinct.rating" value="{{system.virtues.selfControlInstinct.rating}}">
         </div>
         <div class="virtue">
-          <label>Courage</label>
+          <label>Courage
+            <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
+          </label>
           <input type="number" name="system.virtues.courage.rating" value="{{system.virtues.courage.rating}}">
         </div>
       </div>

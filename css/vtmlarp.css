@@ -341,6 +341,11 @@
   margin-left: 2px;
 }
 
+.vtmlarp .virtue .open-lore {
+  color: var(--vtm-red-bright);
+  margin-left: 4px;
+}
+
 /* -------------------------------------------------------------------- */
 /* Tabs                                                                  */
 /* -------------------------------------------------------------------- */
@@ -520,7 +525,8 @@
   border-radius: 2px;
 }
 
-.vtmlarp .item-list .item-name { flex: 1; color: var(--vtm-text); }
+.vtmlarp .item-list .item-name { flex: 1; color: var(--vtm-text); cursor: pointer; }
+.vtmlarp .item-list .item-name:hover { color: var(--vtm-red-bright); text-decoration: underline; }
 .vtmlarp .item-list .item-meta, .vtmlarp .item-list .item-rating {
   font-size: 13px;
   color: var(--vtm-text-dim);

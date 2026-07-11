@@ -189,6 +189,13 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.clanLoreEntry = CLAN_LORE_LOOKUP[sys.clan] ?? null;
     context.sectLoreEntry = SECT_LORE_LOOKUP[sys.sect] ?? null;
     context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : null;
+    // Nature and Demeanor both draw from the same shared "Nature and Demeanor
+    // Archetypes" reference doc (no per-archetype documents exist), and the
+    // Virtues (Conscience/Conviction, Self-Control/Instinct, Courage) all
+    // point to the same shared Virtues reference doc.
+    context.archetypeLoreEntry = sys.nature || sys.demeanor
+      ? { pack: "rules-reference", name: "Nature and Demeanor Archetypes" } : null;
+    context.virtuesLoreEntry = { pack: "rules-reference", name: "Virtues" };
     return context;
   }
 
@@ -209,6 +216,10 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find(".health-level-add").on("click", this._onAddHealthLevel.bind(this));
     html.find(".health-level-remove").on("click", this._onRemoveHealthLevel.bind(this));
     html.find(".item-edit").on("click", this._onItemEdit.bind(this));
+    // Clicking the item's name itself also opens its sheet, so players can
+    // read a Discipline/Power's full text without hunting for the small
+    // pencil icon separately.
+    html.find(".item-name").on("click", this._onItemEdit.bind(this));
     html.find(".item-delete").on("click", this._onItemDelete.bind(this));
     html.find(".rated-trait-control").on("click", this._onRatedTraitControl.bind(this));
     html.find(".open-challenge").on("click", () => new ChallengeApp(this.actor).render(true));
