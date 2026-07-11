@@ -1,7 +1,7 @@
 <div class="vtmlarp-challenge-card">
   <div class="vtm-clash-header">
     <span>{{challengeType}} Challenge</span>
-    <span>{{traitsBid}} Traits Bid{{#if fullBid}} (Full-Bid){{/if}}</span>
+    {{#unless isStatic}}<span>{{traitsBid}} vs {{opponentTraitsBid}} Traits Bid{{#if fullBid}} (Full-Bid){{/if}}</span>{{/unless}}
   </div>
 
   {{#if isStatic}}
@@ -12,12 +12,12 @@
   {{else}}
   <div class="vtm-clash">
     <div class="vtm-combatant">
-      <span class="vtm-combatant-name">{{actorName}}</span>
+      <span class="vtm-combatant-name">{{actorName}} ({{traitsBid}})</span>
       <span class="vtm-gesture vtm-gesture-left">{{vtmGestureEmoji gesture}}</span>
     </div>
     <span class="vtm-vs">VS</span>
     <div class="vtm-combatant">
-      <span class="vtm-combatant-name">{{#if opponentName}}{{opponentName}}{{else}}Opponent{{/if}}</span>
+      <span class="vtm-combatant-name">{{#if opponentName}}{{opponentName}}{{else}}Opponent{{/if}} ({{opponentTraitsBid}})</span>
       {{#if opponentGesture}}
       <span class="vtm-gesture vtm-gesture-right">{{vtmGestureEmoji opponentGesture}}</span>
       {{else}}

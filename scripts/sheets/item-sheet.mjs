@@ -4,7 +4,7 @@ const { ItemSheetV2 } = foundry.applications.sheets;
 export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "sheet", "item"],
-    position: { width: 520, height: 480 },
+    position: { width: 520, height: 640 },
     window: { resizable: true },
     form: { submitOnChange: true }
   };

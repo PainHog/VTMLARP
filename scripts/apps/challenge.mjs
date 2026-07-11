@@ -105,6 +105,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     const fd = new FormDataExtended(form).object;
     const { challengeType, gesture, opponentName, opponentGesture, retest } = fd;
     let traitsBid = fd.traitsBid;
+    const opponentTraitsBid = fd.opponentTraitsBid;
 
     const actorName = this.actor.name;
     const opponentLabel = opponentName || "Opponent";
@@ -135,8 +136,27 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       resultLabel = success ? `${actorName} Succeeds!` : `${actorName} Fails!`;
     } else if (opponentGesture) {
       const outcome = beats(gesture, opponentGesture);
-      result = outcome === "tie" ? "Tied" : (outcome === "win" ? "Won" : "Lost");
-      resultLabel = result === "Tied" ? "Tied" : (result === "Won" ? `${actorName} Wins!` : `${opponentLabel} Wins!`);
+      if (outcome === "tie") {
+        // Playing remotely, not face to face, so there's no table to visibly
+        // compare trait piles - per the rulebook, a matched gesture is broken
+        // by whoever bid more Traits; a genuine tie (equal gesture AND equal
+        // Traits) stands as a tie with no winner.
+        const mine = Number(traitsBid) || 0;
+        const theirs = Number(opponentTraitsBid) || 0;
+        if (mine > theirs) {
+          result = "Won";
+          resultLabel = `${actorName} Wins (overbid on tied gesture)!`;
+        } else if (theirs > mine) {
+          result = "Lost";
+          resultLabel = `${opponentLabel} Wins (overbid on tied gesture)!`;
+        } else {
+          result = "Tied";
+          resultLabel = "Tied";
+        }
+      } else {
+        result = outcome === "win" ? "Won" : "Lost";
+        resultLabel = result === "Won" ? `${actorName} Wins!` : `${opponentLabel} Wins!`;
+      }
     }
 
     const content = await renderTemplate("systems/vtmlarp/templates/apps/challenge-card.hbs", {
@@ -149,6 +169,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       gesture,
       opponentName,
       opponentGesture,
+      opponentTraitsBid,
       result,
       resultLabel,
       retest
