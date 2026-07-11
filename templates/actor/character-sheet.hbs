@@ -20,12 +20,17 @@
         </label>
         <label>Bloodline <input type="text" name="system.bloodline" value="{{system.bloodline}}" placeholder="e.g. Antitribu, Caitiff"></label>
         <label>Sect
-          <select name="system.sect">
-            <option value="">—</option>
-            {{#each SECT_OPTIONS as |s|}}
-            <option value="{{s}}" {{#if (eq ../system.sect s)}}selected{{/if}}>{{s}}</option>
-            {{/each}}
-          </select>
+          <span class="flexrow dropdown-with-lore">
+            <select name="system.sect">
+              <option value="">—</option>
+              {{#each SECT_OPTIONS as |s|}}
+              <option value="{{s}}" {{#if (eq ../system.sect s)}}selected{{/if}}>{{s}}</option>
+              {{/each}}
+            </select>
+            {{#if sectLoreEntry}}
+            <a class="open-lore" data-pack="{{sectLoreEntry.pack}}" data-name="{{sectLoreEntry.name}}" title="Open {{sectLoreEntry.name}} lore"><i class="fas fa-book"></i></a>
+            {{/if}}
+          </span>
         </label>
         <label>Generation
           <select name="system.generation">

@@ -28,12 +28,20 @@ const SECT_OPTIONS = [
   "Camarilla", "Sabbat", "Anarch Movement", "Independent Alliance", "Inconnu", "Ashirra"
 ];
 
+// Sect lore built from the Camarilla Guide/Sabbat Guide/Anarchs Guide.
+// Independent Alliance, Inconnu, and Ashirra have no dedicated sourcebook in
+// this system yet, so those three are left unmapped rather than guessing.
+const SECT_LORE_LOOKUP = {
+  "Camarilla": { pack: "sects", name: "Camarilla" },
+  "Sabbat": { pack: "sects", name: "Sabbat" },
+  "Anarch Movement": { pack: "sects", name: "Anarch Movement" }
+};
+
 // Maps a Clan/Bloodline dropdown value to the JournalEntry that actually
 // covers it, since clan lore isn't consistently one-pack-one-entry-per-clan
 // (most live in "clans" as a bare-named overview entry alongside many
 // differently-titled sub-topic entries; a few bloodlines instead live in
-// "antitribu"). Sect has no equivalent lore entry in any compendium yet, so
-// there's no lookup for it - the link is simply omitted when unmapped.
+// "antitribu").
 const CLAN_LORE_LOOKUP = {
   "Assamite": { pack: "clans", name: "Assamite" },
   "Brujah": { pack: "clans", name: "Brujah" },
@@ -178,6 +186,7 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     // when a mapping actually exists, since coverage isn't complete (e.g.
     // Sect has no matching compendium entry at all yet).
     context.clanLoreEntry = CLAN_LORE_LOOKUP[sys.clan] ?? null;
+    context.sectLoreEntry = SECT_LORE_LOOKUP[sys.sect] ?? null;
     context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : null;
     return context;
   }
