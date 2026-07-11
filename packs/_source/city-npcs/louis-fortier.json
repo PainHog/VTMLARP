@@ -236,7 +236,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Second son of the Comte de la Belliere, Louis Charles Fortier de la Belliere chose the army over the Church and served in colonial Canada, where in 1754 he was seduced and Embraced by a mysterious Indian shaman's agent, Night Star, after his men were slaughtered around him. He built a respected unlife in New York, fled the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} to San Francisco and finally Los Angeles in 1912, joining Don Sebastian's primogen. When Don Sebastian savagely beat Jeremy MacNeil for defying him, Louis alone among the primogen spoke up for the anarch; when the primogen refused to act, Louis broke with them, fought alongside Jeremy and Crispus Attucks in the 1944 Revolt, and led the ill-fated expedition to Malibu. In gratitude, the anarchs let him govern West Los Angeles (Beverly Hills and the Westside) as his own barony.</p><h2>Roleplaying Hints</h2><p>The quintessential nobleman, Louis is protective of his vassals, gracious to enemies, and the only baron who takes genuine interest in his domain's economic prosperity \u2014 the Westside thrives under his tight, paternalistic control. He respects Jeremy as a born leader and supports the Free States' \"experiment in democracy\" even though the notion of Kindred equality offends his noble sensibilities. He built the Music Center (with Jeremy) as a cultural Elysium alternative, though most anarchs showed no interest in it.</p>",
+    "biography": "<h2>Background</h2><p>Second son of the Comte de la Belliere, Louis Charles Fortier de la Belliere chose the army over the Church and served in colonial Canada, where in 1754 he was seduced and Embraced by a mysterious Indian shaman's agent, Night Star, after his men were slaughtered around him. He built a respected unlife in New York, fled the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} to San Francisco and finally Los Angeles in 1912, joining Don Sebastian's primogen. When Don Sebastian savagely beat Jeremy MacNeil for defying him, Louis alone among the primogen spoke up for the anarch; when the primogen refused to act, Louis broke with them, fought alongside Jeremy and Crispus Attucks in the 1944 Revolt, and led the ill-fated expedition to Malibu. In gratitude, the anarchs let him govern West Los Angeles (Beverly Hills and the Westside) as his own barony.</p><h2>Roleplaying Hints</h2><p>The quintessential nobleman, Louis is protective of his vassals, gracious to enemies, and the only baron who takes genuine interest in his domain's economic prosperity — the Westside thrives under his tight, paternalistic control. He respects Jeremy as a born leader and supports the Free States' \"experiment in democracy\" even though the notion of Kindred equality offends his noble sensibilities. He built the Music Center (with Jeremy) as a cultural Elysium alternative, though most anarchs showed no interest in it.</p>",
     "notes": "Haven: a magnificent, heavily guarded mansion in Beverly Hills. Keeps three formidable mistresses (Catherine, Elena, and a third) and reputedly the largest ghoul household in the Free States, all young, strong, and beautiful.",
     "npcType": "vampire"
   },
@@ -256,7 +256,238 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "c914e2bd00f74258",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8c0930e023164d47",
+      "name": "Dominate — 2 Intermediate — Conditioning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Over several consecutive nights of unrestricted access and repeated Mental Challenges, you can break down a victim's will entirely, turning them into a virtually mindless thrall who obeys you without need for further tests.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until broken (six sessions without contact)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a65ad62e99f64e55",
+      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c657fe57457d4ed7",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "266176e742824ee5",
+      "name": "Fortitude — 2 Intermediate — Brace for Impact",
+      "type": "power",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+      "system": {
+        "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Athletics",
+        "duration": "Instantaneous (per impact)",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": "Fortitude (3), Potence (3)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "cb5800af65db44e8",
+      "name": "Fortitude — 2 Intermediate — Resilience",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>When you suffer aggravated damage, you may make a Simple Test (improved by spending a stamina-related Physical Trait) to reduce one level of that damage to lethal damage; usable once per attack.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Instant",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "69e248b5eceb414a",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "000ac688a8e244af",
+      "name": "Presence — 2 Intermediate — Command the Wary Steed",
+      "type": "power",
+      "img": "icons/creatures/mammals/horse-brown-galloping.webp",
+      "system": {
+        "description": "<p>Through use of this power the Cainite can cause enemies' mounts to rear and bolt, singly or en masse, by the strength of his gaze alone, or bolster the courage and tractability of allied steeds for greater control in battle.</p><p><strong>System:</strong> The player spends a Willpower point and rolls Manipulation + Animal Ken (difficulty 7). Enemy mounts become terrified and nigh uncontrollable: Ride roll difficulties increase by three and mounted combat becomes impossible. Friendly mounts become far more pliant (-2 difficulty on all Ride rolls) and may be coerced into situations they would normally avoid.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Three: Zealots",
+        "discipline": "Presence",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Manipulation",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Presence (3), Animalism (2)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

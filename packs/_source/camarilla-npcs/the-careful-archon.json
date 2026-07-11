@@ -341,7 +341,391 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "827587c05d944e2f",
+      "name": "Auspex — 1 Basic — Heightened Senses",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may double the range of your sight and hearing and sharpen your other senses to remarkable acuity, perceiving things ordinary folk cannot. A sudden sensory assault, such as a loud noise or strong odor, numbs the affected sense for the rest of the scene and stuns you for a turn unless you spend a Willpower Trait. You may also receive uncontrollable visions of past or future events.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "At will",
+        "activation": "passive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d65d4bd8e5b04a0a",
+      "name": "Auspex — 1 Basic — Aura Perception",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By concentrating on a visible subject and besting them in a Static Mental Challenge, you read the colors of their aura to learn their emotional state, general nature, whether they're under magical influence, have committed diablerie, or just lied; it can also reveal nearby ghosts.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "dfa1db3550e3404b",
+      "name": "Auspex — 2 Intermediate — The Spirit's Touch",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Maintain physical contact with an object or location and concentrate for a turn, expending a Mental Trait, then ask the Narrator one question about who last touched it, whether it was involved in stressful situations, or what strong emotions drove its user. May be used repeatedly for greater insight; objects of powerful emotional resonance may force a derangement upon the user for the scene.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant, repeatable",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5c2cdd2b41db43c9",
+      "name": "Celerity — 1 Basic — Alacrity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you preempt any physical action taken in the same turn that you are aware of, acting before your opponent can complete their move.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4253e37e7c064add",
+      "name": "Celerity — 1 Basic — Swiftness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain one additional action at the end of the turn, after all basic actions resolve.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "033959f47c874418",
+      "name": "Celerity — 2 Intermediate — Rapidity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>In addition to the benefits of Swiftness, spending a Blood Trait lets you use the Bomb in challenges depending on speed or agility (not strength), after warning your opponent of the ability and how it works.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Celerity",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "fd905c4ab9c34032",
+      "name": "Fortitude — 1 Basic — Endurance",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "0960e065516041b5",
+      "name": "Fortitude — 1 Basic — Mettle",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You gain one additional health level, functioning as an extra Healthy level on your health chart, which can be lost and healed normally.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ff5bb516af804ce2",
+      "name": "Fortitude — 2 Intermediate — Resilience",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>When you suffer aggravated damage, you may make a Simple Test (improved by spending a stamina-related Physical Trait) to reduce one level of that damage to lethal damage; usable once per attack.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Instant",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4e6da12ac4874699",
+      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By remaining completely still and silent in shadow or behind cover, you fade from notice to all but those using Auspex or similar senses; any movement, speech, or interaction breaks the concealment immediately.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Stealth",
+        "duration": "While still and silent",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3ee222b04b8c4298",
+      "name": "Obfuscate — 1 Basic — Unseen Presence",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Once hidden from sight, you may move about at a walk and remain unnoticed, automatically becoming visible only if you speak, make loud noise, or interact with your surroundings.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Stealth",
+        "duration": "Until concealment is broken",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "7b4bcc9ca803466f",
+      "name": "Presence — 1 Basic — Awe",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Social Trait during a Social Challenge, you gain an automatic retest, usable once per challenge (or once per target in a mass challenge at the same cost).</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "1 Social Trait",
+        "retestAbility": "Leadership",
+        "duration": "One challenge",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "beb5574bb8af46a0",
+      "name": "Presence — 1 Basic — Dread Gaze",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By hissing and baring your vampiric features in a Social Challenge, you strike terror into a victim who, if defeated, flees and avoids you for the rest of the scene or hour, risking an extra Trait to act against you if cornered.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

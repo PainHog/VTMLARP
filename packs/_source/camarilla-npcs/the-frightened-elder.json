@@ -308,7 +308,240 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "9cc6c37fecd04277",
+      "name": "Dominate — 1 Basic — Command",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and speaking a single emphasized word of command, you win a Mental Challenge to force immediate, unquestioning obedience to a simple order lasting no more than ten minutes.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Up to 10 minutes",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1c72394556654099",
+      "name": "Dominate — 1 Basic — Mesmerism",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and winning a Mental Challenge, you implant a more complex command, optionally tied to a specific trigger event, to be carried out immediately or later.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until command is fulfilled",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "fabdcd096882420f",
+      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "404553982caa4f08",
+      "name": "Fortitude — 1 Basic — Endurance",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a6cd30a1e2cc4dc7",
+      "name": "Fortitude — 1 Basic — Mettle",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You gain one additional health level, functioning as an extra Healthy level on your health chart, which can be lost and healed normally.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "599891444425474a",
+      "name": "Presence — 1 Basic — Awe",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Social Trait during a Social Challenge, you gain an automatic retest, usable once per challenge (or once per target in a mass challenge at the same cost).</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "1 Social Trait",
+        "retestAbility": "Leadership",
+        "duration": "One challenge",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a15feb27172e4c06",
+      "name": "Presence — 1 Basic — Dread Gaze",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By hissing and baring your vampiric features in a Social Challenge, you strike terror into a victim who, if defeated, flees and avoids you for the rest of the scene or hour, risking an extra Trait to act against you if cornered.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "53721b58e68e45ec",
+      "name": "Presence — 2 Intermediate — Entrancement",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Social Challenge, you render the target favorably disposed toward you for the rest of the scene or an hour, unable to insult or attack you unless you act against them first.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

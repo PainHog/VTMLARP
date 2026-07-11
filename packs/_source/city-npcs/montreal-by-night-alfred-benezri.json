@@ -258,7 +258,214 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "5fdb22420ef945c5",
+      "name": "Auspex — 3 Advanced — Anima Gathering",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Originally used to lead warrior-caste mystics on vision quests, this vizier technique lets a willing seer bring companions with him into the astral realms. All would-be participants must form an unbroken chain of physical contact with the character. Spend a Blood Trait for each \"follower\" you wish to bring along, up to a maximum of half your permanent Mental Traits (rounded down), then leave your body as per Psychic Projection. Each follower is treated as though she knows Psychic Projection regardless of her actual Auspex rating, using the leader's rolled successes. On the astral plane, followers must remain within roughly 100 feet of the leader, tethered to him and unable to break the connection. Any follower who loses physical contact with the leader instantly returns to her body and loses three Mental Traits, falling unconscious for the rest of the night if this reduces her to zero Mental Traits.</p>",
+        "source": "Clanbook: Assamite, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait per follower (max half permanent Mental Traits, rounded down)",
+        "retestAbility": "",
+        "duration": "Until the astral projection ends",
+        "activation": "reflexive",
+        "prerequisites": "Auspex (Psychic Projection)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9cdee0477e244aec",
+      "name": "Auspex — 3 Advanced — Crocodile's Tongue",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-red.webp",
+      "system": {
+        "description": "<p>A character with this power instinctively understands what one other person in a conversation (living or undead) wants to hear. If she can find a way to phrase what she wants so that it sounds like what that person wants to hear, this helps her get her point across, ingratiate herself, or accumulate favors. Unlike Telepathy, the subject need not be actively thinking about what she wants to hear.</p><p>The character must spend at least a minute speaking with the subject and win a Mental Challenge against the subject. If both players agree, they may instead roleplay the conversation directly, with the subject's player reacting favorably and offering suggestions that aid the character with the power. If the players resort to mechanics, the character with the power initiates a Social Challenge against the subject, winning ties.</p>",
+        "source": "Clanbook: Toreador, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Single conversation",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ab50a141a9b14772",
+      "name": "Presence — 3 Advanced — Melusine's Song",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-detection-alt-red.webp",
+      "system": {
+        "description": "<p>Named for the legendary (and supposedly fae) progenitor of the houses of Anjou and Lusignan, this power lets a Toreador sway others through song. If the Artisan can phrase her request in the form of a song, her words take on the weight of a nigh-irresistible command.</p><p><strong>System:</strong> The player states the suggestion she wishes to weave into the song and describes the song's nature. Everyone within earshot must resist or unknowingly submit to the request. The effect lasts as long as the Toreador continues singing or until the target leaves her presence; commands requiring the victim to leave the singer's presence can be resisted once more after the enchanting voice fades. Listeners outside the Toreador's immediate presence may notice something odd about the performance, though it registers as little more than an exceptionally fine one; other Toreador within earshot are immediately entranced. As a side benefit, knowledge of this power makes the character a superlative singer even when the power itself is not invoked.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book One: Artisans (Toreador)",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "2 Blood Traits and 1 Willpower Trait",
+        "retestAbility": "Performance",
+        "duration": "As long as the Toreador continues singing, or until the target leaves her presence",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": "Presence"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "72824381457b4b59",
+      "name": "Presence — 3 Advanced — Pulse of the City",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Your emotional state is always passively mirrored by the population of an entire city-sized region, with visitors affected less strongly than residents and vampires affected one level more mildly than mortals. To deliberately project a chosen emotion, spend a Willpower Trait and win a Static Social Challenge (typically 10-15 Traits, Storyteller's call) to shift the city's mood for one minute, extendable by spending additional Social Traits before the challenge. Two Methuselahs with this power contesting the same city test the Social Challenge directly against one another, with the longer-established Methuselah (six months or more) gaining five bonus Traits. Usable even while in torpor.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "One Willpower Trait (plus Social Traits to extend duration)",
+        "retestAbility": "",
+        "duration": "One minute per activation, longer with extra Social Traits spent",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "916e96609a4a4c52",
+      "name": "Thaumaturgy: Spirit Thaumaturgy — 3 Advanced — Spirit Eyes",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may attempt to see and communicate with wraiths in the area. A successful Mental Challenge versus the wraith is required before you are able to see or communicate with it. You may communicate with the ghost for five minutes for every Mental Trait you expend.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Thaumaturgy: Spirit Thaumaturgy",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "5 minutes per Mental Trait expended",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1adc689084194d37",
+      "name": "Thaumaturgy: Spirit Thaumaturgy — 3 Advanced — Evil Eye",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You can summon a wraith to harass a victim for a duration determined by the number of Mental Traits expended into the challenge. You must defeat the victim in a Mental Challenge; if successful, the victim must bid two extra Traits in any challenges for 10 minutes. You may extend the duration of harassment at the cost of one Mental Trait per five minutes.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Thaumaturgy: Spirit Thaumaturgy",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "10 minutes (extendable)",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3c97f69714c14a06",
+      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

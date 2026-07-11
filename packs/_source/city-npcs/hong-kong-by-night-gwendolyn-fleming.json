@@ -200,7 +200,234 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "9ab3c596a20e4c6f",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ebac0115a5ef4b8e",
+      "name": "Auspex \u2014 1 Basic \u2014 Heightened Senses",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may double the range of your sight and hearing and sharpen your other senses to remarkable acuity, perceiving things ordinary folk cannot. A sudden sensory assault, such as a loud noise or strong odor, numbs the affected sense for the rest of the scene and stuns you for a turn unless you spend a Willpower Trait. You may also receive uncontrollable visions of past or future events.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "At will",
+        "activation": "passive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "b3e5683ea34c4246",
+      "name": "Auspex \u2014 2 Intermediate \u2014 The Spirit's Touch",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Maintain physical contact with an object or location and concentrate for a turn, expending a Mental Trait, then ask the Narrator one question about who last touched it, whether it was involved in stressful situations, or what strong emotions drove its user. May be used repeatedly for greater insight; objects of powerful emotional resonance may force a derangement upon the user for the scene.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant, repeatable",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": ""
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "0ee74c4ffb37452f",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "0db2ecdc0a5d40ec",
+      "name": "Celerity \u2014 1 Basic \u2014 Swiftness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain one additional action at the end of the turn, after all basic actions resolve.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "113d4de36fda4a72",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4a56ba23bb0547a0",
+      "name": "Presence \u2014 1 Basic \u2014 Dread Gaze",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By hissing and baring your vampiric features in a Social Challenge, you strike terror into a victim who, if defeated, flees and avoids you for the rest of the scene or hour, risking an extra Trait to act against you if cornered.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "aa431dad4c5c46a2",
+      "name": "Presence \u2014 2 Intermediate \u2014 Command the Wary Steed",
+      "type": "power",
+      "img": "icons/creatures/mammals/horse-brown-galloping.webp",
+      "system": {
+        "description": "<p>Through use of this power the Cainite can cause enemies' mounts to rear and bolt, singly or en masse, by the strength of his gaze alone, or bolster the courage and tractability of allied steeds for greater control in battle.</p><p><strong>System:</strong> The player spends a Willpower point and rolls Manipulation + Animal Ken (difficulty 7). Enemy mounts become terrified and nigh uncontrollable: Ride roll difficulties increase by three and mounted combat becomes impossible. Friendly mounts become far more pliant (-2 difficulty on all Ride rolls) and may be coerced into situations they would normally avoid.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Three: Zealots",
+        "discipline": "Presence",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Manipulation",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Presence (3), Animalism (2)"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

@@ -258,7 +258,213 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "304a293a7402460b",
+      "name": "Auspex — 1 Basic — Heightened Senses",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may double the range of your sight and hearing and sharpen your other senses to remarkable acuity, perceiving things ordinary folk cannot. A sudden sensory assault, such as a loud noise or strong odor, numbs the affected sense for the rest of the scene and stuns you for a turn unless you spend a Willpower Trait. You may also receive uncontrollable visions of past or future events.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "At will",
+        "activation": "passive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b871499b68b54db6",
+      "name": "Fortitude — 1 Basic — Endurance",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4a00bb62bacc4ec0",
+      "name": "Fortitude — 1 Basic — Mettle",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You gain one additional health level, functioning as an extra Healthy level on your health chart, which can be lost and healed normally.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8829e05a839c410b",
+      "name": "Fortitude — 2 Intermediate — Resilience",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>When you suffer aggravated damage, you may make a Simple Test (improved by spending a stamina-related Physical Trait) to reduce one level of that damage to lethal damage; usable once per attack.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Instant",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "0d980b39bda54b8d",
+      "name": "Protean — 1 Basic — Eyes of the Beast",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By declaring your intent, your eyes glow red and grant you perfect sight in total darkness by the end of the turn, though you gain the Negative Trait Bestial unless you conceal your eyes.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Protean",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "At will",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "aaff848c3b654954",
+      "name": "Protean — 1 Basic — Feral Claws",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you sprout sharp claws from your hands and feet by the end of the turn, granting the bonus Trait Sharp and inflicting aggravated damage in combat.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Protean",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Survival",
+        "duration": "At will",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "0d57916df6ed4b93",
+      "name": "Protean — 2 Intermediate — Earth Meld",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait and a full turn, you sink into raw soil, becoming undetectable and immune to daylight while you sleep undisturbed, rising again at will or if the soil is disturbed.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Protean",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Survival",
+        "duration": "Until you choose to rise",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

@@ -346,7 +346,411 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "d04d7632cf484a73",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1ed32959f5d84627",
+      "name": "Auspex \u2014 1 Basic \u2014 Heightened Senses",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may double the range of your sight and hearing and sharpen your other senses to remarkable acuity, perceiving things ordinary folk cannot. A sudden sensory assault, such as a loud noise or strong odor, numbs the affected sense for the rest of the scene and stuns you for a turn unless you spend a Willpower Trait. You may also receive uncontrollable visions of past or future events.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "At will",
+        "activation": "passive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "b936e09ccc154a4c",
+      "name": "Auspex \u2014 2 Intermediate \u2014 The Spirit's Touch",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Maintain physical contact with an object or location and concentrate for a turn, expending a Mental Trait, then ask the Narrator one question about who last touched it, whether it was involved in stressful situations, or what strong emotions drove its user. May be used repeatedly for greater insight; objects of powerful emotional resonance may force a derangement upon the user for the scene.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant, repeatable",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": ""
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "8179c721bb0d400a",
+      "name": "Auspex \u2014 3 Advanced \u2014 Anima Gathering",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Originally used to lead warrior-caste mystics on vision quests, this vizier technique lets a willing seer bring companions with him into the astral realms. All would-be participants must form an unbroken chain of physical contact with the character. Spend a Blood Trait for each \"follower\" you wish to bring along, up to a maximum of half your permanent Mental Traits (rounded down), then leave your body as per Psychic Projection. Each follower is treated as though she knows Psychic Projection regardless of her actual Auspex rating, using the leader's rolled successes. On the astral plane, followers must remain within roughly 100 feet of the leader, tethered to him and unable to break the connection. Any follower who loses physical contact with the leader instantly returns to her body and loses three Mental Traits, falling unconscious for the rest of the night if this reduces her to zero Mental Traits.</p>",
+        "source": "Clanbook: Assamite, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait per follower (max half permanent Mental Traits, rounded down)",
+        "retestAbility": "",
+        "duration": "Until the astral projection ends",
+        "activation": "reflexive",
+        "prerequisites": "Auspex (Psychic Projection)"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "c613ec037dbd4234",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c02db56d48ea4ec8",
+      "name": "Presence \u2014 1 Basic \u2014 Dread Gaze",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By hissing and baring your vampiric features in a Social Challenge, you strike terror into a victim who, if defeated, flees and avoids you for the rest of the scene or hour, risking an extra Trait to act against you if cornered.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "8b72ce6f4ac94d77",
+      "name": "Presence \u2014 2 Intermediate \u2014 Command the Wary Steed",
+      "type": "power",
+      "img": "icons/creatures/mammals/horse-brown-galloping.webp",
+      "system": {
+        "description": "<p>Through use of this power the Cainite can cause enemies' mounts to rear and bolt, singly or en masse, by the strength of his gaze alone, or bolster the courage and tractability of allied steeds for greater control in battle.</p><p><strong>System:</strong> The player spends a Willpower point and rolls Manipulation + Animal Ken (difficulty 7). Enemy mounts become terrified and nigh uncontrollable: Ride roll difficulties increase by three and mounted combat becomes impossible. Friendly mounts become far more pliant (-2 difficulty on all Ride rolls) and may be coerced into situations they would normally avoid.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Three: Zealots",
+        "discipline": "Presence",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Manipulation",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Presence (3), Animalism (2)"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "6ac6d165fad546d2",
+      "name": "Presence \u2014 3 Advanced \u2014 Melusine's Song",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-detection-alt-red.webp",
+      "system": {
+        "description": "<p>Named for the legendary (and supposedly fae) progenitor of the houses of Anjou and Lusignan, this power lets a Toreador sway others through song. If the Artisan can phrase her request in the form of a song, her words take on the weight of a nigh-irresistible command.</p><p><strong>System:</strong> The player states the suggestion she wishes to weave into the song and describes the song's nature. Everyone within earshot must resist or unknowingly submit to the request. The effect lasts as long as the Toreador continues singing or until the target leaves her presence; commands requiring the victim to leave the singer's presence can be resisted once more after the enchanting voice fades. Listeners outside the Toreador's immediate presence may notice something odd about the performance, though it registers as little more than an exceptionally fine one; other Toreador within earshot are immediately entranced. As a side benefit, knowledge of this power makes the character a superlative singer even when the power itself is not invoked.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book One: Artisans (Toreador)",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "2 Blood Traits and 1 Willpower Trait",
+        "retestAbility": "Performance",
+        "duration": "As long as the Toreador continues singing, or until the target leaves her presence",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": "Presence"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "a114e839a0e24d3a",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "86caaf3121694c38",
+      "name": "Dominate \u2014 1 Basic \u2014 Mesmerism",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and winning a Mental Challenge, you implant a more complex command, optionally tied to a specific trigger event, to be carried out immediately or later.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until command is fulfilled",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "c9302ca075d74d3f",
+      "name": "Dominate \u2014 2 Intermediate \u2014 Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "420dd67833d748df",
+      "name": "Thaumaturgy",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5983e91890da40d9",
+      "name": "Thaumaturgy \u2014 1 Basic \u2014 Eyes of the Earth",
+      "type": "power",
+      "img": "icons/magic/nature/root-vines-green.webp",
+      "system": {
+        "description": "<p>The vampire \"sees\" everything that transpires within 10 miles of her attuned haven or shrine by utilizing the spirits of the grass, trees, rocks, and animals in the vicinity. No sound accompanies the visions, and unless the practitioner can read lips she cannot know what is being said. If she wishes to track a particular person for more than one night, she must relocate him again after each broken contact.</p><p><strong>System:</strong> The vampire ingests an infusion of her own vitae mixed with soil, grass shoots, leaves, animal fur, and bird feathers. The number of successes on a Willpower roll determines the duration: 1 success grants one turn, 2 one hour, 3 one night, 4 one week, and 5 one month.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "basic",
+        "challengeType": "static",
+        "bloodCost": "1 blood point",
+        "retestAbility": "Willpower",
+        "duration": "See system",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Sielanic Thaumaturgy: Path of the World's Blood; must be attuned to the land (One with the Land ritual)"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "0406242fd7d04d62",
+      "name": "Thaumaturgy \u2014 2 Intermediate \u2014 Command the Freshly Dead",
+      "type": "power",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": "<p>The vampire can command any ghost she can see to obey her, receiving answers to questions within the ghost's realm of awareness or sending it to deliver a message. She cannot compel a ghost to perform any task requiring a material form.</p><p><strong>System:</strong> The vampire must first use See the Dead to locate a desired ghost, then wins a contested Willpower roll against the wraith (most ghosts have 5 Willpower). Each success scored over the wraith's own answers one question or performs one simple action.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Willpower",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "See the Dead"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

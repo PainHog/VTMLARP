@@ -251,7 +251,130 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "caf45571e1b541c1",
+      "name": "Thaumaturgy — 2 Intermediate — Command the Freshly Dead",
+      "type": "power",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": "<p>The vampire can command any ghost she can see to obey her, receiving answers to questions within the ghost's realm of awareness or sending it to deliver a message. She cannot compel a ghost to perform any task requiring a material form.</p><p><strong>System:</strong> The vampire must first use See the Dead to locate a desired ghost, then wins a contested Willpower roll against the wraith (most ghosts have 5 Willpower). Each success scored over the wraith's own answers one question or performs one simple action.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Willpower",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "See the Dead"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c00551c66a6e47b9",
+      "name": "Thaumaturgy — 2 Intermediate — Heart of the Wood",
+      "type": "power",
+      "img": "icons/magic/nature/tree-oak-green-brown.webp",
+      "system": {
+        "description": "<p>The vampire may take refuge within the living wood of any tree standing inside her realm of attunement, concealing her presence from enemies; her aura blends with the tree's, increasing the difficulty of detecting her by two Traits' worth of supernatural senses. While inside, she may use Disciplines and abilities not dependent on physical gestures or eye contact. Sheltering within a tree also protects her from the rising sun. If the tree is chopped down she suffers five levels of damage and is forced out; burning the tree inflicts the same damage as aggravated.</p><p><strong>System:</strong> The vampire drinks a mixture of blood and tree sap, then rolls Willpower. A single success allows her to remain inside a tree for one turn; two successes extend this to a scene; three or more successes let her remain for up to 24 hours, after which the tree ejects her.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "1 blood point",
+        "retestAbility": "Willpower",
+        "duration": "See system",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Sielanic Thaumaturgy: Path of the World's Blood; must be attuned to the land"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1c9f4dbdbe9f4b7f",
+      "name": "Auspex — 1 Basic — Heightened Senses",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may double the range of your sight and hearing and sharpen your other senses to remarkable acuity, perceiving things ordinary folk cannot. A sudden sensory assault, such as a loud noise or strong odor, numbs the affected sense for the rest of the scene and stuns you for a turn unless you spend a Willpower Trait. You may also receive uncontrollable visions of past or future events.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "At will",
+        "activation": "passive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3b37110d39c04aaa",
+      "name": "Dominate — 1 Basic — Mesmerism",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and winning a Mental Challenge, you implant a more complex command, optionally tied to a specific trigger event, to be carried out immediately or later.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until command is fulfilled",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

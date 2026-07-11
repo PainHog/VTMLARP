@@ -193,7 +193,7 @@
     ],
     "freeTraits": 0,
     "biography": "<h2>Background</h2><p>Josefa Teotalco was an unpious nun Embraced for a forgotten scheme requiring an all-nun auxiliary; despite being a comparatively weak 14th-generation Cainite, she found genuine power through Noddist devotion, joining Las Hermanitas de Zila. During the @UUID[Compendium.vtmlarp.clans.JournalEntry.oWsHHlI3OS7cwvaF]{Ravnos} antitribu's 1999 Week of Nightmares frenzy she experienced visions of Gehenna, emerged transformed, and diablerized her own pack priest in Monomacy when the woman doubted her.</p><h2>Roleplaying Hints</h2><p>Josefa now preaches with rising charismatic fervor that the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} must abandon strategy and Path philosophy alike and fight the Antediluvians with everything, now, because there is no tomorrow. An unnamed elder (one of the city's three senior prisci, at the Storyteller's choice) secretly feeds her distorted Noddist lore and rhetoric to use her as an unwitting mouthpiece, exploiting the fact that lowering her generation cost Josefa the intuitive sense for others' hidden agendas she once had.</p>",
-    "notes": "Sire: Luisa Montoya. Merit: Face the Flames (two extra dice resisting R\u00f6tschreck from fire, atop her already-high Courage and Fire Dancing).",
+    "notes": "Sire: Luisa Montoya. Merit: Face the Flames (two extra dice resisting Rötschreck from fire, atop her already-high Courage and Fire Dancing).",
     "npcType": "vampire"
   },
   "prototypeToken": {
@@ -212,7 +212,207 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "68ba7fc85c614fe6",
+      "name": "Chimerstry",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3a58dad81eda48bf",
+      "name": "Chimerstry — 2 Intermediate — Apparition",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you animate an existing illusion, giving it a repeating pattern of movement that you can alter with a turn of concentration; the illusion requires your presence to be sustained.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Chimerstry",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Subterfuge",
+        "duration": "While you remain present",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c0c2ed3768504f25",
+      "name": "Chimerstry — 2 Intermediate — Permanency",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, an illusion you have created persists even after you leave the area, lasting until dispelled or seen through.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Chimerstry",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Subterfuge",
+        "duration": "Until dispelled",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8831f119f9a3445a",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d4dba3699d9f4894",
+      "name": "Animalism — 1 Basic — Beckoning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By uttering an animal call, you summon nearby animals of a chosen type to your side, favorably disposed toward you, by spending a Social Trait per animal summoned.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Animal Ken",
+        "duration": "Until threatened or scene ends",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "40baf62288514360",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ca823bf567fa40a6",
+      "name": "Fortitude — 1 Basic — Endurance",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

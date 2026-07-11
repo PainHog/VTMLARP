@@ -225,7 +225,340 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "6a7479ccb7a24eea",
+      "name": "Obtenebration",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Lasombra",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "58347828bb774482",
+      "name": "Obtenebration — 3 Advanced — Shadowstep",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+      "system": {
+        "description": "<p>While standing in a naturally occurring shadow, spend two Blood Traits and win a Static Mental Challenge against a seven-Trait difficulty to shift your position up to 50 steps to another natural shadow within line of sight, carrying your clothes and possessions. Bringing along an unwilling companion or using the power to escape restraint requires an additional Willpower Trait and winning a Physical Challenge.</p>",
+        "source": "Sabbat Guide, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "2 Blood Traits (+1 Willpower for a companion)",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "df97535040c3483e",
+      "name": "Obtenebration — 3 Advanced — Ahriman's Demesne",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+      "system": {
+        "description": "<p>Spend any number of Willpower Traits and concentrate for three turns to summon a billowing cloud of darkness in a 50-pace radius, placing the area under Shroud of Night. For each of the next three turns, everyone you wish to destroy in the area must win a Static Physical Challenge against the Willpower Traits you spent or take three Health Levels of aggravated damage. The cloud then collapses, and anyone who died within it vanishes entirely, leaving only belongings. The power cannot be invoked again that night.</p>",
+        "source": "Sabbat Guide, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "Any number of Willpower Traits",
+        "retestAbility": "",
+        "duration": "Three turns, then ends for the night",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e02d8b25df004caf",
+      "name": "Obtenebration — 3 Advanced — Tenebrous Form",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending three Blood Traits and three full turns of concentration, you dissolve into a shadowy, liquid form immune to physical attacks (though not fire, sunlight, or magic), able to slither through cracks and smother victims like a Shroud of Night.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "3 Blood Traits",
+        "retestAbility": "Occult",
+        "duration": "Until you choose to revert",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "13151eafd7e7406f",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Lasombra",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "cc7a349018df4315",
+      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9823033578044fea",
+      "name": "Dominate — 2 Intermediate — Conditioning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Over several consecutive nights of unrestricted access and repeated Mental Challenges, you can break down a victim's will entirely, turning them into a virtually mindless thrall who obeys you without need for further tests.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until broken (six sessions without contact)",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d5e5a1884a2f4258",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Lasombra",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "eba8b9ef74704a2a",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c492627611db4c01",
+      "name": "Potence — 1 Basic — Prowess",
+      "type": "power",
+      "img": "icons/skills/melee/strike-fist-punch-orange.webp",
+      "system": {
+        "description": "<p>Your unarmed and clubbing attacks inflict lethal rather than bashing damage if you choose. Once per game session you may also restore all of your used Brawny, Ferocious, Stalwart, Tough, and Wiry Physical Traits at once. Prowess costs nothing and isn't an action - it can be used at any time.</p>",
+        "source": "Laws of the Night Revised, p.150",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Permanent / once per session",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c82e9f235c1d4148",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Lasombra",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "6aa9059842574721",
+      "name": "Celerity — 1 Basic — Swiftness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain one additional action at the end of the turn, after all basic actions resolve.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

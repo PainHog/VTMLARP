@@ -160,7 +160,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Kokopell Mana remembers only fragments of her mortal life before an unknown @UUID[Compendium.vtmlarp.clans.JournalEntry.UhaIbwzsC1O2x9vr]{Nosferatu} Embraced her; she awoke believing herself the Humpback Locust Woman, a kachina spirit of the Hopi, and has never let go of that identity. She wandered from the desert Southwest to San Francisco seeking her fellow kachina, found instead a @UUID[Compendium.vtmlarp.clans.JournalEntry.UhaIbwzsC1O2x9vr]{Nosferatu} clan that welcomed her as kin, and settled into the city's underbelly. She first appeared in Kindred records in 1911.</p><h2>Roleplaying Hints</h2><p>Kokopell Mana treats the @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla} clans as a squabbling but beloved family and views the Kuei-jin invasion as an existential threat akin to the mythic Spider Clan's conquest of Pal\u00e1tkwapi. She has sworn never to let another home fall, and allies closely with Prince Winder (whom she calls the new Warrior Mother) and Luna Demian.</p>",
+    "biography": "<h2>Background</h2><p>Kokopell Mana remembers only fragments of her mortal life before an unknown @UUID[Compendium.vtmlarp.clans.JournalEntry.UhaIbwzsC1O2x9vr]{Nosferatu} Embraced her; she awoke believing herself the Humpback Locust Woman, a kachina spirit of the Hopi, and has never let go of that identity. She wandered from the desert Southwest to San Francisco seeking her fellow kachina, found instead a @UUID[Compendium.vtmlarp.clans.JournalEntry.UhaIbwzsC1O2x9vr]{Nosferatu} clan that welcomed her as kin, and settled into the city's underbelly. She first appeared in Kindred records in 1911.</p><h2>Roleplaying Hints</h2><p>Kokopell Mana treats the @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla} clans as a squabbling but beloved family and views the Kuei-jin invasion as an existential threat akin to the mythic Spider Clan's conquest of Palátkwapi. She has sworn never to let another home fall, and allies closely with Prince Winder (whom she calls the new Warrior Mother) and Luna Demian.</p>",
     "notes": "Sire: Unknown. Disciplines (as printed): Animalism 4, Auspex 3, Celerity 1, Fortitude 2, Obfuscate 6, Potence 5. Uses Obfuscate constantly to move unseen.",
     "npcType": "vampire"
   },
@@ -180,7 +180,408 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "fea4fe37123243a7",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Nosferatu",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d8373d2b79734bd3",
+      "name": "Obfuscate — 3 Advanced — Phantom Haunter",
+      "type": "power",
+      "img": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
+      "system": {
+        "description": "<p>Reaches into a target's self-image and lets the Malkavian assume the appearance and false memories of whoever has most shaped (or damaged) that self-image &mdash; a sire, a parent, a priest, or whoever the target's own psyche supplies.</p><p><strong>MET System:</strong> Win a Social Challenge against the victim. On a win, you gain a free retest on your very next use of Dementation, Dominate, or Presence against that same victim. Once the retest is used, the power's knowledge fades unless you spend a Willpower Trait to keep it active for one further retest (this is expensive, but more certain than triggering the power again from scratch). You may only claim one retest per challenge this way. This power relies heavily on the target's own good-faith roleplaying &mdash; if the subject's player won't cooperate, don't force it with a Storyteller ruling.</p>",
+        "source": "Clanbook: Malkavian, Chapter Two",
+        "discipline": "Obfuscate",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Scene (extendable)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "294b122128944ac3",
+      "name": "Obfuscate — 3 Advanced — Cloak the Gathering",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Mental Trait per subject, you extend any Obfuscate power you possess over a group, hiding or disguising them collectively; the cloak fails entirely only if you yourself are noticed or violate your power's conditions.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Stealth",
+        "duration": "Until the cloak is broken",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d1aaa6bc4358411c",
+      "name": "Obfuscate — 3 Advanced — Create Name",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>After spending three hours in peace establishing a persona, spend a permanent Willpower Trait and win a Static Mental Challenge (Storyteller-set difficulty, typically 10+ Traits) to permanently craft a wholly new identity, complete with appearance, speech, aura, and even apparent thoughts and Psychological traits. You may adopt the persona at will without further tests, and may maintain multiple identities, though only one may be active at a time; switching requires a Willpower Trait and a minute of concentration. Only Methuselah-level Auspex reliably pierces the disguise, though inconsistencies between the persona and your actual skills can also give it away.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "One permanent Willpower Trait",
+        "retestAbility": "",
+        "duration": "Permanent identity; switching costs one Willpower Trait and a minute",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "7e55f074700d42ec",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Nosferatu",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ae331bf5a7464a8b",
+      "name": "Potence — 3 Advanced — Gentle Nudge",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Facetiously named, this power allows the Kindred to physically knock another character away from herself with the slightest of touches. Although this power does no damage in and of itself, its use is quite humbling &mdash; to be hurled away from an elder in a social setting has its embarrassing repercussions. Some Kindred use this power surreptitiously, touching their victims and sending them reeling across the room; others use it as a not-so-subtle display of their might, giving their victim a casual slap with overwhelming results.</p><p><strong>System:</strong> The player spends a Blood Trait and must succeed in a physical challenge to touch the target (this may be done surreptitiously, but the player may not make use of other Potence benefits). The challenge is not required if the subject allows the player to touch him (a handshake, a &ldquo;friendly&rdquo; hand on the shoulder, etc). This power hurls the victim 20 feet directly away from the invoking character. If the subject strikes a wall or other solid obstacle, he suffers two health levels of bashing damage. Otherwise, the character needs to win a static physical challenge against six Traits to remain standing.</p>",
+        "source": "Clanbook: Brujah, Chapter Two",
+        "discipline": "Potence",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "One Blood Trait",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": "Potence (6, Master tier)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "fa5f13a440e54626",
+      "name": "Potence — 3 Advanced — Esprit de Corps",
+      "type": "power",
+      "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
+      "system": {
+        "description": "<p>A Brujah with this power can stir the hearts of his allies, granting them courage and strength for the cause they fight for. Once employed, those affected fight fearlessly and with great strength, following the Cainite into battle against even overwhelming odds.</p><p><strong>System:</strong> The player rolls Strength + Intimidation (difficulty 7). Any opposing power meant to inspire fear or otherwise prevent an affected ally from fighting suffers +2 difficulty. All affected allies &mdash; mortal, ghoul, or Cainite &mdash; also gain one dot of Potence for the scene per two successes. The number of successes determines how many allies are affected, from a single person (1 success) up to every ally in the vampire's immediate vicinity, such as a courtyard or battle group (5 successes).</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Three: Zealots",
+        "discipline": "Potence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Strength",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Potence (5), Presence (5)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "524db20031fa4fd2",
+      "name": "Potence — 3 Advanced — Demolition",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You now possess power so colossal that only the suicidal or the insane would cross you in a test of strength. You are so dangerous in hand-to-hand combat that you inflict two additional wounds if you win the challenge. If your opponent uses Demolition, and each of you wins one of the tests, you both take full damage.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Potence",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Passive",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3313d7d3e8544a79",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Nosferatu",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9fec593b24af411c",
+      "name": "Animalism — 2 Intermediate — Subsume the Spirit",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By locking eyes with an animal, you project your consciousness into its body, leaving your own comatose while you control the beast (and, with greater expenditure, retain access to some of your own Disciplines).</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "Social Traits expended",
+        "retestAbility": "Animal Ken",
+        "duration": "Until you choose to return",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "09ebf0827a774d89",
+      "name": "Animalism — 2 Intermediate — Cowing the Beast",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Touch your target (with a successful Physical Challenge if unwilling) or meet his eyes, then win a Social Challenge. The target gains the Negative Trait Submissive x2 and cannot expend Willpower Traits for the rest of the night, and will attempt to flee for the scene unless you have learned the pacifying technique, which instead lets you use this power to draw a Cainite out of frenzy without the negative effects. Using this on a vampire requires spending a Willpower Trait first.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Animalism",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Animal Ken",
+        "duration": "Rest of the night",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e252d4ed6c394fc3",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Nosferatu",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b660fa5aee504c97",
+      "name": "Auspex — 1 Basic — Heightened Senses",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may double the range of your sight and hearing and sharpen your other senses to remarkable acuity, perceiving things ordinary folk cannot. A sudden sensory assault, such as a loud noise or strong odor, numbs the affected sense for the rest of the scene and stuns you for a turn unless you spend a Willpower Trait. You may also receive uncontrollable visions of past or future events.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "At will",
+        "activation": "passive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "454c6150f02b4f90",
+      "name": "Auspex — 1 Basic — Aura Perception",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By concentrating on a visible subject and besting them in a Static Mental Challenge, you read the colors of their aura to learn their emotional state, general nature, whether they're under magical influence, have committed diablerie, or just lied; it can also reveal nearby ghosts.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

@@ -1,6 +1,6 @@
 {
   "_id": "7dacf4f6dc984484",
-  "name": "C\u00e9l\u00e8ste Lamontagne (Country Gangrel antitribu, of the Navigators)",
+  "name": "Célèste Lamontagne (Country Gangrel antitribu, of the Navigators)",
   "type": "npc",
   "img": "icons/svg/mystery-man.svg",
   "system": {
@@ -257,12 +257,12 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>The Shepherd Fr\u00e8re Marc Embraced wildlife expert C\u00e9l\u00e8ste Lamontagne for her near-religious appreciation of nature, but her instincts drew her to the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.e763657e5a404aff]{Path of Harmony} rather than his own Nocturnal Redemption, creating a lasting rift between sire and childe. She joined the nomadic Navigators in 1983, befriending pack priest Miguel Santo Domingo over their shared disdain for vampiric power games, and has become a fierce, loyal warrior for the pack, delighting especially in wrecking @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla} operations. She ranges the forests of Quebec, Ontario, and New York, has made uneasy allies among Country @UUID[Compendium.vtmlarp.clans.JournalEntry.zCWdD1NpOCn03CwE]{Gangrel} and even a few Garou, and leads the informal @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} band Wyldchylde.</p><h2>Roleplaying Hints</h2><p>Free and comfortable with your existence. Some think you weak; you delight in proving them wrong.</p><h2>Secrets</h2><p>C\u00e9l\u00e8ste's Lupine contacts have told her that they avoid Montreal because the ground is cursed.</p>",
+    "biography": "<h2>Background</h2><p>The Shepherd Frère Marc Embraced wildlife expert Célèste Lamontagne for her near-religious appreciation of nature, but her instincts drew her to the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.e763657e5a404aff]{Path of Harmony} rather than his own Nocturnal Redemption, creating a lasting rift between sire and childe. She joined the nomadic Navigators in 1983, befriending pack priest Miguel Santo Domingo over their shared disdain for vampiric power games, and has become a fierce, loyal warrior for the pack, delighting especially in wrecking @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla} operations. She ranges the forests of Quebec, Ontario, and New York, has made uneasy allies among Country @UUID[Compendium.vtmlarp.clans.JournalEntry.zCWdD1NpOCn03CwE]{Gangrel} and even a few Garou, and leads the informal @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} band Wyldchylde.</p><h2>Roleplaying Hints</h2><p>Free and comfortable with your existence. Some think you weak; you delight in proving them wrong.</p><h2>Secrets</h2><p>Célèste's Lupine contacts have told her that they avoid Montreal because the ground is cursed.</p>",
     "notes": "Embraced 1979. Apparent age: mid-20s. Bears the marks of multiple frenzies, including pointed ears and light-reflecting eyes; has assumed a Lupine \"wolf-man\" form twice while lost to battle fury. @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.e763657e5a404aff]{Path of Harmony} 8. Disciplines (as printed): Animalism 4, Celerity 2, Fortitude 3, Potence 2, Protean 5.",
     "npcType": "vampire"
   },
   "prototypeToken": {
-    "name": "C\u00e9l\u00e8ste Lamontagne",
+    "name": "Célèste Lamontagne",
     "displayName": 20,
     "actorLink": false,
     "texture": {
@@ -277,7 +277,185 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "c5330d59b7d347b1",
+      "name": "Protean — 3 Advanced — Flesh of Marble",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Spend two Blood Traits to instantly turn your skin into flexible living stone for the rest of the scene. All incoming physical damage (fists, claws, blades, firearms, explosions) is halved, round up, though fire, sunlight, and magic are unaffected. Bashing attacks also lose one health level of damage before halving, and melee weapons used against you risk shattering on a lost Simple Test unless exceptionally well-made.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Protean",
+        "level": "advanced",
+        "challengeType": "static",
+        "bloodCost": "Two Blood Traits",
+        "retestAbility": "",
+        "duration": "Scene",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e12d118d400d4e5a",
+      "name": "Protean — 3 Advanced — Animal Swarm",
+      "type": "power",
+      "img": "icons/magic/nature/wolf-paw-glow-green.webp",
+      "system": {
+        "description": "<p>The vampire disperses into one small creature per current Blood Trait spent (or fewer, larger creatures sharing Blood Traits evenly). Lasts until sunrise or voluntary reformation; any creatures not reabsorbed by dawn are destroyed. Difficult to represent at the table &mdash; Storytellers should plan in advance how a single player represents a swarm.</p>",
+        "source": "Clanbook: Gangrel",
+        "discipline": "Protean",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "Variable (1 per creature)",
+        "retestAbility": "",
+        "duration": "Until sunrise or voluntary reformation",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d8cc1bc32c984fbc",
+      "name": "Animalism — 3 Advanced — Animal Succulence",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>While many Kindred find the blood of animals revolting, you are able to reap unique benefits from this type of feeding. This power doubles the number of Blood Traits you may obtain from any single animal you feed from. It is not in effect when you feed on humans.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Animalism",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Passive",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c9f5c638f34b4267",
+      "name": "Animalism — 3 Advanced — Conquer the Beast",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may enter a controlled frenzy at will by winning or tying a Simple Test, choosing your own targets while the frenzy otherwise plays out normally; failure drops you into an uncontrolled frenzy instead. You may also regain composure during an uncontrolled frenzy with a Self-Control Challenge, spending a Willpower Trait each turn to hold onto that control until Willpower runs out or the frenzy is ended normally.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Animalism",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Instant / scene",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a7dd54401d6e4bec",
+      "name": "Fortitude — 2 Intermediate — Brace for Impact",
+      "type": "power",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+      "system": {
+        "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Athletics",
+        "duration": "Instantaneous (per impact)",
+        "activation": "reflexive",
+        "prerequisites": "Fortitude (3), Potence (3)",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "94ec387b3ebc4ae8",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

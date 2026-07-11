@@ -17,43 +17,101 @@
       "physical": {
         "priority": "tertiary",
         "traits": [
-          { "name": "Agile", "spent": false },
-          { "name": "Quick", "spent": false }
+          {
+            "name": "Agile",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          }
         ]
       },
       "social": {
         "priority": "secondary",
         "traits": [
-          { "name": "Detached", "spent": false },
-          { "name": "Enigmatic", "spent": false },
-          { "name": "Persuasive", "spent": false }
+          {
+            "name": "Detached",
+            "spent": false
+          },
+          {
+            "name": "Enigmatic",
+            "spent": false
+          },
+          {
+            "name": "Persuasive",
+            "spent": false
+          }
         ]
       },
       "mental": {
         "priority": "primary",
         "traits": [
-          { "name": "Knowledgeable", "spent": false },
-          { "name": "Knowledgeable", "spent": false },
-          { "name": "Observant", "spent": false },
-          { "name": "Observant", "spent": false },
-          { "name": "Resourceful", "spent": false }
+          {
+            "name": "Knowledgeable",
+            "spent": false
+          },
+          {
+            "name": "Knowledgeable",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Resourceful",
+            "spent": false
+          }
         ]
       }
     },
     "negativeTraits": [],
     "abilities": {
       "talents": [
-        { "name": "Alertness", "rating": 2, "notes": "" },
-        { "name": "Subterfuge", "rating": 3, "notes": "" }
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
       ],
       "skills": [
-        { "name": "Security", "rating": 4, "notes": "" },
-        { "name": "Stealth", "rating": 3, "notes": "" }
+        {
+          "name": "Security",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 3,
+          "notes": ""
+        }
       ],
       "knowledges": [
-        { "name": "Computer", "rating": 5, "notes": "" },
-        { "name": "Occult", "rating": 3, "notes": "" },
-        { "name": "Sabbat Lore", "rating": 4, "notes": "" }
+        {
+          "name": "Computer",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Sabbat Lore",
+          "rating": 4,
+          "notes": ""
+        }
       ]
     },
     "willpower": {
@@ -70,9 +128,18 @@
       "rating": 4
     },
     "virtues": {
-      "conscienceConviction": { "rating": 2, "temporary": 2 },
-      "selfControlInstinct": { "rating": 3, "temporary": 3 },
-      "courage": { "rating": 3, "temporary": 3 }
+      "conscienceConviction": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
     },
     "health": {
       "bruised": "ok",
@@ -84,7 +151,11 @@
       "incapacitated": "ok"
     },
     "backgrounds": [
-      { "name": "Resources", "rating": 2, "notes": "" }
+      {
+        "name": "Resources",
+        "rating": 2,
+        "notes": ""
+      }
     ],
     "freeTraits": 0,
     "biography": "<h2>Background</h2><p>A 1980s teenage hacker recruited as an unwitting asset before being Embraced in 1985 following a leukemia scare. Priest of Black Eagle Consulting, Inc. since 1993, he is detached but useful as the pack's spiritual advisor.</p><p>See Richard B. Weinstein's entry for the pack's shared background as Black Eagle Consulting, Inc.</p><h2>Roleplaying Hints</h2><p>Armor keeps an emotional distance from the pack's affairs even while guiding its doctrinal life, treating faith and ritual with the same detached technical precision he once brought to hacking.</p><p><strong>Disciplines (as printed):</strong> Dominate 1, Obfuscate 1, Obtenebration 2, Potence 1.</p>",
@@ -107,7 +178,153 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "b7a0af0f6c6f4f16",
+      "name": "Dominate — 1 Basic — Command",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and speaking a single emphasized word of command, you win a Mental Challenge to force immediate, unquestioning obedience to a simple order lasting no more than ten minutes.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Up to 10 minutes",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "74d124dc35404d5b",
+      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By remaining completely still and silent in shadow or behind cover, you fade from notice to all but those using Auspex or similar senses; any movement, speech, or interaction breaks the concealment immediately.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Stealth",
+        "duration": "While still and silent",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4e0832361f7b49e6",
+      "name": "Obtenebration — 1 Basic — Shadow Play",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you animate nearby shadows for a scene or hour, granting yourself a bonus Trait in stealth or ranged combat for concealment, a bonus Trait in intimidation, or afflicting a victim with Clumsy and slow asphyxiating damage.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Occult",
+        "duration": "Scene or one hour",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d9f51a76f9f04c50",
+      "name": "Obtenebration — 1 Basic — Shroud of Night",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you summon a roughly ten-foot sphere of light-absorbing, sound-muffling darkness (placeable at range for an extra Blood Trait) that disorients and can strangle mortals caught within, lasting a scene or hour.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "1-2 Blood Traits",
+        "retestAbility": "Occult",
+        "duration": "Scene or one hour",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8bee34b2aec64278",
+      "name": "Potence — 1 Basic — Prowess",
+      "type": "power",
+      "img": "icons/skills/melee/strike-fist-punch-orange.webp",
+      "system": {
+        "description": "<p>Your unarmed and clubbing attacks inflict lethal rather than bashing damage if you choose. Once per game session you may also restore all of your used Brawny, Ferocious, Stalwart, Tough, and Wiry Physical Traits at once. Prowess costs nothing and isn't an action - it can be used at any time.</p>",
+        "source": "Laws of the Night Revised, p.150",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Permanent / once per session",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

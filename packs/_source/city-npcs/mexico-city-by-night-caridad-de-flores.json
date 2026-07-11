@@ -215,8 +215,8 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>A rich 1920s Mexico City socialite trapped in an arranged marriage she despised, Caridad poisoned her husband, was caught, and was Embraced by Donna Fer\u00eda on the eve of her hanging. She grew into a scholar of the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.exke2riW9D0htoUu]{Path of Cathari} and abyss mysticism, identifying with Persephone, and now serves the Partido Devolucionario Institucional as pack priest while supplying the drug kalif (cannabis fed on vitae) to the @UUID[Compendium.vtmlarp.clans.JournalEntry.WaQFCEXFzv8YeAgX]{Assamite} sorcerer Ikraam al-Biruni and occasionally poisoning targets for the Black Hand.</p><h2>Roleplaying Hints</h2><p>Never explain your actions; pursue pleasure after pleasure with apparent randomness, speak in enigmatic non sequiturs about sex, death, and flowers. Caridad's mansion in Xochimilco conceals a bricked-up indoor garden of grow-lamp flowers and drug plants twined through her victims' cadavers, centered on a pomegranate tree she fertilizes with her own vitae.</p>",
-    "notes": "Sire: Donna Fer\u00eda. Caridad's greatest occult-gardening feats include ghoul bamboo (grows three feet a day, Potence-strong shoots), Cainite asphodel (blooms in a destroyed vampire's remains), and the Pomegranates of Persephone (the fruit or juice casts a mortal into a days-long deathlike torpor; a vampire who feeds on a dosed mortal may fall into a similar torpor, breakable with a Stamina roll, difficulty 6).",
+    "biography": "<h2>Background</h2><p>A rich 1920s Mexico City socialite trapped in an arranged marriage she despised, Caridad poisoned her husband, was caught, and was Embraced by Donna Fería on the eve of her hanging. She grew into a scholar of the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.exke2riW9D0htoUu]{Path of Cathari} and abyss mysticism, identifying with Persephone, and now serves the Partido Devolucionario Institucional as pack priest while supplying the drug kalif (cannabis fed on vitae) to the @UUID[Compendium.vtmlarp.clans.JournalEntry.WaQFCEXFzv8YeAgX]{Assamite} sorcerer Ikraam al-Biruni and occasionally poisoning targets for the Black Hand.</p><h2>Roleplaying Hints</h2><p>Never explain your actions; pursue pleasure after pleasure with apparent randomness, speak in enigmatic non sequiturs about sex, death, and flowers. Caridad's mansion in Xochimilco conceals a bricked-up indoor garden of grow-lamp flowers and drug plants twined through her victims' cadavers, centered on a pomegranate tree she fertilizes with her own vitae.</p>",
+    "notes": "Sire: Donna Fería. Caridad's greatest occult-gardening feats include ghoul bamboo (grows three feet a day, Potence-strong shoots), Cainite asphodel (blooms in a destroyed vampire's remains), and the Pomegranates of Persephone (the fruit or juice casts a mortal into a days-long deathlike torpor; a vampire who feeds on a dosed mortal may fall into a similar torpor, breakable with a Stamina roll, difficulty 6).",
     "npcType": "vampire"
   },
   "prototypeToken": {
@@ -235,7 +235,238 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "c32185e3a268479c",
+      "name": "Obtenebration",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ddba98962a6d468e",
+      "name": "Obtenebration — 3 Advanced — Eyes of the Night",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>With the expenditure of a Mental Trait, you are able to see anything that goes on within the dark force created by any other use of this Discipline &mdash; you could evoke Eyes of the Night in another room and clairvoyantly scan the area within. You may also use this power to view your surroundings from any angle or vantage point within 50 feet of your body where a shadow exists. You only perceive visual information through use of this power, and using it requires the expenditure of a Mental Trait per five minutes of use.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "5 minutes per Mental Trait spent",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ddf169020ae94248",
+      "name": "Obtenebration — 3 Advanced — Shadow Step",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>With the expenditure of two Mental Traits, you can walk into one shadow and exit from another up to 50 feet away, acting as a limited form of teleportation to bypass solid walls, ascend a floor, or get around other obstacles. You may attempt to pull others through a shadow by reaching in, grabbing the victim, and pulling her through to your location (requiring a Physical Challenge). You may carry objects (including living creatures) through the shadows. Use of this power requires you to state which shadow you wish to step through, walk over that shadow, then exit from the stated shadow and resume play. Use of this power is a Fair Escape.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8f3ff57bbf6846cc",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c7e555d160db48b2",
+      "name": "Dominate — 2 Intermediate — Conditioning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Over several consecutive nights of unrestricted access and repeated Mental Challenges, you can break down a victim's will entirely, turning them into a virtually mindless thrall who obeys you without need for further tests.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until broken (six sessions without contact)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "854536b88433495d",
+      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "60dc9a3e8089489f",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ef6fe690d53c449b",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

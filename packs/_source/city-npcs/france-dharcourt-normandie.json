@@ -172,7 +172,318 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "03cee10ea59645d9",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "772bf42ab43a4013",
+      "name": "Dominate \u2014 1 Basic \u2014 Mesmerism",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and winning a Mental Challenge, you implant a more complex command, optionally tied to a specific trigger event, to be carried out immediately or later.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until command is fulfilled",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "287e2c5470b24553",
+      "name": "Dominate \u2014 2 Intermediate \u2014 Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "6fa12e8939bb4708",
+      "name": "Dominate \u2014 3 Advanced \u2014 Obedience",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Rather than requiring eye contact, you may use Dominate through skin-to-skin contact alone (a Physical Challenge may be needed on unwilling subjects). The touch need not be maintained while issuing the command, but only one command may be given per contact; using Dominate again requires touching the subject anew.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Instant, per command",
+        "activation": "reflexive"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "fd7a45c39dc14d00",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "85bcc5ce26824a64",
+      "name": "Fortitude \u2014 1 Basic \u2014 Mettle",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You gain one additional health level, functioning as an extra Healthy level on your health chart, which can be lost and healed normally.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "80054b9e21604caf",
+      "name": "Fortitude \u2014 2 Intermediate \u2014 Brace for Impact",
+      "type": "power",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+      "system": {
+        "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage \u2014 only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Athletics",
+        "duration": "Instantaneous (per impact)",
+        "activation": "reflexive",
+        "prerequisites": "Fortitude (3), Potence (3)",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "aa33e48b32fd4cd3",
+      "name": "Fortitude \u2014 3 Advanced \u2014 Invulnerability",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You have become a walking juggernaut. You may perform a Simple Test to negate aggravated wounds, conducting one test per wound level incurred. If you win, you take no damage; on a tie the wound becomes nonaggravated. You cannot continue testing down with Imperviousness after a successful test on Invulnerability.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Fortitude",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "reflexive"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "f857deb5030841d7",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "67d5d52731594a8a",
+      "name": "Presence \u2014 1 Basic \u2014 Dread Gaze",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By hissing and baring your vampiric features in a Social Challenge, you strike terror into a victim who, if defeated, flees and avoids you for the rest of the scene or hour, risking an extra Trait to act against you if cornered.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "4cdd226f47f34037",
+      "name": "Presence \u2014 2 Intermediate \u2014 Command the Wary Steed",
+      "type": "power",
+      "img": "icons/creatures/mammals/horse-brown-galloping.webp",
+      "system": {
+        "description": "<p>Through use of this power the Cainite can cause enemies' mounts to rear and bolt, singly or en masse, by the strength of his gaze alone, or bolster the courage and tractability of allied steeds for greater control in battle.</p><p><strong>System:</strong> The player spends a Willpower point and rolls Manipulation + Animal Ken (difficulty 7). Enemy mounts become terrified and nigh uncontrollable: Ride roll difficulties increase by three and mounted combat becomes impossible. Friendly mounts become far more pliant (-2 difficulty on all Ride rolls) and may be coerced into situations they would normally avoid.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Three: Zealots",
+        "discipline": "Presence",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Manipulation",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Presence (3), Animalism (2)"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

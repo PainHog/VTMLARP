@@ -198,7 +198,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Raphael Catarari was the first of Fr\u00e8re Marc's dark experiments in Creation Rites on cursed ground, Embraced in 1892 in the plot of excommunicated intellectual Joseph Guibord on Mount Royal. He emerged with two strange traits: a palpable, sometimes visible aura, and only vague memories of his mortal life, leading him to believe himself a fallen angel cast out of Heaven for slaying another of the Host. He has dedicated his unlife to redeeming the childer of Caine, became guardian of the Hollow Saints, and altered Yitzhak's Sainting rite according to his own visions &mdash; every Saint created since has died with an expression of utter amazement. His mind is fragile: lucid, he is a font of ancient wisdom; unhinged during the depths of his Divine Tide, he becomes dangerously obsessive, once driving fifty mortals insane with a public display of his \"angelic glory\" before Sangris and his ward Cherubim stopped him. He is currently erotically fixated on Cherubim, a traumatized childe he took into his care and who leads the @UUID[Compendium.vtmlarp.revenants.JournalEntry.ldyqw2o2gR45LxDO]{Obertus} Choir of Caine.</p><h2>Roleplaying Hints</h2><p>You do not remember all of your true life, but you recall enough. Speak in whispers and guard your secrets.</p><h2>Secrets</h2><p>Raphael is the only Shepherd who suspects Yitzhak of treachery, having found his rite of Sainting lacking in some crucial way.</p>",
+    "biography": "<h2>Background</h2><p>Raphael Catarari was the first of Frère Marc's dark experiments in Creation Rites on cursed ground, Embraced in 1892 in the plot of excommunicated intellectual Joseph Guibord on Mount Royal. He emerged with two strange traits: a palpable, sometimes visible aura, and only vague memories of his mortal life, leading him to believe himself a fallen angel cast out of Heaven for slaying another of the Host. He has dedicated his unlife to redeeming the childer of Caine, became guardian of the Hollow Saints, and altered Yitzhak's Sainting rite according to his own visions &mdash; every Saint created since has died with an expression of utter amazement. His mind is fragile: lucid, he is a font of ancient wisdom; unhinged during the depths of his Divine Tide, he becomes dangerously obsessive, once driving fifty mortals insane with a public display of his \"angelic glory\" before Sangris and his ward Cherubim stopped him. He is currently erotically fixated on Cherubim, a traumatized childe he took into his care and who leads the @UUID[Compendium.vtmlarp.revenants.JournalEntry.ldyqw2o2gR45LxDO]{Obertus} Choir of Caine.</p><h2>Roleplaying Hints</h2><p>You do not remember all of your true life, but you recall enough. Speak in whispers and guard your secrets.</p><h2>Secrets</h2><p>Raphael is the only Shepherd who suspects Yitzhak of treachery, having found his rite of Sainting lacking in some crucial way.</p>",
     "notes": "Embraced 1892. Apparent age: late 30s. Twisted @UUID[Compendium.vtmlarp.clans.JournalEntry.UhaIbwzsC1O2x9vr]{Nosferatu} form; deep-green eyes and an occasional golden aura hint at a once-beautiful mortal form. Path of Nocturnal Redemption 8. Disciplines (as printed): Auspex ?, Fortitude ?, Obfuscate ? (full block obscured by OCR damage in the original text; Storyteller discretion for exact ratings, treat as a formidable @UUID[Compendium.vtmlarp.clans.JournalEntry.UhaIbwzsC1O2x9vr]{Nosferatu} antitribu elder with strong Presence-like mind-affecting power and Obfuscate).",
     "npcType": "vampire"
   },
@@ -218,7 +218,157 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "2601fc87c0044452",
+      "name": "Auspex — 3 Advanced — Anima Gathering",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Originally used to lead warrior-caste mystics on vision quests, this vizier technique lets a willing seer bring companions with him into the astral realms. All would-be participants must form an unbroken chain of physical contact with the character. Spend a Blood Trait for each \"follower\" you wish to bring along, up to a maximum of half your permanent Mental Traits (rounded down), then leave your body as per Psychic Projection. Each follower is treated as though she knows Psychic Projection regardless of her actual Auspex rating, using the leader's rolled successes. On the astral plane, followers must remain within roughly 100 feet of the leader, tethered to him and unable to break the connection. Any follower who loses physical contact with the leader instantly returns to her body and loses three Mental Traits, falling unconscious for the rest of the night if this reduces her to zero Mental Traits.</p>",
+        "source": "Clanbook: Assamite, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait per follower (max half permanent Mental Traits, rounded down)",
+        "retestAbility": "",
+        "duration": "Until the astral projection ends",
+        "activation": "reflexive",
+        "prerequisites": "Auspex (Psychic Projection)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "2ece71270f5e471f",
+      "name": "Auspex — 3 Advanced — Crocodile's Tongue",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-red.webp",
+      "system": {
+        "description": "<p>A character with this power instinctively understands what one other person in a conversation (living or undead) wants to hear. If she can find a way to phrase what she wants so that it sounds like what that person wants to hear, this helps her get her point across, ingratiate herself, or accumulate favors. Unlike Telepathy, the subject need not be actively thinking about what she wants to hear.</p><p>The character must spend at least a minute speaking with the subject and win a Mental Challenge against the subject. If both players agree, they may instead roleplay the conversation directly, with the subject's player reacting favorably and offering suggestions that aid the character with the power. If the players resort to mechanics, the character with the power initiates a Social Challenge against the subject, winning ties.</p>",
+        "source": "Clanbook: Toreador, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Single conversation",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "53a3294e9ef34d2f",
+      "name": "Obfuscate — 3 Advanced — Phantom Haunter",
+      "type": "power",
+      "img": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
+      "system": {
+        "description": "<p>Reaches into a target's self-image and lets the Malkavian assume the appearance and false memories of whoever has most shaped (or damaged) that self-image &mdash; a sire, a parent, a priest, or whoever the target's own psyche supplies.</p><p><strong>MET System:</strong> Win a Social Challenge against the victim. On a win, you gain a free retest on your very next use of Dementation, Dominate, or Presence against that same victim. Once the retest is used, the power's knowledge fades unless you spend a Willpower Trait to keep it active for one further retest (this is expensive, but more certain than triggering the power again from scratch). You may only claim one retest per challenge this way. This power relies heavily on the target's own good-faith roleplaying &mdash; if the subject's player won't cooperate, don't force it with a Storyteller ruling.</p>",
+        "source": "Clanbook: Malkavian, Chapter Two",
+        "discipline": "Obfuscate",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Scene (extendable)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "dae7422e30d346a8",
+      "name": "Obfuscate — 3 Advanced — Cloak the Gathering",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Mental Trait per subject, you extend any Obfuscate power you possess over a group, hiding or disguising them collectively; the cloak fails entirely only if you yourself are noticed or violate your power's conditions.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Stealth",
+        "duration": "Until the cloak is broken",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "62f47b9410ca4222",
+      "name": "Fortitude — 2 Intermediate — Brace for Impact",
+      "type": "power",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+      "system": {
+        "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Athletics",
+        "duration": "Instantaneous (per impact)",
+        "activation": "reflexive",
+        "prerequisites": "Fortitude (3), Potence (3)",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

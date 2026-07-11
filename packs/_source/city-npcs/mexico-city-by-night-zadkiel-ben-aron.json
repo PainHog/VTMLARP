@@ -209,8 +209,8 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Zadkiel was born to a family of hidden Sephardic Jews (conversos) who fled Iberia's expulsions to Brazil, and was drawn as a young rabbi-lawyer into the Schichiriel, a @UUID[Compendium.vtmlarp.clans.JournalEntry.phgt6OMwTAoAaKfR]{Lasombra} antitribu lineage practicing an abyssal, heretical Kabbalah that sought divinity through the negative emanations (qliphoth) of God. In 1803 the @UUID[Compendium.vtmlarp.clans.JournalEntry.phgt6OMwTAoAaKfR]{Lasombra} cardinal Charles Delmare (later Charles VI) annihilated the Schichiriel; Zadkiel alone survived by selling himself into Charles' service, then relocated to Mexico City decades later to become the city's leading teacher of abyss mysticism and @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.n1ghtP4thOfN1ght]{Path of Night}.</p><h2>Roleplaying Hints</h2><p>Zadkiel rarely resumes human form, preferring to stalk the city as a birdlike shadow. He counsels any Cainite who suffers under undeath regardless of sect, dissects the selfish passions of those he meets, and never commands another except in self-defense, believing every soul must find and endure its own choices. He maintains a cool, distant solidarity with fellow teacher-neutral Efra\u00edn Sortano and keeps five bound abyssal Retainers (Strength/Dexterity 5, Mental Traits 2 each) in the flooded well beneath his storm-drain haven.</p>",
-    "notes": "Merit: Controllable Night Sight (sees in darkness/shadow as light; light obscures him as darkness; can toggle at will \u2014 see Clanbook: @UUID[Compendium.vtmlarp.clans.JournalEntry.phgt6OMwTAoAaKfR]{Lasombra}). Sire: Aron ben Aretz. Ratings above 5 from the original stat block have been capped to this system's 1-5 scale.",
+    "biography": "<h2>Background</h2><p>Zadkiel was born to a family of hidden Sephardic Jews (conversos) who fled Iberia's expulsions to Brazil, and was drawn as a young rabbi-lawyer into the Schichiriel, a @UUID[Compendium.vtmlarp.clans.JournalEntry.phgt6OMwTAoAaKfR]{Lasombra} antitribu lineage practicing an abyssal, heretical Kabbalah that sought divinity through the negative emanations (qliphoth) of God. In 1803 the @UUID[Compendium.vtmlarp.clans.JournalEntry.phgt6OMwTAoAaKfR]{Lasombra} cardinal Charles Delmare (later Charles VI) annihilated the Schichiriel; Zadkiel alone survived by selling himself into Charles' service, then relocated to Mexico City decades later to become the city's leading teacher of abyss mysticism and @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.n1ghtP4thOfN1ght]{Path of Night}.</p><h2>Roleplaying Hints</h2><p>Zadkiel rarely resumes human form, preferring to stalk the city as a birdlike shadow. He counsels any Cainite who suffers under undeath regardless of sect, dissects the selfish passions of those he meets, and never commands another except in self-defense, believing every soul must find and endure its own choices. He maintains a cool, distant solidarity with fellow teacher-neutral Efraín Sortano and keeps five bound abyssal Retainers (Strength/Dexterity 5, Mental Traits 2 each) in the flooded well beneath his storm-drain haven.</p>",
+    "notes": "Merit: Controllable Night Sight (sees in darkness/shadow as light; light obscures him as darkness; can toggle at will — see Clanbook: @UUID[Compendium.vtmlarp.clans.JournalEntry.phgt6OMwTAoAaKfR]{Lasombra}). Sire: Aron ben Aretz. Ratings above 5 from the original stat block have been capped to this system's 1-5 scale.",
     "npcType": "vampire"
   },
   "prototypeToken": {
@@ -229,7 +229,269 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "7ac16110eb854fa1",
+      "name": "Obtenebration",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3e0e924e05954cfc",
+      "name": "Obtenebration — 3 Advanced — Eyes of the Night",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>With the expenditure of a Mental Trait, you are able to see anything that goes on within the dark force created by any other use of this Discipline &mdash; you could evoke Eyes of the Night in another room and clairvoyantly scan the area within. You may also use this power to view your surroundings from any angle or vantage point within 50 feet of your body where a shadow exists. You only perceive visual information through use of this power, and using it requires the expenditure of a Mental Trait per five minutes of use.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "5 minutes per Mental Trait spent",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "54605fe32f6b451f",
+      "name": "Obtenebration — 3 Advanced — Shadow Step",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>With the expenditure of two Mental Traits, you can walk into one shadow and exit from another up to 50 feet away, acting as a limited form of teleportation to bypass solid walls, ascend a floor, or get around other obstacles. You may attempt to pull others through a shadow by reaching in, grabbing the victim, and pulling her through to your location (requiring a Physical Challenge). You may carry objects (including living creatures) through the shadows. Use of this power requires you to state which shadow you wish to step through, walk over that shadow, then exit from the stated shadow and resume play. Use of this power is a Fair Escape.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "14b2914c06074f14",
+      "name": "Obtenebration — 3 Advanced — Dark Hunter",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+      "system": {
+        "description": "<p>You summon a shadowy duplicate of yourself — a simulacrum of pure darkness that mirrors your form, clothes and weapons (unique items are duplicated in appearance only and do not function). Given a target and a fragment of that target's spiritual signature (a possession, blood, hair, or the like), the Dark Hunter sets off at once and pursues relentlessly, resting only during daylight, until the chase is finished. It can be instructed to subdue or slay; if told to subdue, it drags its captured quarry back to you by whatever means necessary. It cannot vanish into shadow to travel home — it must cross every foot of ground on its own. Once its mission is complete, it dissolves back into darkness.</p><p>A Dark Hunter shares your Attributes, including Willpower, but can only use Obtenebration's Unseen Presence among your Disciplines. Like a Night Shade, it takes damage normally as well as from fire and sunlight. Sending a Dark Hunter after a fellow Lasombra capable of summoning one is considered a grave breach of etiquette, tantamount to a challenge — but no such restriction applies to those beneath you.</p>",
+        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "static",
+        "bloodCost": "5 Blood Points, plus 1 Willpower point",
+        "retestAbility": "Leadership",
+        "duration": "Until the hunt concludes or the vampire recalls it",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": "Obtenebration (8)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c11d698f564f43dd",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b7009bd40b244e2f",
+      "name": "Dominate — 2 Intermediate — Conditioning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Over several consecutive nights of unrestricted access and repeated Mental Challenges, you can break down a victim's will entirely, turning them into a virtually mindless thrall who obeys you without need for further tests.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until broken (six sessions without contact)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "bb1fdfe37eee43a3",
+      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "77f08d2d81f5442c",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1c753b677d344ab2",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

@@ -4,7 +4,7 @@
   "type": "npc",
   "img": "icons/svg/mystery-man.svg",
   "system": {
-    "concept": "Sabbat Tzimisce scout posing as a Tremere \u201cflunky\u201d within Thrace's own Chantry",
+    "concept": "Sabbat Tzimisce scout posing as a Tremere “flunky” within Thrace's own Chantry",
     "clan": "Tzimisce",
     "bloodline": "",
     "sect": "Sabbat",
@@ -170,7 +170,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Posing as a @UUID[Compendium.vtmlarp.clans.JournalEntry.jaYCq9rVOh0I9NCN]{Tremere} sent from London to assist Oliver Thrace with the Hong Kong Chantry, Stephen Bateson is in fact a @UUID[Compendium.vtmlarp.clans.JournalEntry.nyOuQ8xvZEiNEJbM]{Tzimisce} @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} scout, Embraced by a @UUID[Compendium.vtmlarp.clans.JournalEntry.nyOuQ8xvZEiNEJbM]{Tzimisce} priscus from Toronto and trained for 20 years in Thaumaturgy and other Disciplines before being sent to Hong Kong with forged @UUID[Compendium.vtmlarp.clans.JournalEntry.jaYCq9rVOh0I9NCN]{Tremere} credentials. His natural talent for impersonation let him disarm Thrace completely. Bateson serves a dual purpose: spying on Thrace toward his eventual downfall, and &mdash; using Vicissitude to alter his features to appear Oriental &mdash; insinuating himself into the fringes of Kuei-jin society to learn of an impending age of bloodshed uncannily reminiscent of Gehenna, information the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} would find very useful. His long abstinence from the Vaulderie is weakening his ties to the Sabbat, leaving him to wonder if the risk is worth the payoff.</p><h2>Image</h2><p>Short (5'5\") and slim, dark-brown hair and eyes. As \u201cStephen Bateson, Tremere\u201d he dresses conservatively and deferentially; his Oriental persona is shorter, stockier, and dresses as a Hong Kong white-collar worker.</p><h2>Roleplaying Hints</h2><p>Knows his good joss will eventually run out; has planned an escape but accepts he might not survive discovery. Finds the gamble and the potentially explosive information exhilarating.</p><h2>Haven</h2><p>Lives in the Tremere Chantry but keeps several boltholes throughout Hong Kong and Kowloon.</p>",
+    "biography": "<h2>Background</h2><p>Posing as a @UUID[Compendium.vtmlarp.clans.JournalEntry.jaYCq9rVOh0I9NCN]{Tremere} sent from London to assist Oliver Thrace with the Hong Kong Chantry, Stephen Bateson is in fact a @UUID[Compendium.vtmlarp.clans.JournalEntry.nyOuQ8xvZEiNEJbM]{Tzimisce} @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} scout, Embraced by a @UUID[Compendium.vtmlarp.clans.JournalEntry.nyOuQ8xvZEiNEJbM]{Tzimisce} priscus from Toronto and trained for 20 years in Thaumaturgy and other Disciplines before being sent to Hong Kong with forged @UUID[Compendium.vtmlarp.clans.JournalEntry.jaYCq9rVOh0I9NCN]{Tremere} credentials. His natural talent for impersonation let him disarm Thrace completely. Bateson serves a dual purpose: spying on Thrace toward his eventual downfall, and &mdash; using Vicissitude to alter his features to appear Oriental &mdash; insinuating himself into the fringes of Kuei-jin society to learn of an impending age of bloodshed uncannily reminiscent of Gehenna, information the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} would find very useful. His long abstinence from the Vaulderie is weakening his ties to the Sabbat, leaving him to wonder if the risk is worth the payoff.</p><h2>Image</h2><p>Short (5'5\") and slim, dark-brown hair and eyes. As “Stephen Bateson, Tremere” he dresses conservatively and deferentially; his Oriental persona is shorter, stockier, and dresses as a Hong Kong white-collar worker.</p><h2>Roleplaying Hints</h2><p>Knows his good joss will eventually run out; has planned an escape but accepts he might not survive discovery. Finds the gamble and the potentially explosive information exhilarating.</p><h2>Haven</h2><p>Lives in the Tremere Chantry but keeps several boltholes throughout Hong Kong and Kowloon.</p>",
     "notes": "Disciplines (as printed): Animalism 2, Auspex 2, Obfuscate 1, Thaumaturgy 3 (Blood 3, Elemental Mastery 2, Lure of Flames 2, Movement of Mind 2, Spirit Thaumaturgy 1), Vicissitude 3. Rites: Defense of the Sacred Haven, Communicate with Kindred Sire, Deflection of Wooden Doom. Sire: Rowena Alden (Toronto @UUID[Compendium.vtmlarp.clans.JournalEntry.nyOuQ8xvZEiNEJbM]{Tzimisce} priscus). Conceals most Abilities/Disciplines from Thrace.",
     "npcType": "vampire"
   },
@@ -190,7 +190,294 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "7cf9ad08a67841f3",
+      "name": "Vicissitude",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b474dbd015674648",
+      "name": "Vicissitude — 2 Intermediate — Bonecraft",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By grasping a victim, you twist and reshape bone, inflicting one level of lethal damage per strike or, combined with Fleshcraft, completely restructuring appearance, height, or crafting bone spurs and weapons that allow lethal unarmed damage.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Vicissitude",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Crafts: Body Crafts",
+        "duration": "Permanent (heals as aggravated wound on weaker generations)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8049e7ed7abd4be9",
+      "name": "Vicissitude — 2 Intermediate — Horrid Form",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending two Blood Traits, you warp into an eight-foot rubbery, spiked monstrosity gaining the Physical Traits Brawny, Dexterous, Enduring, Ferocious, Quick, and Stalwart along with Negative Social Traits Bestial, Feral, and Repugnant, inflicting lethal brawling damage with a bonus health level of harm until you choose to revert.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Vicissitude",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "2 Blood Traits",
+        "retestAbility": "Crafts: Body Crafts",
+        "duration": "Until you choose to revert",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "74e3d25ddbe64fd4",
+      "name": "Thaumaturgy",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "dc8cf27c57ef49d8",
+      "name": "Thaumaturgy — 2 Intermediate — Command the Freshly Dead",
+      "type": "power",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": "<p>The vampire can command any ghost she can see to obey her, receiving answers to questions within the ghost's realm of awareness or sending it to deliver a message. She cannot compel a ghost to perform any task requiring a material form.</p><p><strong>System:</strong> The vampire must first use See the Dead to locate a desired ghost, then wins a contested Willpower roll against the wraith (most ghosts have 5 Willpower). Each success scored over the wraith's own answers one question or performs one simple action.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Willpower",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "See the Dead"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "75e5ddd0cbb646ad",
+      "name": "Thaumaturgy — 2 Intermediate — Course of the Beast",
+      "type": "power",
+      "img": "icons/creatures/mammals/deer-forest-brown.webp",
+      "system": {
+        "description": "<p>This power lets the Sielanic practitioner assume the shape of any animal existing within her domain, and in some cases shift from one animal form to another. She gains the chosen creature's physical attributes and abilities while retaining her undead nature, and may use any mental Disciplines she possesses while transformed. The ability lasts from moonrise to moonrise.</p><p><strong>System:</strong> The vampire mixes her own blood with that of an animal and drinks it, then spends three blood points. Each success on a Willpower roll (difficulty 7) grants one animal form the character may assume during the power's duration, allowing her to change shape more than once if she rolled multiple successes.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "3 blood points",
+        "retestAbility": "Willpower",
+        "duration": "Moonrise to moonrise",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Sielanic Thaumaturgy: Path of the World's Blood; must be attuned to the land"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9ef02a2573cb4c43",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "365f18212d60402e",
+      "name": "Auspex — 1 Basic — Aura Perception",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By concentrating on a visible subject and besting them in a Static Mental Challenge, you read the colors of their aura to learn their emotional state, general nature, whether they're under magical influence, have committed diablerie, or just lied; it can also reveal nearby ghosts.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c58b3b55ac6b4256",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "11447e3a6fd04cc6",
+      "name": "Animalism — 1 Basic — Beckoning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By uttering an animal call, you summon nearby animals of a chosen type to your side, favorably disposed toward you, by spending a Social Trait per animal summoned.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Animal Ken",
+        "duration": "Until threatened or scene ends",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

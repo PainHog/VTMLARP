@@ -250,7 +250,7 @@
     ],
     "freeTraits": 0,
     "biography": "<h2>Background</h2><p>Menele (born Menele of Greece, c. 1240 B.C.) is a 4th-generation @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} Methuselah, Embraced in antiquity by the philosopher Troile after the fall of Troy. He helped found Carthage as a utopian city of Kindred and kine living in harmony, and served as its envoy until Rome and the @UUID[Compendium.vtmlarp.clans.JournalEntry.OpCOs3PLjmtl0QVu]{Ventrue}/@UUID[Compendium.vtmlarp.clans.JournalEntry.ZJx9H3XnU8yQGy9s]{Malkavian} alliance destroyed the city. He has warred for millennia against the @UUID[Compendium.vtmlarp.clans.JournalEntry.GaCuLGcjZZjf2EO6]{Toreador} Methuselah Helena (\"Portia\"), his opposite number and rival for control of Chicago; both fell into torpor roughly 250 years ago after a climactic battle near Fort Dearborn and have remained torpid ever since, directing the city's Kindred through Blood Bonds, Dominate, and unwitting proxies. Menele controls Chicago's anarchs indirectly through his childe and Blood-Bound thrall Critias (\"the Doctor,\" a @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} primogen who has no idea of the bond or of Menele's continued existence) and through Dominated intermediaries. His extra level of Auspex lets him remain dimly aware of city events even while torpid, and his extra level of Dominate lets his agents act on his will with only a touch, no eye contact required.</p><h2>Roleplaying Hints</h2><p>Menele is in torpor and does not act directly; his influence surfaces only through the actions of Critias and other unwitting agents. If ever roused, he is patient, philosophical, and utterly ruthless in service to his long game against Helena.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor at Storyteller discretion):</strong> Animalism 5, Auspex 6, Celerity 9, Dominate 6, Fortitude 6, Obfuscate 2, Potence 8, Presence 5, Protean 5, Thaumaturgy 7 (Elemental Mastery 5, Spirit Mastery 5, Movement of the Mind 4, Lure of Flames 3).</p>",
-    "notes": "Sire: Troile. Secret rival: Helena (\"Portia\"), @UUID[Compendium.vtmlarp.clans.JournalEntry.GaCuLGcjZZjf2EO6]{Toreador} Methuselah. Secret thrall: Critias, @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} primogen, Blood Bound and unaware of it. Currently torpid; haven moves frequently via Retainers. Ratings above 5 from the original stat block have been capped to fit this system's 1-5 scale \u2014 restore full book values for high-power Storyteller-only scenes.",
+    "notes": "Sire: Troile. Secret rival: Helena (\"Portia\"), @UUID[Compendium.vtmlarp.clans.JournalEntry.GaCuLGcjZZjf2EO6]{Toreador} Methuselah. Secret thrall: Critias, @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} primogen, Blood Bound and unaware of it. Currently torpid; haven moves frequently via Retainers. Ratings above 5 from the original stat block have been capped to fit this system's 1-5 scale — restore full book values for high-power Storyteller-only scenes.",
     "npcType": "vampire"
   },
   "prototypeToken": {
@@ -269,7 +269,294 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "f813a83a42114103",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "199367ad3cc743f8",
+      "name": "Auspex — 3 Advanced — Anima Gathering",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Originally used to lead warrior-caste mystics on vision quests, this vizier technique lets a willing seer bring companions with him into the astral realms. All would-be participants must form an unbroken chain of physical contact with the character. Spend a Blood Trait for each \"follower\" you wish to bring along, up to a maximum of half your permanent Mental Traits (rounded down), then leave your body as per Psychic Projection. Each follower is treated as though she knows Psychic Projection regardless of her actual Auspex rating, using the leader's rolled successes. On the astral plane, followers must remain within roughly 100 feet of the leader, tethered to him and unable to break the connection. Any follower who loses physical contact with the leader instantly returns to her body and loses three Mental Traits, falling unconscious for the rest of the night if this reduces her to zero Mental Traits.</p>",
+        "source": "Clanbook: Assamite, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait per follower (max half permanent Mental Traits, rounded down)",
+        "retestAbility": "",
+        "duration": "Until the astral projection ends",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": "Auspex (Psychic Projection)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "879f7ff9d955494d",
+      "name": "Auspex — 3 Advanced — Clairvoyance",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>After concentrating for a round on a familiar person, place, or object and spending a Willpower Trait, you win a Simple Test to perceive everything happening around that subject while remaining aware of your own surroundings. Other Auspex powers may be layered on to glean more, provided their own challenges are won. You must have known the subject at least one night, and must bid two extra Traits for challenges concerning your own physical surroundings while divided between two places.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "One Willpower Trait",
+        "retestAbility": "",
+        "duration": "As long as concentration is maintained",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ef11a34ae843404e",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "f7705495d25e4a03",
+      "name": "Dominate — 3 Advanced — Chain the Psyche",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>When issuing a Dominate command, spend a Blood Trait and decide how many future attempts to resist or recover memories you wish to crush, spending one Mental Trait per attempt (these Traits are unavailable the rest of the night, though Willpower expenditure restores them normally). If the subject tries to disobey or recover memories within that limit, agonizing pain incapacitates him for 10 minutes; the power fades once all guarded attempts have been used.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "One Blood Trait, plus one Mental Trait per resisted attempt crushed",
+        "retestAbility": "",
+        "duration": "Until the set number of resistance attempts are exhausted",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "66e9f1495c554b9b",
+      "name": "Dominate — 3 Advanced — Far Mastery",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Spend a Willpower Trait and win a normal Mental Challenge against a familiar target, regardless of distance, to establish mental contact as though eye contact had been made. Once contact is established, Dominate may be used on the subject normally; using this against another supernatural being costs an additional Willpower Trait.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "One Willpower Trait (plus one more against supernaturals)",
+        "retestAbility": "",
+        "duration": "As per the Dominate power used",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ce1f249d944a464e",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "7cb3a0c930384752",
+      "name": "Celerity — 3 Advanced — Precision",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You focus your preternatural speed into the smallest of motions, allowing feats of fine manipulation beyond mortal (or even ordinary Cainite) capability, such as micro-precise crafting or delicate surgery. Spend two Blood Traits and a Willpower Trait, then spend five minutes in a trance-like state of concentration. For the next five minutes you gain two free retests on all challenges related to precision, fine manipulation, or moving something without disturbing its surroundings. Any actions that do not involve fine manipulation require you to bid an additional Trait, and you lose all ties on any challenge involving gross physical movement, including combat.</p>",
+        "source": "Clanbook: Assamite, Chapter Two",
+        "discipline": "Celerity",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "2 Blood Traits and 1 Willpower Trait",
+        "retestAbility": "Crafts (or an appropriate Ability)",
+        "duration": "5 minutes",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1a310eaeea014ce5",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3fff58501c5e4095",
+      "name": "Potence — 3 Advanced — Gentle Nudge",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Facetiously named, this power allows the Kindred to physically knock another character away from herself with the slightest of touches. Although this power does no damage in and of itself, its use is quite humbling &mdash; to be hurled away from an elder in a social setting has its embarrassing repercussions. Some Kindred use this power surreptitiously, touching their victims and sending them reeling across the room; others use it as a not-so-subtle display of their might, giving their victim a casual slap with overwhelming results.</p><p><strong>System:</strong> The player spends a Blood Trait and must succeed in a physical challenge to touch the target (this may be done surreptitiously, but the player may not make use of other Potence benefits). The challenge is not required if the subject allows the player to touch him (a handshake, a &ldquo;friendly&rdquo; hand on the shoulder, etc). This power hurls the victim 20 feet directly away from the invoking character. If the subject strikes a wall or other solid obstacle, he suffers two health levels of bashing damage. Otherwise, the character needs to win a static physical challenge against six Traits to remain standing.</p>",
+        "source": "Clanbook: Brujah, Chapter Two",
+        "discipline": "Potence",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "One Blood Trait",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Potence (6, Master tier)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

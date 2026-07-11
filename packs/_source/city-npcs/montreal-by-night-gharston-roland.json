@@ -268,7 +268,182 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "140df045ed67459f",
+      "name": "Chimerstry — 3 Advanced — Shared Nightmare",
+      "type": "power",
+      "img": "icons/magic/death/skull-horned-worn-blue.webp",
+      "system": {
+        "description": "<p>An expansion of Horrid Reality that lets the Ravnos inflict a terrifying, illusory catastrophe on multiple victims at once, each convinced they alone are experiencing it.</p><p><strong>System:</strong> The Ravnos spends one Blood Point per target plus two Willpower, then rolls Manipulation + Subterfuge once, comparing the result against each target's Perception + Self-Control individually. Any target who fails believes the Horrid Reality is happening to them personally.</p><p><strong>MET:</strong> Elder Discipline. The Ravnos spends one Willpower Trait per target (maximum five targets) plus one Social Trait, bid against all targets simultaneously; each target's result is compared individually rather than as a group challenge. Any target who loses suffers the full effects of Horrid Reality.</p>",
+        "source": "Clanbook: Ravnos (Revised), Disciplines",
+        "discipline": "Chimerstry",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "1 per target + Willpower",
+        "retestAbility": "",
+        "duration": "Scene",
+        "system_": "",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": "Chimerstry 6 (Elder)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8266497a14704c99",
+      "name": "Chimerstry — 3 Advanced — Horrid Reality",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Your illusions can affect a person's mind directly: illusory shackles restrain, illusory wounds are believed real, and you may craft arrows that never miss or Rötschreck-inducing flames that cannot be doused. Works on only one victim at a time. Expend a Willpower Trait and win a Social Challenge; wounds remain until the victim is convinced they were illusory or heals himself psychologically. Vampires 'killed' enter torpor; mortals fall into a coma.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Chimerstry",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Subterfuge",
+        "duration": "Until convinced otherwise",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4aefcde2e6a247b6",
+      "name": "Potence — 2 Intermediate — Vigor",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9ac623bd5e3d4a87",
+      "name": "Animalism — 2 Intermediate — Subsume the Spirit",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By locking eyes with an animal, you project your consciousness into its body, leaving your own comatose while you control the beast (and, with greater expenditure, retain access to some of your own Disciplines).</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "Social Traits expended",
+        "retestAbility": "Animal Ken",
+        "duration": "Until you choose to return",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e31c02bba4c642f2",
+      "name": "Celerity — 1 Basic — Swiftness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain one additional action at the end of the turn, after all basic actions resolve.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d5755024fc6041ea",
+      "name": "Pistol",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>Covers nearly any small- or medium-caliber handgun commonly encountered, from zip guns and holdout pieces to 9mms and standard police-issue sidearms.</p><p><strong>Negative Traits:</strong> Loud</p><p><strong>Concealability:</strong> Pocket</p><p><strong>Damage:</strong> Two health levels</p><p><strong>Availability:</strong> Any, if registered; Police 4, Street 3, or Underworld 2 otherwise.</p>",
+        "source": "Laws of the Night Revised, Rules, Systems and Drama",
+        "quantity": 2,
+        "traitBonus": "+2 Traits"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

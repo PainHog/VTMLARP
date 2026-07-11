@@ -277,7 +277,319 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "d912ca2af5d9429f",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4580f61a1d774151",
+      "name": "Auspex \u2014 1 Basic \u2014 Heightened Senses",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may double the range of your sight and hearing and sharpen your other senses to remarkable acuity, perceiving things ordinary folk cannot. A sudden sensory assault, such as a loud noise or strong odor, numbs the affected sense for the rest of the scene and stuns you for a turn unless you spend a Willpower Trait. You may also receive uncontrollable visions of past or future events.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "At will",
+        "activation": "passive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "2a120c57d9354e06",
+      "name": "Auspex \u2014 2 Intermediate \u2014 The Spirit's Touch",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Maintain physical contact with an object or location and concentrate for a turn, expending a Mental Trait, then ask the Narrator one question about who last touched it, whether it was involved in stressful situations, or what strong emotions drove its user. May be used repeatedly for greater insight; objects of powerful emotional resonance may force a derangement upon the user for the scene.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant, repeatable",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": ""
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "3ad603cda08f4d86",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c8e16eb0a31a4e2b",
+      "name": "Dominate \u2014 1 Basic \u2014 Mesmerism",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and winning a Mental Challenge, you implant a more complex command, optionally tied to a specific trigger event, to be carried out immediately or later.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until command is fulfilled",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "505286919f4947fc",
+      "name": "Dominate \u2014 2 Intermediate \u2014 Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "63b687e1bda34424",
+      "name": "Thaumaturgy",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4a1e94295c6e4c9a",
+      "name": "Thaumaturgy \u2014 1 Basic \u2014 Eyes of the Earth",
+      "type": "power",
+      "img": "icons/magic/nature/root-vines-green.webp",
+      "system": {
+        "description": "<p>The vampire \"sees\" everything that transpires within 10 miles of her attuned haven or shrine by utilizing the spirits of the grass, trees, rocks, and animals in the vicinity. No sound accompanies the visions, and unless the practitioner can read lips she cannot know what is being said. If she wishes to track a particular person for more than one night, she must relocate him again after each broken contact.</p><p><strong>System:</strong> The vampire ingests an infusion of her own vitae mixed with soil, grass shoots, leaves, animal fur, and bird feathers. The number of successes on a Willpower roll determines the duration: 1 success grants one turn, 2 one hour, 3 one night, 4 one week, and 5 one month.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "basic",
+        "challengeType": "static",
+        "bloodCost": "1 blood point",
+        "retestAbility": "Willpower",
+        "duration": "See system",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Sielanic Thaumaturgy: Path of the World's Blood; must be attuned to the land (One with the Land ritual)"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "c44b70e74b214934",
+      "name": "Thaumaturgy \u2014 2 Intermediate \u2014 Command the Freshly Dead",
+      "type": "power",
+      "img": "icons/magic/death/skull-energy-light-white.webp",
+      "system": {
+        "description": "<p>The vampire can command any ghost she can see to obey her, receiving answers to questions within the ghost's realm of awareness or sending it to deliver a message. She cannot compel a ghost to perform any task requiring a material form.</p><p><strong>System:</strong> The vampire must first use See the Dead to locate a desired ghost, then wins a contested Willpower roll against the wraith (most ghosts have 5 Willpower). Each success scored over the wraith's own answers one question or performs one simple action.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Willpower",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "See the Dead"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    },
+    {
+      "_id": "644be9f40cc84510",
+      "name": "Vicissitude",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "eb0a682c625c47ac",
+      "name": "Vicissitude \u2014 1 Basic \u2014 Fleshcraft",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By touching a victim, you reshape flesh like clay, inflicting up to three Repugnant Negative Traits per use, or trading one Physical Trait for an extra health level (or the reverse) without inflicting damage.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Vicissitude",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Crafts: Body Crafts",
+        "duration": "Permanent (heals as aggravated wound on weaker generations)",
+        "activation": "challenge"
+      },
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "effects": []
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

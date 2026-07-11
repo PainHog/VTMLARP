@@ -233,7 +233,269 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "89e29d1062ae4328",
+      "name": "Thaumaturgy",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "436f3253572f491a",
+      "name": "Thaumaturgy — 3 Advanced — Army of Souls",
+      "type": "power",
+      "img": "icons/magic/death/skeleton-horde-brown.webp",
+      "system": {
+        "description": "<p>The Sielanic practitioner raises a spectral troop of mindless dead, called Drones, to act as defenders or to deliver warnings to her enemies. Though the tattered, ethereal images of long-dead warriors cannot fully materialize, they can hurl objects and frighten attackers. The ghosts return to their rest at the end of the night on which they are summoned.</p><p><strong>System:</strong> This power costs two blood points and a Willpower roll (difficulty 7). The number of successes determines how many Drones the Cainite can summon.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "advanced",
+        "challengeType": "static",
+        "bloodCost": "2 blood points",
+        "retestAbility": "Willpower",
+        "duration": "Until the following dawn",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "46ae0d7c25d64164",
+      "name": "Thaumaturgy — 3 Advanced — Walk the Road of Shadows",
+      "type": "power",
+      "img": "icons/magic/death/shadow-hand-fog-black.webp",
+      "system": {
+        "description": "<p>This power lets the vampire physically cross the barrier between the world of the living and the Underworld (Shadowlands) for a brief time, appearing to its denizens as a particularly solid wraith. She can interact freely with wraiths there, though she has no control over how they regard her, and any resulting combat causes real damage to both parties. Sielanic priests sometimes use this power to transport mortals into the Underworld as part of a shamanic initiation rite.</p><p><strong>System:</strong> This power costs three blood points and two Willpower, and requires a Willpower roll (difficulty 8). A single success lets the Cainite penetrate the Shroud and enter the Underworld; three successes let her bring one other person along. She may remain until dawn forces her out, until she flees, or until driven out by the Underworld's residents.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Two: Usurpers",
+        "discipline": "Thaumaturgy",
+        "level": "advanced",
+        "challengeType": "static",
+        "bloodCost": "3 blood points and 2 Willpower",
+        "retestAbility": "Willpower",
+        "duration": "Until dawn or the caster's choice",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "49ba2027161d45c8",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a4f27e26395a49f9",
+      "name": "Dominate — 3 Advanced — Chain the Psyche",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>When issuing a Dominate command, spend a Blood Trait and decide how many future attempts to resist or recover memories you wish to crush, spending one Mental Trait per attempt (these Traits are unavailable the rest of the night, though Willpower expenditure restores them normally). If the subject tries to disobey or recover memories within that limit, agonizing pain incapacitates him for 10 minutes; the power fades once all guarded attempts have been used.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "One Blood Trait, plus one Mental Trait per resisted attempt crushed",
+        "retestAbility": "",
+        "duration": "Until the set number of resistance attempts are exhausted",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3f9f6135ad9f48e4",
+      "name": "Dominate — 3 Advanced — Far Mastery",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Spend a Willpower Trait and win a normal Mental Challenge against a familiar target, regardless of distance, to establish mental contact as though eye contact had been made. Once contact is established, Dominate may be used on the subject normally; using this against another supernatural being costs an additional Willpower Trait.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "One Willpower Trait (plus one more against supernaturals)",
+        "retestAbility": "",
+        "duration": "As per the Dominate power used",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "498d5de291394ad4",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a8681b39890841fc",
+      "name": "Auspex — 2 Intermediate — Telepathy",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge and concentrating for a turn, you establish a telepathic link with a visible subject, allowing thought communication and the extraction of certain truthful answers, with deeper secrets costing a Mental Trait per question.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "As long as contact is maintained",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "7a6983403a0346e4",
+      "name": "Auspex — 2 Intermediate — The Spirit's Touch",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By touching an object and concentrating for a turn while spending a Mental Trait, you glimpse psychic impressions of powerful emotional events tied to it, possibly suffering a temporary derangement from particularly traumatic echoes.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

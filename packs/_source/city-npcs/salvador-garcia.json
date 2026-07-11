@@ -249,7 +249,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Born in late-19th-century Andalusia to poor farmers, Salvador joined the Anarquista movement and later the Mano Negra before being nearly beaten to death by police alongside his brother Pablo, who did not survive. The mysterious @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} Ferdinand Embraced him, and Salvador continued the fight against oppression, and against the @UUID[Compendium.vtmlarp.clans.JournalEntry.OpCOs3PLjmtl0QVu]{Ventrue}-dominated @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla}, through the Spanish Civil War until Ferdinand's destruction collapsed the Spanish anarch movement. He fled to Los Angeles, where \u2014 alongside Jeremy MacNeil, Crispus Attucks, and Marguerite Foccart \u2014 he helped plan and execute the 1944 Revolt, personally credited with killing Don Sebastian in single combat (in truth, an unknown, far more powerful attacker did the deed; Salvador smeared himself in the Don's blood and took the credit to protect the Revolt's morale). He later sat on the short-lived Revolutionary Council and authored the founding document of the Free States, the @UUID[Compendium.vtmlarp.rules-reference.JournalEntry.St7uVm2DqK4nRy8X]{Status} Perfectus, as well as the widely-read \"An Anarch Manifesto.\"</p><h2>Roleplaying Hints</h2><p>Salvador is the de facto leader of El Hermandad, the anarch faction centered on East Los Angeles, and supplies equipment and riot training to revolutionary movements across the Americas. He is a passionate, straightforward believer in the Free States' philosophy of non-interference, even when it costs him personally \u2014 he made no effort to stop his childe Allison Maller from seizing the Barony of Anaheim through slaughter, despite grieving the loss of her idealism.</p>",
+    "biography": "<h2>Background</h2><p>Born in late-19th-century Andalusia to poor farmers, Salvador joined the Anarquista movement and later the Mano Negra before being nearly beaten to death by police alongside his brother Pablo, who did not survive. The mysterious @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} Ferdinand Embraced him, and Salvador continued the fight against oppression, and against the @UUID[Compendium.vtmlarp.clans.JournalEntry.OpCOs3PLjmtl0QVu]{Ventrue}-dominated @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla}, through the Spanish Civil War until Ferdinand's destruction collapsed the Spanish anarch movement. He fled to Los Angeles, where — alongside Jeremy MacNeil, Crispus Attucks, and Marguerite Foccart — he helped plan and execute the 1944 Revolt, personally credited with killing Don Sebastian in single combat (in truth, an unknown, far more powerful attacker did the deed; Salvador smeared himself in the Don's blood and took the credit to protect the Revolt's morale). He later sat on the short-lived Revolutionary Council and authored the founding document of the Free States, the @UUID[Compendium.vtmlarp.rules-reference.JournalEntry.St7uVm2DqK4nRy8X]{Status} Perfectus, as well as the widely-read \"An Anarch Manifesto.\"</p><h2>Roleplaying Hints</h2><p>Salvador is the de facto leader of El Hermandad, the anarch faction centered on East Los Angeles, and supplies equipment and riot training to revolutionary movements across the Americas. He is a passionate, straightforward believer in the Free States' philosophy of non-interference, even when it costs him personally — he made no effort to stop his childe Allison Maller from seizing the Barony of Anaheim through slaughter, despite grieving the loss of her idealism.</p>",
     "notes": "Haven: various, largely among ghoul retainers in the barrios of East Los Angeles; frequently travels through Mexico and Central/South America. Closest friend and second-in-command: Jesus Ramirez. Childe: Allison Maller, now Baroness of Anaheim.",
     "npcType": "vampire"
   },
@@ -269,7 +269,313 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "7ae40c5ba657409c",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d713ac331d034542",
+      "name": "Celerity — 2 Intermediate — Legerity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain a further additional action at the end of the turn, on top of any gained from Swiftness.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "2328c4bef6114dfe",
+      "name": "Combination Discipline — Eyes of Blades",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Assamites who hone both their preternatural senses and their speed learn a valuable secret: sometimes it is wiser to defend than to attack. A vampire with this power enters a brief trance in which she perceives every threat against her at once, assessing and reacting to each in turn.</p><p><strong>System:</strong> At the start of a combat turn, before actions are declared, the player spends two Blood Traits and a Willpower Trait to activate this power (this counts as activating Celerity for the turn). The character takes no offensive action that turn, but may defend against every attack made against her, contesting each one individually. This power may be used no more than a number of times per scene equal to the character's Perception Trait total.</p>",
+        "source": "Libellus Sanguinis III: Wolves at the Door, Book Two: Saracens",
+        "discipline": "Celerity",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "2",
+        "retestAbility": "",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": "Auspex 2, Celerity 2"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "223bab8a804f4056",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a086dcf41ca54e77",
+      "name": "Potence — 2 Intermediate — Vigor",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d47643acf8c844e8",
+      "name": "Potence — 2 Intermediate — Intensity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>In challenges of strength, you may use Potence itself as your bid Trait, which can never be lost outright, though wounds or Negative Traits can still force you to risk other Traits.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a735ab1d7c5d4672",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "48b18153df024107",
+      "name": "Presence — 1 Basic — Dread Gaze",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By hissing and baring your vampiric features in a Social Challenge, you strike terror into a victim who, if defeated, flees and avoids you for the rest of the scene or hour, risking an extra Trait to act against you if cornered.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "2211c46eb1974843",
+      "name": "Presence — 1 Basic — Awe",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Social Trait during a Social Challenge, you gain an automatic retest, usable once per challenge (or once per target in a mass challenge at the same cost).</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "1 Social Trait",
+        "retestAbility": "Leadership",
+        "duration": "One challenge",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e1e8230587384069",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9af2eb5912cc4777",
+      "name": "Fortitude — 1 Basic — Mettle",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You gain one additional health level, functioning as an extra Healthy level on your health chart, which can be lost and healed normally.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

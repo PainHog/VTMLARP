@@ -143,7 +143,7 @@
     },
     "backgrounds": [],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>A scientific and technical illustrator Embraced in 1997 after two separate unnerving encounters with @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} vampires \u2014 one of whom spared her out of admiration for her art \u2014 left her disillusioned with science and drawn to surrealist and horrific subject matter. The Black Eagles recruited her for her artistic talent.</p><p>See Richard B. Weinstein's entry for the pack's shared background as Black Eagle Consulting, Inc.</p><h2>Roleplaying Hints</h2><p>Katherine is the newest and most conventionally human-seeming of the pack, still processing her transformation through her art. She is observant and curious rather than jaded.</p><p><strong>Disciplines (as printed):</strong> Dominate 2, Obtenebration 1, Potence 1.</p>",
+    "biography": "<h2>Background</h2><p>A scientific and technical illustrator Embraced in 1997 after two separate unnerving encounters with @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} vampires — one of whom spared her out of admiration for her art — left her disillusioned with science and drawn to surrealist and horrific subject matter. The Black Eagles recruited her for her artistic talent.</p><p>See Richard B. Weinstein's entry for the pack's shared background as Black Eagle Consulting, Inc.</p><h2>Roleplaying Hints</h2><p>Katherine is the newest and most conventionally human-seeming of the pack, still processing her transformation through her art. She is observant and curious rather than jaded.</p><p><strong>Disciplines (as printed):</strong> Dominate 2, Obtenebration 1, Potence 1.</p>",
     "notes": "Convert Disciplines to owned power Items: Dominate 2, Obtenebration 1, Potence 1.",
     "npcType": "vampire"
   },
@@ -163,7 +163,124 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "ac87249755a14a5c",
+      "name": "Dominate — 1 Basic — Command",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and speaking a single emphasized word of command, you win a Mental Challenge to force immediate, unquestioning obedience to a simple order lasting no more than ten minutes.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Up to 10 minutes",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "cda4315bc4684747",
+      "name": "Dominate — 1 Basic — Mesmerism",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By meeting your subject's gaze and winning a Mental Challenge, you implant a more complex command, optionally tied to a specific trigger event, to be carried out immediately or later.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until command is fulfilled",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "10eb3742f3d944e2",
+      "name": "Obtenebration — 1 Basic — Shadow Play",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you animate nearby shadows for a scene or hour, granting yourself a bonus Trait in stealth or ranged combat for concealment, a bonus Trait in intimidation, or afflicting a victim with Clumsy and slow asphyxiating damage.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Occult",
+        "duration": "Scene or one hour",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "210402de805e438e",
+      "name": "Potence — 1 Basic — Prowess",
+      "type": "power",
+      "img": "icons/skills/melee/strike-fist-punch-orange.webp",
+      "system": {
+        "description": "<p>Your unarmed and clubbing attacks inflict lethal rather than bashing damage if you choose. Once per game session you may also restore all of your used Brawny, Ferocious, Stalwart, Tough, and Wiry Physical Traits at once. Prowess costs nothing and isn't an action - it can be used at any time.</p>",
+        "source": "Laws of the Night Revised, p.150",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Permanent / once per session",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

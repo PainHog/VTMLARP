@@ -241,7 +241,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Thomas S. Ewell was a Confederate cavalry officer and bank-robbing outlaw during the American Civil War who fled to Canada afterward. There he was Embraced by Alexis Blanc, the self-styled @UUID[Compendium.vtmlarp.clans.JournalEntry.GaCuLGcjZZjf2EO6]{Toreador} \"prince\" of Ottawa, and took the name Balthazar. Bored and broke, he journeyed to Chicago in the 1870s with Alexis and her Blood-Bound thrall Marc Levesque to back Modius, the socialist Prince of Gary, in his war against Prince Lodin. When the @UUID[Compendium.vtmlarp.clans.JournalEntry.OpCOs3PLjmtl0QVu]{Ventrue} elder Hinds offered him wealth and free rein over vessels, Balthazar betrayed Modius and Alexis, personally staking his own sire and burning her haven with her still inside. Lodin rewarded him well, and over the following century Balthazar became Lodin's primary enforcer, tasked with suppressing the anarchs \u2014 a role that earned him the mocking nickname \"the Sheriff,\" which he has since claimed with pride. With Lodin's death, Balthazar has begun eyeing the princeship himself, campaigning on a platform of crushing the anarchs, though the primogen see him as too divisive to actually rule.</p><h2>Roleplaying Hints</h2><p>Pushy, arrogant, and physically imposing \u2014 Balthazar takes up space and dares people to object. He affects an exaggerated cowboy persona (Stetson, boots, tobacco) as a defiant answer to the insults other @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} throw at him, but cleans up well when trying to impress the primogen. He craves the respect he knows he'll never fully have from his own clan, who despise him as a traitor.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor):</strong> Auspex 1, Celerity 2, Dominate 5, Fortitude 3, Potence 3, Presence 2.</p>",
+    "biography": "<h2>Background</h2><p>Thomas S. Ewell was a Confederate cavalry officer and bank-robbing outlaw during the American Civil War who fled to Canada afterward. There he was Embraced by Alexis Blanc, the self-styled @UUID[Compendium.vtmlarp.clans.JournalEntry.GaCuLGcjZZjf2EO6]{Toreador} \"prince\" of Ottawa, and took the name Balthazar. Bored and broke, he journeyed to Chicago in the 1870s with Alexis and her Blood-Bound thrall Marc Levesque to back Modius, the socialist Prince of Gary, in his war against Prince Lodin. When the @UUID[Compendium.vtmlarp.clans.JournalEntry.OpCOs3PLjmtl0QVu]{Ventrue} elder Hinds offered him wealth and free rein over vessels, Balthazar betrayed Modius and Alexis, personally staking his own sire and burning her haven with her still inside. Lodin rewarded him well, and over the following century Balthazar became Lodin's primary enforcer, tasked with suppressing the anarchs — a role that earned him the mocking nickname \"the Sheriff,\" which he has since claimed with pride. With Lodin's death, Balthazar has begun eyeing the princeship himself, campaigning on a platform of crushing the anarchs, though the primogen see him as too divisive to actually rule.</p><h2>Roleplaying Hints</h2><p>Pushy, arrogant, and physically imposing — Balthazar takes up space and dares people to object. He affects an exaggerated cowboy persona (Stetson, boots, tobacco) as a defiant answer to the insults other @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} throw at him, but cleans up well when trying to impress the primogen. He craves the respect he knows he'll never fully have from his own clan, who despise him as a traitor.</p><p><strong>Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor):</strong> Auspex 1, Celerity 2, Dominate 5, Fortitude 3, Potence 3, Presence 2.</p>",
     "notes": "Sire: Alexis Blanc (destroyed by Balthazar himself). Hated by the wider @UUID[Compendium.vtmlarp.clans.JournalEntry.ZFYurbvAHfaRguYI]{Brujah} clan as a turncoat. Frequently found holding court at the Rack. His five ex-cop Retainers are Conditioned and will do nearly anything he orders.",
     "npcType": "vampire"
   },
@@ -261,7 +261,340 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "a71e195aaf694fad",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3049d54d307d4107",
+      "name": "Dominate — 3 Advanced — Obedience",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Rather than requiring eye contact, you may use Dominate through skin-to-skin contact alone (a Physical Challenge may be needed on unwilling subjects). The touch need not be maintained while issuing the command, but only one command may be given per contact; using Dominate again requires touching the subject anew.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Instant, per command",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "915e83be65624e90",
+      "name": "Dominate — 3 Advanced — Loyalty",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Commands you implant via Dominate become extremely resistant to being overridden by other vampires. Any other Dominate user attempting to countermand your instruction on the subject must spend an extra Willpower Trait and bid two extra Traits on the test.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "As long as the original command stands",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "efd12a359bf3422b",
+      "name": "Dominate — 3 Advanced — Speak Through the Blood",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Spend a permanent Willpower Trait and win a Mental Challenge against any vampire of your own bloodline, regardless of distance, to implant a broad, generic long-term command (specific or immediate orders are not possible). The command lasts five years per permanent Willpower Trait spent, gradually shaping the subject's agenda without her realizing the source, and combines potently with powers like Mass Manipulation. A vampire who reaches Golconda becomes immune, though unknowingly so.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "One permanent Willpower Trait",
+        "retestAbility": "",
+        "duration": "Five years per permanent Willpower Trait",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "07a0d8f8da3742d5",
+      "name": "Fortitude",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "60394724c6b3427c",
+      "name": "Fortitude — 1 Basic — Mettle",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You gain one additional health level, functioning as an extra Healthy level on your health chart, which can be lost and healed normally.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a72825a182f344d4",
+      "name": "Fortitude — 1 Basic — Endurance",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You shrug off the fatigue and pain of injury, suffering no wound penalties until struck into torpor or Final Death, beyond the usual penalty of being Bruised.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "adfe240e6ef54118",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c23d8ee37d9a473e",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "976f184f0c1f4294",
+      "name": "Potence — 1 Basic — Prowess",
+      "type": "power",
+      "img": "icons/skills/melee/strike-fist-punch-orange.webp",
+      "system": {
+        "description": "<p>Your unarmed and clubbing attacks inflict lethal rather than bashing damage if you choose. Once per game session you may also restore all of your used Brawny, Ferocious, Stalwart, Tough, and Wiry Physical Traits at once. Prowess costs nothing and isn't an action - it can be used at any time.</p>",
+        "source": "Laws of the Night Revised, p.150",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Permanent / once per session",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3330e8a5407a4101",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b1239001dc9b4fb7",
+      "name": "Celerity — 1 Basic — Swiftness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain one additional action at the end of the turn, after all basic actions resolve.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

@@ -190,8 +190,8 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Vermudo de Sancha taught medicine at UNAM and was ghouled, then Embraced, by Efra\u00edn Sortano after his obsession with vivisection cost him his mortal career. He drifted from Sortano's Metamorphosist research into the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.XaFK1xcneAZ4CbV5]{Path of Death and the Soul}, earning the nickname El Torcedor (\"the Twister\") for his fervent study of how pain and mutilation reshape the mind, and now serves the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} as its foremost interrogator when Disciplines alone cannot break a subject.</p><h2>Roleplaying Hints</h2><p>De Sancha remains courteous, even solicitous, while inflicting horrific and carefully documented mutilations \u2014 he considers himself a scientist advancing vampiric medicine, not a sadist, and extends genuine Hippocratic care to any Cainite or kine who comes to him willingly for medical help.</p>",
-    "notes": "Sire: Efra\u00edn Sortano. Embraced Father Yoel Rosen as a test subject to pit mortal faith against the Curse of Caine; the experiment broke the priest's mind instead.",
+    "biography": "<h2>Background</h2><p>Vermudo de Sancha taught medicine at UNAM and was ghouled, then Embraced, by Efraín Sortano after his obsession with vivisection cost him his mortal career. He drifted from Sortano's Metamorphosist research into the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.XaFK1xcneAZ4CbV5]{Path of Death and the Soul}, earning the nickname El Torcedor (\"the Twister\") for his fervent study of how pain and mutilation reshape the mind, and now serves the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} as its foremost interrogator when Disciplines alone cannot break a subject.</p><h2>Roleplaying Hints</h2><p>De Sancha remains courteous, even solicitous, while inflicting horrific and carefully documented mutilations — he considers himself a scientist advancing vampiric medicine, not a sadist, and extends genuine Hippocratic care to any Cainite or kine who comes to him willingly for medical help.</p>",
+    "notes": "Sire: Efraín Sortano. Embraced Father Yoel Rosen as a test subject to pit mortal faith against the Curse of Caine; the experiment broke the priest's mind instead.",
     "npcType": "vampire"
   },
   "prototypeToken": {
@@ -210,7 +210,207 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "8919c6f212a3444b",
+      "name": "Vicissitude",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c7255ae95b5f4864",
+      "name": "Vicissitude — 2 Intermediate — Bonecraft",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By grasping a victim, you twist and reshape bone, inflicting one level of lethal damage per strike or, combined with Fleshcraft, completely restructuring appearance, height, or crafting bone spurs and weapons that allow lethal unarmed damage.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Vicissitude",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Crafts: Body Crafts",
+        "duration": "Permanent (heals as aggravated wound on weaker generations)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "170c5e5c4108442f",
+      "name": "Vicissitude — 2 Intermediate — Horrid Form",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending two Blood Traits, you warp into an eight-foot rubbery, spiked monstrosity gaining the Physical Traits Brawny, Dexterous, Enduring, Ferocious, Quick, and Stalwart along with Negative Social Traits Bestial, Feral, and Repugnant, inflicting lethal brawling damage with a bonus health level of harm until you choose to revert.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Vicissitude",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "2 Blood Traits",
+        "retestAbility": "Crafts: Body Crafts",
+        "duration": "Until you choose to revert",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5dd5690c2e854e47",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d45236e8c776409d",
+      "name": "Auspex — 1 Basic — Aura Perception",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By concentrating on a visible subject and besting them in a Static Mental Challenge, you read the colors of their aura to learn their emotional state, general nature, whether they're under magical influence, have committed diablerie, or just lied; it can also reveal nearby ghosts.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "3cfce9b904df4d01",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "dfb50b31d0744deb",
+      "name": "Animalism — 1 Basic — Beckoning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By uttering an animal call, you summon nearby animals of a chosen type to your side, favorably disposed toward you, by spending a Social Trait per animal summoned.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Animal Ken",
+        "duration": "Until threatened or scene ends",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

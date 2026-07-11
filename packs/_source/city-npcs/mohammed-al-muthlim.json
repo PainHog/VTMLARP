@@ -250,7 +250,153 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "f2da4173d67048d5",
+      "name": "Obtenebration — 3 Advanced — Shadowstep",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+      "system": {
+        "description": "<p>While standing in a naturally occurring shadow, spend two Blood Traits and win a Static Mental Challenge against a seven-Trait difficulty to shift your position up to 50 steps to another natural shadow within line of sight, carrying your clothes and possessions. Bringing along an unwilling companion or using the power to escape restraint requires an additional Willpower Trait and winning a Physical Challenge.</p>",
+        "source": "Sabbat Guide, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "2 Blood Traits (+1 Willpower for a companion)",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "89a00334a65d4bc0",
+      "name": "Obtenebration — 3 Advanced — Ahriman's Demesne",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+      "system": {
+        "description": "<p>Spend any number of Willpower Traits and concentrate for three turns to summon a billowing cloud of darkness in a 50-pace radius, placing the area under Shroud of Night. For each of the next three turns, everyone you wish to destroy in the area must win a Static Physical Challenge against the Willpower Traits you spent or take three Health Levels of aggravated damage. The cloud then collapses, and anyone who died within it vanishes entirely, leaving only belongings. The power cannot be invoked again that night.</p>",
+        "source": "Sabbat Guide, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "Any number of Willpower Traits",
+        "retestAbility": "",
+        "duration": "Three turns, then ends for the night",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "fc3ff5d678b94e9e",
+      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4d8f52711ad648fe",
+      "name": "Dominate — 2 Intermediate — Conditioning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Over several consecutive nights of unrestricted access and repeated Mental Challenges, you can break down a victim's will entirely, turning them into a virtually mindless thrall who obeys you without need for further tests.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until broken (six sessions without contact)",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "2c5eaa2148314930",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

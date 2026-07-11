@@ -245,7 +245,290 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "c2305f77726d49e4",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 5,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "695a7794411e4196",
+      "name": "Presence — 3 Advanced — Melusine's Song",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-detection-alt-red.webp",
+      "system": {
+        "description": "<p>Named for the legendary (and supposedly fae) progenitor of the houses of Anjou and Lusignan, this power lets a Toreador sway others through song. If the Artisan can phrase her request in the form of a song, her words take on the weight of a nigh-irresistible command.</p><p><strong>System:</strong> The player states the suggestion she wishes to weave into the song and describes the song's nature. Everyone within earshot must resist or unknowingly submit to the request. The effect lasts as long as the Toreador continues singing or until the target leaves her presence; commands requiring the victim to leave the singer's presence can be resisted once more after the enchanting voice fades. Listeners outside the Toreador's immediate presence may notice something odd about the performance, though it registers as little more than an exceptionally fine one; other Toreador within earshot are immediately entranced. As a side benefit, knowledge of this power makes the character a superlative singer even when the power itself is not invoked.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book One: Artisans (Toreador)",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "2 Blood Traits and 1 Willpower Trait",
+        "retestAbility": "Performance",
+        "duration": "As long as the Toreador continues singing, or until the target leaves her presence",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": "Presence"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "96190d2b43934715",
+      "name": "Presence — 3 Advanced — Pulse of the City",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Your emotional state is always passively mirrored by the population of an entire city-sized region, with visitors affected less strongly than residents and vampires affected one level more mildly than mortals. To deliberately project a chosen emotion, spend a Willpower Trait and win a Static Social Challenge (typically 10-15 Traits, Storyteller's call) to shift the city's mood for one minute, extendable by spending additional Social Traits before the challenge. Two Methuselahs with this power contesting the same city test the Social Challenge directly against one another, with the longer-established Methuselah (six months or more) gaining five bonus Traits. Usable even while in torpor.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "One Willpower Trait (plus Social Traits to extend duration)",
+        "retestAbility": "",
+        "duration": "One minute per activation, longer with extra Social Traits spent",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1e87b2bf80d84209",
+      "name": "Presence — 3 Advanced — Diplomat's Boon",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-detection-alt-red.webp",
+      "system": {
+        "description": "<p>A diplomat's most difficult task is understanding what people need to hear to make them agreeable to a suggestion. With this power, a Toreador learns what a target wants to hear. It does not reveal the target's full views, but it grants invaluable insight that can be put to use in negotiation, avoiding treachery, or worse &mdash; enemies may be allied, marriages arranged, and wars started with proper application of this knack.</p><p><strong>System:</strong> The character concentrates on her subject and, on success, knows what to say to elicit a particular response. If she is attempting to advance an idea the target believes fundamentally wrong (convincing a pacifist monk to propose war, or a happy person to consider suicide), the target may resist. The effect lasts for the remainder of the conversation.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book One: Artisans (Toreador)",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Empathy",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": "Presence"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "630d5b4fec084615",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c4613672371b4d13",
+      "name": "Celerity — 1 Basic — Swiftness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain one additional action at the end of the turn, after all basic actions resolve.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "fa2622aa5ffe4780",
+      "name": "Celerity — 1 Basic — Alacrity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you preempt any physical action taken in the same turn that you are aware of, acting before your opponent can complete their move.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "96318abc2ea146a7",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "Brujah",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8597bb650965473d",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "bd2ddbf92da9492b",
+      "name": "Potence — 1 Basic — Prowess",
+      "type": "power",
+      "img": "icons/skills/melee/strike-fist-punch-orange.webp",
+      "system": {
+        "description": "<p>Your unarmed and clubbing attacks inflict lethal rather than bashing damage if you choose. Once per game session you may also restore all of your used Brawny, Ferocious, Stalwart, Tough, and Wiry Physical Traits at once. Prowess costs nothing and isn't an action - it can be used at any time.</p>",
+        "source": "Laws of the Night Revised, p.150",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Permanent / once per session",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

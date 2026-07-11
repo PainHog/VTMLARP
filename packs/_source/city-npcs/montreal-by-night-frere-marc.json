@@ -1,6 +1,6 @@
 {
   "_id": "f83aa28e72bf4055",
-  "name": "Fr\u00e8re Marc (Marc Arsenault) (Country Gangrel antitribu, of the Shepherds of Caine)",
+  "name": "Frère Marc (Marc Arsenault) (Country Gangrel antitribu, of the Shepherds of Caine)",
   "type": "npc",
   "img": "icons/svg/mystery-man.svg",
   "system": {
@@ -233,12 +233,12 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>When the Catholic Church dissolved the Jesuit order, missionary Marc Arsenault was left isolated in a native settlement in the Ottawa Valley; en route back to Montreal he was attacked and Embraced by a nomadic pack of Country @UUID[Compendium.vtmlarp.clans.JournalEntry.zCWdD1NpOCn03CwE]{Gangrel}, and, drawn by his correspondence with Soeur Jeanne, joined the Shepherds of Caine. Marc never abandoned his drive to understand and convert the Quebec natives, and became fascinated by tales of natives who never survive the Embrace &mdash; he has Embraced hundreds over the centuries in cursed ground on Mount Royal, and none have survived more than a night. Convinced a demonic force on the mountain is responsible, he has spent a century investigating, torturing the enigmatic @UUID[Compendium.vtmlarp.clans.JournalEntry.jaYCq9rVOh0I9NCN]{Tremere} antitribu Jacob the Glitch and flaying native victims to understand their deaths, even &quot;borrowing&quot; the preserved heart of the mortal saint Fr\u00e8re Andr\u00e9 for his own rituals. He led the Shepherds from 1951 until Sangris' fall was blamed in part on his obsession, and now leaves coven affairs to Yitzhak and Alfred Benezri.</p><h2>Roleplaying Hints</h2><p>Focused on your goals. The mysteries of Mount Royal and the native nations cannot elude you forever; you will do anything to pierce the veil.</p><h2>Secrets</h2><p>Fr\u00e8re Marc understands more about Mount Royal's demon than almost anyone: that it is a fiend of disease with access to feral creatures, and that it may not have been destroyed along with Sangris.</p>",
+    "biography": "<h2>Background</h2><p>When the Catholic Church dissolved the Jesuit order, missionary Marc Arsenault was left isolated in a native settlement in the Ottawa Valley; en route back to Montreal he was attacked and Embraced by a nomadic pack of Country @UUID[Compendium.vtmlarp.clans.JournalEntry.zCWdD1NpOCn03CwE]{Gangrel}, and, drawn by his correspondence with Soeur Jeanne, joined the Shepherds of Caine. Marc never abandoned his drive to understand and convert the Quebec natives, and became fascinated by tales of natives who never survive the Embrace &mdash; he has Embraced hundreds over the centuries in cursed ground on Mount Royal, and none have survived more than a night. Convinced a demonic force on the mountain is responsible, he has spent a century investigating, torturing the enigmatic @UUID[Compendium.vtmlarp.clans.JournalEntry.jaYCq9rVOh0I9NCN]{Tremere} antitribu Jacob the Glitch and flaying native victims to understand their deaths, even &quot;borrowing&quot; the preserved heart of the mortal saint Frère André for his own rituals. He led the Shepherds from 1951 until Sangris' fall was blamed in part on his obsession, and now leaves coven affairs to Yitzhak and Alfred Benezri.</p><h2>Roleplaying Hints</h2><p>Focused on your goals. The mysteries of Mount Royal and the native nations cannot elude you forever; you will do anything to pierce the veil.</p><h2>Secrets</h2><p>Frère Marc understands more about Mount Royal's demon than almost anyone: that it is a fiend of disease with access to feral creatures, and that it may not have been destroyed along with Sangris.</p>",
     "notes": "Embraced 1799. Apparent age: late 30s. Path of Nocturnal Redemption 7. Disciplines (as printed): Auspex 4, Animalism 3, Fortitude 3, Protean 4, Thaumaturgy 4 (Corruption 3, Spirit Thaumaturgy 4, Gift of Morpheus 3).",
     "npcType": "vampire"
   },
   "prototypeToken": {
-    "name": "Fr\u00e8re Marc (Marc Arsenault)",
+    "name": "Frère Marc (Marc Arsenault)",
     "displayName": 20,
     "actorLink": false,
     "texture": {
@@ -253,7 +253,157 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "00e2aca263174db8",
+      "name": "Protean — 3 Advanced — Flesh of Marble",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Spend two Blood Traits to instantly turn your skin into flexible living stone for the rest of the scene. All incoming physical damage (fists, claws, blades, firearms, explosions) is halved, round up, though fire, sunlight, and magic are unaffected. Bashing attacks also lose one health level of damage before halving, and melee weapons used against you risk shattering on a lost Simple Test unless exceptionally well-made.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Protean",
+        "level": "advanced",
+        "challengeType": "static",
+        "bloodCost": "Two Blood Traits",
+        "retestAbility": "",
+        "duration": "Scene",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "77e2bff1f62445f5",
+      "name": "Protean — 3 Advanced — Animal Swarm",
+      "type": "power",
+      "img": "icons/magic/nature/wolf-paw-glow-green.webp",
+      "system": {
+        "description": "<p>The vampire disperses into one small creature per current Blood Trait spent (or fewer, larger creatures sharing Blood Traits evenly). Lasts until sunrise or voluntary reformation; any creatures not reabsorbed by dawn are destroyed. Difficult to represent at the table &mdash; Storytellers should plan in advance how a single player represents a swarm.</p>",
+        "source": "Clanbook: Gangrel",
+        "discipline": "Protean",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "Variable (1 per creature)",
+        "retestAbility": "",
+        "duration": "Until sunrise or voluntary reformation",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c89a54750a8c4ffb",
+      "name": "Auspex — 3 Advanced — Anima Gathering",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Originally used to lead warrior-caste mystics on vision quests, this vizier technique lets a willing seer bring companions with him into the astral realms. All would-be participants must form an unbroken chain of physical contact with the character. Spend a Blood Trait for each \"follower\" you wish to bring along, up to a maximum of half your permanent Mental Traits (rounded down), then leave your body as per Psychic Projection. Each follower is treated as though she knows Psychic Projection regardless of her actual Auspex rating, using the leader's rolled successes. On the astral plane, followers must remain within roughly 100 feet of the leader, tethered to him and unable to break the connection. Any follower who loses physical contact with the leader instantly returns to her body and loses three Mental Traits, falling unconscious for the rest of the night if this reduces her to zero Mental Traits.</p>",
+        "source": "Clanbook: Assamite, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait per follower (max half permanent Mental Traits, rounded down)",
+        "retestAbility": "",
+        "duration": "Until the astral projection ends",
+        "activation": "reflexive",
+        "prerequisites": "Auspex (Psychic Projection)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5bb10284c5d1460e",
+      "name": "Fortitude — 2 Intermediate — Brace for Impact",
+      "type": "power",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+      "system": {
+        "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Athletics",
+        "duration": "Instantaneous (per impact)",
+        "activation": "reflexive",
+        "prerequisites": "Fortitude (3), Potence (3)",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d3a2e3959da84904",
+      "name": "Animalism — 2 Intermediate — Subsume the Spirit",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By locking eyes with an animal, you project your consciousness into its body, leaving your own comatose while you control the beast (and, with greater expenditure, retain access to some of your own Disciplines).</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "Social Traits expended",
+        "retestAbility": "Animal Ken",
+        "duration": "Until you choose to return",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

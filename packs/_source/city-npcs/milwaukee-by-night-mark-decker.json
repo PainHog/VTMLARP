@@ -265,7 +265,237 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "d5b878ed60d84b99",
+      "name": "Celerity — 3 Advanced — Quickness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>In addition to the benefits of Fleetness, spending a Blood Trait grants a fourth action, taking place after the actions of all vampires using Legerity.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Celerity",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ce12fd12919140de",
+      "name": "Celerity — 3 Advanced — Fleetness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>In addition to the benefits of Legerity, spending a Blood Trait grants automatic wins on all ties involving speed or agility regardless of relative Traits, except against another vampire using a similarly-effective Discipline power such as Potence's Puissance, in which case ties are resolved normally.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Celerity",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e25ba3ccb4bf4131",
+      "name": "Protean — 3 Advanced — Flesh of Marble",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Spend two Blood Traits to instantly turn your skin into flexible living stone for the rest of the scene. All incoming physical damage (fists, claws, blades, firearms, explosions) is halved, round up, though fire, sunlight, and magic are unaffected. Bashing attacks also lose one health level of damage before halving, and melee weapons used against you risk shattering on a lost Simple Test unless exceptionally well-made.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Protean",
+        "level": "advanced",
+        "challengeType": "static",
+        "bloodCost": "Two Blood Traits",
+        "retestAbility": "",
+        "duration": "Scene",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "33de783467c34e7c",
+      "name": "Protean — 3 Advanced — Animal Swarm",
+      "type": "power",
+      "img": "icons/magic/nature/wolf-paw-glow-green.webp",
+      "system": {
+        "description": "<p>The vampire disperses into one small creature per current Blood Trait spent (or fewer, larger creatures sharing Blood Traits evenly). Lasts until sunrise or voluntary reformation; any creatures not reabsorbed by dawn are destroyed. Difficult to represent at the table &mdash; Storytellers should plan in advance how a single player represents a swarm.</p>",
+        "source": "Clanbook: Gangrel",
+        "discipline": "Protean",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "Variable (1 per creature)",
+        "retestAbility": "",
+        "duration": "Until sunrise or voluntary reformation",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b0cf0f5594fd4f07",
+      "name": "Fortitude — 2 Intermediate — Brace for Impact",
+      "type": "power",
+      "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+      "system": {
+        "description": "<p>A combination power blending Potence's unnatural strength with Fortitude's supernatural toughness, letting a Cainite brace her whole body against blunt-force impacts: falling, car crashes, explosions, or being struck by very large objects. It does not help against ordinary combat damage (fists, bullets, blades) or against fire, electricity, sunlight, or other energy-based damage — only against impacts affecting the entire body, and only if the character can see the impact coming and brace for it.</p>",
+        "discipline": "Fortitude",
+        "level": "intermediate",
+        "challengeType": "static",
+        "bloodCost": "",
+        "retestAbility": "Athletics",
+        "duration": "Instantaneous (per impact)",
+        "activation": "reflexive",
+        "prerequisites": "Fortitude (3), Potence (3)",
+        "source": "Mexico City by Night, Chapter Five: Storytelling (Unique Abilities)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4519b3f8956f47d1",
+      "name": "Potence — 2 Intermediate — Vigor",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8b823032e57244c1",
+      "name": "Shotgun",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>Fires a spray of pellets, making targets easy to hit.</p><p><strong>Negative Traits:</strong> Loud</p><p><strong>Concealability:</strong> None</p><p><strong>Damage:</strong> Two health levels</p><p><strong>Availability:</strong> Any, if registered; Police 4, Street 4, or Underworld 3 otherwise.</p><p><strong>Special Abilities:</strong> Spray (affects up to three targets standing immediately next to each other, further than 20 feet from the shooter, if loaded with pellets); Mass-Trauma (an extra health level of damage to a single target within five feet).</p>",
+        "source": "Laws of the Night Revised, Rules, Systems and Drama",
+        "quantity": 1,
+        "traitBonus": "+3 Traits"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "92f55ccbcbee496d",
+      "name": "Heavy Pistol",
+      "type": "gear",
+      "img": "icons/svg/sword.svg",
+      "system": {
+        "description": "<p>Covers the monsters of the handgun range, from the Desert Eagle to a .454 Cassull - tremendous guns using high-caliber ammunition to punch large holes in their targets.</p><p><strong>Negative Traits:</strong> Loud</p><p><strong>Concealability:</strong> Jacket</p><p><strong>Damage:</strong> Two health levels</p><p><strong>Availability:</strong> Any, if registered; Police 4, Street 4, or Underworld 3 otherwise.</p><p><strong>Special Ability - High-Caliber:</strong> A Simple Test on a successful hit; success indicates the target takes an extra level of damage.</p>",
+        "source": "Laws of the Night Revised, Rules, Systems and Drama",
+        "quantity": 1,
+        "traitBonus": "+2 Traits"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

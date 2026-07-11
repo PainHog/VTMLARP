@@ -1,6 +1,6 @@
 {
   "_id": "6e0b91ce772d4f12",
-  "name": "Efra\u00edn Sortano (Tzimisce, The Zookeeper)",
+  "name": "Efraín Sortano (Tzimisce, The Zookeeper)",
   "type": "npc",
   "img": "icons/svg/mystery-man.svg",
   "system": {
@@ -216,12 +216,12 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Embraced more than two centuries ago and inspired by the naturalist Alexander Humboldt, Efra\u00edn Sortano claims Chapultepec Zoo as his personal domain \u2014 any Cainite who wishes to hunt or feed there must join him in a Vaulderie. He uses Vicissitude and, later, @UUID[Compendium.vtmlarp.clans.JournalEntry.zCWdD1NpOCn03CwE]{Gangrel} shapeshifting to study the animal world in pursuit of the Path of Metamorphosis, has performed five prestigious diableries, and sired both the pain scientist Dr. Vermudo de Sancha and the self-styled Barren Virgin, Ana Rita Monta\u00f1a.</p><h2>Roleplaying Hints</h2><p>Sortano prefers animals to Cainites (except his students), rarely holds fully human form anymore, and commands the loyalty of the city's feral cats, dogs, bats, and rats as Contacts. He possesses the unique combination power Shape of All Beasts (Protean + Vicissitude), letting him take the form of any animal between the size of a tiger and a rabbit at will.</p>",
-    "notes": "Sire: Fyodor Andreyev. Childer include Dr. Vermudo de Sancha and Ana Rita Monta\u00f1a. Most recent diablerie (1978) destroyed a priscus who threatened him.",
+    "biography": "<h2>Background</h2><p>Embraced more than two centuries ago and inspired by the naturalist Alexander Humboldt, Efraín Sortano claims Chapultepec Zoo as his personal domain — any Cainite who wishes to hunt or feed there must join him in a Vaulderie. He uses Vicissitude and, later, @UUID[Compendium.vtmlarp.clans.JournalEntry.zCWdD1NpOCn03CwE]{Gangrel} shapeshifting to study the animal world in pursuit of the Path of Metamorphosis, has performed five prestigious diableries, and sired both the pain scientist Dr. Vermudo de Sancha and the self-styled Barren Virgin, Ana Rita Montaña.</p><h2>Roleplaying Hints</h2><p>Sortano prefers animals to Cainites (except his students), rarely holds fully human form anymore, and commands the loyalty of the city's feral cats, dogs, bats, and rats as Contacts. He possesses the unique combination power Shape of All Beasts (Protean + Vicissitude), letting him take the form of any animal between the size of a tiger and a rabbit at will.</p>",
+    "notes": "Sire: Fyodor Andreyev. Childer include Dr. Vermudo de Sancha and Ana Rita Montaña. Most recent diablerie (1978) destroyed a priscus who threatened him.",
     "npcType": "vampire"
   },
   "prototypeToken": {
-    "name": "Efra\u00edn Sortano",
+    "name": "Efraín Sortano",
     "displayName": 20,
     "actorLink": false,
     "texture": {
@@ -236,7 +236,238 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "0e0005836cd048af",
+      "name": "Vicissitude",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "af29660b47264a8c",
+      "name": "Vicissitude — 3 Advanced — Blood of Acid",
+      "type": "power",
+      "img": "icons/magic/control/debuff-energy-hold-pink.webp",
+      "system": {
+        "description": "<p>Permanently converts your vitae into organic acid. Any Blood Trait that contacts something other than you inflicts two levels of aggravated damage; anyone drinking your vitae takes four levels of aggravated damage per Blood Trait. When a penetrating attack injures you in close combat, make a Simple Test; on a win, you lose one Blood Trait that sprays toward your attacker, who must win a Static Physical Challenge (difficulty five) or take one level of aggravated damage. Objects piercing you corrode away within minutes, and stakes dissolve within five turns.</p>",
+        "source": "Sabbat Guide, Disciplines",
+        "discipline": "Vicissitude",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Permanent",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9d707c9c086f4a05",
+      "name": "Vicissitude — 3 Advanced — Bloodform",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By concentrating briefly, you liquefy part or all of your body into Blood Traits, retaining autonomic control to ooze through cracks at a slow walking pace, using mental Disciplines and remaining immune to all physical harm but fire, sunlight, and the loss of your blood.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Vicissitude",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Crafts: Body Crafts",
+        "duration": "Until you choose to revert",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "bc3aee5048fb4cc3",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "38cc7599e7d44b6c",
+      "name": "Animalism — 2 Intermediate — Quell the Beast",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Through touch or gaze, you project your predatory aspect to cow a victim into submission, denying use of Willpower and inflicting Submissive x2 for the rest of the evening; using it on a frenzying vampire can instead snap them back to lucidity.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Animal Ken",
+        "duration": "Rest of the evening",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "2dc8d577b9d942a8",
+      "name": "Animalism — 2 Intermediate — Subsume the Spirit",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By locking eyes with an animal, you project your consciousness into its body, leaving your own comatose while you control the beast (and, with greater expenditure, retain access to some of your own Disciplines).</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "Social Traits expended",
+        "retestAbility": "Animal Ken",
+        "duration": "Until you choose to return",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "491bdfd26d0e430e",
+      "name": "Shape of All Beasts (Protean/Vicissitude)",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "e696b80989e649a8",
+      "name": "Combination Discipline — Pater Szlachta",
+      "type": "power",
+      "img": "icons/creatures/abilities/mouth-teeth-bite-red.webp",
+      "system": {
+        "description": "<p><strong>Prerequisites:</strong> Basic Protean, Intermediate Vicissitude. Some Tzimisce combine the Protean power to turn into an animal with the possibilities of Vicissitude, forcing chaotic change to surge through the Fiend's body while he directs it through bone-breaking pain. When the strain becomes too much to bear, the body settles into the Pater Szlachta or bogatyri form &mdash; named by Tzimisce anarchs to insult either their servants or the &quot;elder valiant champions&quot; who served their sires. In the modern nights this power is known to a few Tzimisce, who sometimes use it in contests of improvisational fleshcrafting.</p><p><strong>System:</strong> Spend two blood points and roll Stamina + Medicine (difficulty 7). The change takes (5 minus the number of successes) turns to complete, during which the Tzimisce can only howl, drool vitae, and writhe. The character can rearrange his Physical Attributes (one dot per success), though no Attribute may exceed the limit imposed by generation; the player describes the alterations desired, but the Storyteller is the final arbiter of the resulting form (bone spikes, spine-saws, reinforced hide, and the like). Botches earn whatever physical Flaws the Storyteller chooses, possibly permanent ones. The change lasts one scene. Costs 18 experience points to learn.</p><p><strong>MET System:</strong> Your body increases its mass for every Blood Trait you spend. First enter a Static Physical Challenge against the Storyteller; if successful, you increase your Physical Trait category by two Traits for every Blood Trait consumed this way, possibly exceeding the limits of your Generation.</p>",
+        "source": "Clanbook: Tzimisce, Chapter Two: Ego and Evolution",
+        "discipline": "Combination Discipline (Protean/Vicissitude)",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "Two blood points (System) / one per two Physical Traits gained (MET)",
+        "retestAbility": "Medicine",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Protean (1), Vicissitude (2)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

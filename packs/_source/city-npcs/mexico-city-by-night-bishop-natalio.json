@@ -217,7 +217,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Embraced amid revolutionary fervor in 1899, Natalio is a true believer convinced the Final Nights are already underway. Rather than challenge the sect's cardinals directly, he organizes neonates and ancillae \u2014 the sect's most disposable members and its most receptive audience \u2014 into covens and packs across Mexico City's shantytowns, using the Vaulderie and Mexican revolutionary imagery (ice-pick assassinations echoing Trotsky's murder, the ritual creation of \"La Malinche\" figures) to forge loyalty independent of the Path-of-Enlightenment orthodoxy other @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} preach.</p><h2>Roleplaying Hints</h2><p>As many as a dozen packs look to Natalio for leadership, foremost his own large coven El Grito de Dolor. He is aware of the rogue vampire La Malinche (whom his own ritus created and who then escaped), considers the ravenous Hungry Sisters bloodline a threat to his shantytown herds, and is quietly recruiting the @UUID[Compendium.vtmlarp.clans.JournalEntry.ZJx9H3XnU8yQGy9s]{Malkavian} antitribu Eliza Villanova as a potential ally against Gehenna.</p>",
+    "biography": "<h2>Background</h2><p>Embraced amid revolutionary fervor in 1899, Natalio is a true believer convinced the Final Nights are already underway. Rather than challenge the sect's cardinals directly, he organizes neonates and ancillae — the sect's most disposable members and its most receptive audience — into covens and packs across Mexico City's shantytowns, using the Vaulderie and Mexican revolutionary imagery (ice-pick assassinations echoing Trotsky's murder, the ritual creation of \"La Malinche\" figures) to forge loyalty independent of the Path-of-Enlightenment orthodoxy other @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} preach.</p><h2>Roleplaying Hints</h2><p>As many as a dozen packs look to Natalio for leadership, foremost his own large coven El Grito de Dolor. He is aware of the rogue vampire La Malinche (whom his own ritus created and who then escaped), considers the ravenous Hungry Sisters bloodline a threat to his shantytown herds, and is quietly recruiting the @UUID[Compendium.vtmlarp.clans.JournalEntry.ZJx9H3XnU8yQGy9s]{Malkavian} antitribu Eliza Villanova as a potential ally against Gehenna.</p>",
     "notes": "Sire: Eva la Prima. A mortal industrial accident left his face scarred and right arm mangled; he has never had it repaired by a Fiend's touch.",
     "npcType": "vampire"
   },
@@ -237,7 +237,238 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "35836e158e37459f",
+      "name": "Celerity",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "890e13b2b12f44c7",
+      "name": "Combination Discipline — Eyes of Blades",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Assamites who hone both their preternatural senses and their speed learn a valuable secret: sometimes it is wiser to defend than to attack. A vampire with this power enters a brief trance in which she perceives every threat against her at once, assessing and reacting to each in turn.</p><p><strong>System:</strong> At the start of a combat turn, before actions are declared, the player spends two Blood Traits and a Willpower Trait to activate this power (this counts as activating Celerity for the turn). The character takes no offensive action that turn, but may defend against every attack made against her, contesting each one individually. This power may be used no more than a number of times per scene equal to the character's Perception Trait total.</p>",
+        "source": "Libellus Sanguinis III: Wolves at the Door, Book Two: Saracens",
+        "discipline": "Celerity",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "2",
+        "retestAbility": "",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": "Auspex 2, Celerity 2"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a25be9ab95c042e2",
+      "name": "Celerity — 2 Intermediate — Legerity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain a further additional action at the end of the turn, on top of any gained from Swiftness.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "37b91e4edc8041d4",
+      "name": "Presence",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5d26430b650c4f42",
+      "name": "Presence — 2 Intermediate — Command the Wary Steed",
+      "type": "power",
+      "img": "icons/creatures/mammals/horse-brown-galloping.webp",
+      "system": {
+        "description": "<p>Through use of this power the Cainite can cause enemies' mounts to rear and bolt, singly or en masse, by the strength of his gaze alone, or bolster the courage and tractability of allied steeds for greater control in battle.</p><p><strong>System:</strong> The player spends a Willpower point and rolls Manipulation + Animal Ken (difficulty 7). Enemy mounts become terrified and nigh uncontrollable: Ride roll difficulties increase by three and mounted combat becomes impossible. Friendly mounts become far more pliant (-2 difficulty on all Ride rolls) and may be coerced into situations they would normally avoid.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book Three: Zealots",
+        "discipline": "Presence",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Manipulation",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Presence (3), Animalism (2)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a1968cd187ad47f3",
+      "name": "Presence — 2 Intermediate — Entrancement",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Social Challenge, you render the target favorably disposed toward you for the rest of the scene or an hour, unable to insult or attack you unless you act against them first.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "da9f1d943fa54287",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "0f440b8a29324d75",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

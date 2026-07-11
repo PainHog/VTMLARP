@@ -287,7 +287,7 @@
     ],
     "freeTraits": 0,
     "biography": "<h2>Background</h2><p>Carolina Valez distinguished herself during covert @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} operations in the Anarch Free States of California, at least until the disastrous end of her tenure there under the inept Archbishop Fuller. Her political savvy, stern methods and cautiousness made her Cardinal Strathcona's choice to restore order in Montreal after the trial and execution of the infernalist Archbishop Sangris in 1992. She rules through her pack, the Lost Angels, and a network of Blood-Bound @UUID[Compendium.vtmlarp.revenants.JournalEntry.wABwn8FJtAN2e88I]{Grimaldi} revenants who give her a stranglehold on the mortal infrastructure of the city.</p><p>Valez's ease with mortals and anarchs, and her distaste for public displays of vampirism, is widely read in Montreal as weakness. The Shepherds of Caine consider her a transitional figure and have put forward their own candidate, Alfred Benezri, while the Black Hand agitator Ezekiel openly needles her about her \"excessive humanity.\" In truth Valez is a cold, shrewd, and ruthless manipulator who deliberately exaggerates her reputation for softness to keep her true motives hidden.</p><h2>Secret</h2><p>Valez's greatest secret is her obsessive, unlife-spanning devotion to her mortal granddaughter Josefina, the last living reminder of the beauty Valez lost when she stopped casting a reflection. Valez slew her own daughter Maria and Maria's husband in a frenzy of jealousy over the child, and has since raised and guarded Josefina through a cadre of loyal @UUID[Compendium.vtmlarp.revenants.JournalEntry.wABwn8FJtAN2e88I]{Grimaldi} revenants, arranging for the girl to marry and bear a child so that a fading Josefina can eventually be replaced.</p><h2>Roleplaying Hints</h2><p>Determined and calculating. You know when to push and when to back away, and you never accept defeat. Fair as a leader, but your cruelty surfaces when you choose to release it.</p>",
-    "notes": "Sire unknown. Embraced 1957. Apparent age: late 20s. @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.MkHKLOcOCLQ5pWCj]{Path of Honorable Accord} 6. Ratings above 5 from the original stat block have been capped to fit this system's 1-5 scale \u2014 restore full book values for high-power Storyteller-only scenes. Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor at Storyteller discretion): Animalism 3, Auspex 3, Celerity 1, Dominate 4, Fortitude 1, Obfuscate 2, Obtenebration 4, Potence 2, Presence 5.",
+    "notes": "Sire unknown. Embraced 1957. Apparent age: late 20s. @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.MkHKLOcOCLQ5pWCj]{Path of Honorable Accord} 6. Ratings above 5 from the original stat block have been capped to fit this system's 1-5 scale — restore full book values for high-power Storyteller-only scenes. Disciplines (as printed, dot-rating, converted to owned Discipline Items on this Actor at Storyteller discretion): Animalism 3, Auspex 3, Celerity 1, Dominate 4, Fortitude 1, Obfuscate 2, Obtenebration 4, Potence 2, Presence 5.",
     "npcType": "vampire"
   },
   "prototypeToken": {
@@ -306,7 +306,215 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "b10ea5ff43ff45a3",
+      "name": "Presence — 3 Advanced — Melusine's Song",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-detection-alt-red.webp",
+      "system": {
+        "description": "<p>Named for the legendary (and supposedly fae) progenitor of the houses of Anjou and Lusignan, this power lets a Toreador sway others through song. If the Artisan can phrase her request in the form of a song, her words take on the weight of a nigh-irresistible command.</p><p><strong>System:</strong> The player states the suggestion she wishes to weave into the song and describes the song's nature. Everyone within earshot must resist or unknowingly submit to the request. The effect lasts as long as the Toreador continues singing or until the target leaves her presence; commands requiring the victim to leave the singer's presence can be resisted once more after the enchanting voice fades. Listeners outside the Toreador's immediate presence may notice something odd about the performance, though it registers as little more than an exceptionally fine one; other Toreador within earshot are immediately entranced. As a side benefit, knowledge of this power makes the character a superlative singer even when the power itself is not invoked.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book One: Artisans (Toreador)",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "2 Blood Traits and 1 Willpower Trait",
+        "retestAbility": "Performance",
+        "duration": "As long as the Toreador continues singing, or until the target leaves her presence",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": "Presence"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "4f49e450743c474b",
+      "name": "Presence — 3 Advanced — Pulse of the City",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Your emotional state is always passively mirrored by the population of an entire city-sized region, with visitors affected less strongly than residents and vampires affected one level more mildly than mortals. To deliberately project a chosen emotion, spend a Willpower Trait and win a Static Social Challenge (typically 10-15 Traits, Storyteller's call) to shift the city's mood for one minute, extendable by spending additional Social Traits before the challenge. Two Methuselahs with this power contesting the same city test the Social Challenge directly against one another, with the longer-established Methuselah (six months or more) gaining five bonus Traits. Usable even while in torpor.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "One Willpower Trait (plus Social Traits to extend duration)",
+        "retestAbility": "",
+        "duration": "One minute per activation, longer with extra Social Traits spent",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "b0bce8ac409d4830",
+      "name": "Dominate — 3 Advanced — Obedience",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Rather than requiring eye contact, you may use Dominate through skin-to-skin contact alone (a Physical Challenge may be needed on unwilling subjects). The touch need not be maintained while issuing the command, but only one command may be given per contact; using Dominate again requires touching the subject anew.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Instant, per command",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "94a9111136c0478a",
+      "name": "Dominate — 3 Advanced — Loyalty",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Commands you implant via Dominate become extremely resistant to being overridden by other vampires. Any other Dominate user attempting to countermand your instruction on the subject must spend an extra Willpower Trait and bid two extra Traits on the test.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Dominate",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "As long as the original command stands",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ea22db37c9af4158",
+      "name": "Obtenebration — 3 Advanced — Shadowstep",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+      "system": {
+        "description": "<p>While standing in a naturally occurring shadow, spend two Blood Traits and win a Static Mental Challenge against a seven-Trait difficulty to shift your position up to 50 steps to another natural shadow within line of sight, carrying your clothes and possessions. Bringing along an unwilling companion or using the power to escape restraint requires an additional Willpower Trait and winning a Physical Challenge.</p>",
+        "source": "Sabbat Guide, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "2 Blood Traits (+1 Willpower for a companion)",
+        "retestAbility": "",
+        "duration": "Instant",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "f88f3ae24d534f3a",
+      "name": "Obtenebration — 3 Advanced — Ahriman's Demesne",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+      "system": {
+        "description": "<p>Spend any number of Willpower Traits and concentrate for three turns to summon a billowing cloud of darkness in a 50-pace radius, placing the area under Shroud of Night. For each of the next three turns, everyone you wish to destroy in the area must win a Static Physical Challenge against the Willpower Traits you spent or take three Health Levels of aggravated damage. The cloud then collapses, and anyone who died within it vanishes entirely, leaving only belongings. The power cannot be invoked again that night.</p>",
+        "source": "Sabbat Guide, Disciplines",
+        "discipline": "Obtenebration",
+        "level": "advanced",
+        "challengeType": "physical",
+        "bloodCost": "Any number of Willpower Traits",
+        "retestAbility": "",
+        "duration": "Three turns, then ends for the night",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d3291370c9384a1e",
+      "name": "Auspex — 2 Intermediate — The Spirit's Touch",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Maintain physical contact with an object or location and concentrate for a turn, expending a Mental Trait, then ask the Narrator one question about who last touched it, whether it was involved in stressful situations, or what strong emotions drove its user. May be used repeatedly for greater insight; objects of powerful emotional resonance may force a derangement upon the user for the scene.</p>",
+        "source": "Faith and Fire, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant, repeatable",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

@@ -223,7 +223,124 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "a93301e505214804",
+      "name": "Serpentis — 2 Intermediate — The Form of the Cobra",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait and three full turns, you transform into a giant venomous cobra retaining your weight, able to use Disciplines that require neither hands nor speech, lasting until the next sunrise or until you revert.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Serpentis",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Subterfuge",
+        "duration": "Until next sunrise or you revert",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c2262a0b832f4919",
+      "name": "Serpentis — 2 Intermediate — The Skin of the Adder",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait and a Willpower Trait, you transform by the end of the turn into a scaled, snake-flexible hybrid form gaining the bonus Traits Lithe and Tough, an enhanced bite, and the Negative Social Traits Bestial and Repugnant, lasting until you revert or the next sunrise.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Serpentis",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Subterfuge",
+        "duration": "Until next sunrise or you revert",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8b46250fa63345c7",
+      "name": "Presence — 1 Basic — Dread Gaze",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By hissing and baring your vampiric features in a Social Challenge, you strike terror into a victim who, if defeated, flees and avoids you for the rest of the scene or hour, risking an extra Trait to act against you if cornered.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Presence",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Leadership",
+        "duration": "Scene or one hour",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1e1a2bb64557474c",
+      "name": "Obfuscate — 1 Basic — Unseen Presence",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Once hidden from sight, you may move about at a walk and remain unnoticed, automatically becoming visible only if you speak, make loud noise, or interact with your surroundings.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Stealth",
+        "duration": "Until concealment is broken",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

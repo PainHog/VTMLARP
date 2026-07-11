@@ -4,7 +4,7 @@
   "type": "npc",
   "img": "icons/svg/mystery-man.svg",
   "system": {
-    "concept": "Black Hand dominion, Mexico City's ranking Black Hand authority, trainer of the Ni\u00f1os Heroes cadets",
+    "concept": "Black Hand dominion, Mexico City's ranking Black Hand authority, trainer of the Niños Heroes cadets",
     "clan": "Nosferatu antitribu",
     "bloodline": "",
     "sect": "Sabbat",
@@ -12,7 +12,7 @@
     "nature": "Creep Show",
     "demeanor": "Caretaker",
     "title": "Dominion, Black Hand (acting seraph candidate)",
-    "coterie": "Los Ni\u00f1os Heroes",
+    "coterie": "Los Niños Heroes",
     "attributes": {
       "physical": {
         "priority": "secondary",
@@ -221,7 +221,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Embraced in 1672 by the @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla} archon Gerhardt the Lizard, who used her small size to infiltrate pipes and treated her as disposable, Teresita betrayed her sire to a @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} pack and spent decades proving herself until she became a Black Hand dominion. She trains potential Black Hand cadets (Los Ni\u00f1os Heroes) using the martyred boy soldiers of Mexican legend as models, and is Mexico City's ranking Black Hand authority whenever no seraph is present, lobbying to become the vacant seraph seat since Izhim ur-Baal's departure.</p><h2>Roleplaying Hints</h2><p>Teresita treats her cadets and soldiers with the affectionate menace of a strict nanny \u2014 \"darling child,\" cheek-pinches, and casual bone-crushing for failure \u2014 and secretly maintains a covert online persona as a @UUID[Compendium.vtmlarp.clans.JournalEntry.UhaIbwzsC1O2x9vr]{Nosferatu} anarch to trade gossip via SchreckNet, trafficking in information about @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} she personally judges to have failed or betrayed the sect.</p>",
+    "biography": "<h2>Background</h2><p>Embraced in 1672 by the @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla} archon Gerhardt the Lizard, who used her small size to infiltrate pipes and treated her as disposable, Teresita betrayed her sire to a @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} pack and spent decades proving herself until she became a Black Hand dominion. She trains potential Black Hand cadets (Los Niños Heroes) using the martyred boy soldiers of Mexican legend as models, and is Mexico City's ranking Black Hand authority whenever no seraph is present, lobbying to become the vacant seraph seat since Izhim ur-Baal's departure.</p><h2>Roleplaying Hints</h2><p>Teresita treats her cadets and soldiers with the affectionate menace of a strict nanny — \"darling child,\" cheek-pinches, and casual bone-crushing for failure — and secretly maintains a covert online persona as a @UUID[Compendium.vtmlarp.clans.JournalEntry.UhaIbwzsC1O2x9vr]{Nosferatu} anarch to trade gossip via SchreckNet, trafficking in information about @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} she personally judges to have failed or betrayed the sect.</p>",
     "notes": "Sire: Gerhardt the Lizard (destroyed). Stands 3'8\" tall. If her SchreckNet double-dealing were ever exposed it would end any chance of her becoming seraph.",
     "npcType": "vampire"
   },
@@ -241,7 +241,238 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "de088c2ba43b4512",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 4,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a3bceba1b6a943d0",
+      "name": "Obfuscate — 3 Advanced — Blithe Acceptance",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You dampen observers' reactions to your activities, making anything you do seem far more tolerable than it should &mdash; so long as your actions are not physically threatening and you do not directly interact with the observer. Unlike most lesser Obfuscate powers, Blithe Acceptance remains in effect even if you affect your physical surroundings or act in an obtrusive manner (picking a lock, defusing a bomb, or rappelling down a building all pass unnoticed). Spend a Willpower Trait and two Mental Traits. Any observer who wishes to take exception to (or even take note of) your nonthreatening actions must defeat you in a Mental Challenge in which you win all ties. The Storyteller is the final arbiter of what counts as \"nonthreatening.\"</p>",
+        "source": "Clanbook: Assamite, Chapter Two",
+        "discipline": "Obfuscate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Subterfuge",
+        "duration": "Scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a843ad1fdd964ce2",
+      "name": "Obfuscate — 3 Advanced — Cloak the Aura",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>With this power, you can completely cloak your aura from the prying eyes of others. By expending a Willpower Trait, you can completely conceal your aura or change it at will. Others attempting to use Aura Perception, Telepathy, or Soul Scan on you must defeat you in an opposed Mental Challenge to break the Cloak, and if broken, must defeat you in an additional Mental Challenge for any of those powers to have an effect. Cloak the Aura's effects override those of any lesser Obfuscate power.</p>",
+        "source": "Laws of Elysium, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "1 Willpower Trait",
+        "retestAbility": "",
+        "duration": "Until Cloak is broken",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d4ee5d382f744ad8",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8afa14b96d034f54",
+      "name": "Potence — 2 Intermediate — Intensity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>In challenges of strength, you may use Potence itself as your bid Trait, which can never be lost outright, though wounds or Negative Traits can still force you to risk other Traits.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "31403ed7f44d4b01",
+      "name": "Potence — 2 Intermediate — Vigor",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may use the Bomb symbol in challenges of strength, which defeats Rock and Paper, ties with other Bombs, and loses only to Scissors, requiring no expenditure.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "78c2849321b74e99",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8ab148c4dd7a4068",
+      "name": "Animalism — 1 Basic — Beckoning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By uttering an animal call, you summon nearby animals of a chosen type to your side, favorably disposed toward you, by spending a Social Trait per animal summoned.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Animalism",
+        "level": "basic",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Animal Ken",
+        "duration": "Until threatened or scene ends",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

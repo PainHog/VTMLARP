@@ -218,7 +218,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>University student Margaret Moy fled to Detroit to escape her abusive father, only to be seized off the street by a @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} Gargoyle looking for war-party fodder; her sire abandoned her the moment she rose from the ground in uncontrollable rage. She made her way back to Montreal, where Ezekiel found her, guided her through the Creation Rites, and welcomed her into 25:17 as &quot;Erinyi.&quot; Torn between love for her savior Ezekiel and consuming rage, she cycled through the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.exke2riW9D0htoUu]{Path of Cathari} before Ezekiel had Reza Fatir guide her onto the more structured @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.MkHKLOcOCLQ5pWCj]{Path of Honorable Accord}. She now travels with the nomadic Navigators, having joined the band Wyldchylde alongside C\u00e9l\u00e8ste, though pack priest Miguel Santo Domingo remains wary of her lingering ties to Ezekiel.</p><h2>Roleplaying Hints</h2><p>Quick to anger; it takes real effort not to rip annoying Malkavians apart. You find release in battle and music, but nothing compares to the love in your dead heart.</p><h2>Secrets</h2><p>Erinyi believes Ezekiel is not a pawn of any grand conspiracy but a strong, conscientious leader who could save Montreal.</p>",
+    "biography": "<h2>Background</h2><p>University student Margaret Moy fled to Detroit to escape her abusive father, only to be seized off the street by a @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} Gargoyle looking for war-party fodder; her sire abandoned her the moment she rose from the ground in uncontrollable rage. She made her way back to Montreal, where Ezekiel found her, guided her through the Creation Rites, and welcomed her into 25:17 as &quot;Erinyi.&quot; Torn between love for her savior Ezekiel and consuming rage, she cycled through the @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.exke2riW9D0htoUu]{Path of Cathari} before Ezekiel had Reza Fatir guide her onto the more structured @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.MkHKLOcOCLQ5pWCj]{Path of Honorable Accord}. She now travels with the nomadic Navigators, having joined the band Wyldchylde alongside Célèste, though pack priest Miguel Santo Domingo remains wary of her lingering ties to Ezekiel.</p><h2>Roleplaying Hints</h2><p>Quick to anger; it takes real effort not to rip annoying Malkavians apart. You find release in battle and music, but nothing compares to the love in your dead heart.</p><h2>Secrets</h2><p>Erinyi believes Ezekiel is not a pawn of any grand conspiracy but a strong, conscientious leader who could save Montreal.</p>",
     "notes": "Embraced 1994. Apparent age: early 20s. Over seven feet tall on gargoyle legs with eight-inch horns and gray wings. Merits/Flaws: Short Fuse. @UUID[Compendium.vtmlarp.paths-of-enlightenment.JournalEntry.MkHKLOcOCLQ5pWCj]{Path of Honorable Accord} 5. Disciplines (as printed): Fortitude 2, Potence 2, Visceratika 3.",
     "npcType": "vampire"
   },
@@ -238,7 +238,124 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "c4a8b3bfc6124bf5",
+      "name": "Visceratika — 2 Intermediate — Bond with the Mountain",
+      "type": "power",
+      "img": "icons/creatures/abilities/wing-bat-blue.webp",
+      "system": {
+        "description": "<p>Similar to Protean's Earth Meld, this power lets you meld into stone or concrete, though a faint outline of your form remains visible. You cannot move while merged unless you also have Flow Within the Mountain.</p><p>Spend a Blood Trait and touch a mass of rock or concrete large enough to hold your body (a wall works, a small rock does not); the merge takes two turns to complete. While merged you are immune to sunlight, aggravated damage becomes lethal and lethal becomes bashing, and ordinary bashing damage has no effect unless it deals at least two health levels at once. Taking three health levels of damage from a single attack forcibly ejects you and leaves you unable to act for a turn. Spotting a bonded Gargoyle requires a Mental Challenge with three extra Traits bid, waived for anyone with Auspex.</p>",
+        "source": "Camarilla Guide, p.150-153",
+        "discipline": "Visceratika",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Survival",
+        "duration": "Until dismissed or ejected",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "dac6ddb1775448b7",
+      "name": "Visceratika — 2 Intermediate — Armor of Terra",
+      "type": "power",
+      "img": "icons/creatures/abilities/wing-bat-blue.webp",
+      "system": {
+        "description": "<p>Your skin hardens into a rocklike, damage-resistant shell, raising your pain threshold and dulling even the harm of fire. Armor of Terra is always active and requires no activation cost.</p><p>It subtracts one additional health level from incoming bashing damage after halving it normally (minimum one health level still applies), and you may attempt to convert incoming lethal damage to bashing damage by winning a Simple Test. Fire deals half damage to you, though it remains aggravated and you must still test to resist Rötschreck. Armor of Terra can be combined with Fortitude but only once per attack, and must always be applied before Fortitude.</p>",
+        "source": "Camarilla Guide, p.150-153",
+        "discipline": "Visceratika",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "427eee4d55164e59",
+      "name": "Fortitude — 1 Basic — Mettle",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You gain one additional health level, functioning as an extra Healthy level on your health chart, which can be lost and healed normally.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Fortitude",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Survival",
+        "duration": "Permanent (passive)",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "09730a4278ce49c5",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

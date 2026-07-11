@@ -191,7 +191,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>A federal police captain under Porfirio D\u00edaz who broke strikes and took bribes with a clear conscience, Isidro was Embraced in 1906 by Don Vicente Ortiz y Peralta after proving unbreakable under a year of the Cainite's testing (a test that cost Isidro his wife and mistress, handed over as his first meal). He built Las Emblemas, the coven responsible for covering up @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} indiscretions across Mexico City \u2014 erasing witnesses, destroying evidence, Dominating officials, and framing mortal patsies \u2014 and was rewarded first as ductus, then bishop, when Regent Galbraith declared the coven Founded and ordered all @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} to cooperate with its cover-up work under pain of violating the Code of Milan.</p><h2>Roleplaying Hints</h2><p>Isidro genuinely believes in order and protecting the powerful from the rabble \u2014 an irony given his job protecting rabble-like Sabbat packs from mortal authority. He supports the Ultra-Conservative faction, hoping a centralized Sabbat would rein in the sect's crazier fringes, and treats his handful of Emblemas deputies (recruited once or twice a decade) with gruff, violent discipline.</p>",
+    "biography": "<h2>Background</h2><p>A federal police captain under Porfirio Díaz who broke strikes and took bribes with a clear conscience, Isidro was Embraced in 1906 by Don Vicente Ortiz y Peralta after proving unbreakable under a year of the Cainite's testing (a test that cost Isidro his wife and mistress, handed over as his first meal). He built Las Emblemas, the coven responsible for covering up @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} indiscretions across Mexico City — erasing witnesses, destroying evidence, Dominating officials, and framing mortal patsies — and was rewarded first as ductus, then bishop, when Regent Galbraith declared the coven Founded and ordered all @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} to cooperate with its cover-up work under pain of violating the Code of Milan.</p><h2>Roleplaying Hints</h2><p>Isidro genuinely believes in order and protecting the powerful from the rabble — an irony given his job protecting rabble-like Sabbat packs from mortal authority. He supports the Ultra-Conservative faction, hoping a centralized Sabbat would rein in the sect's crazier fringes, and treats his handful of Emblemas deputies (recruited once or twice a decade) with gruff, violent discipline.</p>",
     "notes": "Sire: Don Vicente Ortiz y Peralta. Members bear a ritual forearm brand marking Las Emblemas' authority, though it commands far less respect than the Black Hand's mark.",
     "npcType": "vampire"
   },
@@ -211,7 +211,238 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "99484b7662e34128",
+      "name": "Dominate",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5b9fc6a8db254c7c",
+      "name": "Dominate — 2 Intermediate — Conditioning",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Over several consecutive nights of unrestricted access and repeated Mental Challenges, you can break down a victim's will entirely, turning them into a virtually mindless thrall who obeys you without need for further tests.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Until broken (six sessions without contact)",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "219d52300eec4cf3",
+      "name": "Dominate — 2 Intermediate — Forgetful Mind",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge while holding your victim's gaze, you can erase, alter, or implant up to fifteen minutes of memory per challenge, or question the subject to recall details they otherwise might not share.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dominate",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Intimidation",
+        "duration": "Instant, permanent until overwritten",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "d6ff44aacc024f7d",
+      "name": "Obtenebration",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "2ea32561f8f04858",
+      "name": "Obtenebration — 2 Intermediate — Dark Steel",
+      "type": "power",
+      "img": "icons/magic/air/wind-tornado-blue.webp",
+      "system": {
+        "description": "<p>A combination power blending Obtenebration and Potence. Where Arms of Ahriman lets a Lasombra summon tentacles of pure shadow to grip and strike, this bastardized variant grants those pseudopods far greater strength and endurance, catching Cainites used to the ordinary manifestation off guard. Each success summons one tentacle, emerging from any nearby patch of shadow (beneath furniture, from within the vampire's own cloak, and so on). Every tentacle is eight feet long and has Strength and Dexterity equal to twice the wielder's Obtenebration rating. The vampire may feed a tentacle additional Blood Points, one for one, raising its ratings further. A Dark Steel tentacle deals Strength+2 crushing damage, has six health levels of its own, and — like the wielder — takes extra harm from fire and sunlight.</p>",
+        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters",
+        "discipline": "Obtenebration",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "2 Blood Points, plus 1 per point of tentacle enhancement",
+        "retestAbility": "Occult",
+        "duration": "One scene or until dismissed",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Obtenebration (3), Potence (3)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "1180149f001e49e3",
+      "name": "Obtenebration — 2 Intermediate — Shadowed Eyes",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-shadow-creature-laugh.webp",
+      "system": {
+        "description": "<p>A combination power blending Obtenebration and Auspex. Rather than raw destructive force, this power is a matter of delicate control: the wielder summons small patches of blackness that cover a target's eyes, rendering him effectively blind and giving him a demonic appearance. Victims who wander about blinded and marked as unnatural often find themselves in trouble with neighbors who have little patience for either affliction. This power affects every eye a victim possesses, whether he has one, two, or more. The shadow cannot be removed short of plucking out the eye it covers.</p><p>The number of successes determines duration: one success grants one turn, two successes one minute, three successes five minutes, four successes 30 minutes, and five or more successes one full hour.</p><p>Some Lasombra have adapted a cosmetic variant, covering their own eyes with shadow while retaining full sight; used this way, the power can also strike terror into onlookers, who must resist fleeing in fear.</p>",
+        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters",
+        "discipline": "Obtenebration",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Occult",
+        "duration": "Variable — one turn to one hour, based on successes",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Obtenebration (3), Auspex (3)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "bc9a5b95510f4b82",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "58397c1b1c3f4ca6",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "Brawl (or appropriate combat Ability)",
+        "duration": "One challenge",
+        "activation": "passive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

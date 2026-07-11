@@ -263,7 +263,185 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "a8e4fb62344447d6",
+      "name": "Auspex — 3 Advanced — Anima Gathering",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Originally used to lead warrior-caste mystics on vision quests, this vizier technique lets a willing seer bring companions with him into the astral realms. All would-be participants must form an unbroken chain of physical contact with the character. Spend a Blood Trait for each \"follower\" you wish to bring along, up to a maximum of half your permanent Mental Traits (rounded down), then leave your body as per Psychic Projection. Each follower is treated as though she knows Psychic Projection regardless of her actual Auspex rating, using the leader's rolled successes. On the astral plane, followers must remain within roughly 100 feet of the leader, tethered to him and unable to break the connection. Any follower who loses physical contact with the leader instantly returns to her body and loses three Mental Traits, falling unconscious for the rest of the night if this reduces her to zero Mental Traits.</p>",
+        "source": "Clanbook: Assamite, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "none",
+        "bloodCost": "1 Blood Trait per follower (max half permanent Mental Traits, rounded down)",
+        "retestAbility": "",
+        "duration": "Until the astral projection ends",
+        "activation": "reflexive",
+        "prerequisites": "Auspex (Psychic Projection)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "69bdc82ddd3f4bb8",
+      "name": "Auspex — 3 Advanced — Crocodile's Tongue",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-red.webp",
+      "system": {
+        "description": "<p>A character with this power instinctively understands what one other person in a conversation (living or undead) wants to hear. If she can find a way to phrase what she wants so that it sounds like what that person wants to hear, this helps her get her point across, ingratiate herself, or accumulate favors. Unlike Telepathy, the subject need not be actively thinking about what she wants to hear.</p><p>The character must spend at least a minute speaking with the subject and win a Mental Challenge against the subject. If both players agree, they may instead roleplay the conversation directly, with the subject's player reacting favorably and offering suggestions that aid the character with the power. If the players resort to mechanics, the character with the power initiates a Social Challenge against the subject, winning ties.</p>",
+        "source": "Clanbook: Toreador, Chapter Two",
+        "discipline": "Auspex",
+        "level": "advanced",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "",
+        "duration": "Single conversation",
+        "activation": "challenge"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a09edccbe75d41c6",
+      "name": "Presence — 3 Advanced — Melusine's Song",
+      "type": "power",
+      "img": "icons/magic/perception/eye-slit-detection-alt-red.webp",
+      "system": {
+        "description": "<p>Named for the legendary (and supposedly fae) progenitor of the houses of Anjou and Lusignan, this power lets a Toreador sway others through song. If the Artisan can phrase her request in the form of a song, her words take on the weight of a nigh-irresistible command.</p><p><strong>System:</strong> The player states the suggestion she wishes to weave into the song and describes the song's nature. Everyone within earshot must resist or unknowingly submit to the request. The effect lasts as long as the Toreador continues singing or until the target leaves her presence; commands requiring the victim to leave the singer's presence can be resisted once more after the enchanting voice fades. Listeners outside the Toreador's immediate presence may notice something odd about the performance, though it registers as little more than an exceptionally fine one; other Toreador within earshot are immediately entranced. As a side benefit, knowledge of this power makes the character a superlative singer even when the power itself is not invoked.</p>",
+        "source": "Libellus Sanguinis II: Keepers of the Word, Book One: Artisans (Toreador)",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "2 Blood Traits and 1 Willpower Trait",
+        "retestAbility": "Performance",
+        "duration": "As long as the Toreador continues singing, or until the target leaves her presence",
+        "activation": "challenge",
+        "active": true,
+        "prerequisites": "Presence"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "a0a3f3edfdc64789",
+      "name": "Presence — 3 Advanced — Pulse of the City",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>Your emotional state is always passively mirrored by the population of an entire city-sized region, with visitors affected less strongly than residents and vampires affected one level more mildly than mortals. To deliberately project a chosen emotion, spend a Willpower Trait and win a Static Social Challenge (typically 10-15 Traits, Storyteller's call) to shift the city's mood for one minute, extendable by spending additional Social Traits before the challenge. Two Methuselahs with this power contesting the same city test the Social Challenge directly against one another, with the longer-established Methuselah (six months or more) gaining five bonus Traits. Usable even while in torpor.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "discipline": "Presence",
+        "level": "advanced",
+        "challengeType": "social",
+        "bloodCost": "One Willpower Trait (plus Social Traits to extend duration)",
+        "retestAbility": "",
+        "duration": "One minute per activation, longer with extra Social Traits spent",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "0baee91e36d94957",
+      "name": "Vicissitude — 2 Intermediate — Horrid Form",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending two Blood Traits, you warp into an eight-foot rubbery, spiked monstrosity gaining the Physical Traits Brawny, Dexterous, Enduring, Ferocious, Quick, and Stalwart along with Negative Social Traits Bestial, Feral, and Repugnant, inflicting lethal brawling damage with a bonus health level of harm until you choose to revert.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Vicissitude",
+        "level": "intermediate",
+        "challengeType": "none",
+        "bloodCost": "2 Blood Traits",
+        "retestAbility": "Crafts: Body Crafts",
+        "duration": "Until you choose to revert",
+        "activation": "toggle"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "5e2fc3d1bda74a13",
+      "name": "Celerity — 2 Intermediate — Legerity",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait, you gain a further additional action at the end of the turn, on top of any gained from Swiftness.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Celerity",
+        "level": "intermediate",
+        "challengeType": "physical",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

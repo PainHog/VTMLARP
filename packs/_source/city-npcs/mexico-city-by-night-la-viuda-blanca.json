@@ -217,7 +217,7 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Once a pagan mortal witch drawn into the lands of the dead, the White Widow was eventually spat back into the world of the living centuries later, emerging in a birthing ward with a hunger for infant blood. Found half-delirious before the Templo Mayor's tzompantli (skull wall) by the koldun Esteban del Agua y Tierra, she was baptized into the Harbinger of Skulls bloodline and bonded to him as a pack of two through the Vaulderie. In 2000 the pair broke into the sealed chantry of the vanished @UUID[Compendium.vtmlarp.clans.JournalEntry.jaYCq9rVOh0I9NCN]{Tremere} antitribu Elena Vasquez, and the Widow now presides over its library and laboratories from beneath a teocalli gentlemen's club.</p><h2>Roleplaying Hints</h2><p>The Widow is convinced a great storm of death is coming to consume all life and unlife, and intends to be \"front and center\" when it arrives \u2014 potentially helping it along. She quietly recruits neonates she believes will matter in the coming apocalypse, unbeknownst to the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} cardinals who leave her alone as an apolitical occult asset.</p>",
+    "biography": "<h2>Background</h2><p>Once a pagan mortal witch drawn into the lands of the dead, the White Widow was eventually spat back into the world of the living centuries later, emerging in a birthing ward with a hunger for infant blood. Found half-delirious before the Templo Mayor's tzompantli (skull wall) by the koldun Esteban del Agua y Tierra, she was baptized into the Harbinger of Skulls bloodline and bonded to him as a pack of two through the Vaulderie. In 2000 the pair broke into the sealed chantry of the vanished @UUID[Compendium.vtmlarp.clans.JournalEntry.jaYCq9rVOh0I9NCN]{Tremere} antitribu Elena Vasquez, and the Widow now presides over its library and laboratories from beneath a teocalli gentlemen's club.</p><h2>Roleplaying Hints</h2><p>The Widow is convinced a great storm of death is coming to consume all life and unlife, and intends to be \"front and center\" when it arrives — potentially helping it along. She quietly recruits neonates she believes will matter in the coming apocalypse, unbeknownst to the @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} cardinals who leave her alone as an apolitical occult asset.</p>",
     "notes": "Sire and Embrace date unknown. Merit/Flaw: Prey Exclusion (feeds only from children and infants). Pack-bonded (Vaulderie) with Esteban del Agua y Tierra.",
     "npcType": "vampire"
   },
@@ -237,7 +237,207 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "9d9efdbef7464a5d",
+      "name": "Necromancy",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "02c8c63c559e49e9",
+      "name": "Necromancy — 2 Intermediate — Call Forth the Host",
+      "type": "power",
+      "img": "icons/magic/death/ghost-fire-blue.webp",
+      "system": {
+        "description": "<p>This power summons the spirit of the dead. The necromancer must know the name of the spirit she is attempting to summon and must possess some fragment of the deceased's corpse. The ceremony must be performed in complete silence but for the invocations themselves, lest the spirit flee in fear, and requires 15 minutes to complete. Vampires who achieved Golconda, or mortals who possessed True Faith in life, may not be summoned this way.</p><p><strong>System:</strong> Win a Social Challenge (retest with Occult) against the spirit's Willpower to force its attendance; the degree of victory indicates the clarity of the spirit's communication. Each question posed to the spirit gives it another chance to break free, requiring the necromancer to repeat the challenge to maintain contact. A botch instead summons a malignant, lying spirit that convincingly impersonates the one sought.</p>",
+        "source": "Clanbook: Cappadocian, Chapter Three: Observations and Conclusions",
+        "discipline": "Necromancy",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "",
+        "retestAbility": "Occult",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Necromancy (The Tragedy Revealed)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "f7421c16a71a4aa4",
+      "name": "Necromancy — 1 Basic — The Tragedy Revealed",
+      "type": "power",
+      "img": "icons/magic/death/skull-in-hand-red.webp",
+      "system": {
+        "description": "<p>By holding the skull or brain of a recently deceased individual, the necromancer gains a mental image of the last thing to cross that individual's vision. This is an early, primitive fledgling use of the Giovanni family's necromantic art, taught in fragments to a handful of non-Giovanni Cappadocians before Necromancy fully matured as a Discipline.</p><p><strong>System:</strong> The necromancer must hold either the brain or skull of the dead. Win a Mental Challenge (retest with Occult); the challenge is harder if the remains are more than a fortnight old. This power will not work if the subject had attained Golconda. The degree of victory determines the clarity of the vision, from a hazy sense of how the subject died to an infallible, picture-perfect vision of the cause of death, the killer, and the scene. A botch yields utterly false information.</p>",
+        "source": "Clanbook: Cappadocian, Chapter Three: Observations and Conclusions",
+        "discipline": "Necromancy",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Occult",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "59d8284956ab47c1",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "620ce0dc29454c15",
+      "name": "Auspex — 1 Basic — Aura Perception",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By concentrating on a visible subject and besting them in a Static Mental Challenge, you read the colors of their aura to learn their emotional state, general nature, whether they're under magical influence, have committed diablerie, or just lied; it can also reveal nearby ghosts.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "8dce240afd8d400c",
+      "name": "Obtenebration",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "ee045971dd91408e",
+      "name": "Obtenebration — 1 Basic — Smothering Darkness",
+      "type": "power",
+      "img": "icons/magic/air/wind-tornado-blue.webp",
+      "system": {
+        "description": "<p>A combination power blending Obtenebration and Obfuscate. The Magister summons fluttering shadows that behave like moths drawn to flame, flocking to the nearest light sources — torches, candles, oil lamps — and dousing them. An entire area can be plunged into darkness almost instantly, leaving anyone unprepared for the dark completely helpless. Each success produces one shadow, which douses any flame up to the size of a torch before vanishing; larger fires require multiple shadows to extinguish. Shadows in excess of the available flames flap about causing confusion and fear before dissipating into whatever dark place spawned them. They cause no direct damage, though they may collide with people in their flight.</p>",
+        "source": "Libellus Sanguinis I: Masters of the State, Book One: Magisters",
+        "discipline": "Obtenebration",
+        "level": "basic",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Occult",
+        "duration": "Until all nearby light sources are doused",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": "Obtenebration (2), Obfuscate (1)"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,

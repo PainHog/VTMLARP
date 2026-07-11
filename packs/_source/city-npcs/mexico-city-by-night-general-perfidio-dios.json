@@ -1,6 +1,6 @@
 {
   "_id": "9acb5ddadd864a2f",
-  "name": "General Perfidio D\u00edos, The Mocker (Malkavian antitribu)",
+  "name": "General Perfidio Díos, The Mocker (Malkavian antitribu)",
   "type": "npc",
   "img": "icons/svg/mystery-man.svg",
   "system": {
@@ -210,12 +210,12 @@
       }
     ],
     "freeTraits": 0,
-    "biography": "<h2>Background</h2><p>Andr\u00e9s de Hojeto mocked the D\u00edaz dictatorship as \"General Perfidio\" until police beat him nearly to death; his sire Diego Diego, reminded of his own devoured father, Embraced him instead. The Creation Rites' trauma unhinged Andr\u00e9s' mind entirely, and he re-emerged as General Perfidio D\u00edos, waging a one-Cainite satirical war first on the D\u00edaz regime, then on the @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla}, eventually founding the coven that became the Partido Devolucionario Institucional and earning a bishopric.</p><h2>Roleplaying Hints</h2><p>Perfidio argues (correctly, and to real strategic effect) that @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} coalitions should fracture a @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla} city's political and economic stability before ever invading with fangs bared \u2014 but undercuts his own credibility by insisting with equal fervor that the @UUID[Compendium.vtmlarp.clans.JournalEntry.OpCOs3PLjmtl0QVu]{Ventrue} Antediluvian wrote NAFTA and that snake-men from the Hollow Earth have infiltrated the PRI.</p>",
+    "biography": "<h2>Background</h2><p>Andrés de Hojeto mocked the Díaz dictatorship as \"General Perfidio\" until police beat him nearly to death; his sire Diego Diego, reminded of his own devoured father, Embraced him instead. The Creation Rites' trauma unhinged Andrés' mind entirely, and he re-emerged as General Perfidio Díos, waging a one-Cainite satirical war first on the Díaz regime, then on the @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla}, eventually founding the coven that became the Partido Devolucionario Institucional and earning a bishopric.</p><h2>Roleplaying Hints</h2><p>Perfidio argues (correctly, and to real strategic effect) that @UUID[Compendium.vtmlarp.sects.JournalEntry.6868ee8c357f4b73]{Sabbat} coalitions should fracture a @UUID[Compendium.vtmlarp.sects.JournalEntry.fc464242d84d4e34]{Camarilla} city's political and economic stability before ever invading with fangs bared — but undercuts his own credibility by insisting with equal fervor that the @UUID[Compendium.vtmlarp.clans.JournalEntry.OpCOs3PLjmtl0QVu]{Ventrue} Antediluvian wrote NAFTA and that snake-men from the Hollow Earth have infiltrated the PRI.</p>",
     "notes": "Sire: Diego Diego. Pack/coven: co-leads the PDI with Caridad de Flores as pack priest.",
     "npcType": "vampire"
   },
   "prototypeToken": {
-    "name": "General Perfidio D\u00edos",
+    "name": "General Perfidio Díos",
     "displayName": 20,
     "actorLink": false,
     "texture": {
@@ -230,7 +230,238 @@
       "enabled": false
     }
   },
-  "items": [],
+  "items": [
+    {
+      "_id": "f5cfc1ce2aba410a",
+      "name": "Dementation",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "6099fd842fe54439",
+      "name": "Dementation — 2 Intermediate — Eyes of Chaos",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By watching a target for a full turn and winning a Mental Challenge, you discern their Nature; alternatively, by concentrating and spending a Mental Trait, you can become immune to surprise for the scene or hour, though losing risks becoming entranced by the patterns yourself.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dementation",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Empathy",
+        "duration": "Scene or one hour",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "f9ee6ece90ce4b96",
+      "name": "Dementation — 2 Intermediate — Voice of Madness",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By spending a Blood Trait and speaking to your targets for a full turn, you win a Social Challenge to drive them toward frenzy or terror, forcing mortals to flee in Rötschreck and vampires to test against frenzy.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Dementation",
+        "level": "intermediate",
+        "challengeType": "social",
+        "bloodCost": "1 Blood Trait",
+        "retestAbility": "Empathy",
+        "duration": "One scene",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "96b900d5bf2942ee",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 3,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "c00f64cfd1e84900",
+      "name": "Auspex — 2 Intermediate — Telepathy",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By winning a Mental Challenge and concentrating for a turn, you establish a telepathic link with a visible subject, allowing thought communication and the extraction of certain truthful answers, with deeper secrets costing a Mental Trait per question.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "As long as contact is maintained",
+        "activation": "challenge",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "400df9606a24414b",
+      "name": "Auspex — 2 Intermediate — The Spirit's Touch",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By touching an object and concentrating for a turn while spending a Mental Trait, you glimpse psychic impressions of powerful emotional events tied to it, possibly suffering a temporary derangement from particularly traumatic echoes.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Auspex",
+        "level": "intermediate",
+        "challengeType": "mental",
+        "bloodCost": "",
+        "retestAbility": "Investigation",
+        "duration": "Instant",
+        "activation": "reflexive",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "387acab6e0f64438",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/dice-target.svg",
+      "system": {
+        "description": "",
+        "source": "",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9340cc3fd6de4fc2",
+      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "type": "power",
+      "img": "icons/magic/unholy/silhouette-evil-horned-summon.webp",
+      "system": {
+        "description": "<p>By remaining completely still and silent in shadow or behind cover, you fade from notice to all but those using Auspex or similar senses; any movement, speech, or interaction breaks the concealment immediately.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Stealth",
+        "duration": "While still and silent",
+        "activation": "toggle",
+        "active": false,
+        "prerequisites": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
   "effects": [],
   "folder": null,
   "sort": 0,
