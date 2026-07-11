@@ -1,0 +1,195 @@
+{
+  "_id": "b3d13c1e6b4143fc",
+  "name": "David Geduld (Ventrue)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Camarilla Infiltrator Turned Genuine Anarch Baron of Torrance",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Anarch",
+    "generation": 10,
+    "nature": "Survivor",
+    "demeanor": "Bravo",
+    "title": "Baron of Torrance",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Judge of Character",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Law",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 9,
+      "max": 9,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 2,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A Ventrue lawyer Embraced in Chicago to manage that city's business interests for the Camarilla, David Geduld was sent to Los Angeles in 1963 to infiltrate and report on the Free States, posing as a rogue Ventrue fugitive. Amazed to discover a stable, functioning society without princes or primogen, David's loyalties shifted permanently during the 1965 Sabbat siege, when he fought alongside the anarchs he had once despised. He now rules Torrance as a genuine anarch baron, though older anarchs like Jeremy MacNeil and Crispus Attucks distrust his Ventrue blood, and his old instincts still drive him to quietly scheme for control of Steve Booth's Long Beach barony.</p><h2>Roleplaying Hints</h2><p>Polished and lawyerly, but your loyalty to the Free States is genuine now. Old Ventrue habits die hard, though &mdash; you cannot quite stop yourself eyeing Long Beach.</p>",
+    "notes": "Former Camarilla infiltrator, now genuine anarch baron of Torrance. Distrusted by MacNeil and Attucks for his Ventrue blood. Covets Steve Booth's Long Beach territory.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "David Geduld (Ventrue)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Los Angeles by Night, Kindred of Note",
+      "tag": "(Ventrue)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

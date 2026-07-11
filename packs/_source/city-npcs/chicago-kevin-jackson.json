@@ -1,0 +1,210 @@
+{
+  "_id": "e547ea482d93451b",
+  "name": "Kevin Jackson (Ventrue)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ventrue Ruler of 'Blood Turf,' Beloved Protector of His Mortal Domain",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 9,
+    "nature": "Caregiver",
+    "demeanor": "Autocrat",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Powerful",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Judge of Character",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Melee",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Politics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 7,
+      "max": 7
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Kevin Jackson is a Ventrue who, with Prince Lodin's backing, seized control of a South Side public-housing project and transformed it into one of the most heavily fortified Kindred domains in the city, known among Kindred as \"Blood Turf.\" Paradoxically, Jackson enforces a strict policy against violent crime within his territory, a choice that has won him genuine loyalty and protection from the mortal residents, who consider him a hero and warn him of trespassers before Kindred threats even arrive.</p><h2>Roleplaying Hints</h2><p>Firm, protective, and genuinely invested in your domain's mortal wellbeing. You rule through loyalty as much as fear &mdash; a rare thing among your clan, and you know its value.</p>",
+    "notes": "Domain example of Kindred rule mortals actively welcome. Useful ally or obstacle for coteries operating on Chicago's South Side.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Kevin Jackson (Ventrue)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Chicago by Night, Kindred of Note",
+      "tag": "(Ventrue)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "_id": "46eb97275848499b",
+  "name": "Etienne (Marquis of Fief du Nord)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Brujah Marquis of Lille-Roubaix-Tourcoing, an Idealist Turned Reluctant Ruler",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 7,
+    "nature": "Director",
+    "demeanor": "Judge",
+    "title": "Marquis (\"Tribune\") of Fief du Nord",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Powerful",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 6,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Politics",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 7,
+      "max": 7
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 5,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>The Fief du Nord spans the Lille-Roubaix-Tourcoing conurbation out to the Channel ports of Calais and Dunkirk. Once a stronghold of conservative industrialist Ventrue, it passed after the Second World War into the hands of &Eacute;tienne, a Brujah Marquis &mdash; one of the rare Camarilla Fiefs actually ruled by that Clan. An idealist revolutionary turned reluctant ruler, &Eacute;tienne is deeply unpopular even among his own Clan, who accuse him of selling out to the Parisian Toreador; he prefers the title Tribune to Marquis and has held power for half a century thanks to distant Princely support and his enemies' inability to unite against him.</p><h2>Roleplaying Hints</h2><p>Weary, pragmatic, uncomfortable in the role of ruler. You wanted revolution, not a throne, and every year in power costs you a little more of your old convictions.</p>",
+    "notes": "Rules under Provost Crevel's shadow, who is widely believed the Fief's true second power. Rivals Reynier (Idealist opposition) and Ianka (Anarch icon) within his own clan.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Etienne (Marquis of Fief du Nord)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "France by Night, Fiefs of the Hexagon",
+      "tag": "(Brujah)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

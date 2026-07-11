@@ -1,0 +1,200 @@
+{
+  "_id": "4fc32e97c17f49c2",
+  "name": "Gorias (Brujah Elder of Marseille)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Oldest Vampire in Marseille, Chief Local Opponent of the Sabbat",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 6,
+    "nature": "Visionary",
+    "demeanor": "Judge",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Powerful",
+            "spent": false
+          },
+          {
+            "name": "Powerful",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Learned",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Intimidation",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Melee",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 7,
+        "temporary": 7
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 5,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Founded by Greek colonists in the 7th century BC and ruled from the start by an alliance of Brujah and Toreador, Marseille is France's oldest Kindred Fief and the country's most volatile. The Brujah Idealist Gorias, Embraced in the late 14th century by the legendary Marius (who dreamed of a Brujah \"new Carthage\" at Marseille), is the oldest known vampire in the city and the Sabbat's chief local opponent; he seeks to restore the old Brujah-led \"Free Republic\" that governed Marseille from 1757 until the Revolution.</p><h2>Roleplaying Hints</h2><p>Ancient patience wrapped in a revolutionary's fire. You remember the Free Republic and believe, against all evidence of the current chaos, that it can rise again.</p>",
+    "notes": "Protects the Anarch coordinator Valeria. Marseille is sliding toward civil war between five factions (Camarilla, Anarchs, Giovanni, Setites, Sabbat); Gorias is the Sabbat's chief opponent.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Gorias (Brujah Elder of Marseille)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "France by Night, Fiefs of the Hexagon",
+      "tag": "(Brujah)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

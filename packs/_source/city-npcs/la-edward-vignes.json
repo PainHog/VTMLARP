@@ -1,0 +1,204 @@
+{
+  "_id": "f8971fe8e80d4cb8",
+  "name": "Edward Vignes (Ventrue)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Rigid Old-Fashioned Ventrue Elder of Pasadena",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Anarch",
+    "generation": 9,
+    "nature": "Traditionalist",
+    "demeanor": "Autocrat",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Judge of Character",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "selfControlInstinct": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 4,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Edward Vignes is a rigid, old-fashioned 9th-generation Ventrue elder who has weathered every upheaval in Los Angeles from a position of quiet, rarely-exercised influence at his Pasadena mansion, respected enough that Free States leaders listen when he deigns to offer advice. His wife of over 150 years, Vera Vignes, has recently and unexpectedly fallen in love with their mutual servant Henry Waters, Dominating him into a Blood Bond with her even though he remains Blood Bound to Edward as well. Edward remains unaware of the extent of the betrayal brewing within his own household.</p><h2>Roleplaying Hints</h2><p>Formal, imperious, and utterly certain of his own household's loyalty. You would not survive the humiliation of learning the truth about Henry and Vera gracefully.</p>",
+    "notes": "Unaware his wife Vera and servant Henry Waters are secretly in love and consulting the Nosferatu Alonzo to escape his control. A ticking-clock household drama for Storytellers.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Edward Vignes (Ventrue)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Los Angeles by Night, Kindred of Note",
+      "tag": "(Ventrue)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "_id": "3ffb4a9def944164",
+  "name": "D'Harcourt (Marquis of Fief de Normandie)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ancient Ventrue Marquis, Broken by Torpor and Modernity",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 5,
+    "nature": "Fanatic",
+    "demeanor": "Traditionalist",
+    "title": "Marquis of Fief de Normandie",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Powerful",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Learned",
+            "spent": false
+          },
+          {
+            "name": "Learned",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      {
+        "name": "Technophobe",
+        "spent": false
+      }
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Intimidation",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 13,
+      "max": 13,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 2,
+        "temporary": 2
+      },
+      "courage": {
+        "rating": 6,
+        "temporary": 6
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Resources",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 4,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>The Fief of Normandy unites Rouen (the capital), Le Havre, and Caen. Once powerful, it has become a mere province of Paris in all but name. Its nominal ruler, the ancient Ventrue Marquis D'Harcourt, is a broken figure: after centuries in torpor imposed as punishment for plotting against Prince Beatrix during the Fronde, he was restored to his title in the 1820s but emerged half-mad, unable to adapt to the modern world, and prone to frenzies triggered by the sight of modern technology. He periodically withdraws to the Channel Island of Sercq, whose medieval pace of life soothes him, while continuing a private war against the English branch of Clan Tremere.</p><h2>Roleplaying Hints</h2><p>Regal but fragile, easily provoked to frenzy by anything modern &mdash; a ringing telephone, a car engine, a flickering television. True power in the Fief belongs to others; you rage against a world that has left you behind.</p>",
+    "notes": "Real power belongs to his Regent Quentin, who quietly runs the Fief for Prince Fran\u00e7ois Villon of Paris while D'Harcourt rages against the Tremere.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "D'Harcourt (Marquis of Fief de Normandie)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "France by Night, Fiefs of the Hexagon",
+      "tag": "(Ventrue)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

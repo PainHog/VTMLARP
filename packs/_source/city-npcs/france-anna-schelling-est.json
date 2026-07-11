@@ -1,0 +1,199 @@
+{
+  "_id": "52d4287c188d4bb6",
+  "name": "Anna Schelling (Marquise of Fief de l'Est)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Visionary Ventrue Marquise, Champion of Franco-German Reconciliation",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 8,
+    "nature": "Visionary",
+    "demeanor": "Bon Vivant",
+    "title": "Marquise of Fief de l'Est",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": []
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Leadership",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Politics",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 4,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Centered on Strasbourg (seat of the European Parliament), Metz, and Nancy, the Fief de l'Est has spent centuries torn between French and German influence. Ventrue Marquise Anna Schelling, Embraced at the close of the last century by a Ventrue finance baron, champions reconciliation between French and German Kindred and a unified European Ventrue confederation, a vision that has begun to bear fruit since Strasbourg became seat of the European Council in 1949; behind the visionary image lies a shrewd, self-interested businesswoman working to loosen the Fief from Parisian control.</p><h2>Roleplaying Hints</h2><p>Warm, diplomatic, and visionary in public &mdash; but every reconciliation you broker also serves your own bid for greater independence from Paris.</p>",
+    "notes": "Rival of the reactionary Ventrue old guard leader Friedrich von K\u00f6ln. Works toward loosening the Fief from Parisian control behind a reconciliation platform.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Anna Schelling (Marquise of Fief de l'Est)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "France by Night, Fiefs of the Hexagon",
+      "tag": "(Ventrue)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

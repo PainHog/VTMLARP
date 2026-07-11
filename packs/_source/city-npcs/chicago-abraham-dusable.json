@@ -1,0 +1,205 @@
+{
+  "_id": "76ac542754c04229",
+  "name": "Abraham DuSable (Tremere)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Tremere Chantry Member with a Dangerous Mortal Secret",
+    "clan": "Tremere",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 9,
+    "nature": "Bon Vivant",
+    "demeanor": "Caregiver",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Learned",
+            "spent": false
+          },
+          {
+            "name": "Learned",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 9,
+      "max": 9,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Mentor",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Abraham DuSable is a distinguished Black Tremere whose family believed him murdered by the Ku Klux Klan shortly after World War I. In 1980, his mortal great-niece Carol Davis recognized him in a jazz club &mdash; he had not visibly aged in sixty years. Panicked and torn between fear of exposure and a desire he had never before felt, DuSable lost control of his Beast and nearly drained her, then fled after giving her a single drop of his vitae in a fit of guilt. The Brujah information broker Dickie, already watching DuSable on suspicion of Tremere manipulation in city politics, discovered the dying Davis and used the incident as leverage.</p><h2>Roleplaying Hints</h2><p>You carry guilt over Carol Davis like a stone around your neck. You are careful, controlled, and terrified of what happens if the Chantry &mdash; or Dickie &mdash; decides you are a liability.</p>",
+    "notes": "A rare Tremere vulnerability: a living mortal relative (Carol Davis) who recognized him and now carries a drop of his vitae. The Brujah broker Dickie holds this secret as leverage.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Abraham DuSable (Tremere)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Chicago by Night, Kindred of Note",
+      "tag": "(Tremere)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

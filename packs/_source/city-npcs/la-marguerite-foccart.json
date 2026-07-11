@@ -1,0 +1,219 @@
+{
+  "_id": "57524df7fe8a4a30",
+  "name": "Marguerite Foccart (Brujah)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Revolutionary War-Era Brujah Elder, Sire of Crispus Attucks and Steve Booth",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Anarch",
+    "generation": 7,
+    "nature": "Fanatic",
+    "demeanor": "Visionary",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Powerful",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Judge of Character",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Melee",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Politics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Academics",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 7,
+        "temporary": 7
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>A Brujah elder present at the Boston Massacre, Marguerite Foccart Embraced the dying Crispus Attucks on the spot rather than let his charisma and advocacy for freedom go to waste. She fought beside him through the Revolutionary War and beyond, eventually traveling to Los Angeles to aid Jeremy MacNeil's uprising against Don Sebastian. She also sired the surfer-anarch Steve Booth, though her attempts to mold him into an ideologue mostly failed &mdash; he became an easygoing, popular baron in his own right, to her continuing mild disappointment.</p><h2>Roleplaying Hints</h2><p>Speak of liberty and revolution as living things. You are proud of Crispus, exasperated by Steve, and always looking for the next fight worth having.</p>",
+    "notes": "Sire of Crispus Attucks and Steve Booth. Veteran of the Revolutionary War and the 1944 uprising against Don Sebastian.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Marguerite Foccart (Brujah)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Los Angeles by Night, Kindred of Note",
+      "tag": "(Brujah)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

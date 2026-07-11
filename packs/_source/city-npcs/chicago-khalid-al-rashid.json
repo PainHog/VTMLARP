@@ -1,0 +1,217 @@
+{
+  "_id": "68a7307bea5a432d",
+  "name": "Khalid al-Rashid (Assamite)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Crusade-Era Assamite Warlord Turned Kabbalistic Mystic",
+    "clan": "Assamite",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 8,
+    "nature": "Fanatic",
+    "demeanor": "Judge",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Powerful",
+            "spent": false
+          },
+          {
+            "name": "Powerful",
+            "spent": false
+          },
+          {
+            "name": "Fierce",
+            "spent": false
+          },
+          {
+            "name": "Fierce",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Intimidating",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Occult Mind",
+            "spent": false
+          },
+          {
+            "name": "Occult Mind",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Melee",
+          "rating": 6,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Occult",
+          "rating": 6,
+          "notes": ""
+        },
+        {
+          "name": "Linguistics",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Religion",
+          "rating": 5,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 11,
+      "max": 11,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 7,
+        "temporary": 7
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 1,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Khalid al-Rashid was a Muslim warlord during the Crusades whose reputation for atrocity was extreme even by the standards of that brutal age &mdash; a reputation that drew the attention of a Cainite who Embraced him amid the bloodshed of the Holy Land. Khalid went berserk upon realizing what he had become, savaging his own men before fleeing into the desert, where a reclusive Jewish hermit saved him from the sun and sheltered him for a month while he studied Kabbalistic mysticism. That study transformed him. Now resident in Chicago, Khalid is a solitary, mystically inclined Assamite whose Kabbalah-inflected worldview and violent past make him an unpredictable, dangerous factor in the city's Kindred affairs.</p><h2>Roleplaying Hints</h2><p>Speak rarely, and when you do, invoke scripture and mysticism. Violence is a language you know better than words, but you have learned, painfully, to hold it in check.</p>",
+    "notes": "Solitary and unpredictable. Studies Kabbalistic mysticism. A wildcard whose old Crusader violence lurks beneath a veneer of contemplative restraint.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Khalid al-Rashid (Assamite)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Chicago by Night, Kindred of Note",
+      "tag": "(Assamite)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "_id": "93c5fe49faa94549",
+  "name": "Dorian Adams (the \"Old Bat of Washington\")",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Retired Ventrue Clan Leader Turned Secret Inconnu Informant",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 5,
+    "nature": "Survivor",
+    "demeanor": "Autocrat",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Theatrical",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Paranoid Genius",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 6,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Investigation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 6,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 13,
+      "max": 13,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "selfControlInstinct": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "courage": {
+        "rating": 6,
+        "temporary": 6
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Resources",
+        "rating": 6,
+        "notes": ""
+      },
+      {
+        "name": "Retainers",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Dorian Adams gracefully ceded leadership of Clan Ventrue and withdrew from city politics the moment Marcus Vitel arrived, retiring to the fortified, gargoyle-crowned Castle Adams in the Maryland countryside. A 5th-generation elder Embraced in 1701, Adams affects the theatrical mannerisms of a cinematic vampire &mdash; sweeping capes, a hammy Romanian accent &mdash; as camouflage for genuine paranoia and genuine danger; his castle's secret corridors, security systems, and magical traps have swallowed entire Sabbat war parties without a trace. Adams alone among Washington's elders has correctly deduced that Marcus Vitel is secretly Lasombra, and has quietly begun cooperating with the Inconnu.</p><h2>Roleplaying Hints</h2><p>Play the harmless old ham to the hilt &mdash; capes, accent, theater &mdash; while missing absolutely nothing. You know the Prince's secret and it terrifies you more than any Sabbat war party ever has.</p>",
+    "notes": "Correctly suspects Marcus Vitel is secretly Lasombra; quietly cooperating with the Inconnu. Retired to fortified Castle Adams in Maryland.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Dorian Adams (the \"Old Bat of Washington\")",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "DC by Night, Kindred of Note",
+      "tag": "(Ventrue)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

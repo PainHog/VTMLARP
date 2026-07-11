@@ -1,0 +1,200 @@
+{
+  "_id": "e57c1121fc72481c",
+  "name": "De Vandreuil (Marquis of Fief de Lyon)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ventrue Marquis of Lyon, a Political Front for the Giovanni",
+    "clan": "Ventrue",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 6,
+    "nature": "Conniver",
+    "demeanor": "Autocrat",
+    "title": "Marquis of Fief de Lyon",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Intimidation",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 5,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Politics",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Bureaucracy",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Finance",
+          "rating": 3,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 7,
+      "max": 7
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 3
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 5,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Lyon, France's third city, has a long tradition of independence from Paris dating to its founding as Roman Lugdunum. Ventrue Marquis De Vandreuil, Embraced in the early 16th century, rules with an iron hand in appearance only: his true power has steadily bled away to the Giovanni, whose financial backing rebuilt the Fief after the Revolution and who now effectively control its economy while De Vandreuil serves as their political front. Fiercely resentful of the Hegemony, he helped found the Praxist movement advocating restored Princely sovereignty; few of his allies know he had his own sire eliminated and struck a private bargain with the Giovanni to secure his throne.</p><h2>Roleplaying Hints</h2><p>Imperious and commanding in public, quietly aware in private that your throne rests entirely on a bargain you dare not break. You resent every debt you owe the Giovanni.</p>",
+    "notes": "Secretly had his own sire eliminated and is beholden to the Giovanni, who effectively control Lyon's economy through him. Leading Praxist movement advocate against the Parisian Hegemony.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "De Vandreuil (Marquis of Fief de Lyon)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "France by Night, Fiefs of the Hexagon",
+      "tag": "(Ventrue)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

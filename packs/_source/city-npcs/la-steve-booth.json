@@ -1,0 +1,205 @@
+{
+  "_id": "f0910b3bb9c34d23",
+  "name": "Steve Booth (Baron of Long Beach)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Easygoing Surfer Baron of Long Beach",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Anarch",
+    "generation": 9,
+    "nature": "Bon Vivant",
+    "demeanor": "Bon Vivant",
+    "title": "Baron of Long Beach",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Charismatic",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Observant",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Survival",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Politics",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 9,
+      "max": 9,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "selfControlInstinct": {
+        "rating": 5,
+        "temporary": 5
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Contacts",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 2,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Sired reluctantly by Marguerite Foccart, who hoped to build another dedicated revolutionary, Steve Booth instead became a laid-back surfer whose easy charisma and total command of the Long Beach coastline earned him unquestioned loyalty from the local surfer-vampire population. Within his barony Steve's word is absolute; outside it, he has almost no interest in the wider politics of the Free States, to the chronic frustration of both his sire and the scheming Ventrue David Geduld, who covets his territory.</p><h2>Roleplaying Hints</h2><p>Relaxed, friendly, allergic to politics. Your barony runs on good vibes and loyalty, not schemes &mdash; leave the scheming to people like Geduld.</p>",
+    "notes": "Childe of Marguerite Foccart. His territory is coveted by the scheming Ventrue David Geduld.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Steve Booth (Baron of Long Beach)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Los Angeles by Night, Kindred of Note",
+      "tag": "(Brujah)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

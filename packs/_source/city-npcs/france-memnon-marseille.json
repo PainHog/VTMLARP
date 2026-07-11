@@ -1,0 +1,204 @@
+{
+  "_id": "4ffa54a142784d72",
+  "name": "Memnon (Nosferatu \"King\" of Marseille)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Reclusive Nosferatu Power Broker, Rumored Methuselah",
+    "clan": "Nosferatu",
+    "bloodline": "",
+    "sect": "Independent",
+    "generation": 6,
+    "nature": "Conniver",
+    "demeanor": "Judge",
+    "title": "\"King\" of the Nosferatu of Marseille",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": []
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          },
+          {
+            "name": "Perceptive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [
+      {
+        "name": "Repulsive",
+        "spent": false
+      }
+    ],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Stealth",
+          "rating": 6,
+          "notes": ""
+        },
+        {
+          "name": "Security",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Investigation",
+          "rating": 6,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 5,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 9,
+      "max": 9
+    },
+    "blood": {
+      "value": 12,
+      "max": 12,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 4
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Contacts",
+        "rating": 6,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>The reclusive Nosferatu Memnon, called \"king\" by his own Clan and rumored to be a Methuselah, may be Marseille's true secret power, playing every faction &mdash; the Sabbat, the Giovanni, the Setites &mdash; against the others to keep the city locked in permanent, useful chaos. His true age and origins are unknown even to most of his own clan.</p><h2>Roleplaying Hints</h2><p>Speak in riddles and half-truths. You know secrets about everyone in Marseille and let each faction believe you favor them alone.</p>",
+    "notes": "Rumored Methuselah; true power behind Marseille's factional chaos, manipulating the Sabbat, Giovanni, and Setites against one another.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Memnon (Nosferatu \"King\" of Marseille)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "France by Night, Fiefs of the Hexagon",
+      "tag": "(Nosferatu)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}

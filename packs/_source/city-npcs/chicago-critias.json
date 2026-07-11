@@ -1,0 +1,266 @@
+{
+  "_id": "eda40d5391694fc9",
+  "name": "Critias \"the Doctor\" (Brujah Primogen)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Brujah Primogen, Professor and Secret Blood-Bound Pawn of Menele",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 5,
+    "nature": "Visionary",
+    "demeanor": "Traditionalist",
+    "title": "Primogen",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          },
+          {
+            "name": "Tireless",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          },
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Cunning",
+            "spent": false
+          },
+          {
+            "name": "Learned",
+            "spent": false
+          },
+          {
+            "name": "Learned",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          },
+          {
+            "name": "Observant",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "negativeTraits": [],
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Expression",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Leadership",
+          "rating": 5,
+          "notes": ""
+        },
+        {
+          "name": "Subterfuge",
+          "rating": 4,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Etiquette",
+          "rating": 4,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 3,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 7,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Occult",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Philosophy",
+          "rating": 6,
+          "notes": ""
+        },
+        {
+          "name": "Politics",
+          "rating": 5,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 8,
+      "max": 8
+    },
+    "blood": {
+      "value": 13,
+      "max": 13,
+      "perTurn": 2
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 6
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 6,
+        "temporary": 6
+      },
+      "selfControlInstinct": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "courage": {
+        "rating": 5,
+        "temporary": 5
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Allies",
+        "rating": 4,
+        "notes": ""
+      },
+      {
+        "name": "Influence",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Mentor",
+        "rating": 5,
+        "notes": ""
+      },
+      {
+        "name": "Resources",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "name": "Status",
+        "rating": 5,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<h2>Background</h2><p>Critias is the eldest and most respected member of Chicago's primogen, a 5th-generation Brujah Embraced in ancient Athens by Menele himself, drawn to the Sophist philosopher's skill at debate. Unknown to Critias, he was Blood Bound to Menele centuries ago and has unwittingly served as his sire's primary instrument in Chicago ever since, believing his own political maneuvering &mdash; including his secret support of Annabelle Triabell and the anarchs during the Council Wars &mdash; to be entirely his own idea. He is a professor at Chicago University who dreams of a democratic Kindred government.</p><h2>Roleplaying Hints</h2><p>Debate everything. Mentor promising young men. Speak of reform and patience in the same breath, and never let anyone see how much of your own mind is not, in truth, your own.</p>",
+    "notes": "Secretly Blood Bound to the Methuselah Menele for centuries; unwittingly his sire's instrument in Chicago politics. Bitter rival of Patricia of Bollingbroke.",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Critias \"the Doctor\" (Brujah Primogen)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Chicago by Night, Kindred of Note",
+      "tag": "(Brujah)"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
