@@ -2,7 +2,7 @@
   "id": "vtmlarp",
   "title": "Mind's Eye Theatre: Laws of the Night",
   "description": "An unofficial Foundry VTT system for Mind's Eye Theatre: Vampire the Masquerade (Laws of the Night Revised), a trait-bidding, Rock-Paper-Scissors based live-action roleplaying game.",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
@@ -169,6 +169,52 @@
       "path": "packs/city-npcs",
       "type": "Actor",
       "system": "vtmlarp"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Character Building",
+      "sorting": "m",
+      "color": "#8a0303",
+      "packs": ["attributes", "disciplines", "abilities", "backgrounds", "merits-flaws", "gear"]
+    },
+    {
+      "name": "Lore & Reference",
+      "sorting": "m",
+      "color": "#8a0303",
+      "folders": [
+        {
+          "name": "Clans & Bloodlines",
+          "sorting": "m",
+          "packs": ["clans", "antitribu", "revenants"]
+        },
+        {
+          "name": "Sects",
+          "sorting": "m",
+          "packs": ["sects"]
+        },
+        {
+          "name": "Paths & Derangements",
+          "sorting": "m",
+          "packs": ["paths-of-enlightenment", "derangements"]
+        },
+        {
+          "name": "Cities",
+          "sorting": "m",
+          "packs": ["cities"]
+        },
+        {
+          "name": "Rules Reference",
+          "sorting": "m",
+          "packs": ["rules-reference", "rules-reference-st"]
+        }
+      ]
+    },
+    {
+      "name": "Sample Characters",
+      "sorting": "m",
+      "color": "#8a0303",
+      "packs": ["sabbat-npcs", "camarilla-npcs", "anarch-npcs", "city-npcs"]
     }
   ],
   "languages": [
