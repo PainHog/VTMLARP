@@ -1,7 +1,7 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
 
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" data-action="editImage" title="{{actor.name}}">
     <div class="header-fields flexcol">
       <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name">
       <div class="flexrow header-grid">
@@ -85,19 +85,19 @@
   </header>
 
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="main">Main</a>
-    <a class="item" data-tab="traits">Attributes &amp; Abilities</a>
-    <a class="item" data-tab="powers">Disciplines &amp; Powers</a>
-    <a class="item" data-tab="backgrounds">Backgrounds</a>
-    <a class="item" data-tab="meritsflaws">Merits &amp; Flaws</a>
-    <a class="item" data-tab="gear">Gear</a>
-    <a class="item" data-tab="social">Social</a>
-    <a class="item" data-tab="bio">Biography</a>
+    <a class="item {{#if tabs.main.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="main">Main</a>
+    <a class="item {{#if tabs.traits.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="traits">Attributes &amp; Abilities</a>
+    <a class="item {{#if tabs.powers.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="powers">Disciplines &amp; Powers</a>
+    <a class="item {{#if tabs.backgrounds.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="backgrounds">Backgrounds</a>
+    <a class="item {{#if tabs.meritsflaws.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="meritsflaws">Merits &amp; Flaws</a>
+    <a class="item {{#if tabs.gear.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="gear">Gear</a>
+    <a class="item {{#if tabs.social.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="social">Social</a>
+    <a class="item {{#if tabs.bio.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="bio">Biography</a>
   </nav>
 
   <section class="sheet-body">
 
-    <div class="tab" data-group="primary" data-tab="main">
+    <div class="tab {{#if tabs.main.active}}active{{/if}}" data-group="primary" data-tab="main">
       <div class="pools flexrow">
         <div class="pool">
           <label>Willpower</label>
@@ -190,7 +190,7 @@
       {{/if}}
     </div>
 
-    <div class="tab" data-group="primary" data-tab="traits">
+    <div class="tab {{#if tabs.traits.active}}active{{/if}}" data-group="primary" data-tab="traits">
       {{#each system.attributes as |category key|}}
       <div class="attribute-category">
         <h3>{{vtmCapitalize key}} <span class="priority">({{category.priority}})</span>
@@ -243,7 +243,7 @@
       {{/each}}
     </div>
 
-    <div class="tab" data-group="primary" data-tab="powers">
+    <div class="tab {{#if tabs.powers.active}}active{{/if}}" data-group="primary" data-tab="powers">
       <h3>Disciplines
         <span class="hint">Drag Discipline items from a compendium, or</span>
         <a class="item-create" data-type="discipline" title="Create new Discipline"><i class="fas fa-plus"></i></a>
@@ -308,7 +308,7 @@
       </ol>
     </div>
 
-    <div class="tab" data-group="primary" data-tab="backgrounds">
+    <div class="tab {{#if tabs.backgrounds.active}}active{{/if}}" data-group="primary" data-tab="backgrounds">
       <h3>Backgrounds
         <a class="rated-trait-control" data-action="add" data-path="backgrounds"><i class="fas fa-plus"></i></a>
       </h3>
@@ -341,7 +341,7 @@
       </ol>
     </div>
 
-    <div class="tab" data-group="primary" data-tab="meritsflaws">
+    <div class="tab {{#if tabs.meritsflaws.active}}active{{/if}}" data-group="primary" data-tab="meritsflaws">
       <h3>Merits <a class="item-create" data-type="merit" title="Create new Merit"><i class="fas fa-plus"></i></a></h3>
       <ol class="item-list">
         {{#each itemsByType.merit as |item|}}
@@ -368,7 +368,7 @@
       </ol>
     </div>
 
-    <div class="tab" data-group="primary" data-tab="gear">
+    <div class="tab {{#if tabs.gear.active}}active{{/if}}" data-group="primary" data-tab="gear">
       <h3>Gear &amp; Weapons
         <span class="hint">Trait Bonus is shown automatically in the Resolve Challenge dialog as a manual reminder.</span>
         <a class="item-create" data-type="gear" title="Create new Gear"><i class="fas fa-plus"></i></a>
@@ -386,7 +386,7 @@
       </ol>
     </div>
 
-    <div class="tab" data-group="primary" data-tab="social">
+    <div class="tab {{#if tabs.social.active}}active{{/if}}" data-group="primary" data-tab="social">
       <h3>Derangements <a class="simple-list-add" data-path="derangements"><i class="fas fa-plus"></i></a></h3>
       <div class="simple-list">
         {{#each system.derangements as |d i|}}
@@ -435,13 +435,13 @@
       </div>
     </div>
 
-    <div class="tab" data-group="primary" data-tab="bio">
+    <div class="tab {{#if tabs.bio.active}}active{{/if}}" data-group="primary" data-tab="bio">
       <h3>Concept</h3>
       <input type="text" name="system.concept" value="{{system.concept}}">
       <h3>Biography</h3>
-      {{editor system.biography target="system.biography" button=true engine="prosemirror" owner=owner}}
+      <prose-mirror name="system.biography" value="{{system.biography}}" {{#unless owner}}disabled{{/unless}} toggled button></prose-mirror>
       <h3>Notes</h3>
-      {{editor system.notes target="system.notes" button=true engine="prosemirror" owner=owner}}
+      <prose-mirror name="system.notes" value="{{system.notes}}" {{#unless owner}}disabled{{/unless}} toggled button></prose-mirror>
     </div>
 
   </section>

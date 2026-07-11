@@ -2,6 +2,9 @@ import { ChallengeApp } from "../apps/challenge.mjs";
 import { FrenzyApp } from "../apps/frenzy.mjs";
 import { checkPrerequisites } from "../apps/prerequisites.mjs";
 
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
+
 const CREATABLE_TYPES = {
   discipline: "Discipline", power: "Power", background: "Background",
   merit: "Merit", flaw: "Flaw", ritual: "Ritual", gear: "Gear"
@@ -9,6 +12,17 @@ const CREATABLE_TYPES = {
 
 const HEALTH_LEVELS = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled", "incapacitated"];
 const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
+
+const TAB_DEFS = [
+  { id: "main", label: "Main" },
+  { id: "traits", label: "Attributes & Abilities" },
+  { id: "powers", label: "Disciplines & Powers" },
+  { id: "backgrounds", label: "Backgrounds" },
+  { id: "meritsflaws", label: "Merits & Flaws" },
+  { id: "gear", label: "Gear" },
+  { id: "social", label: "Social" },
+  { id: "bio", label: "Biography" }
+];
 
 const CLAN_OPTIONS = [
   // The 13 core clans
@@ -120,24 +134,40 @@ const SIMPLE_LIST_DEFAULTS = {
   boons: { who: "", type: "minor", direction: "owed", notes: "" }
 };
 
-export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["vtmlarp", "sheet", "actor"],
-      template: "systems/vtmlarp/templates/actor/character-sheet.hbs",
-      width: 820,
-      height: 880,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }],
-      dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }]
-    });
-  }
+export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+  static DEFAULT_OPTIONS = {
+    classes: ["vtmlarp", "sheet", "actor"],
+    position: { width: 820, height: 880 },
+    window: { resizable: true },
+    form: { submitOnChange: true },
+    dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }]
+  };
+
+  static PARTS = {
+    form: { template: "systems/vtmlarp/templates/actor/character-sheet.hbs" }
+  };
+
+  static TABS = {
+    primary: {
+      tabs: TAB_DEFS.map(({ id }) => ({ id })),
+      initial: "main"
+    }
+  };
 
   /** @override */
-  async getData(options) {
-    const context = await super.getData(options);
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
     context.actor = this.actor;
     context.system = this.actor.system;
+    context.owner = this.actor.isOwner;
+    context.cssClass = this.isEditable ? "editable" : "locked";
     const sys = context.system;
+
+    const active = this.tabGroups.primary ?? "main";
+    context.tabs = {};
+    for (const { id, label } of TAB_DEFS) {
+      context.tabs[id] = { id, group: "primary", label, active: active === id };
+    }
 
     // Bonus Health Levels (e.g. from basic Fortitude) act as extra "Healthy"
     // boxes ahead of the fixed 7-level track, per the rulebook.
@@ -199,36 +229,52 @@ export class VTMActorSheet extends foundry.appv1.sheets.ActorSheet {
     return context;
   }
 
+  /**
+   * ApplicationV2's built-in tab-switch handler recalculates the window's
+   * height to fit whichever tab is now showing (updatePosition defaults to
+   * true), which visibly resizes and repositions the whole window every
+   * time a tab is clicked - jarring on a sheet with 8 tabs of very different
+   * lengths (Main vs. Biography). Keep the sheet's own fixed size instead.
+   * @override
+   */
+  changeTab(tab, group, options = {}) {
+    return super.changeTab(tab, group, { ...options, updatePosition: false });
+  }
+
   /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
+  _onRender(context, options) {
+    super._onRender(context, options);
+    const el = this.element;
+    const on = (selector, event, handler) => {
+      el.querySelectorAll(selector).forEach(node => node.addEventListener(event, handler));
+    };
 
     // Available to everyone (not just owners with edit rights) - opening a
     // lore entry to read isn't an edit.
-    html.find(".open-lore").on("click", this._onOpenLore.bind(this));
+    on(".open-lore", "click", this._onOpenLore.bind(this));
 
     if (!this.isEditable) return;
 
-    html.find(".trait-toggle").on("click", this._onToggleTrait.bind(this));
-    html.find(".trait-add").on("click", this._onAddTrait.bind(this));
-    html.find(".trait-delete").on("click", this._onDeleteTrait.bind(this));
-    html.find(".health-box").on("click", this._onCycleHealth.bind(this));
-    html.find(".health-level-add").on("click", this._onAddHealthLevel.bind(this));
-    html.find(".health-level-remove").on("click", this._onRemoveHealthLevel.bind(this));
-    html.find(".item-edit").on("click", this._onItemEdit.bind(this));
+    on(".trait-toggle", "click", this._onToggleTrait.bind(this));
+    on(".trait-add", "click", this._onAddTrait.bind(this));
+    on(".trait-delete", "click", this._onDeleteTrait.bind(this));
+    on(".health-box", "click", this._onCycleHealth.bind(this));
+    on(".health-level-add", "click", this._onAddHealthLevel.bind(this));
+    on(".health-level-remove", "click", this._onRemoveHealthLevel.bind(this));
+    on(".item-edit", "click", this._onItemEdit.bind(this));
     // Clicking the item's name itself also opens its sheet, so players can
     // read a Discipline/Power's full text without hunting for the small
     // pencil icon separately.
-    html.find(".item-name").on("click", this._onItemEdit.bind(this));
-    html.find(".item-delete").on("click", this._onItemDelete.bind(this));
-    html.find(".rated-trait-control").on("click", this._onRatedTraitControl.bind(this));
-    html.find(".open-challenge").on("click", () => new ChallengeApp(this.actor).render(true));
-    html.find(".open-frenzy").on("click", () => new FrenzyApp(this.actor).render(true));
-    html.find(".power-toggle").on("click", this._onTogglePower.bind(this));
-    html.find(".item-create").on("click", this._onItemCreate.bind(this));
-    html.find(".simple-list-add").on("click", this._onSimpleListAdd.bind(this));
-    html.find(".simple-list-remove").on("click", this._onSimpleListRemove.bind(this));
-    html.find(".apply-generation").on("click", this._onApplyGeneration.bind(this));
+    on(".item-name", "click", this._onItemEdit.bind(this));
+    on(".item-delete", "click", this._onItemDelete.bind(this));
+    on(".rated-trait-control", "click", this._onRatedTraitControl.bind(this));
+    on(".open-challenge", "click", () => new ChallengeApp(this.actor).render(true));
+    on(".open-frenzy", "click", () => new FrenzyApp(this.actor).render(true));
+    on(".power-toggle", "click", this._onTogglePower.bind(this));
+    on(".item-create", "click", this._onItemCreate.bind(this));
+    on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
+    on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
+    on(".apply-generation", "click", this._onApplyGeneration.bind(this));
   }
 
   /** Open the compendium JournalEntry backing a Clan/Path lore link button. */
