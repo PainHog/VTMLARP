@@ -1,3 +1,6 @@
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { renderTemplate } = foundry.applications.handlebars;
+
 const GESTURES = ["rock", "paper", "scissors", "bomb"];
 
 function beats(a, b) {
@@ -15,22 +18,22 @@ function beats(a, b) {
  * this tool tracks trait totals, records the announced gesture, and posts
  * a shareable result card so the table can see who won and what was bid.
  */
-export class ChallengeApp extends foundry.appv1.api.Application {
+export class ChallengeApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   constructor(actor, options = {}) {
     super(options);
     this.actor = actor;
   }
 
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      id: "vtmlarp-challenge",
-      classes: ["vtmlarp", "challenge-app"],
-      template: "systems/vtmlarp/templates/apps/challenge.hbs",
-      width: 420,
-      height: "auto",
-      title: "Resolve Challenge"
-    });
-  }
+  static DEFAULT_OPTIONS = {
+    id: "vtmlarp-challenge",
+    classes: ["vtmlarp", "challenge-app"],
+    position: { width: 420, height: "auto" },
+    window: { title: "Resolve Challenge", resizable: true }
+  };
+
+  static PARTS = {
+    form: { template: "systems/vtmlarp/templates/apps/challenge.hbs" }
+  };
 
   /** Count of not-yet-spent traits in one of the actor's attribute categories. */
   _unspentCount(category) {
@@ -39,33 +42,32 @@ export class ChallengeApp extends foundry.appv1.api.Application {
   }
 
   /** @override */
-  getData(options) {
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
     const equipmentBonuses = this.actor.items
       .filter(i => i.type === "gear" && i.system.traitBonus)
       .map(i => `${i.name}: ${i.system.traitBonus}`);
 
-    return {
-      actor: this.actor,
-      gestures: GESTURES,
-      challengeTypes: ["physical", "social", "mental", "static"],
-      equipmentBonuses,
-      fullBidEnabled: game.settings.get("vtmlarp", "fullBidTraitRule"),
-      pools: {
-        physical: this._unspentCount("physical"),
-        social: this._unspentCount("social"),
-        mental: this._unspentCount("mental")
-      }
+    context.actor = this.actor;
+    context.gestures = GESTURES;
+    context.challengeTypes = ["physical", "social", "mental", "static"];
+    context.equipmentBonuses = equipmentBonuses;
+    context.fullBidEnabled = game.settings.get("vtmlarp", "fullBidTraitRule");
+    context.pools = {
+      physical: this._unspentCount("physical"),
+      social: this._unspentCount("social"),
+      mental: this._unspentCount("mental")
     };
+    return context;
   }
 
   /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
+  _onRender(context, options) {
+    super._onRender(context, options);
+    const root = this.element;
     // Bind directly to the button's click rather than the form's "submit" event -
-    // this avoids relying on jQuery's .find()/.on() continuing to behave the same
-    // way across Foundry versions, and guarantees the browser never falls back to
-    // a native full-page form submission (which looks like the page "reloading").
-    const root = html instanceof HTMLElement ? html : html[0];
+    // this guarantees the browser never falls back to a native full-page form
+    // submission (which looks like the page "reloading").
     root.querySelector("button[type='submit']")?.addEventListener("click", this._onSubmit.bind(this));
 
     const challengeTypeSelect = root.querySelector("select[name='challengeType']");

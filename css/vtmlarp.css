@@ -791,13 +791,17 @@
   display: flex !important;
   flex-direction: column;
   gap: 0 !important;
+  /* ApplicationV2's core CSS sets a larger baseline font-size on its root
+     ".application" element than V1 ever did - !important pins this back
+     down, same fix as the Actor/Item sheets needed. */
+  font-size: 13px !important;
 }
 
 .vtmlarp-challenge label, .vtmlarp-frenzy label {
   display: block;
   margin: 0 0 6px 0 !important;
   padding: 0 !important;
-  font-size: 13px;
+  font-size: 13px !important;
   line-height: 1.3;
   color: var(--vtm-text-dim);
 }
