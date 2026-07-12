@@ -24,11 +24,16 @@ export function unspentCount(actor, category) {
  * where the two sides can't just glance at each other's trait cards
  * across a table the way they could face to face.
  */
-export async function resolveAndPostGestureChallenge({ challengerActor, challengeType, challengerGesture, opponentActor, opponentGesture, retest }) {
+export async function resolveAndPostGestureChallenge({
+  challengerActor, challengeType, challengerGesture, opponentActor, opponentGesture, retest,
+  // Overrides for a fake/no-document opponent (e.g. the "TEST" practice
+  // opponent) where there's no real Actor to derive a name/pool from.
+  opponentName: opponentNameOverride, opponentTraitsBid: opponentTraitsBidOverride
+}) {
   const challengerName = challengerActor.name;
-  const opponentName = opponentActor?.name ?? "Opponent";
+  const opponentName = opponentNameOverride ?? opponentActor?.name ?? "Opponent";
   const traitsBid = unspentCount(challengerActor, challengeType);
-  const opponentTraitsBid = opponentActor ? unspentCount(opponentActor, challengeType) : null;
+  const opponentTraitsBid = opponentTraitsBidOverride ?? (opponentActor ? unspentCount(opponentActor, challengeType) : null);
 
   let result = "";
   let resultLabel = "";

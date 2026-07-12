@@ -1,4 +1,12 @@
-import { GESTURES, unspentCount, respondingUsers } from "./challenge-shared.mjs";
+import { GESTURES, unspentCount, respondingUsers, resolveAndPostGestureChallenge } from "./challenge-shared.mjs";
+
+// A standing fake opponent so a single tester can resolve a Challenge
+// without needing a second logged-in player/GM to respond - always throws
+// Rock with a 7-Trait pool, resolved immediately with no socket round-trip.
+// TODO: remove once real multi-player testing is available.
+const TEST_OPPONENT_ID = "TEST";
+const TEST_OPPONENT_GESTURE = "rock";
+const TEST_OPPONENT_TRAITS = 7;
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { renderTemplate } = foundry.applications.handlebars;
@@ -40,10 +48,13 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     context.gestures = GESTURES;
     context.challengeTypes = ["physical", "social", "mental", "static"];
     context.equipmentBonuses = equipmentBonuses;
-    context.actorOptions = game.actors
-      .filter(a => ["character", "npc"].includes(a.type) && a.id !== this.actor.id)
-      .map(a => ({ id: a.id, name: a.name }))
-      .sort((a, b) => a.name.localeCompare(b.name));
+    context.actorOptions = [
+      { id: TEST_OPPONENT_ID, name: `TEST (practice - ${TEST_OPPONENT_TRAITS} Traits, always ${TEST_OPPONENT_GESTURE})` },
+      ...game.actors
+        .filter(a => ["character", "npc"].includes(a.type) && a.id !== this.actor.id)
+        .map(a => ({ id: a.id, name: a.name }))
+        .sort((a, b) => a.name.localeCompare(b.name))
+    ];
     context.pools = {
       physical: unspentCount(this.actor, "physical"),
       social: unspentCount(this.actor, "social"),
@@ -114,6 +125,22 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     }
 
     const opponentActorId = fd.opponentActorId;
+
+    if (opponentActorId === TEST_OPPONENT_ID) {
+      await resolveAndPostGestureChallenge({
+        challengerActor: this.actor,
+        challengeType,
+        challengerGesture: fd.gesture,
+        opponentActor: null,
+        opponentName: "TEST",
+        opponentGesture: TEST_OPPONENT_GESTURE,
+        opponentTraitsBid: TEST_OPPONENT_TRAITS,
+        retest
+      });
+      this.close();
+      return;
+    }
+
     const opponentActor = opponentActorId ? game.actors.get(opponentActorId) : null;
     if (!opponentActor) {
       ui.notifications?.warn("Pick an opponent before sending the Challenge.");
