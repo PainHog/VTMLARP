@@ -11,6 +11,13 @@ const CREATABLE_TYPES = {
   merit: "Merit", flaw: "Flaw", ritual: "Ritual", gear: "Gear"
 };
 
+// Basic/Intermediate/Advanced/Elder power tiers map 1:1 to a Discipline's
+// rating (Basic power present -> rating 1, Advanced -> rating 3, etc.), so
+// this doubles as both the sort order for powers under a Discipline and the
+// minimum rating a Discipline should auto-bump to once a given tier is
+// dragged in.
+const LEVEL_ORDER = { basic: 0, intermediate: 1, advanced: 2, elder: 3 };
+
 const HEALTH_LEVELS = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled", "incapacitated"];
 const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
 
@@ -210,7 +217,6 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // (combination Discipline prerequisite tags like "Auspex, Celerity", or
     // a power dragged in before its parent Discipline was) falls back to an
     // "Other Powers" bucket rather than being silently dropped.
-    const LEVEL_ORDER = { basic: 0, intermediate: 1, advanced: 2, elder: 3 };
     const sortByLevel = (a, b) => (LEVEL_ORDER[a.system.level] ?? 99) - (LEVEL_ORDER[b.system.level] ?? 99);
     const remainingPowers = new Set(allPowerItems);
     context.disciplineGroups = disciplineItems.map(discipline => {
@@ -317,6 +323,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
     on(".apply-generation", "click", this._onApplyGeneration.bind(this));
+    on(".discipline-rating-control", "click", this._onDisciplineRatingControl.bind(this));
 
     // ApplicationV2 doesn't auto-wire a "dragDrop" static option into actual
     // drag/drop event listeners the way V1's FormApplication did (that
@@ -510,6 +517,17 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     await this.actor.update(update);
   }
 
+  /** Manual override for a Discipline's rating, alongside the auto-bump-on-drop behavior. */
+  async _onDisciplineRatingControl(event) {
+    event.preventDefault();
+    const { itemId, action } = event.currentTarget.dataset;
+    const item = this.actor.items.get(itemId);
+    if (!item) return;
+    const delta = action === "increase" ? 1 : -1;
+    const newRating = Math.max(0, item.system.rating + delta);
+    await item.update({ "system.rating": newRating });
+  }
+
   async _onCycleHealth(event) {
     event.preventDefault();
     const { level, bonusIndex } = event.currentTarget.dataset;
@@ -700,6 +718,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       if (passthrough.length) {
         const created = await this.actor.createEmbeddedDocuments("Item", passthrough);
         console.log(`VTMLARP | createEmbeddedDocuments returned ${created.length} document(s):`, created.map(d => `${d.name} (${d.type})`));
+        await this._autoBumpDisciplineRatings(created);
         return created;
       }
     } catch (err) {
@@ -709,6 +728,27 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       // surface them as a notification instead of swallowing them silently.
       console.error("VTMLARP | Item drop failed:", err);
       ui.notifications?.error(`Failed to add item to ${this.actor.name}: ${err.message}`);
+    }
+  }
+
+  /**
+   * A Discipline's rating should reflect the highest-tier Power actually
+   * dragged in under it (Basic -> 1, Intermediate -> 2, Advanced -> 3,
+   * Elder -> 4), so players don't also have to remember to separately bump
+   * the rating number by hand every time. Only ever raises the rating, never
+   * lowers it - a Storyteller-set higher rating (e.g. for Elder NPCs who
+   * don't have every intervening Power written up) is never overwritten.
+   */
+  async _autoBumpDisciplineRatings(createdItems) {
+    const newPowers = createdItems.filter(i => i.type === "power" && i.system.discipline);
+    if (!newPowers.length) return;
+    for (const power of newPowers) {
+      const discipline = this.actor.items.find(i => i.type === "discipline" && i.name === power.system.discipline);
+      if (!discipline) continue;
+      const required = (LEVEL_ORDER[power.system.level] ?? 0) + 1;
+      if (discipline.system.rating < required) {
+        await discipline.update({ "system.rating": required });
+      }
     }
   }
 }
