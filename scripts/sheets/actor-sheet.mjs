@@ -191,15 +191,38 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // for them - the "active" flag only gets set by actually clicking the
     // toggle control on a toggle-type power), so they belong in this summary
     // too even though system.active stays at its default false for them.
-    context.activePowers = (context.itemsByType.power ?? [])
-      .filter(item => item.system.active || item.system.activation === "passive");
+    // Split into two groups for display so a sheet with many passives isn't
+    // one undifferentiated wall of chips next to the handful actually
+    // switched on right now.
+    const allPowerItems = context.itemsByType.power ?? [];
+    context.passivePowers = allPowerItems.filter(item => item.system.activation === "passive");
+    context.toggledOnPowers = allPowerItems.filter(item => item.system.active && item.system.activation !== "passive");
+    context.activePowers = [...context.passivePowers, ...context.toggledOnPowers];
 
     const disciplineItems = context.itemsByType.discipline ?? [];
     context.powerPrereqStatus = {};
-    for (const power of context.itemsByType.power ?? []) {
+    for (const power of allPowerItems) {
       if (!power.system.prerequisites) continue;
       context.powerPrereqStatus[power.id] = checkPrerequisites(power.system.prerequisites, disciplineItems);
     }
+
+    // Group each dragged-in Discipline with its own Powers, sorted Basic ->
+    // Intermediate -> Advanced -> Elder, so a Discipline's levels stack
+    // directly beneath it instead of living in an entirely separate list a
+    // player has to cross-reference by name. A Power whose system.discipline
+    // string doesn't exactly match any Discipline the actor actually has
+    // (combination Discipline prerequisite tags like "Auspex, Celerity", or
+    // a power dragged in before its parent Discipline was) falls back to an
+    // "Other Powers" bucket rather than being silently dropped.
+    const LEVEL_ORDER = { basic: 0, intermediate: 1, advanced: 2, elder: 3 };
+    const sortByLevel = (a, b) => (LEVEL_ORDER[a.system.level] ?? 99) - (LEVEL_ORDER[b.system.level] ?? 99);
+    const remainingPowers = new Set(allPowerItems);
+    context.disciplineGroups = disciplineItems.map(discipline => {
+      const powers = allPowerItems.filter(p => p.system.discipline === discipline.name);
+      for (const p of powers) remainingPowers.delete(p);
+      return { discipline, powers: powers.sort(sortByLevel) };
+    });
+    context.otherPowers = [...remainingPowers].sort(sortByLevel);
 
     context.isCharacter = this.actor.type === "character";
     context.NPC_TYPE_OPTIONS = ["vampire", "ghoul", "mortal", "spirit", "other"];

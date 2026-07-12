@@ -708,6 +708,51 @@
   color: var(--vtm-text-dim);
 }
 
+.vtmlarp .discipline-group {
+  border: 1px solid var(--vtm-border);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 4px 6px;
+}
+
+.vtmlarp .discipline-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  font-weight: bold;
+  border-bottom: 1px solid var(--vtm-red-dim);
+  margin-bottom: 4px;
+}
+
+.vtmlarp .discipline-header .item-name { color: var(--vtm-red-bright); }
+
+.vtmlarp .discipline-powers {
+  margin: 0 0 0 20px;
+}
+
+.vtmlarp .discipline-powers .item {
+  border-bottom: 1px dashed var(--vtm-border);
+}
+
+.vtmlarp .item-list-empty {
+  padding: 4px;
+  list-style: none;
+}
+
+.vtmlarp .active-powers-subhead {
+  margin: 4px 0 2px 0;
+}
+
+.vtmlarp .trait-chip.toggled-chip {
+  border-color: var(--vtm-red-bright);
+  background: rgba(184, 18, 26, 0.15);
+}
+
+.vtmlarp .trait-chip.passive-chip {
+  opacity: 0.75;
+}
+
 .vtmlarp .hint {
   font-size: 13px;
   font-style: italic;
