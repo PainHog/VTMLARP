@@ -587,11 +587,22 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     try {
       data = JSON.parse(event.dataTransfer.getData("text/plain"));
     } catch (err) {
+      console.warn("VTMLARP | Drop event had no parseable text/plain data:", err);
       return;
     }
-    if (data?.type !== "Item") return;
+    console.log("VTMLARP | Drop data:", data);
+    if (data?.type !== "Item") {
+      console.warn(`VTMLARP | Ignored drop of type "${data?.type}" (only "Item" drops are handled).`);
+      return;
+    }
     const item = await Item.implementation.fromDropData(data);
-    if (item) await this._onDropItemCreate(item.toObject());
+    if (!item) {
+      console.warn("VTMLARP | Item.fromDropData() could not resolve this drop - uuid was:", data.uuid);
+      ui.notifications?.warn("Couldn't resolve the dropped item - check the browser console for details.");
+      return;
+    }
+    console.log("VTMLARP | Resolved dropped item:", item.name, item.type, item.uuid);
+    await this._onDropItemCreate(item.toObject());
   }
 
   /**
@@ -637,7 +648,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       // ActorSheetV2 doesn't provide a _onDropItemCreate of its own to fall
       // back to (that was a V1 FormApplication pipeline method) - passthrough
       // types are just embedded normally.
-      if (passthrough.length) return await this.actor.createEmbeddedDocuments("Item", passthrough);
+      if (passthrough.length) {
+        const created = await this.actor.createEmbeddedDocuments("Item", passthrough);
+        console.log(`VTMLARP | createEmbeddedDocuments returned ${created.length} document(s):`, created.map(d => `${d.name} (${d.type})`));
+        return created;
+      }
     } catch (err) {
       // A drag/drop that visibly "does nothing" is otherwise impossible to
       // diagnose - createEmbeddedDocuments failures (e.g. schema validation
