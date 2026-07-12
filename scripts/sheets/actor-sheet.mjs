@@ -533,6 +533,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       name: `New ${label}`,
       type
     }]);
+    this.render();
   }
 
   /**
@@ -559,6 +560,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         await this.actor.update({ "system.blood.value": Math.max(0, current - cost) });
       }
     }
+    this.render();
   }
 
   _onItemEdit(event) {
@@ -571,6 +573,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     event.preventDefault();
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     await this.actor.items.get(itemId)?.delete();
+    this.render();
   }
 
   /** Set the drag payload when picking up an item row from one of the sheet's item-lists. */
@@ -603,6 +606,13 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     }
     console.log("VTMLARP | Resolved dropped item:", item.name, item.type, item.uuid);
     await this._onDropItemCreate(item.toObject());
+    // createEmbeddedDocuments confirmed succeeding (visible in the log above)
+    // isn't the same as this sheet actually re-rendering to show it - rather
+    // than trust that ApplicationV2 auto-re-renders on every embedded
+    // document change the same way V1 did, force it explicitly so a newly
+    // dropped item is guaranteed to actually appear without needing the
+    // sheet closed and reopened.
+    this.render();
   }
 
   /**
