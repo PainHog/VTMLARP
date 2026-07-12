@@ -273,6 +273,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const CHARACTER_CREATION_ENTRY = { pack: "rules-reference", name: "Character Creation" };
     context.clanLoreEntry = sys.clan ? (CLAN_LORE_LOOKUP[sys.clan] ?? { pack: "clans", name: sys.clan }) : CHARACTER_CREATION_ENTRY;
     context.sectLoreEntry = sys.sect ? (SECT_LORE_LOOKUP[sys.sect] ?? { pack: "sects", name: sys.sect }) : CHARACTER_CREATION_ENTRY;
+    console.log("VTMLARP | sys.clan:", JSON.stringify(sys.clan), "-> clanLoreEntry:", context.clanLoreEntry);
+    console.log("VTMLARP | sys.sect:", JSON.stringify(sys.sect), "-> sectLoreEntry:", context.sectLoreEntry);
     context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : CHARACTER_CREATION_ENTRY;
     // Nature and Demeanor both draw from the same shared "Nature and Demeanor
     // Archetypes" reference doc regardless of whether a value is picked yet
@@ -396,6 +398,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   async _onOpenLore(event) {
     event.preventDefault();
     const { pack: packName, name } = event.currentTarget.dataset;
+    console.log("VTMLARP | _onOpenLore clicked with dataset:", event.currentTarget.dataset);
     if (!name) {
       ui.notifications?.warn("Select a value first to open its lore entry.");
       return;
