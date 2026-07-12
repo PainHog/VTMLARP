@@ -429,7 +429,7 @@
    itself into that flex column with overflow:hidden. Scoped to sheets using
    this class combo (Actor/Item) rather than every window, since the small
    Challenge/Frenzy/Vaulderie popups use height:"auto" and don't need it. */
-.window-content:has(> .vtmlarp.sheet) {
+.window-content:has(.vtmlarp.sheet) {
   display: flex;
   flex-direction: column;
   overflow: hidden;
