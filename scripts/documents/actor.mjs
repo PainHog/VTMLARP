@@ -12,7 +12,12 @@ function ratedTraitField(initial = {}) {
 function traitField() {
   return new fields.SchemaField({
     name: new fields.StringField({ required: true, initial: "" }),
-    spent: new fields.BooleanField({ required: true, initial: false })
+    spent: new fields.BooleanField({ required: true, initial: false }),
+    // Negative Traits live in the same physical/social/mental pool as their
+    // positive counterparts rather than a separate list, since that's where
+    // a player actually thinks to look for them and where they affect
+    // challenge counts - this flag is what marks a trait as one.
+    negative: new fields.BooleanField({ required: true, initial: false })
   });
 }
 
@@ -80,8 +85,6 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
         social: attributeCategorySchema(),
         mental: attributeCategorySchema()
       }),
-
-      negativeTraits: new fields.ArrayField(traitField()),
 
       abilities: new fields.SchemaField({
         talents: new fields.ArrayField(ratedTraitField()),

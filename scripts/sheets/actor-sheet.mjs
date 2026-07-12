@@ -323,7 +323,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
     on(".apply-generation", "click", this._onApplyGeneration.bind(this));
-    on(".discipline-rating-control", "click", this._onDisciplineRatingControl.bind(this));
+    on(".item-rating-control", "click", this._onItemRatingControl.bind(this));
 
     // ApplicationV2 doesn't auto-wire a "dragDrop" static option into actual
     // drag/drop event listeners the way V1's FormApplication did (that
@@ -435,38 +435,43 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   async _onAddTrait(event) {
     event.preventDefault();
     const { path } = event.currentTarget.dataset;
-    const name = await foundry.applications.api.DialogV2.prompt({
+    const isAttributeCategory = path.startsWith("attributes.") && path.endsWith(".traits");
+    const result = await foundry.applications.api.DialogV2.prompt({
       window: { title: "New Trait" },
-      content: `<input type="text" name="trait" placeholder="Trait name" autofocus>`,
-      ok: { callback: (e, btn) => btn.form.elements.trait.value }
+      content: `<input type="text" name="trait" placeholder="Trait name" autofocus>`
+        + (isAttributeCategory ? `<label style="display:block;margin-top:6px;"><input type="checkbox" name="negative"> Negative Trait</label>` : ""),
+      ok: { callback: (e, btn) => ({ name: btn.form.elements.trait.value, negative: btn.form.elements.negative?.checked ?? false }) }
     }).catch(() => null);
-    if (!name) return;
+    if (!result?.name) return;
+    const { name, negative } = result;
 
     // Per Laws of the Night Revised's Experience cost table: a new Attribute
     // Trait costs 1 Experience. Negative Traits aren't a purchase (they're a
     // self-imposed penalty), so they're free.
     const update = {};
-    if (path.startsWith("attributes.") && path.endsWith(".traits")) {
-      if (!this._spendXP(update, 1)) return;
+    if (isAttributeCategory && !negative) {
+      this._spendXP(update, 1);
     }
 
     const list = foundry.utils.getProperty(this.actor.system, path) ?? [];
-    update[`system.${path}`] = [...list, { name, spent: false }];
+    update[`system.${path}`] = [...list, { name, spent: false, negative }];
     await this.actor.update(update);
   }
 
   /**
-   * Deduct `cost` Experience into the given update payload if the actor can
-   * afford it, warning and returning false otherwise. Callers should bail
-   * out without applying any other change when this returns false.
+   * Deduct `cost` Experience into the given update payload for bookkeeping.
+   * Never blocks the actual trait/rating change over it - Storytellers
+   * generally trust their players not to abuse this, and a hard block here
+   * just gets in the way of live play. Experience is clamped at 0 rather
+   * than going negative, with a soft notification if the actor came up
+   * short, so the shortfall is visible without stopping anything.
    */
   _spendXP(update, cost) {
     const current = this.actor.system.experience.value;
     if (current < cost) {
-      ui.notifications?.warn(`${this.actor.name} doesn't have enough Experience (needs ${cost}, has ${current}).`);
-      return false;
+      ui.notifications?.warn(`${this.actor.name} spent more Experience than they had (needed ${cost}, had ${current}) - allowed anyway.`);
     }
-    update["system.experience.value"] = current - cost;
+    update["system.experience.value"] = Math.max(0, current - cost);
     return true;
   }
 
@@ -517,8 +522,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     await this.actor.update(update);
   }
 
-  /** Manual override for a Discipline's rating, alongside the auto-bump-on-drop behavior. */
-  async _onDisciplineRatingControl(event) {
+  /** Manual +/- for any embedded Item's system.rating (Disciplines, dragged-in Backgrounds). */
+  async _onItemRatingControl(event) {
     event.preventDefault();
     const { itemId, action } = event.currentTarget.dataset;
     const item = this.actor.items.get(itemId);
@@ -699,8 +704,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         if (data.type === "attribute") {
           const category = ["physical", "social", "mental"].includes(data.system?.category)
             ? data.system.category : "physical";
-          const path = data.system?.negative ? "negativeTraits" : `attributes.${category}.traits`;
-          pushTrait(path, { name: data.name, spent: false });
+          pushTrait(`attributes.${category}.traits`, { name: data.name, spent: false, negative: !!data.system?.negative });
         } else if (data.type === "ability") {
           const key = { talent: "talents", skill: "skills", knowledge: "knowledges" }[data.system?.category] ?? "talents";
           pushTrait(`abilities.${key}`, { name: data.name, rating: Number(data.system?.rating) || 1, notes: "" });

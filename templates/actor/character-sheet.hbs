@@ -191,7 +191,7 @@
         </h3>
         <div class="trait-list collapsible-body">
           {{#each category.traits as |trait i|}}
-          <span class="trait-chip {{#if trait.spent}}spent{{/if}}">
+          <span class="trait-chip {{#if trait.negative}}negative{{/if}} {{#if trait.spent}}spent{{/if}}" title="{{#if trait.negative}}Negative Trait{{/if}}">
             <a class="trait-toggle" data-path="attributes.{{key}}.traits" data-index="{{i}}">{{trait.name}}</a>
             <a class="trait-delete" data-path="attributes.{{key}}.traits" data-index="{{i}}"><i class="fas fa-times"></i></a>
           </span>
@@ -199,20 +199,6 @@
         </div>
       </div>
       {{/each}}
-
-      <div class="attribute-category collapsible" data-collapse-key="attr-negative">
-        <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> Negative Traits
-          <a class="trait-add" data-path="negativeTraits"><i class="fas fa-plus"></i></a>
-        </h3>
-        <div class="trait-list collapsible-body">
-          {{#each system.negativeTraits as |trait i|}}
-          <span class="trait-chip negative {{#if trait.spent}}spent{{/if}}">
-            <a class="trait-toggle" data-path="negativeTraits" data-index="{{i}}">{{trait.name}}</a>
-            <a class="trait-delete" data-path="negativeTraits" data-index="{{i}}"><i class="fas fa-times"></i></a>
-          </span>
-          {{/each}}
-        </div>
-      </div>
 
       {{#each system.abilities as |list key|}}
       <div class="ability-category collapsible" data-collapse-key="ability-{{key}}">
@@ -250,24 +236,23 @@
           <img src="{{group.discipline.img}}" class="item-img">
           <span class="item-name">{{group.discipline.name}}</span>
           <span class="item-rating">{{group.discipline.system.rating}}</span>
-          <a class="discipline-rating-control" data-item-id="{{group.discipline.id}}" data-action="decrease" title="Decrease rating"><i class="fas fa-minus"></i></a>
-          <a class="discipline-rating-control" data-item-id="{{group.discipline.id}}" data-action="increase" title="Increase rating"><i class="fas fa-plus"></i></a>
+          <a class="item-rating-control" data-item-id="{{group.discipline.id}}" data-action="decrease" title="Decrease rating"><i class="fas fa-minus"></i></a>
+          <a class="item-rating-control" data-item-id="{{group.discipline.id}}" data-action="increase" title="Increase rating"><i class="fas fa-plus"></i></a>
           <a class="item-edit"><i class="fas fa-edit"></i></a>
           <a class="item-delete"><i class="fas fa-trash"></i></a>
         </div>
         <ol class="item-list discipline-powers collapsible-body">
           {{#each group.powers as |item|}}
-          {{#with (lookup ../../powerPrereqStatus item.id) as |prereq|}}
-          <li class="item {{#if item.system.active}}power-active{{/if}} {{#if prereq}}{{#unless prereq.met}}prereq-unmet{{/unless}}{{/if}}" data-item-id="{{item.id}}">
+          <li class="item {{#if item.system.active}}power-active{{/if}} {{#if (lookup ../../powerPrereqStatus item.id)}}{{#unless (lookup (lookup ../../powerPrereqStatus item.id) "met")}}prereq-unmet{{/unless}}{{/if}}" data-item-id="{{item.id}}">
             <img src="{{item.img}}" class="item-img">
             <span class="item-name">{{item.name}}</span>
             <span class="item-meta">{{item.system.level}} - {{item.system.activation}}</span>
             {{#if item.system.prerequisites}}
             <span class="item-prereqs" title="Prerequisites: {{item.system.prerequisites}}">
-              {{#if prereq.met}}
+              {{#if (lookup (lookup ../../powerPrereqStatus item.id) "met")}}
               <i class="fas fa-check-circle prereq-ok" title="Prerequisites met: {{item.system.prerequisites}}"></i>
               {{else}}
-              <i class="fas fa-exclamation-triangle prereq-warn" title="Missing prerequisites: {{prereq.missing.[0]}}"></i>
+              <i class="fas fa-exclamation-triangle prereq-warn" title="Missing prerequisites: {{lookup (lookup (lookup ../../powerPrereqStatus item.id) "missing") 0}}"></i>
               {{/if}}
             </span>
             {{/if}}
@@ -281,7 +266,6 @@
             <a class="item-edit"><i class="fas fa-edit"></i></a>
             <a class="item-delete"><i class="fas fa-trash"></i></a>
           </li>
-          {{/with}}
           {{/each}}
           {{#unless group.powers.length}}
           <li class="item-list-empty hint">No Powers yet - drag this Discipline's Basic/Intermediate/Advanced Powers in from the compendium.</li>
@@ -298,17 +282,16 @@
       <h3>Other Powers <span class="hint">Combination Disciplines and powers whose Discipline hasn't been added yet</span></h3>
       <ol class="item-list">
         {{#each otherPowers as |item|}}
-        {{#with (lookup ../powerPrereqStatus item.id) as |prereq|}}
-        <li class="item {{#if item.system.active}}power-active{{/if}} {{#if prereq}}{{#unless prereq.met}}prereq-unmet{{/unless}}{{/if}}" data-item-id="{{item.id}}">
+        <li class="item {{#if item.system.active}}power-active{{/if}} {{#if (lookup ../powerPrereqStatus item.id)}}{{#unless (lookup (lookup ../powerPrereqStatus item.id) "met")}}prereq-unmet{{/unless}}{{/if}}" data-item-id="{{item.id}}">
           <img src="{{item.img}}" class="item-img">
           <span class="item-name">{{item.name}}</span>
           <span class="item-meta">{{item.system.discipline}} - {{item.system.level}} - {{item.system.activation}}</span>
           {{#if item.system.prerequisites}}
           <span class="item-prereqs" title="Prerequisites: {{item.system.prerequisites}}">
-            {{#if prereq.met}}
+            {{#if (lookup (lookup ../powerPrereqStatus item.id) "met")}}
             <i class="fas fa-check-circle prereq-ok" title="Prerequisites met: {{item.system.prerequisites}}"></i>
             {{else}}
-            <i class="fas fa-exclamation-triangle prereq-warn" title="Missing prerequisites: {{prereq.missing.[0]}}"></i>
+            <i class="fas fa-exclamation-triangle prereq-warn" title="Missing prerequisites: {{lookup (lookup (lookup ../powerPrereqStatus item.id) "missing") 0}}"></i>
             {{/if}}
           </span>
           {{/if}}
@@ -322,7 +305,6 @@
           <a class="item-edit"><i class="fas fa-edit"></i></a>
           <a class="item-delete"><i class="fas fa-trash"></i></a>
         </li>
-        {{/with}}
         {{/each}}
       </ol>
       {{/if}}
@@ -353,6 +335,8 @@
           <img src="{{item.img}}" class="item-img">
           <span class="item-name">{{item.name}}</span>
           <span class="item-rating">{{item.system.rating}}</span>
+          <a class="item-rating-control" data-item-id="{{item.id}}" data-action="decrease" title="Decrease rating"><i class="fas fa-minus"></i></a>
+          <a class="item-rating-control" data-item-id="{{item.id}}" data-action="increase" title="Increase rating"><i class="fas fa-plus"></i></a>
           <a class="item-edit"><i class="fas fa-edit"></i></a>
           <a class="item-delete"><i class="fas fa-trash"></i></a>
         </li>
