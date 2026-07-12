@@ -436,8 +436,14 @@
   flex-direction: row;
 }
 form.vtmlarp.sheet {
-  height: 100%;
+  /* As a flex item of .window-content (below), height:100% alone is not
+     reliable here - flex:1 1 auto + min-height:0 is the same pattern used
+     for .sheet-body itself, and is what actually makes this fill the
+     window and hand the scroll boundary down instead of growing to fit
+     its content. */
+  flex: 1 1 auto;
   min-height: 0;
+  overflow: hidden;
 }
 
 .vtmlarp .sheet-header { flex: 0 0 auto; }
