@@ -395,6 +395,25 @@
   font-size: 14px !important;
 }
 
+/* The two rules above only override the font-size Foundry's own core CSS
+   sets on the sheet ROOT and on form controls - core CSS also sets its own
+   explicit font-size on plain text tags (td, li, span, label, etc.), which
+   wins over inheriting our 15px because an element's own explicit property
+   always beats an ancestor's, regardless of that ancestor's specificity.
+   Forcing it here too, rather than only at the root, is what actually
+   fixes text looking oversized throughout the Attributes/Abilities tables
+   and everywhere else that isn't a bare <p>. */
+.vtmlarp.sheet p,
+.vtmlarp.sheet span,
+.vtmlarp.sheet label,
+.vtmlarp.sheet li,
+.vtmlarp.sheet td,
+.vtmlarp.sheet th,
+.vtmlarp.sheet div,
+.vtmlarp.sheet a {
+  font-size: 14px !important;
+}
+
 .vtmlarp .sheet-header { flex: 0 0 auto; }
 .vtmlarp .sheet-tabs { flex: 0 0 auto; }
 .vtmlarp .sheet-body { flex: 1 1 auto; overflow-y: auto; min-height: 0; }
@@ -693,9 +712,11 @@
   border-left: 2px solid var(--vtm-red-bright);
 }
 
-.vtmlarp .item-list .item-img {
+.vtmlarp .item-list .item-img,
+.vtmlarp .item-img {
   width: 24px;
   height: 24px;
+  min-width: 24px;
   object-fit: cover;
   border: 1px solid var(--vtm-border);
   border-radius: 2px;
