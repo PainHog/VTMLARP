@@ -417,6 +417,23 @@
 .vtmlarp .sheet-header { flex: 0 0 auto; }
 .vtmlarp .sheet-tabs { flex: 0 0 auto; }
 .vtmlarp .sheet-body { flex: 1 1 auto; overflow-y: auto; min-height: 0; }
+
+/* .sheet-body's own overflow-y:auto only actually produces a scrollbar (and
+   keeps the header/tabs pinned above it) if its own ancestor chain is a
+   properly bounded flex column - otherwise the browser just grows
+   .window-content to fit all the content instead of scrolling, which is
+   what made the sheet look "wrong size" with content spilling out
+   uncontained (including Discipline sub-levels genuinely being present but
+   below the visible/reachable area). Neither Foundry core CSS nor this
+   stylesheet's own rules had ever explicitly constrained .window-content
+   itself into that flex column with overflow:hidden. Scoped to sheets using
+   this class combo (Actor/Item) rather than every window, since the small
+   Challenge/Frenzy/Vaulderie popups use height:"auto" and don't need it. */
+.window-content:has(> .vtmlarp.sheet) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 .vtmlarp .sheet-body .tab { display: none; }
 .vtmlarp .sheet-body .tab.active { display: block; }
 
