@@ -28,7 +28,12 @@ function attributeCategorySchema() {
       initial: "tertiary",
       choices: ["primary", "secondary", "tertiary"]
     }),
-    traits: new fields.ArrayField(traitField())
+    traits: new fields.ArrayField(traitField()),
+    // The Trait Bidding rule cares about how many Traits total a character
+    // has in a pool, not the individual named entries below - a player
+    // should be able to set/see that count directly (e.g. "12 Physical")
+    // without first having to type out all 12 names as separate chips.
+    total: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 })
   });
 }
 

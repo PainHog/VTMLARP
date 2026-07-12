@@ -187,6 +187,9 @@
       {{#each system.attributes as |category key|}}
       <div class="attribute-category collapsible" data-collapse-key="attr-{{key}}">
         <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> {{vtmCapitalize key}} <span class="priority">({{category.priority}})</span>
+          <label class="category-total" title="Total Traits in this pool (Trait Bidding), independent of the named chips below">Total
+            <input type="number" name="system.attributes.{{key}}.total" value="{{category.total}}" min="0" class="tiny">
+          </label>
           <a class="trait-add" data-path="attributes.{{key}}.traits"><i class="fas fa-plus"></i></a>
         </h3>
         <div class="trait-list collapsible-body">

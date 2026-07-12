@@ -481,6 +481,22 @@ form.vtmlarp.sheet {
   display: none;
 }
 
+.vtmlarp .category-total {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: normal;
+  font-variant: normal;
+  color: var(--vtm-text-dim);
+  margin-left: 10px;
+  cursor: default;
+}
+.vtmlarp .category-total input {
+  width: 40px;
+  cursor: text;
+}
+
 .vtmlarp.sheet h1,
 .vtmlarp.sheet h2,
 .vtmlarp.sheet h3 {

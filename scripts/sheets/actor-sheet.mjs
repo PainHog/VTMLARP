@@ -11,6 +11,24 @@ const CREATABLE_TYPES = {
   merit: "Merit", flaw: "Flaw", ritual: "Ritual", gear: "Gear"
 };
 
+// Creating an Item with no img set lets Foundry core assign one of its own
+// randomized default icons, and not every one of those actually exists on
+// every server (a self-hosted install may not have the full core icon set) -
+// several 404'd (silhouette-evil-horned-summon.webp, wave-blue.webp,
+// quill-ink-white.webp) the moment a player quick-created a Background.
+// Pinning an explicit default per type, from the same icons/svg/* set
+// already verified safe elsewhere in this compendium, avoids depending on
+// which decorative icons happen to be present on a given install.
+const DEFAULT_ITEM_ICONS = {
+  discipline: "icons/svg/upgrade.svg",
+  power: "icons/svg/lightning.svg",
+  background: "icons/svg/house.svg",
+  merit: "icons/svg/heal.svg",
+  flaw: "icons/svg/hazard.svg",
+  ritual: "icons/svg/book.svg",
+  gear: "icons/svg/item-bag.svg"
+};
+
 // Basic/Intermediate/Advanced/Elder power tiers map 1:1 to a Discipline's
 // rating (Basic power present -> rating 1, Advanced -> rating 3, etc.), so
 // this doubles as both the sort order for powers under a Discipline and the
@@ -360,9 +378,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   /** Toggle a collapsible section (attribute/ability category, discipline group) open/closed. */
   _onToggleCollapse(event) {
-    // Ignore clicks on nested action buttons (edit/delete/add-trait/etc.)
-    // inside the header, so toggling collapse doesn't fight with those.
-    if (event.target.closest("a")) return;
+    // Ignore clicks on nested action buttons (edit/delete/add-trait/etc.) or
+    // form inputs (e.g. the category Total field) inside the header, so
+    // toggling collapse doesn't fight with those.
+    if (event.target.closest("a, input, select, label")) return;
     const container = event.currentTarget.closest(".collapsible");
     if (!container) return;
     const key = container.dataset.collapseKey;
@@ -599,7 +618,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const label = CREATABLE_TYPES[type] ?? type;
     await this.actor.createEmbeddedDocuments("Item", [{
       name: `New ${label}`,
-      type
+      type,
+      img: DEFAULT_ITEM_ICONS[type] ?? "icons/svg/mystery-man.svg"
     }]);
     this.render();
   }
