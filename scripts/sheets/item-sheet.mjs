@@ -29,7 +29,11 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     context.item = this.item;
     context.system = this.item.system;
     context.owner = this.item.isOwner;
-    context.cssClass = this.isEditable ? "editable" : "locked";
+    // Matches the same fix in actor-sheet.mjs: ApplicationV2 only applies
+    // DEFAULT_OPTIONS.classes to the outer .application element, not to
+    // this inner <form>, so cssClass needs to carry "vtmlarp sheet item"
+    // itself for any CSS scoped to those classes on this specific element.
+    context.cssClass = `vtmlarp sheet item ${this.isEditable ? "editable" : "locked"}`;
 
     // Built explicitly here (rather than trusting an assumed shape from the
     // mixin's own tabGroups context) so the template's active/class logic

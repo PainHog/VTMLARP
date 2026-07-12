@@ -191,7 +191,17 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     context.actor = this.actor;
     context.system = this.actor.system;
     context.owner = this.actor.isOwner;
-    context.cssClass = this.isEditable ? "editable" : "locked";
+    // The root <form> template tag is `class="{{cssClass}} flexcol"` - this
+    // was only ever "editable"/"locked", never actually including
+    // "vtmlarp sheet actor" at all. ApplicationV2 only applies
+    // DEFAULT_OPTIONS.classes to the outer .application window element, not
+    // to this inner <form>, so every CSS rule requiring .vtmlarp/.sheet on
+    // this specific element - `.window-content:has(.vtmlarp.sheet)`,
+    // `form.vtmlarp.sheet {...}` - silently never matched. That's the actual
+    // root cause of the sheet never getting a bounded, scrollable body:
+    // not a missing scrollbar style, but this element never carrying the
+    // classes those styles were scoped to in the first place.
+    context.cssClass = `vtmlarp sheet actor ${this.isEditable ? "editable" : "locked"}`;
     const sys = context.system;
 
     const active = this.tabGroups.primary ?? "main";
@@ -352,6 +362,19 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".apply-generation", "click", this._onApplyGeneration.bind(this));
     on(".item-rating-control", "click", this._onItemRatingControl.bind(this));
 
+    // Every other interactive control on this sheet saves explicitly via its
+    // own handler above rather than trusting form.submitOnChange - plain
+    // <select>/<input name="system...."> fields with no dedicated handler
+    // (Clan, Sect, Nature, Demeanor, Generation, Path, Willpower/Blood
+    // pools, ability/background name text fields, etc.) were the one
+    // exception, relying entirely on that implicit submission. Confirmed via
+    // console logging that it wasn't actually persisting (system.clan stayed
+    // "" after selecting a Clan, across every subsequent render) - so these
+    // now save the same explicit way as everything else on this sheet,
+    // rather than depending on framework behavior that demonstrably wasn't
+    // working here.
+    on("select[name^='system.'], input[name^='system.']", "change", this._onFieldChange.bind(this));
+
     // ApplicationV2 doesn't auto-wire a "dragDrop" static option into actual
     // drag/drop event listeners the way V1's FormApplication did (that
     // binding lived in FormApplication.activateListeners, which no longer
@@ -377,6 +400,20 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       const key = node.dataset.collapseKey;
       if (key && this.#collapsedKeys.has(key)) node.classList.add("collapsed");
     });
+  }
+
+  /**
+   * Explicit save for any plain <select>/<input name="system...."> field
+   * with no other dedicated handler (Clan, Sect, Nature, Demeanor,
+   * Generation, Path, Willpower/Blood pools, ability/background name text
+   * fields, etc.), rather than relying solely on form.submitOnChange.
+   */
+  async _onFieldChange(event) {
+    const el = event.currentTarget;
+    let value = el.value;
+    if (el.type === "checkbox") value = el.checked;
+    else if (el.type === "number") value = value === "" ? null : Number(value);
+    await this.actor.update({ [el.name]: value });
   }
 
   /** Toggle a collapsible section (attribute/ability category, discipline group) open/closed. */
