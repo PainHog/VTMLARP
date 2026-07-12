@@ -13,13 +13,13 @@
   <div class="vtm-clash">
     <div class="vtm-combatant">
       <span class="vtm-combatant-name">{{actorName}} ({{traitsBid}})</span>
-      <span class="vtm-gesture vtm-gesture-left">{{vtmGestureEmoji gesture}}</span>
+      <span class="vtm-gesture vtm-gesture-left"><i class="fas {{vtmGestureIcon gesture}}"></i></span>
     </div>
     <span class="vtm-vs">VS</span>
     <div class="vtm-combatant">
       <span class="vtm-combatant-name">{{#if opponentName}}{{opponentName}}{{else}}Opponent{{/if}} ({{opponentTraitsBid}})</span>
       {{#if opponentGesture}}
-      <span class="vtm-gesture vtm-gesture-right">{{vtmGestureEmoji opponentGesture}}</span>
+      <span class="vtm-gesture vtm-gesture-right"><i class="fas {{vtmGestureIcon opponentGesture}}"></i></span>
       {{else}}
       <span class="vtm-gesture vtm-gesture-right vtm-gesture-unknown">?</span>
       {{/if}}

@@ -41,8 +41,12 @@ Hooks.once("init", () => {
 
   Handlebars.registerHelper("vtmCapitalize", str => typeof str === "string" ? str.charAt(0).toUpperCase() + str.slice(1) : str);
 
-  const GESTURE_EMOJI = { rock: "✊", paper: "✋", scissors: "✌️", bomb: "💣" };
-  Handlebars.registerHelper("vtmGestureEmoji", gesture => GESTURE_EMOJI[gesture] ?? "?");
+  // Font Awesome icons instead of emoji glyphs for Rock/Paper/Scissors/Bomb -
+  // emoji render as fixed full-color platform graphics that CSS can't
+  // recolor, while an icon font's color is just an ordinary styleable
+  // property (see .vtm-gesture i rules in vtmlarp.css).
+  const GESTURE_ICONS = { rock: "fa-hand-rock", paper: "fa-hand-paper", scissors: "fa-hand-scissors", bomb: "fa-bomb" };
+  Handlebars.registerHelper("vtmGestureIcon", gesture => GESTURE_ICONS[gesture] ?? "fa-question");
 });
 
 Hooks.once("ready", () => {

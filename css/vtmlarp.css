@@ -1102,11 +1102,19 @@ form.vtmlarp.sheet {
   line-height: 1;
 }
 
-.vtmlarp-challenge-card .vtm-gesture-left {
+/* Font Awesome icons (not emoji, which ignore CSS color entirely) so each
+   side's gesture can be tinted distinctly: the challenger in dark red, the
+   opponent in black. */
+.vtmlarp-challenge-card .vtm-gesture-left i {
+  color: var(--vtm-red-bright);
   animation: vtm-slide-in-left 0.45s cubic-bezier(.34, 1.56, .64, 1) both;
 }
 
-.vtmlarp-challenge-card .vtm-gesture-right {
+.vtmlarp-challenge-card .vtm-gesture-right i {
+  color: #1a1a1a;
+  /* Pure black on a dark chat log background would be nearly invisible - a
+     faint light halo keeps it legible without changing the actual color. */
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
   animation: vtm-slide-in-right 0.45s cubic-bezier(.34, 1.56, .64, 1) both;
 }
 
