@@ -437,6 +437,24 @@
 .vtmlarp .sheet-body .tab { display: none; }
 .vtmlarp .sheet-body .tab.active { display: block; }
 
+/* Collapsible attribute/ability categories and discipline groups: header
+   stays visible, body collapses away, caret rotates to show state. */
+.vtmlarp .collapsible-header {
+  cursor: pointer;
+  user-select: none;
+}
+.vtmlarp .collapse-caret {
+  display: inline-block;
+  width: 1em;
+  transition: transform 0.15s ease;
+}
+.vtmlarp .collapsible.collapsed .collapse-caret {
+  transform: rotate(-90deg);
+}
+.vtmlarp .collapsible.collapsed .collapsible-body {
+  display: none;
+}
+
 .vtmlarp.sheet h1,
 .vtmlarp.sheet h2,
 .vtmlarp.sheet h3 {

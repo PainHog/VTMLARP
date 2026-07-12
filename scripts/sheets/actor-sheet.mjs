@@ -136,6 +136,12 @@ const SIMPLE_LIST_DEFAULTS = {
 };
 
 export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+  // Tracks which collapsible sections (attribute/ability categories,
+  // discipline groups) are currently collapsed, keyed by their
+  // data-collapse-key. Kept on the instance rather than in actor data so it
+  // survives re-renders without writing UI state into the document.
+  #collapsedKeys = new Set();
+
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "sheet", "actor"],
     position: { width: 960, height: 880 },
@@ -187,17 +193,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       (context.itemsByType[item.type] ??= []).push(item);
     }
 
-    // Passive powers are always in effect by definition (there's no toggle
-    // for them - the "active" flag only gets set by actually clicking the
-    // toggle control on a toggle-type power), so they belong in this summary
-    // too even though system.active stays at its default false for them.
-    // Split into two groups for display so a sheet with many passives isn't
-    // one undifferentiated wall of chips next to the handful actually
-    // switched on right now.
     const allPowerItems = context.itemsByType.power ?? [];
-    context.passivePowers = allPowerItems.filter(item => item.system.activation === "passive");
-    context.toggledOnPowers = allPowerItems.filter(item => item.system.active && item.system.activation !== "passive");
-    context.activePowers = [...context.passivePowers, ...context.toggledOnPowers];
 
     const disciplineItems = context.itemsByType.discipline ?? [];
     context.powerPrereqStatus = {};
@@ -272,6 +268,20 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** @override */
   _onRender(context, options) {
     super._onRender(context, options);
+
+    // Two prior CSS-selector attempts at forcing .window-content into a
+    // bounded, scrollable flex column did not actually take effect (data
+    // confirmed correct via console logging, but content stayed invisible
+    // below the fold) - rather than guess at another selector, set this
+    // directly via JS on ApplicationV2's own documented `this.window.content`
+    // element, which removes any dependency on CSS specificity, selector
+    // support, or cascade ordering assumptions.
+    if (this.window?.content) {
+      this.window.content.style.display = "flex";
+      this.window.content.style.flexDirection = "column";
+      this.window.content.style.overflow = "hidden";
+    }
+
     const el = this.element;
     const on = (selector, event, handler) => {
       el.querySelectorAll(selector).forEach(node => node.addEventListener(event, handler));
@@ -280,6 +290,9 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // Available to everyone (not just owners with edit rights) - opening a
     // lore entry to read isn't an edit.
     on(".open-lore", "click", this._onOpenLore.bind(this));
+    // Collapse/expand is local UI state, not a document edit, so it should
+    // work even for players/observers without edit rights on this actor.
+    on(".collapsible-header", "click", this._onToggleCollapse.bind(this));
 
     if (!this.isEditable) return;
 
@@ -323,6 +336,27 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         drop: this._onDrop.bind(this)
       }
     }).bind(this.element);
+
+    // Re-apply whichever sections the user previously collapsed, since a
+    // fresh render rebuilds the DOM from scratch and would otherwise forget.
+    el.querySelectorAll(".collapsible").forEach(node => {
+      const key = node.dataset.collapseKey;
+      if (key && this.#collapsedKeys.has(key)) node.classList.add("collapsed");
+    });
+  }
+
+  /** Toggle a collapsible section (attribute/ability category, discipline group) open/closed. */
+  _onToggleCollapse(event) {
+    // Ignore clicks on nested action buttons (edit/delete/add-trait/etc.)
+    // inside the header, so toggling collapse doesn't fight with those.
+    if (event.target.closest("a")) return;
+    const container = event.currentTarget.closest(".collapsible");
+    if (!container) return;
+    const key = container.dataset.collapseKey;
+    const collapsed = container.classList.toggle("collapsed");
+    if (!key) return;
+    if (collapsed) this.#collapsedKeys.add(key);
+    else this.#collapsedKeys.delete(key);
   }
 
   /** Open the compendium JournalEntry backing a Clan/Path lore link button. */

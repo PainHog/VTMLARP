@@ -181,34 +181,15 @@
         <button type="button" class="open-vaulderie"><i class="fas fa-tint"></i> Vaulderie</button>
       </div>
 
-      {{#if activePowers.length}}
-      <h3>Active Powers</h3>
-      {{#if toggledOnPowers.length}}
-      <p class="hint active-powers-subhead">Toggled On Now</p>
-      <div class="active-powers flexrow">
-        {{#each toggledOnPowers as |item|}}
-        <span class="trait-chip toggled-chip">{{item.name}}</span>
-        {{/each}}
-      </div>
-      {{/if}}
-      {{#if passivePowers.length}}
-      <p class="hint active-powers-subhead">Always On (Passive)</p>
-      <div class="active-powers flexrow">
-        {{#each passivePowers as |item|}}
-        <span class="trait-chip passive-chip">{{item.name}}</span>
-        {{/each}}
-      </div>
-      {{/if}}
-      {{/if}}
     </div>
 
     <div class="tab {{#if tabs.traits.active}}active{{/if}}" data-group="primary" data-tab="traits">
       {{#each system.attributes as |category key|}}
-      <div class="attribute-category">
-        <h3>{{vtmCapitalize key}} <span class="priority">({{category.priority}})</span>
+      <div class="attribute-category collapsible" data-collapse-key="attr-{{key}}">
+        <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> {{vtmCapitalize key}} <span class="priority">({{category.priority}})</span>
           <a class="trait-add" data-path="attributes.{{key}}.traits"><i class="fas fa-plus"></i></a>
         </h3>
-        <div class="trait-list">
+        <div class="trait-list collapsible-body">
           {{#each category.traits as |trait i|}}
           <span class="trait-chip {{#if trait.spent}}spent{{/if}}">
             <a class="trait-toggle" data-path="attributes.{{key}}.traits" data-index="{{i}}">{{trait.name}}</a>
@@ -219,11 +200,11 @@
       </div>
       {{/each}}
 
-      <div class="attribute-category">
-        <h3>Negative Traits
+      <div class="attribute-category collapsible" data-collapse-key="attr-negative">
+        <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> Negative Traits
           <a class="trait-add" data-path="negativeTraits"><i class="fas fa-plus"></i></a>
         </h3>
-        <div class="trait-list">
+        <div class="trait-list collapsible-body">
           {{#each system.negativeTraits as |trait i|}}
           <span class="trait-chip negative {{#if trait.spent}}spent{{/if}}">
             <a class="trait-toggle" data-path="negativeTraits" data-index="{{i}}">{{trait.name}}</a>
@@ -234,11 +215,11 @@
       </div>
 
       {{#each system.abilities as |list key|}}
-      <div class="ability-category">
-        <h3>{{vtmCapitalize key}}
+      <div class="ability-category collapsible" data-collapse-key="ability-{{key}}">
+        <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> {{vtmCapitalize key}}
           <a class="rated-trait-control" data-action="add" data-path="abilities.{{key}}"><i class="fas fa-plus"></i></a>
         </h3>
-        <table class="rated-trait-table">
+        <table class="rated-trait-table collapsible-body">
           {{#each list as |ability i|}}
           <tr>
             <td><input type="text" name="system.abilities.{{key}}.{{i}}.name" value="{{ability.name}}"></td>
@@ -263,15 +244,16 @@
       </h3>
 
       {{#each disciplineGroups as |group|}}
-      <div class="discipline-group">
-        <div class="item discipline-header" data-item-id="{{group.discipline.id}}">
+      <div class="discipline-group collapsible" data-collapse-key="disc-{{group.discipline.id}}">
+        <div class="item discipline-header collapsible-header" data-item-id="{{group.discipline.id}}">
+          <i class="fas fa-caret-down collapse-caret"></i>
           <img src="{{group.discipline.img}}" class="item-img">
           <span class="item-name">{{group.discipline.name}}</span>
           <span class="item-rating">{{group.discipline.system.rating}}</span>
           <a class="item-edit"><i class="fas fa-edit"></i></a>
           <a class="item-delete"><i class="fas fa-trash"></i></a>
         </div>
-        <ol class="item-list discipline-powers">
+        <ol class="item-list discipline-powers collapsible-body">
           {{#each group.powers as |item|}}
           {{#with (lookup ../../powerPrereqStatus item.id) as |prereq|}}
           <li class="item {{#if item.system.active}}power-active{{/if}} {{#if prereq}}{{#unless prereq.met}}prereq-unmet{{/unless}}{{/if}}" data-item-id="{{item.id}}">
