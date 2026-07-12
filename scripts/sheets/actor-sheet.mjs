@@ -261,17 +261,15 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ? PATH_OPTIONS : [sys.morality.path, ...PATH_OPTIONS].filter(Boolean);
     context.generationInfo = GENERATION_TABLE[sys.generation] ?? null;
 
-    // Lore-linking buttons next to Clan/Sect dropdowns. Mirrors how
-    // archetypeLoreEntry below behaves for Nature/Demeanor: show the button
-    // as soon as a value is picked, rather than only when it happens to hit
-    // an exact entry in the lookup tables above (those tables exist to
-    // redirect a handful of values to a differently-named/located entry -
-    // e.g. antitribu bloodlines - not to gate whether the button shows at
-    // all). If a value isn't in the table, fall back to guessing the entry
-    // shares its name in the "obvious" pack; _onOpenLore already warns
-    // gracefully at click time if that guess doesn't resolve to anything.
-    context.clanLoreEntry = sys.clan ? (CLAN_LORE_LOOKUP[sys.clan] ?? { pack: "clans", name: sys.clan }) : null;
-    context.sectLoreEntry = sys.sect ? (SECT_LORE_LOOKUP[sys.sect] ?? { pack: "sects", name: sys.sect }) : null;
+    // Lore-linking buttons next to Clan/Sect dropdowns. These are now always
+    // rendered (rather than conditionally, per an earlier attempt that still
+    // didn't actually show up for the player even with a valid Clan/Sect
+    // selected) - the button is a fixed part of the layout, and _onOpenLore
+    // resolves whatever the field's current value is at click time, warning
+    // if nothing is selected or nothing matches instead of the button itself
+    // disappearing based on render-time state.
+    context.clanLoreEntry = CLAN_LORE_LOOKUP[sys.clan] ?? { pack: "clans", name: sys.clan };
+    context.sectLoreEntry = SECT_LORE_LOOKUP[sys.sect] ?? { pack: "sects", name: sys.sect };
     context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : null;
     // Nature and Demeanor both draw from the same shared "Nature and Demeanor
     // Archetypes" reference doc (no per-archetype documents exist), and the
@@ -395,6 +393,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   async _onOpenLore(event) {
     event.preventDefault();
     const { pack: packName, name } = event.currentTarget.dataset;
+    if (!name) {
+      ui.notifications?.warn("Select a value first to open its lore entry.");
+      return;
+    }
     const pack = game.packs.get(`vtmlarp.${packName}`);
     if (!pack) {
       ui.notifications?.warn(`Compendium "${packName}" not found.`);

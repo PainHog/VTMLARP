@@ -13,9 +13,7 @@
               <option value="{{c}}" {{#if (eq ../system.clan c)}}selected{{/if}}>{{c}}</option>
               {{/each}}
             </select>
-            {{#if clanLoreEntry}}
-            <a class="open-lore" data-pack="{{clanLoreEntry.pack}}" data-name="{{clanLoreEntry.name}}" title="Open {{clanLoreEntry.name}} lore"><i class="fas fa-book"></i></a>
-            {{/if}}
+            <a class="open-lore" data-pack="{{clanLoreEntry.pack}}" data-name="{{clanLoreEntry.name}}" title="Open {{#if clanLoreEntry.name}}{{clanLoreEntry.name}}{{else}}Clan{{/if}} lore"><i class="fas fa-book"></i></a>
           </span>
         </label>
         <label>Bloodline <input type="text" name="system.bloodline" value="{{system.bloodline}}" placeholder="e.g. Antitribu, Caitiff"></label>
@@ -27,9 +25,7 @@
               <option value="{{s}}" {{#if (eq ../system.sect s)}}selected{{/if}}>{{s}}</option>
               {{/each}}
             </select>
-            {{#if sectLoreEntry}}
-            <a class="open-lore" data-pack="{{sectLoreEntry.pack}}" data-name="{{sectLoreEntry.name}}" title="Open {{sectLoreEntry.name}} lore"><i class="fas fa-book"></i></a>
-            {{/if}}
+            <a class="open-lore" data-pack="{{sectLoreEntry.pack}}" data-name="{{sectLoreEntry.name}}" title="Open {{#if sectLoreEntry.name}}{{sectLoreEntry.name}}{{else}}Sect{{/if}} lore"><i class="fas fa-book"></i></a>
           </span>
         </label>
         <label>Generation
