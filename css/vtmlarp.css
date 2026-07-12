@@ -414,6 +414,32 @@
   font-size: 14px !important;
 }
 
+/* This stylesheet's .sheet-header/.sheet-tabs/.sheet-body flex rules below
+   only do anything if their parent - the sheet's root <form class="vtmlarp
+   sheet flexcol">, per character-sheet.hbs/item-sheet.hbs - is itself a flex
+   container. This project has always used "flexcol"/"flexrow" class names
+   throughout its templates without ever actually defining them here,
+   assuming Foundry core CSS supplied them; it doesn't reliably do so for
+   this root element. Without this, the root <form> is a plain block box, so
+   every child's flex:/overflow-y: rules are no-ops - content (including
+   correctly-grouped Discipline Powers) renders into the DOM but piles up
+   below the window's visible, non-scrolling area instead of being
+   constrained and scrolled. Defining these directly removes the dependency
+   on an assumption that was never actually verified. */
+.vtmlarp.flexcol,
+.vtmlarp .flexcol {
+  display: flex;
+  flex-direction: column;
+}
+.vtmlarp .flexrow {
+  display: flex;
+  flex-direction: row;
+}
+form.vtmlarp.sheet {
+  height: 100%;
+  min-height: 0;
+}
+
 .vtmlarp .sheet-header { flex: 0 0 auto; }
 .vtmlarp .sheet-tabs { flex: 0 0 auto; }
 .vtmlarp .sheet-body { flex: 1 1 auto; overflow-y: auto; min-height: 0; }
