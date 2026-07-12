@@ -243,11 +243,17 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ? PATH_OPTIONS : [sys.morality.path, ...PATH_OPTIONS].filter(Boolean);
     context.generationInfo = GENERATION_TABLE[sys.generation] ?? null;
 
-    // Lore-linking buttons next to Clan and Path dropdowns - only rendered
-    // when a mapping actually exists, since coverage isn't complete (e.g.
-    // Sect has no matching compendium entry at all yet).
-    context.clanLoreEntry = CLAN_LORE_LOOKUP[sys.clan] ?? null;
-    context.sectLoreEntry = SECT_LORE_LOOKUP[sys.sect] ?? null;
+    // Lore-linking buttons next to Clan/Sect dropdowns. Mirrors how
+    // archetypeLoreEntry below behaves for Nature/Demeanor: show the button
+    // as soon as a value is picked, rather than only when it happens to hit
+    // an exact entry in the lookup tables above (those tables exist to
+    // redirect a handful of values to a differently-named/located entry -
+    // e.g. antitribu bloodlines - not to gate whether the button shows at
+    // all). If a value isn't in the table, fall back to guessing the entry
+    // shares its name in the "obvious" pack; _onOpenLore already warns
+    // gracefully at click time if that guess doesn't resolve to anything.
+    context.clanLoreEntry = sys.clan ? (CLAN_LORE_LOOKUP[sys.clan] ?? { pack: "clans", name: sys.clan }) : null;
+    context.sectLoreEntry = sys.sect ? (SECT_LORE_LOOKUP[sys.sect] ?? { pack: "sects", name: sys.sect }) : null;
     context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : null;
     // Nature and Demeanor both draw from the same shared "Nature and Demeanor
     // Archetypes" reference doc (no per-archetype documents exist), and the
