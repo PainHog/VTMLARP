@@ -138,7 +138,7 @@ const SIMPLE_LIST_DEFAULTS = {
 export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "sheet", "actor"],
-    position: { width: 820, height: 880 },
+    position: { width: 960, height: 880 },
     window: { resizable: true },
     form: { submitOnChange: true }
   };
@@ -223,6 +223,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       return { discipline, powers: powers.sort(sortByLevel) };
     });
     context.otherPowers = [...remainingPowers].sort(sortByLevel);
+
+    console.log("VTMLARP | Discipline names on actor:", disciplineItems.map(d => JSON.stringify(d.name)));
+    console.log("VTMLARP | Power discipline fields on actor:", allPowerItems.map(p => `${JSON.stringify(p.system.discipline)} (power: ${p.name})`));
+    console.log("VTMLARP | disciplineGroups result:", context.disciplineGroups.map(g => `${g.discipline.name}: ${g.powers.length} power(s)`));
+    console.log("VTMLARP | otherPowers result:", context.otherPowers.map(p => p.name));
 
     context.isCharacter = this.actor.type === "character";
     context.NPC_TYPE_OPTIONS = ["vampire", "ghoul", "mortal", "spirit", "other"];

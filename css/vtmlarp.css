@@ -519,24 +519,47 @@
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
 }
 
+/* This system never defines its own .flexrow/.flexcol - it always relied on
+   Foundry's own core CSS providing them (a very common convention), via the
+   plain "flexrow"/"flexcol" classes used directly in the templates. That's
+   an assumption worth not trusting blindly a 4th time: every element in the
+   header that actually needs flex layout gets it explicitly and
+   defensively here instead, with a real minimum width on selects so
+   flexbox has no room to shrink a dropdown below what its own selected text
+   needs - this is what was actually causing Sect/Clan/etc. to be
+   unreadable and the whole window needing to be manually dragged wider to
+   compensate. */
 .vtmlarp .header-grid {
+  display: flex !important;
   flex-wrap: wrap;
-  gap: 4px 12px;
+  gap: 6px 14px;
   margin-top: 4px;
 }
 
 .vtmlarp .header-grid label {
   font-size: 13px;
   color: var(--vtm-text-dim);
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  flex: 0 0 auto;
+}
+
+.vtmlarp .header-grid select {
+  min-width: 150px;
+  width: auto;
 }
 
 .vtmlarp .dropdown-with-lore {
+  display: flex !important;
+  flex-direction: row;
   align-items: center;
   gap: 4px;
+}
+
+.vtmlarp .dropdown-with-lore select {
+  flex: 1 1 auto;
 }
 
 .vtmlarp .open-lore {
