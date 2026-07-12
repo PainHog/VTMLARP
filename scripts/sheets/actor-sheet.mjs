@@ -261,22 +261,25 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ? PATH_OPTIONS : [sys.morality.path, ...PATH_OPTIONS].filter(Boolean);
     context.generationInfo = GENERATION_TABLE[sys.generation] ?? null;
 
-    // Lore-linking buttons next to Clan/Sect dropdowns. These are now always
+    // Lore-linking buttons next to Clan/Sect dropdowns. These are always
     // rendered (rather than conditionally, per an earlier attempt that still
     // didn't actually show up for the player even with a valid Clan/Sect
-    // selected) - the button is a fixed part of the layout, and _onOpenLore
-    // resolves whatever the field's current value is at click time, warning
-    // if nothing is selected or nothing matches instead of the button itself
-    // disappearing based on render-time state.
-    context.clanLoreEntry = CLAN_LORE_LOOKUP[sys.clan] ?? { pack: "clans", name: sys.clan };
-    context.sectLoreEntry = SECT_LORE_LOOKUP[sys.sect] ?? { pack: "sects", name: sys.sect };
-    context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : null;
+    // selected) - the button is a fixed part of the layout. With nothing
+    // selected yet (or a value with no dedicated compendium entry), fall
+    // back to the general "Character Creation" reference doc rather than a
+    // dead/blank button - there's no single "Clans overview"/"Sects
+    // overview" doc in this compendium, but Character Creation is where a
+    // player actually picking one would look anyway.
+    const CHARACTER_CREATION_ENTRY = { pack: "rules-reference", name: "Character Creation" };
+    context.clanLoreEntry = sys.clan ? (CLAN_LORE_LOOKUP[sys.clan] ?? { pack: "clans", name: sys.clan }) : CHARACTER_CREATION_ENTRY;
+    context.sectLoreEntry = sys.sect ? (SECT_LORE_LOOKUP[sys.sect] ?? { pack: "sects", name: sys.sect }) : CHARACTER_CREATION_ENTRY;
+    context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : CHARACTER_CREATION_ENTRY;
     // Nature and Demeanor both draw from the same shared "Nature and Demeanor
-    // Archetypes" reference doc (no per-archetype documents exist), and the
-    // Virtues (Conscience/Conviction, Self-Control/Instinct, Courage) all
-    // point to the same shared Virtues reference doc.
-    context.archetypeLoreEntry = sys.nature || sys.demeanor
-      ? { pack: "rules-reference", name: "Nature and Demeanor Archetypes" } : null;
+    // Archetypes" reference doc regardless of whether a value is picked yet
+    // (no per-archetype documents exist), and the Virtues (Conscience/
+    // Conviction, Self-Control/Instinct, Courage) all point to the same
+    // shared Virtues reference doc.
+    context.archetypeLoreEntry = { pack: "rules-reference", name: "Nature and Demeanor Archetypes" };
     context.virtuesLoreEntry = { pack: "rules-reference", name: "Virtues" };
     return context;
   }
