@@ -674,6 +674,15 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     const next = DAMAGE_CYCLE[(idx + 1) % DAMAGE_CYCLE.length];
     await this.actor.update({ [`system.${path}`]: next });
+
+    // Open (never force-resolve) a Frenzy check once real damage crosses
+    // into Wounded or worse - exact table rules on when Frenzy applies vary
+    // too much to hard-enforce a result, but popping the tool pre-filled
+    // beats relying on someone remembering to open it manually mid-combat.
+    // The player/GM can just close it if a check isn't actually called for.
+    if (!isBonus && next !== "ok" && HEALTH_LEVELS.indexOf(level) >= HEALTH_LEVELS.indexOf("wounded")) {
+      new FrenzyApp(this.actor).render(true);
+    }
   }
 
   /**
