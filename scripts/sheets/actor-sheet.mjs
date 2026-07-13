@@ -803,13 +803,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     const item = this.actor.items.get(itemId);
     if (!item) return;
-    const prefill = {
+    new ChallengeApp(this.actor, {}, {
       challengeType: item.system.challengeType,
       retest: item.system.retestAbility,
       powerName: item.name
-    };
-    console.log("VTMLARP | Initiating Challenge from Power:", item.name, "| item.system:", item.system, "| prefill built:", prefill);
-    new ChallengeApp(this.actor, {}, prefill).render(true);
+    }).render(true);
   }
 
   _onItemEdit(event) {

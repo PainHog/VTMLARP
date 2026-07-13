@@ -70,7 +70,6 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     context.challengeTypes = ["physical", "social", "mental", "static"];
     context.equipmentBonuses = equipmentBonuses;
     context.prefill = this.prefill;
-    console.log("VTMLARP | ChallengeApp._prepareContext prefill:", this.prefill, "-> context.challengeTypes:", context.challengeTypes);
     context.actorOptions = [
       { id: TEST_OPPONENT_ID, name: `TEST (practice - ${TEST_OPPONENT_TRAITS} Traits, always ${TEST_OPPONENT_GESTURE})` },
       ...game.actors

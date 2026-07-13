@@ -8,7 +8,7 @@
   <label>Challenge Type
     <select name="challengeType">
       {{#each challengeTypes as |type|}}
-      <option value="{{type}}" {{#if (eq type prefill.challengeType)}}selected{{/if}}>{{vtmCapitalize type}}</option>
+      <option value="{{type}}" {{#if (eq type ../prefill.challengeType)}}selected{{/if}}>{{vtmCapitalize type}}</option>
       {{/each}}
     </select>
   </label>
