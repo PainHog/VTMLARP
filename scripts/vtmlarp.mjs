@@ -43,6 +43,18 @@ Hooks.once("init", () => {
 
   Handlebars.registerHelper("vtmCapitalize", str => typeof str === "string" ? str.charAt(0).toUpperCase() + str.slice(1) : str);
 
+  // Combination Disciplines store every parent Discipline they draw on in
+  // one string field - "Combination Discipline (Auspex/Celerity/Fortitude)",
+  // "Auspex, Celerity", or a plain single name - so a Power's own
+  // discipline field can't always link to one compendium entry. This splits
+  // it into individual clean names so the sheet can offer a lore link to
+  // each parent Discipline separately instead of just the raw combo string.
+  Handlebars.registerHelper("vtmParseDisciplineNames", discipline => {
+    if (typeof discipline !== "string" || !discipline) return [];
+    const inner = discipline.match(/\(([^)]+)\)/)?.[1] ?? discipline;
+    return inner.split(/[/,]/).map(s => s.trim()).filter(Boolean);
+  });
+
   // Font Awesome icons instead of emoji glyphs for Rock/Paper/Scissors/Bomb -
   // emoji render as fixed full-color platform graphics that CSS can't
   // recolor, while an icon font's color is just an ordinary styleable

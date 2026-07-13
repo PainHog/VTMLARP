@@ -254,11 +254,6 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     });
     context.otherPowers = [...remainingPowers].sort(sortByLevel);
 
-    console.log("VTMLARP | Discipline names on actor:", disciplineItems.map(d => JSON.stringify(d.name)));
-    console.log("VTMLARP | Power discipline fields on actor:", allPowerItems.map(p => `${JSON.stringify(p.system.discipline)} (power: ${p.name})`));
-    console.log("VTMLARP | disciplineGroups result:", context.disciplineGroups.map(g => `${g.discipline.name}: ${g.powers.length} power(s)`));
-    console.log("VTMLARP | otherPowers result:", context.otherPowers.map(p => p.name));
-
     context.isCharacter = this.actor.type === "character";
     context.isGM = game.user.isGM;
     context.xpSpent = Math.max(0, (sys.experience.total ?? 0) - (sys.experience.value ?? 0));
@@ -285,8 +280,6 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const CHARACTER_CREATION_ENTRY = { pack: "rules-reference", name: "Character Creation" };
     context.clanLoreEntry = sys.clan ? (CLAN_LORE_LOOKUP[sys.clan] ?? { pack: "clans", name: sys.clan }) : CHARACTER_CREATION_ENTRY;
     context.sectLoreEntry = sys.sect ? (SECT_LORE_LOOKUP[sys.sect] ?? { pack: "sects", name: sys.sect }) : CHARACTER_CREATION_ENTRY;
-    console.log("VTMLARP | sys.clan:", JSON.stringify(sys.clan), "-> clanLoreEntry:", context.clanLoreEntry);
-    console.log("VTMLARP | sys.sect:", JSON.stringify(sys.sect), "-> sectLoreEntry:", context.sectLoreEntry);
     context.pathLoreEntry = sys.morality.path ? { pack: "paths-of-enlightenment", name: sys.morality.path } : CHARACTER_CREATION_ENTRY;
     // Nature and Demeanor both draw from the same shared "Nature and Demeanor
     // Archetypes" reference doc regardless of whether a value is picked yet
@@ -336,6 +329,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // lore entry to read isn't an edit.
     on(".open-lore", "click", this._onOpenLore.bind(this));
     on(".open-source", "click", this._onOpenSource.bind(this));
+    on(".open-power-discipline-lore", "click", this._onOpenPowerDisciplineLore.bind(this));
     // Collapse/expand is local UI state, not a document edit, so it should
     // work even for players/observers without edit rights on this actor.
     on(".collapsible-header", "click", this._onToggleCollapse.bind(this));
@@ -435,7 +429,6 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     else this.#collapsedKeys.delete(key);
   }
 
-  /** Open the compendium JournalEntry backing a Clan/Path lore link button. */
   /**
    * Open the original compendium document a dragged-in Item came from
    * (Discipline, Merit, Flaw, Background), using the UUID Foundry itself
@@ -455,10 +448,32 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     doc.sheet.render(true);
   }
 
+  /**
+   * Open a parent Discipline's own compendium container from a Power's
+   * inline lore link - a Combination Discipline's discipline field lists
+   * every Discipline it draws on (see vtmParseDisciplineNames), so this
+   * looks up by that individual name in the Disciplines & Powers
+   * compendium rather than assuming a 1:1 match to the clicked Power.
+   */
+  async _onOpenPowerDisciplineLore(event) {
+    event.preventDefault();
+    const name = event.currentTarget.dataset.name;
+    const pack = game.packs.get("vtmlarp.disciplines");
+    if (!pack) return;
+    const index = await pack.getIndex();
+    const entry = index.find(e => e.name === name && e.type === "discipline");
+    if (!entry) {
+      ui.notifications?.warn(`No Discipline compendium entry found for "${name}".`);
+      return;
+    }
+    const doc = await pack.getDocument(entry._id);
+    doc.sheet.render(true);
+  }
+
+  /** Open the compendium JournalEntry backing a Clan/Path lore link button. */
   async _onOpenLore(event) {
     event.preventDefault();
     const { pack: packName, name } = event.currentTarget.dataset;
-    console.log("VTMLARP | _onOpenLore clicked with dataset:", event.currentTarget.dataset);
     if (!name) {
       ui.notifications?.warn("Select a value first to open its lore entry.");
       return;
