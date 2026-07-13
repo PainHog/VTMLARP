@@ -103,7 +103,13 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
       }),
 
       experience: new fields.SchemaField({
-        value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 })
+        value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+        // Lifetime Experience ever awarded (bumped alongside value when a
+        // Storyteller grants XP), so total spent can be recovered as
+        // total - value without a full transaction ledger - lets the ST
+        // Audit view show who's actually spending what without needing to
+        // ask around.
+        total: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 })
       }),
 
       blood: new fields.SchemaField({

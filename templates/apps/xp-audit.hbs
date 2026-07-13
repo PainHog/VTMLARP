@@ -1,0 +1,27 @@
+<div class="vtmlarp-xp-audit">
+  <p class="hint">Spending no longer blocks a purchase when Experience runs short, so this is the ST's visibility into who's spent what - "Spent" is lifetime Total Awarded minus current pool.</p>
+  {{#if rows.length}}
+  <table class="rated-trait-table">
+    <thead>
+      <tr>
+        <th>Character</th>
+        <th>Current</th>
+        <th>Total Awarded</th>
+        <th>Spent</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rows as |row|}}
+      <tr class="{{#if row.overspent}}prereq-unmet{{/if}}">
+        <td>{{row.name}}</td>
+        <td>{{row.value}}</td>
+        <td>{{row.total}}</td>
+        <td>{{row.spent}}{{#if row.overspent}} <span class="hint" title="Current pool exceeds recorded Total Awarded - likely edited directly instead of via the sheet's Award XP button.">(unrecorded award?)</span>{{/if}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <p class="hint">No player characters found.</p>
+  {{/if}}
+</div>

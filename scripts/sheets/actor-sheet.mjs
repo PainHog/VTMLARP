@@ -260,6 +260,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     console.log("VTMLARP | otherPowers result:", context.otherPowers.map(p => p.name));
 
     context.isCharacter = this.actor.type === "character";
+    context.isGM = game.user.isGM;
+    context.xpSpent = Math.max(0, (sys.experience.total ?? 0) - (sys.experience.value ?? 0));
     context.NPC_TYPE_OPTIONS = ["vampire", "ghoul", "mortal", "spirit", "other"];
     context.CLAN_OPTIONS = CLAN_OPTIONS;
     context.SECT_OPTIONS = SECT_OPTIONS;
@@ -361,6 +363,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
     on(".apply-generation", "click", this._onApplyGeneration.bind(this));
+    on(".award-xp", "click", this._onAwardXP.bind(this));
     on(".item-rating-control", "click", this._onItemRatingControl.bind(this));
 
     // Every other interactive control on this sheet saves explicitly via its
@@ -511,6 +514,22 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       "system.blood.value": Math.min(sys.blood.value, info.bloodMax),
       "system.willpower.max": info.willpowerMax,
       "system.willpower.value": Math.min(sys.willpower.value, info.willpowerMax)
+    });
+  }
+
+  /** GM-only: grant Experience, bumping both the current pool and the lifetime total the XP Audit view reads from. */
+  async _onAwardXP(event) {
+    event.preventDefault();
+    const amount = await foundry.applications.api.DialogV2.prompt({
+      window: { title: `Award Experience to ${this.actor.name}` },
+      content: `<input type="number" name="amount" value="1" min="1" autofocus>`,
+      ok: { callback: (e, btn) => Number(btn.form.elements.amount.value) || 0 }
+    }).catch(() => null);
+    if (!amount) return;
+    const sys = this.actor.system;
+    await this.actor.update({
+      "system.experience.value": sys.experience.value + amount,
+      "system.experience.total": (sys.experience.total ?? 0) + amount
     });
   }
 

@@ -122,6 +122,10 @@
           <label>Experience</label>
           <input type="number" name="system.experience.value" value="{{system.experience.value}}"
             title="Ongoing: earned after each session, spent on new Attributes/Abilities/Backgrounds/Disciplines. Separate from Gen. Traits Spent, which is a one-time creation cost.">
+          <span class="hint xp-spent-hint">({{xpSpent}} spent of {{system.experience.total}} earned)</span>
+          {{#if isGM}}
+          <a class="award-xp" title="Award Experience (adds to both current and lifetime total)"><i class="fas fa-star"></i></a>
+          {{/if}}
         </div>
       </div>
 

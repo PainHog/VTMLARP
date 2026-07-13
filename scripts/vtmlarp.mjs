@@ -7,6 +7,7 @@ import { VTMActorSheet } from "./sheets/actor-sheet.mjs";
 import { VTMItemSheet } from "./sheets/item-sheet.mjs";
 import { ChallengeResponseApp } from "./apps/challenge-response.mjs";
 import { GMChallengeDashboard } from "./apps/gm-dashboard.mjs";
+import { XPAuditApp } from "./apps/xp-audit.mjs";
 
 Hooks.once("init", () => {
   console.log("VTMLARP | Initializing Mind's Eye Theatre: Laws of the Night system");
@@ -101,14 +102,26 @@ Hooks.on("getSceneControlButtons", controls => {
   // one, since this system targets v12-14.
   const tokenControl = Array.isArray(controls) ? controls.find(c => c.name === "token") : controls.token;
   if (!tokenControl) return;
-  const tool = {
-    name: "vtmlarp-challenges",
-    title: "Active Challenges",
-    icon: "fas fa-hand-rock",
-    button: true,
-    onClick: () => new GMChallengeDashboard().render(true),
-    onChange: () => new GMChallengeDashboard().render(true)
-  };
-  if (Array.isArray(tokenControl.tools)) tokenControl.tools.push(tool);
-  else tokenControl.tools[tool.name] = tool;
+  const tools = [
+    {
+      name: "vtmlarp-challenges",
+      title: "Active Challenges",
+      icon: "fas fa-hand-rock",
+      button: true,
+      onClick: () => new GMChallengeDashboard().render(true),
+      onChange: () => new GMChallengeDashboard().render(true)
+    },
+    {
+      name: "vtmlarp-xp-audit",
+      title: "Experience Audit",
+      icon: "fas fa-star",
+      button: true,
+      onClick: () => new XPAuditApp().render(true),
+      onChange: () => new XPAuditApp().render(true)
+    }
+  ];
+  for (const tool of tools) {
+    if (Array.isArray(tokenControl.tools)) tokenControl.tools.push(tool);
+    else tokenControl.tools[tool.name] = tool;
+  }
 });
