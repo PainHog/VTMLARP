@@ -8,6 +8,7 @@ import { VTMItemSheet } from "./sheets/item-sheet.mjs";
 import { ChallengeResponseApp } from "./apps/challenge-response.mjs";
 import { GMChallengeDashboard } from "./apps/gm-dashboard.mjs";
 import { XPAuditApp } from "./apps/xp-audit.mjs";
+import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
 
 Hooks.once("init", () => {
   console.log("VTMLARP | Initializing Mind's Eye Theatre: Laws of the Night system");
@@ -130,6 +131,14 @@ Hooks.on("getSceneControlButtons", controls => {
       button: true,
       onClick: () => new XPAuditApp().render(true),
       onChange: () => new XPAuditApp().render(true)
+    },
+    {
+      name: "vtmlarp-blood-bonds",
+      title: "Blood Bonds Overview",
+      icon: "fas fa-tint",
+      button: true,
+      onClick: () => new BloodBondOverviewApp().render(true),
+      onChange: () => new BloodBondOverviewApp().render(true)
     }
   ];
   for (const tool of tools) {

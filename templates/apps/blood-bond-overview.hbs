@@ -1,0 +1,28 @@
+<div class="vtmlarp-blood-bond-overview">
+  <p class="hint">Every character's current Blood Bonds/Vinculum, camp-wide. Bonds fade without reinforcement - Decay All reduces every rating by 1 and drops any that reach 0.</p>
+  <button type="button" class="decay-all"><i class="fas fa-hourglass-half"></i> Decay All (-1)</button>
+  {{#if rows.length}}
+  <table class="rated-trait-table">
+    <thead>
+      <tr>
+        <th>Character</th>
+        <th>Bound To</th>
+        <th>Level</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rows as |row|}}
+      <tr>
+        <td>{{row.actorName}}</td>
+        <td>{{row.boundTo}}</td>
+        <td>{{row.level}}</td>
+        <td>{{row.notes}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <p class="hint">No Blood Bonds recorded on any character yet.</p>
+  {{/if}}
+</div>
