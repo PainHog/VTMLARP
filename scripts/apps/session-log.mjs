@@ -8,12 +8,13 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
  */
 export class SessionLogApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   constructor(actor, options = {}) {
-    super(options);
+    // Explicit unique id per instance (see ChallengeApp) - a GM plausibly
+    // wants two different characters' logs open side by side at once.
+    super({ id: `vtmlarp-session-log-${foundry.utils.randomID()}`, ...options });
     this.actor = actor;
   }
 
   static DEFAULT_OPTIONS = {
-    id: "vtmlarp-session-log",
     classes: ["vtmlarp", "session-log"],
     position: { width: 400, height: 500 },
     window: { resizable: true }

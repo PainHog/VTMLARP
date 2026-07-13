@@ -17,13 +17,16 @@ const { renderTemplate } = foundry.applications.handlebars;
  */
 export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   constructor(actor, options = {}) {
-    super(options);
+    // Explicit unique id per instance so multiple FrenzyApp windows (e.g.
+    // the auto-open-on-Wounded trigger firing while a manually-opened one
+    // is still up) don't clash over a shared DOM id - same fix as
+    // ChallengeApp.
+    super({ id: `vtmlarp-frenzy-${foundry.utils.randomID()}`, ...options });
     this.actor = actor;
   }
 
   static DEFAULT_OPTIONS = {
-    id: "vtmlarp-frenzy",
-    classes: ["vtmlarp", "frenzy-app"],
+    classes: ["vtmlarp", "frenzy-app", "vtmlarp-frenzy"],
     position: { width: 380, height: "auto" },
     window: { title: "Frenzy / Rötschreck Check", resizable: true }
   };

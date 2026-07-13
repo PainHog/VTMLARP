@@ -984,10 +984,15 @@ form.vtmlarp.sheet {
 /* Challenge / frenzy apps                                               */
 /* -------------------------------------------------------------------- */
 
-#vtmlarp-challenge .window-content,
-#vtmlarp-challenge-response .window-content,
-#vtmlarp-frenzy .window-content,
-#vtmlarp-vaulderie .window-content {
+/* Class-based, not id-based - ChallengeApp/FrenzyApp/VaulderieApp/
+   ChallengeResponseApp all use a "{id}"-suffixed DOM id now so multiple
+   instances (e.g. a Power's own prefilled Challenge alongside an
+   already-open plain one) don't clash over one shared id; a fixed class on
+   the Application's outer element is what CSS should target instead. */
+.application.vtmlarp-challenge .window-content,
+.application.vtmlarp-challenge-response .window-content,
+.application.vtmlarp-frenzy .window-content,
+.application.vtmlarp-vaulderie .window-content {
   display: block !important;
 }
 

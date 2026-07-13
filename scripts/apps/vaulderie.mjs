@@ -15,15 +15,15 @@ const { renderTemplate } = foundry.applications.handlebars;
  */
 export class VaulderieApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   constructor(actor, options = {}) {
-    super(options);
+    // Explicit unique id per instance - same fix as ChallengeApp/FrenzyApp.
+    super({ id: `vtmlarp-vaulderie-${foundry.utils.randomID()}`, ...options });
     // Seed with the opening actor as the first participant, contributing 1
     // Blood Trait - both easy to edit or remove entirely from the form.
     this.participants = [{ actorId: actor?.id ?? "", traits: 1 }];
   }
 
   static DEFAULT_OPTIONS = {
-    id: "vtmlarp-vaulderie",
-    classes: ["vtmlarp", "vaulderie-app"],
+    classes: ["vtmlarp", "vaulderie-app", "vtmlarp-vaulderie"],
     position: { width: 480, height: "auto" },
     window: { title: "Vaulderie", resizable: true }
   };

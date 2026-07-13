@@ -11,13 +11,15 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
  */
 export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   constructor(request, options = {}) {
-    super(options);
+    // Explicit unique id per instance - see ChallengeApp's constructor for
+    // why (multiple simultaneous incoming Challenges to the same GM/player
+    // shouldn't clash over one shared DOM id).
+    super({ id: `vtmlarp-challenge-response-${foundry.utils.randomID()}`, ...options });
     this.request = request;
   }
 
   static DEFAULT_OPTIONS = {
-    id: "vtmlarp-challenge-response",
-    classes: ["vtmlarp", "challenge-app"],
+    classes: ["vtmlarp", "challenge-app", "vtmlarp-challenge-response"],
     position: { width: 380, height: "auto" },
     window: { title: "Incoming Challenge", resizable: true }
   };

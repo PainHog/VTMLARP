@@ -29,14 +29,22 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
    *   "Resolve Challenge" button - {challengeType, retest, powerName}.
    */
   constructor(actor, options = {}, prefill = {}) {
-    super(options);
+    // A fixed literal id in DEFAULT_OPTIONS meant every ChallengeApp shared
+    // one DOM id, so opening this pre-filled (from a Power's own Challenge
+    // button) while a plain "Resolve Challenge" instance was already open/
+    // tracked could reuse or clash with the existing window instead of
+    // rendering the new one with its own prefill - explicitly generating a
+    // unique id per instance here (rather than relying on "{id}"-style
+    // templating in the static default, which isn't confirmed to apply to
+    // plain ApplicationV2) guarantees each instance is independent. CSS
+    // targets the "vtmlarp-challenge" class instead, unaffected by this.
+    super({ id: `vtmlarp-challenge-${foundry.utils.randomID()}`, ...options });
     this.actor = actor;
     this.prefill = prefill;
   }
 
   static DEFAULT_OPTIONS = {
-    id: "vtmlarp-challenge",
-    classes: ["vtmlarp", "challenge-app"],
+    classes: ["vtmlarp", "challenge-app", "vtmlarp-challenge"],
     position: { width: 420, height: "auto" },
     window: { title: "Resolve Challenge", resizable: true }
   };
