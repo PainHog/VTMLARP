@@ -1,0 +1,15 @@
+<div class="vtmlarp-gm-dashboard">
+  <p class="hint">Challenges currently waiting on a response. Cleared automatically once resolved or blocked.</p>
+  {{#if pending.length}}
+  <ol class="item-list">
+    {{#each pending as |req|}}
+    <li class="item">
+      <span class="item-name">{{req.challengerName}} vs {{req.opponentName}}</span>
+      <span class="item-meta">{{vtmCapitalize req.challengeType}}</span>
+    </li>
+    {{/each}}
+  </ol>
+  {{else}}
+  <p class="hint">No Challenges currently pending.</p>
+  {{/if}}
+</div>

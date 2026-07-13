@@ -153,14 +153,20 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       return;
     }
 
+    // requestId lets every client (not just the responding one) track and
+    // later clear this specific request from the GM dashboard - broadcast
+    // unfiltered, unlike targetUserIds above which only the responder acts on.
+    const requestId = foundry.utils.randomID();
     game.socket.emit("system.vtmlarp", {
       action: "challengeRequest",
+      requestId,
       targetUserIds: recipients.map(u => u.id),
       challengerActorId: this.actor.id,
       challengerName: this.actor.name,
       challengeType,
       challengerGesture: fd.gesture,
       opponentActorId: opponentActor.id,
+      opponentName: opponentActor.name,
       retest
     });
 

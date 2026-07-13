@@ -6,6 +6,7 @@ import {
 import { VTMActorSheet } from "./sheets/actor-sheet.mjs";
 import { VTMItemSheet } from "./sheets/item-sheet.mjs";
 import { ChallengeResponseApp } from "./apps/challenge-response.mjs";
+import { GMChallengeDashboard } from "./apps/gm-dashboard.mjs";
 
 Hooks.once("init", () => {
   console.log("VTMLARP | Initializing Mind's Eye Theatre: Laws of the Night system");
@@ -57,6 +58,23 @@ Hooks.once("ready", () => {
   // this event; every connected client receives it and only the intended
   // recipient(s) actually pop the response dialog.
   game.socket.on("system.vtmlarp", data => {
+    // Every GM client tracks the request/resolution pair for the Active
+    // Challenges dashboard, regardless of whether this particular GM is the
+    // one who'll actually respond - a busy session can have several
+    // challenges in flight across different players at once.
+    if (game.user.isGM) {
+      if (data.action === "challengeRequest") {
+        GMChallengeDashboard.trackRequest({
+          requestId: data.requestId,
+          challengerName: data.challengerName,
+          opponentName: data.opponentName,
+          challengeType: data.challengeType
+        });
+      } else if (data.action === "challengeResolved") {
+        GMChallengeDashboard.clearRequest(data.requestId);
+      }
+    }
+
     if (data.action !== "challengeRequest") return;
     if (!data.targetUserIds.includes(game.user.id)) return;
 
@@ -65,6 +83,7 @@ Hooks.once("ready", () => {
     if (!challengerActor || !opponentActor) return;
 
     new ChallengeResponseApp({
+      requestId: data.requestId,
       challengerActor,
       challengerName: data.challengerName,
       challengeType: data.challengeType,
@@ -73,4 +92,23 @@ Hooks.once("ready", () => {
       retest: data.retest
     }).render(true);
   });
+});
+
+Hooks.on("getSceneControlButtons", controls => {
+  if (!game.user.isGM) return;
+  // Foundry v13 restructured getSceneControlButtons from an array to an
+  // object keyed by control name; support both shapes rather than assuming
+  // one, since this system targets v12-14.
+  const tokenControl = Array.isArray(controls) ? controls.find(c => c.name === "token") : controls.token;
+  if (!tokenControl) return;
+  const tool = {
+    name: "vtmlarp-challenges",
+    title: "Active Challenges",
+    icon: "fas fa-hand-rock",
+    button: true,
+    onClick: () => new GMChallengeDashboard().render(true),
+    onChange: () => new GMChallengeDashboard().render(true)
+  };
+  if (Array.isArray(tokenControl.tools)) tokenControl.tools.push(tool);
+  else tokenControl.tools[tool.name] = tool;
 });

@@ -60,6 +60,7 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
           + (fd.blockSource ? ` using <strong>${fd.blockSource}</strong>` : "") + `.</p>`
           + `<div class="vtm-result-banner result-Lost">${opponentName} Wins (retest blocked)!</div></div>`
       });
+      this._broadcastResolved();
       this.close();
       return;
     }
@@ -73,6 +74,13 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
       retest: this.request.retest
     });
 
+    this._broadcastResolved();
     this.close();
+  }
+
+  /** Tell every client (including GMs watching the dashboard) this request is no longer pending. */
+  _broadcastResolved() {
+    if (!this.request.requestId) return;
+    game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: this.request.requestId });
   }
 }
