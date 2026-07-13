@@ -1,3 +1,5 @@
+import { logAction } from "./action-log.mjs";
+
 const { renderTemplate } = foundry.applications.handlebars;
 
 export const GESTURES = ["rock", "paper", "scissors", "bomb"];
@@ -78,6 +80,11 @@ export async function resolveAndPostGestureChallenge({
     speaker: ChatMessage.getSpeaker({ actor: challengerActor }),
     content
   });
+
+  if (result) {
+    await logAction(challengerActor, `${challengeType} Challenge vs ${opponentName}: ${resultLabel}`);
+    if (opponentActor) await logAction(opponentActor, `${challengeType} Challenge vs ${challengerName}: ${resultLabel}`);
+  }
 }
 
 /**

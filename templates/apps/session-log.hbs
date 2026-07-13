@@ -1,0 +1,17 @@
+<div class="vtmlarp-session-log">
+  {{#if isEditable}}
+  <button type="button" class="clear-log"><i class="fas fa-trash"></i> Clear Log</button>
+  {{/if}}
+  {{#if entries.length}}
+  <ol class="item-list">
+    {{#each entries as |entry|}}
+    <li class="item-list-entry">
+      <span class="log-time">{{entry.display}}</span>
+      <span class="log-summary">{{entry.summary}}</span>
+    </li>
+    {{/each}}
+  </ol>
+  {{else}}
+  <p class="hint">Nothing logged yet - Challenges, Frenzy checks, and Power toggles will show up here as they happen.</p>
+  {{/if}}
+</div>

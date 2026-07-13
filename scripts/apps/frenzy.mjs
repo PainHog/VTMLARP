@@ -1,3 +1,5 @@
+import { logAction } from "./action-log.mjs";
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { renderTemplate } = foundry.applications.handlebars;
 
@@ -83,6 +85,8 @@ export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.a
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       content
     });
+
+    await logAction(this.actor, `${failLabel === "Rötschreck!" ? "Rötschreck" : "Frenzy"} check (Difficulty ${difficulty}): ${outcome}`);
 
     this.close();
   }

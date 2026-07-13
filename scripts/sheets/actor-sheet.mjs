@@ -2,6 +2,8 @@ import { ChallengeApp } from "../apps/challenge.mjs";
 import { FrenzyApp } from "../apps/frenzy.mjs";
 import { VaulderieApp } from "../apps/vaulderie.mjs";
 import { checkPrerequisites } from "../apps/prerequisites.mjs";
+import { logAction } from "../apps/action-log.mjs";
+import { SessionLogApp } from "../apps/session-log.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -333,6 +335,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // Collapse/expand is local UI state, not a document edit, so it should
     // work even for players/observers without edit rights on this actor.
     on(".collapsible-header", "click", this._onToggleCollapse.bind(this));
+    on(".open-session-log", "click", () => new SessionLogApp(this.actor).render(true));
 
     if (!this.isEditable) return;
 
@@ -749,13 +752,16 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const turningOn = !item.system.active;
     await item.update({ "system.active": turningOn });
 
+    let bloodSpent = 0;
     if (turningOn && item.system.bloodCost) {
       const cost = Number(item.system.bloodCost);
       if (Number.isInteger(cost) && cost > 0) {
         const current = this.actor.system.blood.value;
         await this.actor.update({ "system.blood.value": Math.max(0, current - cost) });
+        bloodSpent = cost;
       }
     }
+    await logAction(this.actor, `${turningOn ? "Activated" : "Deactivated"} ${item.name}${bloodSpent ? ` (spent ${bloodSpent} Blood)` : ""}`);
     this.render();
   }
 

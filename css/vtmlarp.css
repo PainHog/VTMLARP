@@ -1260,3 +1260,14 @@ form.vtmlarp.sheet {
     font-size: 13px;
   }
 }
+
+.vtmlarp .item-list-entry {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  border-bottom: 1px solid var(--vtm-border);
+}
+.vtmlarp .item-list-entry .log-time {
+  font-size: 11px;
+  color: var(--vtm-text-dim);
+}

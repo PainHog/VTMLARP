@@ -141,6 +141,17 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
         description: new fields.StringField({ required: false, blank: true, initial: "" })
       })),
 
+      // A running record of what actually happened to this character
+      // in-session - Challenges resolved, Frenzy checks, Powers toggled -
+      // since this system is played online rather than face to face, a
+      // Storyteller can't just glance across the table to reconstruct a
+      // busy night's events afterward. Newest-first is enforced by callers
+      // (logAction), not this field itself.
+      actionLog: new fields.ArrayField(new fields.SchemaField({
+        timestamp: new fields.NumberField({ required: true }),
+        summary: new fields.StringField({ required: true, initial: "" })
+      })),
+
       bloodBonds: new fields.ArrayField(new fields.SchemaField({
         name: new fields.StringField({ required: true, initial: "" }),
         // 1-3 covers an ordinary Blood Bond (3 = Full Bond); Sabbat's
