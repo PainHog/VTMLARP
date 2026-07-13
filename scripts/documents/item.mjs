@@ -4,7 +4,12 @@ class BaseItemData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
       description: new fields.HTMLField({ required: false, blank: true, initial: "" }),
-      source: new fields.StringField({ required: false, blank: true, initial: "" })
+      source: new fields.StringField({ required: false, blank: true, initial: "" }),
+      // A GM-curated flag (e.g. for Disciplines/Rituals/Paths deemed too
+      // powerful to hand out without a conversation first) - shown as a
+      // badge on the actor sheet rather than a hard drag-drop block, since
+      // the Storyteller is the one enforcing it at the table either way.
+      stApprovalRequired: new fields.BooleanField({ required: true, initial: false })
     };
   }
 }

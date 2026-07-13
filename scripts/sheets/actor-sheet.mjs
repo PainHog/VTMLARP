@@ -333,6 +333,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // Available to everyone (not just owners with edit rights) - opening a
     // lore entry to read isn't an edit.
     on(".open-lore", "click", this._onOpenLore.bind(this));
+    on(".open-source", "click", this._onOpenSource.bind(this));
     // Collapse/expand is local UI state, not a document edit, so it should
     // work even for players/observers without edit rights on this actor.
     on(".collapsible-header", "click", this._onToggleCollapse.bind(this));
@@ -432,6 +433,25 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   }
 
   /** Open the compendium JournalEntry backing a Clan/Path lore link button. */
+  /**
+   * Open the original compendium document a dragged-in Item came from
+   * (Discipline, Merit, Flaw, Background), using the UUID Foundry itself
+   * stamps onto _stats.compendiumSource when an Item is imported from a
+   * compendium - a read-only view of the source, since the embedded copy on
+   * the actor is what's actually being played.
+   */
+  async _onOpenSource(event) {
+    event.preventDefault();
+    const uuid = event.currentTarget.dataset.uuid;
+    if (!uuid) return;
+    const doc = await fromUuid(uuid);
+    if (!doc) {
+      ui.notifications?.warn("Couldn't find the original compendium entry for this item.");
+      return;
+    }
+    doc.sheet.render(true);
+  }
+
   async _onOpenLore(event) {
     event.preventDefault();
     const { pack: packName, name } = event.currentTarget.dataset;
