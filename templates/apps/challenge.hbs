@@ -44,7 +44,7 @@
       <select name="opponentActorId">
         <option value="">— Select an opponent —</option>
         {{#each actorOptions as |a|}}
-        <option value="{{a.id}}">{{a.name}}</option>
+        <option value="{{a.id}}" {{#if (eq a.id ../prefill.opponentActorId)}}selected{{/if}}>{{a.name}}</option>
         {{/each}}
       </select>
     </label>

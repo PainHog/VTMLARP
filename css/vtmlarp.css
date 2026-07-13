@@ -1223,6 +1223,13 @@ form.vtmlarp.sheet {
   color: #6b6259;
 }
 
+.vtmlarp-challenge-card .vtm-retest-throw {
+  display: block;
+  margin: 4px auto 0;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 @keyframes vtm-slide-in-left {
   0% { transform: translateX(-50px) scale(0.4); opacity: 0; }
   65% { transform: translateX(4px) scale(1.15); opacity: 1; }

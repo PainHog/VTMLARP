@@ -33,5 +33,12 @@
 
   {{#if retest}}
   <p class="vtm-retest"><strong>Retest:</strong> {{retest}}</p>
+  {{#unless isStatic}}
+  <button type="button" class="vtm-retest-throw"
+    data-challenger-id="{{challengerActorId}}" data-opponent-id="{{opponentActorId}}"
+    data-challenge-type="{{challengeType}}" data-retest="{{retest}}">
+    <i class="fas fa-redo"></i> Re-throw Retest
+  </button>
+  {{/unless}}
   {{/if}}
 </div>

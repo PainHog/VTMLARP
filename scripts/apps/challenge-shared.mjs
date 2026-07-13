@@ -64,11 +64,13 @@ export async function resolveAndPostGestureChallenge({
 
   const content = await renderTemplate("systems/vtmlarp/templates/apps/challenge-card.hbs", {
     actorName: challengerName,
+    challengerActorId: challengerActor.id,
     challengeType,
     traitsBid,
     isStatic: false,
     gesture: challengerGesture,
     opponentName,
+    opponentActorId: opponentActor?.id ?? "",
     opponentGesture,
     opponentTraitsBid,
     result,

@@ -6,6 +6,7 @@ import {
 import { VTMActorSheet } from "./sheets/actor-sheet.mjs";
 import { VTMItemSheet } from "./sheets/item-sheet.mjs";
 import { ChallengeResponseApp } from "./apps/challenge-response.mjs";
+import { ChallengeApp } from "./apps/challenge.mjs";
 import { GMChallengeDashboard } from "./apps/gm-dashboard.mjs";
 import { XPAuditApp } from "./apps/xp-audit.mjs";
 import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
@@ -145,4 +146,30 @@ Hooks.on("getSceneControlButtons", controls => {
     if (Array.isArray(tokenControl.tools)) tokenControl.tools.push(tool);
     else tokenControl.tools[tool.name] = tool;
   }
+});
+
+// "Re-throw Retest" button on a resolved Challenge's chat card - there was
+// previously no way to actually act on a noted Retest short of manually
+// reopening the Challenge tool and re-entering everything by hand. Bound
+// via document-level delegated click rather than a specific
+// "renderChatMessage(HTML)" hook, since that hook's exact name/signature
+// changed between the Foundry versions this system targets (v12-14) and a
+// delegated listener works identically regardless.
+document.addEventListener("click", event => {
+  const button = event.target.closest(".vtm-retest-throw");
+  if (!button) return;
+  event.preventDefault();
+
+  const { challengerId, opponentId, challengeType, retest } = button.dataset;
+  const challengerActor = game.actors.get(challengerId);
+  if (!challengerActor) {
+    ui.notifications?.warn("The challenger for this Retest no longer exists.");
+    return;
+  }
+  if (!challengerActor.isOwner) {
+    ui.notifications?.warn(`You don't control ${challengerActor.name} - only they can throw this Retest.`);
+    return;
+  }
+
+  new ChallengeApp(challengerActor, {}, { challengeType, retest, opponentActorId: opponentId }).render(true);
 });
