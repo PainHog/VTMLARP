@@ -1,10 +1,14 @@
 <form class="vtmlarp-challenge flexcol">
   <p class="hint">For a Physical/Social/Mental Challenge, pick your opponent and gesture below - they'll get a private popup to choose their own gesture, and the result posts to chat once both sides are in. Each side's Traits Bid is always their full remaining pool of the matching Attribute category.</p>
 
+  {{#if prefill.powerName}}
+  <p class="hint">Using: <strong>{{prefill.powerName}}</strong></p>
+  {{/if}}
+
   <label>Challenge Type
     <select name="challengeType">
       {{#each challengeTypes as |type|}}
-      <option value="{{type}}">{{vtmCapitalize type}}</option>
+      <option value="{{type}}" {{#if (eq type prefill.challengeType)}}selected{{/if}}>{{vtmCapitalize type}}</option>
       {{/each}}
     </select>
   </label>
@@ -46,7 +50,7 @@
     </label>
   </div>
 
-  <label>Retest Used <input type="text" name="retest" placeholder="e.g. Willpower, Brawl Ability"></label>
+  <label>Retest Used <input type="text" name="retest" value="{{prefill.retest}}" placeholder="e.g. Willpower, Brawl Ability"></label>
 
   <button type="submit" class="vtm-submit"><i class="fas fa-bullhorn"></i> Send Challenge</button>
 </form>

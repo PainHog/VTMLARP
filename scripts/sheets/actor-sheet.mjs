@@ -356,6 +356,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".open-frenzy", "click", () => new FrenzyApp(this.actor).render(true));
     on(".open-vaulderie", "click", () => new VaulderieApp(this.actor).render(true));
     on(".power-toggle", "click", this._onTogglePower.bind(this));
+    on(".power-use", "click", this._onUsePower.bind(this));
+    on(".power-challenge", "click", this._onInitiatePowerChallenge.bind(this));
     on(".item-create", "click", this._onItemCreate.bind(this));
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
@@ -761,8 +763,51 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         bloodSpent = cost;
       }
     }
-    await logAction(this.actor, `${turningOn ? "Activated" : "Deactivated"} ${item.name}${bloodSpent ? ` (spent ${bloodSpent} Blood)` : ""}`);
+    const summary = `${turningOn ? "Activated" : "Deactivated"} ${item.name}${bloodSpent ? ` (spent ${bloodSpent} Blood)` : ""}`;
+    await logAction(this.actor, summary);
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content: `<p><strong>${this.actor.name}</strong> ${summary.charAt(0).toLowerCase()}${summary.slice(1)}.</p>`
+    });
     this.render();
+  }
+
+  /** A reflexive Power (a declared action with no Challenge or persistent toggle) - just announces its use to chat. */
+  async _onUsePower(event) {
+    event.preventDefault();
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
+    if (!item) return;
+
+    let bloodSpent = 0;
+    if (item.system.bloodCost) {
+      const cost = Number(item.system.bloodCost);
+      if (Number.isInteger(cost) && cost > 0) {
+        const current = this.actor.system.blood.value;
+        await this.actor.update({ "system.blood.value": Math.max(0, current - cost) });
+        bloodSpent = cost;
+      }
+    }
+
+    const summary = `Used ${item.name}${bloodSpent ? ` (spent ${bloodSpent} Blood)` : ""}`;
+    await logAction(this.actor, summary);
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content: `<p><strong>${this.actor.name}</strong> uses <strong>${item.name}</strong>${bloodSpent ? ` (spends ${bloodSpent} Blood)` : ""}.</p>`
+    });
+  }
+
+  /** Open ChallengeApp pre-filled with a specific Power's own challengeType/retestAbility. */
+  _onInitiatePowerChallenge(event) {
+    event.preventDefault();
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
+    if (!item) return;
+    new ChallengeApp(this.actor, {}, {
+      challengeType: item.system.challengeType,
+      retest: item.system.retestAbility,
+      powerName: item.name
+    }).render(true);
   }
 
   _onItemEdit(event) {

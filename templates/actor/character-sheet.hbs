@@ -275,6 +275,10 @@
             <a class="power-toggle {{#if item.system.active}}is-on{{/if}}" title="Toggle active">
               <i class="fas {{#if item.system.active}}fa-toggle-on{{else}}fa-toggle-off{{/if}}"></i>
             </a>
+            {{else if (eq item.system.activation "reflexive")}}
+            <a class="power-use" title="Use this Power (posts to chat, no Challenge needed)"><i class="fas fa-bolt"></i> Use</a>
+            {{else if (eq item.system.activation "challenge")}}
+            <a class="power-challenge" title="Initiate a Challenge using this Power"><i class="fas fa-hand-rock"></i> Challenge</a>
             {{/if}}
             <a class="item-edit"><i class="fas fa-edit"></i></a>
             <a class="item-delete"><i class="fas fa-trash"></i></a>
@@ -320,6 +324,10 @@
           <a class="power-toggle {{#if item.system.active}}is-on{{/if}}" title="Toggle active">
             <i class="fas {{#if item.system.active}}fa-toggle-on{{else}}fa-toggle-off{{/if}}"></i>
           </a>
+          {{else if (eq item.system.activation "reflexive")}}
+          <a class="power-use" title="Use this Power (posts to chat, no Challenge needed)"><i class="fas fa-bolt"></i> Use</a>
+          {{else if (eq item.system.activation "challenge")}}
+          <a class="power-challenge" title="Initiate a Challenge using this Power"><i class="fas fa-hand-rock"></i> Challenge</a>
           {{/if}}
           <a class="item-edit"><i class="fas fa-edit"></i></a>
           <a class="item-delete"><i class="fas fa-trash"></i></a>

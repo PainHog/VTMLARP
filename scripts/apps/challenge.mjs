@@ -21,9 +21,17 @@ const { renderTemplate } = foundry.applications.handlebars;
  * Challenges have no opposing throw and still resolve immediately here.
  */
 export class ChallengeApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
-  constructor(actor, options = {}) {
+  /**
+   * @param {Actor} actor
+   * @param {object} [options] ApplicationV2 options.
+   * @param {object} [prefill] Pre-selects the form when opened from a
+   *   specific Power's "Challenge" button, instead of the generic
+   *   "Resolve Challenge" button - {challengeType, retest, powerName}.
+   */
+  constructor(actor, options = {}, prefill = {}) {
     super(options);
     this.actor = actor;
+    this.prefill = prefill;
   }
 
   static DEFAULT_OPTIONS = {
@@ -38,6 +46,11 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
   };
 
   /** @override */
+  get title() {
+    return this.prefill?.powerName ? `Resolve Challenge - ${this.prefill.powerName}` : "Resolve Challenge";
+  }
+
+  /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const equipmentBonuses = this.actor.items
@@ -48,6 +61,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     context.gestures = GESTURES;
     context.challengeTypes = ["physical", "social", "mental", "static"];
     context.equipmentBonuses = equipmentBonuses;
+    context.prefill = this.prefill;
     context.actorOptions = [
       { id: TEST_OPPONENT_ID, name: `TEST (practice - ${TEST_OPPONENT_TRAITS} Traits, always ${TEST_OPPONENT_GESTURE})` },
       ...game.actors
@@ -168,6 +182,11 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       opponentActorId: opponentActor.id,
       opponentName: opponentActor.name,
       retest
+    });
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content: `<p><strong>${this.actor.name}</strong> has initiated a ${challengeType} Challenge against <strong>${opponentActor.name}</strong>${this.prefill?.powerName ? ` using <strong>${this.prefill.powerName}</strong>` : ""} - awaiting their response...</p>`
     });
 
     ui.notifications?.info(`Challenge sent to ${opponentActor.name} - waiting for their response.`);
