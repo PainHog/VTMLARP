@@ -104,7 +104,8 @@ Hooks.once("ready", () => {
       challengeType: data.challengeType,
       challengerGesture: data.challengerGesture,
       opponentActor,
-      retest: data.retest
+      retest: data.retest,
+      isRetestThrow: !!data.isRetestThrow
     }).render(true);
   });
 });
@@ -171,5 +172,5 @@ document.addEventListener("click", event => {
     return;
   }
 
-  new ChallengeApp(challengerActor, {}, { challengeType, retest, opponentActorId: opponentId }).render(true);
+  new ChallengeApp(challengerActor, {}, { challengeType, retest, opponentActorId: opponentId, isRetestThrow: true }).render(true);
 });

@@ -155,9 +155,11 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
         challengerGesture: fd.gesture,
         opponentActor: null,
         opponentName: "TEST",
+        opponentActorId: TEST_OPPONENT_ID,
         opponentGesture: TEST_OPPONENT_GESTURE,
         opponentTraitsBid: TEST_OPPONENT_TRAITS,
-        retest
+        retest,
+        isRetestThrow: !!this.prefill?.isRetestThrow
       });
       this.close();
       return;
@@ -189,7 +191,8 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       challengerGesture: fd.gesture,
       opponentActorId: opponentActor.id,
       opponentName: opponentActor.name,
-      retest
+      retest,
+      isRetestThrow: !!this.prefill?.isRetestThrow
     });
 
     await ChatMessage.create({

@@ -30,7 +30,12 @@ export async function resolveAndPostGestureChallenge({
   challengerActor, challengeType, challengerGesture, opponentActor, opponentGesture, retest,
   // Overrides for a fake/no-document opponent (e.g. the "TEST" practice
   // opponent) where there's no real Actor to derive a name/pool from.
-  opponentName: opponentNameOverride, opponentTraitsBid: opponentTraitsBidOverride
+  opponentName: opponentNameOverride, opponentTraitsBid: opponentTraitsBidOverride, opponentActorId: opponentActorIdOverride,
+  // True when this resolution IS itself a Retest throw (opened via the
+  // "Re-throw Retest" button) rather than an original Challenge - a Retest
+  // can only be used once per original Challenge, so the resulting card
+  // still shows what Retest was used, but must not offer another one.
+  isRetestThrow = false
 }) {
   const challengerName = challengerActor.name;
   const opponentName = opponentNameOverride ?? opponentActor?.name ?? "Opponent";
@@ -70,12 +75,13 @@ export async function resolveAndPostGestureChallenge({
     isStatic: false,
     gesture: challengerGesture,
     opponentName,
-    opponentActorId: opponentActor?.id ?? "",
+    opponentActorId: opponentActorIdOverride ?? opponentActor?.id ?? "",
     opponentGesture,
     opponentTraitsBid,
     result,
     resultLabel,
-    retest
+    retest,
+    retestAvailable: !!retest && !isRetestThrow
   });
 
   await ChatMessage.create({

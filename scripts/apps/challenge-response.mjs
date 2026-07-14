@@ -73,7 +73,8 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
       challengerGesture: this.request.challengerGesture,
       opponentActor: this.request.opponentActor,
       opponentGesture: fd.gesture,
-      retest: this.request.retest
+      retest: this.request.retest,
+      isRetestThrow: !!this.request.isRetestThrow
     });
 
     this._broadcastResolved();
