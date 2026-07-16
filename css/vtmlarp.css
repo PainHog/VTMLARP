@@ -530,6 +530,25 @@ form.vtmlarp.sheet {
   box-shadow: 0 0 6px rgba(184, 18, 26, 0.5);
 }
 
+/* The Challenge/Frenzy/Vaulderie/Session Log row previously had no sizing
+   rules at all, so each button's width just followed its own label length
+   ("Resolve Challenge" vs "Vaulderie") - uneven and cramped depending on
+   text. Give the row a fixed height and each button an equal share. */
+.vtmlarp.sheet .main-actions {
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.vtmlarp.sheet .main-actions button {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 34px;
+  padding: 0 6px;
+  font-size: 13px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .vtmlarp .item-list .item.prereq-unmet { background: rgba(138, 3, 3, 0.15); }
 .vtmlarp .item-list .item-prereqs { margin: 0 4px; }
 .vtmlarp .item-list .prereq-ok { color: #4caf50; }
@@ -1230,17 +1249,19 @@ form.vtmlarp.sheet {
   cursor: pointer;
 }
 
-.vtmlarp-challenge-prompt .vtm-gesture-response-buttons {
+.vtmlarp-challenge-prompt .vtm-gesture-response-row {
   display: flex;
   gap: 6px;
-  justify-content: center;
   margin-top: 6px;
 }
+.vtmlarp-challenge-prompt .vtm-gesture-select {
+  flex: 1 1 auto;
+  font-size: 12px;
+}
 .vtmlarp-challenge-prompt .vtm-gesture-respond {
-  flex: 1 1 0;
   cursor: pointer;
   font-size: 12px;
-  padding: 4px 2px;
+  white-space: nowrap;
 }
 .vtmlarp-challenge-prompt .vtm-retest-block-row {
   display: flex;

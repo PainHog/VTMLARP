@@ -5,19 +5,21 @@
   <p class="hint">
     <strong>{{challengerName}}</strong> has challenged
     <strong>{{#if opponentName}}{{opponentName}}{{else}}Opponent{{/if}}</strong>.
-    Only {{opponentName}}'s player (or a GM) can respond below - click a Gesture whenever you're ready.
+    Only {{opponentName}}'s player (or a GM) can respond below.
   </p>
 
   {{#if retest}}
   <p class="vtm-retest"><strong>Retest:</strong> {{retest}}</p>
   {{/if}}
 
-  <div class="vtm-gesture-response-buttons">
-    {{#each gestures as |g|}}
-    <button type="button" class="vtm-gesture-respond" data-gesture="{{g}}">
-      <i class="fas {{vtmGestureIcon g}}"></i> {{vtmCapitalize g}}
-    </button>
-    {{/each}}
+  <div class="vtm-gesture-response-row">
+    <select class="vtm-gesture-select">
+      <option value="">— Choose your Gesture —</option>
+      {{#each gestures as |g|}}
+      <option value="{{g}}">{{vtmCapitalize g}}</option>
+      {{/each}}
+    </select>
+    <button type="button" class="vtm-gesture-respond"><i class="fas fa-hand-rock"></i> Respond</button>
   </div>
 
   {{#if retest}}

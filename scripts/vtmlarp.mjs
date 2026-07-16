@@ -219,6 +219,15 @@ document.addEventListener("click", async event => {
     return;
   }
 
+  let gesture;
+  if (gestureBtn) {
+    gesture = card.querySelector(".vtm-gesture-select")?.value;
+    if (!gesture) {
+      ui.notifications?.warn("Choose a Gesture first.");
+      return;
+    }
+  }
+
   await message.setFlag("vtmlarp", "responded", true);
 
   if (blockBtn) {
@@ -239,7 +248,7 @@ document.addEventListener("click", async event => {
       challengeType: req.challengeType,
       challengerGesture: req.challengerGesture,
       opponentActor,
-      opponentGesture: gestureBtn.dataset.gesture,
+      opponentGesture: gesture,
       retest: req.retest,
       isRetestThrow: req.isRetestThrow
     });
