@@ -54,7 +54,7 @@ export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.a
   async _onSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget.closest("form");
-    const fd = new FormDataExtended(form).object;
+    const fd = new foundry.applications.ux.FormDataExtended(form).object;
     const difficulty = Number(fd.difficulty) || 1;
     const spendWillpower = !!fd.spendWillpower;
     const trigger = fd.trigger || "";

@@ -56,7 +56,7 @@ export class VaulderieApp extends HandlebarsApplicationMixin(foundry.application
   _syncParticipantsFromForm() {
     const form = this.element.querySelector("form");
     if (!form) return;
-    const fd = foundry.utils.expandObject(new FormDataExtended(form).object);
+    const fd = foundry.utils.expandObject(new foundry.applications.ux.FormDataExtended(form).object);
     const rows = fd.participants ? Object.values(fd.participants) : [];
     this.participants = rows.map(r => ({ actorId: r.actorId ?? "", traits: Number(r.traits) || 1 }));
   }

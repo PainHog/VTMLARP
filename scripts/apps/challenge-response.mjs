@@ -48,7 +48,7 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
   async _onSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget.closest("form");
-    const fd = new FormDataExtended(form).object;
+    const fd = new foundry.applications.ux.FormDataExtended(form).object;
 
     // Retests can be blocked by an opponent who can match its conditions
     // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw

@@ -112,7 +112,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
   async _onSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget.closest("form");
-    const fd = new FormDataExtended(form).object;
+    const fd = new foundry.applications.ux.FormDataExtended(form).object;
     const { challengeType, retest } = fd;
 
     // Static Challenges (an Ability used against a set Difficulty, no
@@ -172,6 +172,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     }
 
     const recipients = respondingUsers(opponentActor);
+    console.log("VTMLARP | Challenge recipients for", opponentActor.name, ":", recipients.map(u => `${u.name} (${u.id}, active=${u.active}, isGM=${u.isGM})`));
     if (!recipients.length) {
       ui.notifications?.warn(`No active player or GM is available to respond for ${opponentActor.name}.`);
       return;
@@ -181,6 +182,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     // later clear this specific request from the GM dashboard - broadcast
     // unfiltered, unlike targetUserIds above which only the responder acts on.
     const requestId = foundry.utils.randomID();
+    console.log("VTMLARP | Emitting challengeRequest, requestId:", requestId, "targetUserIds:", recipients.map(u => u.id));
     game.socket.emit("system.vtmlarp", {
       action: "challengeRequest",
       requestId,
