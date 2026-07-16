@@ -1,0 +1,29 @@
+<div class="vtmlarp-challenge-card vtmlarp-challenge-prompt">
+  <div class="vtm-clash-header">
+    <span>{{challengeType}} Challenge</span>
+  </div>
+  <p class="hint">
+    <strong>{{challengerName}}</strong> has challenged
+    <strong>{{#if opponentName}}{{opponentName}}{{else}}Opponent{{/if}}</strong>.
+    Only {{opponentName}}'s player (or a GM) can respond below - click a Gesture whenever you're ready.
+  </p>
+
+  {{#if retest}}
+  <p class="vtm-retest"><strong>Retest:</strong> {{retest}}</p>
+  {{/if}}
+
+  <div class="vtm-gesture-response-buttons">
+    {{#each gestures as |g|}}
+    <button type="button" class="vtm-gesture-respond" data-gesture="{{g}}">
+      <i class="fas {{vtmGestureIcon g}}"></i> {{vtmCapitalize g}}
+    </button>
+    {{/each}}
+  </div>
+
+  {{#if retest}}
+  <div class="vtm-retest-block-row">
+    <input type="text" class="vtm-retest-block-source" placeholder="Blocked using... (leave blank if not blocking)">
+    <button type="button" class="vtm-retest-block-submit"><i class="fas fa-shield-halved"></i> Block This Retest Instead</button>
+  </div>
+  {{/if}}
+</div>

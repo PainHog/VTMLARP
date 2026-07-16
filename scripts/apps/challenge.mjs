@@ -1,4 +1,4 @@
-import { GESTURES, unspentCount, respondingUsers, resolveAndPostGestureChallenge } from "./challenge-shared.mjs";
+import { GESTURES, unspentCount, respondingUsers, resolveAndPostGestureChallenge, postGestureChallengePrompt } from "./challenge-shared.mjs";
 
 // A standing fake opponent so a single tester can resolve a Challenge
 // without needing a second logged-in player/GM to respond - always throws
@@ -172,9 +172,8 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     }
 
     const recipients = respondingUsers(opponentActor);
-    console.log("VTMLARP | Challenge recipients for", opponentActor.name, ":", recipients.map(u => `${u.name} (${u.id}, active=${u.active}, isGM=${u.isGM})`));
     if (!recipients.length) {
-      ui.notifications?.warn(`No active player or GM is available to respond for ${opponentActor.name}.`);
+      ui.notifications?.warn(`No player or GM is set up to respond for ${opponentActor.name}.`);
       return;
     }
 
@@ -182,7 +181,26 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     // later clear this specific request from the GM dashboard - broadcast
     // unfiltered, unlike targetUserIds above which only the responder acts on.
     const requestId = foundry.utils.randomID();
-    console.log("VTMLARP | Emitting challengeRequest, requestId:", requestId, "targetUserIds:", recipients.map(u => u.id));
+
+    // Primary path: a public chat message with clickable gesture buttons
+    // (see postGestureChallengePrompt) that the opponent can respond to
+    // whenever they next load chat, regardless of whether a live socket
+    // push actually reaches their client - confirmed via testing that it
+    // doesn't reliably for every setup. The socket broadcast below is kept
+    // as a bonus instant-popup for clients where it does work, and to keep
+    // the GM dashboard's pending-request tracking functioning; it's not
+    // required for the Challenge to actually be answerable.
+    await postGestureChallengePrompt({
+      challengerActor: this.actor,
+      challengeType,
+      challengerGesture: fd.gesture,
+      opponentActor,
+      opponentName: opponentActor.name,
+      retest,
+      isRetestThrow: !!this.prefill?.isRetestThrow,
+      requestId
+    });
+
     game.socket.emit("system.vtmlarp", {
       action: "challengeRequest",
       requestId,
@@ -197,12 +215,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       isRetestThrow: !!this.prefill?.isRetestThrow
     });
 
-    await ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      content: `<p><strong>${this.actor.name}</strong> has initiated a ${challengeType} Challenge against <strong>${opponentActor.name}</strong>${this.prefill?.powerName ? ` using <strong>${this.prefill.powerName}</strong>` : ""} - awaiting their response...</p>`
-    });
-
-    ui.notifications?.info(`Challenge sent to ${opponentActor.name} - waiting for their response.`);
+    ui.notifications?.info(`Challenge sent to ${opponentActor.name} - they can respond from the chat log.`);
     this.close();
   }
 }

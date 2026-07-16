@@ -10,6 +10,7 @@ import { ChallengeApp } from "./apps/challenge.mjs";
 import { GMChallengeDashboard } from "./apps/gm-dashboard.mjs";
 import { XPAuditApp } from "./apps/xp-audit.mjs";
 import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
+import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
 
 Hooks.once("init", () => {
   console.log("VTMLARP | Initializing Mind's Eye Theatre: Laws of the Night system");
@@ -175,4 +176,75 @@ document.addEventListener("click", event => {
   }
 
   new ChallengeApp(challengerActor, {}, { challengeType, retest, opponentActorId: opponentId, isRetestThrow: true }).render(true);
+});
+
+// Responding to a Challenge directly from its chat card's gesture buttons
+// (see postGestureChallengePrompt in challenge-shared.mjs) - this is the
+// primary response path, not just a fallback: it only depends on normal
+// chat history loading, not on a live socket push actually reaching the
+// opponent's client, which testing showed isn't reliable on every setup.
+// The message is public (anyone can see a Challenge is happening) but only
+// the opponent's own owner (or a GM) is permitted to actually click a
+// response - the challenger's own gesture stays hidden in the message's
+// flags, never rendered into the visible card, until it resolves.
+document.addEventListener("click", async event => {
+  const gestureBtn = event.target.closest(".vtm-gesture-respond");
+  const blockBtn = event.target.closest(".vtm-retest-block-submit");
+  if (!gestureBtn && !blockBtn) return;
+  event.preventDefault();
+
+  const card = (gestureBtn ?? blockBtn).closest("[data-message-id]");
+  const message = card && game.messages.get(card.dataset.messageId);
+  if (!message) {
+    ui.notifications?.warn("This Challenge's chat message no longer exists.");
+    return;
+  }
+
+  const req = message.flags?.vtmlarp;
+  if (!req) return;
+  if (req.responded) {
+    ui.notifications?.warn("This Challenge has already been responded to.");
+    return;
+  }
+
+  const opponentActor = req.opponentActorId ? game.actors.get(req.opponentActorId) : null;
+  if (!opponentActor?.isOwner) {
+    ui.notifications?.warn(`You don't control ${req.opponentName || "this actor"} - only they (or a GM) can respond to this Challenge.`);
+    return;
+  }
+
+  const challengerActor = game.actors.get(req.challengerActorId);
+  if (!challengerActor) {
+    ui.notifications?.warn("The challenger for this Challenge no longer exists.");
+    return;
+  }
+
+  await message.setFlag("vtmlarp", "responded", true);
+
+  if (blockBtn) {
+    // Retests can be blocked by an opponent who can match its conditions
+    // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw
+    // entirely rather than resolving a gesture exchange.
+    const blockSource = card.querySelector(".vtm-retest-block-source")?.value?.trim();
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: challengerActor }),
+      content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${req.challengeType} Challenge - Retest Blocked</span></div>`
+        + `<p>${challengerActor.name}'s retest (<strong>${req.retest}</strong>) was blocked by ${opponentActor.name}`
+        + (blockSource ? ` using <strong>${blockSource}</strong>` : "") + `.</p>`
+        + `<div class="vtm-result-banner result-Lost">${opponentActor.name} Wins (retest blocked)!</div></div>`
+    });
+  } else {
+    await resolveAndPostGestureChallenge({
+      challengerActor,
+      challengeType: req.challengeType,
+      challengerGesture: req.challengerGesture,
+      opponentActor,
+      opponentGesture: gestureBtn.dataset.gesture,
+      retest: req.retest,
+      isRetestThrow: req.isRetestThrow
+    });
+  }
+
+  if (req.requestId) game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: req.requestId });
+  await message.delete();
 });

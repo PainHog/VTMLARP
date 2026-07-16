@@ -96,11 +96,56 @@ export async function resolveAndPostGestureChallenge({
 }
 
 /**
- * Users eligible to respond on behalf of `actor`: its active player owners,
- * or (if it has none, e.g. a Storyteller-run NPC) every active GM.
+ * Users eligible to respond on behalf of `actor`: its player owners, or
+ * (if it has none, e.g. a Storyteller-run NPC) every GM. Not gated on
+ * "currently active" - the response now happens via a persistent chat
+ * message (see postGestureChallengePrompt) rather than a live popup, so an
+ * offline player can still respond whenever they next log in and load chat.
  */
 export function respondingUsers(actor) {
-  const owners = game.users.filter(u => u.active && !u.isGM && actor.testUserPermission(u, "OWNER"));
+  const owners = game.users.filter(u => !u.isGM && actor.testUserPermission(u, "OWNER"));
   if (owners.length) return owners;
-  return game.users.filter(u => u.active && u.isGM);
+  return game.users.filter(u => u.isGM);
+}
+
+/**
+ * Post a public chat message with clickable gesture buttons the opponent
+ * (or a GM, for an unowned NPC) can respond to whenever they next load
+ * chat - this doesn't depend on a live socket push to work at all, only on
+ * normal chat history loading, which happens regardless of real-time
+ * connectivity between clients. The challenger's own gesture is stored in
+ * the message's flags (not rendered into the visible text) so it isn't
+ * revealed until the opponent actually responds and the result posts -
+ * anyone can see that a Challenge is happening, but only the opponent's
+ * owner (or a GM) is permitted to actually click a response.
+ */
+export async function postGestureChallengePrompt({
+  challengerActor, challengeType, challengerGesture, opponentActor, opponentName, retest, isRetestThrow, requestId
+}) {
+  const content = await renderTemplate("systems/vtmlarp/templates/apps/challenge-prompt-card.hbs", {
+    challengerName: challengerActor.name,
+    challengeType,
+    opponentName,
+    opponentActorId: opponentActor?.id ?? "",
+    retest,
+    gestures: GESTURES
+  });
+
+  await ChatMessage.create({
+    speaker: ChatMessage.getSpeaker({ actor: challengerActor }),
+    content,
+    flags: {
+      vtmlarp: {
+        requestId,
+        challengerActorId: challengerActor.id,
+        challengeType,
+        challengerGesture,
+        opponentActorId: opponentActor?.id ?? "",
+        opponentName,
+        retest: retest ?? "",
+        isRetestThrow: !!isRetestThrow,
+        responded: false
+      }
+    }
+  });
 }
