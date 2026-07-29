@@ -1,15 +1,15 @@
-2026/07/29-15:04:02.319779 7f6346bfe6c0 Recovering log #348
-2026/07/29-15:04:02.326820 7f6346bfe6c0 Delete type=0 #348
-2026/07/29-15:04:02.326834 7f6346bfe6c0 Delete type=3 #346
-2026/07/29-15:04:02.330505 7f63453fb6c0 Level-0 table #354: started
-2026/07/29-15:04:02.333375 7f63453fb6c0 Level-0 table #354: 14501 bytes OK
-2026/07/29-15:04:02.334534 7f63453fb6c0 Delete type=0 #352
-2026/07/29-15:04:02.334690 7f63453fb6c0 Manual compaction at level-0 from '!items!020fda905ddc4b1b' @ 72057594037927935 : 1 .. '!items!fac41bb56a8a495c' @ 0 : 0; will stop at (end)
-2026/07/29-15:04:02.334750 7f63453fb6c0 Manual compaction at level-1 from '!items!020fda905ddc4b1b' @ 72057594037927935 : 1 .. '!items!fac41bb56a8a495c' @ 0 : 0; will stop at '!items!fac41bb56a8a495c' @ 3064 : 1
-2026/07/29-15:04:02.334753 7f63453fb6c0 Compacting 1@1 + 1@2 files
-2026/07/29-15:04:02.337925 7f63453fb6c0 Generated table #355@1: 45 keys, 14501 bytes
-2026/07/29-15:04:02.337935 7f63453fb6c0 Compacted 1@1 + 1@2 files => 14501 bytes
-2026/07/29-15:04:02.338848 7f63453fb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
-2026/07/29-15:04:02.338912 7f63453fb6c0 Delete type=2 #354
-2026/07/29-15:04:02.338955 7f63453fb6c0 Delete type=2 #350
-2026/07/29-15:04:02.339056 7f63453fb6c0 Manual compaction at level-1 from '!items!fac41bb56a8a495c' @ 3064 : 1 .. '!items!fac41bb56a8a495c' @ 0 : 0; will stop at (end)
+2026/07/29-15:08:01.388940 7f418e3fe6c0 Recovering log #353
+2026/07/29-15:08:01.396445 7f418e3fe6c0 Delete type=0 #353
+2026/07/29-15:08:01.396479 7f418e3fe6c0 Delete type=3 #351
+2026/07/29-15:08:01.400355 7f418cbfb6c0 Level-0 table #359: started
+2026/07/29-15:08:01.404966 7f418cbfb6c0 Level-0 table #359: 14487 bytes OK
+2026/07/29-15:08:01.407180 7f418cbfb6c0 Delete type=0 #357
+2026/07/29-15:08:01.407503 7f418cbfb6c0 Manual compaction at level-0 from '!items!020fda905ddc4b1b' @ 72057594037927935 : 1 .. '!items!fac41bb56a8a495c' @ 0 : 0; will stop at (end)
+2026/07/29-15:08:01.407569 7f418cbfb6c0 Manual compaction at level-1 from '!items!020fda905ddc4b1b' @ 72057594037927935 : 1 .. '!items!fac41bb56a8a495c' @ 0 : 0; will stop at '!items!fac41bb56a8a495c' @ 3109 : 1
+2026/07/29-15:08:01.407571 7f418cbfb6c0 Compacting 1@1 + 1@2 files
+2026/07/29-15:08:01.410952 7f418cbfb6c0 Generated table #360@1: 45 keys, 14487 bytes
+2026/07/29-15:08:01.410963 7f418cbfb6c0 Compacted 1@1 + 1@2 files => 14487 bytes
+2026/07/29-15:08:01.412737 7f418cbfb6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/07/29-15:08:01.412814 7f418cbfb6c0 Delete type=2 #355
+2026/07/29-15:08:01.412907 7f418cbfb6c0 Delete type=2 #359
+2026/07/29-15:08:01.413198 7f418cbfb6c0 Manual compaction at level-1 from '!items!fac41bb56a8a495c' @ 3109 : 1 .. '!items!fac41bb56a8a495c' @ 0 : 0; will stop at (end)

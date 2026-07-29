@@ -1,0 +1,237 @@
+{
+  "_id": "1547ddab5eb9412f",
+  "name": "Camarilla Vampire - Nosferatu Enforcer",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Generic reusable Camarilla combatant - drop in as needed, no unique backstory required.",
+    "clan": "Nosferatu",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 11,
+    "nature": "Bravo",
+    "demeanor": "Conformist",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Rugged",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Menacing",
+            "spent": false
+          },
+          {
+            "name": "Cold",
+            "spent": false
+          },
+          {
+            "name": "Aloof",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Alert",
+            "spent": false
+          },
+          {
+            "name": "Calculating",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "talents": [
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Dodge",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 10,
+      "max": 10,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [
+      {
+        "name": "Resources",
+        "rating": 1,
+        "notes": ""
+      }
+    ],
+    "freeTraits": 0,
+    "biography": "<p>A generic Nosferatu combatant for the Camarilla, ready to drop into any scene without prep. Rating-2 Obfuscate, Brawl 3. Reskin the name/description as needed for a specific fight.</p>",
+    "notes": "",
+    "npcType": "vampire"
+  },
+  "prototypeToken": {
+    "name": "Camarilla Vampire - Nosferatu Enforcer",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [
+    {
+      "_id": "ff9c00bf247544fe",
+      "name": "Obfuscate",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "<p>Base rating-tracker for the Obfuscate Discipline. Set the Rating field to your current level in this Discipline, and drag the individual Basic/Intermediate/Advanced/Elder powers you've learned from the Disciplines &amp; Powers compendium into the Powers list below it.</p>",
+        "source": "Camarilla Guide, Disciplines",
+        "clanAffinity": "",
+        "rating": 2,
+        "retestAbility": ""
+      },
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    },
+    {
+      "_id": "9f901f6d165d439f",
+      "name": "Obfuscate — 1 Basic — Cloak of Shadows",
+      "type": "power",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>By remaining completely still and silent in shadow or behind cover, you fade from notice to all but those using Auspex or similar senses; any movement, speech, or interaction breaks the concealment immediately.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Obfuscate",
+        "level": "basic",
+        "challengeType": "none",
+        "bloodCost": "",
+        "retestAbility": "Stealth",
+        "duration": "While still and silent",
+        "activation": "toggle"
+      },
+      "sort": 1000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp",
+        "systemVersion": "0.1.0",
+        "coreVersion": "12",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Generic reusable mook"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "1.3.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
