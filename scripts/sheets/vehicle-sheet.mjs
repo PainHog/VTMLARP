@@ -12,7 +12,7 @@ const { ActorSheetV2 } = foundry.applications.sheets;
 export class VTMVehicleSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "sheet", "vehicle"],
-    position: { width: 420, height: 480 },
+    position: { width: 480, height: 680 },
     window: { resizable: true },
     form: { submitOnChange: true }
   };

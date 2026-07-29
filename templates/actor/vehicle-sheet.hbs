@@ -5,15 +5,21 @@
       <input name="name" type="text" value="{{actor.name}}" placeholder="Vehicle Name">
       <div class="flexrow header-grid">
         <label>Seats <input type="number" name="system.seats" value="{{system.seats}}" min="0"></label>
-        <label>Grid Width (squares) <input type="number" name="system.gridWidth" value="{{system.gridWidth}}" min="1"></label>
-        <label>Grid Height (squares) <input type="number" name="system.gridHeight" value="{{system.gridHeight}}" min="1"></label>
+        <label>Grid Width <input type="number" name="system.gridWidth" value="{{system.gridWidth}}" min="1"></label>
+        <label>Grid Height <input type="number" name="system.gridHeight" value="{{system.gridHeight}}" min="1"></label>
       </div>
       <p class="hint">
         Current token size: {{tokenWidth}}x{{tokenHeight}} squares.
-        <a class="apply-grid-size"><i class="fas fa-arrows-up-down-left-right"></i> Apply Grid Width/Height above to token size</a>
+        <a class="apply-grid-size"><i class="fas fa-arrows-up-down-left-right"></i> Apply size above to token</a>
       </p>
-      <label>Durability / Damage Track <input type="text" name="system.durability" value="{{system.durability}}" placeholder="e.g. 3 boxes: Undamaged/Damaged/Wrecked"></label>
-      <label>Source <input type="text" name="system.source" value="{{system.source}}" placeholder="e.g. Storyteller-created"></label>
+      <div class="flexrow header-grid">
+        <label>Durability <input type="text" name="system.durability" value="{{system.durability}}" placeholder="e.g. 3 boxes: Undamaged/Damaged/Wrecked" class="wide"></label>
+        <label>Source <input type="text" name="system.source" value="{{system.source}}" placeholder="e.g. Storyteller-created"></label>
+      </div>
+      <label class="checkbox-label">
+        <input type="checkbox" name="system.randomizeTint" {{#if system.randomizeTint}}checked{{/if}}>
+        Randomize token color when placed (one shared image can't be recolored directly, but a color tint can vary per token)
+      </label>
     </div>
   </header>
 

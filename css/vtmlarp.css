@@ -155,6 +155,26 @@
   border-radius: 2px;
 }
 
+/* The <prose-mirror> custom element has no sensible default height on its
+   own - on a sheet with limited vertical space (like the compact Vehicle
+   sheet) it was collapsing to almost nothing, squeezing Description/Notes
+   into an unusably tiny sliver. */
+.vtmlarp.sheet prose-mirror {
+  display: block;
+  min-height: 100px;
+}
+
+.vtmlarp.sheet .header-grid input.wide { flex: 1 1 auto; }
+.vtmlarp.sheet .checkbox-label {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
 /* Foundry's core stylesheet sets color-scheme: dark on the document root,
    which makes Chromium/Firefox render the NATIVE <select> dropdown popup
    (the list of <option>s when the box is clicked open) using dark-mode

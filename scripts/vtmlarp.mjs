@@ -69,6 +69,20 @@ Hooks.once("init", () => {
   Handlebars.registerHelper("vtmGestureIcon", gesture => GESTURE_ICONS[gesture] ?? "fa-question");
 });
 
+// A vehicle's token art is usually one shared image (e.g. a top-down car
+// render) that can't be recolored per-instance directly - Foundry tokens
+// support a "tint" color multiplied onto the texture instead, so a Vehicle
+// Actor with system.randomizeTint checked gets a random tint from a small
+// palette every time a new token is created from it, giving visual variety
+// (a lot with a fleet) without needing a separate image per color.
+const VEHICLE_TINT_PALETTE = ["#1a1a1a", "#e6e6e6", "#8a0303", "#0d2b4a", "#2f4f2f", "#4a3c1a", "#6b6b6b"];
+Hooks.on("preCreateToken", (tokenDoc, data) => {
+  const actor = tokenDoc.actor;
+  if (actor?.type !== "vehicle" || !actor.system.randomizeTint) return;
+  const tint = VEHICLE_TINT_PALETTE[Math.floor(Math.random() * VEHICLE_TINT_PALETTE.length)];
+  tokenDoc.updateSource({ "texture.tint": tint });
+});
+
 Hooks.once("ready", () => {
   // A Challenge's opponent side is resolved on the responding player's (or,
   // for an unowned NPC, any GM's) own client rather than the challenger's -

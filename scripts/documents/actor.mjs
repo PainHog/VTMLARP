@@ -209,7 +209,14 @@ export class VTMVehicleData extends foundry.abstract.TypeDataModel {
       gridWidth: new fields.NumberField({ required: true, integer: true, min: 1, initial: 4 }),
       gridHeight: new fields.NumberField({ required: true, integer: true, min: 1, initial: 2 }),
       durability: new fields.StringField({ required: false, blank: true, initial: "" }),
-      notes: new fields.HTMLField({ required: false, blank: true, initial: "" })
+      notes: new fields.HTMLField({ required: false, blank: true, initial: "" }),
+      // A single shared image (e.g. a top-down car render) can't be
+      // recolored procedurally, but Foundry tokens support a "tint" color
+      // multiplied onto the texture - toggling this randomizes it from a
+      // small palette every time a new token is created from this Actor
+      // (see the preCreateToken hook in vtmlarp.mjs), so a dozen Sedans on
+      // the same scene don't all look identically navy blue.
+      randomizeTint: new fields.BooleanField({ required: true, initial: false })
     };
   }
 }
