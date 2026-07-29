@@ -1,9 +1,10 @@
-import { VTMCharacterData, VTMNpcData } from "./documents/actor.mjs";
+import { VTMCharacterData, VTMNpcData, VTMVehicleData } from "./documents/actor.mjs";
 import {
   VTMAttributeData, VTMAbilityData, VTMDisciplineData, VTMPowerData,
   VTMBackgroundData, VTMMeritData, VTMFlawData, VTMVirtueData, VTMRitualData, VTMGearData
 } from "./documents/item.mjs";
 import { VTMActorSheet } from "./sheets/actor-sheet.mjs";
+import { VTMVehicleSheet } from "./sheets/vehicle-sheet.mjs";
 import { VTMItemSheet } from "./sheets/item-sheet.mjs";
 import { ChallengeResponseApp } from "./apps/challenge-response.mjs";
 import { ChallengeApp } from "./apps/challenge.mjs";
@@ -17,7 +18,8 @@ Hooks.once("init", () => {
 
   CONFIG.Actor.dataModels = {
     character: VTMCharacterData,
-    npc: VTMNpcData
+    npc: VTMNpcData,
+    vehicle: VTMVehicleData
   };
 
   CONFIG.Item.dataModels = {
@@ -40,6 +42,7 @@ Hooks.once("init", () => {
 
   ActorsCollection.unregisterSheet("core", BaseActorSheet);
   ActorsCollection.registerSheet("vtmlarp", VTMActorSheet, { types: ["character", "npc"], makeDefault: true });
+  ActorsCollection.registerSheet("vtmlarp", VTMVehicleSheet, { types: ["vehicle"], makeDefault: true });
 
   ItemsCollection.unregisterSheet("core", BaseItemSheet);
   ItemsCollection.registerSheet("vtmlarp", VTMItemSheet, { makeDefault: true });

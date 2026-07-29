@@ -189,3 +189,27 @@ export class VTMNpcData extends VTMCharacterData {
     return schema;
   }
 }
+
+/**
+ * A driveable/rideable vehicle - deliberately its own minimal schema rather
+ * than extending VTMCharacterData, since a vehicle has no Attributes,
+ * Abilities, Disciplines, Virtues, etc. Grid footprint (width/height, in
+ * grid squares) is the field that actually matters for tabletop use - a
+ * sedan seats 4 and occupies 4x2 squares, a semi occupies 10x2, and so on -
+ * this drives the Actor's prototypeToken size directly (see
+ * VTMVehicleSheet._onApplyGridSize) so dragging one onto a scene places a
+ * correctly-sized token without the GM having to configure it by hand.
+ */
+export class VTMVehicleData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return {
+      description: new fields.HTMLField({ required: false, blank: true, initial: "" }),
+      source: new fields.StringField({ required: false, blank: true, initial: "" }),
+      seats: new fields.NumberField({ required: true, integer: true, min: 0, initial: 4 }),
+      gridWidth: new fields.NumberField({ required: true, integer: true, min: 1, initial: 4 }),
+      gridHeight: new fields.NumberField({ required: true, integer: true, min: 1, initial: 2 }),
+      durability: new fields.StringField({ required: false, blank: true, initial: "" }),
+      notes: new fields.HTMLField({ required: false, blank: true, initial: "" })
+    };
+  }
+}
