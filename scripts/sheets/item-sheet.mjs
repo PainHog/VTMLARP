@@ -56,11 +56,13 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     if (!this.isEditable) return;
 
     // Click a number/text field and its existing value is selected, so typing
-    // replaces it instead of appending - matches the actor sheet.
-    this.element.addEventListener("focusin", (event) => {
-      const t = event.target;
-      if (t?.matches?.("input[type='number'], input[type='text']")) t.select();
-    });
+    // replaces it instead of appending - matches the actor sheet. Bound per
+    // input node (rebuilt each render) rather than once on this.element, which
+    // ApplicationV2 keeps across re-renders and would accumulate duplicate
+    // listeners (a source of lag).
+    this.element
+      .querySelectorAll("input[type='number'], input[type='text']")
+      .forEach(node => node.addEventListener("focus", (event) => event.currentTarget.select()));
 
     // Explicit save for every named form field, since submitOnChange does not
     // persist on this hosting (see DEFAULT_OPTIONS). Includes <prose-mirror>

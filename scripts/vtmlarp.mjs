@@ -91,8 +91,6 @@ Hooks.once("ready", () => {
   // this event; every connected client receives it and only the intended
   // recipient(s) actually pop the response dialog.
   game.socket.on("system.vtmlarp", data => {
-    console.log("VTMLARP | Received socket event:", data.action, "| my user:", game.user.id, game.user.name, "| targetUserIds:", data.targetUserIds, "| am I targeted?", data.targetUserIds?.includes(game.user.id));
-
     // Every GM client tracks the request/resolution pair for the Active
     // Challenges dashboard, regardless of whether this particular GM is the
     // one who'll actually respond - a busy session can have several

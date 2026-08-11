@@ -234,13 +234,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // which is the SOLE write path for plain named fields, so there are no
     // dueling concurrent actor.update() calls (the earlier cause of text/
     // array data loss during character creation).
-    form: { submitOnChange: false },
-    // Own the portrait-image action rather than inheriting the core one: the
-    // core handler routes the new path through form submission (which is off
-    // here), so on this setup the picked image never actually persisted. Our
-    // handler writes it straight to the document, and also mirrors it onto the
-    // prototype token so it shows up when the actor is dropped on a scene.
-    actions: { editImage: onEditImage }
+    form: { submitOnChange: false }
   };
 
   static PARTS = {
@@ -396,13 +390,17 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     // Select the whole existing value when a number/text field gains focus,
     // so a player can just click a total (Physical, Mental, Willpower, Blood,
-    // etc.) and type the new number straight over it instead of having to
-    // clear it out first. `focusin` (delegated on the root) rather than a
-    // per-node `focus` listener so it also covers fields added after render.
-    el.addEventListener("focusin", (event) => {
-      const t = event.target;
-      if (t?.matches?.("input[type='number'], input[type='text']")) t.select();
-    });
+    // etc.) and type the new number straight over it. Bound per input node
+    // (nodes are rebuilt every render, so listeners don't accumulate) rather
+    // than once on this.element - ApplicationV2 KEEPS the root element across
+    // re-renders, so a listener added to it each render piles up into dozens of
+    // duplicates over a session, which was a real source of sheet lag.
+    on("input[type='number'], input[type='text']", "focus", (event) => event.currentTarget.select());
+
+    // Portrait: open a FilePicker and save straight to the document. Bound
+    // directly instead of via the core `editImage` action, which routes the
+    // new path through form submission (disabled here) and so never persisted.
+    on(".profile-img", "click", (event) => onEditImage.call(this, event, event.currentTarget));
 
     // Available to everyone (not just owners with edit rights) - opening a
     // lore entry to read isn't an edit.
