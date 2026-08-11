@@ -495,15 +495,18 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (el.type === "checkbox") value = el.checked;
     else if (el.type === "number") value = value === "" ? null : Number(value);
 
-    // Setting Generation auto-applies that generation's starting Willpower and
-    // Blood Pool from the Laws of the Night Revised chart (p. 95), so players
-    // don't have to look the numbers up or click a separate button. Willpower's
-    // max is derived from generation elsewhere; here we seed the starting pools.
+    // The FIRST time Generation is set, auto-apply that generation's starting
+    // Willpower and Blood Pool from the Laws of the Night Revised chart (p. 95),
+    // so players don't have to look the numbers up. Gated by generationApplied
+    // so changing Generation later (e.g. diablerie) only re-derives the
+    // Willpower cap and never clobbers an established pool. Use the "Apply
+    // Generation" button to deliberately re-seed the starting values.
     if (el.name === "system.generation") {
       const info = GENERATION_TABLE[value];
-      if (info) {
+      if (info && !this.actor.system.generationApplied) {
         await this.actor.update({
           "system.generation": value,
+          "system.generationApplied": true,
           "system.willpower.value": info.willpowerStart,
           "system.blood.max": info.bloodMax,
           "system.blood.perTurn": info.bloodPerTurn,
@@ -625,12 +628,15 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       return;
     }
     const sys = this.actor.system;
+    // Deliberate (re)seed to this generation's starting values - unlike the
+    // automatic on-change seeding, this always resets to the chart's starting
+    // Willpower/Blood, so it's the way to reset an established character.
     await this.actor.update({
+      "system.generationApplied": true,
       "system.blood.max": info.bloodMax,
       "system.blood.perTurn": info.bloodPerTurn,
-      "system.blood.value": Math.min(sys.blood.value, info.bloodMax),
-      "system.willpower.max": info.willpowerMax,
-      "system.willpower.value": Math.min(sys.willpower.value, info.willpowerMax)
+      "system.blood.value": info.bloodMax,
+      "system.willpower.value": info.willpowerStart
     });
   }
 

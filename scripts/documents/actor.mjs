@@ -125,6 +125,11 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
         max: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 })
       }),
 
+      // Set true the first time a Generation is applied, so auto-seeding of
+      // starting Willpower/Blood happens once (at creation) and never
+      // overwrites an established pool if the Generation changes later.
+      generationApplied: new fields.BooleanField({ required: false, initial: false }),
+
       experience: new fields.SchemaField({
         value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
         // Lifetime Experience ever awarded (bumped alongside value when a
