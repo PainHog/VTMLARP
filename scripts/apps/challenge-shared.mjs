@@ -13,10 +13,20 @@ export function beats(a, b) {
   return (wins[a] === b) ? "win" : "lose";
 }
 
-/** Count of not-yet-spent traits in one of an actor's attribute categories. */
+/**
+ * Traits an actor can bid in one attribute category (Physical/Social/Mental).
+ * The bid pool is the category's Total (what players actually fill in: 7/5/3),
+ * reduced by any named Trait chips already marked spent. Named chips are
+ * optional flavor, so an actor with a Total of 7 and no chips bids 7 - earlier
+ * this only counted chips, so those characters bid 0.
+ */
 export function unspentCount(actor, category) {
-  const traits = actor?.system?.attributes?.[category]?.traits ?? [];
-  return traits.filter(t => !t.spent).length;
+  const cat = actor?.system?.attributes?.[category];
+  if (!cat) return 0;
+  const total = Number(cat.total) || 0;
+  const spentChips = (cat.traits ?? []).filter(t => t.spent).length;
+  const available = total - spentChips;
+  return available > 0 ? available : 0;
 }
 
 /**
