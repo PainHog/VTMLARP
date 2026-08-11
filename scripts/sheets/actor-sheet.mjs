@@ -494,6 +494,25 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     let value = el.value;
     if (el.type === "checkbox") value = el.checked;
     else if (el.type === "number") value = value === "" ? null : Number(value);
+
+    // Setting Generation auto-applies that generation's starting Willpower and
+    // Blood Pool from the Laws of the Night Revised chart (p. 95), so players
+    // don't have to look the numbers up or click a separate button. Willpower's
+    // max is derived from generation elsewhere; here we seed the starting pools.
+    if (el.name === "system.generation") {
+      const info = GENERATION_TABLE[value];
+      if (info) {
+        await this.actor.update({
+          "system.generation": value,
+          "system.willpower.value": info.willpowerStart,
+          "system.blood.max": info.bloodMax,
+          "system.blood.perTurn": info.bloodPerTurn,
+          "system.blood.value": Math.min(this.actor.system.blood.value, info.bloodMax)
+        });
+        return;
+      }
+    }
+
     await this.actor.update({ [el.name]: value });
   }
 
