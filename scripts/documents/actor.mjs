@@ -72,7 +72,30 @@ function virtueSchema() {
   });
 }
 
+// Maximum permanent Willpower by generation (Laws of the Night Revised, p. 95
+// Generation chart, Willpower "start/max" column - this is the max). Your
+// generation sets the ceiling to which permanent Willpower can be raised.
+// 14th/15th (thin-blood) aren't on the book chart, so they use the 13th-gen
+// cap; 3rd and below are left out (ST's call).
+export const GENERATION_WILLPOWER_MAX = {
+  15: 6, 14: 6, 13: 6, 12: 8, 11: 8, 10: 10, 9: 10, 8: 12, 7: 14, 6: 16, 5: 18, 4: 20
+};
+
 export class VTMCharacterData extends foundry.abstract.TypeDataModel {
+  /**
+   * Generation caps maximum permanent Willpower, so derive willpower.max from
+   * the character's generation rather than trusting a manually-entered value,
+   * and clamp the current pool to that ceiling for display.
+   */
+  prepareDerivedData() {
+    super.prepareDerivedData?.();
+    const cap = GENERATION_WILLPOWER_MAX[this.generation];
+    if (cap != null) {
+      this.willpower.max = cap;
+      if (this.willpower.value > cap) this.willpower.value = cap;
+    }
+  }
+
   static defineSchema() {
     return {
       concept: new fields.StringField({ required: false, blank: true, initial: "" }),

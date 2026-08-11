@@ -146,6 +146,8 @@ const PATH_OPTIONS = [
 // so those rows are left for Storyteller judgment rather than risking wrong
 // numbers.
 const GENERATION_TABLE = {
+  15: { maxTraits: 10, maxAbilities: 5, bloodMax: 10, bloodPerTurn: 1, willpowerStart: 2, willpowerMax: 6 },
+  14: { maxTraits: 10, maxAbilities: 5, bloodMax: 10, bloodPerTurn: 1, willpowerStart: 2, willpowerMax: 6 },
   13: { maxTraits: 10, maxAbilities: 5, bloodMax: 10, bloodPerTurn: 1, willpowerStart: 2, willpowerMax: 6 },
   12: { maxTraits: 10, maxAbilities: 5, bloodMax: 11, bloodPerTurn: 1, willpowerStart: 2, willpowerMax: 8 },
   11: { maxTraits: 11, maxAbilities: 5, bloodMax: 12, bloodPerTurn: 1, willpowerStart: 4, willpowerMax: 8 },
@@ -154,7 +156,8 @@ const GENERATION_TABLE = {
   8: { maxTraits: 14, maxAbilities: 5, bloodMax: 15, bloodPerTurn: 3, willpowerStart: 6, willpowerMax: 12 },
   7: { maxTraits: 16, maxAbilities: 6, bloodMax: 20, bloodPerTurn: 5, willpowerStart: 7, willpowerMax: 14 },
   6: { maxTraits: 18, maxAbilities: 7, bloodMax: 30, bloodPerTurn: 6, willpowerStart: 8, willpowerMax: 16 },
-  5: { maxTraits: 20, maxAbilities: 8, bloodMax: 40, bloodPerTurn: 8, willpowerStart: 9, willpowerMax: 18 }
+  5: { maxTraits: 20, maxAbilities: 8, bloodMax: 40, bloodPerTurn: 8, willpowerStart: 9, willpowerMax: 18 },
+  4: { maxTraits: 25, maxAbilities: 9, bloodMax: 50, bloodPerTurn: 10, willpowerStart: 10, willpowerMax: 20 }
 };
 
 const SIMPLE_LIST_DEFAULTS = {
