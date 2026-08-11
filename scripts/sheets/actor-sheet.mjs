@@ -183,17 +183,32 @@ async function onEditImage(event, target) {
     type: "image",
     current,
     callback: async (path) => {
-      const update = { [attr]: path };
-      // Mirror the portrait onto the prototype token when the token is still
-      // using the default/blank art, so dropping the actor on a scene shows
-      // the picture instead of the mystery-man silhouette. If the token already
-      // has its own distinct image, leave it alone.
+      // Save the portrait on its own first, so nothing else can roll it back.
+      try {
+        await this.actor.update({ [attr]: path });
+      } catch (err) {
+        console.error("VTMLARP | portrait image update failed", err);
+        ui.notifications?.error("Failed to save the portrait image.");
+        return;
+      }
+      // Then, as a separate best-effort update, mirror the portrait onto the
+      // prototype token when the token is still using the default/blank art -
+      // so dropping the actor on a scene shows the picture. Done separately so
+      // a token-field validation error can never undo the portrait save above.
       if (attr === "img") {
         const tokenSrc = this.actor.prototypeToken?.texture?.src;
         const DEFAULTS = ["icons/svg/mystery-man.svg", "", null, undefined];
-        if (DEFAULTS.includes(tokenSrc)) update["prototypeToken.texture.src"] = path;
+        if (DEFAULTS.includes(tokenSrc)) {
+          try {
+            await this.actor.update({ "prototypeToken.texture.src": path });
+          } catch (err) {
+            console.warn("VTMLARP | token image sync skipped", err);
+          }
+        }
       }
-      await this.actor.update(update);
+      // Force a re-render so the header <img src="{{actor.img}}"> repaints even
+      // if the document update hook didn't already trigger one.
+      this.render(false);
     },
     top: (this.position?.top ?? 0) + 40,
     left: (this.position?.left ?? 0) + 10
