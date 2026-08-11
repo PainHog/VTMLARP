@@ -35,10 +35,6 @@
             {{/each}}
           </select>
         </label>
-        <label>Gen. Traits Spent
-          <input type="number" name="system.freeTraits" value="{{system.freeTraits}}" min="0"
-            title="Character-creation only, separate from Experience: 1 Background/Free Trait spent per Generation purchased below 13th. Not touched again after creation.">
-        </label>
         <label>Nature
           <span class="flexrow dropdown-with-lore">
             <select name="system.nature">
@@ -121,7 +117,7 @@
         <div class="pool">
           <label>Experience</label>
           <input type="number" name="system.experience.value" value="{{system.experience.value}}"
-            title="Ongoing: earned after each session, spent on new Attributes/Abilities/Backgrounds/Disciplines. Separate from Gen. Traits Spent, which is a one-time creation cost.">
+            title="Ongoing: earned after each session, spent on new Attributes/Abilities/Backgrounds/Disciplines.">
           <span class="hint xp-spent-hint">({{xpSpent}} spent of {{system.experience.total}} earned)</span>
           {{#if isGM}}
           <a class="award-xp" title="Award Experience (adds to both current and lifetime total)"><i class="fas fa-star"></i></a>
@@ -180,6 +176,7 @@
         <button type="button" class="open-frenzy"><i class="fas fa-burst"></i> Frenzy / Rötschreck</button>
         <button type="button" class="open-vaulderie"><i class="fas fa-tint"></i> Vaulderie</button>
         <button type="button" class="open-session-log"><i class="fas fa-scroll"></i> Session Log</button>
+        <button type="button" class="open-chargen-guide"><i class="fas fa-book-open"></i> Chargen Guide</button>
       </div>
 
     </div>

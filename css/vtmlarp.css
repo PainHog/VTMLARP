@@ -1367,3 +1367,13 @@ form.vtmlarp.sheet {
   font-size: 11px;
   color: var(--vtm-text-dim);
 }
+
+.vtmlarp-chargen-guide {
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 100%;
+}
+.vtm-chargen-columns {
+  columns: 2;
+  column-gap: 20px;
+}

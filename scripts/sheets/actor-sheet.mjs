@@ -4,6 +4,7 @@ import { VaulderieApp } from "../apps/vaulderie.mjs";
 import { checkPrerequisites } from "../apps/prerequisites.mjs";
 import { logAction } from "../apps/action-log.mjs";
 import { SessionLogApp } from "../apps/session-log.mjs";
+import { CharacterCreationGuideApp } from "../apps/character-creation-guide.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -336,6 +337,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // work even for players/observers without edit rights on this actor.
     on(".collapsible-header", "click", this._onToggleCollapse.bind(this));
     on(".open-session-log", "click", () => new SessionLogApp(this.actor).render(true));
+    on(".open-chargen-guide", "click", () => new CharacterCreationGuideApp().render(true));
 
     if (!this.isEditable) return;
 

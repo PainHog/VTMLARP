@@ -134,8 +134,6 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
 
       backgrounds: new fields.ArrayField(ratedTraitField()),
 
-      freeTraits: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
-
       derangements: new fields.ArrayField(new fields.SchemaField({
         name: new fields.StringField({ required: true, initial: "" }),
         description: new fields.StringField({ required: false, blank: true, initial: "" })
