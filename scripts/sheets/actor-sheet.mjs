@@ -163,6 +163,44 @@ const SIMPLE_LIST_DEFAULTS = {
   boons: { who: "", type: "minor", direction: "owed", notes: "" }
 };
 
+/**
+ * ApplicationV2 action handler for the portrait <img data-action="editImage">.
+ * `this` is the sheet instance. Opens a FilePicker and writes the chosen image
+ * directly to the actor (and its prototype token) via actor.update, so it
+ * persists regardless of the form's submit configuration. The core editImage
+ * handler relied on form submission, which is disabled on this sheet, so the
+ * picked portrait silently never saved.
+ */
+async function onEditImage(event, target) {
+  const attr = target?.dataset?.edit ?? "img";
+  const current = foundry.utils.getProperty(this.actor, attr) ?? this.actor.img;
+  // FilePicker moved under foundry.applications.apps in v13; fall back to the
+  // still-present global on v12.
+  const FP = foundry.applications?.apps?.FilePicker?.implementation
+    ?? foundry.applications?.apps?.FilePicker
+    ?? FilePicker;
+  const picker = new FP({
+    type: "image",
+    current,
+    callback: async (path) => {
+      const update = { [attr]: path };
+      // Mirror the portrait onto the prototype token when the token is still
+      // using the default/blank art, so dropping the actor on a scene shows
+      // the picture instead of the mystery-man silhouette. If the token already
+      // has its own distinct image, leave it alone.
+      if (attr === "img") {
+        const tokenSrc = this.actor.prototypeToken?.texture?.src;
+        const DEFAULTS = ["icons/svg/mystery-man.svg", "", null, undefined];
+        if (DEFAULTS.includes(tokenSrc)) update["prototypeToken.texture.src"] = path;
+      }
+      await this.actor.update(update);
+    },
+    top: (this.position?.top ?? 0) + 40,
+    left: (this.position?.left ?? 0) + 10
+  });
+  return picker.browse();
+}
+
 export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   // Tracks which collapsible sections (attribute/ability categories,
   // discipline groups) are currently collapsed, keyed by their
@@ -181,7 +219,13 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // which is the SOLE write path for plain named fields, so there are no
     // dueling concurrent actor.update() calls (the earlier cause of text/
     // array data loss during character creation).
-    form: { submitOnChange: false }
+    form: { submitOnChange: false },
+    // Own the portrait-image action rather than inheriting the core one: the
+    // core handler routes the new path through form submission (which is off
+    // here), so on this setup the picked image never actually persisted. Our
+    // handler writes it straight to the document, and also mirrors it onto the
+    // prototype token so it shows up when the actor is dropped on a scene.
+    actions: { editImage: onEditImage }
   };
 
   static PARTS = {

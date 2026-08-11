@@ -555,6 +555,8 @@ form.vtmlarp.sheet {
    ("Resolve Challenge" vs "Vaulderie") - uneven and cramped depending on
    text. Give the row a fixed height and each button an equal share. */
 .vtmlarp.sheet .main-actions {
+  display: flex;
+  flex-direction: row;
   gap: 6px;
   margin-bottom: 10px;
   align-items: center;
