@@ -55,6 +55,13 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     super._onRender(context, options);
     if (!this.isEditable) return;
 
+    // Click a number/text field and its existing value is selected, so typing
+    // replaces it instead of appending - matches the actor sheet.
+    this.element.addEventListener("focusin", (event) => {
+      const t = event.target;
+      if (t?.matches?.("input[type='number'], input[type='text']")) t.select();
+    });
+
     // Explicit save for every named form field, since submitOnChange does not
     // persist on this hosting (see DEFAULT_OPTIONS). Includes <prose-mirror>
     // rich-text editors (description/notes), which dispatch their own change

@@ -335,6 +335,16 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       el.querySelectorAll(selector).forEach(node => node.addEventListener(event, handler));
     };
 
+    // Select the whole existing value when a number/text field gains focus,
+    // so a player can just click a total (Physical, Mental, Willpower, Blood,
+    // etc.) and type the new number straight over it instead of having to
+    // clear it out first. `focusin` (delegated on the root) rather than a
+    // per-node `focus` listener so it also covers fields added after render.
+    el.addEventListener("focusin", (event) => {
+      const t = event.target;
+      if (t?.matches?.("input[type='number'], input[type='text']")) t.select();
+    });
+
     // Available to everyone (not just owners with edit rights) - opening a
     // lore entry to read isn't an edit.
     on(".open-lore", "click", this._onOpenLore.bind(this));
