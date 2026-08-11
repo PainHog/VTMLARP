@@ -254,10 +254,10 @@ document.addEventListener("click", async event => {
     const blockSource = card.querySelector(".vtm-retest-block-source")?.value?.trim();
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: challengerActor }),
-      content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${req.challengeType} Challenge - Retest Blocked</span></div>`
-        + `<p>${challengerActor.name}'s retest (<strong>${req.retest}</strong>) was blocked by ${opponentActor.name}`
-        + (blockSource ? ` using <strong>${blockSource}</strong>` : "") + `.</p>`
-        + `<div class="vtm-result-banner result-Lost">${opponentActor.name} Wins (retest blocked)!</div></div>`
+      content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${req.challengeType} Challenge - Retest Cancelled</span></div>`
+        + `<p>${challengerActor.name}'s retest (<strong>${req.retest}</strong>) was cancelled by ${opponentActor.name}`
+        + (blockSource ? ` giving up <strong>${blockSource}</strong>` : "") + `.</p>`
+        + `<div class="vtm-result-banner result-Lost">${opponentActor.name} Wins (retest cancelled)!</div></div>`
     });
   } else {
     await resolveAndPostGestureChallenge({
