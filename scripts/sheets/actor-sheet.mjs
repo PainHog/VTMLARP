@@ -174,7 +174,14 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     classes: ["vtmlarp", "sheet", "actor"],
     position: { width: 960, height: 880 },
     window: { resizable: true },
-    form: { submitOnChange: true }
+    // submitOnChange is deliberately OFF: Foundry's built-in form auto-submit
+    // was confirmed (via console logging) to NOT actually persist on this
+    // table's hosting - selecting a Clan left system.clan "" across every
+    // subsequent render. Saving is done explicitly by _onFieldChange below,
+    // which is the SOLE write path for plain named fields, so there are no
+    // dueling concurrent actor.update() calls (the earlier cause of text/
+    // array data loss during character creation).
+    form: { submitOnChange: false }
   };
 
   static PARTS = {
@@ -367,6 +374,17 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".award-xp", "click", this._onAwardXP.bind(this));
     on(".item-rating-control", "click", this._onItemRatingControl.bind(this));
 
+    // Explicit save for every plain named <input>/<select>/<textarea> - the
+    // actor name field plus all system.* fields (Clan, Sect, Bloodline,
+    // Nature, Demeanor, Generation, Path, Willpower/Blood pools, ability/
+    // background specialization names, biography textareas, etc.). This is
+    // the sole write path for these fields since submitOnChange is off (see
+    // DEFAULT_OPTIONS) - Foundry's built-in auto-submit does not persist on
+    // this hosting. Controls with their own dedicated handlers above (trait
+    // dots, health boxes, item rating steppers) are clicks/anchors, not
+    // named form inputs, so they never double-fire this.
+    on("input[name], select[name], textarea[name], prose-mirror[name]", "change", this._onFieldChange.bind(this));
+
     // ApplicationV2 doesn't auto-wire a "dragDrop" static option into actual
     // drag/drop event listeners the way V1's FormApplication did (that
     // binding lived in FormApplication.activateListeners, which no longer
@@ -392,6 +410,22 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       const key = node.dataset.collapseKey;
       if (key && this.#collapsedKeys.has(key)) node.classList.add("collapsed");
     });
+  }
+
+  /**
+   * Explicit save for any plain named <input>/<select>/<textarea> with no
+   * other dedicated handler (actor name, Clan, Sect, Nature, Demeanor,
+   * Generation, Path, Willpower/Blood pools, specialization/name text
+   * fields, biography, etc.). This is the sole write path for these fields
+   * (submitOnChange is off), so it never races another actor.update().
+   */
+  async _onFieldChange(event) {
+    const el = event.currentTarget;
+    if (el.disabled || el.readOnly) return;
+    let value = el.value;
+    if (el.type === "checkbox") value = el.checked;
+    else if (el.type === "number") value = value === "" ? null : Number(value);
+    await this.actor.update({ [el.name]: value });
   }
 
   /** Toggle a collapsible section (attribute/ability category, discipline group) open/closed. */

@@ -6,7 +6,10 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     classes: ["vtmlarp", "sheet", "item"],
     position: { width: 520, height: 640 },
     window: { resizable: true },
-    form: { submitOnChange: true }
+    // submitOnChange is OFF for the same reason as the actor sheet: Foundry's
+    // built-in auto-submit does not persist on this table's hosting. Saving
+    // is done explicitly in _onRender's field handler below.
+    form: { submitOnChange: false }
   };
 
   static PARTS = {
@@ -45,6 +48,30 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       details: { id: "details", group: "primary", label: "Details", active: active === "details" }
     };
     return context;
+  }
+
+  /** @override */
+  _onRender(context, options) {
+    super._onRender(context, options);
+    if (!this.isEditable) return;
+
+    // Explicit save for every named form field, since submitOnChange does not
+    // persist on this hosting (see DEFAULT_OPTIONS). Includes <prose-mirror>
+    // rich-text editors (description/notes), which dispatch their own change
+    // event on save.
+    const handler = this._onFieldChange.bind(this);
+    this.element
+      .querySelectorAll("input[name], select[name], textarea[name], prose-mirror[name]")
+      .forEach(node => node.addEventListener("change", handler));
+  }
+
+  async _onFieldChange(event) {
+    const el = event.currentTarget;
+    if (el.disabled || el.readOnly) return;
+    let value = el.value;
+    if (el.type === "checkbox") value = el.checked;
+    else if (el.type === "number") value = value === "" ? null : Number(value);
+    await this.item.update({ [el.name]: value });
   }
 
   /**
