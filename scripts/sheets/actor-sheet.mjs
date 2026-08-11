@@ -43,7 +43,8 @@ const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
 
 const TAB_DEFS = [
   { id: "main", label: "Main" },
-  { id: "traits", label: "Attributes & Abilities" },
+  { id: "attributes", label: "Attributes" },
+  { id: "abilities", label: "Abilities" },
   { id: "powers", label: "Disciplines & Powers" },
   { id: "backgrounds", label: "Backgrounds" },
   { id: "meritsflaws", label: "Merits & Flaws" },

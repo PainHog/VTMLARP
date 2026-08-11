@@ -78,7 +78,8 @@
 
   <nav class="sheet-tabs tabs" data-group="primary">
     <a class="item {{#if tabs.main.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="main">Main</a>
-    <a class="item {{#if tabs.traits.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="traits">Attributes &amp; Abilities</a>
+    <a class="item {{#if tabs.attributes.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="attributes">Attributes</a>
+    <a class="item {{#if tabs.abilities.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="abilities">Abilities</a>
     <a class="item {{#if tabs.powers.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="powers">Disciplines &amp; Powers</a>
     <a class="item {{#if tabs.backgrounds.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="backgrounds">Backgrounds</a>
     <a class="item {{#if tabs.meritsflaws.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="meritsflaws">Merits &amp; Flaws</a>
@@ -180,7 +181,7 @@
 
     </div>
 
-    <div class="tab {{#if tabs.traits.active}}active{{/if}}" data-group="primary" data-tab="traits">
+    <div class="tab {{#if tabs.attributes.active}}active{{/if}}" data-group="primary" data-tab="attributes">
       {{#each system.attributes as |category key|}}
       <div class="attribute-category collapsible" data-collapse-key="attr-{{key}}">
         <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> {{vtmCapitalize key}} <span class="priority">({{category.priority}})</span>
@@ -199,7 +200,9 @@
         </div>
       </div>
       {{/each}}
+    </div>
 
+    <div class="tab {{#if tabs.abilities.active}}active{{/if}}" data-group="primary" data-tab="abilities">
       {{#each system.abilities as |list key|}}
       <div class="ability-category collapsible" data-collapse-key="ability-{{key}}">
         <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> {{vtmCapitalize key}}
