@@ -154,6 +154,30 @@ Hooks.once("ready", () => {
   });
 });
 
+// Add an "Activate Scene" entry to the right-click menu on the top scene
+// navigation tabs, so a GM can pull everyone to a scene straight from the nav
+// bar instead of opening the Scenes sidebar. Core Foundry doesn't put Activate
+// on the nav-tab menu on every version; this adds it consistently.
+Hooks.on("getSceneNavigationContext", (nav, options) => {
+  const sceneIdOf = (li) => {
+    const el = li instanceof HTMLElement ? li : (li?.[0] ?? li);
+    return el?.dataset?.sceneId ?? el?.getAttribute?.("data-scene-id");
+  };
+  options.push({
+    name: "Activate Scene",
+    icon: '<i class="fas fa-bullseye"></i>',
+    condition: (li) => {
+      if (!game.user.isGM) return false;
+      const scene = game.scenes.get(sceneIdOf(li));
+      return !!scene && !scene.active;
+    },
+    callback: (li) => {
+      const scene = game.scenes.get(sceneIdOf(li));
+      return scene?.activate();
+    }
+  });
+});
+
 Hooks.on("getSceneControlButtons", controls => {
   if (!game.user.isGM) return;
   // Foundry v13 restructured getSceneControlButtons from an array to an
