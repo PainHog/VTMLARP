@@ -51,11 +51,9 @@
     <label>Name
       <input type="text" name="effectName" placeholder="e.g. Blinded, Inspired, Staggered">
     </label>
-    <label>Affected Attribute
+    <label>Affected Trait
       <select name="effectStat">
-        <option value="physical">Physical</option>
-        <option value="social">Social</option>
-        <option value="mental">Mental</option>
+        {{#each statTargets as |t|}}<option value="{{t.key}}">{{t.label}}</option>{{/each}}
       </select>
     </label>
     <div class="flexrow">

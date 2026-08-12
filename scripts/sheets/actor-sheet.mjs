@@ -322,6 +322,23 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     context.isCharacter = this.actor.type === "character";
     context.isGM = game.user.isGM;
+
+    // Storyteller-applied afflictions/modifiers (Active Effects) shown so the
+    // owning player can remove one themselves if the ST forgets to clear it.
+    context.afflictions = this.actor.effects
+      .filter(e => e.flags?.vtmlarp?.stTemp)
+      .map(e => {
+        const chg = e.changes?.[0];
+        const label = e.flags?.vtmlarp?.statLabel ?? chg?.key?.split(".")?.[2] ?? "";
+        const amt = Number(chg?.value) || 0;
+        const rounds = e.duration?.rounds;
+        return {
+          id: e.id,
+          name: e.name ?? e.label ?? "Affliction",
+          summary: label ? `${amt > 0 ? "+" : ""}${amt} ${label}` : "",
+          rounds: rounds ? `${rounds} rd` : ""
+        };
+      });
     context.xpSpent = Math.max(0, (sys.experience.total ?? 0) - (sys.experience.value ?? 0));
     context.NPC_TYPE_OPTIONS = ["vampire", "ghoul", "mortal", "spirit", "other"];
     context.CLAN_OPTIONS = CLAN_OPTIONS;
@@ -414,6 +431,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // work even for players/observers without edit rights on this actor.
     on(".collapsible-header", "click", this._onToggleCollapse.bind(this));
     on(".open-session-log", "click", () => new SessionLogApp(this.actor).render(true));
+    // Owners (players) can clear a Storyteller-applied affliction themselves,
+    // in case the ST forgets - available above the edit guard so it works for
+    // any owner viewing their own sheet.
+    on(".remove-affliction", "click", this._onRemoveAffliction.bind(this));
 
     if (!this.isEditable) return;
 
@@ -538,6 +559,14 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     }
 
     await this.actor.update({ [el.name]: value });
+  }
+
+  /** Remove a Storyteller-applied affliction (Active Effect) from this actor. */
+  async _onRemoveAffliction(event) {
+    event.preventDefault();
+    const id = event.currentTarget.dataset.effectId;
+    const effect = this.actor.effects.get(id);
+    if (effect) await effect.delete();
   }
 
   /** Toggle a collapsible section (attribute/ability category, discipline group) open/closed. */

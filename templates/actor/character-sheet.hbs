@@ -135,6 +135,18 @@
       </p>
       {{/if}}
 
+      {{#if afflictions.length}}
+      <div class="afflictions">
+        <h3><i class="fas fa-bolt"></i> Afflictions / Modifiers</h3>
+        {{#each afflictions as |a|}}
+        <div class="affliction-row">
+          <span class="affliction-desc"><strong>{{a.name}}</strong>{{#if a.summary}} ({{a.summary}}{{#if a.rounds}}, {{a.rounds}}{{/if}}){{/if}}</span>
+          <a class="remove-affliction" data-effect-id="{{a.id}}" title="Remove this affliction"><i class="fas fa-times"></i></a>
+        </div>
+        {{/each}}
+      </div>
+      {{/if}}
+
       <div class="virtues flexrow">
         <div class="virtue">
           <label>Conscience/Conviction

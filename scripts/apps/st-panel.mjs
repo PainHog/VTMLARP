@@ -29,6 +29,18 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     form: { template: "systems/vtmlarp/templates/apps/st-panel.hbs" }
   };
 
+  // Which trait an affliction/modifier can target -> the system field the
+  // Active Effect writes to, and the friendly label shown on the sheet.
+  static STAT_TARGETS = {
+    "attributes.physical.total": "Physical",
+    "attributes.social.total": "Social",
+    "attributes.mental.total": "Mental",
+    "willpower.value": "Willpower",
+    "virtues.conscienceConviction.rating": "Conscience / Conviction",
+    "virtues.selfControlInstinct.rating": "Self-Control / Instinct",
+    "virtues.courage.rating": "Courage"
+  };
+
   /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
@@ -38,6 +50,7 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
       .sort((a, b) => a.name.localeCompare(b.name));
     context.challengeTypes = ["physical", "social", "mental"];
     context.gestures = ["rock", "paper", "scissors", "bomb"];
+    context.statTargets = Object.entries(STPanelApp.STAT_TARGETS).map(([key, label]) => ({ key, label }));
     return context;
   }
 
@@ -96,7 +109,8 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
   static async #onApplyStatus() {
     const get = (name) => this.element.querySelector(`[name="${name}"]`)?.value ?? "";
     const name = get("effectName").trim() || "Status Effect";
-    const stat = get("effectStat") || "physical";
+    const stat = get("effectStat") || "attributes.physical.total";
+    const statLabel = STPanelApp.STAT_TARGETS[stat] ?? stat;
     const amount = Number(get("effectAmount")) || 0;
     const rounds = Math.max(0, Number(get("effectRounds")) || 0);
     if (!amount) {
@@ -108,21 +122,21 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
       ui.notifications?.warn("Select one or more tokens on the canvas first.");
       return;
     }
-    // An Active Effect that adds/subtracts Traits from the chosen Attribute
-    // pool. system.attributes.<stat>.total is what Challenges read, so the
-    // modifier flows straight into trait bidding while the effect is active.
+    // An Active Effect that adds/subtracts Traits from the chosen trait. For
+    // Attributes, system.attributes.<x>.total is exactly what Challenges read,
+    // so the modifier flows straight into trait bidding while active.
     const effectData = {
       name,
       label: name,
       icon: "icons/svg/aura.svg",
       img: "icons/svg/aura.svg",
       changes: [{
-        key: `system.attributes.${stat}.total`,
+        key: `system.${stat}`,
         mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         value: amount
       }],
       duration: rounds > 0 ? { rounds } : {},
-      flags: { vtmlarp: { stTemp: true } }
+      flags: { vtmlarp: { stTemp: true, statLabel } }
     };
     for (const actor of actors) {
       try {
@@ -132,7 +146,7 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
       }
     }
     const dur = rounds > 0 ? `${rounds} round(s)` : "until cleared";
-    ui.notifications?.info(`Applied "${name}" (${amount > 0 ? "+" : ""}${amount} ${stat}, ${dur}) to ${actors.length} token(s).`);
+    ui.notifications?.info(`Applied "${name}" (${amount > 0 ? "+" : ""}${amount} ${statLabel}, ${dur}) to ${actors.length} token(s).`);
   }
 
   static async #onClearStatus() {

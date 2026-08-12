@@ -1419,3 +1419,12 @@ form.vtmlarp.sheet {
   box-shadow: 0 0 8px var(--vtm-red, #8a0303);
 }
 #vtmlarp-st-launcher i { margin-right: 4px; }
+
+/* -------------------------------------------------------------------- */
+/* Afflictions / ST modifiers on the character sheet                     */
+/* -------------------------------------------------------------------- */
+.vtmlarp.sheet .afflictions { margin: 8px 0; padding: 6px 8px; border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; }
+.vtmlarp.sheet .afflictions h3 { margin: 0 0 4px; font-size: 14px; }
+.vtmlarp.sheet .affliction-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 0; }
+.vtmlarp.sheet .affliction-row .remove-affliction { color: var(--vtm-red-bright, #b8121a); cursor: pointer; }
+.vtmlarp.sheet .affliction-row .remove-affliction:hover { color: #fff; }
