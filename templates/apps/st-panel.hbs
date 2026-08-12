@@ -46,17 +46,29 @@
   </section>
 
   <section class="st-section">
-    <h3><i class="fas fa-bolt"></i> Status Effects</h3>
-    <p class="hint">Applies or clears a status on every token currently selected on the canvas.</p>
-    <label>Status
-      <select name="status">
-        <option value="">— Choose —</option>
-        {{#each statuses as |s|}}<option value="{{s.id}}">{{s.label}}</option>{{/each}}
+    <h3><i class="fas fa-bolt"></i> Status Effect / Modifier</h3>
+    <p class="hint">Applies a named modifier to every selected token: it adds (or subtracts) Traits from one Attribute pool for a number of rounds, so Challenges use the adjusted total while it lasts.</p>
+    <label>Name
+      <input type="text" name="effectName" placeholder="e.g. Blinded, Inspired, Staggered">
+    </label>
+    <label>Affected Attribute
+      <select name="effectStat">
+        <option value="physical">Physical</option>
+        <option value="social">Social</option>
+        <option value="mental">Mental</option>
       </select>
     </label>
+    <div class="flexrow">
+      <label style="flex:1;">Amount (use a negative number for a penalty)
+        <input type="number" name="effectAmount" value="-1">
+      </label>
+      <label style="flex:1;">Duration (rounds, 0 = until cleared)
+        <input type="number" name="effectRounds" value="1" min="0">
+      </label>
+    </div>
     <div class="flexrow st-status-buttons">
       <button type="button" data-action="applyStatus"><i class="fas fa-plus"></i> Apply to Selected</button>
-      <button type="button" data-action="clearStatus"><i class="fas fa-minus"></i> Clear from Selected</button>
+      <button type="button" data-action="clearStatus"><i class="fas fa-minus"></i> Clear ST Effects from Selected</button>
     </div>
   </section>
 </form>

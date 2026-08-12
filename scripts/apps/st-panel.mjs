@@ -38,10 +38,6 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
       .sort((a, b) => a.name.localeCompare(b.name));
     context.challengeTypes = ["physical", "social", "mental"];
     context.gestures = ["rock", "paper", "scissors", "bomb"];
-    context.statuses = (CONFIG.statusEffects ?? [])
-      .map(s => ({ id: s.id, label: game.i18n.localize(s.name ?? s.label ?? s.id) }))
-      .filter(s => s.id)
-      .sort((a, b) => a.label.localeCompare(b.label));
     return context;
   }
 
@@ -97,10 +93,14 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     return actors;
   }
 
-  static async #toggleStatusOnSelection(active) {
-    const statusId = (this.element.querySelector('[name="status"]')?.value) || "";
-    if (!statusId) {
-      ui.notifications?.warn("Pick a status effect first.");
+  static async #onApplyStatus() {
+    const get = (name) => this.element.querySelector(`[name="${name}"]`)?.value ?? "";
+    const name = get("effectName").trim() || "Status Effect";
+    const stat = get("effectStat") || "physical";
+    const amount = Number(get("effectAmount")) || 0;
+    const rounds = Math.max(0, Number(get("effectRounds")) || 0);
+    if (!amount) {
+      ui.notifications?.warn("Enter a non-zero Amount (negative for a penalty).");
       return;
     }
     const actors = this.#selectedActors();
@@ -108,16 +108,51 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
       ui.notifications?.warn("Select one or more tokens on the canvas first.");
       return;
     }
+    // An Active Effect that adds/subtracts Traits from the chosen Attribute
+    // pool. system.attributes.<stat>.total is what Challenges read, so the
+    // modifier flows straight into trait bidding while the effect is active.
+    const effectData = {
+      name,
+      label: name,
+      icon: "icons/svg/aura.svg",
+      img: "icons/svg/aura.svg",
+      changes: [{
+        key: `system.attributes.${stat}.total`,
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: amount
+      }],
+      duration: rounds > 0 ? { rounds } : {},
+      flags: { vtmlarp: { stTemp: true } }
+    };
     for (const actor of actors) {
       try {
-        await actor.toggleStatusEffect(statusId, { active });
+        await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
       } catch (err) {
-        console.warn("VTMLARP | status toggle failed", err);
+        console.warn("VTMLARP | apply effect failed", err);
       }
     }
-    ui.notifications?.info(`${active ? "Applied" : "Cleared"} status on ${actors.length} token(s).`);
+    const dur = rounds > 0 ? `${rounds} round(s)` : "until cleared";
+    ui.notifications?.info(`Applied "${name}" (${amount > 0 ? "+" : ""}${amount} ${stat}, ${dur}) to ${actors.length} token(s).`);
   }
 
-  static async #onApplyStatus() { return STPanelApp.#toggleStatusOnSelection.call(this, true); }
-  static async #onClearStatus() { return STPanelApp.#toggleStatusOnSelection.call(this, false); }
+  static async #onClearStatus() {
+    const actors = this.#selectedActors();
+    if (!actors.length) {
+      ui.notifications?.warn("Select one or more tokens on the canvas first.");
+      return;
+    }
+    let cleared = 0;
+    for (const actor of actors) {
+      const ids = actor.effects.filter(e => e.flags?.vtmlarp?.stTemp).map(e => e.id);
+      if (ids.length) {
+        try {
+          await actor.deleteEmbeddedDocuments("ActiveEffect", ids);
+          cleared += ids.length;
+        } catch (err) {
+          console.warn("VTMLARP | clear effect failed", err);
+        }
+      }
+    }
+    ui.notifications?.info(`Cleared ${cleared} Storyteller effect(s) from ${actors.length} token(s).`);
+  }
 }
