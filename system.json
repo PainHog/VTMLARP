@@ -2,7 +2,7 @@
   "id": "vtmlarp",
   "title": "Mind's Eye Theatre: Laws of the Night",
   "description": "An unofficial Foundry VTT system for Mind's Eye Theatre: Vampire the Masquerade (Laws of the Night Revised), a trait-bidding, Rock-Paper-Scissors based live-action roleplaying game.",
-  "version": "1.6.7",
+  "version": "1.7.0",
   "compatibility": {
     "minimum": "12",
     "verified": "14"
@@ -172,6 +172,13 @@
       "system": "vtmlarp"
     },
     {
+      "name": "mortals-ghouls",
+      "label": "Mortals & Ghouls",
+      "path": "packs/mortals-ghouls",
+      "type": "Actor",
+      "system": "vtmlarp"
+    },
+    {
       "name": "vehicles",
       "label": "Vehicles",
       "path": "packs/vehicles",
@@ -222,7 +229,7 @@
       "name": "Sample Characters",
       "sorting": "m",
       "color": "#8a0303",
-      "packs": ["sabbat-npcs", "camarilla-npcs", "anarch-npcs", "city-npcs"]
+      "packs": ["sabbat-npcs", "camarilla-npcs", "anarch-npcs", "city-npcs", "mortals-ghouls"]
     },
     {
       "name": "Vehicles",

@@ -80,7 +80,9 @@
     <a class="item {{#if tabs.main.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="main">Main</a>
     <a class="item {{#if tabs.attributes.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="attributes">Attributes</a>
     <a class="item {{#if tabs.abilities.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="abilities">Abilities</a>
+    {{#if showDisciplines}}
     <a class="item {{#if tabs.powers.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="powers">Disciplines &amp; Powers</a>
+    {{/if}}
     <a class="item {{#if tabs.backgrounds.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="backgrounds">Backgrounds</a>
     <a class="item {{#if tabs.meritsflaws.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="meritsflaws">Merits &amp; Flaws</a>
     <a class="item {{#if tabs.gear.active}}active{{/if}}" data-action="tab" data-group="primary" data-tab="gear">Gear</a>
@@ -97,12 +99,14 @@
           <input type="number" name="system.willpower.value" value="{{system.willpower.value}}">
           / <input type="number" name="system.willpower.max" value="{{system.willpower.max}}" readonly title="Maximum permanent Willpower is set by your Generation (Laws of the Night Revised, p. 95). Change your Generation to change this cap.">
         </div>
+        {{#if showBlood}}
         <div class="pool">
           <label>Blood</label>
           <input type="number" name="system.blood.value" value="{{system.blood.value}}">
           / <input type="number" name="system.blood.max" value="{{system.blood.max}}">
           (per turn <input type="number" name="system.blood.perTurn" value="{{system.blood.perTurn}}" class="tiny">)
         </div>
+        {{/if}}
         <div class="pool">
           <label>Path Rating</label>
           <input type="number" name="system.morality.rating" value="{{system.morality.rating}}">
@@ -126,6 +130,7 @@
         </div>
       </div>
 
+      {{#if showGeneration}}
       {{#if generationInfo}}
       <p class="hint generation-reference">
         Gen {{system.generation}} reference — Blood {{generationInfo.bloodMax}}/{{generationInfo.bloodPerTurn}} per turn,
@@ -133,6 +138,7 @@
         Max Traits {{generationInfo.maxTraits}}, Max Abilities {{generationInfo.maxAbilities}}
         <a class="apply-generation" title="Set Blood/Willpower max from this Generation (clamps current values down if needed)"><i class="fas fa-sync"></i> Apply to Blood/Willpower</a>
       </p>
+      {{/if}}
       {{/if}}
 
       {{#if afflictions.length}}
@@ -186,8 +192,10 @@
 
       <div class="main-actions flexrow">
         <button type="button" class="open-challenge"><i class="fas fa-hand-rock"></i> Resolve Challenge</button>
+        {{#if showVampireRituals}}
         <button type="button" class="open-frenzy"><i class="fas fa-burst"></i> Frenzy / Rötschreck</button>
         <button type="button" class="open-vaulderie"><i class="fas fa-tint"></i> Vaulderie</button>
+        {{/if}}
         <button type="button" class="open-session-log"><i class="fas fa-scroll"></i> Session Log</button>
       </div>
 
@@ -237,6 +245,7 @@
       {{/each}}
     </div>
 
+    {{#if showDisciplines}}
     <div class="tab {{#if tabs.powers.active}}active{{/if}}" data-group="primary" data-tab="powers">
       <h3>Disciplines &amp; Powers
         <span class="hint">Drag a Discipline in first, then its Powers stack beneath it automatically. Passive/Toggle powers can be switched on here. Challenge powers must be resolved with the Challenge tool against the opposing party.</span>
@@ -363,6 +372,7 @@
         {{/each}}
       </ol>
     </div>
+    {{/if}}
 
     <div class="tab {{#if tabs.backgrounds.active}}active{{/if}}" data-group="primary" data-tab="backgrounds">
       <h3>Backgrounds

@@ -1,0 +1,147 @@
+{
+  "_id": "e02c6e3333b8409c",
+  "name": "Civilian (Bystander)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "An ordinary person caught up in events - no combat training.",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "",
+    "demeanor": "",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Nimble",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Friendly",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Alert",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 1,
+          "notes": ""
+        },
+        {
+          "name": "Athletics",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Drive",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 3,
+      "max": 3
+    },
+    "blood": {
+      "value": 0,
+      "max": 0,
+      "perTurn": 0
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "biography": "<p>An ordinary person caught up in events - no combat training. Unarmed and easily frightened.</p>",
+    "notes": "",
+    "npcType": "mortal"
+  },
+  "prototypeToken": {
+    "name": "Civilian (Bystander)",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": 0,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Generic reusable mook"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "1.6.0",
+    "coreVersion": "12"
+  }
+}

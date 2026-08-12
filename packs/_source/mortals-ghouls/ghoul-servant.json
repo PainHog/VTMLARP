@@ -1,0 +1,161 @@
+{
+  "_id": "35ccdbc6aa2f4ff8",
+  "name": "Ghoul Servant",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "A domestic ghoul bound to a domitor - loyal, not a fighter.",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "",
+    "demeanor": "",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Steady",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Deferential",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Alert",
+            "spent": false
+          },
+          {
+            "name": "Attentive",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Empathy",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Drive",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Etiquette",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Stealth",
+          "rating": 1,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Academics",
+          "rating": 1,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 4,
+      "max": 4
+    },
+    "blood": {
+      "value": 3,
+      "max": 3,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "biography": "<p>A domestic ghoul bound to a domitor - loyal, not a fighter. Bound by the blood; will die to protect the domitor.</p>",
+    "notes": "",
+    "npcType": "ghoul"
+  },
+  "prototypeToken": {
+    "name": "Ghoul Servant",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Generic reusable mook"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "1.6.0",
+    "coreVersion": "12"
+  }
+}

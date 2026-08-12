@@ -1,0 +1,150 @@
+{
+  "_id": "02c31294c3c746c1",
+  "name": "Street Thug",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "A back-alley tough looking for a fight or a wallet.",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "",
+    "demeanor": "",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Menacing",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Alert",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "talents": [
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Streetwise",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 4,
+      "max": 4
+    },
+    "blood": {
+      "value": 0,
+      "max": 0,
+      "perTurn": 0
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "biography": "<p>A back-alley tough looking for a fight or a wallet. Usually armed with a knife or club.</p>",
+    "notes": "",
+    "npcType": "mortal"
+  },
+  "prototypeToken": {
+    "name": "Street Thug",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Generic reusable mook"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "1.6.0",
+    "coreVersion": "12"
+  }
+}

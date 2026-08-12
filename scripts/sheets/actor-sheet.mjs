@@ -323,6 +323,18 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     context.isCharacter = this.actor.type === "character";
     context.isGM = game.user.isGM;
 
+    // Non-vampire NPCs (mortals, ghouls) shouldn't show vampire-only chrome.
+    // Mortals have no vitae/Disciplines/Generation; ghouls have a small blood
+    // pool and can carry a Discipline or two, but have no Generation.
+    const npcType = this.actor.type === "npc" ? sys.npcType : "vampire";
+    context.isVampire = this.actor.type === "character" || npcType === "vampire";
+    context.isGhoul = npcType === "ghoul";
+    context.isMortal = npcType === "mortal";
+    context.showBlood = context.isVampire || context.isGhoul;
+    context.showDisciplines = context.isVampire || context.isGhoul;
+    context.showGeneration = context.isVampire;
+    context.showVampireRituals = context.isVampire; // Frenzy/Vaulderie
+
     // Storyteller-applied afflictions/modifiers (Active Effects) shown so the
     // owning player can remove one themselves if the ST forgets to clear it.
     context.afflictions = this.actor.effects

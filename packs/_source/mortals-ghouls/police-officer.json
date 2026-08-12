@@ -1,0 +1,170 @@
+{
+  "_id": "37f41d18b2034ae7",
+  "name": "Police Officer",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "A city cop - trained, armed, and backed by more of the same.",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "",
+    "demeanor": "",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Quick",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Alert",
+            "spent": false
+          },
+          {
+            "name": "Determined",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Firearms",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Drive",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": [
+        {
+          "name": "Law",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Investigation",
+          "rating": 2,
+          "notes": ""
+        }
+      ]
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 0,
+      "max": 0,
+      "perTurn": 0
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "biography": "<p>A city cop - trained, armed, and backed by more of the same. Armed with a pistol; calls for backup.</p>",
+    "notes": "",
+    "npcType": "mortal"
+  },
+  "prototypeToken": {
+    "name": "Police Officer",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Generic reusable mook"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "1.6.0",
+    "coreVersion": "12"
+  }
+}

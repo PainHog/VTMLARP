@@ -1,0 +1,210 @@
+{
+  "_id": "ba378820e6aa4ab2",
+  "name": "Ghoul Bodyguard",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "A ghoul kept for muscle - blood-strengthened and armed.",
+    "clan": "",
+    "bloodline": "",
+    "sect": "",
+    "generation": 13,
+    "nature": "",
+    "demeanor": "",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "primary",
+        "traits": [
+          {
+            "name": "Brawny",
+            "spent": false
+          },
+          {
+            "name": "Tough",
+            "spent": false
+          },
+          {
+            "name": "Steady",
+            "spent": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "secondary",
+        "traits": [
+          {
+            "name": "Menacing",
+            "spent": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "tertiary",
+        "traits": [
+          {
+            "name": "Alert",
+            "spent": false
+          },
+          {
+            "name": "Vigilant",
+            "spent": false
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "talents": [
+        {
+          "name": "Alertness",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Brawl",
+          "rating": 3,
+          "notes": ""
+        },
+        {
+          "name": "Intimidation",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Firearms",
+          "rating": 2,
+          "notes": ""
+        },
+        {
+          "name": "Melee",
+          "rating": 2,
+          "notes": ""
+        }
+      ],
+      "knowledges": []
+    },
+    "willpower": {
+      "value": 5,
+      "max": 5
+    },
+    "blood": {
+      "value": 4,
+      "max": 4,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Humanity",
+      "rating": 7
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 3,
+        "temporary": 3
+      }
+    },
+    "health": {
+      "bruised": "ok",
+      "hurt": "ok",
+      "injured": "ok",
+      "wounded": "ok",
+      "mauled": "ok",
+      "crippled": "ok",
+      "incapacitated": "ok"
+    },
+    "backgrounds": [],
+    "biography": "<p>A ghoul kept for muscle - blood-strengthened and armed. Enhanced by vitae; Potence 1.</p>",
+    "notes": "",
+    "npcType": "ghoul"
+  },
+  "prototypeToken": {
+    "name": "Ghoul Bodyguard",
+    "displayName": 20,
+    "actorLink": false,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "width": 1,
+    "height": 1,
+    "disposition": -1,
+    "sight": {
+      "enabled": false
+    }
+  },
+  "items": [
+    {
+      "_id": "9883852352474379",
+      "name": "Potence",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "<p>Superhuman strength granted by the domitor's vitae. Set the Rating to the ghoul's level.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "clanAffinity": "",
+        "rating": 1,
+        "retestAbility": ""
+      },
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp"
+      }
+    },
+    {
+      "_id": "b78a2d3d4acb4124",
+      "name": "Potence — 1 Basic — Might",
+      "type": "power",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>You may make a single retest on any challenge of sheer physical strength, even against an opponent relying on stamina or speed to resist, at no cost.</p>",
+        "source": "Laws of the Night Revised, Disciplines",
+        "discipline": "Potence",
+        "level": "basic",
+        "challengeType": "physical",
+        "bloodCost": "",
+        "retestAbility": "None (innate)",
+        "duration": "One turn",
+        "activation": "reflexive"
+      },
+      "sort": 1000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "vtmlarp"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "vtmlarp": {
+      "source": "Generic reusable mook"
+    }
+  },
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "1.6.0",
+    "coreVersion": "12"
+  }
+}
