@@ -79,9 +79,19 @@ Hooks.once("init", () => {
 const VEHICLE_TINT_PALETTE = ["#1a1a1a", "#e6e6e6", "#8a0303", "#0d2b4a", "#2f4f2f", "#4a3c1a", "#6b6b6b"];
 Hooks.on("preCreateToken", (tokenDoc, data) => {
   const actor = tokenDoc.actor;
-  if (actor?.type !== "vehicle" || !actor.system.randomizeTint) return;
-  const tint = VEHICLE_TINT_PALETTE[Math.floor(Math.random() * VEHICLE_TINT_PALETTE.length)];
-  tokenDoc.updateSource({ "texture.tint": tint });
+  if (actor?.type !== "vehicle") return;
+  const update = {};
+  // Always size a vehicle token from its grid footprint, so it drops onto the
+  // scene at the right multi-square size regardless of what the prototype token
+  // happened to carry (a manually-created vehicle, an imported one, etc.).
+  const w = Number(actor.system.gridWidth);
+  const h = Number(actor.system.gridHeight);
+  if (w > 0) update.width = w;
+  if (h > 0) update.height = h;
+  if (actor.system.randomizeTint) {
+    update["texture.tint"] = VEHICLE_TINT_PALETTE[Math.floor(Math.random() * VEHICLE_TINT_PALETTE.length)];
+  }
+  if (Object.keys(update).length) tokenDoc.updateSource(update);
 });
 
 Hooks.once("ready", () => {
