@@ -45,23 +45,33 @@ export async function resolveAndPostGestureChallenge({
   // "Re-throw Retest" button) rather than an original Challenge - a Retest
   // can only be used once per original Challenge, so the resulting card
   // still shows what Retest was used, but must not offer another one.
-  isRetestThrow = false
+  isRetestThrow = false,
+  // A Storyteller "coin toss": pure gesture, no trait pools behind either side.
+  // Ties stand as ties (no overbid), and no trait counts are shown.
+  coinToss = false
 }) {
   const challengerName = challengerActor.name;
   const opponentName = opponentNameOverride ?? opponentActor?.name ?? "Opponent";
-  const traitsBid = unspentCount(challengerActor, challengeType);
-  const opponentTraitsBid = opponentTraitsBidOverride ?? (opponentActor ? unspentCount(opponentActor, challengeType) : null);
+  const traitsBid = coinToss ? null : unspentCount(challengerActor, challengeType);
+  const opponentTraitsBid = coinToss
+    ? null
+    : (opponentTraitsBidOverride ?? (opponentActor ? unspentCount(opponentActor, challengeType) : null));
 
   let result = "";
   let resultLabel = "";
   if (opponentGesture) {
     const outcome = beats(challengerGesture, opponentGesture);
     if (outcome === "tie") {
+      // A coin toss has no traits, so a matched gesture is simply a tie.
+      if (coinToss) {
+        result = "Tied";
+        resultLabel = "Tied — throw again";
+      }
       // Playing remotely, not face to face, so there's no table to visibly
       // compare trait piles - per the rulebook, a matched gesture is broken
       // by whoever bid more Traits; a genuine tie (equal gesture AND equal
       // pool size) stands as a tie with no winner.
-      if (traitsBid > opponentTraitsBid) {
+      else if (traitsBid > opponentTraitsBid) {
         result = "Won";
         resultLabel = `${challengerName} Wins (overbid on tied gesture)!`;
       } else if (opponentTraitsBid > traitsBid) {
