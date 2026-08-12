@@ -495,6 +495,27 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (el.type === "checkbox") value = el.checked;
     else if (el.type === "number") value = value === "" ? null : Number(value);
 
+    // Guard against Foundry's array-element footgun: updating an ArrayField
+    // element by dotted path (e.g. "system.abilities.talents.0.name") does NOT
+    // reliably merge - it can drop or corrupt the rest of the array, which is
+    // what wiped a character's other abilities when one was edited/added. When
+    // the field targets an array element, read the whole array, set just that
+    // element's leaf property, and write the entire array back.
+    const arrMatch = el.name.match(/^system\.(.+?)\.(\d+)\.(.+)$/);
+    if (arrMatch) {
+      const [, arrPath, idxStr, leaf] = arrMatch;
+      const arr = foundry.utils.getProperty(this.actor.system, arrPath);
+      if (Array.isArray(arr)) {
+        const copy = foundry.utils.duplicate(arr);
+        const idx = Number(idxStr);
+        if (copy[idx] != null) {
+          foundry.utils.setProperty(copy[idx], leaf, value);
+          await this.actor.update({ [`system.${arrPath}`]: copy });
+          return;
+        }
+      }
+    }
+
     // The FIRST time Generation is set, auto-apply that generation's starting
     // Willpower and Blood Pool from the Laws of the Night Revised chart (p. 95),
     // so players don't have to look the numbers up. Gated by generationApplied
@@ -677,34 +698,14 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (!result?.name) return;
     const { name, negative } = result;
 
-    // Per Laws of the Night Revised's Experience cost table: a new Attribute
-    // Trait costs 1 Experience. Negative Traits aren't a purchase (they're a
-    // self-imposed penalty), so they're free.
+    // Trait purchases no longer auto-deduct Experience - players manage their
+    // own XP (see _onRatedTraitControl), so adding a Trait never touches the
+    // XP pool or warns.
     const update = {};
-    if (isAttributeCategory && !negative) {
-      this._spendXP(update, 1);
-    }
 
     const list = foundry.utils.getProperty(this.actor.system, path) ?? [];
     update[`system.${path}`] = [...list, { name, spent: false, negative }];
     await this.actor.update(update);
-  }
-
-  /**
-   * Deduct `cost` Experience into the given update payload for bookkeeping.
-   * Never blocks the actual trait/rating change over it - Storytellers
-   * generally trust their players not to abuse this, and a hard block here
-   * just gets in the way of live play. Experience is clamped at 0 rather
-   * than going negative, with a soft notification if the actor came up
-   * short, so the shortfall is visible without stopping anything.
-   */
-  _spendXP(update, cost) {
-    const current = this.actor.system.experience.value;
-    if (current < cost) {
-      ui.notifications?.warn(`${this.actor.name} spent more Experience than they had (needed ${cost}, had ${current}) - allowed anyway.`);
-    }
-    update["system.experience.value"] = Math.max(0, current - cost);
-    return true;
   }
 
   async _onDeleteTrait(event) {
@@ -715,19 +716,6 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     await this.actor.update({ [`system.${path}`]: updated });
   }
 
-  /**
-   * Per Laws of the Night Revised's Experience cost table: a new Ability
-   * Trait costs 1 Experience up to rating 5, 2 Experience for ratings 6-10
-   * (it gets harder to find things you don't already know); a new
-   * Background Trait costs 1 Experience regardless of rating. Anything
-   * else (e.g. free-form rated lists this control might be reused for
-   * later) is left uncosted.
-   */
-  _ratedTraitCost(path, newRating) {
-    if (path.startsWith("abilities.")) return newRating <= 5 ? 1 : 2;
-    if (path === "backgrounds") return 1;
-    return 0;
-  }
 
   async _onRatedTraitControl(event) {
     event.preventDefault();
@@ -736,16 +724,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const update = {};
 
     if (action === "add") {
-      const cost = this._ratedTraitCost(path, 1);
-      if (cost > 0 && !this._spendXP(update, cost)) return;
       list.push({ name: "New Trait", rating: 1, notes: "" });
     } else if (action === "remove") {
       list.splice(Number(index), 1);
     } else if (action === "increase") {
-      const newRating = list[Number(index)].rating + 1;
-      const cost = this._ratedTraitCost(path, newRating);
-      if (cost > 0 && !this._spendXP(update, cost)) return;
-      list[Number(index)].rating = newRating;
+      list[Number(index)].rating = list[Number(index)].rating + 1;
     } else if (action === "decrease") {
       list[Number(index)].rating = Math.max(0, list[Number(index)].rating - 1);
     }
