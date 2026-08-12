@@ -140,7 +140,10 @@ export function respondingUsers(actor) {
  * owner (or a GM) is permitted to actually click a response.
  */
 export async function postGestureChallengePrompt({
-  challengerActor, challengeType, challengerGesture, opponentActor, opponentName, retest, isRetestThrow, requestId
+  challengerActor, challengeType, challengerGesture, opponentActor, opponentName, retest, isRetestThrow, requestId,
+  // Storyteller-initiated flavours: a "surprise" note on the card, and a
+  // no-traits coin toss (gesture decides, no pools).
+  surprise = false, coinToss = false
 }) {
   const content = await renderTemplate("systems/vtmlarp/templates/apps/challenge-prompt-card.hbs", {
     challengerName: challengerActor.name,
@@ -148,6 +151,8 @@ export async function postGestureChallengePrompt({
     opponentName,
     opponentActorId: opponentActor?.id ?? "",
     retest,
+    surprise,
+    coinToss,
     gestures: GESTURES
   });
 
@@ -164,6 +169,7 @@ export async function postGestureChallengePrompt({
         opponentName,
         retest: retest ?? "",
         isRetestThrow: !!isRetestThrow,
+        coinToss: !!coinToss,
         responded: false
       }
     }

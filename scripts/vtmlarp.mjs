@@ -11,6 +11,7 @@ import { ChallengeApp } from "./apps/challenge.mjs";
 import { GMChallengeDashboard } from "./apps/gm-dashboard.mjs";
 import { XPAuditApp } from "./apps/xp-audit.mjs";
 import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
+import { STPanelApp } from "./apps/st-panel.mjs";
 import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
 
 Hooks.once("init", () => {
@@ -136,6 +137,14 @@ Hooks.on("getSceneControlButtons", controls => {
   const tokenControl = Array.isArray(controls) ? controls.find(c => c.name === "token") : controls.token;
   if (!tokenControl) return;
   const tools = [
+    {
+      name: "vtmlarp-st-panel",
+      title: "Storyteller Panel",
+      icon: "fas fa-chess-king",
+      button: true,
+      onClick: () => new STPanelApp().render(true),
+      onChange: () => new STPanelApp().render(true)
+    },
     {
       name: "vtmlarp-challenges",
       title: "Active Challenges",
@@ -265,7 +274,8 @@ document.addEventListener("click", async event => {
       opponentActor,
       opponentGesture: gesture,
       retest: req.retest,
-      isRetestThrow: req.isRetestThrow
+      isRetestThrow: req.isRetestThrow,
+      coinToss: req.coinToss
     });
   }
 

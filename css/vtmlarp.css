@@ -1380,3 +1380,15 @@ form.vtmlarp.sheet {
   columns: 2;
   column-gap: 20px;
 }
+
+/* -------------------------------------------------------------------- */
+/* Storyteller Panel                                                     */
+/* -------------------------------------------------------------------- */
+.vtmlarp.st-panel { padding: 10px; gap: 12px; }
+.vtmlarp.st-panel .st-section { border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; padding: 8px 10px; margin-bottom: 10px; }
+.vtmlarp.st-panel .st-section h3 { margin: 0 0 6px; }
+.vtmlarp.st-panel label { display: block; margin: 6px 0; }
+.vtmlarp.st-panel label select,
+.vtmlarp.st-panel label input { width: 100%; }
+.vtmlarp.st-panel .st-status-buttons { gap: 6px; }
+.vtmlarp.st-panel button { margin-top: 6px; }

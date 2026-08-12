@@ -1,10 +1,10 @@
 <div class="vtmlarp-challenge-card vtmlarp-challenge-prompt">
   <div class="vtm-clash-header">
-    <span>{{challengeType}} Challenge</span>
+    <span>{{#if coinToss}}Coin Toss{{else}}{{challengeType}} Challenge{{/if}}{{#if surprise}} — Surprise!{{/if}}</span>
   </div>
   <p class="hint">
     <strong>{{challengerName}}</strong> has challenged
-    <strong>{{#if opponentName}}{{opponentName}}{{else}}Opponent{{/if}}</strong>.
+    <strong>{{#if opponentName}}{{opponentName}}{{else}}Opponent{{/if}}</strong>{{#if coinToss}} to a coin toss (gesture only — no Traits){{/if}}.
     Only {{opponentName}}'s player (or a GM) can respond below.
   </p>
 

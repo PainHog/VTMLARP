@@ -1,0 +1,62 @@
+<form class="vtmlarp sheet st-panel flexcol" autocomplete="off">
+  <section class="st-section">
+    <h3><i class="fas fa-hand-rock"></i> Challenges</h3>
+    <p class="hint">Posts a Challenge to the chat log. The challenger's Gesture stays hidden until the opponent responds there. Only the opponent's player (or a GM) can respond.</p>
+
+    <label>Type of Challenge
+      <select name="mode">
+        <option value="surprise">Surprise Challenge (ST vs a player)</option>
+        <option value="force">Force Challenge between two players</option>
+        <option value="coinToss">Coin Toss (gesture only, no Traits)</option>
+      </select>
+    </label>
+
+    <label>Challenger
+      <select name="challenger">
+        <option value="">— Choose —</option>
+        {{#each actors as |a|}}<option value="{{a.id}}">{{a.name}}</option>{{/each}}
+      </select>
+    </label>
+
+    <label>Opponent
+      <select name="opponent">
+        <option value="">— Choose —</option>
+        {{#each actors as |a|}}<option value="{{a.id}}">{{a.name}}</option>{{/each}}
+      </select>
+    </label>
+
+    <label>Challenge Attribute (ignored for a Coin Toss)
+      <select name="challengeType">
+        {{#each challengeTypes as |t|}}<option value="{{t}}">{{vtmCapitalize t}}</option>{{/each}}
+      </select>
+    </label>
+
+    <label>Challenger's Gesture (hidden until resolved)
+      <select name="challengerGesture">
+        <option value="">— Choose —</option>
+        {{#each gestures as |g|}}<option value="{{g}}">{{vtmCapitalize g}}</option>{{/each}}
+      </select>
+    </label>
+
+    <label>Retest (optional, ignored for a Coin Toss)
+      <input type="text" name="retest" placeholder="e.g. Dodge, Awareness">
+    </label>
+
+    <button type="button" data-action="postChallenge"><i class="fas fa-paper-plane"></i> Post Challenge to Chat</button>
+  </section>
+
+  <section class="st-section">
+    <h3><i class="fas fa-bolt"></i> Status Effects</h3>
+    <p class="hint">Applies or clears a status on every token currently selected on the canvas.</p>
+    <label>Status
+      <select name="status">
+        <option value="">— Choose —</option>
+        {{#each statuses as |s|}}<option value="{{s.id}}">{{s.label}}</option>{{/each}}
+      </select>
+    </label>
+    <div class="flexrow st-status-buttons">
+      <button type="button" data-action="applyStatus"><i class="fas fa-plus"></i> Apply to Selected</button>
+      <button type="button" data-action="clearStatus"><i class="fas fa-minus"></i> Clear from Selected</button>
+    </div>
+  </section>
+</form>
