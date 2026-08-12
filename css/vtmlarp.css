@@ -1392,3 +1392,30 @@ form.vtmlarp.sheet {
 .vtmlarp.st-panel label input { width: 100%; }
 .vtmlarp.st-panel .st-status-buttons { gap: 6px; }
 .vtmlarp.st-panel button { margin-top: 6px; }
+
+/* -------------------------------------------------------------------- */
+/* Storyteller Panel floating launcher (GM only)                         */
+/* -------------------------------------------------------------------- */
+#vtmlarp-st-launcher {
+  position: fixed;
+  top: 180px;
+  left: 8px;
+  z-index: 70;
+  width: auto;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.4;
+  color: var(--vtm-text, #f4f2ee);
+  background: linear-gradient(180deg, #2a0606 0%, #000 100%);
+  border: 1px solid var(--vtm-red, #8a0303);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  white-space: nowrap;
+}
+#vtmlarp-st-launcher:hover {
+  border-color: var(--vtm-red-bright, #b8121a);
+  box-shadow: 0 0 8px var(--vtm-red, #8a0303);
+}
+#vtmlarp-st-launcher i { margin-right: 4px; }

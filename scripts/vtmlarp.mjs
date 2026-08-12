@@ -85,6 +85,21 @@ Hooks.on("preCreateToken", (tokenDoc, data) => {
 });
 
 Hooks.once("ready", () => {
+  // Always-visible Storyteller Panel launcher for GMs. The scene-control
+  // button (see getSceneControlButtons) doesn't render on every Foundry
+  // version's control layout, so a GM also gets a small fixed on-screen button
+  // that opens the panel - guaranteed present regardless of scene-control API
+  // changes across v12-v14.
+  if (game.user.isGM && !document.getElementById("vtmlarp-st-launcher")) {
+    const btn = document.createElement("button");
+    btn.id = "vtmlarp-st-launcher";
+    btn.type = "button";
+    btn.title = "Open the Storyteller Panel";
+    btn.innerHTML = `<i class="fas fa-chess-king"></i> ST Panel`;
+    btn.addEventListener("click", () => new STPanelApp().render(true));
+    document.body.appendChild(btn);
+  }
+
   // A Challenge's opponent side is resolved on the responding player's (or,
   // for an unowned NPC, any GM's) own client rather than the challenger's -
   // this system is played online, not face to face, so the challenger must
