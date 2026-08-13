@@ -108,6 +108,14 @@
         </h3>
         <div class="collapsible-body">
           <p class="hint">Using <strong>{{creation.rulesLabel}}</strong>.</p>
+          <div class="creation-overunder">
+            {{#if creation.balanced}}
+            <span class="tag-ok">✓ Every area is exactly on its allotment.</span>
+            {{else}}
+              {{#if creation.overList.length}}<div class="ou-over"><strong>Over:</strong> {{#each creation.overList as |o|}}{{o}}{{#unless @last}}, {{/unless}}{{/each}}</div>{{/if}}
+              {{#if creation.underList.length}}<div class="ou-under"><strong>Under:</strong> {{#each creation.underList as |u|}}{{u}}{{#unless @last}}, {{/unless}}{{/each}}</div>{{/if}}
+            {{/if}}
+          </div>
           <table class="creation-table">
             <thead><tr><th>Area</th><th>Spent</th><th>Budget</th><th>Status</th></tr></thead>
             <tbody>

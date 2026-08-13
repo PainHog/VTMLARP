@@ -491,11 +491,18 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const derangeBonus = (sys.derangements?.length ? 2 : 0);
     const freebiesAvailable = Math.min(21, B.freebieBase + flawBonus + derangeBonus);
 
+    // Explicit lists of exactly which areas are over/under their allotment.
+    const overList = rows.filter(r => r.over > 0).map(r => `${r.label} +${r.over}`);
+    const underList = rows.filter(r => r.under > 0).map(r => `${r.label} needs ${r.under} more`);
+
     return {
       complete: !!sys.creationComplete,
       original,
       rulesLabel: original ? "Original Laws of the Night" : "Custom rules",
       rows,
+      overList,
+      underList,
+      balanced: overList.length === 0 && underList.length === 0,
       meritCost,
       freebies: {
         available: freebiesAvailable,

@@ -1464,3 +1464,8 @@ form.vtmlarp.sheet {
 }
 .vtmlarp .dots .dot.filled { background: var(--vtm-red-bright, #b8121a); }
 .vtmlarp .dots .dot:hover { box-shadow: 0 0 3px var(--vtm-red-bright, #b8121a); }
+
+/* Creation Tracker over/under summary */
+.vtmlarp .creation-overunder { margin: 4px 0 6px; font-size: 12px; }
+.vtmlarp .creation-overunder .ou-over { color: var(--vtm-red-bright, #b8121a); }
+.vtmlarp .creation-overunder .ou-under { color: #d6b34a; }
