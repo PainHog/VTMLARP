@@ -17,6 +17,11 @@ import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
 Hooks.once("init", () => {
   console.log("VTMLARP | Initializing Mind's Eye Theatre: Laws of the Night system");
 
+  // Initiative is a flat d20 roll - MET breaks ties/order with a random draw
+  // rather than a stat, so the Combat Tracker's "Roll Initiative" just rolls
+  // 1d20 for each combatant.
+  CONFIG.Combat.initiative = { formula: "1d20", decimals: 0 };
+
   CONFIG.Actor.dataModels = {
     character: VTMCharacterData,
     npc: VTMNpcData,
