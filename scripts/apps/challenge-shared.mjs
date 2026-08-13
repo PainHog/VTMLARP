@@ -48,14 +48,18 @@ export async function resolveAndPostGestureChallenge({
   isRetestThrow = false,
   // A Storyteller "coin toss": pure gesture, no trait pools behind either side.
   // Ties stand as ties (no overbid), and no trait counts are shown.
-  coinToss = false
+  coinToss = false,
+  // Flat bonus/penalty Traits each side adds to their bid (equipment, powers,
+  // situational modifiers) - entered on the Challenge form / response card.
+  challengerMod = 0,
+  opponentMod = 0
 }) {
   const challengerName = challengerActor.name;
   const opponentName = opponentNameOverride ?? opponentActor?.name ?? "Opponent";
-  const traitsBid = coinToss ? null : unspentCount(challengerActor, challengeType);
+  const traitsBid = coinToss ? null : unspentCount(challengerActor, challengeType) + (Number(challengerMod) || 0);
   const opponentTraitsBid = coinToss
     ? null
-    : (opponentTraitsBidOverride ?? (opponentActor ? unspentCount(opponentActor, challengeType) : null));
+    : (opponentTraitsBidOverride ?? (opponentActor ? unspentCount(opponentActor, challengeType) + (Number(opponentMod) || 0) : null));
 
   let result = "";
   let resultLabel = "";
@@ -143,7 +147,7 @@ export async function postGestureChallengePrompt({
   challengerActor, challengeType, challengerGesture, opponentActor, opponentName, retest, isRetestThrow, requestId,
   // Storyteller-initiated flavours: a "surprise" note on the card, and a
   // no-traits coin toss (gesture decides, no pools).
-  surprise = false, coinToss = false
+  surprise = false, coinToss = false, challengerMod = 0
 }) {
   const content = await renderTemplate("systems/vtmlarp/templates/apps/challenge-prompt-card.hbs", {
     challengerName: challengerActor.name,
@@ -170,6 +174,7 @@ export async function postGestureChallengePrompt({
         retest: retest ?? "",
         isRetestThrow: !!isRetestThrow,
         coinToss: !!coinToss,
+        challengerMod: Number(challengerMod) || 0,
         responded: false
       }
     }

@@ -378,6 +378,7 @@ document.addEventListener("click", async event => {
         + `<div class="vtm-result-banner result-Lost">${opponentActor.name} Wins (retest cancelled)!</div></div>`
     });
   } else {
+    const opponentMod = Number(card.querySelector(".vtm-opponent-mod-input")?.value) || 0;
     await resolveAndPostGestureChallenge({
       challengerActor,
       challengeType: req.challengeType,
@@ -386,7 +387,9 @@ document.addEventListener("click", async event => {
       opponentGesture: gesture,
       retest: req.retest,
       isRetestThrow: req.isRetestThrow,
-      coinToss: req.coinToss
+      coinToss: req.coinToss,
+      challengerMod: req.challengerMod,
+      opponentMod
     });
   }
 

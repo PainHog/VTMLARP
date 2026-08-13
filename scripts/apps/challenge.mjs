@@ -198,7 +198,8 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       opponentName: opponentActor.name,
       retest,
       isRetestThrow: !!this.prefill?.isRetestThrow,
-      requestId
+      requestId,
+      challengerMod: Number(fd.challengerMod) || 0
     });
 
     game.socket.emit("system.vtmlarp", {
