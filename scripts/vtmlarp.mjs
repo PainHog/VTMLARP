@@ -140,6 +140,10 @@ Hooks.once("ready", () => {
         });
       } else if (data.action === "challengeResolved") {
         GMChallengeDashboard.clearRequest(data.requestId);
+      } else if (data.action === "deleteChallengePrompt") {
+        // A player resolved a Challenge but can't delete the challenger's
+        // prompt message themselves - a GM does it on their behalf.
+        game.messages.get(data.messageId)?.delete().catch(() => {});
       }
     }
 
@@ -310,8 +314,10 @@ document.addEventListener("click", async event => {
     }
   }
 
-  await message.setFlag("vtmlarp", "responded", true);
-
+  // Resolve and post the result FIRST. Creating a new chat message is always
+  // allowed, but updating/deleting the challenger's prompt message is NOT
+  // permitted for a different player (only its author or a GM) - so that
+  // cleanup must never come before, or block, the actual resolution.
   if (blockBtn) {
     // Retests can be blocked by an opponent who can match its conditions
     // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw
@@ -337,6 +343,17 @@ document.addEventListener("click", async event => {
     });
   }
 
+  // Now clean up the prompt. If this client may modify the message (author or
+  // GM), do it directly; otherwise ask a GM to, via socket. Wrapped so a
+  // permission error can never surface or undo the resolution above.
+  try {
+    if (message.canUserModify(game.user, "delete")) {
+      await message.delete();
+    } else {
+      game.socket.emit("system.vtmlarp", { action: "deleteChallengePrompt", messageId: message.id });
+    }
+  } catch (err) {
+    console.warn("VTMLARP | couldn't remove the challenge prompt (harmless):", err);
+  }
   if (req.requestId) game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: req.requestId });
-  await message.delete();
 });
