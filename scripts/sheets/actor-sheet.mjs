@@ -1123,8 +1123,14 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       return;
     }
     console.log("VTMLARP | Drop data:", data);
+    // A Derangement is a JournalEntry, not an Item, and lives in the actor's
+    // system.derangements list rather than the item list - so dropping one
+    // adds an entry there instead of creating an embedded Item.
+    if (data?.type === "JournalEntry") {
+      return this._onDropDerangement(data);
+    }
     if (data?.type !== "Item") {
-      console.warn(`VTMLARP | Ignored drop of type "${data?.type}" (only "Item" drops are handled).`);
+      console.warn(`VTMLARP | Ignored drop of type "${data?.type}" (only "Item" and Derangement drops are handled).`);
       return;
     }
     const item = await Item.implementation.fromDropData(data);
@@ -1141,6 +1147,26 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // document change the same way V1 did, force it explicitly so a newly
     // dropped item is guaranteed to actually appear without needing the
     // sheet closed and reopened.
+    this.render();
+  }
+
+  /** Add a dropped Derangement JournalEntry to system.derangements. */
+  async _onDropDerangement(data) {
+    if (!this.isEditable) return;
+    const doc = await fromUuid(data.uuid);
+    if (!doc) return;
+    // Only entries from the Derangements compendium (or an unpacked copy of
+    // one) become derangements - a random lore journal shouldn't.
+    const fromDerangements = (doc.pack ?? "").includes("derangements");
+    if (!fromDerangements) {
+      ui.notifications?.info("Only Derangement entries can be dropped onto a character.");
+      return;
+    }
+    const description = doc.pages?.contents?.[0]?.text?.content ?? "";
+    const list = foundry.utils.duplicate(this.actor.system.derangements ?? []);
+    list.push({ name: doc.name, description });
+    await this.actor.update({ "system.derangements": list });
+    ui.notifications?.info(`Added derangement: ${doc.name}.`);
     this.render();
   }
 
