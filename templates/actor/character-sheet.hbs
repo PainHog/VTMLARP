@@ -247,7 +247,14 @@
     <div class="tab {{#if tabs.attributes.active}}active{{/if}}" data-group="primary" data-tab="attributes">
       {{#each system.attributes as |category key|}}
       <div class="attribute-category collapsible" data-collapse-key="attr-{{key}}">
-        <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> {{vtmCapitalize key}} <span class="priority">({{category.priority}})</span>
+        <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> {{vtmCapitalize key}}
+          <label class="attr-priority" title="Priority sets the creation allotment: Primary 7, Secondary 5, Tertiary 3">
+            <select name="system.attributes.{{key}}.priority" class="tiny">
+              <option value="primary" {{#if (eq category.priority "primary")}}selected{{/if}}>Primary (7)</option>
+              <option value="secondary" {{#if (eq category.priority "secondary")}}selected{{/if}}>Secondary (5)</option>
+              <option value="tertiary" {{#if (eq category.priority "tertiary")}}selected{{/if}}>Tertiary (3)</option>
+            </select>
+          </label>
           <label class="category-total" title="Total Traits in this pool (Trait Bidding), independent of the named chips below">Total
             <input type="number" name="system.attributes.{{key}}.total" value="{{category.total}}" min="0" class="tiny">
           </label>
