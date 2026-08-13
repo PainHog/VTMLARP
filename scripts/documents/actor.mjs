@@ -144,6 +144,11 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
       // the Night Revised (5 Abilities / 3 Disciplines / 5 Freebies).
       useOriginalRules: new fields.BooleanField({ required: false, initial: false }),
 
+      // Player took a Derangement at creation for +2 Freebies (custom rule).
+      // Tracked explicitly so the bonus is discoverable in the tracker itself,
+      // separate from the in-play Derangements list.
+      creationDerangement: new fields.BooleanField({ required: false, initial: false }),
+
       experience: new fields.SchemaField({
         value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
         // Lifetime Experience ever awarded (bumped alongside value when a

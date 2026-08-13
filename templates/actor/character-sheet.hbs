@@ -99,6 +99,9 @@
         <h3 class="collapsible-header">
           <i class="fas fa-caret-down collapse-caret"></i> Character Creation Tracker
           {{#if creation.complete}}<span class="creation-done-badge">✓ Complete</span>{{/if}}
+          <label class="creation-rules-toggle" title="Check if you took a Derangement at creation for +2 Freebies">
+            <input type="checkbox" name="system.creationDerangement" {{#if system.creationDerangement}}checked{{/if}}> Derangement (+2)
+          </label>
           <label class="creation-rules-toggle" title="Switch budgets between this table's custom rules and original Laws of the Night Revised">
             <input type="checkbox" name="system.useOriginalRules" {{#if creation.original}}checked{{/if}}> Original rules
           </label>

@@ -487,7 +487,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const flawValue = this.actor.items.filter(i => i.type === "flaw")
       .reduce((n, i) => n + (Number(i.system.bonus) || 0), 0);
     const flawBonus = Math.min(7, flawValue);
-    const derangeBonus = (sys.derangements?.length ? 2 : 0);
+    // +2 if the creation-derangement box is checked OR a derangement is listed.
+    const derangeBonus = (sys.creationDerangement || sys.derangements?.length) ? 2 : 0;
     const freebiesAvailable = Math.min(21, B.freebieBase + flawBonus + derangeBonus);
 
     // Explicit lists of exactly which areas are over/under their allotment.
