@@ -427,7 +427,18 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     const sumRatings = (arr) => (arr ?? []).reduce((n, x) => n + (Number(x.rating) || 0), 0);
     const abilitiesSpent = sumRatings(sys.abilities.talents) + sumRatings(sys.abilities.skills) + sumRatings(sys.abilities.knowledges);
-    const disciplinesSpent = this.actor.items.filter(i => i.type === "discipline").reduce((n, i) => n + (Number(i.system.rating) || 0), 0);
+
+    // Disciplines: each dot costs by its tier (Basic 3, Intermediate 6,
+    // Advanced 9, Elder 12 Freebies). The free allotment covers the most
+    // expensive dots first (player-favourable), so the Freebie charge is the
+    // sum of the cheapest dots left over beyond the allotment.
+    const TIER_COST = [3, 6, 9, 12];
+    const disciplineDotCosts = [];
+    for (const i of this.actor.items.filter(i => i.type === "discipline")) {
+      const r = Number(i.system.rating) || 0;
+      for (let d = 0; d < r; d++) disciplineDotCosts.push(TIER_COST[Math.min(d, TIER_COST.length - 1)]);
+    }
+    const disciplinesSpent = disciplineDotCosts.length;
     const backgroundsSpent = sumRatings(sys.backgrounds);
     const virtuesSpent = (Number(sys.virtues.conscienceConviction.rating) || 0)
       + (Number(sys.virtues.selfControlInstinct.rating) || 0)
@@ -445,6 +456,15 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     ];
     for (const a of attributes) rows.unshift({ ...a, cost: 1 });
 
+    // Freebie cost of the overspent Discipline dots (tiered): free the most
+    // expensive dots up to the allotment, charge the cheapest that remain.
+    const disciplineFreebies = (() => {
+      const over = disciplinesSpent - B.disciplines;
+      if (over <= 0) return 0;
+      const ascending = [...disciplineDotCosts].sort((a, b) => a - b);
+      return ascending.slice(0, over).reduce((n, c) => n + c, 0);
+    })();
+
     // Annotate each row with over/under and freebie cost of any overspend.
     let freebiesSpent = 0;
     for (const r of rows) {
@@ -452,7 +472,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       r.over = Math.max(0, r.diff);
       r.under = r.diff < 0 ? -r.diff : 0;
       r.ok = r.diff === 0;
-      r.freebies = r.over * (r.cost ?? 1);
+      r.freebies = r.key === "disciplines" ? disciplineFreebies : r.over * (r.cost ?? 1);
       freebiesSpent += r.freebies;
     }
 
