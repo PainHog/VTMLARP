@@ -5,6 +5,10 @@ function ratedTraitField(initial = {}) {
   return new fields.SchemaField({
     name: new fields.StringField({ required: true, initial: "" }),
     rating: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+    // The permanent maximum. Normally equals rating; when rating is temporarily
+    // reduced (shift-click a dot) max stays, so the sheet shows the lost dots
+    // and can restore them. 0 means "untracked" (treat as equal to rating).
+    max: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 }),
     notes: new fields.StringField({ required: false, blank: true, initial: "" })
   }, initial);
 }

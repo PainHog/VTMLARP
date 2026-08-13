@@ -82,6 +82,21 @@ Hooks.once("init", () => {
     const m = Math.max(r, Number(max) || 5);
     return Array.from({ length: m }, (_, i) => ({ value: i + 1, filled: i < r }));
   });
+
+  Handlebars.registerHelper("gt", (a, b) => Number(a) > Number(b));
+
+  // Like vtmDots but also marks dots between the current rating and the
+  // permanent max as "lost" (temporarily reduced), for the temp-loss display.
+  Handlebars.registerHelper("vtmDotsMax", (rating, permMax, cap) => {
+    const r = Math.max(0, Number(rating) || 0);
+    const pm = Math.max(r, Number(permMax) || 0);
+    const c = Math.max(pm, Number(cap) || 5);
+    return Array.from({ length: c }, (_, i) => ({
+      value: i + 1,
+      filled: i < r,
+      lost: i >= r && i < pm
+    }));
+  });
 });
 
 // A vehicle's token art is usually one shared image (e.g. a top-down car

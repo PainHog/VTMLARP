@@ -1469,3 +1469,8 @@ form.vtmlarp.sheet {
 .vtmlarp .creation-overunder { margin: 4px 0 6px; font-size: 12px; }
 .vtmlarp .creation-overunder .ou-over { color: var(--vtm-red-bright, #b8121a); }
 .vtmlarp .creation-overunder .ou-under { color: #d6b34a; }
+
+/* A temporarily-lost rating dot: hollow with a faded/dashed border */
+.vtmlarp .dots .dot.lost { background: transparent; border-style: dashed; opacity: 0.55; }
+.vtmlarp .trait-restore { margin-left: 5px; color: #d6b34a; cursor: pointer; }
+.vtmlarp .trait-restore:hover { color: #fff; }

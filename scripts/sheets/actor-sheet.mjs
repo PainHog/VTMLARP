@@ -580,6 +580,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".item-delete", "click", this._onItemDelete.bind(this));
     on(".rated-trait-control", "click", this._onRatedTraitControl.bind(this));
     on(".dot", "click", this._onSetDots.bind(this));
+    on(".trait-restore", "click", this._onRestoreTrait.bind(this));
     on(".open-challenge", "click", () => new ChallengeApp(this.actor).render(true));
     on(".open-frenzy", "click", () => new FrenzyApp(this.actor).render(true));
     on(".open-vaulderie", "click", () => new VaulderieApp(this.actor).render(true));
@@ -930,9 +931,30 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       const i = Number(index);
       if (!list[i]) return;
       const current = Number(list[i].rating) || 0;
-      list[i].rating = Math.max(0, value === current ? value - 1 : value);
+      const storedMax = Number(list[i].max) || 0;
+      const newRating = Math.max(0, value === current ? value - 1 : value);
+      list[i].rating = newRating;
+      if (event.shiftKey) {
+        // Shift-click = temporary loss: keep the permanent max, so the lost
+        // dots and a restore control show.
+        list[i].max = Math.max(storedMax, current, newRating);
+      } else {
+        // Normal click = set permanently (rating and max together).
+        list[i].max = newRating;
+      }
       await this.actor.update({ [`system.${path}`]: list });
     }
+  }
+
+  /** Restore a temporarily-reduced rated trait back to its permanent max. */
+  async _onRestoreTrait(event) {
+    event.preventDefault();
+    const { path, index } = event.currentTarget.dataset;
+    const list = foundry.utils.duplicate(foundry.utils.getProperty(this.actor.system, path) ?? []);
+    const i = Number(index);
+    if (!list[i]) return;
+    list[i].rating = Number(list[i].max) || Number(list[i].rating) || 0;
+    await this.actor.update({ [`system.${path}`]: list });
   }
 
   /** Manual +/- for any embedded Item's system.rating (Disciplines, dragged-in Backgrounds). */

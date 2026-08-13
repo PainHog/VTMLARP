@@ -296,9 +296,10 @@
           <tr>
             <td><input type="text" name="system.abilities.{{key}}.{{i}}.name" value="{{ability.name}}"></td>
             <td>
-              <span class="dots" data-path="abilities.{{key}}" data-index="{{i}}">
-                {{#each (vtmDots ability.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+              <span class="dots" data-path="abilities.{{key}}" data-index="{{i}}" title="Click to set. Shift-click to mark a temporary loss (keeps the max).">
+                {{#each (vtmDotsMax ability.rating ability.max 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}} {{#if dot.lost}}lost{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
               </span>
+              {{#if (gt ability.max ability.rating)}}<a class="trait-restore" data-path="abilities.{{key}}" data-index="{{i}}" title="Restore to maximum ({{ability.max}})"><i class="fas fa-rotate-left"></i></a>{{/if}}
             </td>
             <td><a class="rated-trait-control" data-action="remove" data-path="abilities.{{key}}" data-index="{{i}}"><i class="fas fa-times"></i></a></td>
           </tr>
@@ -474,9 +475,10 @@
         <tr>
           <td><input type="text" name="system.backgrounds.{{i}}.name" value="{{bg.name}}"></td>
           <td>
-            <span class="dots" data-path="backgrounds" data-index="{{i}}">
-              {{#each (vtmDots bg.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            <span class="dots" data-path="backgrounds" data-index="{{i}}" title="Click to set. Shift-click to mark a temporary loss (keeps the max).">
+              {{#each (vtmDotsMax bg.rating bg.max 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}} {{#if dot.lost}}lost{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
             </span>
+            {{#if (gt bg.max bg.rating)}}<a class="trait-restore" data-path="backgrounds" data-index="{{i}}" title="Restore to maximum ({{bg.max}})"><i class="fas fa-rotate-left"></i></a>{{/if}}
           </td>
           <td><a class="rated-trait-control" data-action="remove" data-path="backgrounds" data-index="{{i}}"><i class="fas fa-times"></i></a></td>
         </tr>
