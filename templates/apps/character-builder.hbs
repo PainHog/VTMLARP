@@ -53,15 +53,19 @@
   <!-- STEP: Disciplines -->
   <div class="builder-step" data-title="Disciplines">
     <h3>Disciplines <span class="count count-disciplines">0 / 5</span></h3>
-    <p class="hint">Click a Discipline to add it, then set its dots. Your 5 free dots can raise a Discipline to <strong>3 max</strong>; going to 4 or 5 must be bought with Freebies (6 for the 4th dot, 9 for the 5th). Core powers up to the dots set are pulled onto the sheet in order on creation.</p>
+    <p class="hint">Your clan's three in-clan Disciplines are added automatically when you pick a clan. Use the <i class="fas fa-right-left"></i> dropdown on any row to <strong>swap</strong> it for another Discipline before assigning dots, or click one below to add an extra. Your 5 free dots can raise a Discipline to <strong>3 max</strong>; going to 4 or 5 must be bought with Freebies (6 for the 4th dot, 9 for the 5th). Core powers up to the dots set are pulled onto the sheet in order on creation.</p>
     <div class="pick-list">
       {{#each disciplineList as |d|}}<a class="pick" data-action="pickAdd" data-kind="discipline" data-name="{{d}}">{{d}}</a>{{/each}}
     </div>
     <div class="rows-discipline"></div>
     <template class="row-discipline"><div class="builder-row flexrow">
-      <input type="text" name="name" placeholder="Discipline" class="wide">
-      <input type="number" name="rating" value="1" min="0" max="5" class="tiny">
-      <a data-action="removeRow"><i class="fas fa-times"></i></a>
+      <i class="fas fa-right-left disc-swap-icon" title="Swap this Discipline"></i>
+      <select name="name" class="wide disc-select" title="Swap this Discipline">
+        <option value="">— Discipline —</option>
+        {{#each disciplineList as |d|}}<option value="{{d}}">{{d}}</option>{{/each}}
+      </select>
+      <input type="number" name="rating" value="0" min="0" max="5" class="tiny">
+      <a data-action="removeRow" title="Remove"><i class="fas fa-times"></i></a>
     </div></template>
   </div>
 

@@ -9,6 +9,41 @@ const SECTS = ["Camarilla", "Sabbat", "Anarch Movement", "Independent Alliance",
 const ARCHETYPES = ["Architect", "Autocrat", "Bon Vivant", "Bravo", "Caregiver", "Cavalier", "Celebrant", "Conformist", "Conniver", "Curmudgeon", "Deviant", "Director", "Fanatic", "Gallant", "Judge", "Loner", "Martyr", "Masochist", "Monster", "Pedagogue", "Perfectionist", "Rebel", "Rogue", "Survivor", "Thrill-Seeker", "Traditionalist", "Trickster", "Visionary"];
 const PATHS = ["Path of Humanity", "Path of Blood (Assamite)", "Path of Caine", "Path of Cathari", "Path of Death and the Soul", "Path of Ecstasy", "Path of Evil Revelations", "Path of Harmony", "Path of Honorable Accord", "Path of Lilith", "Path of Night", "Path of Paradox (Ravnos)", "Path of Power and the Inner Voice", "Path of the Feral Heart", "Path of the Warrior", "Path of Typhon (Setite)"];
 
+// The three in-clan Disciplines each clan/bloodline learns most easily. When a
+// clan is picked on the Concept step these are auto-added (at 0 dots) to the
+// Disciplines step, where each row is a dropdown the player can swap for a
+// different Discipline before assigning points. Caitiff/Panders have no fixed
+// three, so they start blank. Names match the compendium Discipline entries.
+const CLAN_DISCIPLINES = {
+  "Assamite": ["Celerity", "Obfuscate", "Quietus"],
+  "Brujah": ["Celerity", "Potence", "Presence"],
+  "Followers of Set": ["Obfuscate", "Presence", "Serpentis"],
+  "Gangrel": ["Animalism", "Fortitude", "Protean"],
+  "Giovanni": ["Dominate", "Necromancy", "Potence"],
+  "Lasombra": ["Dominate", "Obtenebration", "Potence"],
+  "Malkavian": ["Auspex", "Dementation", "Obfuscate"],
+  "Nosferatu": ["Animalism", "Obfuscate", "Potence"],
+  "Ravnos": ["Animalism", "Chimerstry", "Fortitude"],
+  "Toreador": ["Auspex", "Celerity", "Presence"],
+  "Tremere": ["Auspex", "Dominate", "Thaumaturgy"],
+  "Tzimisce": ["Animalism", "Auspex", "Vicissitude"],
+  "Ventrue": ["Dominate", "Fortitude", "Presence"],
+  "Baali": ["Daimoinon", "Obfuscate", "Presence"],
+  "Cappadocian": ["Auspex", "Fortitude", "Mortis"],
+  "Salubri": ["Auspex", "Fortitude", "Valeren"],
+  "Blood Brothers": ["Fortitude", "Potence", "Sanguinus"],
+  "Harbingers of Skulls": ["Auspex", "Fortitude", "Necromancy"],
+  "Kiasyd": ["Dominate", "Mytherceria", "Obtenebration"],
+  "Panders": [],
+  "Gargoyle": ["Fortitude", "Potence", "Visceratika"],
+  "Daughters of Cacophony": ["Fortitude", "Melpominee", "Presence"],
+  "True Brujah": ["Potence", "Presence", "Temporis"],
+  "Nagaraja": ["Auspex", "Dominate", "Necromancy"],
+  "Samedi": ["Fortitude", "Obfuscate", "Thanatosis"],
+  "Lamia": ["Fortitude", "Mortis", "Potence"],
+  "Caitiff": []
+};
+
 /**
  * Paged, point-tracked character creator. Each step has a scrollable list of
  * real compendium entries you click to add, with a live counter of points
@@ -66,6 +101,10 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     this.#stepCount = this.element.querySelectorAll(".builder-step").length;
     this.element.addEventListener("input", () => this.#recompute());
     this.element.addEventListener("change", () => this.#recompute());
+    // Auto-fill in-clan Disciplines when the clan is chosen on the Concept step.
+    this.element.querySelector('[name="clan"]')?.addEventListener("change", (e) => {
+      this.#applyClanDisciplines(e.target.value);
+    });
     this.#showStep(this.#step);
     this.#recompute();
   }
@@ -90,13 +129,34 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
   #addRow(kind, prefill = {}) {
     const tpl = this.element.querySelector(`template.row-${kind}`);
     const container = this.element.querySelector(`.rows-${kind}`);
-    if (!tpl || !container) return;
+    if (!tpl || !container) return null;
     const frag = tpl.content.cloneNode(true);
     for (const [k, v] of Object.entries(prefill)) {
       const field = frag.querySelector(`[name="${k}"]`);
       if (field) field.value = v;
     }
     container.appendChild(frag);
+    return container.lastElementChild;
+  }
+
+  /**
+   * Populate the Disciplines step with the picked clan's three in-clan
+   * Disciplines (at 0 dots). Previously auto-added clan rows are cleared first
+   * so re-picking a clan swaps the set cleanly; manually-added rows are kept.
+   */
+  #applyClanDisciplines(clan) {
+    const container = this.element.querySelector(".rows-discipline");
+    if (!container) return;
+    container.querySelectorAll(".builder-row[data-clan-row]").forEach(r => r.remove());
+    const discs = CLAN_DISCIPLINES[clan] ?? [];
+    const anchor = container.firstElementChild;
+    for (const name of discs) {
+      const row = this.#addRow("discipline", { name, rating: 0 });
+      if (!row) continue;
+      row.dataset.clanRow = "1";
+      if (anchor) container.insertBefore(row, anchor);
+    }
+    this.#recompute();
   }
 
   static #onRemoveRow(event, target) { target.closest(".builder-row")?.remove(); this.#recompute(); }
