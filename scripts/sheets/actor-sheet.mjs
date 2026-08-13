@@ -586,6 +586,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".power-toggle", "click", this._onTogglePower.bind(this));
     on(".power-use", "click", this._onUsePower.bind(this));
     on(".power-challenge", "click", this._onInitiatePowerChallenge.bind(this));
+    on(".power-bodymod", "click", this._onPowerBodyMod.bind(this));
     on(".item-create", "click", this._onItemCreate.bind(this));
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
@@ -1094,6 +1095,63 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         await this.actor.update({ "system.bonusHealth": list });
       }
     }
+  }
+
+  /**
+   * Fleshcraft/Bonecraft-style body modification: pick a trait to add or remove
+   * (Physical/Social/Mental Traits, or a Health level) and by how much. Trait
+   * changes are applied as a removable Active Effect (shown in the Afflictions
+   * panel); Health changes add/remove bonus Healthy boxes.
+   */
+  async _onPowerBodyMod(event) {
+    event.preventDefault();
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
+    if (!item) return;
+
+    const result = await foundry.applications.api.DialogV2.prompt({
+      window: { title: `${item.name} - Body Modification` },
+      content: `
+        <div class="flexcol" style="gap:6px;">
+          <label>What to change
+            <select name="trait">
+              <option value="attributes.physical.total">Physical Traits</option>
+              <option value="attributes.social.total">Social Traits</option>
+              <option value="attributes.mental.total">Mental Traits</option>
+              <option value="health">Health level(s)</option>
+            </select>
+          </label>
+          <label>Amount (negative to remove)
+            <input type="number" name="amount" value="1" autofocus>
+          </label>
+        </div>`,
+      ok: {
+        label: "Apply",
+        callback: (e, btn) => ({
+          trait: btn.form.elements.trait.value,
+          amount: Number(btn.form.elements.amount.value) || 0
+        })
+      }
+    }).catch(() => null);
+    if (!result || !result.amount) return;
+
+    const label = { "attributes.physical.total": "Physical", "attributes.social.total": "Social", "attributes.mental.total": "Mental", "health": "Health level" }[result.trait];
+
+    if (result.trait === "health") {
+      const list = [...(this.actor.system.bonusHealth ?? [])];
+      if (result.amount > 0) for (let k = 0; k < result.amount; k++) list.push("ok");
+      else list.splice(Math.max(0, list.length + result.amount), -result.amount);
+      await this.actor.update({ "system.bonusHealth": list });
+    } else {
+      await this.actor.createEmbeddedDocuments("ActiveEffect", [{
+        name: `${item.name}: ${result.amount > 0 ? "+" : ""}${result.amount} ${label}`,
+        icon: item.img, img: item.img,
+        changes: [{ key: `system.${result.trait}`, mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: result.amount }],
+        flags: { vtmlarp: { stTemp: true, statLabel: label } }
+      }]);
+    }
+    await logAction(this.actor, `${item.name}: ${result.amount > 0 ? "+" : ""}${result.amount} ${label}`);
+    this.render();
   }
 
   /** A reflexive Power (a declared action with no Challenge or persistent toggle) - just announces its use to chat. */

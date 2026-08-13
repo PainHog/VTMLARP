@@ -96,7 +96,11 @@ export class VTMPowerData extends BaseItemData {
       // levels. Applied/removed automatically when the power is switched on/off.
       bodyMod: new fields.SchemaField({
         physical: new fields.NumberField({ required: false, integer: true, initial: 0 }),
-        health: new fields.NumberField({ required: false, integer: true, initial: 0 })
+        health: new fields.NumberField({ required: false, integer: true, initial: 0 }),
+        // Fleshcraft/Bonecraft-style powers where the player chooses what to
+        // add/remove each use (Physical/Social/Mental Traits or Health levels)
+        // from a dialog, rather than a fixed bonus.
+        choose: new fields.BooleanField({ required: false, initial: false })
       })
     };
   }
