@@ -970,11 +970,14 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   /** Resolve a drop (from a compendium, another actor, or the sidebar) into a real Item and hand it to _onDropItemCreate. */
   async _onDrop(event) {
-    // Stop any other drop listener on this element from also handling the same
-    // drop - a hard guard against creating the dropped item twice, even if a
-    // stale/duplicate listener is ever attached.
+    // Process each native drop exactly once. On Foundry v13+, ActorSheetV2
+    // wires its own drag/drop pipeline that also calls _onDrop, on top of the
+    // manual listener we bind for v12 (where core doesn't) - so the same drop
+    // event reaches _onDrop twice and would create two copies. Both calls share
+    // the same DragEvent object, so a flag on it dedupes regardless of source.
+    if (event._vtmlarpDropHandled) return;
+    event._vtmlarpDropHandled = true;
     event.preventDefault();
-    event.stopImmediatePropagation();
     let data;
     try {
       data = JSON.parse(event.dataTransfer.getData("text/plain"));
