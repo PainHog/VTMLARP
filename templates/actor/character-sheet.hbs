@@ -346,7 +346,7 @@
           {{#if item.system.stApprovalRequired}}
           <span class="st-approval-badge" title="Storyteller Approval Required"><i class="fas fa-user-shield"></i> ST</span>
           {{/if}}
-            <span class="item-meta">{{item.system.level}} - {{item.system.activation}}</span>
+            <span class="item-meta">{{#if item.system.seq}}<span class="power-seq">({{item.system.seq}})</span> {{/if}}{{item.system.level}} - {{item.system.activation}}</span>
             {{#if item.system.prerequisites}}
             <span class="item-prereqs" title="Prerequisites: {{item.system.prerequisites}}">
               {{#if (lookup (lookup ../../powerPrereqStatus item.id) "met")}}
@@ -395,7 +395,7 @@
           {{#if item.system.stApprovalRequired}}
           <span class="st-approval-badge" title="Storyteller Approval Required"><i class="fas fa-user-shield"></i> ST</span>
           {{/if}}
-          <span class="item-meta">{{item.system.discipline}} - {{item.system.level}} - {{item.system.activation}}</span>
+          <span class="item-meta">{{#if item.system.seq}}<span class="power-seq">({{item.system.seq}})</span> {{/if}}{{item.system.discipline}} - {{item.system.level}} - {{item.system.activation}}</span>
           {{#each (vtmParseDisciplineNames item.system.discipline) as |discName|}}
           <a class="open-power-discipline-lore" data-name="{{discName}}" title="Open {{discName}} in the Disciplines compendium"><i class="fas fa-book"></i></a>
           {{/each}}

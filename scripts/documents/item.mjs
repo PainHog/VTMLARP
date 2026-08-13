@@ -58,6 +58,9 @@ export class VTMPowerData extends BaseItemData {
     return {
       ...super.defineSchema(),
       discipline: new fields.StringField({ required: false, blank: true, initial: "" }),
+      // The power's sequential level within its Discipline (1 = first power
+      // learned, 2 = second, ...). 0 = unset. Shown on the sheet as "(N)".
+      seq: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 }),
       level: new fields.StringField({
         required: true,
         initial: "basic",
