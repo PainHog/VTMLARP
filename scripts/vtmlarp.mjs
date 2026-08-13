@@ -176,6 +176,48 @@ Hooks.once("ready", () => {
 // navigation tabs, so a GM can pull everyone to a scene straight from the nav
 // bar instead of opening the Scenes sidebar. Core Foundry doesn't put Activate
 // on the nav-tab menu on every version; this adds it consistently.
+// Post any compendium entry (Item, JournalEntry, Actor) to the chat log, so a
+// Storyteller can share a power, clan write-up, rule, etc. with the table.
+async function postDocumentToChat(doc) {
+  if (!doc) return;
+  let body = "";
+  if (doc.documentName === "JournalEntry") {
+    const pages = doc.pages?.contents ?? [];
+    body = pages.map(p => `${pages.length > 1 ? `<h3>${p.name}</h3>` : ""}${p.text?.content ?? ""}`).join("");
+  } else if (doc.documentName === "Item") {
+    body = doc.system?.description ?? "";
+  } else {
+    body = doc.system?.biography ?? doc.system?.concept ?? "";
+  }
+  let content = `<div class="vtmlarp-shared-entry"><h2>${doc.name}</h2>${body}</div>`;
+  try {
+    const TE = foundry.applications?.ux?.TextEditor?.implementation ?? globalThis.TextEditor;
+    content = await TE.enrichHTML(content, { async: true });
+  } catch (err) { /* posting raw HTML is fine if enrichment isn't available */ }
+  await ChatMessage.create({ content, speaker: { alias: doc.name } });
+}
+
+Hooks.on("getCompendiumEntryContext", (application, options) => {
+  const resolve = async (li) => {
+    const el = li instanceof HTMLElement ? li : (li?.[0] ?? li);
+    const uuid = el?.dataset?.uuid ?? el?.dataset?.entryUuid;
+    if (uuid) return fromUuid(uuid);
+    const id = el?.dataset?.documentId ?? el?.dataset?.entryId;
+    const pack = el?.closest?.("[data-pack]")?.dataset?.pack
+      ?? application?.collection?.collection ?? application?.metadata?.id;
+    return (pack && id) ? fromUuid(`Compendium.${pack}.${id}`) : null;
+  };
+  options.push({
+    name: "Post to Chat",
+    icon: '<i class="fas fa-comment-dots"></i>',
+    callback: async (li) => {
+      const doc = await resolve(li);
+      if (!doc) return ui.notifications?.warn("Couldn't resolve that compendium entry.");
+      await postDocumentToChat(doc);
+    }
+  });
+});
+
 Hooks.on("getSceneNavigationContext", (nav, options) => {
   const sceneIdOf = (li) => {
     const el = li instanceof HTMLElement ? li : (li?.[0] ?? li);
