@@ -12,6 +12,7 @@ import { GMChallengeDashboard } from "./apps/gm-dashboard.mjs";
 import { XPAuditApp } from "./apps/xp-audit.mjs";
 import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
 import { STPanelApp } from "./apps/st-panel.mjs";
+import { CharacterBuilderApp } from "./apps/character-builder.mjs";
 import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
 
 Hooks.once("init", () => {
@@ -231,6 +232,22 @@ Hooks.on("getCompendiumEntryContext", (application, options) => {
       await postDocumentToChat(doc);
     }
   });
+});
+
+// A "Character Builder" button at the top of the Actors sidebar directory.
+Hooks.on("renderActorDirectory", (app, html) => {
+  const root = html instanceof HTMLElement ? html : html?.[0];
+  if (!root) return;
+  const header = root.querySelector(".directory-header .header-actions")
+    ?? root.querySelector(".directory-header .action-buttons")
+    ?? root.querySelector(".directory-header");
+  if (!header || header.querySelector(".vtmlarp-build-character")) return;
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "vtmlarp-build-character";
+  btn.innerHTML = `<i class="fas fa-user-plus"></i> Character Builder`;
+  btn.addEventListener("click", () => new CharacterBuilderApp().render(true));
+  header.prepend(btn);
 });
 
 Hooks.on("getSceneNavigationContext", (nav, options) => {
