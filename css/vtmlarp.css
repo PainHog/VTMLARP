@@ -1493,6 +1493,11 @@ form.vtmlarp.sheet {
 .vtmlarp.character-builder .builder-row .wide { flex: 1; }
 .vtmlarp.character-builder .builder-row .tiny { width: 52px; }
 .vtmlarp.character-builder .builder-row .disc-swap-icon { color: var(--vtm-red, #8a0303); opacity: 0.7; flex: 0 0 auto; }
+.vtmlarp.character-builder .pick-info,
+.vtmlarp.character-builder .sel-info { color: var(--vtm-red-bright, #b8121a); cursor: pointer; margin-left: 4px; flex: 0 0 auto; }
+.vtmlarp.character-builder .pick-info:hover,
+.vtmlarp.character-builder .sel-info:hover { color: var(--vtm-red, #8a0303); }
+.vtmlarp.character-builder .sel-info-wrap { display: inline-flex; align-items: center; gap: 4px; }
 .vtmlarp.character-builder .builder-freebies { margin-top: 10px; font-weight: bold; }
 .vtmlarp.character-builder .builder-create { margin-top: 8px; padding: 8px; font-weight: bold; }
 button.vtmlarp-build-character { flex: 0 0 auto; }

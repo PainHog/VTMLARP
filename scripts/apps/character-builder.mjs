@@ -63,6 +63,8 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       addRow: CharacterBuilderApp.#onAddRow,
       removeRow: CharacterBuilderApp.#onRemoveRow,
       pickAdd: CharacterBuilderApp.#onPickAdd,
+      openInfo: CharacterBuilderApp.#onOpenInfo,
+      openInfoSel: CharacterBuilderApp.#onOpenInfoSel,
       next: CharacterBuilderApp.#onNext,
       back: CharacterBuilderApp.#onBack,
       createCharacter: CharacterBuilderApp.#onCreate
@@ -71,24 +73,57 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
 
   static PARTS = { form: { template: "systems/vtmlarp/templates/apps/character-builder.hbs" } };
 
+  // name -> compendium UUID lookups, so the info buttons next to the dropdowns
+  // (clan/sect/path/derangement/discipline) can open the right entry at click
+  // time. Built in _prepareContext.
+  #uuid = { discipline: {}, ability: {}, background: {}, meritflaw: {}, derangement: {}, clan: {}, sect: {}, path: {} };
+
+  /** Strip HTML to a short plain-text blurb for hover tooltips. */
+  static #blurb(html) {
+    if (!html) return "";
+    const txt = String(html).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+    return txt.length > 320 ? `${txt.slice(0, 317)}…` : txt;
+  }
+
   async _prepareContext() {
     const idx = async (packName, fields) => {
       const pack = game.packs.get(`vtmlarp.${packName}`);
       if (!pack) return [];
-      return [...(await pack.getIndex({ fields }))];
+      return [...(await pack.getIndex({ fields }))].map(e => ({ ...e, uuid: e.uuid ?? pack.getUuid?.(e._id) ?? `Compendium.vtmlarp.${packName}.${e._id}` }));
     };
-    const abilities = (await idx("abilities", ["system.category"]))
-      .map(e => ({ name: e.name, category: e.system?.category ?? "talent" }))
+    const blurb = CharacterBuilderApp.#blurb;
+    const remember = (kind, name, uuid) => { if (name && uuid) this.#uuid[kind][name] = uuid; };
+
+    const abilities = (await idx("abilities", ["system.category", "system.description"]))
+      .map(e => { remember("ability", e.name, e.uuid); return { name: e.name, category: e.system?.category ?? "talent", uuid: e.uuid, info: blurb(e.system?.description) }; })
       .sort((a, b) => a.name.localeCompare(b.name));
-    const disciplineList = [...new Set((await idx("disciplines", ["type"]))
-      .filter(e => e.type === "discipline" && !/[(—]/.test(e.name)).map(e => e.name))].sort();
-    const backgrounds = (await idx("backgrounds")).map(e => e.name).sort();
-    const mf = (await idx("merits-flaws", ["type", "system.cost", "system.bonus"]))
-      .map(e => ({ name: e.name, type: e.type, cost: e.type === "flaw" ? (e.system?.bonus ?? 1) : (e.system?.cost ?? 1) }))
+
+    const seen = new Set();
+    const disciplineList = (await idx("disciplines", ["type", "system.description"]))
+      .filter(e => e.type === "discipline" && !/[(—]/.test(e.name))
+      .filter(e => { if (seen.has(e.name)) return false; seen.add(e.name); return true; })
+      .map(e => { remember("discipline", e.name, e.uuid); return { name: e.name, uuid: e.uuid, info: blurb(e.system?.description) }; })
       .sort((a, b) => a.name.localeCompare(b.name));
+
+    const backgrounds = (await idx("backgrounds", ["system.description"]))
+      .map(e => { remember("background", e.name, e.uuid); return { name: e.name, uuid: e.uuid, info: blurb(e.system?.description) }; })
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    const mf = (await idx("merits-flaws", ["type", "system.cost", "system.bonus", "system.description"]))
+      .map(e => { remember("meritflaw", e.name, e.uuid); return { name: e.name, type: e.type, cost: e.type === "flaw" ? (e.system?.bonus ?? 1) : (e.system?.cost ?? 1), uuid: e.uuid, info: blurb(e.system?.description) }; })
+      .sort((a, b) => a.name.localeCompare(b.name));
+
     // Derangements are JournalEntries; offer them as a dropdown so a player can
     // pick the specific Derangement they take (for the +2 Freebies rule).
-    const derangements = (await idx("derangements")).map(e => e.name).sort();
+    const derangements = (await idx("derangements"))
+      .map(e => { remember("derangement", e.name, e.uuid); return e.name; })
+      .sort();
+
+    // Clan lore lives across three JournalEntry packs; sects and paths in one
+    // each. Map their names to UUIDs so the Concept-step info buttons work.
+    for (const p of ["clans", "antitribu", "revenants"]) for (const e of await idx(p)) remember("clan", e.name, e.uuid);
+    for (const e of await idx("sects")) remember("sect", e.name, e.uuid);
+    for (const e of await idx("paths-of-enlightenment")) remember("path", e.name, e.uuid);
 
     return {
       clans: CLANS, sects: SECTS, paths: PATHS, archetypes: ARCHETYPES,
@@ -97,6 +132,34 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       merits: mf.filter(e => e.type === "merit"),
       flaws: mf.filter(e => e.type === "flaw")
     };
+  }
+
+  /** Open a compendium document by UUID in its own sheet. */
+  static async #openUuid(uuid) {
+    if (!uuid) { ui.notifications?.warn("No compendium entry is linked to this."); return; }
+    const doc = await fromUuid(uuid).catch(() => null);
+    if (doc?.sheet) doc.sheet.render(true);
+    else ui.notifications?.warn("Couldn't open that compendium entry.");
+  }
+
+  /** Info icon on a pick-list entry: open its compendium page. */
+  static async #onOpenInfo(event, target) {
+    event.preventDefault(); event.stopPropagation();
+    await CharacterBuilderApp.#openUuid(target.dataset.uuid);
+  }
+
+  /** Info button next to a dropdown: open the currently-selected value's page. */
+  static async #onOpenInfoSel(event, target) {
+    event.preventDefault(); event.stopPropagation();
+    const kind = target.dataset.kind;
+    // The related <select> is either named (clan/sect/path/derangement) or the
+    // discipline dropdown in the same row.
+    const sel = target.dataset.for
+      ? this.element.querySelector(`[name="${target.dataset.for}"]`)
+      : target.closest(".builder-row")?.querySelector("select[name='name']");
+    const name = sel?.value;
+    if (!name) { ui.notifications?.info("Pick something first, then click for its info."); return; }
+    await CharacterBuilderApp.#openUuid(this.#uuid[kind]?.[name]);
   }
 
   _onRender(context, options) {

@@ -14,9 +14,9 @@
       </label>
     </div>
     <div class="builder-toprow flexrow">
-      <label>Clan <select name="clan"><option value="">—</option>{{#each clans as |c|}}<option value="{{c}}">{{c}}</option>{{/each}}</select></label>
-      <label>Sect <select name="sect"><option value="">—</option>{{#each sects as |s|}}<option value="{{s}}">{{s}}</option>{{/each}}</select></label>
-      <label>Path <select name="path">{{#each paths as |p|}}<option value="{{p}}">{{p}}</option>{{/each}}</select></label>
+      <label>Clan <span class="sel-info-wrap"><select name="clan"><option value="">—</option>{{#each clans as |c|}}<option value="{{c}}">{{c}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="clan" data-for="clan" title="View this clan's compendium lore"></i></span></label>
+      <label>Sect <span class="sel-info-wrap"><select name="sect"><option value="">—</option>{{#each sects as |s|}}<option value="{{s}}">{{s}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="sect" data-for="sect" title="View this sect's compendium lore"></i></span></label>
+      <label>Path <span class="sel-info-wrap"><select name="path">{{#each paths as |p|}}<option value="{{p}}">{{p}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="path" data-for="path" title="View this path's compendium lore"></i></span></label>
     </div>
     <div class="builder-toprow flexrow">
       <label>Nature <select name="nature"><option value="">—</option>{{#each archetypes as |a|}}<option value="{{a}}">{{a}}</option>{{/each}}</select></label>
@@ -40,7 +40,7 @@
     <h3>Abilities <span class="count count-abilities">0 / 11</span></h3>
     <p class="hint">Click an Ability to add it, then set its dots.</p>
     <div class="pick-list">
-      {{#each abilities as |a|}}<a class="pick" data-action="pickAdd" data-kind="ability" data-name="{{a.name}}" data-category="{{a.category}}">{{a.name}}</a>{{/each}}
+      {{#each abilities as |a|}}<a class="pick" data-action="pickAdd" data-kind="ability" data-name="{{a.name}}" data-category="{{a.category}}" {{#if a.info}}data-tooltip="{{a.info}}"{{/if}}>{{a.name}}{{#if a.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{a.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}
     </div>
     <div class="rows-ability"></div>
     <template class="row-ability"><div class="builder-row flexrow">
@@ -56,15 +56,16 @@
     <h3>Disciplines <span class="count count-disciplines">0 / 5</span></h3>
     <p class="hint">Your clan's three in-clan Disciplines are added automatically when you pick a clan. Use the <i class="fas fa-right-left"></i> dropdown on any row to <strong>swap</strong> it for another Discipline before assigning dots, or click one below to add an extra. Your 5 free dots can raise a Discipline to <strong>3 max</strong>; going to 4 or 5 must be bought with Freebies (6 for the 4th dot, 9 for the 5th). Core powers up to the dots set are pulled onto the sheet in order on creation.</p>
     <div class="pick-list">
-      {{#each disciplineList as |d|}}<a class="pick" data-action="pickAdd" data-kind="discipline" data-name="{{d}}">{{d}}</a>{{/each}}
+      {{#each disciplineList as |d|}}<a class="pick" data-action="pickAdd" data-kind="discipline" data-name="{{d.name}}" {{#if d.info}}data-tooltip="{{d.info}}"{{/if}}>{{d.name}}{{#if d.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{d.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}
     </div>
     <div class="rows-discipline"></div>
     <template class="row-discipline"><div class="builder-row flexrow">
       <i class="fas fa-right-left disc-swap-icon" title="Swap this Discipline"></i>
       <select name="name" class="wide disc-select" title="Swap this Discipline">
         <option value="">— Discipline —</option>
-        {{#each disciplineList as |d|}}<option value="{{d}}">{{d}}</option>{{/each}}
+        {{#each disciplineList as |d|}}<option value="{{d.name}}">{{d.name}}</option>{{/each}}
       </select>
+      <i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="discipline" title="View this Discipline's compendium entry"></i>
       <input type="number" name="rating" value="0" min="0" max="5" class="tiny">
       <a data-action="removeRow" title="Remove"><i class="fas fa-times"></i></a>
     </div></template>
@@ -75,7 +76,7 @@
     <h3>Backgrounds <span class="count count-backgrounds">0 / 5</span></h3>
     <p class="hint">Click a Background to add it, then set its dots.</p>
     <div class="pick-list">
-      {{#each backgrounds as |b|}}<a class="pick" data-action="pickAdd" data-kind="background" data-name="{{b}}">{{b}}</a>{{/each}}
+      {{#each backgrounds as |b|}}<a class="pick" data-action="pickAdd" data-kind="background" data-name="{{b.name}}" {{#if b.info}}data-tooltip="{{b.info}}"{{/if}}>{{b.name}}{{#if b.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{b.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}
     </div>
     <div class="rows-background"></div>
     <template class="row-background"><div class="builder-row flexrow">
@@ -104,11 +105,11 @@
     <div class="pick-columns flexrow">
       <div class="pick-col">
         <div class="pick-col-title">Merits</div>
-        <div class="pick-list">{{#each merits as |m|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{m.name}}" data-type="merit" data-cost="{{m.cost}}">{{m.name}} ({{m.cost}})</a>{{/each}}</div>
+        <div class="pick-list">{{#each merits as |m|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{m.name}}" data-type="merit" data-cost="{{m.cost}}" {{#if m.info}}data-tooltip="{{m.info}}"{{/if}}>{{m.name}} ({{m.cost}}){{#if m.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{m.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}</div>
       </div>
       <div class="pick-col">
         <div class="pick-col-title">Flaws</div>
-        <div class="pick-list">{{#each flaws as |f|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{f.name}}" data-type="flaw" data-cost="{{f.cost}}">{{f.name}} ({{f.cost}})</a>{{/each}}</div>
+        <div class="pick-list">{{#each flaws as |f|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{f.name}}" data-type="flaw" data-cost="{{f.cost}}" {{#if f.info}}data-tooltip="{{f.info}}"{{/if}}>{{f.name}} ({{f.cost}}){{#if f.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{f.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}</div>
       </div>
     </div>
     <div class="rows-meritflaw"></div>
@@ -119,7 +120,7 @@
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
     <label>Derangement (+2 Freebies)
-      <select name="derangement"><option value="">— none —</option>{{#each derangements as |d|}}<option value="{{d}}">{{d}}</option>{{/each}}</select>
+      <span class="sel-info-wrap"><select name="derangement"><option value="">— none —</option>{{#each derangements as |d|}}<option value="{{d}}">{{d}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="derangement" data-for="derangement" title="View this Derangement's compendium entry"></i></span>
     </label>
   </div>
 
