@@ -89,7 +89,15 @@ export class VTMPowerData extends BaseItemData {
       // Comma-separated list of "Discipline Name" or "Discipline Name (rating)" prerequisites,
       // e.g. "Animalism (2), Dominate (2)" for a combination Discipline. Free text so it can
       // describe "or" conditions (e.g. "Fortitude or Potence") that a strict structured field can't.
-      prerequisites: new fields.StringField({ required: false, blank: true, initial: "" })
+      prerequisites: new fields.StringField({ required: false, blank: true, initial: "" }),
+
+      // Body-modification powers (Vicissitude: Horrid Form, etc.): while toggled
+      // on, add these many Physical Traits (to the pool) and bonus Health
+      // levels. Applied/removed automatically when the power is switched on/off.
+      bodyMod: new fields.SchemaField({
+        physical: new fields.NumberField({ required: false, integer: true, initial: 0 }),
+        health: new fields.NumberField({ required: false, integer: true, initial: 0 })
+      })
     };
   }
 }

@@ -1037,6 +1037,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const turningOn = !item.system.active;
     await item.update({ "system.active": turningOn });
 
+    // Body-modification powers (Horrid Form, etc.): apply/remove their Physical
+    // Traits and bonus Health levels automatically as the power is toggled.
+    await this._applyBodyMod(item, turningOn);
+
     let bloodSpent = 0;
     if (turningOn && item.system.bloodCost) {
       const cost = Number(item.system.bloodCost);
@@ -1053,6 +1057,43 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       content: `<p><strong>${this.actor.name}</strong> ${summary.charAt(0).toLowerCase()}${summary.slice(1)}.</p>`
     });
     this.render();
+  }
+
+  /**
+   * Apply (turningOn) or remove a Power's body modification: extra Physical
+   * Traits via an Active Effect on the Physical pool, and bonus Health levels
+   * pushed onto system.bonusHealth. Both are tagged with the power's id so they
+   * come off cleanly when the power is switched off.
+   */
+  async _applyBodyMod(item, turningOn) {
+    const bm = item.system.bodyMod;
+    if (!bm || (!bm.physical && !bm.health)) return;
+
+    if (turningOn) {
+      if (bm.physical) {
+        await this.actor.createEmbeddedDocuments("ActiveEffect", [{
+          name: `${item.name} (body)`,
+          icon: item.img, img: item.img,
+          changes: [{ key: "system.attributes.physical.total", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: bm.physical }],
+          flags: { vtmlarp: { bodyModPower: item.id } }
+        }]);
+      }
+      if (bm.health) {
+        const list = [...(this.actor.system.bonusHealth ?? [])];
+        for (let k = 0; k < bm.health; k++) list.push("ok");
+        await this.actor.update({ "system.bonusHealth": list });
+        this._bodyModHealth ??= {};
+        this._bodyModHealth[item.id] = bm.health;
+      }
+    } else {
+      const fx = this.actor.effects.filter(e => e.flags?.vtmlarp?.bodyModPower === item.id).map(e => e.id);
+      if (fx.length) await this.actor.deleteEmbeddedDocuments("ActiveEffect", fx);
+      if (bm.health) {
+        const list = [...(this.actor.system.bonusHealth ?? [])];
+        list.splice(-bm.health, bm.health);
+        await this.actor.update({ "system.bonusHealth": list });
+      }
+    }
   }
 
   /** A reflexive Power (a declared action with no Challenge or persistent toggle) - just announces its use to chat. */
