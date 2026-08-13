@@ -159,6 +159,11 @@
         </div>
         {{/if}}
         <div class="pool">
+          <label title="Current / rating - lower the current value as your armor soaks hits">Armor</label>
+          <input type="number" name="system.armor.value" value="{{system.armor.value}}" min="0">
+          / <input type="number" name="system.armor.max" value="{{system.armor.max}}" min="0">
+        </div>
+        <div class="pool">
           <label>Path Rating</label>
           <input type="number" name="system.morality.rating" value="{{system.morality.rating}}">
           <select name="system.morality.path" class="tiny">

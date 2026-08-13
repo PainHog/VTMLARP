@@ -156,6 +156,13 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
         perTurn: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 })
       }),
 
+      // Armor: `max` is the rating of the worn armor, `value` its current
+      // remaining protection (players lower it as it soaks hits).
+      armor: new fields.SchemaField({
+        value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+        max: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 })
+      }),
+
       morality: new fields.SchemaField({
         path: new fields.StringField({ required: true, initial: "Path of Humanity" }),
         rating: new fields.NumberField({ required: true, integer: true, min: 0, max: 10, initial: 7 })
