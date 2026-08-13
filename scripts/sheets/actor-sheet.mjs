@@ -570,6 +570,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".item-name", "click", this._onItemEdit.bind(this));
     on(".item-delete", "click", this._onItemDelete.bind(this));
     on(".rated-trait-control", "click", this._onRatedTraitControl.bind(this));
+    on(".dot", "click", this._onSetDots.bind(this));
     on(".open-challenge", "click", () => new ChallengeApp(this.actor).render(true));
     on(".open-frenzy", "click", () => new FrenzyApp(this.actor).render(true));
     on(".open-vaulderie", "click", () => new VaulderieApp(this.actor).render(true));
@@ -889,6 +890,39 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     update[`system.${path}`] = list;
     await this.actor.update(update);
+  }
+
+  /**
+   * Click-a-dot rating. Sets the trait to the clicked dot's value; clicking the
+   * dot that already equals the current rating drops it by one (so you can
+   * lower or clear a rating without a separate minus button). Works for both
+   * embedded Items (data-item-id: Disciplines, dragged-in Backgrounds) and
+   * inline rated traits (data-path/data-index: Abilities, quick Backgrounds).
+   */
+  async _onSetDots(event) {
+    event.preventDefault();
+    const dot = event.currentTarget;
+    const container = dot.closest(".dots");
+    if (!container) return;
+    const value = Number(dot.dataset.value) || 0;
+    const { itemId, path, index } = container.dataset;
+
+    if (itemId) {
+      const item = this.actor.items.get(itemId);
+      if (!item) return;
+      const current = Number(item.system.rating) || 0;
+      const newRating = value === current ? value - 1 : value;
+      await item.update({ "system.rating": Math.max(0, newRating) });
+      return;
+    }
+    if (path) {
+      const list = foundry.utils.duplicate(foundry.utils.getProperty(this.actor.system, path) ?? []);
+      const i = Number(index);
+      if (!list[i]) return;
+      const current = Number(list[i].rating) || 0;
+      list[i].rating = Math.max(0, value === current ? value - 1 : value);
+      await this.actor.update({ [`system.${path}`]: list });
+    }
   }
 
   /** Manual +/- for any embedded Item's system.rating (Disciplines, dragged-in Backgrounds). */

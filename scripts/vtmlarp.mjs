@@ -68,6 +68,15 @@ Hooks.once("init", () => {
   // property (see .vtm-gesture i rules in vtmlarp.css).
   const GESTURE_ICONS = { rock: "fa-hand-rock", paper: "fa-hand-paper", scissors: "fa-hand-scissors", bomb: "fa-bomb" };
   Handlebars.registerHelper("vtmGestureIcon", gesture => GESTURE_ICONS[gesture] ?? "fa-question");
+
+  // Build a dot row for a rated trait: `max` dots, the first `rating` filled.
+  // If the rating exceeds max (e.g. Abilities above 5 at low generation), the
+  // row grows to show them all.
+  Handlebars.registerHelper("vtmDots", (rating, max) => {
+    const r = Math.max(0, Number(rating) || 0);
+    const m = Math.max(r, Number(max) || 5);
+    return Array.from({ length: m }, (_, i) => ({ value: i + 1, filled: i < r }));
+  });
 });
 
 // A vehicle's token art is usually one shared image (e.g. a top-down car

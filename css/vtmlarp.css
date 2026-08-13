@@ -1447,3 +1447,20 @@ form.vtmlarp.sheet {
 .vtmlarp .tag-ok { color: #4caf50; }
 .vtmlarp .freebie-summary { margin-top: 4px; padding: 4px 6px; border-radius: 3px; background: rgba(0,0,0,0.25); }
 .vtmlarp .freebie-summary.over { background: rgba(184, 18, 26, 0.22); }
+
+/* -------------------------------------------------------------------- */
+/* Clickable rating dots (abilities, disciplines, backgrounds)           */
+/* -------------------------------------------------------------------- */
+.vtmlarp .dots { display: inline-flex; gap: 3px; align-items: center; }
+.vtmlarp .dots .dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid var(--vtm-red, #8a0303);
+  background: #fff;
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.1s ease;
+}
+.vtmlarp .dots .dot.filled { background: var(--vtm-red-bright, #b8121a); }
+.vtmlarp .dots .dot:hover { box-shadow: 0 0 3px var(--vtm-red-bright, #b8121a); }

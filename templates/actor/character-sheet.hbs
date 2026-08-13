@@ -276,9 +276,9 @@
           <tr>
             <td><input type="text" name="system.abilities.{{key}}.{{i}}.name" value="{{ability.name}}"></td>
             <td>
-              <a class="rated-trait-control" data-action="decrease" data-path="abilities.{{key}}" data-index="{{i}}">-</a>
-              <span class="rating">{{ability.rating}}</span>
-              <a class="rated-trait-control" data-action="increase" data-path="abilities.{{key}}" data-index="{{i}}">+</a>
+              <span class="dots" data-path="abilities.{{key}}" data-index="{{i}}">
+                {{#each (vtmDots ability.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+              </span>
             </td>
             <td><a class="rated-trait-control" data-action="remove" data-path="abilities.{{key}}" data-index="{{i}}"><i class="fas fa-times"></i></a></td>
           </tr>
@@ -305,9 +305,9 @@
           {{#if group.discipline.system.stApprovalRequired}}
           <span class="st-approval-badge" title="Storyteller Approval Required"><i class="fas fa-user-shield"></i> ST</span>
           {{/if}}
-          <span class="item-rating">{{group.discipline.system.rating}}</span>
-          <a class="item-rating-control" data-item-id="{{group.discipline.id}}" data-action="decrease" title="Decrease rating"><i class="fas fa-minus"></i></a>
-          <a class="item-rating-control" data-item-id="{{group.discipline.id}}" data-action="increase" title="Increase rating"><i class="fas fa-plus"></i></a>
+          <span class="dots" data-item-id="{{group.discipline.id}}">
+            {{#each (vtmDots group.discipline.system.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+          </span>
           {{#if group.discipline._stats.compendiumSource}}
           <a class="open-source" data-uuid="{{group.discipline._stats.compendiumSource}}" title="Open compendium source"><i class="fas fa-book"></i></a>
           {{/if}}
@@ -431,9 +431,9 @@
           {{#if item.system.stApprovalRequired}}
           <span class="st-approval-badge" title="Storyteller Approval Required"><i class="fas fa-user-shield"></i> ST</span>
           {{/if}}
-          <span class="item-rating">{{item.system.rating}}</span>
-          <a class="item-rating-control" data-item-id="{{item.id}}" data-action="decrease" title="Decrease rating"><i class="fas fa-minus"></i></a>
-          <a class="item-rating-control" data-item-id="{{item.id}}" data-action="increase" title="Increase rating"><i class="fas fa-plus"></i></a>
+          <span class="dots" data-item-id="{{item.id}}">
+            {{#each (vtmDots item.system.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+          </span>
           {{#if item._stats.compendiumSource}}
           <a class="open-source" data-uuid="{{item._stats.compendiumSource}}" title="Open compendium source"><i class="fas fa-book"></i></a>
           {{/if}}
@@ -448,9 +448,9 @@
         <tr>
           <td><input type="text" name="system.backgrounds.{{i}}.name" value="{{bg.name}}"></td>
           <td>
-            <a class="rated-trait-control" data-action="decrease" data-path="backgrounds" data-index="{{i}}">-</a>
-            <span class="rating">{{bg.rating}}</span>
-            <a class="rated-trait-control" data-action="increase" data-path="backgrounds" data-index="{{i}}">+</a>
+            <span class="dots" data-path="backgrounds" data-index="{{i}}">
+              {{#each (vtmDots bg.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            </span>
           </td>
           <td><a class="rated-trait-control" data-action="remove" data-path="backgrounds" data-index="{{i}}"><i class="fas fa-times"></i></a></td>
         </tr>
