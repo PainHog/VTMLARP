@@ -439,7 +439,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       for (let d = 0; d < r; d++) disciplineDotCosts.push(TIER_COST[Math.min(d, TIER_COST.length - 1)]);
     }
     const disciplinesSpent = disciplineDotCosts.length;
-    const backgroundsSpent = sumRatings(sys.backgrounds);
+    // Backgrounds live in two places: quick inline entries (system.backgrounds)
+    // and Background Items dragged from the compendium - count both.
+    const backgroundsSpent = sumRatings(sys.backgrounds)
+      + this.actor.items.filter(i => i.type === "background").reduce((n, i) => n + (Number(i.system.rating) || 0), 0);
     const virtuesSpent = (Number(sys.virtues.conscienceConviction.rating) || 0)
       + (Number(sys.virtues.selfControlInstinct.rating) || 0)
       + (Number(sys.virtues.courage.rating) || 0);
