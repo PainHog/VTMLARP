@@ -1,6 +1,7 @@
 <form class="vtmlarp sheet character-builder flexcol" autocomplete="off">
   <div class="builder-header">
     <span class="builder-stepname">Step 1</span>
+    <span class="builder-freebie-live" title="Freebie XP spent / available. Available = 12 base + Flaws (max 7) + 2 if you take a Derangement.">Freebie XP: <span class="count count-freebies">0 / 12</span></span>
     <label class="check builder-orig"><input type="checkbox" name="useOriginal"> Original rules</label>
   </div>
 
@@ -117,13 +118,15 @@
       <input type="number" name="cost" value="1" min="0" max="7" class="tiny">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
-    <label class="check"><input type="checkbox" name="derangement"> Took a Derangement (+2 Freebies)</label>
+    <label>Derangement (+2 Freebies)
+      <select name="derangement"><option value="">— none —</option>{{#each derangements as |d|}}<option value="{{d}}">{{d}}</option>{{/each}}</select>
+    </label>
   </div>
 
   <!-- STEP: Review -->
   <div class="builder-step" data-title="Review & Freebies">
     <h3>Review</h3>
-    <p class="hint">Every area's spend, and your Freebie total. Anything you put over an area's allotment (plus Merits) is paid from Freebies.</p>
+    <p class="hint">Every area's spend, and your Freebie total. Anything you put over an area's allotment (plus Merits) is paid from Freebies. <strong>To spend your Freebie XP</strong>, use <em>Back</em> to return to any panel and raise a trait past its base allotment — the Freebie XP counter in the header updates live as you go back and forth. Take Flaws and a Derangement first to see your full Freebie total.</p>
     <ul class="builder-review">
       <li>Attributes: <span class="count count-attributes">0 / 15</span></li>
       <li>Abilities: <span class="count count-abilities">0 / 11</span></li>

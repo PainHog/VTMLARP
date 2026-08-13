@@ -1500,6 +1500,8 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 /* Paged Character Builder */
 .vtmlarp.character-builder .builder-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; border-bottom: 1px solid var(--vtm-red, #8a0303); padding-bottom: 4px; }
 .vtmlarp.character-builder .builder-stepname { font-weight: bold; color: var(--vtm-red-bright, #b8121a); }
+.vtmlarp.character-builder .builder-freebie-live { font-size: 12px; font-weight: bold; }
+.vtmlarp.character-builder .builder-freebie-live .over { color: var(--vtm-red-bright, #b8121a); }
 .vtmlarp.character-builder .builder-step { display: none; flex: 1 1 auto; overflow-y: auto; }
 .vtmlarp.character-builder .builder-step.active { display: block; }
 .vtmlarp.character-builder .pick-list { max-height: 180px; overflow-y: auto; border: 1px solid var(--vtm-border, #3a3a3a); border-radius: 4px; padding: 4px; margin: 4px 0; display: flex; flex-wrap: wrap; gap: 4px; }

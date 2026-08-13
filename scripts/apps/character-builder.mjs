@@ -86,11 +86,14 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const mf = (await idx("merits-flaws", ["type", "system.cost", "system.bonus"]))
       .map(e => ({ name: e.name, type: e.type, cost: e.type === "flaw" ? (e.system?.bonus ?? 1) : (e.system?.cost ?? 1) }))
       .sort((a, b) => a.name.localeCompare(b.name));
+    // Derangements are JournalEntries; offer them as a dropdown so a player can
+    // pick the specific Derangement they take (for the +2 Freebies rule).
+    const derangements = (await idx("derangements")).map(e => e.name).sort();
 
     return {
       clans: CLANS, sects: SECTS, paths: PATHS, archetypes: ARCHETYPES,
       generations: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4],
-      abilities, disciplineList, backgrounds,
+      abilities, disciplineList, backgrounds, derangements,
       merits: mf.filter(e => e.type === "merit"),
       flaws: mf.filter(e => e.type === "flaw")
     };
@@ -188,11 +191,14 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
 
   #recompute() {
     const el = this.element;
+    // Update EVERY element matching the selector (several counters - freebies,
+    // attributes, etc. - appear both on their own step and again on the Review
+    // step; querySelector would only refresh the first, leaving Review stale).
     const set = (sel, txt, over) => {
-      const n = el.querySelector(sel);
-      if (!n) return;
-      n.textContent = txt;
-      n.classList.toggle("over", !!over);
+      el.querySelectorAll(sel).forEach(n => {
+        n.textContent = txt;
+        n.classList.toggle("over", !!over);
+      });
     };
     const attr = this.#num('[name="phys"]') + this.#num('[name="soc"]') + this.#num('[name="ment"]');
     set(".count-attributes", `${attr} / 15`, attr > 15);
@@ -229,7 +235,7 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const flawValue = mf.filter(r => r.type === "flaw").reduce((n, r) => n + r.cost, 0);
     const freebiesSpent = over(attr, 15) + over(abil, abilB) + over(bg, 5) + over(virt, 10) * 2 + discFree + meritCost;
     const base = this.#orig() ? 5 : 12;
-    const derange = el.querySelector('[name="derangement"]')?.checked ? 2 : 0;
+    const derange = el.querySelector('[name="derangement"]')?.value ? 2 : 0;
     const pool = Math.min(21, base + Math.min(7, flawValue) + derange);
     set(".count-freebies", `${freebiesSpent} / ${pool}`, freebiesSpent > pool);
   }
@@ -317,7 +323,8 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
         willpower: { value: wpStart, max: wpStart },
         blood: { value: bloodMax, max: bloodMax, perTurn },
         creationComplete: false,
-        creationDerangement: !!el.querySelector('[name="derangement"]')?.checked,
+        creationDerangement: !!val("derangement"),
+        derangements: val("derangement") ? [{ name: val("derangement"), description: "" }] : [],
         useOriginalRules: this.#orig()
       },
       items
