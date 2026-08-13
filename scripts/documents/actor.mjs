@@ -130,6 +130,16 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
       // overwrites an established pool if the Generation changes later.
       generationApplied: new fields.BooleanField({ required: false, initial: false }),
 
+      // Player checks this when they've finished spending at character
+      // creation; the Creation Tracker on the sheet uses it to show a
+      // "locked in" state.
+      creationComplete: new fields.BooleanField({ required: false, initial: false }),
+
+      // Creation Tracker rules set: false = this table's custom rules
+      // (11 Abilities / 5 Disciplines / 12 Freebies), true = original Laws of
+      // the Night Revised (5 Abilities / 3 Disciplines / 5 Freebies).
+      useOriginalRules: new fields.BooleanField({ required: false, initial: false }),
+
       experience: new fields.SchemaField({
         value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
         // Lifetime Experience ever awarded (bumped alongside value when a

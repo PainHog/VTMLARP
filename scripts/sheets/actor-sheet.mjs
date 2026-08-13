@@ -326,6 +326,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     context.isCharacter = this.actor.type === "character";
     context.isGM = game.user.isGM;
+    context.creation = this.#creationBudget(sys);
 
     // Non-vampire NPCs (mortals, ghouls) shouldn't show vampire-only chrome.
     // Mortals have no vitae/Disciplines/Generation; ghouls have a small blood
@@ -400,6 +401,88 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
    */
   changeTab(tab, group, options = {}) {
     return super.changeTab(tab, group, { ...options, updatePosition: false });
+  }
+
+  /**
+   * Character-creation budget tracker. Tallies what the character currently has
+   * in each area against the creation allotment, and works out how many Freebie
+   * points that implies (overspend beyond an area's allotment, plus Merits, is
+   * paid from Freebies), versus the Freebie pool available (12 base + up to 7
+   * from Flaws + 2 for a Derangement, max 21). Costs follow Laws of the Night
+   * Revised / this table's house rules; the ST has final say on edge cases.
+   */
+  #creationBudget(sys) {
+    const original = !!sys.useOriginalRules;
+    // Allotments that differ between the two rule sets.
+    const B = original
+      ? { abilities: 5, disciplines: 3, freebieBase: 5 }
+      : { abilities: 11, disciplines: 5, freebieBase: 12 };
+    const PRIORITY = { primary: 7, secondary: 5, tertiary: 3 };
+    // Attributes: each category's Total vs its priority allotment (7/5/3).
+    const attributes = ["physical", "social", "mental"].map(key => {
+      const cat = sys.attributes[key];
+      const budget = PRIORITY[cat.priority] ?? 7;
+      return { key, label: key.charAt(0).toUpperCase() + key.slice(1), spent: Number(cat.total) || 0, budget };
+    });
+
+    const sumRatings = (arr) => (arr ?? []).reduce((n, x) => n + (Number(x.rating) || 0), 0);
+    const abilitiesSpent = sumRatings(sys.abilities.talents) + sumRatings(sys.abilities.skills) + sumRatings(sys.abilities.knowledges);
+    const disciplinesSpent = this.actor.items.filter(i => i.type === "discipline").reduce((n, i) => n + (Number(i.system.rating) || 0), 0);
+    const backgroundsSpent = sumRatings(sys.backgrounds);
+    const virtuesSpent = (Number(sys.virtues.conscienceConviction.rating) || 0)
+      + (Number(sys.virtues.selfControlInstinct.rating) || 0)
+      + (Number(sys.virtues.courage.rating) || 0);
+    const willpowerSpent = Number(sys.willpower.value) || 0;
+    const willpowerBudget = GENERATION_TABLE[sys.generation]?.willpowerStart ?? 4;
+
+    // Freebie cost per extra dot beyond an area's allotment.
+    const rows = [
+      { key: "abilities", label: "Abilities", spent: abilitiesSpent, budget: B.abilities, cost: 1 },
+      { key: "disciplines", label: "Disciplines", spent: disciplinesSpent, budget: B.disciplines, cost: 3 },
+      { key: "backgrounds", label: "Backgrounds", spent: backgroundsSpent, budget: 5, cost: 1 },
+      { key: "virtues", label: "Virtues", spent: virtuesSpent, budget: 10, cost: 2 },
+      { key: "willpower", label: "Willpower", spent: willpowerSpent, budget: willpowerBudget, cost: 3 }
+    ];
+    for (const a of attributes) rows.unshift({ ...a, cost: 1 });
+
+    // Annotate each row with over/under and freebie cost of any overspend.
+    let freebiesSpent = 0;
+    for (const r of rows) {
+      r.diff = r.spent - r.budget;
+      r.over = Math.max(0, r.diff);
+      r.under = r.diff < 0 ? -r.diff : 0;
+      r.ok = r.diff === 0;
+      r.freebies = r.over * (r.cost ?? 1);
+      freebiesSpent += r.freebies;
+    }
+
+    // Merits are bought straight from Freebies (their listed cost).
+    const meritCost = this.actor.items.filter(i => i.type === "merit")
+      .reduce((n, i) => n + (Number(i.system.cost) || 0), 0);
+    freebiesSpent += meritCost;
+
+    // Freebie pool: 12 base + Flaw values (max 7) + 2 for a Derangement, cap 21.
+    const flawValue = this.actor.items.filter(i => i.type === "flaw")
+      .reduce((n, i) => n + (Number(i.system.cost) || 0), 0);
+    const flawBonus = Math.min(7, flawValue);
+    const derangeBonus = (sys.derangements?.length ? 2 : 0);
+    const freebiesAvailable = Math.min(21, B.freebieBase + flawBonus + derangeBonus);
+
+    return {
+      complete: !!sys.creationComplete,
+      original,
+      rulesLabel: original ? "Original Laws of the Night" : "Custom rules",
+      rows,
+      meritCost,
+      freebies: {
+        available: freebiesAvailable,
+        spent: freebiesSpent,
+        remaining: freebiesAvailable - freebiesSpent,
+        flawBonus,
+        derangeBonus,
+        over: freebiesSpent > freebiesAvailable
+      }
+    };
   }
 
   /** @override */

@@ -1428,3 +1428,22 @@ form.vtmlarp.sheet {
 .vtmlarp.sheet .affliction-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 0; }
 .vtmlarp.sheet .affliction-row .remove-affliction { color: var(--vtm-red-bright, #b8121a); cursor: pointer; }
 .vtmlarp.sheet .affliction-row .remove-affliction:hover { color: #fff; }
+
+/* -------------------------------------------------------------------- */
+/* Character Creation Tracker                                            */
+/* -------------------------------------------------------------------- */
+.vtmlarp .creation-tracker { border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; padding: 6px 8px; margin-bottom: 10px; }
+.vtmlarp .creation-tracker .collapsible-header { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.vtmlarp .creation-tracker .creation-rules-toggle,
+.vtmlarp .creation-tracker .creation-complete-toggle { margin-left: auto; font-size: 12px; font-weight: normal; white-space: nowrap; }
+.vtmlarp .creation-tracker .creation-complete-toggle { margin-left: 8px; }
+.vtmlarp .creation-done-badge { color: #4caf50; font-size: 12px; }
+.vtmlarp .creation-table { width: 100%; border-collapse: collapse; margin: 4px 0; }
+.vtmlarp .creation-table th, .vtmlarp .creation-table td { text-align: left; padding: 2px 6px; border-bottom: 1px solid var(--vtm-border, #3a3a3a); }
+.vtmlarp .creation-table tr.over td { background: rgba(184, 18, 26, 0.18); }
+.vtmlarp .creation-table tr.under td { background: rgba(230, 180, 40, 0.12); }
+.vtmlarp .tag-over { color: var(--vtm-red-bright, #b8121a); font-weight: bold; }
+.vtmlarp .tag-under { color: #d6b34a; }
+.vtmlarp .tag-ok { color: #4caf50; }
+.vtmlarp .freebie-summary { margin-top: 4px; padding: 4px 6px; border-radius: 3px; background: rgba(0,0,0,0.25); }
+.vtmlarp .freebie-summary.over { background: rgba(184, 18, 26, 0.22); }

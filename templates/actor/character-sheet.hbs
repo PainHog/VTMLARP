@@ -93,6 +93,49 @@
   <section class="sheet-body">
 
     <div class="tab {{#if tabs.main.active}}active{{/if}}" data-group="primary" data-tab="main">
+
+      {{#if isCharacter}}
+      <div class="creation-tracker collapsible {{#if creation.complete}}collapsed{{/if}}" data-collapse-key="creation-tracker">
+        <h3 class="collapsible-header">
+          <i class="fas fa-caret-down collapse-caret"></i> Character Creation Tracker
+          {{#if creation.complete}}<span class="creation-done-badge">✓ Complete</span>{{/if}}
+          <label class="creation-rules-toggle" title="Switch budgets between this table's custom rules and original Laws of the Night Revised">
+            <input type="checkbox" name="system.useOriginalRules" {{#if creation.original}}checked{{/if}}> Original rules
+          </label>
+          <label class="creation-complete-toggle" title="Check when you've finished spending at creation">
+            <input type="checkbox" name="system.creationComplete" {{#if creation.complete}}checked{{/if}}> Done
+          </label>
+        </h3>
+        <div class="collapsible-body">
+          <p class="hint">Using <strong>{{creation.rulesLabel}}</strong>.</p>
+          <table class="creation-table">
+            <thead><tr><th>Area</th><th>Spent</th><th>Budget</th><th>Status</th></tr></thead>
+            <tbody>
+              {{#each creation.rows as |r|}}
+              <tr class="{{#if r.over}}over{{/if}}{{#if r.under}}under{{/if}}">
+                <td>{{r.label}}</td>
+                <td>{{r.spent}}</td>
+                <td>{{r.budget}}</td>
+                <td>
+                  {{#if r.over}}<span class="tag-over">+{{r.over}} → {{r.freebies}} freebies</span>
+                  {{else}}{{#if r.under}}<span class="tag-under">{{r.under}} left</span>
+                  {{else}}<span class="tag-ok">✓</span>{{/if}}{{/if}}
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          <div class="freebie-summary {{#if creation.freebies.over}}over{{/if}}">
+            <strong>Freebies:</strong> {{creation.freebies.spent}} spent of {{creation.freebies.available}} available
+            <span class="freebie-remaining">({{creation.freebies.remaining}} remaining)</span>
+            {{#if creation.freebies.over}}<span class="tag-over"> — OVER BUDGET</span>{{/if}}
+            <br>
+            <span class="hint">Pool = 12 base{{#if creation.freebies.flawBonus}} + {{creation.freebies.flawBonus}} from Flaws{{/if}}{{#if creation.freebies.derangeBonus}} + {{creation.freebies.derangeBonus}} Derangement{{/if}} (max 21). Overspending any area above, plus {{creation.meritCost}} in Merits, is paid from Freebies.</span>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+
       <div class="pools flexrow">
         <div class="pool">
           <label>Willpower</label>
