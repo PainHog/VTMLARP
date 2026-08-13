@@ -140,9 +140,11 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const abilB = this.#orig() ? 5 : 11;
     set(".count-abilities", `${abil} / ${abilB}`, abil > abilB);
     const dRows = this.#rows("discipline");
-    const disc = dRows.reduce((n, r) => n + r.rating, 0);
+    // Only dots up to 3 per Discipline draw from the free-dot allotment; dots 4
+    // and 5 are freebie-only.
+    const freeDots = dRows.reduce((n, r) => n + Math.min(r.rating, 3), 0);
     const discB = this.#orig() ? 3 : 5;
-    set(".count-disciplines", `${disc} / ${discB}`, disc > discB || dRows.some(r => r.rating > 3));
+    set(".count-disciplines", `${freeDots} / ${discB}`, freeDots > discB);
     const bg = this.#rows("background").reduce((n, r) => n + r.rating, 0);
     set(".count-backgrounds", `${bg} / 5`, bg > 5);
     const virt = this.#num('[name="conscience"]') + this.#num('[name="selfcontrol"]') + this.#num('[name="courage"]');
@@ -151,9 +153,17 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     set(".count-willpower", `${GEN_WILLPOWER_START[gen] ?? 2}`);
 
     const over = (s, b) => Math.max(0, s - b);
-    const TIER = [3, 6, 9, 12];
-    const discCosts = dRows.flatMap(r => Array.from({ length: r.rating }, (_, i) => TIER[Math.min(i, 3)])).sort((a, b) => a - b);
-    const discFree = discCosts.slice(0, Math.max(0, disc - discB)).reduce((n, c) => n + c, 0);
+    // Discipline Freebie cost: dots 4 and 5 always cost 6 and 9; and any
+    // free-tier dots (<=3) beyond the 5-dot allotment cost tiered (3/6/9),
+    // cheapest first.
+    let discFree = 0;
+    for (const r of dRows) {
+      if (r.rating >= 4) discFree += 6;
+      if (r.rating >= 5) discFree += 9;
+    }
+    const TIER = [3, 6, 9];
+    const freeDotCosts = dRows.flatMap(r => Array.from({ length: Math.min(r.rating, 3) }, (_, i) => TIER[i])).sort((a, b) => a - b);
+    discFree += freeDotCosts.slice(0, over(freeDots, discB)).reduce((n, c) => n + c, 0);
     const mf = this.#rows("meritflaw");
     const meritCost = mf.filter(r => r.type === "merit").reduce((n, r) => n + r.cost, 0);
     const flawValue = mf.filter(r => r.type === "flaw").reduce((n, r) => n + r.cost, 0);
@@ -197,19 +207,26 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     let discIndex = [];
     let folderByName = {};
     if (discPack) {
-      discIndex = [...(await discPack.getIndex({ fields: ["type", "folder", "system.discipline", "system.level"] }))];
+      discIndex = [...(await discPack.getIndex({ fields: ["type", "folder", "system.discipline", "system.level", "sort"] }))];
       (discPack.folders ?? []).forEach(f => { folderByName[f.name] = f.id; });
     }
     for (const r of this.#rows("discipline")) {
       if (!r.name) continue;
       items.push({ name: r.name, type: "discipline", img: "icons/svg/upgrade.svg", system: { rating: r.rating, description: `<p>${r.name}.</p>` } });
-      // core powers = in this discipline's main folder, tier <= rating
+      // A Discipline's powers are learned IN ORDER, one per dot. Pull the core
+      // powers (in this Discipline's main folder), sort them by level then their
+      // sort/name so they're in progression order, and take the first `rating`
+      // of them - so 3 dots gives the 1st, 2nd and 3rd powers, not every power
+      // of every tier.
       const folderId = folderByName[r.name];
-      const matches = discIndex.filter(e => e.type === "power"
-        && (e.folder === folderId || e.system?.discipline === r.name)
-        && (LEVEL_TIER[e.system?.level] ?? 9) <= r.rating
-        && (folderId ? e.folder === folderId : true));
-      const docs = await Promise.all(matches.map(e => discPack.getDocument(e._id).catch(() => null)));
+      const core = discIndex.filter(e => e.type === "power"
+        && (folderId ? e.folder === folderId : e.system?.discipline === r.name));
+      core.sort((a, b) =>
+        (LEVEL_TIER[a.system?.level] ?? 9) - (LEVEL_TIER[b.system?.level] ?? 9)
+        || (a.sort ?? 0) - (b.sort ?? 0)
+        || a.name.localeCompare(b.name));
+      const chosen = core.slice(0, Math.max(0, r.rating));
+      const docs = await Promise.all(chosen.map(e => discPack.getDocument(e._id).catch(() => null)));
       for (const doc of docs) {
         if (doc) { const o = doc.toObject(); delete o._id; items.push(o); }
       }

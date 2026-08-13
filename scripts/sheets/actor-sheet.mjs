@@ -426,17 +426,19 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const sumRatings = (arr) => (arr ?? []).reduce((n, x) => n + (Number(x.rating) || 0), 0);
     const abilitiesSpent = sumRatings(sys.abilities.talents) + sumRatings(sys.abilities.skills) + sumRatings(sys.abilities.knowledges);
 
-    // Disciplines: each dot costs by its tier (Basic 3, Intermediate 6,
-    // Advanced 9, Elder 12 Freebies). The free allotment covers the most
-    // expensive dots first (player-favourable), so the Freebie charge is the
-    // sum of the cheapest dots left over beyond the allotment.
-    const TIER_COST = [3, 6, 9, 12];
-    const disciplineDotCosts = [];
-    for (const i of this.actor.items.filter(i => i.type === "discipline")) {
-      const r = Number(i.system.rating) || 0;
-      for (let d = 0; d < r; d++) disciplineDotCosts.push(TIER_COST[Math.min(d, TIER_COST.length - 1)]);
+    // Disciplines: the free-dot allotment can raise a Discipline to 3 at most;
+    // dots 4 and 5 must be bought with Freebies (6 for the 4th, 9 for the 5th).
+    // Free-tier dots (<=3) beyond the allotment cost their tier (Basic 3,
+    // Intermediate 6, Advanced 9), cheapest first.
+    const discRatings = this.actor.items.filter(i => i.type === "discipline").map(i => Number(i.system.rating) || 0);
+    const disciplinesSpent = discRatings.reduce((n, r) => n + Math.min(r, 3), 0);
+    let disciplineExtra = 0;
+    for (const r of discRatings) {
+      if (r >= 4) disciplineExtra += 6;
+      if (r >= 5) disciplineExtra += 9;
     }
-    const disciplinesSpent = disciplineDotCosts.length;
+    const TIER_COST = [3, 6, 9];
+    const freeDotCosts = discRatings.flatMap(r => Array.from({ length: Math.min(r, 3) }, (_, i) => TIER_COST[i]));
     // Backgrounds live in two places: quick inline entries (system.backgrounds)
     // and Background Items dragged from the compendium - count both.
     const backgroundsSpent = sumRatings(sys.backgrounds)
@@ -457,12 +459,12 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       { key: "willpower", label: "Willpower", spent: willpowerSpent, budget: willpowerBudget, cost: 3 }
     ];
 
-    // Freebie cost of the overspent Discipline dots (tiered): free the most
-    // expensive dots up to the allotment, charge the cheapest that remain.
-    const disciplineFreebies = (() => {
+    // Discipline Freebies = the mandatory 4th/5th-dot costs, plus any free-tier
+    // dots that overran the allotment (cheapest charged first).
+    const disciplineFreebies = disciplineExtra + (() => {
       const over = disciplinesSpent - B.disciplines;
       if (over <= 0) return 0;
-      const ascending = [...disciplineDotCosts].sort((a, b) => a - b);
+      const ascending = [...freeDotCosts].sort((a, b) => a - b);
       return ascending.slice(0, over).reduce((n, c) => n + c, 0);
     })();
 
