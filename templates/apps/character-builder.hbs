@@ -1,29 +1,30 @@
 <form class="vtmlarp sheet character-builder flexcol" autocomplete="off">
-  <datalist id="bld-abilities">{{#each abilityNames as |n|}}<option value="{{n}}">{{/each}}</datalist>
-  <datalist id="bld-disciplines">{{#each disciplineNames as |n|}}<option value="{{n}}">{{/each}}</datalist>
-  <datalist id="bld-backgrounds">{{#each backgroundNames as |n|}}<option value="{{n}}">{{/each}}</datalist>
-  <datalist id="bld-meritflaws">{{#each meritFlawNames as |n|}}<option value="{{n}}">{{/each}}</datalist>
-  <p class="hint">Fill in each section. The counters show points spent vs. your allotment (they turn red if over). When you're done, <strong>Create Character</strong> builds the sheet.</p>
-
-  <div class="builder-toprow flexrow">
-    <label class="wide">Name <input type="text" name="charname" placeholder="Character name"></label>
-    <label>Generation
-      <select name="generation">{{#each generations as |g|}}<option value="{{g}}" {{#if (eq g 13)}}selected{{/if}}>{{g}}th</option>{{/each}}</select>
-    </label>
+  <div class="builder-header">
+    <span class="builder-stepname">Step 1</span>
+    <label class="check builder-orig"><input type="checkbox" name="useOriginal"> Original rules</label>
   </div>
 
-  <div class="builder-toprow flexrow">
-    <label>Clan <select name="clan"><option value="">—</option>{{#each clans as |c|}}<option value="{{c}}">{{c}}</option>{{/each}}</select></label>
-    <label>Sect <select name="sect"><option value="">—</option>{{#each sects as |s|}}<option value="{{s}}">{{s}}</option>{{/each}}</select></label>
-    <label>Path <select name="path">{{#each paths as |p|}}<option value="{{p}}">{{p}}</option>{{/each}}</select></label>
-  </div>
-  <div class="builder-toprow flexrow">
-    <label>Nature <select name="nature"><option value="">—</option>{{#each archetypes as |a|}}<option value="{{a}}">{{a}}</option>{{/each}}</select></label>
-    <label>Demeanor <select name="demeanor"><option value="">—</option>{{#each archetypes as |a|}}<option value="{{a}}">{{a}}</option>{{/each}}</select></label>
-    <label class="check"><input type="checkbox" name="useOriginal"> Original rules</label>
+  <!-- STEP: Concept -->
+  <div class="builder-step" data-title="Concept">
+    <div class="builder-toprow flexrow">
+      <label class="wide">Name <input type="text" name="charname" placeholder="Character name"></label>
+      <label>Generation
+        <select name="generation">{{#each generations as |g|}}<option value="{{g}}" {{#if (eq g 13)}}selected{{/if}}>{{g}}th</option>{{/each}}</select>
+      </label>
+    </div>
+    <div class="builder-toprow flexrow">
+      <label>Clan <select name="clan"><option value="">—</option>{{#each clans as |c|}}<option value="{{c}}">{{c}}</option>{{/each}}</select></label>
+      <label>Sect <select name="sect"><option value="">—</option>{{#each sects as |s|}}<option value="{{s}}">{{s}}</option>{{/each}}</select></label>
+      <label>Path <select name="path">{{#each paths as |p|}}<option value="{{p}}">{{p}}</option>{{/each}}</select></label>
+    </div>
+    <div class="builder-toprow flexrow">
+      <label>Nature <select name="nature"><option value="">—</option>{{#each archetypes as |a|}}<option value="{{a}}">{{a}}</option>{{/each}}</select></label>
+      <label>Demeanor <select name="demeanor"><option value="">—</option>{{#each archetypes as |a|}}<option value="{{a}}">{{a}}</option>{{/each}}</select></label>
+    </div>
   </div>
 
-  <section class="builder-section">
+  <!-- STEP: Attributes -->
+  <div class="builder-step" data-title="Attributes">
     <h3>Attributes <span class="count count-attributes">0 / 15</span></h3>
     <p class="hint">Distribute 7 / 5 / 3 across the three categories (15 total). Priority is set automatically from the highest.</p>
     <div class="flexrow">
@@ -31,47 +32,56 @@
       <label>Social <input type="number" name="soc" value="0" min="0"></label>
       <label>Mental <input type="number" name="ment" value="0" min="0"></label>
     </div>
-  </section>
+  </div>
 
-  <section class="builder-section">
-    <h3>Abilities <span class="count count-abilities">0 / 11</span>
-      <a class="builder-add" data-action="addRow" data-kind="ability"><i class="fas fa-plus"></i> Add</a>
-    </h3>
+  <!-- STEP: Abilities -->
+  <div class="builder-step" data-title="Abilities">
+    <h3>Abilities <span class="count count-abilities">0 / 11</span></h3>
+    <p class="hint">Click an Ability to add it, then set its dots.</p>
+    <div class="pick-list">
+      {{#each abilities as |a|}}<a class="pick" data-action="pickAdd" data-kind="ability" data-name="{{a.name}}" data-category="{{a.category}}">{{a.name}}</a>{{/each}}
+    </div>
     <div class="rows-ability"></div>
     <template class="row-ability"><div class="builder-row flexrow">
       <select name="category"><option value="talent">Talent</option><option value="skill">Skill</option><option value="knowledge">Knowledge</option></select>
-      <input type="text" name="name" placeholder="Ability" class="wide" list="bld-abilities">
+      <input type="text" name="name" placeholder="Ability" class="wide">
       <input type="number" name="rating" value="1" min="0" max="10" class="tiny">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
-  </section>
+  </div>
 
-  <section class="builder-section">
-    <h3>Disciplines <span class="count count-disciplines">0 / 5</span>
-      <a class="builder-add" data-action="addRow" data-kind="discipline"><i class="fas fa-plus"></i> Add</a>
-    </h3>
-    <p class="hint">Max 3 dots in any one Discipline at start.</p>
+  <!-- STEP: Disciplines -->
+  <div class="builder-step" data-title="Disciplines">
+    <h3>Disciplines <span class="count count-disciplines">0 / 5</span></h3>
+    <p class="hint">Click a Discipline to add it, then set its dots (max 3). On creation, its core powers up to that level are pulled onto the sheet automatically.</p>
+    <div class="pick-list">
+      {{#each disciplineList as |d|}}<a class="pick" data-action="pickAdd" data-kind="discipline" data-name="{{d}}">{{d}}</a>{{/each}}
+    </div>
     <div class="rows-discipline"></div>
     <template class="row-discipline"><div class="builder-row flexrow">
-      <input type="text" name="name" placeholder="Discipline (e.g. Potence)" class="wide" list="bld-disciplines">
-      <input type="number" name="rating" value="1" min="0" max="5" class="tiny">
+      <input type="text" name="name" placeholder="Discipline" class="wide">
+      <input type="number" name="rating" value="1" min="0" max="3" class="tiny">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
-  </section>
+  </div>
 
-  <section class="builder-section">
-    <h3>Backgrounds <span class="count count-backgrounds">0 / 5</span>
-      <a class="builder-add" data-action="addRow" data-kind="background"><i class="fas fa-plus"></i> Add</a>
-    </h3>
+  <!-- STEP: Backgrounds -->
+  <div class="builder-step" data-title="Backgrounds">
+    <h3>Backgrounds <span class="count count-backgrounds">0 / 5</span></h3>
+    <p class="hint">Click a Background to add it, then set its dots.</p>
+    <div class="pick-list">
+      {{#each backgrounds as |b|}}<a class="pick" data-action="pickAdd" data-kind="background" data-name="{{b}}">{{b}}</a>{{/each}}
+    </div>
     <div class="rows-background"></div>
     <template class="row-background"><div class="builder-row flexrow">
-      <input type="text" name="name" placeholder="Background (e.g. Resources)" class="wide" list="bld-backgrounds">
+      <input type="text" name="name" placeholder="Background" class="wide">
       <input type="number" name="rating" value="1" min="0" max="5" class="tiny">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
-  </section>
+  </div>
 
-  <section class="builder-section">
+  <!-- STEP: Virtues -->
+  <div class="builder-step" data-title="Virtues & Willpower">
     <h3>Virtues <span class="count count-virtues">0 / 10</span></h3>
     <p class="hint">10 points across the three Virtues (each starts with 1).</p>
     <div class="flexrow">
@@ -80,22 +90,50 @@
       <label>Courage <input type="number" name="courage" value="1" min="0" max="5"></label>
     </div>
     <p class="hint">Starting Willpower (by Generation): <span class="count count-willpower">2</span></p>
-  </section>
+  </div>
 
-  <section class="builder-section">
-    <h3>Merits &amp; Flaws
-      <a class="builder-add" data-action="addRow" data-kind="meritflaw"><i class="fas fa-plus"></i> Add</a>
-    </h3>
+  <!-- STEP: Merits & Flaws -->
+  <div class="builder-step" data-title="Merits, Flaws & Derangement">
+    <h3>Merits &amp; Flaws</h3>
+    <p class="hint">Click to add. Flaws grant Freebies (max 7); Merits cost Freebies.</p>
+    <div class="pick-columns flexrow">
+      <div class="pick-col">
+        <div class="pick-col-title">Merits</div>
+        <div class="pick-list">{{#each merits as |m|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{m.name}}" data-type="merit" data-cost="{{m.cost}}">{{m.name}} ({{m.cost}})</a>{{/each}}</div>
+      </div>
+      <div class="pick-col">
+        <div class="pick-col-title">Flaws</div>
+        <div class="pick-list">{{#each flaws as |f|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{f.name}}" data-type="flaw" data-cost="{{f.cost}}">{{f.name}} ({{f.cost}})</a>{{/each}}</div>
+      </div>
+    </div>
     <div class="rows-meritflaw"></div>
     <template class="row-meritflaw"><div class="builder-row flexrow">
       <select name="type"><option value="merit">Merit</option><option value="flaw">Flaw</option></select>
-      <input type="text" name="name" placeholder="Name" class="wide" list="bld-meritflaws">
-      <input type="number" name="cost" value="1" min="0" max="7" class="tiny" title="Merit cost or Flaw value">
+      <input type="text" name="name" placeholder="Name" class="wide">
+      <input type="number" name="cost" value="1" min="0" max="7" class="tiny">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
     <label class="check"><input type="checkbox" name="derangement"> Took a Derangement (+2 Freebies)</label>
-  </section>
+  </div>
 
-  <div class="builder-freebies">Freebies: <span class="count count-freebies">0 / 12</span></div>
-  <button type="button" class="builder-create" data-action="createCharacter"><i class="fas fa-user-plus"></i> Create Character</button>
+  <!-- STEP: Review -->
+  <div class="builder-step" data-title="Review & Freebies">
+    <h3>Review</h3>
+    <p class="hint">Every area's spend, and your Freebie total. Anything you put over an area's allotment (plus Merits) is paid from Freebies.</p>
+    <ul class="builder-review">
+      <li>Attributes: <span class="count count-attributes">0 / 15</span></li>
+      <li>Abilities: <span class="count count-abilities">0 / 11</span></li>
+      <li>Disciplines: <span class="count count-disciplines">0 / 5</span></li>
+      <li>Backgrounds: <span class="count count-backgrounds">0 / 5</span></li>
+      <li>Virtues: <span class="count count-virtues">0 / 10</span></li>
+      <li><strong>Freebies: <span class="count count-freebies">0 / 12</span></strong></li>
+    </ul>
+    <p class="hint">Click <strong>Add Character</strong> to build the sheet.</p>
+  </div>
+
+  <div class="builder-nav flexrow">
+    <button type="button" class="builder-back" data-action="back"><i class="fas fa-arrow-left"></i> Back</button>
+    <button type="button" class="builder-next" data-action="next">Next <i class="fas fa-arrow-right"></i></button>
+    <button type="button" class="builder-create hidden" data-action="createCharacter"><i class="fas fa-user-plus"></i> Add Character</button>
+  </div>
 </form>
