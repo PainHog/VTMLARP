@@ -165,6 +165,21 @@ Hooks.once("ready", () => {
         // A player resolved a Challenge but can't delete the challenger's
         // prompt message themselves - a GM does it on their behalf.
         game.messages.get(data.messageId)?.delete().catch(() => {});
+      } else if (data.action === "createCharacter") {
+        // A player built a character but lacks "Create New Actors" permission,
+        // so a GM creates it for them - keeping the requesting player flagged
+        // as the OWNER. Only the single designated active GM acts, so multiple
+        // connected GMs don't each create a duplicate.
+        if (game.users.activeGM?.id === game.user.id && data.actorData) {
+          const payload = foundry.utils.duplicate(data.actorData);
+          if (data.requesterId) {
+            payload.ownership = payload.ownership ?? {};
+            payload.ownership[data.requesterId] = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+          }
+          Actor.create(payload)
+            .then(a => { if (a) ui.notifications?.info(`Added ${a.name} for a player via the Character Builder.`); })
+            .catch(err => console.error("vtmlarp | createCharacter (GM proxy) failed", err));
+        }
       }
     }
 

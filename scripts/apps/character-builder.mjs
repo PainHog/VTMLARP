@@ -237,8 +237,13 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       items.push({ name: r.name, type: isMerit ? "merit" : "flaw", img: isMerit ? "icons/svg/heal.svg" : "icons/svg/hazard.svg", system: isMerit ? { cost: r.cost } : { bonus: r.cost } });
     }
 
-    const actor = await Actor.create({
+    // Stamp the current user as OWNER of the finished character, so whoever
+    // ran the builder can immediately open and edit their own sheet (whether
+    // they're a player or the Storyteller).
+    const OWNER = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+    const actorData = {
       name, type: "character",
+      ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE, [game.user.id]: OWNER },
       system: {
         clan: val("clan"), sect: val("sect"), nature: val("nature"), demeanor: val("demeanor"),
         generation: gen, generationApplied: true,
@@ -256,9 +261,35 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
         useOriginalRules: this.#orig()
       },
       items
-    });
-    ui.notifications?.info(`Created ${name} with ${items.length} item(s).`);
-    this.close();
-    actor?.sheet?.render(true);
+    };
+
+    // Players don't have the core "Create New Actors" permission by default, so
+    // a direct Actor.create() would throw for them. Try it directly if allowed;
+    // otherwise hand the assembled character off to an online Storyteller (GM)
+    // via socket, who creates it and leaves this user flagged as the owner.
+    const canCreate = game.user.isGM
+      || (game.user.can?.("ACTOR_CREATE") ?? game.user.hasPermission?.("ACTOR_CREATE") ?? false);
+
+    let actor = null;
+    if (canCreate) {
+      try { actor = await Actor.create(actorData); }
+      catch (err) { console.error("vtmlarp | character-builder create failed", err); }
+    }
+
+    if (actor) {
+      ui.notifications?.info(`Created ${name} with ${items.length} item(s).`);
+      this.close();
+      actor.sheet?.render(true);
+      return;
+    }
+
+    // Fall back to asking a Storyteller to create it.
+    if (game.users.activeGM) {
+      game.socket.emit("system.vtmlarp", { action: "createCharacter", actorData, requesterId: game.user.id });
+      ui.notifications?.info(`Sent ${name} to the Storyteller to add — you'll be set as its owner.`);
+      this.close();
+    } else {
+      ui.notifications?.error("Couldn't create the character: no Storyteller (GM) is online. Ask your ST to be online, or to grant you \"Create New Actors\" permission.");
+    }
   }
 }
