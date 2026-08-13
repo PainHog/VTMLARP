@@ -1,4 +1,8 @@
 <form class="vtmlarp sheet character-builder flexcol" autocomplete="off">
+  <datalist id="bld-abilities">{{#each abilityNames as |n|}}<option value="{{n}}">{{/each}}</datalist>
+  <datalist id="bld-disciplines">{{#each disciplineNames as |n|}}<option value="{{n}}">{{/each}}</datalist>
+  <datalist id="bld-backgrounds">{{#each backgroundNames as |n|}}<option value="{{n}}">{{/each}}</datalist>
+  <datalist id="bld-meritflaws">{{#each meritFlawNames as |n|}}<option value="{{n}}">{{/each}}</datalist>
   <p class="hint">Fill in each section. The counters show points spent vs. your allotment (they turn red if over). When you're done, <strong>Create Character</strong> builds the sheet.</p>
 
   <div class="builder-toprow flexrow">
@@ -36,7 +40,7 @@
     <div class="rows-ability"></div>
     <template class="row-ability"><div class="builder-row flexrow">
       <select name="category"><option value="talent">Talent</option><option value="skill">Skill</option><option value="knowledge">Knowledge</option></select>
-      <input type="text" name="name" placeholder="Ability" class="wide">
+      <input type="text" name="name" placeholder="Ability" class="wide" list="bld-abilities">
       <input type="number" name="rating" value="1" min="0" max="10" class="tiny">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
@@ -49,7 +53,7 @@
     <p class="hint">Max 3 dots in any one Discipline at start.</p>
     <div class="rows-discipline"></div>
     <template class="row-discipline"><div class="builder-row flexrow">
-      <input type="text" name="name" placeholder="Discipline (e.g. Potence)" class="wide">
+      <input type="text" name="name" placeholder="Discipline (e.g. Potence)" class="wide" list="bld-disciplines">
       <input type="number" name="rating" value="1" min="0" max="5" class="tiny">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
@@ -61,7 +65,7 @@
     </h3>
     <div class="rows-background"></div>
     <template class="row-background"><div class="builder-row flexrow">
-      <input type="text" name="name" placeholder="Background (e.g. Resources)" class="wide">
+      <input type="text" name="name" placeholder="Background (e.g. Resources)" class="wide" list="bld-backgrounds">
       <input type="number" name="rating" value="1" min="0" max="5" class="tiny">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>
@@ -85,7 +89,7 @@
     <div class="rows-meritflaw"></div>
     <template class="row-meritflaw"><div class="builder-row flexrow">
       <select name="type"><option value="merit">Merit</option><option value="flaw">Flaw</option></select>
-      <input type="text" name="name" placeholder="Name" class="wide">
+      <input type="text" name="name" placeholder="Name" class="wide" list="bld-meritflaws">
       <input type="number" name="cost" value="1" min="0" max="7" class="tiny" title="Merit cost or Flaw value">
       <a data-action="removeRow"><i class="fas fa-times"></i></a>
     </div></template>

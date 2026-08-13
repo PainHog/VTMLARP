@@ -31,7 +31,24 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
   static PARTS = { form: { template: "systems/vtmlarp/templates/apps/character-builder.hbs" } };
 
   async _prepareContext() {
-    return { clans: CLANS, sects: SECTS, paths: PATHS, archetypes: ARCHETYPES, generations: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4] };
+    // Load names from the compendiums so the builder's fields can autocomplete.
+    const names = async (packName, filter = () => true) => {
+      const pack = game.packs.get(`vtmlarp.${packName}`);
+      if (!pack) return [];
+      const index = await pack.getIndex({ fields: ["type", "system.category"] });
+      return [...index].filter(filter).map(e => e.name).sort((a, b) => a.localeCompare(b));
+    };
+    const abilityNames = await names("abilities");
+    const backgroundNames = await names("backgrounds");
+    const meritFlawNames = await names("merits-flaws");
+    const disciplineNames = await names("disciplines", e => e.type === "discipline" && !/\(|—/.test(e.name));
+
+    return {
+      clans: CLANS, sects: SECTS, paths: PATHS, archetypes: ARCHETYPES,
+      generations: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4],
+      abilityNames, backgroundNames, meritFlawNames,
+      disciplineNames: [...new Set(disciplineNames)]
+    };
   }
 
   _onRender(context, options) {
