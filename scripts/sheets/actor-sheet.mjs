@@ -970,6 +970,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   /** Resolve a drop (from a compendium, another actor, or the sidebar) into a real Item and hand it to _onDropItemCreate. */
   async _onDrop(event) {
+    // Stop any other drop listener on this element from also handling the same
+    // drop - a hard guard against creating the dropped item twice, even if a
+    // stale/duplicate listener is ever attached.
+    event.preventDefault();
+    event.stopImmediatePropagation();
     let data;
     try {
       data = JSON.parse(event.dataTransfer.getData("text/plain"));
