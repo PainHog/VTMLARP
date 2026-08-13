@@ -226,6 +226,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   // survives re-renders without writing UI state into the document.
   #collapsedKeys = new Set();
 
+  // The root element the drop listeners are attached to, so they're bound once
+  // rather than re-added on every render (ApplicationV2 keeps the root).
+  #dropBoundElement = null;
+
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "sheet", "actor"],
     position: { width: 960, height: 880 },
@@ -493,18 +497,24 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // runs) - the underlying _onDragStart/_onDrop/_onDropItemCreate pipeline
     // is still inherited from ActorSheetV2, but something has to actually
     // attach it to the DOM on every render.
-    new foundry.applications.ux.DragDrop.implementation({
-      dragSelector: ".item-list .item",
-      dropSelector: null,
-      permissions: {
-        dragstart: () => this.isEditable,
-        drop: () => this.isEditable
-      },
-      callbacks: {
-        dragstart: this._onDragStart.bind(this),
-        drop: this._onDrop.bind(this)
+    // Drag/drop, bound WITHOUT re-adding root listeners every render.
+    // DragDrop.bind(this.element) re-attaches dragover/drop to the persistent
+    // ApplicationV2 root on each render, so those handlers pile up over a
+    // session - a source of creeping lag (and duplicate drops). Instead:
+    // dragstart goes on the freshly-rebuilt item nodes each render (old nodes
+    // are discarded, so no accumulation), and the drop target is bound to the
+    // root only once.
+    if (this.isEditable) {
+      el.querySelectorAll(".item-list .item").forEach(node => {
+        node.setAttribute("draggable", "true");
+        node.addEventListener("dragstart", this._onDragStart.bind(this));
+      });
+      if (this.#dropBoundElement !== this.element) {
+        this.#dropBoundElement = this.element;
+        this.element.addEventListener("dragover", (ev) => ev.preventDefault());
+        this.element.addEventListener("drop", this._onDrop.bind(this));
       }
-    }).bind(this.element);
+    }
 
     // Re-apply whichever sections the user previously collapsed, since a
     // fresh render rebuilds the DOM from scratch and would otherwise forget.
