@@ -417,13 +417,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const B = original
       ? { abilities: 5, disciplines: 3, freebieBase: 5 }
       : { abilities: 11, disciplines: 5, freebieBase: 12 };
-    const PRIORITY = { primary: 7, secondary: 5, tertiary: 3 };
-    // Attributes: each category's Total vs its priority allotment (7/5/3).
-    const attributes = ["physical", "social", "mental"].map(key => {
-      const cat = sys.attributes[key];
-      const budget = PRIORITY[cat.priority] ?? 7;
-      return { key, label: key.charAt(0).toUpperCase() + key.slice(1), spent: Number(cat.total) || 0, budget };
-    });
+    // Attributes: don't police which category is which - just that the total
+    // across Physical/Social/Mental equals 7 + 5 + 3 = 15. Anything past 15 is
+    // overspend (drawn from Freebies), anything under still needs distributing.
+    const attributesTotal = ["physical", "social", "mental"]
+      .reduce((n, key) => n + (Number(sys.attributes[key].total) || 0), 0);
 
     const sumRatings = (arr) => (arr ?? []).reduce((n, x) => n + (Number(x.rating) || 0), 0);
     const abilitiesSpent = sumRatings(sys.abilities.talents) + sumRatings(sys.abilities.skills) + sumRatings(sys.abilities.knowledges);
@@ -451,13 +449,13 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     // Freebie cost per extra dot beyond an area's allotment.
     const rows = [
+      { key: "attributes", label: "Attributes (15 total)", spent: attributesTotal, budget: 15, cost: 1 },
       { key: "abilities", label: "Abilities", spent: abilitiesSpent, budget: B.abilities, cost: 1 },
       { key: "disciplines", label: "Disciplines", spent: disciplinesSpent, budget: B.disciplines, cost: 3 },
       { key: "backgrounds", label: "Backgrounds", spent: backgroundsSpent, budget: 5, cost: 1 },
       { key: "virtues", label: "Virtues", spent: virtuesSpent, budget: 10, cost: 2 },
       { key: "willpower", label: "Willpower", spent: willpowerSpent, budget: willpowerBudget, cost: 3 }
     ];
-    for (const a of attributes) rows.unshift({ ...a, cost: 1 });
 
     // Freebie cost of the overspent Discipline dots (tiered): free the most
     // expensive dots up to the allotment, charge the cheapest that remain.
@@ -485,8 +483,9 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     freebiesSpent += meritCost;
 
     // Freebie pool: 12 base + Flaw values (max 7) + 2 for a Derangement, cap 21.
+    // Flaws record their value in system.bonus (Merits use system.cost).
     const flawValue = this.actor.items.filter(i => i.type === "flaw")
-      .reduce((n, i) => n + (Number(i.system.cost) || 0), 0);
+      .reduce((n, i) => n + (Number(i.system.bonus) || 0), 0);
     const flawBonus = Math.min(7, flawValue);
     const derangeBonus = (sys.derangements?.length ? 2 : 0);
     const freebiesAvailable = Math.min(21, B.freebieBase + flawBonus + derangeBonus);
