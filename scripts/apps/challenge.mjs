@@ -71,7 +71,10 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     context.equipmentBonuses = equipmentBonuses;
     context.prefill = this.prefill;
     context.actorOptions = [
-      { id: TEST_OPPONENT_ID, name: `TEST (practice - ${TEST_OPPONENT_TRAITS} Traits, always ${TEST_OPPONENT_GESTURE})` },
+      // The fake practice opponent is a testing aid — show it only to the
+      // Storyteller so players don't see a "TEST (always Rock)" entry in their
+      // real opponent list.
+      ...(game.user.isGM ? [{ id: TEST_OPPONENT_ID, name: `TEST (practice - ${TEST_OPPONENT_TRAITS} Traits, always ${TEST_OPPONENT_GESTURE})` }] : []),
       ...game.actors
         .filter(a => ["character", "npc"].includes(a.type) && a.id !== this.actor.id)
         .map(a => ({ id: a.id, name: a.name }))

@@ -64,6 +64,11 @@ export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.a
     const failLabel = isRotschreck ? "Rötschreck!" : "Frenzy!";
 
     let outcome, detail;
+    // Asked to spend Willpower but has none left: warn and fall through to the
+    // Virtue test rather than silently pretending the spend happened.
+    if (spendWillpower && this.actor.system.willpower.value <= 0) {
+      ui.notifications?.warn("No Willpower left to spend — resolving by Virtue test instead.");
+    }
     if (spendWillpower && this.actor.system.willpower.value > 0) {
       await this.actor.update({ "system.willpower.value": this.actor.system.willpower.value - 1 });
       outcome = "Resisted";

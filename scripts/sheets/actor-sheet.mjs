@@ -729,7 +729,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ui.notifications?.warn("Couldn't find the original compendium entry for this item.");
       return;
     }
-    doc.sheet.render(true);
+    doc.sheet?.render(true);
   }
 
   /**
@@ -751,7 +751,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       return;
     }
     const doc = await pack.getDocument(entry._id);
-    doc.sheet.render(true);
+    doc.sheet?.render(true);
   }
 
   /** Open the compendium JournalEntry backing a Clan/Path lore link button. */
@@ -778,7 +778,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       const entry = (await pack.getIndex()).find(e => e.name === name);
       if (entry) {
         const doc = await pack.getDocument(entry._id);
-        doc.sheet.render(true);
+        doc.sheet?.render(true);
         return;
       }
     }
@@ -829,6 +829,9 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** GM-only: grant Experience, bumping both the current pool and the lifetime total the XP Audit view reads from. */
   async _onAwardXP(event) {
     event.preventDefault();
+    // Defense-in-depth: the button is only rendered for GMs, but never let a
+    // non-GM self-award even if that template guard ever changes.
+    if (!game.user.isGM) return;
     const amount = await foundry.applications.api.DialogV2.prompt({
       window: { title: `Award Experience to ${this.actor.name}` },
       content: `<input type="number" name="amount" value="1" min="1" autofocus>`,
@@ -1222,7 +1225,19 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   async _onItemDelete(event) {
     event.preventDefault();
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
-    await this.actor.items.get(itemId)?.delete();
+    const item = this.actor.items.get(itemId);
+    if (!item) return;
+    // Deleting an embedded item (a Discipline, Power, Background, Merit, etc.)
+    // is permanent with no undo - confirm first. Shift-click skips the prompt
+    // for quick cleanup.
+    if (!event.shiftKey) {
+      const confirmed = await foundry.applications.api.DialogV2.confirm({
+        window: { title: `Delete ${item.name}?` },
+        content: `<p>Remove <strong>${foundry.utils.escapeHTML?.(item.name) ?? item.name}</strong> from ${this.actor.name}? This cannot be undone. (Hold Shift when clicking to skip this prompt.)</p>`
+      }).catch(() => false);
+      if (!confirmed) return;
+    }
+    await item.delete();
     this.render();
   }
 
@@ -1251,7 +1266,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       console.warn("VTMLARP | Drop event had no parseable text/plain data:", err);
       return;
     }
-    console.log("VTMLARP | Drop data:", data);
+    console.debug("VTMLARP | Drop data:", data);
     // A Derangement is a JournalEntry, not an Item, and lives in the actor's
     // system.derangements list rather than the item list - so dropping one
     // adds an entry there instead of creating an embedded Item.
@@ -1268,7 +1283,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ui.notifications?.warn("Couldn't resolve the dropped item - check the browser console for details.");
       return;
     }
-    console.log("VTMLARP | Resolved dropped item:", item.name, item.type, item.uuid);
+    console.debug("VTMLARP | Resolved dropped item:", item.name, item.type, item.uuid);
     await this._onDropItemCreate(item.toObject());
     // createEmbeddedDocuments confirmed succeeding (visible in the log above)
     // isn't the same as this sheet actually re-rendering to show it - rather
@@ -1343,7 +1358,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       // types are just embedded normally.
       if (passthrough.length) {
         const created = await this.actor.createEmbeddedDocuments("Item", passthrough);
-        console.log(`VTMLARP | createEmbeddedDocuments returned ${created.length} document(s):`, created.map(d => `${d.name} (${d.type})`));
+        console.debug(`VTMLARP | createEmbeddedDocuments returned ${created.length} document(s):`, created.map(d => `${d.name} (${d.type})`));
         await this._autoBumpDisciplineRatings(created);
         return created;
       }
