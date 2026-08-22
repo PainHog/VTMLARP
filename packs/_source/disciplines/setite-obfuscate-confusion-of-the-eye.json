@@ -4,12 +4,12 @@
   "type": "power",
   "img": "icons/svg/aura.svg",
   "system": {
-    "description": "<p>This power extends the effect of Mask of a Thousand Faces to another person in a specialized way. While under the influence of this power, the victim perceives one other person of the vampire's choosing as someone else entirely. The victim hears whatever the 'masked' person says but unconsciously explains away any inconsistencies. If the masked person directly tries to persuade the victim of his true identity, the victim proves hard to convince and may grow angry.</p><p>You spend a Willpower Trait. Disguising the other person against his will requires success in a Mental Challenge against him. If the masked person tries to convince the victim of the truth, the victim may attempt to throw off the effect with a Static Mental Challenge, aided by any relevant Charisma-based Ability the masked person uses to argue his case.</p>",
+    "description": "<p>An elaboration of Mask of a Thousand Faces turned upon someone else: you make a victim perceive one other person as an entirely different individual &mdash; the Sabbat archbishop as a mortal janitor, or a despised Anarch as a coveted primogen. The victim hears whatever the masked person actually says but unconsciously explains away every inconsistency.</p><p>Spend one Willpower Trait. Against an unwilling target you must win a Mental Challenge (retest Stealth); the illusion then holds for up to 24 hours. The victim rationalises away most evidence of the deception and grows hard to convince &mdash; even angry &mdash; if the masked person openly insists on their true identity, which grants the victim a chance to shake off the effect.</p>",
     "source": "Clanbook: Followers of Set, Chapter Two",
     "discipline": "Obfuscate",
     "level": "advanced",
     "challengeType": "mental",
-    "bloodCost": "",
+    "bloodCost": "One Willpower Trait",
     "retestAbility": "",
     "duration": "Up to 24 hours",
     "activation": "challenge",
@@ -22,11 +22,7 @@
   "ownership": {
     "default": 0
   },
-  "flags": {
-    "vtmlarp": {
-      "gmOnly": true
-    }
-  },
+  "flags": {},
   "_stats": {
     "systemId": "vtmlarp",
     "systemVersion": "0.1.0",
