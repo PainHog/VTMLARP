@@ -55,8 +55,10 @@ stored data that live characters may already have, add a migration** — Foundry
 does not rewrite existing documents for you. Append an entry to `MIGRATIONS`
 with the shipping version and an idempotent `migrate(ctx)` using the
 `updateActors` / `updateItems` / `updateOwnedItems` / `updateScenes` helpers.
-The list is intentionally empty at 1.13.x (framework introduced with no pending
-changes; first load just baselines the version).
+The framework baselines the version on first load; the first real migration
+(1.17.1) merges the old Talents/Skills/Knowledges ability arrays into the flat
+`system.abilities` list, reading `actor._source` since the new schema coerces
+the old object away before the migration runs.
 
 ## Foundry version notes
 

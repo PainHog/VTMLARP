@@ -44,21 +44,30 @@ const MIGRATIONS = [
     async migrate({ updateActors }) {
       await updateActors(actor => {
         const src = actor._source?.system?.abilities;
-        if (!src || Array.isArray(src)) return null;
-        const merged = [...(src.talents ?? []), ...(src.skills ?? []), ...(src.knowledges ?? [])]
-          .filter(a => a && typeof a === "object")
-          .map(a => ({
-            name: a.name ?? "",
-            rating: Number(a.rating) || 0,
-            max: Number(a.max ?? a.rating) || 0,
-            notes: a.notes ?? ""
-          }))
-          .sort((a, b) => String(a.name).localeCompare(String(b.name)));
-        return { "system.abilities": merged };
+        const merged = flattenAbilities(src);
+        return merged ? { "system.abilities": merged } : null;
       });
     }
   }
 ];
+
+/**
+ * Merge the legacy {talents,skills,knowledges} ability object into one flat,
+ * alphabetical array. Returns null when the input is already flat (an array),
+ * missing, or otherwise not the old shape — i.e. nothing to migrate.
+ */
+export function flattenAbilities(src) {
+  if (!src || Array.isArray(src) || typeof src !== "object") return null;
+  return [...(src.talents ?? []), ...(src.skills ?? []), ...(src.knowledges ?? [])]
+    .filter(a => a && typeof a === "object")
+    .map(a => ({
+      name: a.name ?? "",
+      rating: Number(a.rating) || 0,
+      max: Number(a.max ?? a.rating) || 0,
+      notes: a.notes ?? ""
+    }))
+    .sort((a, b) => String(a.name).localeCompare(String(b.name)));
+}
 
 /** Semver-ish compare: returns <0, 0, >0. Non-numeric/junk segments sort as 0. */
 export function compareVersions(a, b) {
