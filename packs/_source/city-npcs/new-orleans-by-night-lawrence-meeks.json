@@ -74,74 +74,80 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Interrogation",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Tracking",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Cryptography",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Kindred Lore",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "New Orleans Knowledge",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Investigation",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Psychology",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Cryptography",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Interrogation",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Kindred Lore",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "New Orleans Knowledge",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Psychology",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Tracking",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 9,
       "max": 9

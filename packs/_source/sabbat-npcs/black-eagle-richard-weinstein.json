@@ -82,59 +82,62 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Security",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Computer",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Sabbat Lore",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Science",
-          "rating": 4,
-          "notes": "Physics/engineering"
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Computer",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Lore",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Science",
+        "rating": 4,
+        "max": 4,
+        "notes": "Physics/engineering"
+      },
+      {
+        "name": "Security",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 7,
       "max": 7

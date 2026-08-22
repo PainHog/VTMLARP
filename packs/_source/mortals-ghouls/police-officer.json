@@ -50,49 +50,50 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Firearms",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Drive",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Law",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Investigation",
-          "rating": 2,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Law",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 5,
       "max": 5

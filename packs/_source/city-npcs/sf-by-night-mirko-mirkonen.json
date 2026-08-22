@@ -27,79 +27,86 @@
         "traits": []
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Blind Fighting",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Streetwise",
-          "rating": 1,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Animal Ken",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Investigation",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Medicine",
-          "rating": 1,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Animal Ken",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Blind Fighting",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Medicine",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Streetwise",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

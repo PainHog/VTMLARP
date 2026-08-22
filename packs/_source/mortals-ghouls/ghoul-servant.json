@@ -46,44 +46,44 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 1,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Drive",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Etiquette",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 1,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Academics",
-          "rating": 1,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Academics",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 4,
       "max": 4

@@ -79,89 +79,98 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 6"
-        },
-        {
-          "name": "Leadership",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Animal Ken",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Etiquette",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Music",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Bureaucracy",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Investigation",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Law",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Medicine",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 5"
-        },
-        {
-          "name": "Politics",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Animal Ken",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Bureaucracy",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 6"
+      },
+      {
+        "name": "Investigation",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Law",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Medicine",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Music",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 5"
+      },
+      {
+        "name": "Politics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

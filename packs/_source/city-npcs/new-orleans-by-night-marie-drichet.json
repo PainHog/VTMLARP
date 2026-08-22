@@ -54,104 +54,116 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Acting",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Alertness",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Poetic Expression",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Drive",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Etiquette",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Research",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Ride",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Style",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Computer",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Kindred Lore",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Lupine Lore",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Mage Lore",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Spirit Lore",
-          "rating": 1,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Acting",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Computer",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Kindred Lore",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Lupine Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Mage Lore",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Poetic Expression",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Research",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Ride",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Spirit Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Style",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 7,
       "max": 7

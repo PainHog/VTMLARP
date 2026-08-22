@@ -27,89 +27,98 @@
         "traits": []
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Expression",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Drive",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Etiquette",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Academics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Camarilla Lore",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Investigation",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Science",
-          "rating": 1,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Academics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Camarilla Lore",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Expression",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Science",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 6,
       "max": 6

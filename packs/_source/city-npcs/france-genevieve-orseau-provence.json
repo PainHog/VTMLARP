@@ -62,44 +62,44 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Empathy",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Performance",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Occult",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 5,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Empathy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Performance",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

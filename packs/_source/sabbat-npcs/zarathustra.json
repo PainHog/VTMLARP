@@ -106,69 +106,74 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Finance",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Trade Negotiation",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Bureaucracy",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "History",
-          "rating": 5,
-          "notes": "Antioch and the region"
-        },
-        {
-          "name": "Linguistics",
-          "rating": 5,
-          "notes": "Greek, Turkish, Arabic, English, and others"
-        },
-        {
-          "name": "Politics",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Bureaucracy",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Finance",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "History",
+        "rating": 5,
+        "max": 5,
+        "notes": "Antioch and the region"
+      },
+      {
+        "name": "Leadership",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 5,
+        "max": 5,
+        "notes": "Greek, Turkish, Arabic, English, and others"
+      },
+      {
+        "name": "Politics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Trade Negotiation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 10,
       "max": 10

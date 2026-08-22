@@ -58,54 +58,56 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Academics",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 2,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Academics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 5,
       "max": 5

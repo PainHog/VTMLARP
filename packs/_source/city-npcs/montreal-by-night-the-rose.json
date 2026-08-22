@@ -74,104 +74,116 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Acting",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Alertness",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Dreaming",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Seduction",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Body Alteration",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Etiquette",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Intrigue",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Style",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Torture (pleasure/pain)",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "City Secrets",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Finance",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Sabbat Lore",
-          "rating": 2,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Acting",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Body Alteration",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "City Secrets",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Dreaming",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Finance",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Intrigue",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Lore",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Seduction",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Style",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Torture (pleasure/pain)",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

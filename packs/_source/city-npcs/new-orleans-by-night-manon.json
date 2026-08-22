@@ -70,64 +70,68 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Acting",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Seduction",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Occult",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Spirit Lore",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "New Orleans Knowledge",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 2,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Acting",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "New Orleans Knowledge",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Seduction",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Spirit Lore",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 9,
       "max": 9

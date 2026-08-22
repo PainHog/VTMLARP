@@ -27,114 +27,128 @@
         "traits": []
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 6,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Streetwise",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Animal Ken",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Boat Handling",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Drive",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Etiquette",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Melee",
-          "rating": 6,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Linguistics",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Medicine",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 1,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Animal Ken",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Boat Handling",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Medicine",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Streetwise",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

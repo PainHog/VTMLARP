@@ -86,84 +86,92 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Acting",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 7"
-        },
-        {
-          "name": "Alertness",
-          "rating": 5,
-          "notes": "capped; book lists 6"
-        },
-        {
-          "name": "Brawl",
-          "rating": 5,
-          "notes": "capped; book lists 7"
-        },
-        {
-          "name": "Intimidation",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Painting",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Sculpture",
-          "rating": 1,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Bureaucracy",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Finance",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Art History",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Movie History",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Acting",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 7"
+      },
+      {
+        "name": "Alertness",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped; book lists 6"
+      },
+      {
+        "name": "Art History",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped; book lists 7"
+      },
+      {
+        "name": "Bureaucracy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Finance",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Movie History",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Painting",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Sculpture",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 9,
       "max": 9

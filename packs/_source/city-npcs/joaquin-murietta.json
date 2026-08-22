@@ -70,94 +70,104 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 6"
-        },
-        {
-          "name": "Dodge",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 6"
-        },
-        {
-          "name": "Streetwise",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Drive",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 6"
-        },
-        {
-          "name": "Melee",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Law",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 6"
+      },
+      {
+        "name": "Dodge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 6"
+      },
+      {
+        "name": "Intimidation",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 6"
+      },
+      {
+        "name": "Law",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Streetwise",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 9,
       "max": 9

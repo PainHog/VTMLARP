@@ -40,14 +40,13 @@
     <h3>Abilities <span class="count count-abilities">0 / 11</span></h3>
     <p class="hint">Click an Ability to add it, then set its dots.</p>
     <div class="pick-list">
-      {{#each abilities as |a|}}<a class="pick" data-action="pickAdd" data-kind="ability" data-name="{{a.name}}" data-category="{{a.category}}" {{#if a.info}}data-tooltip="{{a.info}}"{{/if}}>{{a.name}}{{#if a.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{a.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}
+      {{#each abilities as |a|}}<a class="pick" data-action="pickAdd" data-kind="ability" data-name="{{a.name}}" {{#if a.info}}data-tooltip="{{a.info}}"{{/if}}>{{a.name}}{{#if a.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{a.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}
     </div>
     <div class="rows-ability"></div>
     <template class="row-ability"><div class="builder-row flexrow">
-      <select name="category"><option value="talent">Talent</option><option value="skill">Skill</option><option value="knowledge">Knowledge</option></select>
       <input type="text" name="name" placeholder="Ability" class="wide">
       <input type="number" name="rating" value="1" min="0" max="10" class="tiny">
-      <a data-action="removeRow"><i class="fas fa-times"></i></a>
+      <a data-action="removeRow" title="Remove"><i class="fas fa-times"></i></a>
     </div></template>
   </div>
 

@@ -70,49 +70,50 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Security",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Computer",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Sabbat Lore",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Computer",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Sabbat Lore",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 6,
       "max": 6

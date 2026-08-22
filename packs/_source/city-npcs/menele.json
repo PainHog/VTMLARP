@@ -106,99 +106,110 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 8"
-        },
-        {
-          "name": "Dodge",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 8"
-        },
-        {
-          "name": "Leadership",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 8"
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Animal Ken",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Melee",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 7"
-        },
-        {
-          "name": "Music",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 9"
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Architecture",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 9"
-        },
-        {
-          "name": "Medicine",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 9"
-        },
-        {
-          "name": "Philosophy",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Science",
-          "rating": 3,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Animal Ken",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Architecture",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 8"
+      },
+      {
+        "name": "Dodge",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 8"
+      },
+      {
+        "name": "Etiquette",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 8"
+      },
+      {
+        "name": "Linguistics",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 9"
+      },
+      {
+        "name": "Medicine",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 7"
+      },
+      {
+        "name": "Music",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 9"
+      },
+      {
+        "name": "Philosophy",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Science",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 9"
+      }
+    ],
     "willpower": {
       "value": 10,
       "max": 10

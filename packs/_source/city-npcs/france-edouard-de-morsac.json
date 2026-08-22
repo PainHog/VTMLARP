@@ -62,44 +62,44 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Subterfuge",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Politics",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Bureaucracy",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Finance",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Bureaucracy",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Finance",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

@@ -168,84 +168,92 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Animal Ken",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Expression",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Medicine",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 1,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Animal Ken",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Expression",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Medicine",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 9,
       "max": 9

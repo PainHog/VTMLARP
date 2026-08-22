@@ -66,22 +66,20 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Acting",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Alertness",
-          "rating": 0,
-          "notes": ""
-        }
-      ],
-      "skills": [],
-      "knowledges": []
-    },
+    "abilities": [
+      {
+        "name": "Acting",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 0,
+        "max": 0,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 3,
       "max": 3

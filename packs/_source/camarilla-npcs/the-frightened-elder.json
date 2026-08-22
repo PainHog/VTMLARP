@@ -186,48 +186,50 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Dodge",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [],
-      "knowledges": [
-        {
-          "name": "Law",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Lore (Camarilla)",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 3,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Dodge",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Law",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Lore (Camarilla)",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 10,
       "max": 10

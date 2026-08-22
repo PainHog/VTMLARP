@@ -90,33 +90,32 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Brawl",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "skills": [],
-      "knowledges": [
-        {
-          "name": "Law",
-          "rating": 2,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Brawl",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Law",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 3,
       "max": 3

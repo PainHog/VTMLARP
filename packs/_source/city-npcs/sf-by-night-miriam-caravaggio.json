@@ -27,94 +27,104 @@
         "traits": []
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Expression",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Streetwise",
-          "rating": 1,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Acrobatics",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Drive",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Etiquette",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Performance (Dance)",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Academics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Investigation",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 1,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Academics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Acrobatics",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Expression",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Performance (Dance)",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Streetwise",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 5,
       "max": 5

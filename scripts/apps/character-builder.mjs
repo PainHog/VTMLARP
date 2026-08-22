@@ -62,8 +62,8 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const blurb = CharacterBuilderApp.#blurb;
     const remember = (kind, name, uuid) => { if (name && uuid) this.#uuid[kind][name] = uuid; };
 
-    const abilities = (await idx("abilities", ["system.category", "system.description"]))
-      .map(e => { remember("ability", e.name, e.uuid); return { name: e.name, category: e.system?.category ?? "talent", uuid: e.uuid, info: blurb(e.system?.description) }; })
+    const abilities = (await idx("abilities", ["system.description"]))
+      .map(e => { remember("ability", e.name, e.uuid); return { name: e.name, uuid: e.uuid, info: blurb(e.system?.description) }; })
       .sort((a, b) => a.name.localeCompare(b.name));
 
     const seen = new Set();
@@ -283,12 +283,11 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       attrData[key] = { priority: priority[key], total, traits: [] };
     }
 
-    const ab = { talents: [], skills: [], knowledges: [] };
-    for (const r of this.#rows("ability")) {
-      if (!r.name) continue;
-      const key = { talent: "talents", skill: "skills", knowledge: "knowledges" }[r.category] ?? "talents";
-      ab[key].push({ name: r.name, rating: r.rating, max: r.rating, notes: "" });
-    }
+    // Flat, alphabetical Ability list (MET has no Talent/Skill/Knowledge split).
+    const ab = this.#rows("ability")
+      .filter(r => r.name)
+      .map(r => ({ name: r.name, rating: r.rating, max: r.rating, notes: "" }))
+      .sort((a, b) => a.name.localeCompare(b.name));
     const backgrounds = this.#rows("background").filter(r => r.name).map(r => ({ name: r.name, rating: r.rating, max: r.rating, notes: "" }));
 
     const items = [];

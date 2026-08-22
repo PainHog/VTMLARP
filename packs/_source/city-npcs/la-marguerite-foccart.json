@@ -62,59 +62,62 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Melee",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Politics",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Academics",
-          "rating": 2,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Academics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

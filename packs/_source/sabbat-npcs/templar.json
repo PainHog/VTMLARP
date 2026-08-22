@@ -142,79 +142,86 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Streetwise",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Drive",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 1,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Investigation",
-          "rating": 2,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Streetwise",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 10,
       "max": 10

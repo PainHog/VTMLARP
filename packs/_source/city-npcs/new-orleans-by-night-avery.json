@@ -62,149 +62,170 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Acting",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Alertness",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Mimicry",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Scan",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Search",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Sense Deception",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Animal Ken",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Bribery",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Lockpicking",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Melee",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Research",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Tracking",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Bureaucracy",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Cryptography",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Faerie Lore",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Investigation",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Kindred Lore",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Lupine Lore",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Mage Lore",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "New Orleans Knowledge",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Psychology",
-          "rating": 3,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Acting",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Alertness",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Animal Ken",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Bribery",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Bureaucracy",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Cryptography",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Faerie Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Kindred Lore",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Lockpicking",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Lupine Lore",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Mage Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Mimicry",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "New Orleans Knowledge",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Psychology",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Research",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Scan",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Search",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Sense Deception",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Tracking",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 7,
       "max": 7

@@ -86,104 +86,116 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Acting",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Streetwise",
-          "rating": 5,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Drive",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Melee",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Bureaucracy",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Law",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 5,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Acting",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Bureaucracy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Drive",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Law",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Streetwise",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 10,
       "max": 10

@@ -120,11 +120,11 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
         mental: attributeCategorySchema()
       }),
 
-      abilities: new fields.SchemaField({
-        talents: new fields.ArrayField(ratedTraitField()),
-        skills: new fields.ArrayField(ratedTraitField()),
-        knowledges: new fields.ArrayField(ratedTraitField())
-      }),
+      // A single flat, alphabetical list of Abilities. Mind's Eye Theatre uses
+      // one undifferentiated Ability list (unlike tabletop's Talents/Skills/
+      // Knowledges split). Characters created before 1.17.x are migrated from
+      // the old three-list shape into this array (see migrations.mjs).
+      abilities: new fields.ArrayField(ratedTraitField()),
 
       willpower: new fields.SchemaField({
         value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 }),

@@ -70,59 +70,62 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Melee",
-          "rating": 6,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Occult",
-          "rating": 6,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Religion",
-          "rating": 5,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Religion",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

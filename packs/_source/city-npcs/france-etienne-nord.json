@@ -58,44 +58,44 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Intimidation",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 6,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Melee",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Politics",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Bureaucracy",
-          "rating": 3,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Bureaucracy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 7,
       "max": 7

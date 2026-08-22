@@ -54,139 +54,158 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Brawl",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Masquerade",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Gambling",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Game Playing",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Hypnotism",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Music",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Repair",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Research",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Security",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Alchemy",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Astrology",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Camarilla Lore",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Faerie Lore",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Investigation",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Lupine Lore",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Mage Lore",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Medicine",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Spirit Lore",
-          "rating": 1,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alchemy",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Astrology",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Camarilla Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Faerie Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Gambling",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Game Playing",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Hypnotism",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Lupine Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Mage Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Masquerade",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Medicine",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Music",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Repair",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Research",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Security",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Spirit Lore",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 6,
       "max": 6

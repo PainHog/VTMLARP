@@ -142,37 +142,38 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Athletics",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Expression",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Performance",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [],
-      "knowledges": []
-    },
+    "abilities": [
+      {
+        "name": "Athletics",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Expression",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Performance",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 2,
       "max": 2

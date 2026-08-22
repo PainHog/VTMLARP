@@ -78,49 +78,50 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Empathy",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Intuition",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 6,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Performance",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Investigation",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 5,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Empathy",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Intuition",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Performance",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 6,
       "max": 6

@@ -295,27 +295,27 @@
     </div>
 
     <div class="tab {{#if tabs.abilities.active}}active{{/if}}" data-group="primary" data-tab="abilities">
-      {{#each system.abilities as |list key|}}
-      <div class="ability-category collapsible" data-collapse-key="ability-{{key}}">
-        <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> {{vtmCapitalize key}}
-          <a class="rated-trait-control" data-action="add" data-path="abilities.{{key}}"><i class="fas fa-plus"></i></a>
+      <div class="ability-category collapsible" data-collapse-key="abilities">
+        <h3 class="collapsible-header"><i class="fas fa-caret-down collapse-caret"></i> Abilities
+          <a class="rated-trait-control" data-action="add" data-path="abilities" title="Add an Ability"><i class="fas fa-plus"></i></a>
         </h3>
         <table class="rated-trait-table collapsible-body">
-          {{#each list as |ability i|}}
+          {{#each system.abilities as |ability i|}}
           <tr>
-            <td><input type="text" name="system.abilities.{{key}}.{{i}}.name" value="{{ability.name}}"></td>
+            <td><input type="text" name="system.abilities.{{i}}.name" value="{{ability.name}}"></td>
             <td>
-              <span class="dots" data-path="abilities.{{key}}" data-index="{{i}}" title="Click to set. Shift-click to mark a temporary loss (keeps the max).">
+              <span class="dots" data-path="abilities" data-index="{{i}}" title="Click to set. Shift-click to mark a temporary loss (keeps the max).">
                 {{#each (vtmDotsMax ability.rating ability.max 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}} {{#if dot.lost}}lost{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
               </span>
-              {{#if (gt ability.max ability.rating)}}<a class="trait-restore" data-path="abilities.{{key}}" data-index="{{i}}" title="Restore to maximum ({{ability.max}})"><i class="fas fa-rotate-left"></i></a>{{/if}}
+              {{#if (gt ability.max ability.rating)}}<a class="trait-restore" data-path="abilities" data-index="{{i}}" title="Restore to maximum ({{ability.max}})"><i class="fas fa-rotate-left"></i></a>{{/if}}
             </td>
-            <td><a class="rated-trait-control" data-action="remove" data-path="abilities.{{key}}" data-index="{{i}}"><i class="fas fa-times"></i></a></td>
+            <td><a class="rated-trait-control" data-action="remove" data-path="abilities" data-index="{{i}}" title="Remove"><i class="fas fa-times"></i></a></td>
           </tr>
+          {{else}}
+          <tr><td colspan="3" class="hint">No Abilities yet — click + or drag one from the compendium.</td></tr>
           {{/each}}
         </table>
       </div>
-      {{/each}}
     </div>
 
     {{#if showDisciplines}}

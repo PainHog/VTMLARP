@@ -90,94 +90,104 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 6,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Streetwise",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Firearms",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Melee",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Survival",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Bureaucracy",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 2,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Bureaucracy",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Streetwise",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Survival",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 8,
       "max": 8

@@ -86,89 +86,98 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Acting",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 6"
-        },
-        {
-          "name": "Alertness",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Athletics",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Brawl",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Dodge",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 6"
-        },
-        {
-          "name": "Empathy",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Animal Ken",
-          "rating": 3,
-          "notes": ""
-        },
-        {
-          "name": "Etiquette",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 1,
-          "notes": ""
-        },
-        {
-          "name": "Melee",
-          "rating": 5,
-          "notes": "capped for LARP play; book lists 6"
-        },
-        {
-          "name": "Stealth",
-          "rating": 2,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Bureaucracy",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Acting",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 6"
+      },
+      {
+        "name": "Alertness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Animal Ken",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Athletics",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Brawl",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Bureaucracy",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Dodge",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 6"
+      },
+      {
+        "name": "Empathy",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Melee",
+        "rating": 5,
+        "max": 5,
+        "notes": "capped for LARP play; book lists 6"
+      },
+      {
+        "name": "Occult",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 10,
       "max": 10

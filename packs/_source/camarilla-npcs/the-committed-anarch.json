@@ -143,27 +143,26 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Brawl",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Firearms",
-          "rating": 2,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 3,
-          "notes": ""
-        }
-      ],
-      "skills": [],
-      "knowledges": []
-    },
+    "abilities": [
+      {
+        "name": "Brawl",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Firearms",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 6,
       "max": 6

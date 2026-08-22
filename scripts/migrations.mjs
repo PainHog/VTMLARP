@@ -34,13 +34,30 @@ const SETTING_KEY = "systemMigrationVersion";
 // introduced with no pending data changes, so the first load simply stamps the
 // world with the current version as a baseline for future migrations.
 const MIGRATIONS = [
-  // Example (do not remove — copy when writing a real one):
-  // {
-  //   version: "1.14.0",
-  //   async migrate({ updateActors }) {
-  //     await updateActors(a => (a.system.newField === undefined ? { "system.newField": 0 } : null));
-  //   }
-  // }
+  {
+    // Abilities moved from the tabletop Talents/Skills/Knowledges split to a
+    // single flat, alphabetical MET Ability list. Merge any character's three
+    // old arrays into system.abilities. Read _source (the raw stored data),
+    // because the new ArrayField schema coerces the old {talents,skills,
+    // knowledges} object away in the prepared data before this runs.
+    version: "1.17.1",
+    async migrate({ updateActors }) {
+      await updateActors(actor => {
+        const src = actor._source?.system?.abilities;
+        if (!src || Array.isArray(src)) return null;
+        const merged = [...(src.talents ?? []), ...(src.skills ?? []), ...(src.knowledges ?? [])]
+          .filter(a => a && typeof a === "object")
+          .map(a => ({
+            name: a.name ?? "",
+            rating: Number(a.rating) || 0,
+            max: Number(a.max ?? a.rating) || 0,
+            notes: a.notes ?? ""
+          }))
+          .sort((a, b) => String(a.name).localeCompare(String(b.name)));
+        return { "system.abilities": merged };
+      });
+    }
+  }
 ];
 
 /** Semver-ish compare: returns <0, 0, >0. Non-numeric/junk segments sort as 0. */

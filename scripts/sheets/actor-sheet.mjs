@@ -384,7 +384,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       .reduce((n, key) => n + (Number(sys.attributes[key].total) || 0), 0);
 
     const sumRatings = (arr) => (arr ?? []).reduce((n, x) => n + (Number(x.rating) || 0), 0);
-    const abilitiesSpent = sumRatings(sys.abilities.talents) + sumRatings(sys.abilities.skills) + sumRatings(sys.abilities.knowledges);
+    const abilitiesSpent = sumRatings(sys.abilities);
 
     // Disciplines: the free-dot allotment can raise a Discipline to 3 at most;
     // dots 4 and 5 must be bought with Freebies (6 for the 4th, 9 for the 5th).
@@ -605,7 +605,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     else if (el.type === "number") value = value === "" ? null : Number(value);
 
     // Guard against Foundry's array-element footgun: updating an ArrayField
-    // element by dotted path (e.g. "system.abilities.talents.0.name") does NOT
+    // element by dotted path (e.g. "system.abilities.0.name") does NOT
     // reliably merge - it can drop or corrupt the rest of the array, which is
     // what wiped a character's other abilities when one was edited/added. When
     // the field targets an array element, read the whole array, set just that
@@ -1313,8 +1313,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
             ? data.system.category : "physical";
           pushTrait(`attributes.${category}.traits`, { name: data.name, spent: false, negative: !!data.system?.negative });
         } else if (data.type === "ability") {
-          const key = { talent: "talents", skill: "skills", knowledge: "knowledges" }[data.system?.category] ?? "talents";
-          pushTrait(`abilities.${key}`, { name: data.name, rating: Number(data.system?.rating) || 1, notes: "" });
+          pushTrait("abilities", { name: data.name, rating: Number(data.system?.rating) || 1, notes: "" });
         } else {
           passthrough.push(data);
         }

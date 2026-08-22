@@ -102,74 +102,80 @@
         ]
       }
     },
-    "abilities": {
-      "talents": [
-        {
-          "name": "Alertness",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Empathy",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Intimidation",
-          "rating": 4,
-          "notes": ""
-        },
-        {
-          "name": "Leadership",
-          "rating": 6,
-          "notes": ""
-        },
-        {
-          "name": "Subterfuge",
-          "rating": 7,
-          "notes": ""
-        }
-      ],
-      "skills": [
-        {
-          "name": "Etiquette",
-          "rating": 6,
-          "notes": ""
-        },
-        {
-          "name": "Performance",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Stealth",
-          "rating": 4,
-          "notes": ""
-        }
-      ],
-      "knowledges": [
-        {
-          "name": "Investigation",
-          "rating": 5,
-          "notes": ""
-        },
-        {
-          "name": "Occult",
-          "rating": 6,
-          "notes": ""
-        },
-        {
-          "name": "Politics",
-          "rating": 7,
-          "notes": ""
-        },
-        {
-          "name": "Linguistics",
-          "rating": 4,
-          "notes": ""
-        }
-      ]
-    },
+    "abilities": [
+      {
+        "name": "Alertness",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Etiquette",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Investigation",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Leadership",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Linguistics",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Occult",
+        "rating": 6,
+        "max": 6,
+        "notes": ""
+      },
+      {
+        "name": "Performance",
+        "rating": 5,
+        "max": 5,
+        "notes": ""
+      },
+      {
+        "name": "Politics",
+        "rating": 7,
+        "max": 7,
+        "notes": ""
+      },
+      {
+        "name": "Stealth",
+        "rating": 4,
+        "max": 4,
+        "notes": ""
+      },
+      {
+        "name": "Subterfuge",
+        "rating": 7,
+        "max": 7,
+        "notes": ""
+      }
+    ],
     "willpower": {
       "value": 10,
       "max": 10
