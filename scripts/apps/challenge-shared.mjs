@@ -1,17 +1,11 @@
 import { logAction } from "./action-log.mjs";
+import { GESTURES, beats } from "./gesture.mjs";
 
 const { renderTemplate } = foundry.applications.handlebars;
 
-export const GESTURES = ["rock", "paper", "scissors", "bomb"];
-
-export function beats(a, b) {
-  if (a === b) return "tie";
-  const wins = { rock: "scissors", paper: "rock", scissors: "paper", bomb: "rock" };
-  // Bomb beats Rock and Paper, loses to Scissors (scissors cut the fuse) - common MET house variant.
-  if (a === "bomb") return (b === "scissors") ? "lose" : "win";
-  if (b === "bomb") return (a === "scissors") ? "win" : "lose";
-  return (wins[a] === b) ? "win" : "lose";
-}
+// Re-exported so existing importers (challenge.mjs, challenge-response.mjs) can
+// keep importing GESTURES from here; the definitions now live in gesture.mjs.
+export { GESTURES, beats };
 
 /**
  * Traits an actor can bid in one attribute category (Physical/Social/Mental).
