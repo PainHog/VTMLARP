@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # Dev tooling (ESLint, Handlebars, Foundry CLI) — the system ships no runtime
+  # npm dependencies, so this only touches the build/validation toolchain.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+  # Keep the GitHub Actions used in CI/release up to date.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
