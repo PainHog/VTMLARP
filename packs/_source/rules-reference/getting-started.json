@@ -1,0 +1,124 @@
+{
+  "_id": "4e4cf0422a7440cf",
+  "name": "Getting Started",
+  "pages": [
+    {
+      "_id": "1a6add9582544206",
+      "name": "Welcome",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "text": {
+        "format": 1,
+        "content": "\n<p>Welcome to <strong>Mind's Eye Theatre: Laws of the Night</strong> for Foundry VTT — an unofficial fan system for playing the trait-bidding, Rock-Paper-Scissors style of Vampire the Masquerade LARP online.</p>\n<p>This guide gets a new table up and running. Read the pages in order; players mainly need <em>Creating a Character</em> and <em>Traits &amp; Challenges</em>, Storytellers should also read <em>Storyteller Quick-Start</em>.</p>\n<h2>What's in the box</h2>\n<ul>\n<li><strong>Compendiums</strong> for every character option — Clans &amp; Bloodlines, Disciplines &amp; Powers, Abilities, Backgrounds, Merits &amp; Flaws, Paths, Derangements, Gear — plus sample NPCs and rules reference.</li>\n<li>A <strong>Character Builder</strong> wizard that walks you through creation with live point/freebie budgeting.</li>\n<li>A <strong>Challenge</strong> tool for resolving trait bids and gestures, with retests and a Storyteller dashboard.</li>\n</ul>\n",
+        "markdown": ""
+      }
+    },
+    {
+      "_id": "12205dbad57f4831",
+      "name": "Creating a Character",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "text": {
+        "format": 1,
+        "content": "\n<p>The fastest way to make a character is the <strong>Character Builder</strong>. Open the <em>Actors</em> sidebar and click the <strong>Character Builder</strong> button at the top. (Any player can use it — the character it creates is owned by whoever built it.)</p>\n<h2>Step by step</h2>\n<ol>\n<li><strong>Concept</strong> — name, Generation, Clan, Sect, Path, Nature/Demeanor. Picking a Clan auto-fills its three in-clan Disciplines (you can swap any of them).</li>\n<li><strong>Attributes</strong> — split 15 across Physical / Social / Mental (7/5/3). Priority is set automatically from the highest.</li>\n<li><strong>Abilities, Disciplines, Backgrounds, Virtues</strong> — click entries to add them and set their dots. The header shows a live <strong>Freebie XP</strong> total the whole time.</li>\n<li><strong>Merits &amp; Flaws, Derangement</strong> — Flaws grant Freebies (max 7); a Derangement grants +2.</li>\n<li><strong>Review</strong> — anything over an area's base allotment (plus Merits) is paid from Freebies. To <em>spend</em> Freebie XP, use <em>Back</em> to any panel and raise a trait past its base — the header total updates live.</li>\n</ol>\n<p>Every choice has an <i class=\"fas fa-circle-info\"></i> info button and a hover tooltip that opens or previews its compendium entry, so you don't need the rulebook open beside you.</p>\n<p>Prefer to build by hand? Create a Character actor directly and drag options from the compendiums onto the sheet. Discipline powers pull in learning order as you set dots.</p>\n",
+        "markdown": ""
+      }
+    },
+    {
+      "_id": "da4a895bd3fe4a37",
+      "name": "Traits & Challenges",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "text": {
+        "format": 1,
+        "content": "\n<p>MET is resolved by <strong>bidding Traits</strong> and throwing a Rock-Paper-Scissors <strong>gesture</strong>, not by rolling dice.</p>\n<h2>Traits</h2>\n<p>Your Attributes are pools of Traits (Physical, Social, Mental). On the sheet, Trait chips toggle between <em>available</em> and <em>spent</em>. You bid Traits to win challenges; retests and losses spend them.</p>\n<h2>Making a challenge</h2>\n<ol>\n<li>Open your sheet and click <strong>Challenge</strong> (or use a Power's challenge button).</li>\n<li>Pick the challenge type (Physical/Social/Mental) and your target. Add any bonus/penalty Traits.</li>\n<li>Both sides throw a gesture. The tool logs the bids, gestures and result to chat. Ties compare Traits; a further tie can go to a Trait bid-off.</li>\n</ol>\n<p>Because play is online, the responder throws on their own screen — the challenger never sees the opposing gesture early. You resolve someone else's challenge by responding to the prompt in chat.</p>\n<h2>Health &amp; Willpower</h2>\n<p>The health track cycles Ok → Bashing → Lethal → Aggravated by clicking the boxes. Willpower and Blood are tracked on the sheet and seeded from your Generation.</p>\n",
+        "markdown": ""
+      }
+    },
+    {
+      "_id": "3901896a63dd4cf8",
+      "name": "Storyteller Quick-Start",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "system": {},
+      "sort": 0,
+      "ownership": {
+        "default": -1
+      },
+      "flags": {},
+      "text": {
+        "format": 1,
+        "content": "\n<p>As GM you get extra tools. A <strong>ST Panel</strong> button sits on screen (and in scene controls).</p>\n<h2>Storyteller Panel</h2>\n<ul>\n<li>Run <strong>surprise</strong>, <strong>forced</strong> and <strong>coin-toss</strong> challenges.</li>\n<li>Apply named <strong>trait-modifier effects</strong> (temporary bonuses/penalties) to characters — they flow into challenge bids automatically.</li>\n<li>Apply <strong>Afflictions</strong>; players can clear them from their own sheet if you forget.</li>\n</ul>\n<h2>Running the table</h2>\n<ul>\n<li>The <strong>Active Challenges</strong> dashboard tracks every challenge in flight across the session.</li>\n<li>Right-click any compendium entry → <strong>Post to Chat</strong> to share a rule, power or lore snippet.</li>\n<li>Sample NPCs (Camarilla, Sabbat, Anarch, city books, mortals &amp; ghouls) are ready to drag onto scenes.</li>\n<li>Initiative is a flat d20 draw (MET breaks order randomly, not by stat).</li>\n</ul>\n<h2>Permissions</h2>\n<p>If you want players to create their own characters directly, enable <em>Create New Actors</em> for the Player role in <em>Game Settings → Configure Permissions</em>. Otherwise the Character Builder hands finished characters to an online Storyteller to create, keeping the player as owner.</p>\n",
+        "markdown": ""
+      }
+    }
+  ],
+  "folder": null,
+  "sort": -1000000,
+  "ownership": {
+    "default": -1
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "vtmlarp",
+    "systemVersion": "0.1.0",
+    "coreVersion": "12",
+    "createdTime": null,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  }
+}
