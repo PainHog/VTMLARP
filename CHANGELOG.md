@@ -3,6 +3,19 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.17.x – 1.18.x — Full compendium enrichment
+
+- **Every compendium description brought to a book-grounded standard.** ~380
+  entries rewritten from the actual sourcebooks with vivid flavor plus complete
+  MET mechanics, structured fields preserved and a strict no-invention rule:
+  ~230 Discipline powers (all core Disciplines, Necromancy/blood-magic paths,
+  Thaumaturgy paths, and bloodline Disciplines), 38 Abilities, 112 Merits &
+  Flaws, and flavor leads on 22 weapons. Clan lore, Paths and Derangements were
+  already rich and left intact.
+- The enrichment surfaced further structured fixes (Alchemy→Science and Taking
+  of the Spirit→Subterfuge retests) and filled an empty clan-lore stub (Jan
+  Pieterzoon).
+
 ## 1.16.x – 1.17.x — Content accuracy & flat Abilities
 
 - **Abilities** are now a single flat, alphabetical MET list instead of the
