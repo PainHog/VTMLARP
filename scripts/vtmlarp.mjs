@@ -216,6 +216,32 @@ Hooks.once("ready", () => {
     const opponentActor = game.actors.get(data.opponentActorId);
     if (!challengerActor || !opponentActor) return;
 
+    // NPC auto-response: when the opposed NPC is set to auto-randomize, resolve
+    // the throw automatically with a random gesture instead of popping the
+    // response dialog - so the Storyteller doesn't have to answer (and re-answer
+    // on retests) every Challenge. It still bids the NPC's real Trait pool
+    // (resolveAndPostGestureChallenge derives that from the actor). Only the
+    // first designated responder acts, so multiple GMs don't double-resolve.
+    if (opponentActor.type === "npc" && opponentActor.system?.autoChallenge
+        && data.targetUserIds[0] === game.user.id) {
+      const pool = ["rock", "paper", "scissors"];
+      if (opponentActor.system?.bombAccess) pool.push("bomb");
+      const opponentGesture = pool[Math.floor(Math.random() * pool.length)];
+      resolveAndPostGestureChallenge({
+        challengerActor,
+        challengeType: data.challengeType,
+        challengerGesture: data.challengerGesture,
+        opponentActor,
+        opponentGesture,
+        retest: data.retest,
+        isRetestThrow: !!data.isRetestThrow
+      }).then(() => {
+        game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: data.requestId });
+        if (game.user.isGM) GMChallengeDashboard.clearRequest?.(data.requestId);
+      }).catch(err => console.error("VTMLARP | NPC auto-challenge failed", err));
+      return;
+    }
+
     new ChallengeResponseApp({
       requestId: data.requestId,
       challengerActor,

@@ -240,6 +240,11 @@ export class VTMNpcData extends VTMCharacterData {
       initial: "vampire",
       choices: ["vampire", "ghoul", "mortal", "spirit", "other"]
     });
+    // When set, this NPC answers a Challenge automatically with a random
+    // gesture (Storyteller convenience) instead of the GM having to respond in
+    // the dialog. Bomb is only included in the random pick if bombAccess is on.
+    schema.autoChallenge = new fields.BooleanField({ required: false, initial: false });
+    schema.bombAccess = new fields.BooleanField({ required: false, initial: false });
     return schema;
   }
 }

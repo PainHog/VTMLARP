@@ -71,6 +71,12 @@
             {{/each}}
           </select>
         </label>
+        <label class="check" title="When challenged, this NPC answers automatically with a random gesture (still bidding its real Trait pool). Retests auto-throw too.">
+          <input type="checkbox" name="system.autoChallenge" {{#if system.autoChallenge}}checked{{/if}}> Auto-answer challenges (random gesture)
+        </label>
+        <label class="check" title="Include Bomb in this NPC's random gesture pool. Leave off if the NPC has no access to Bomb.">
+          <input type="checkbox" name="system.bombAccess" {{#if system.bombAccess}}checked{{/if}}> …can throw Bomb
+        </label>
         {{/unless}}
       </div>
     </div>
