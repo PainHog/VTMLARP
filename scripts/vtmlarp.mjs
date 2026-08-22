@@ -173,6 +173,16 @@ Hooks.once("ready", () => {
   // this event; every connected client receives it and only the intended
   // recipient(s) actually pop the response dialog.
   game.socket.on("system.vtmlarp", data => {
+    // Delete a Challenge prompt message by its requestId - runs on every
+    // client, but only the message's author (the challenger) or a GM actually
+    // has permission, so exactly the right client removes it. Used by the NPC
+    // auto-answer path to clear the prompt regardless of which client synced it.
+    if (data.action === "deleteChallengePromptByRequest") {
+      const msg = game.messages?.find(m => m.getFlag?.("vtmlarp", "requestId") === data.requestId);
+      if (msg && msg.canUserModify(game.user, "delete")) msg.delete().catch(() => {});
+      return;
+    }
+
     // Every GM client tracks the request/resolution pair for the Active
     // Challenges dashboard, regardless of whether this particular GM is the
     // one who'll actually respond - a busy session can have several
@@ -238,6 +248,13 @@ Hooks.once("ready", () => {
       }).then(() => {
         game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: data.requestId });
         if (game.user.isGM) GMChallengeDashboard.clearRequest?.(data.requestId);
+        // Remove the public chat prompt for this Challenge so it can't be
+        // clicked to resolve a second time. Try locally (this GM can delete
+        // it), and broadcast so whoever authored it (the challenger) also
+        // removes it, in case the message hasn't synced to this client yet.
+        const prompt = game.messages?.find(m => m.getFlag?.("vtmlarp", "requestId") === data.requestId);
+        prompt?.delete?.().catch(() => {});
+        game.socket.emit("system.vtmlarp", { action: "deleteChallengePromptByRequest", requestId: data.requestId });
       }).catch(err => console.error("VTMLARP | NPC auto-challenge failed", err));
       return;
     }
