@@ -232,7 +232,7 @@ async function postDocumentToChat(doc) {
   try {
     const TE = foundry.applications?.ux?.TextEditor?.implementation ?? globalThis.TextEditor;
     content = await TE.enrichHTML(content, { async: true });
-  } catch (err) { /* posting raw HTML is fine if enrichment isn't available */ }
+  } catch { /* posting raw HTML is fine if enrichment isn't available */ }
   await ChatMessage.create({ content, speaker: { alias: doc.name } });
 }
 

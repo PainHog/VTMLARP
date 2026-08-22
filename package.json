@@ -7,10 +7,14 @@
     "validate:packs": "node tools/validate-packs.mjs",
     "check:packs": "node tools/check-packs-current.mjs",
     "validate:manifest": "node tools/validate-manifest.mjs",
-    "check": "npm run validate:manifest && npm run validate:packs && npm run check:packs",
+    "validate:templates": "node tools/validate-templates.mjs",
+    "lint": "eslint scripts tools *.mjs",
+    "check": "npm run lint && npm run validate:manifest && npm run validate:templates && npm run validate:packs && npm run check:packs",
     "ci": "npm run check"
   },
   "devDependencies": {
-    "@foundryvtt/foundryvtt-cli": "^3.0.4"
+    "@foundryvtt/foundryvtt-cli": "^3.0.4",
+    "eslint": "^9.39.5",
+    "handlebars": "^4.7.9"
   }
 }

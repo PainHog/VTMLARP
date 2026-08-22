@@ -20,11 +20,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint JavaScript (ESLint)
+        run: npm run lint
+
+      - name: Lint system.json manifest
+        run: npm run validate:manifest
+
+      - name: Validate Handlebars templates
+        run: npm run validate:templates
+
       - name: Validate compendium source (_ids, duplicates, types)
         run: npm run validate:packs
 
       - name: Verify compiled packs match source
         run: npm run check:packs
-
-      - name: Lint system.json manifest
-        run: node tools/validate-manifest.mjs

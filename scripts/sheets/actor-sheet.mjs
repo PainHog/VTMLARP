@@ -817,7 +817,6 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ui.notifications?.warn("No Generation chart data below 5th generation - set Blood/Willpower manually.");
       return;
     }
-    const sys = this.actor.system;
     // Deliberate (re)seed to this generation's starting values - unlike the
     // automatic on-change seeding, this always resets to the chart's starting
     // Willpower/Blood, so it's the way to reset an established character.
