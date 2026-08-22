@@ -1,15 +1,16 @@
 import { disciplineFreeDots, disciplineFreebieCost } from "./creation-costs.mjs";
 import { CLANS, CLAN_DISCIPLINES } from "./clan-data.mjs";
+import { GENERATION_TABLE, GENERATION_OPTIONS, PATH_OPTIONS, ARCHETYPE_OPTIONS } from "../game-data.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
-const GEN_WILLPOWER_START = { 15: 2, 14: 2, 13: 2, 12: 2, 11: 4, 10: 4, 9: 6, 8: 6, 7: 7, 6: 8, 5: 9, 4: 10 };
-const GEN_BLOOD = { 15: [10, 1], 14: [10, 1], 13: [10, 1], 12: [11, 1], 11: [12, 1], 10: [13, 1], 9: [14, 2], 8: [15, 3], 7: [20, 5], 6: [30, 6], 5: [40, 8], 4: [50, 10] };
 const LEVEL_TIER = { basic: 1, intermediate: 2, advanced: 3, elder: 4 };
+// Starting Willpower and Blood by Generation, derived from the shared table so
+// the builder and the sheet can't drift.
+const GEN_WILLPOWER_START = Object.fromEntries(Object.entries(GENERATION_TABLE).map(([g, i]) => [g, i.willpowerStart]));
+const GEN_BLOOD = Object.fromEntries(Object.entries(GENERATION_TABLE).map(([g, i]) => [g, [i.bloodMax, i.bloodPerTurn]]));
 
 const SECTS = ["Camarilla", "Sabbat", "Anarch Movement", "Independent Alliance", "Inconnu", "Ashirra"];
-const ARCHETYPES = ["Architect", "Autocrat", "Bon Vivant", "Bravo", "Caregiver", "Cavalier", "Celebrant", "Conformist", "Conniver", "Curmudgeon", "Deviant", "Director", "Fanatic", "Gallant", "Judge", "Loner", "Martyr", "Masochist", "Monster", "Pedagogue", "Perfectionist", "Rebel", "Rogue", "Survivor", "Thrill-Seeker", "Traditionalist", "Trickster", "Visionary"];
-const PATHS = ["Path of Humanity", "Path of Blood (Assamite)", "Path of Caine", "Path of Cathari", "Path of Death and the Soul", "Path of Ecstasy", "Path of Evil Revelations", "Path of Harmony", "Path of Honorable Accord", "Path of Lilith", "Path of Night", "Path of Paradox (Ravnos)", "Path of Power and the Inner Voice", "Path of the Feral Heart", "Path of the Warrior", "Path of Typhon (Setite)"];
 
 /**
  * Paged, point-tracked character creator. Each step has a scrollable list of
@@ -93,8 +94,8 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     for (const e of await idx("paths-of-enlightenment")) remember("path", e.name, e.uuid);
 
     return {
-      clans: CLANS, sects: SECTS, paths: PATHS, archetypes: ARCHETYPES,
-      generations: [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4],
+      clans: CLANS, sects: SECTS, paths: PATH_OPTIONS, archetypes: ARCHETYPE_OPTIONS,
+      generations: [...GENERATION_OPTIONS].reverse(),
       abilities, disciplineList, backgrounds, derangements,
       merits: mf.filter(e => e.type === "merit"),
       flaws: mf.filter(e => e.type === "flaw")

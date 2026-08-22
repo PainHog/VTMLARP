@@ -1,3 +1,5 @@
+import { GENERATION_TABLE } from "../game-data.mjs";
+
 const { fields } = foundry.data;
 
 /** A single named Trait the character has bid points into (e.g. an Ability, Background, Discipline). */
@@ -81,9 +83,9 @@ function virtueSchema() {
 // generation sets the ceiling to which permanent Willpower can be raised.
 // 14th/15th (thin-blood) aren't on the book chart, so they use the 13th-gen
 // cap; 3rd and below are left out (ST's call).
-export const GENERATION_WILLPOWER_MAX = {
-  15: 6, 14: 6, 13: 6, 12: 8, 11: 8, 10: 10, 9: 10, 8: 12, 7: 14, 6: 16, 5: 18, 4: 20
-};
+export const GENERATION_WILLPOWER_MAX = Object.fromEntries(
+  Object.entries(GENERATION_TABLE).map(([g, info]) => [g, info.willpowerMax])
+);
 
 export class VTMCharacterData extends foundry.abstract.TypeDataModel {
   /**
