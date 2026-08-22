@@ -1,4 +1,5 @@
 import { disciplineFreeDots, disciplineFreebieCost } from "./creation-costs.mjs";
+import { CLANS, CLAN_DISCIPLINES } from "./clan-data.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
@@ -6,45 +7,9 @@ const GEN_WILLPOWER_START = { 15: 2, 14: 2, 13: 2, 12: 2, 11: 4, 10: 4, 9: 6, 8:
 const GEN_BLOOD = { 15: [10, 1], 14: [10, 1], 13: [10, 1], 12: [11, 1], 11: [12, 1], 10: [13, 1], 9: [14, 2], 8: [15, 3], 7: [20, 5], 6: [30, 6], 5: [40, 8], 4: [50, 10] };
 const LEVEL_TIER = { basic: 1, intermediate: 2, advanced: 3, elder: 4 };
 
-const CLANS = ["Assamite", "Brujah", "Followers of Set", "Gangrel", "Giovanni", "Lasombra", "Malkavian", "Nosferatu", "Ravnos", "Toreador", "Tremere", "Tzimisce", "Ventrue", "Baali", "Cappadocian", "Salubri", "Blood Brothers", "Harbingers of Skulls", "Kiasyd", "Panders", "Gargoyle", "Daughters of Cacophony", "True Brujah", "Nagaraja", "Samedi", "Lamia", "Caitiff"];
 const SECTS = ["Camarilla", "Sabbat", "Anarch Movement", "Independent Alliance", "Inconnu", "Ashirra"];
 const ARCHETYPES = ["Architect", "Autocrat", "Bon Vivant", "Bravo", "Caregiver", "Cavalier", "Celebrant", "Conformist", "Conniver", "Curmudgeon", "Deviant", "Director", "Fanatic", "Gallant", "Judge", "Loner", "Martyr", "Masochist", "Monster", "Pedagogue", "Perfectionist", "Rebel", "Rogue", "Survivor", "Thrill-Seeker", "Traditionalist", "Trickster", "Visionary"];
 const PATHS = ["Path of Humanity", "Path of Blood (Assamite)", "Path of Caine", "Path of Cathari", "Path of Death and the Soul", "Path of Ecstasy", "Path of Evil Revelations", "Path of Harmony", "Path of Honorable Accord", "Path of Lilith", "Path of Night", "Path of Paradox (Ravnos)", "Path of Power and the Inner Voice", "Path of the Feral Heart", "Path of the Warrior", "Path of Typhon (Setite)"];
-
-// The three in-clan Disciplines each clan/bloodline learns most easily. When a
-// clan is picked on the Concept step these are auto-added (at 0 dots) to the
-// Disciplines step, where each row is a dropdown the player can swap for a
-// different Discipline before assigning points. Caitiff/Panders have no fixed
-// three, so they start blank. Names match the compendium Discipline entries.
-const CLAN_DISCIPLINES = {
-  "Assamite": ["Celerity", "Obfuscate", "Quietus"],
-  "Brujah": ["Celerity", "Potence", "Presence"],
-  "Followers of Set": ["Obfuscate", "Presence", "Serpentis"],
-  "Gangrel": ["Animalism", "Fortitude", "Protean"],
-  "Giovanni": ["Dominate", "Necromancy", "Potence"],
-  "Lasombra": ["Dominate", "Obtenebration", "Potence"],
-  "Malkavian": ["Auspex", "Dementation", "Obfuscate"],
-  "Nosferatu": ["Animalism", "Obfuscate", "Potence"],
-  "Ravnos": ["Animalism", "Chimerstry", "Fortitude"],
-  "Toreador": ["Auspex", "Celerity", "Presence"],
-  "Tremere": ["Auspex", "Dominate", "Thaumaturgy"],
-  "Tzimisce": ["Animalism", "Auspex", "Vicissitude"],
-  "Ventrue": ["Dominate", "Fortitude", "Presence"],
-  "Baali": ["Daimoinon", "Obfuscate", "Presence"],
-  "Cappadocian": ["Auspex", "Fortitude", "Mortis"],
-  "Salubri": ["Auspex", "Fortitude", "Valeren"],
-  "Blood Brothers": ["Fortitude", "Potence", "Sanguinus"],
-  "Harbingers of Skulls": ["Auspex", "Fortitude", "Necromancy"],
-  "Kiasyd": ["Dominate", "Mytherceria", "Obtenebration"],
-  "Panders": [],
-  "Gargoyle": ["Fortitude", "Potence", "Visceratika"],
-  "Daughters of Cacophony": ["Fortitude", "Melpominee", "Presence"],
-  "True Brujah": ["Potence", "Presence", "Temporis"],
-  "Nagaraja": ["Auspex", "Dominate", "Necromancy"],
-  "Samedi": ["Fortitude", "Obfuscate", "Thanatosis"],
-  "Lamia": ["Fortitude", "Mortis", "Potence"],
-  "Caitiff": []
-};
 
 /**
  * Paged, point-tracked character creator. Each step has a scrollable list of
