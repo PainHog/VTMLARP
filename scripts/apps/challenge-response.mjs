@@ -43,6 +43,15 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
   _onRender(context, options) {
     super._onRender(context, options);
     this.element.querySelector("button[type='submit']")?.addEventListener("click", this._onSubmit.bind(this));
+    // Quick-throw a random gesture (Rock/Paper/Scissors only - Bomb stays a
+    // deliberate manual pick) for GM-run opponents.
+    this.element.querySelector(".vtm-random")?.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      const pool = ["rock", "paper", "scissors"];
+      const sel = this.element.querySelector("select[name='gesture']");
+      if (sel) sel.value = pool[Math.floor(Math.random() * pool.length)];
+      this.element.querySelector(".vtm-submit")?.click();
+    });
   }
 
   async _onSubmit(event) {
