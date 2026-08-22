@@ -773,19 +773,27 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ui.notifications?.warn("Select a value first to open its lore entry.");
       return;
     }
-    const pack = game.packs.get(`vtmlarp.${packName}`);
-    if (!pack) {
-      ui.notifications?.warn(`Compendium "${packName}" not found.`);
-      return;
+    // Clan/bloodline lore is spread across several JournalEntry packs, so if
+    // the named pack doesn't have the entry, fall back to its siblings before
+    // giving up (e.g. a Sabbat antitribu or a revenant family whose lore isn't
+    // in the base "clans" pack).
+    const LORE_FALLBACKS = {
+      clans: ["clans", "antitribu", "revenants"],
+      antitribu: ["antitribu", "clans", "revenants"],
+      revenants: ["revenants", "clans", "antitribu"]
+    };
+    const candidates = LORE_FALLBACKS[packName] ?? [packName];
+    for (const pn of candidates) {
+      const pack = game.packs.get(`vtmlarp.${pn}`);
+      if (!pack) continue;
+      const entry = (await pack.getIndex()).find(e => e.name === name);
+      if (entry) {
+        const doc = await pack.getDocument(entry._id);
+        doc.sheet.render(true);
+        return;
+      }
     }
-    const index = await pack.getIndex();
-    const entry = index.find(e => e.name === name);
-    if (!entry) {
-      ui.notifications?.warn(`No compendium entry found for "${name}".`);
-      return;
-    }
-    const doc = await pack.getDocument(entry._id);
-    doc.sheet.render(true);
+    ui.notifications?.warn(`No compendium entry found for "${name}".`);
   }
 
   /** Add a blank entry to one of the plain object-array lists (Derangements, Blood Bonds, Boons). */

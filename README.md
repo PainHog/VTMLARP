@@ -1,26 +1,49 @@
 # VTMLARP — Mind's Eye Theatre: Laws of the Night for Foundry VTT
 
-An unofficial Foundry VTT system for **Mind's Eye Theatre: Vampire the Masquerade** (Laws of the Night Revised) — a trait-bidding, live-action game resolved with Rock-Paper-Scissors rather than dice.
+An **unofficial** Foundry VTT system for **Mind's Eye Theatre: Vampire the Masquerade** (Laws of the Night Revised) — a trait-bidding, live-action game resolved with Rock-Paper-Scissors rather than dice. Built for playing MET online.
 
-## Status
+> Fan project. Not affiliated with or endorsed by the rights holders.
 
-Early scaffold. Core mechanics implemented:
+## Features
 
-- Actor data model: Attributes (Physical/Social/Mental Traits), Abilities (Talents/Skills/Knowledges), Willpower, Blood Pool, Virtues, Morality/Path, Health Track (Bruised → Incapacitated), Backgrounds
-- Item types: Attribute, Ability, Discipline, Power, Background, Merit, Flaw, Virtue, Ritual, Gear
-- Character sheet with clickable Trait chips (toggle spent/available) and a health track that cycles Ok → Bashing → Lethal → Aggravated
-- A Challenge resolution tool that logs Trait bids, the announced RPS gesture, and the result to chat
-- Compendium pack structure for Disciplines/Powers, Clans, Backgrounds, Merits & Flaws, and Rules Reference (`packs/`)
+- **Actors**: full character model (Attributes as Physical/Social/Mental Trait pools, Abilities, Willpower, Blood Pool, Virtues, Morality/Path, a Bruised→Incapacitated health track, Backgrounds, Armor), plus **NPC** (mortal/ghoul/vampire, with the sheet adapting to type) and **Vehicle** actors.
+- **Trait-bidding Challenge engine**: Rock-Paper-Scissors gestures, retests, bonus/penalty trait boxes, surprise/coin-toss/static challenges, and a GM dashboard tracking every challenge in flight. Online play never leaks a gesture early.
+- **Disciplines & Powers**: powers are ordered in learning sequence `(01), (02)…` and pull onto the sheet in order as dots are assigned; Vicissitude body-modification powers auto-apply Physical/Health changes.
+- **Character Builder wizard**: paged, point/freebie-budgeted, click-to-add from the compendiums, auto-fills a clan's in-clan Disciplines (swappable), picks a Derangement, and hover/click compendium context on every choice. Any player can run it; the finished character is owned by whoever built it.
+- **Storyteller tools**: Storyteller Panel (apply named trait-modifier effects, run surprise/force/coin-toss challenges), player-removable Afflictions, XP audit, blood-bond overview, session log.
+- **Compendiums**: Disciplines/Powers, Clans & Bloodlines, Antitribu, Revenants, Paths, Derangements, Sects, Abilities, Backgrounds, Merits & Flaws, Gear, Rules Reference (player + ST), sample NPCs, cities, mortals/ghouls, and vehicles.
+- **Sheet lore links**: clan, sect, path, archetype and virtues each link straight to their compendium entry.
+
+## Installation
+
+This system is distributed as a GitHub branch ZIP (no build runs on the end user's server — compiled packs ship in the repo). In Foundry: **Game Systems → Install System → Manifest URL**, using the `manifest` URL in [`system.json`](system.json).
+
+Compatibility: targets Foundry **v12** (`minimum`), verified through **v14**. See `CLAUDE.md` → *Foundry version notes*.
+
+## Development
+
+```bash
+npm install            # once
+npm run check          # lint + validate manifest/templates/packs (what CI runs)
+npm run build:packs    # recompile packs/_source → packs/ LevelDB after editing content
+```
+
+Content lives in `packs/_source/<pack>/*.json` (one document per file) and must be recompiled with `npm run build:packs`; commit both source and the compiled `packs/<pack>` output. CI (`.github/workflows/ci.yml`) runs on every push/PR:
+
+- `lint` — ESLint over `scripts/` and `tools/`
+- `validate:manifest` — `system.json` structural checks
+- `validate:templates` — every Handlebars template compiles
+- `validate:packs` — unique/well-formed `_id`s, type & folder-reference integrity
+- `check:packs` — committed compiled packs match source (catches "forgot to rebuild")
+
+World data migrations (for schema changes to live characters) go in `scripts/migrations.mjs`. See `CLAUDE.md` for the full content workflow and conventions.
 
 ## Repository layout
 
 - `system.json` — Foundry system manifest
-- `scripts/` — system logic (`documents/` data models, `sheets/` Actor & Item sheets, `apps/` the Challenge tool)
-- `templates/` — Handlebars sheet templates
-- `css/vtmlarp.css` — system styling
-- `packs/` — source compendium content (one JSON file per document)
-- `reference/` — extracted rulebook text used to build the system (not shipped with the system itself)
-
-## Source material
-
-Rulebooks are being processed one at a time; extracted text lives in `reference/`. As each book is covered, its rules/content get implemented in code and its character options get added to the compendiums in `packs/`.
+- `scripts/` — `documents/` data models, `sheets/` Actor & Item sheets, `apps/` tools (Challenge, Character Builder, ST Panel, …), `migrations.mjs`
+- `templates/` — Handlebars sheet/app templates
+- `css/vtmlarp.css` — styling
+- `packs/_source/` — source compendium content; `packs/<name>/` — compiled LevelDB (committed)
+- `tools/` — build & validation scripts
+- `reference/` — extracted rulebook text used while building (not shipped to players)
