@@ -16,6 +16,8 @@ const ID_RE = /^[A-Za-z0-9]{16}$/;
 
 const errors = [];
 const seenIds = new Map(); // _id -> "pack/file" where first seen
+const folderIdsByPack = {}; // pack -> Set of folder _ids
+const folderRefs = []; // { rel, pack, folderId } for non-folder docs with a folder
 let fileCount = 0;
 
 for (const pack of system.packs) {
@@ -56,7 +58,11 @@ for (const pack of system.packs) {
       // Folder docs organize the sidebar tree; the compiler keys them off the
       // filename convention, and Foundry needs a sorting mode on each.
       if (!doc.sorting) errors.push(`${rel}: folder is missing a "sorting" value (e.g. "a" or "m")`);
+      (folderIdsByPack[pack.name] ??= new Set()).add(doc._id);
     } else {
+      // Record any folder reference to validate once all folders are known.
+      if (doc.folder) folderRefs.push({ rel, pack: pack.name, folderId: doc.folder });
+
       // A non-folder document's top-level "type" must match the pack's type:
       // Item/Actor packs store a subtype string in "type"; JournalEntry docs
       // legitimately carry no "type" (or "base"), so only validate the
@@ -69,6 +75,16 @@ for (const pack of system.packs) {
         errors.push(`${rel}: type "${doc.type}" is not a declared ${declared} subtype (${allowedSubtypes.join(", ")})`);
       }
     }
+  }
+}
+
+// A document's "folder" must reference a folder that exists in the same pack,
+// or it points at nothing and the entry lands at the pack root (a common
+// copy-paste bug that leaves entries mysteriously outside their subfolder).
+for (const ref of folderRefs) {
+  const folders = folderIdsByPack[ref.pack];
+  if (!folders || !folders.has(ref.folderId)) {
+    errors.push(`${ref.rel}: folder "${ref.folderId}" does not exist in pack "${ref.pack}"`);
   }
 }
 
