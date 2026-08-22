@@ -3,6 +3,27 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.15.x – 1.16.0 — Polish, accessibility, and a Storyteller convenience
+
+- **NPC auto-answer challenges**: a per-NPC toggle makes it respond to a
+  Challenge automatically with a random gesture (plus a "can throw Bomb"
+  option), still bidding its real Trait pool, and re-throwing on retests — so
+  the Storyteller doesn't have to answer every challenge. A "Random" quick-throw
+  button was also added to the manual response dialog.
+- **Accessibility**: icon-only controls get accessible names and keyboard
+  operability via a shared render hook; tooltips added to edit/delete icons.
+- **Compatibility**: set honestly to `minimum: 13` (the system uses v13+
+  ApplicationV2 document sheets and would not load on v12).
+- **Correctness**: unified the Path list and Generation tables so the Character
+  Builder and the sheet can't drift (the builder was missing the Dark Ages
+  Roads); fixed the vehicle sheet silently not saving; delete-confirmation on
+  embedded items; Frenzy warns when there's no Willpower to spend; various
+  null-guards and a GM guard on Award XP.
+- **UX**: empty-state hints on all item lists; clickable actor names in the
+  Blood Bond and XP Audit views; clearer GM-dashboard empty state.
+- **Tests**: the core RPS+Bomb gesture resolution, the discipline creation-cost
+  math, the clan→disciplines map, and the shared game-data are all unit-tested.
+
 ## 1.14.x — Hardening for release
 
 - **Project tooling / CI**: added a GitHub Actions workflow that runs on every

@@ -756,6 +756,17 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     event.preventDefault();
     const { path, index } = event.currentTarget.dataset;
     const list = foundry.utils.getProperty(this.actor.system, path);
+    if (!Array.isArray(list)) return;
+    const entry = list[Number(index)];
+    // Confirm removing a meaningful entry (a Derangement, Blood Bond, Boon).
+    // Shift-click skips the prompt.
+    if (!event.shiftKey && entry?.name) {
+      const confirmed = await foundry.applications.api.DialogV2.confirm({
+        window: { title: "Remove entry?" },
+        content: `<p>Remove <strong>${foundry.utils.escapeHTML?.(entry.name) ?? entry.name}</strong>? (Hold Shift to skip this prompt.)</p>`
+      }).catch(() => false);
+      if (!confirmed) return;
+    }
     const updated = list.filter((_, i) => i !== Number(index));
     await this.actor.update({ [`system.${path}`]: updated });
   }
