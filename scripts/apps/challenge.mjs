@@ -1,9 +1,10 @@
 import { GESTURES, unspentCount, respondingUsers, resolveAndPostGestureChallenge, postGestureChallengePrompt } from "./challenge-shared.mjs";
 
-// A standing fake opponent so a single tester can resolve a Challenge
-// without needing a second logged-in player/GM to respond - always throws
-// Rock with a 7-Trait pool, resolved immediately with no socket round-trip.
-// TODO: remove once real multi-player testing is available.
+// A standing fake opponent (Storyteller-only; see the GM-gated actorOptions
+// entry below) so a GM can resolve a Challenge solo without a second logged-in
+// player - always throws Rock with a 7-Trait pool, resolved immediately with no
+// socket round-trip. A deliberate GM testing aid, kept alongside the NPC
+// auto-answer toggle and the response dialog's Random button.
 const TEST_OPPONENT_ID = "TEST";
 const TEST_OPPONENT_GESTURE = "rock";
 const TEST_OPPONENT_TRAITS = 7;

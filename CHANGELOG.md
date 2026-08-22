@@ -3,6 +3,21 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.16.x – 1.17.x — Content accuracy & flat Abilities
+
+- **Abilities** are now a single flat, alphabetical MET list instead of the
+  tabletop Talents/Skills/Knowledges split — across the data model, sheet and
+  Character Builder — with a world migration (1.17.1) that merges existing
+  characters' three lists, and all 198 sample-NPCs converted.
+- **Discipline data audit against the sourcebooks** — corrected 68 powers:
+  costs that had leaked into the retest field, `activation: challenge` powers
+  with no challenge type, retests set to an attribute instead of an Ability, and
+  Static-Challenge powers whose type was wrong; plus a mislabeled Flaw
+  (Natural Leader → Infamous Sire), found by cross-checking every Merit/Flaw
+  cost against the rulebook.
+- **GM-only compendium entries** (`flags.vtmlarp.gmOnly`) hidden from players in
+  the browser and the builder; used to park two powers with unverified rules.
+
 ## 1.15.x – 1.16.0 — Polish, accessibility, and a Storyteller convenience
 
 - **NPC auto-answer challenges**: a per-NPC toggle makes it respond to a
