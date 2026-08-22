@@ -13,7 +13,7 @@
     <tbody>
       {{#each rows as |row|}}
       <tr class="{{#if row.overspent}}prereq-unmet{{/if}}">
-        <td>{{row.name}}</td>
+        <td><a class="vtm-open-actor" data-uuid="{{row.uuid}}" title="Open {{row.name}}'s sheet">{{row.name}}</a></td>
         <td>{{row.value}}</td>
         <td>{{row.total}}</td>
         <td>{{row.spent}}{{#if row.overspent}} <span class="hint" title="Current pool exceeds recorded Total Awarded - likely edited directly instead of via the sheet's Award XP button.">(unrecorded award?)</span>{{/if}}</td>

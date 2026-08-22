@@ -14,7 +14,7 @@
     <tbody>
       {{#each rows as |row|}}
       <tr>
-        <td>{{row.actorName}}</td>
+        <td><a class="vtm-open-actor" data-uuid="{{row.actorUuid}}" title="Open {{row.actorName}}'s sheet">{{row.actorName}}</a></td>
         <td>{{row.boundTo}}</td>
         <td>{{row.level}}</td>
         <td>{{row.notes}}</td>

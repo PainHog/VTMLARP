@@ -25,7 +25,7 @@ export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.app
     context.rows = [];
     for (const actor of game.actors.filter(a => a.type === "character")) {
       for (const bond of actor.system.bloodBonds ?? []) {
-        context.rows.push({ actorName: actor.name, boundTo: bond.name, level: bond.level, notes: bond.notes });
+        context.rows.push({ actorName: actor.name, actorUuid: actor.uuid, boundTo: bond.name, level: bond.level, notes: bond.notes });
       }
     }
     context.rows.sort((a, b) => a.actorName.localeCompare(b.actorName));
@@ -36,6 +36,13 @@ export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.app
   _onRender(context, options) {
     super._onRender(context, options);
     this.element.querySelector(".decay-all")?.addEventListener("click", this._onDecayAll.bind(this));
+    for (const el of this.element.querySelectorAll(".vtm-open-actor[data-uuid]")) {
+      el.addEventListener("click", async (ev) => {
+        ev.preventDefault();
+        const doc = await fromUuid(ev.currentTarget.dataset.uuid).catch(() => null);
+        doc?.sheet?.render(true);
+      });
+    }
   }
 
   async _onDecayAll(event) {

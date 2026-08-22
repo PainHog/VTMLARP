@@ -29,9 +29,20 @@ export class XPAuditApp extends HandlebarsApplicationMixin(foundry.applications.
       .map(a => {
         const value = a.system.experience.value;
         const total = a.system.experience.total ?? 0;
-        return { name: a.name, value, total, spent: Math.max(0, total - value), overspent: total - value < 0 };
+        return { name: a.name, uuid: a.uuid, value, total, spent: Math.max(0, total - value), overspent: total - value < 0 };
       })
       .sort((a, b) => a.name.localeCompare(b.name));
     return context;
+  }
+
+  _onRender(context, options) {
+    super._onRender(context, options);
+    for (const el of this.element.querySelectorAll(".vtm-open-actor[data-uuid]")) {
+      el.addEventListener("click", async (ev) => {
+        ev.preventDefault();
+        const doc = await fromUuid(ev.currentTarget.dataset.uuid).catch(() => null);
+        doc?.sheet?.render(true);
+      });
+    }
   }
 }
