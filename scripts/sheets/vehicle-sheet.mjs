@@ -13,8 +13,10 @@ export class VTMVehicleSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "sheet", "vehicle"],
     position: { width: 480, height: 680 },
-    window: { resizable: true },
-    form: { submitOnChange: true }
+    window: { resizable: true }
+    // NB: no submitOnChange - like the actor/item sheets, this hosting doesn't
+    // reliably persist the V2 auto-submit, so fields are saved explicitly by
+    // _onFieldChange below.
   };
 
   static PARTS = {
@@ -38,6 +40,22 @@ export class VTMVehicleSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     super._onRender(context, options);
     if (!this.isEditable) return;
     this.element.querySelector(".apply-grid-size")?.addEventListener("click", this._onApplyGridSize.bind(this));
+    // Save each field explicitly on change (bound per-node, so listeners don't
+    // accumulate on the persistent root across re-renders).
+    for (const el of this.element.querySelectorAll("input[name], select[name], textarea[name], prose-mirror[name]")) {
+      el.addEventListener("change", this._onFieldChange.bind(this));
+    }
+  }
+
+  async _onFieldChange(event) {
+    const el = event.currentTarget;
+    if (el.disabled || el.readOnly) return;
+    const name = el.getAttribute("name");
+    if (!name) return;
+    let value = el.value;
+    if (el.type === "checkbox") value = el.checked;
+    else if (el.type === "number") value = value === "" ? null : Number(value);
+    await this.actor.update({ [name]: value });
   }
 
   /** Push the Grid Width/Height fields onto this Actor's own prototypeToken, so new tokens dropped from it are already correctly sized. */
