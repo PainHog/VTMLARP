@@ -18,6 +18,11 @@ const errors = [];
 const seenIds = new Map(); // _id -> "pack/file" where first seen
 const folderIdsByPack = {}; // pack -> Set of folder _ids
 const folderRefs = []; // { rel, pack, folderId } for non-folder docs with a folder
+const namesByPack = {}; // pack -> Map(name -> [rel,...])
+// Packs whose entries are opened by NAME (sheet/builder lore links); a
+// duplicate name here silently resolves to the wrong entry, so it's an error.
+const NAME_RESOLVED_PACKS = new Set(["clans", "antitribu", "revenants", "sects", "paths-of-enlightenment", "derangements"]);
+const warnings = [];
 let fileCount = 0;
 
 for (const pack of system.packs) {
@@ -62,6 +67,10 @@ for (const pack of system.packs) {
     } else {
       // Record any folder reference to validate once all folders are known.
       if (doc.folder) folderRefs.push({ rel, pack: pack.name, folderId: doc.folder });
+      if (doc.name) {
+        const map = (namesByPack[pack.name] ??= new Map());
+        map.set(doc.name, [...(map.get(doc.name) ?? []), rel]);
+      }
 
       // A non-folder document's top-level "type" must match the pack's type:
       // Item/Actor packs store a subtype string in "type"; JournalEntry docs
@@ -88,10 +97,27 @@ for (const ref of folderRefs) {
   }
 }
 
+// Duplicate names: an ERROR in name-resolved lore packs (breaks the sheet's
+// lore links), a non-failing WARNING elsewhere (often intentional variants
+// across folders).
+for (const [pack, map] of Object.entries(namesByPack)) {
+  for (const [name, rels] of map) {
+    if (rels.length < 2) continue;
+    const msg = `pack "${pack}": duplicate name "${name}" in ${rels.length} entries (${rels.map(r => r.split("/")[1]).join(", ")})`;
+    if (NAME_RESOLVED_PACKS.has(pack)) errors.push(msg);
+    else warnings.push(msg);
+  }
+}
+
 if (errors.length) {
   console.error(`✗ validate-packs: ${errors.length} problem(s) across ${fileCount} source file(s):\n`);
   for (const e of errors) console.error(`  - ${e}`);
   process.exit(1);
+}
+
+if (warnings.length) {
+  console.warn(`⚠ validate-packs: ${warnings.length} warning(s) (not failing):`);
+  for (const w of warnings) console.warn(`  - ${w}`);
 }
 
 console.log(`✓ validate-packs: ${fileCount} source files OK, ${seenIds.size} unique _ids, no duplicates or malformed IDs.`);
