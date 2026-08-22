@@ -60,20 +60,28 @@ changes; first load just baselines the version).
 
 ## Foundry version notes
 
-- `system.json` `compatibility` currently targets Foundry v12 (`minimum`/`verified`: "12").
-- The system has also been patched to run under Foundry v13/v14: sheet classes
-  use `foundry.appv1.sheets.ActorSheet`/`ItemSheet` (not the deprecated global
-  `ActorSheet`/`ItemSheet`) and `scripts/vtmlarp.mjs` uses
-  `foundry.documents.collections.Actors`/`Items`, since the un-namespaced
-  globals are deprecated in v13 and will be removed entirely in v15.
-- `getData()` in both `scripts/sheets/actor-sheet.mjs` and
-  `scripts/sheets/item-sheet.mjs` explicitly sets `context.actor`/`context.item`/
-  `context.system` from `this.actor`/`this.item` rather than relying on
-  whatever shape `super.getData()` happens to return — this changed between
-  Foundry versions and caused a "Cannot read properties of undefined" crash.
-- The sheets still use the V1 Application framework (`FormApplication`/
-  `ActorSheet`/`ItemSheet`), which v16 will remove entirely. A full migration
-  to `foundry.applications.api.ApplicationV2`/`DocumentSheetV2` is future work.
+- `system.json` `compatibility` targets Foundry v12 (`minimum`), verified
+  through v14.
+- **Sheets and dialogs are fully on the ApplicationV2 framework.** The actor,
+  vehicle and item sheets extend `HandlebarsApplicationMixin` over
+  `foundry.applications.sheets.ActorSheetV2`/`ItemSheetV2`; every app dialog
+  (Challenge, Character Builder, ST Panel, Frenzy, Vaulderie, GM dashboard, XP
+  audit, blood-bond overview, session log) extends
+  `HandlebarsApplicationMixin(ApplicationV2)`. They use `_prepareContext()`
+  (not `getData()`), `DEFAULT_OPTIONS`/`PARTS` (not `defaultOptions`), and
+  `_onRender()` + a static `actions` map (not `activateListeners`). There is no
+  remaining V1 `FormApplication`/`ActorSheet` sheet code — the only mentions in
+  the source are comments explaining the migration.
+- `scripts/vtmlarp.mjs` uses `foundry.documents.collections.Actors`/`Items`
+  (the un-namespaced `Actors`/`Items` globals are deprecated in v13, removed in
+  v15 — an ESLint `no-restricted-globals` rule guards against them). The core
+  default sheets are unregistered via `foundry.appv1?.sheets?.*`, optional-chained
+  so it degrades gracefully when that deprecated namespace is removed in v15
+  (registering our sheets as `makeDefault` is what actually matters).
+- `_prepareContext()` in the sheets explicitly sets `context.actor`/`context.item`/
+  `context.system` from `this.actor`/`this.item` rather than relying on the
+  super's return shape, which changed across versions and once caused a "Cannot
+  read properties of undefined" crash.
 
 ## Compendium content build workflow
 
@@ -104,6 +112,6 @@ Every document `_id` must be generated with Python's `uuid.uuid4().hex[:16]`
   the Sabbat" style topics), so players can read background info without
   hunting through compendiums manually. Same lookup-table/convention
   prerequisite as above.
-- Full ApplicationV2/DocumentSheetV2 migration (see Foundry version notes
-  above) — the V1 Application framework the sheets currently use will be
-  removed in v16.
+- ~~Full ApplicationV2/DocumentSheetV2 migration~~ — DONE. All sheets and app
+  dialogs are on ApplicationV2 (see Foundry version notes above). Remaining
+  v15/v16 readiness is minor (the guarded `foundry.appv1` unregister).

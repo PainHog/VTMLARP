@@ -48,14 +48,19 @@ Hooks.once("init", () => {
 
   const ActorsCollection = foundry.documents.collections.Actors;
   const ItemsCollection = foundry.documents.collections.Items;
-  const BaseActorSheet = foundry.appv1.sheets.ActorSheet;
-  const BaseItemSheet = foundry.appv1.sheets.ItemSheet;
 
-  ActorsCollection.unregisterSheet("core", BaseActorSheet);
+  // Unregister the core default sheets so ours is the only option. The core
+  // sheet class lives under the deprecated `foundry.appv1` namespace (removed
+  // in v15); guard the access so this keeps working when that namespace is
+  // gone - registering ours as makeDefault is what actually matters, and an
+  // unregister of an absent class would only throw.
+  const BaseActorSheet = foundry.appv1?.sheets?.ActorSheet;
+  const BaseItemSheet = foundry.appv1?.sheets?.ItemSheet;
+  if (BaseActorSheet) ActorsCollection.unregisterSheet("core", BaseActorSheet);
   ActorsCollection.registerSheet("vtmlarp", VTMActorSheet, { types: ["character", "npc"], makeDefault: true });
   ActorsCollection.registerSheet("vtmlarp", VTMVehicleSheet, { types: ["vehicle"], makeDefault: true });
 
-  ItemsCollection.unregisterSheet("core", BaseItemSheet);
+  if (BaseItemSheet) ItemsCollection.unregisterSheet("core", BaseItemSheet);
   ItemsCollection.registerSheet("vtmlarp", VTMItemSheet, { makeDefault: true });
 
   Handlebars.registerHelper("vtmCapitalize", str => typeof str === "string" ? str.charAt(0).toUpperCase() + str.slice(1) : str);
