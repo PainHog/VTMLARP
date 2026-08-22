@@ -1,3 +1,5 @@
+import { disciplineFreeDots, disciplineFreebieCost } from "./creation-costs.mjs";
+
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
 const GEN_WILLPOWER_START = { 15: 2, 14: 2, 13: 2, 12: 2, 11: 4, 10: 4, 9: 6, 8: 6, 7: 7, 6: 8, 5: 9, 4: 10 };
@@ -269,9 +271,10 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const abilB = this.#orig() ? 5 : 11;
     set(".count-abilities", `${abil} / ${abilB}`, abil > abilB);
     const dRows = this.#rows("discipline");
+    const discRatings = dRows.map(r => r.rating);
     // Only dots up to 3 per Discipline draw from the free-dot allotment; dots 4
     // and 5 are freebie-only.
-    const freeDots = dRows.reduce((n, r) => n + Math.min(r.rating, 3), 0);
+    const freeDots = disciplineFreeDots(discRatings);
     const discB = this.#orig() ? 3 : 5;
     set(".count-disciplines", `${freeDots} / ${discB}`, freeDots > discB);
     const bg = this.#rows("background").reduce((n, r) => n + r.rating, 0);
@@ -283,16 +286,9 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
 
     const over = (s, b) => Math.max(0, s - b);
     // Discipline Freebie cost: dots 4 and 5 always cost 6 and 9; and any
-    // free-tier dots (<=3) beyond the 5-dot allotment cost tiered (3/6/9),
-    // cheapest first.
-    let discFree = 0;
-    for (const r of dRows) {
-      if (r.rating >= 4) discFree += 6;
-      if (r.rating >= 5) discFree += 9;
-    }
-    const TIER = [3, 6, 9];
-    const freeDotCosts = dRows.flatMap(r => Array.from({ length: Math.min(r.rating, 3) }, (_, i) => TIER[i])).sort((a, b) => a - b);
-    discFree += freeDotCosts.slice(0, over(freeDots, discB)).reduce((n, c) => n + c, 0);
+    // free-tier dots (<=3) beyond the allotment cost tiered (3/6/9), cheapest
+    // first. (Shared with the sheet's creation tracker.)
+    const discFree = disciplineFreebieCost(discRatings, discB);
     const mf = this.#rows("meritflaw");
     const meritCost = mf.filter(r => r.type === "merit").reduce((n, r) => n + r.cost, 0);
     const flawValue = mf.filter(r => r.type === "flaw").reduce((n, r) => n + r.cost, 0);

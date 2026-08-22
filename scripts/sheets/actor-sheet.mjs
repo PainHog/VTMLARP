@@ -4,6 +4,7 @@ import { VaulderieApp } from "../apps/vaulderie.mjs";
 import { checkPrerequisites } from "../apps/prerequisites.mjs";
 import { logAction } from "../apps/action-log.mjs";
 import { SessionLogApp } from "../apps/session-log.mjs";
+import { disciplineFreeDots, disciplineFreebieCost } from "../apps/creation-costs.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -431,14 +432,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // Free-tier dots (<=3) beyond the allotment cost their tier (Basic 3,
     // Intermediate 6, Advanced 9), cheapest first.
     const discRatings = this.actor.items.filter(i => i.type === "discipline").map(i => Number(i.system.rating) || 0);
-    const disciplinesSpent = discRatings.reduce((n, r) => n + Math.min(r, 3), 0);
-    let disciplineExtra = 0;
-    for (const r of discRatings) {
-      if (r >= 4) disciplineExtra += 6;
-      if (r >= 5) disciplineExtra += 9;
-    }
-    const TIER_COST = [3, 6, 9];
-    const freeDotCosts = discRatings.flatMap(r => Array.from({ length: Math.min(r, 3) }, (_, i) => TIER_COST[i]));
+    const disciplinesSpent = disciplineFreeDots(discRatings);
     // Backgrounds live in two places: quick inline entries (system.backgrounds)
     // and Background Items dragged from the compendium - count both.
     const backgroundsSpent = sumRatings(sys.backgrounds)
@@ -461,12 +455,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     // Discipline Freebies = the mandatory 4th/5th-dot costs, plus any free-tier
     // dots that overran the allotment (cheapest charged first).
-    const disciplineFreebies = disciplineExtra + (() => {
-      const over = disciplinesSpent - B.disciplines;
-      if (over <= 0) return 0;
-      const ascending = [...freeDotCosts].sort((a, b) => a - b);
-      return ascending.slice(0, over).reduce((n, c) => n + c, 0);
-    })();
+    const disciplineFreebies = disciplineFreebieCost(discRatings, B.disciplines);
 
     // Annotate each row with over/under and freebie cost of any overspend.
     let freebiesSpent = 0;

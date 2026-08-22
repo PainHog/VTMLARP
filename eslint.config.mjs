@@ -58,7 +58,18 @@ export default [
       "no-fallthrough": "error",
       "valid-typeof": "error",
       "use-isnan": "error",
-      "no-empty": ["warn", { allowEmptyCatch: true }]
+      "no-empty": ["warn", { allowEmptyCatch: true }],
+      // Guard against the deprecated un-namespaced Foundry globals that broke
+      // this system on v13/v14 (see CLAUDE.md). Use the namespaced forms:
+      // foundry.appv1.sheets.ActorSheet / ItemSheet, and
+      // foundry.documents.collections.Actors / Items.
+      "no-restricted-globals": [
+        "error",
+        { name: "ActorSheet", message: "Use foundry.appv1.sheets.ActorSheet (the global is removed in v15)." },
+        { name: "ItemSheet", message: "Use foundry.appv1.sheets.ItemSheet (the global is removed in v15)." },
+        { name: "Actors", message: "Use foundry.documents.collections.Actors (the global is deprecated in v13)." },
+        { name: "Items", message: "Use foundry.documents.collections.Items (the global is deprecated in v13)." }
+      ]
     }
   },
   {
