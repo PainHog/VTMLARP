@@ -23,6 +23,9 @@ jobs:
       - name: Lint JavaScript (ESLint)
         run: npm run lint
 
+      - name: Unit tests
+        run: npm test
+
       - name: Lint system.json manifest
         run: npm run validate:manifest
 

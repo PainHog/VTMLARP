@@ -8,8 +8,9 @@
     "check:packs": "node tools/check-packs-current.mjs",
     "validate:manifest": "node tools/validate-manifest.mjs",
     "validate:templates": "node tools/validate-templates.mjs",
-    "lint": "eslint scripts tools *.mjs",
-    "check": "npm run lint && npm run validate:manifest && npm run validate:templates && npm run validate:packs && npm run check:packs",
+    "lint": "eslint scripts tools test *.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check": "npm run lint && npm run test && npm run validate:manifest && npm run validate:templates && npm run validate:packs && npm run check:packs",
     "ci": "npm run check"
   },
   "devDependencies": {

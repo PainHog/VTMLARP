@@ -36,7 +36,7 @@ export default [
     ignores: ["node_modules/**", "packs/**", "reference/**"]
   },
   {
-    files: ["scripts/**/*.mjs", "tools/**/*.mjs", "*.mjs"],
+    files: ["scripts/**/*.mjs", "tools/**/*.mjs", "test/**/*.mjs", "*.mjs"],
     languageOptions: {
       ecmaVersion: 2023,
       sourceType: "module",

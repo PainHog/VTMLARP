@@ -38,6 +38,18 @@ Content lives in `packs/_source/<pack>/*.json` (one document per file) and must 
 
 World data migrations (for schema changes to live characters) go in `scripts/migrations.mjs`. See `CLAUDE.md` for the full content workflow and conventions.
 
+### Releasing
+
+Bump `version` in `system.json`, update `CHANGELOG.md`, commit, then tag:
+
+```bash
+git tag v1.14.5 && git push origin v1.14.5
+```
+
+The release workflow validates, rebuilds packs, checks the tag matches the
+manifest version, and publishes a GitHub Release with a runtime `vtmlarp.zip`
+and `system.json` attached.
+
 ## Repository layout
 
 - `system.json` — Foundry system manifest

@@ -1,0 +1,60 @@
+name: Release
+
+# Cutting a release: bump system.json, commit, then
+#   git tag v1.14.5 && git push origin v1.14.5
+# This workflow validates, rebuilds packs, checks the tag matches
+# system.json's version, zips the runtime files, and publishes a GitHub
+# Release with the zip and system.json attached. (Inert until a v* tag is
+# pushed — it changes nothing about day-to-day development.)
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate manifest and rebuild packs
+        run: |
+          npm run validate:manifest
+          npm run build:packs
+
+      - name: Verify tag matches system.json version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          VER="$(node -p "require('./system.json').version")"
+          echo "tag=$TAG manifest=$VER"
+          if [ "$TAG" != "$VER" ]; then
+            echo "::error::Tag $TAG does not match system.json version $VER"
+            exit 1
+          fi
+
+      - name: Build system zip
+        run: |
+          zip -r vtmlarp.zip \
+            system.json scripts templates css lang packs README.md CHANGELOG.md \
+            -x "packs/_source/*"
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            vtmlarp.zip system.json \
+            --title "$GITHUB_REF_NAME" \
+            --notes "See CHANGELOG.md for what changed. Install via the manifest URL in system.json." \
+            --verify-tag
