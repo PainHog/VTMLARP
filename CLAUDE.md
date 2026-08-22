@@ -25,6 +25,39 @@ already-compiled packs.
 Do not hand-edit anything under `packs/<name>` directly (only `packs/_source/<name>`)
 — it will be overwritten on the next build.
 
+## Validation & CI (IMPORTANT)
+
+Before committing content changes, run `npm run check`. It runs three
+validators (also enforced in CI via `.github/workflows/ci.yml` on every push
+and PR):
+
+- `npm run validate:manifest` (`tools/validate-manifest.mjs`) — sanity-checks
+  `system.json`: version is semver, every pack has a source dir, referenced
+  esmodules/styles/lang files exist, packFolders point at real packs.
+- `npm run validate:packs` (`tools/validate-packs.mjs`) — every source doc has a
+  well-formed 16-char alphanumeric `_id`, no duplicate `_id` across the whole
+  repo, folder files have a `sorting`, and each doc's `type` is a declared
+  subtype. This replaces the old manual dupe-scan.
+- `npm run check:packs` (`tools/check-packs-current.mjs`) — extracts the
+  committed compiled packs and compares their documents to source, so "edited
+  source but forgot to `npm run build:packs`" is caught. (A raw `git diff` can't
+  do this — LevelDB output is non-deterministic at the byte level.)
+
+So the content loop is: edit `packs/_source/` → `npm run build:packs` →
+`npm run check` → commit both source and compiled output.
+
+## World data migrations (IMPORTANT)
+
+`scripts/migrations.mjs` runs registered migrations once per world on load (GM
+only), keyed off the `vtmlarp.systemMigrationVersion` world setting, then stamps
+the world with the current version. **Whenever a schema change renames/restructures
+stored data that live characters may already have, add a migration** — Foundry
+does not rewrite existing documents for you. Append an entry to `MIGRATIONS`
+with the shipping version and an idempotent `migrate(ctx)` using the
+`updateActors` / `updateItems` / `updateOwnedItems` / `updateScenes` helpers.
+The list is intentionally empty at 1.13.x (framework introduced with no pending
+changes; first load just baselines the version).
+
 ## Foundry version notes
 
 - `system.json` `compatibility` currently targets Foundry v12 (`minimum`/`verified`: "12").

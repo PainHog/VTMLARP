@@ -14,9 +14,13 @@ import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
 import { STPanelApp } from "./apps/st-panel.mjs";
 import { CharacterBuilderApp } from "./apps/character-builder.mjs";
 import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
+import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 
 Hooks.once("init", () => {
   console.log("VTMLARP | Initializing Mind's Eye Theatre: Laws of the Night system");
+
+  // Records which system version this world's data was last migrated to.
+  registerMigrationSettings();
 
   // Initiative is a flat d20 roll - MET breaks ties/order with a random draw
   // rather than a stat, so the Combat Tracker's "Roll Initiative" just rolls
@@ -125,6 +129,10 @@ Hooks.on("preCreateToken", (tokenDoc, data) => {
 });
 
 Hooks.once("ready", () => {
+  // Run any pending world-data migrations before anything else touches the
+  // data (GM only; no-ops when the world is already current).
+  migrateWorldIfNeeded();
+
   // Always-visible Storyteller Panel launcher for GMs. The scene-control
   // button (see getSceneControlButtons) doesn't render on every Foundry
   // version's control layout, so a GM also gets a small fixed on-screen button

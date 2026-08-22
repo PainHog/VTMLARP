@@ -1,0 +1,160 @@
+/**
+ * World data migration framework.
+ *
+ * When a system update changes the shape of stored data (renames a field,
+ * restructures a SchemaField, drops a value), existing worlds that players have
+ * already built characters in need their documents rewritten to match — Foundry
+ * does NOT do this for you. This module runs, once per world on load, any
+ * registered migration whose version is newer than the last version this world
+ * was migrated to, then records the new version.
+ *
+ * HOW TO ADD A MIGRATION
+ * ----------------------
+ * Append an entry to MIGRATIONS with the system version it ships in and an
+ * async `migrate(ctx)` that returns update objects. Use the ctx helpers so you
+ * don't hand-roll the "iterate every actor/item/scene/compendium" loops:
+ *
+ *   {
+ *     version: "1.14.0",
+ *     async migrate({ updateActors }) {
+ *       // Give every character the new system.foo field.
+ *       await updateActors(actor => {
+ *         if (actor.system.foo === undefined) return { "system.foo": 0 };
+ *       });
+ *     }
+ *   }
+ *
+ * A migrate function should be idempotent (safe to re-run) and return
+ * `undefined`/`null` for documents that need no change.
+ */
+
+const SETTING_KEY = "systemMigrationVersion";
+
+// Ordered list of migrations. Empty at 1.13.x: the framework is being
+// introduced with no pending data changes, so the first load simply stamps the
+// world with the current version as a baseline for future migrations.
+const MIGRATIONS = [
+  // Example (do not remove — copy when writing a real one):
+  // {
+  //   version: "1.14.0",
+  //   async migrate({ updateActors }) {
+  //     await updateActors(a => (a.system.newField === undefined ? { "system.newField": 0 } : null));
+  //   }
+  // }
+];
+
+/** Semver-ish compare: returns <0, 0, >0. Non-numeric/junk segments sort as 0. */
+export function compareVersions(a, b) {
+  const pa = String(a ?? "0").split(".").map(n => parseInt(n, 10) || 0);
+  const pb = String(b ?? "0").split(".").map(n => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const d = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (d) return d;
+  }
+  return 0;
+}
+
+export function registerMigrationSettings() {
+  game.settings.register("vtmlarp", SETTING_KEY, {
+    name: "System Migration Version",
+    scope: "world",
+    config: false,
+    type: String,
+    default: ""
+  });
+}
+
+/** Batched helper factory: collect {_id, ...update} objects and apply them via
+ * one embedded/document updateAll per collection. */
+function makeContext() {
+  const applyDocUpdates = async (collection, fn, label) => {
+    const updates = [];
+    for (const doc of collection) {
+      let change;
+      try { change = await fn(doc); } catch (e) { console.error(`VTMLARP | migration error on ${label} ${doc.id}`, e); }
+      if (change && Object.keys(change).length) updates.push({ _id: doc.id, ...change });
+    }
+    return updates;
+  };
+
+  return {
+    /** Update world Actors (and, if your fn returns embedded item updates via
+     * the `items` key, those are applied too). */
+    async updateActors(fn) {
+      const updates = await applyDocUpdates(game.actors, fn, "actor");
+      if (updates.length) await Actor.updateDocuments(updates);
+      return updates.length;
+    },
+    /** Update world-level Items (items in the Items sidebar, not owned items). */
+    async updateItems(fn) {
+      const updates = await applyDocUpdates(game.items, fn, "item");
+      if (updates.length) await Item.updateDocuments(updates);
+      return updates.length;
+    },
+    /** Update owned items across every world Actor. */
+    async updateOwnedItems(fn) {
+      let count = 0;
+      for (const actor of game.actors) {
+        const updates = await applyDocUpdates(actor.items, fn, "owned-item");
+        if (updates.length) { await actor.updateEmbeddedDocuments("Item", updates); count += updates.length; }
+      }
+      return count;
+    },
+    /** Update Scenes (e.g. token/prototype data). */
+    async updateScenes(fn) {
+      const updates = await applyDocUpdates(game.scenes, fn, "scene");
+      if (updates.length) await Scene.updateDocuments(updates);
+      return updates.length;
+    }
+  };
+}
+
+/**
+ * Run any pending migrations for this world. Only a GM performs migrations
+ * (they write to shared world data); other clients no-op. Safe to call on every
+ * load — nothing runs once the world is at the current version.
+ */
+export async function migrateWorldIfNeeded() {
+  if (!game.user?.isGM) return;
+
+  const current = game.system.version;
+  const last = game.settings.get("vtmlarp", SETTING_KEY) || "";
+
+  // First-ever load under the framework: baseline the world without running
+  // historical migrations against data that was authored under the current
+  // shape anyway.
+  if (!last) {
+    await game.settings.set("vtmlarp", SETTING_KEY, current);
+    console.log(`VTMLARP | Migration baseline set to ${current}.`);
+    return;
+  }
+
+  const pending = MIGRATIONS
+    .filter(m => compareVersions(m.version, last) > 0)
+    .sort((a, b) => compareVersions(a.version, b.version));
+
+  if (!pending.length) {
+    if (compareVersions(current, last) > 0) await game.settings.set("vtmlarp", SETTING_KEY, current);
+    return;
+  }
+
+  ui.notifications?.info(`VTMLARP: migrating world data to ${current}. Please don't close the game…`, { permanent: false });
+  console.log(`VTMLARP | Running ${pending.length} migration(s): ${pending.map(m => m.version).join(", ")}`);
+
+  const ctx = makeContext();
+  for (const m of pending) {
+    try {
+      console.log(`VTMLARP | Migration ${m.version} …`);
+      await m.migrate(ctx);
+      await game.settings.set("vtmlarp", SETTING_KEY, m.version);
+    } catch (e) {
+      console.error(`VTMLARP | Migration ${m.version} FAILED — halting so it can be re-run.`, e);
+      ui.notifications?.error(`VTMLARP: migration ${m.version} failed — see the console (F12). Data was left as-is.`, { permanent: true });
+      return;
+    }
+  }
+
+  await game.settings.set("vtmlarp", SETTING_KEY, current);
+  ui.notifications?.info(`VTMLARP: world migrated to ${current}.`);
+  console.log(`VTMLARP | Migration complete → ${current}.`);
+}

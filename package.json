@@ -3,7 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:packs": "node tools/build-packs.mjs"
+    "build:packs": "node tools/build-packs.mjs",
+    "validate:packs": "node tools/validate-packs.mjs",
+    "check:packs": "node tools/check-packs-current.mjs",
+    "validate:manifest": "node tools/validate-manifest.mjs",
+    "check": "npm run validate:manifest && npm run validate:packs && npm run check:packs",
+    "ci": "npm run check"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^3.0.4"
