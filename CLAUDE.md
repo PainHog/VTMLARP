@@ -60,8 +60,11 @@ changes; first load just baselines the version).
 
 ## Foundry version notes
 
-- `system.json` `compatibility` targets Foundry v12 (`minimum`), verified
-  through v14.
+- `system.json` `compatibility` is `minimum: 13`, `verified: 14`. The system
+  **cannot run on v12**: it depends on `foundry.applications.sheets.ActorSheetV2`/
+  `ItemSheetV2` and `foundry.documents.collections.*`, both of which are v13+ and
+  throw at module load on v12. Written to tolerate v15's removals (see the
+  optional-chained `foundry.appv1` unregister) but only verified through 14.
 - **Sheets and dialogs are fully on the ApplicationV2 framework.** The actor,
   vehicle and item sheets extend `HandlebarsApplicationMixin` over
   `foundry.applications.sheets.ActorSheetV2`/`ItemSheetV2`; every app dialog

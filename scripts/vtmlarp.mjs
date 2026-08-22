@@ -15,6 +15,19 @@ import { STPanelApp } from "./apps/st-panel.mjs";
 import { CharacterBuilderApp } from "./apps/character-builder.mjs";
 import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
+import { enhanceAccessibility } from "./apps/a11y.mjs";
+
+// Accessibility: after any VTMLARP sheet or dialog renders, give its icon-only
+// controls accessible names (title -> aria-label) and keyboard operability. One
+// hook per V2 class name; the V2 render hook passes (application, element, ...).
+for (const appName of [
+  "VTMActorSheet", "VTMVehicleSheet", "VTMItemSheet",
+  "ChallengeApp", "ChallengeResponseApp", "GMChallengeDashboard", "XPAuditApp",
+  "BloodBondOverviewApp", "STPanelApp", "CharacterBuilderApp", "FrenzyApp",
+  "VaulderieApp", "SessionLogApp"
+]) {
+  Hooks.on(`render${appName}`, (app, element) => enhanceAccessibility(element));
+}
 
 Hooks.once("init", () => {
   console.log("VTMLARP | Initializing Mind's Eye Theatre: Laws of the Night system");

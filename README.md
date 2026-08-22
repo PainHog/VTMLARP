@@ -18,7 +18,7 @@ An **unofficial** Foundry VTT system for **Mind's Eye Theatre: Vampire the Masqu
 
 This system is distributed as a GitHub branch ZIP (no build runs on the end user's server — compiled packs ship in the repo). In Foundry: **Game Systems → Install System → Manifest URL**, using the `manifest` URL in [`system.json`](system.json).
 
-Compatibility: targets Foundry **v12** (`minimum`), verified through **v14**. See `CLAUDE.md` → *Foundry version notes*.
+Compatibility: Foundry **v13** minimum, verified through **v14**. (It uses v13+ ApplicationV2 document sheets, so it will not load on v12.) See `CLAUDE.md` → *Foundry version notes*.
 
 ## Development
 
