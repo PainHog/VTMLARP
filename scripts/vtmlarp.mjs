@@ -318,6 +318,25 @@ Hooks.on("getCompendiumEntryContext", (application, options) => {
   });
 });
 
+// GM-only compendium entries: any document flagged flags.vtmlarp.gmOnly is
+// hidden from non-GM players in the compendium browser. Used to park entries
+// that shouldn't be player-visible yet (e.g. powers whose rules we haven't
+// finished verifying). GMs always see everything.
+Hooks.on("renderCompendium", async (app, html) => {
+  if (game.user.isGM) return;
+  const collection = app.collection ?? app.document ?? null;
+  if (!collection?.getIndex) return;
+  let index;
+  try { index = await collection.getIndex({ fields: ["flags.vtmlarp.gmOnly"] }); }
+  catch { return; }
+  const hidden = [...index].filter(e => e.flags?.vtmlarp?.gmOnly).map(e => e._id);
+  if (!hidden.length) return;
+  const root = html instanceof HTMLElement ? html : html?.[0];
+  for (const id of hidden) {
+    root?.querySelector(`[data-entry-id="${id}"], [data-document-id="${id}"], li[data-document-id="${id}"]`)?.remove();
+  }
+});
+
 // A "Character Builder" button at the top of the Actors sidebar directory.
 Hooks.on("renderActorDirectory", (app, html) => {
   const root = html instanceof HTMLElement ? html : html?.[0];

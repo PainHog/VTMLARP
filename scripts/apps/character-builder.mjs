@@ -298,7 +298,9 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     let discIndex = [];
     let folderByName = {};
     if (discPack) {
-      discIndex = [...(await discPack.getIndex({ fields: ["type", "folder", "system.discipline", "system.level", "sort"] }))];
+      discIndex = [...(await discPack.getIndex({ fields: ["type", "folder", "system.discipline", "system.level", "sort", "flags.vtmlarp.gmOnly"] }))]
+        // Never auto-pull GM-only (unverified/hidden) powers onto a character.
+        .filter(e => !(e.flags?.vtmlarp?.gmOnly && !game.user.isGM));
       (discPack.folders ?? []).forEach(f => { folderByName[f.name] = f.id; });
     }
     for (const r of this.#rows("discipline")) {
