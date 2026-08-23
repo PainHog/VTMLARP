@@ -1,0 +1,36 @@
+<form class="vtmlarp homebrew flexcol" autocomplete="off">
+  <p class="hint">Design something new and send it to the Storyteller. If approved, it's added to the <strong>Player Added</strong> compendium and can be dragged onto sheets.</p>
+
+  <label>What are you creating?
+    <select name="type">
+      {{#each types as |label key|}}<option value="{{key}}">{{label}}</option>{{/each}}
+    </select>
+  </label>
+
+  <label>Name <span class="req">*</span><input type="text" name="name" placeholder="e.g. Ward Versus Ghouls, Path of the Sculptor"></label>
+
+  <div class="flexrow" style="gap:8px;">
+    <label>Level / Rating <input type="number" name="level" value="1" min="1" title="Ritual level, or the level of a path/combination power"></label>
+    <label>Blood/Willpower cost <input type="text" name="bloodCost" placeholder="e.g. One Blood Trait"></label>
+  </div>
+
+  <label>Prerequisites / component Disciplines
+    <input type="text" name="prereqs" placeholder="e.g. Thaumaturgy path (rituals), or 'Auspex 2, Dominate 2' (combination)">
+  </label>
+
+  <label>Challenge type (powers/combinations)
+    <select name="challengeType">
+      <option value="none">None</option>
+      <option value="physical">Physical</option>
+      <option value="social">Social</option>
+      <option value="mental">Mental</option>
+      <option value="static">Static</option>
+    </select>
+  </label>
+
+  <label>Description &amp; mechanics <span class="req">*</span>
+    <textarea name="description" rows="8" placeholder="What it does, how it's used, costs, effects, limits — the full write-up for the Storyteller to review."></textarea>
+  </label>
+
+  <button type="button" data-action="submit"><i class="fas fa-paper-plane"></i> Submit for approval</button>
+</form>

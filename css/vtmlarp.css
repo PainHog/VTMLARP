@@ -1396,7 +1396,7 @@ form.vtmlarp.sheet {
 /* -------------------------------------------------------------------- */
 /* Storyteller Panel floating launcher (GM only)                         */
 /* -------------------------------------------------------------------- */
-#vtmlarp-st-launcher, #vtmlarp-merc-launcher {
+#vtmlarp-st-launcher, #vtmlarp-merc-launcher, #vtmlarp-homebrew-launcher {
   position: fixed;
   left: 8px;
   z-index: 70;
@@ -1415,11 +1415,16 @@ form.vtmlarp.sheet {
 }
 #vtmlarp-st-launcher { top: 360px; }
 #vtmlarp-merc-launcher { top: 398px; }
-#vtmlarp-st-launcher:hover, #vtmlarp-merc-launcher:hover {
+#vtmlarp-homebrew-launcher { top: 436px; }
+#vtmlarp-st-launcher:hover, #vtmlarp-merc-launcher:hover, #vtmlarp-homebrew-launcher:hover {
   border-color: var(--vtm-red-bright, #b8121a);
   box-shadow: 0 0 8px var(--vtm-red, #8a0303);
 }
-#vtmlarp-st-launcher i, #vtmlarp-merc-launcher i { margin-right: 4px; }
+#vtmlarp-st-launcher i, #vtmlarp-merc-launcher i, #vtmlarp-homebrew-launcher i { margin-right: 4px; }
+.vtmlarp.homebrew .req, .vtmlarp-create-item .req { color: var(--vtm-red-bright, #b8121a); }
+.vtmlarp.homebrew textarea { width: 100%; }
+.vtmlarp.homebrew-review .hb-sub { border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; margin: 6px 0; padding: 4px 8px; }
+.vtmlarp.homebrew-review .hb-desc { white-space: pre-wrap; font-size: 12px; margin-top: 4px; }
 
 /* Mercantile panel & shop browser */
 .vtmlarp.mercantile-panel .merc-shop { border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; margin: 6px 0; padding: 4px 8px; }

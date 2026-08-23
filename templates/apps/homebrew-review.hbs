@@ -1,0 +1,24 @@
+<form class="vtmlarp homebrew-review flexcol">
+  <div class="flexrow" style="gap:6px; margin-bottom:6px;">
+    <button type="button" data-action="openPack"><i class="fas fa-box-open"></i> Open Player Added compendium</button>
+  </div>
+
+  {{#each submissions as |s|}}
+  <fieldset class="hb-sub">
+    <legend>{{s.name}} <span class="hint">— {{s.typeLabel}}, by {{s.by}} ({{s.submittedAt}})</span></legend>
+    <div class="hb-meta hint">
+      {{#if s.level}}Level {{s.level}}. {{/if}}
+      {{#if s.bloodCost}}Cost: {{s.bloodCost}}. {{/if}}
+      {{#if s.prereqs}}Prereqs: {{s.prereqs}}. {{/if}}
+      {{#unless (eq s.challengeType "none")}}Challenge: {{s.challengeType}}.{{/unless}}
+    </div>
+    <div class="hb-desc">{{s.description}}</div>
+    <div class="flexrow" style="gap:6px; margin-top:6px;">
+      <button type="button" data-action="approve" data-id="{{s.id}}"><i class="fas fa-check"></i> Approve → compendium</button>
+      <button type="button" data-action="reject" data-id="{{s.id}}"><i class="fas fa-times"></i> Reject</button>
+    </div>
+  </fieldset>
+  {{else}}
+  <p class="hint">No pending submissions.</p>
+  {{/each}}
+</form>

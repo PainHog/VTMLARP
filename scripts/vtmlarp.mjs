@@ -17,6 +17,7 @@ import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 import { enhanceAccessibility } from "./apps/a11y.mjs";
 import { registerShopSettings, MercantilePanelApp, ShopBrowserApp, fulfillPurchase } from "./apps/shops.mjs";
+import { registerHomebrewSettings, HomebrewApp, HomebrewReviewApp, enqueueHomebrew } from "./apps/homebrew.mjs";
 
 // Accessibility: after any VTMLARP sheet or dialog renders, give its icon-only
 // controls accessible names (title -> aria-label) and keyboard operability. One
@@ -25,7 +26,8 @@ for (const appName of [
   "VTMActorSheet", "VTMVehicleSheet", "VTMItemSheet",
   "ChallengeApp", "ChallengeResponseApp", "GMChallengeDashboard", "XPAuditApp",
   "BloodBondOverviewApp", "STPanelApp", "CharacterBuilderApp", "FrenzyApp",
-  "VaulderieApp", "SessionLogApp", "MercantilePanelApp", "ShopBrowserApp", "DiablerieApp"
+  "VaulderieApp", "SessionLogApp", "MercantilePanelApp", "ShopBrowserApp", "DiablerieApp",
+  "HomebrewApp", "HomebrewReviewApp"
 ]) {
   Hooks.on(`render${appName}`, (app, element) => enhanceAccessibility(element));
 }
@@ -37,6 +39,8 @@ Hooks.once("init", () => {
   registerMigrationSettings();
   // Mercantile shops (world setting).
   registerShopSettings();
+  // Player-authored content queue (world setting).
+  registerHomebrewSettings();
 
   // Initiative is a flat d20 roll - MET breaks ties/order with a random draw
   // rather than a stat, so the Combat Tracker's "Roll Initiative" just rolls
@@ -195,6 +199,17 @@ Hooks.once("ready", () => {
     document.body.appendChild(mbtn);
   }
 
+  // Storyteller Homebrew Review launcher.
+  if (game.user.isGM && !document.getElementById("vtmlarp-homebrew-launcher")) {
+    const hbtn = document.createElement("button");
+    hbtn.id = "vtmlarp-homebrew-launcher";
+    hbtn.type = "button";
+    hbtn.title = "Review player-submitted homebrew content";
+    hbtn.innerHTML = `<i class="fas fa-scroll"></i> Homebrew`;
+    hbtn.addEventListener("click", () => new HomebrewReviewApp().render(true));
+    document.body.appendChild(hbtn);
+  }
+
   // A Challenge's opponent side is resolved on the responding player's (or,
   // for an unowned NPC, any GM's) own client rather than the challenger's -
   // this system is played online, not face to face, so the challenger must
@@ -230,6 +245,11 @@ Hooks.once("ready", () => {
         // A player resolved a Challenge but can't delete the challenger's
         // prompt message themselves - a GM does it on their behalf.
         game.messages.get(data.messageId)?.delete().catch(() => {});
+      } else if (data.action === "homebrewSubmit") {
+        // A player submitted homebrew content; the active GM queues it.
+        if (game.users.activeGM?.id === game.user.id && data.sub) {
+          enqueueHomebrew(data.sub).catch(err => console.error("vtmlarp | homebrewSubmit failed", err));
+        }
       } else if (data.action === "shopPurchase") {
         // A player asked to buy from a shop; only the designated active GM
         // fulfills it (debits/credits, adds the item, decrements stock, logs).
@@ -397,6 +417,16 @@ Hooks.on("renderActorDirectory", (app, html) => {
     shopBtn.innerHTML = `<i class="fas fa-store"></i> Shops`;
     shopBtn.addEventListener("click", () => new ShopBrowserApp().render(true));
     header.prepend(shopBtn);
+  }
+
+  // A "Create Content" button so players can submit homebrew for ST approval.
+  if (!header.querySelector(".vtmlarp-homebrew")) {
+    const hb = document.createElement("button");
+    hb.type = "button";
+    hb.className = "vtmlarp-homebrew";
+    hb.innerHTML = `<i class="fas fa-wand-magic-sparkles"></i> Create Content`;
+    hb.addEventListener("click", () => new HomebrewApp().render(true));
+    header.prepend(hb);
   }
 });
 
