@@ -376,6 +376,9 @@
             {{#if item.system.bodyMod.choose}}
             <a class="power-bodymod" title="Apply a body modification (add/remove a Trait or Health level)"><i class="fas fa-dna"></i> Body Mod</a>
             {{/if}}
+            {{#unless (eq item.system.area.shape "none")}}
+            <a class="power-area" title="Place this Power's area of effect on the map"><i class="fas fa-draw-polygon"></i> Area</a>
+            {{/unless}}
             <a class="item-edit" title="Open sheet"><i class="fas fa-edit"></i></a>
             <a class="item-delete" title="Delete (Shift-click to skip confirm)"><i class="fas fa-trash"></i></a>
           </li>
@@ -428,6 +431,9 @@
           {{#if item.system.bodyMod.choose}}
           <a class="power-bodymod" title="Apply a body modification (add/remove a Trait or Health level)"><i class="fas fa-dna"></i> Body Mod</a>
           {{/if}}
+          {{#unless (eq item.system.area.shape "none")}}
+          <a class="power-area" title="Place this Power's area of effect on the map"><i class="fas fa-draw-polygon"></i> Area</a>
+          {{/unless}}
           <a class="item-edit" title="Open sheet"><i class="fas fa-edit"></i></a>
           <a class="item-delete" title="Delete (Shift-click to skip confirm)"><i class="fas fa-trash"></i></a>
         </li>

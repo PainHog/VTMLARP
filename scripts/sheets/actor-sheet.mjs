@@ -539,6 +539,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".power-use", "click", this._onUsePower.bind(this));
     on(".power-challenge", "click", this._onInitiatePowerChallenge.bind(this));
     on(".power-bodymod", "click", this._onPowerBodyMod.bind(this));
+    on(".power-area", "click", this._onPlacePowerArea.bind(this));
     on(".item-create", "click", this._onItemCreate.bind(this));
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
@@ -1171,6 +1172,48 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       content: `<p><strong>${this.actor.name}</strong> uses <strong>${item.name}</strong>${bloodSpent ? ` (spends ${bloodSpent} Blood)` : ""}.</p>`
     });
+  }
+
+  /**
+   * Drop this Power's area of effect onto the canvas as a MeasuredTemplate,
+   * centered on the caster's token (or the view center), for the player to then
+   * drag into position.
+   */
+  async _onPlacePowerArea(event) {
+    event.preventDefault();
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
+    const area = item?.system?.area;
+    if (!area || area.shape === "none") return;
+    if (!canvas?.scene) { ui.notifications?.warn("Open a scene first to place an area."); return; }
+
+    // Origin: the caster's active token, else the current view center.
+    const token = this.actor.getActiveTokens?.()[0];
+    const origin = token
+      ? { x: token.center?.x ?? token.x, y: token.center?.y ?? token.y }
+      : { x: canvas.stage.pivot.x, y: canvas.stage.pivot.y };
+
+    const size = Number(area.size) || 5;
+    const data = {
+      t: area.shape,
+      user: game.user.id,
+      x: origin.x,
+      y: origin.y,
+      distance: size,
+      direction: 0,
+      fillColor: game.user.color?.css ?? game.user.color ?? "#8a0303"
+    };
+    // Cone/ray need an angle/width; give sensible defaults.
+    if (area.shape === "cone") data.angle = CONFIG.MeasuredTemplate?.defaults?.angle ?? 53.13;
+    if (area.shape === "ray") data.width = canvas.dimensions?.distance ?? 5;
+
+    try {
+      await canvas.scene.createEmbeddedDocuments("MeasuredTemplate", [data]);
+      ui.notifications?.info(`Placed ${item.name}'s area (${area.shape}, ${size} ${canvas.scene.grid?.units || "units"}). Drag it into position.`);
+    } catch (err) {
+      console.error("VTMLARP | placing area template failed", err);
+      ui.notifications?.error("Couldn't place the area template (you may lack permission to create templates on this scene).");
+    }
   }
 
   /** Open ChallengeApp pre-filled with a specific Power's own challengeType/retestAbility. */

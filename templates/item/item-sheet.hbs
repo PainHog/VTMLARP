@@ -83,6 +83,16 @@
       {{#if (or (eq system.activation "toggle") (eq system.activation "passive"))}}
       <label><input type="checkbox" name="system.active" {{#if system.active}}checked{{/if}} {{#if (eq system.activation "passive")}}disabled{{/if}}> Currently Active</label>
       {{/if}}
+      <label>Area of Effect
+        <select name="system.area.shape">
+          <option value="none" {{#if (eq system.area.shape "none")}}selected{{/if}}>None</option>
+          <option value="circle" {{#if (eq system.area.shape "circle")}}selected{{/if}}>Circle (radius)</option>
+          <option value="cone" {{#if (eq system.area.shape "cone")}}selected{{/if}}>Cone</option>
+          <option value="ray" {{#if (eq system.area.shape "ray")}}selected{{/if}}>Ray/Line</option>
+          <option value="rect" {{#if (eq system.area.shape "rect")}}selected{{/if}}>Rectangle</option>
+        </select>
+      </label>
+      <label>Area Size (in grid units, e.g. feet) <input type="number" name="system.area.size" value="{{system.area.size}}" min="0"></label>
       {{/if}}
 
       {{#if (eq item.type "background")}}

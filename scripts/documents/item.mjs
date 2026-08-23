@@ -104,6 +104,14 @@ export class VTMPowerData extends BaseItemData {
         // add/remove each use (Physical/Social/Mental Traits or Health levels)
         // from a dialog, rather than a fixed bonus.
         choose: new fields.BooleanField({ required: false, initial: false })
+      }),
+
+      // Area of effect. When shape is not "none", the sheet shows a "Place
+      // Area" button that drops a MeasuredTemplate of this shape/size onto the
+      // canvas (size in the scene's grid distance units, e.g. feet).
+      area: new fields.SchemaField({
+        shape: new fields.StringField({ required: false, initial: "none", choices: ["none", "circle", "cone", "ray", "rect"] }),
+        size: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 })
       })
     };
   }
@@ -153,7 +161,11 @@ export class VTMRitualData extends BaseItemData {
       ...super.defineSchema(),
       path: new fields.StringField({ required: false, blank: true, initial: "" }),
       level: new fields.NumberField({ required: true, integer: true, min: 1, initial: 1 }),
-      bloodCost: new fields.StringField({ required: false, blank: true, initial: "" })
+      bloodCost: new fields.StringField({ required: false, blank: true, initial: "" }),
+      area: new fields.SchemaField({
+        shape: new fields.StringField({ required: false, initial: "none", choices: ["none", "circle", "cone", "ray", "rect"] }),
+        size: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 })
+      })
     };
   }
 }
