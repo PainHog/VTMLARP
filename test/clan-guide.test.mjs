@@ -44,6 +44,17 @@ test("searchClans matches a clan by name too", () => {
   assert.ok(searchClans("brujah", CLANS).includes("Brujah"));
 });
 
+test("searchClans finds every clan that learns a searched Discipline", () => {
+  const dominate = searchClans("dominate", CLANS);
+  for (const [clan, discs] of Object.entries(CLAN_DISCIPLINES)) {
+    if (discs.includes("Dominate")) assert.ok(dominate.includes(clan), `${clan} learns Dominate but wasn't found`);
+  }
+  // A few spot checks across Disciplines.
+  assert.ok(searchClans("protean", CLANS).includes("Gangrel"));
+  assert.ok(searchClans("thaumaturgy", CLANS).includes("Tremere"));
+  assert.ok(searchClans("necromancy", CLANS).includes("Giovanni"));
+});
+
 test("searchClans returns [] when nothing matches", () => {
   assert.deepEqual(searchClans("zzznotathing", CLANS), []);
 });
