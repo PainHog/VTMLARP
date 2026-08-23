@@ -173,42 +173,8 @@ Hooks.once("ready", () => {
   // data (GM only; no-ops when the world is already current).
   migrateWorldIfNeeded();
 
-  // Always-visible Storyteller Panel launcher for GMs. The scene-control
-  // button (see getSceneControlButtons) doesn't render on every Foundry
-  // version's control layout, so a GM also gets a small fixed on-screen button
-  // that opens the panel - guaranteed present regardless of scene-control API
-  // changes across v12-v14.
-  if (game.user.isGM && !document.getElementById("vtmlarp-st-launcher")) {
-    const btn = document.createElement("button");
-    btn.id = "vtmlarp-st-launcher";
-    btn.type = "button";
-    btn.title = "Open the Storyteller Panel";
-    btn.innerHTML = `<i class="fas fa-chess-king"></i> ST Panel`;
-    btn.addEventListener("click", () => new STPanelApp().render(true));
-    document.body.appendChild(btn);
-  }
-
-  // Storyteller Mercantile launcher (manage shops).
-  if (game.user.isGM && !document.getElementById("vtmlarp-merc-launcher")) {
-    const mbtn = document.createElement("button");
-    mbtn.id = "vtmlarp-merc-launcher";
-    mbtn.type = "button";
-    mbtn.title = "Open the Mercantile panel (manage shops)";
-    mbtn.innerHTML = `<i class="fas fa-store"></i> Mercantile`;
-    mbtn.addEventListener("click", () => new MercantilePanelApp().render(true));
-    document.body.appendChild(mbtn);
-  }
-
-  // Storyteller Homebrew Review launcher.
-  if (game.user.isGM && !document.getElementById("vtmlarp-homebrew-launcher")) {
-    const hbtn = document.createElement("button");
-    hbtn.id = "vtmlarp-homebrew-launcher";
-    hbtn.type = "button";
-    hbtn.title = "Review player-submitted homebrew content";
-    hbtn.innerHTML = `<i class="fas fa-scroll"></i> Homebrew`;
-    hbtn.addEventListener("click", () => new HomebrewReviewApp().render(true));
-    document.body.appendChild(hbtn);
-  }
+  // All Storyteller and player launchers live in the scene-controls toolbar
+  // (see getSceneControlButtons below) rather than floating on-screen buttons.
 
   // A Challenge's opponent side is resolved on the responding player's (or,
   // for an unowned NPC, any GM's) own client rather than the challenger's -
@@ -394,41 +360,8 @@ Hooks.on("renderCompendium", async (app, html) => {
   }
 });
 
-// A "Character Builder" button at the top of the Actors sidebar directory.
-Hooks.on("renderActorDirectory", (app, html) => {
-  const root = html instanceof HTMLElement ? html : html?.[0];
-  if (!root) return;
-  const header = root.querySelector(".directory-header .header-actions")
-    ?? root.querySelector(".directory-header .action-buttons")
-    ?? root.querySelector(".directory-header");
-  if (!header || header.querySelector(".vtmlarp-build-character")) return;
-  const btn = document.createElement("button");
-  btn.type = "button";
-  btn.className = "vtmlarp-build-character";
-  btn.innerHTML = `<i class="fas fa-user-plus"></i> Character Builder`;
-  btn.addEventListener("click", () => new CharacterBuilderApp().render(true));
-  header.prepend(btn);
-
-  // A "Shops" button so players can browse the open Mercantile shops.
-  if (!header.querySelector(".vtmlarp-shops")) {
-    const shopBtn = document.createElement("button");
-    shopBtn.type = "button";
-    shopBtn.className = "vtmlarp-shops";
-    shopBtn.innerHTML = `<i class="fas fa-store"></i> Shops`;
-    shopBtn.addEventListener("click", () => new ShopBrowserApp().render(true));
-    header.prepend(shopBtn);
-  }
-
-  // A "Create Content" button so players can submit homebrew for ST approval.
-  if (!header.querySelector(".vtmlarp-homebrew")) {
-    const hb = document.createElement("button");
-    hb.type = "button";
-    hb.className = "vtmlarp-homebrew";
-    hb.innerHTML = `<i class="fas fa-wand-magic-sparkles"></i> Create Content`;
-    hb.addEventListener("click", () => new HomebrewApp().render(true));
-    header.prepend(hb);
-  }
-});
+// Character Builder, Shops and Create Content now live in the scene-controls
+// toolbar (see getSceneControlButtons) rather than the Actors sidebar header.
 
 Hooks.on("getSceneNavigationContext", (nav, options) => {
   const sceneIdOf = (li) => {
@@ -451,49 +384,50 @@ Hooks.on("getSceneNavigationContext", (nav, options) => {
 });
 
 Hooks.on("getSceneControlButtons", controls => {
-  if (!game.user.isGM) return;
-  // Foundry v13 restructured getSceneControlButtons from an array to an
-  // object keyed by control name; support both shapes rather than assuming
-  // one, since this system targets v12-14.
-  const tokenControl = Array.isArray(controls) ? controls.find(c => c.name === "token") : controls.token;
-  if (!tokenControl) return;
+  // A dedicated "Mind's Eye Theatre" control group in the left toolbar holds
+  // all this system's launchers, so nothing is jammed into the Actors sidebar
+  // or floated over the canvas. Foundry v13 restructured this hook from an
+  // array to an object keyed by control name; support both shapes (v12-v14).
+  const tool = (name, title, icon, App) => ({
+    name, title, icon, button: true,
+    onClick: () => new App().render(true),
+    onChange: () => new App().render(true)
+  });
+
+  // Available to everyone (players included).
   const tools = [
-    {
-      name: "vtmlarp-st-panel",
-      title: "Storyteller Panel",
-      icon: "fas fa-chess-king",
-      button: true,
-      onClick: () => new STPanelApp().render(true),
-      onChange: () => new STPanelApp().render(true)
-    },
-    {
-      name: "vtmlarp-challenges",
-      title: "Active Challenges",
-      icon: "fas fa-hand-rock",
-      button: true,
-      onClick: () => new GMChallengeDashboard().render(true),
-      onChange: () => new GMChallengeDashboard().render(true)
-    },
-    {
-      name: "vtmlarp-xp-audit",
-      title: "Experience Audit",
-      icon: "fas fa-star",
-      button: true,
-      onClick: () => new XPAuditApp().render(true),
-      onChange: () => new XPAuditApp().render(true)
-    },
-    {
-      name: "vtmlarp-blood-bonds",
-      title: "Blood Bonds Overview",
-      icon: "fas fa-tint",
-      button: true,
-      onClick: () => new BloodBondOverviewApp().render(true),
-      onChange: () => new BloodBondOverviewApp().render(true)
-    }
+    tool("vtmlarp-builder", "Character Builder", "fas fa-user-plus", CharacterBuilderApp),
+    tool("vtmlarp-shops", "Shops", "fas fa-store", ShopBrowserApp),
+    tool("vtmlarp-create", "Create Content (homebrew)", "fas fa-wand-magic-sparkles", HomebrewApp)
   ];
-  for (const tool of tools) {
-    if (Array.isArray(tokenControl.tools)) tokenControl.tools.push(tool);
-    else tokenControl.tools[tool.name] = tool;
+  // Storyteller-only.
+  if (game.user.isGM) {
+    tools.push(
+      tool("vtmlarp-st-panel", "Storyteller Panel", "fas fa-chess-king", STPanelApp),
+      tool("vtmlarp-mercantile", "Mercantile — manage shops", "fas fa-store-alt", MercantilePanelApp),
+      tool("vtmlarp-homebrew", "Homebrew Review", "fas fa-scroll", HomebrewReviewApp),
+      tool("vtmlarp-challenges", "Active Challenges", "fas fa-hand-rock", GMChallengeDashboard),
+      tool("vtmlarp-xp-audit", "Experience Audit", "fas fa-star", XPAuditApp),
+      tool("vtmlarp-blood-bonds", "Blood Bonds Overview", "fas fa-tint", BloodBondOverviewApp)
+    );
+  }
+
+  const group = {
+    name: "vtmlarp",
+    title: "Mind's Eye Theatre",
+    icon: "fas fa-moon",
+    layer: "tokens",
+    activeTool: tools[0]?.name,
+    tools: {}
+  };
+  for (const t of tools) group.tools[t.name] = t;
+
+  if (Array.isArray(controls)) {
+    // v12 array shape: tools must be an array.
+    group.tools = tools;
+    controls.push(group);
+  } else {
+    controls[group.name] = group;
   }
 });
 

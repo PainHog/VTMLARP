@@ -129,9 +129,15 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
     const res = await this.#throw(`Diablerie — steal ${name} ${targetLevel}`);
     if (!res) return;
     if (res.win) {
-      const existing = this.actor.items.find(i => i.type === "discipline" && i.name === name);
-      if (existing) await existing.update({ "system.rating": targetLevel });
-      else await this.actor.createEmbeddedDocuments("Item", [{ name, type: "discipline", img: "icons/svg/upgrade.svg", system: { rating: targetLevel, description: `<p>Gained through diablerie.</p>` } }]);
+      try {
+        const existing = this.actor.items.find(i => i.type === "discipline" && i.name === name);
+        if (existing) await existing.update({ "system.rating": targetLevel });
+        else await this.actor.createEmbeddedDocuments("Item", [{ name, type: "discipline", img: "icons/svg/upgrade.svg", system: { rating: targetLevel, description: `<p>Gained through diablerie.</p>` } }]);
+        ui.notifications?.info(`Gained ${name} ${targetLevel}.`);
+      } catch (err) {
+        console.error("vtmlarp | diablerie discipline gain failed", err);
+        ui.notifications?.error(`Couldn't apply ${name} — see the console.`);
+      }
       await this.#post(`<div class="vtmlarp-shared-entry"><p><strong>${this.actor.name}</strong> tears <strong>${name}</strong> (level ${targetLevel}) from the dying soul. <em>(${res.pick} vs ${res.opp})</em></p></div>`);
     } else {
       await this.#post(`<p><strong>${this.actor.name}</strong> reaches for <strong>${name}</strong> but does not gain it. <em>(${res.pick} vs ${res.opp})</em></p>`);

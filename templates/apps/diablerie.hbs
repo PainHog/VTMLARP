@@ -13,8 +13,9 @@
   </div>
 
   {{#if victimId}}
-  {{#unless torpor}}<p class="hint diablerie-warn">The victim must be reduced to torpor before you can steal anything.</p>{{/unless}}
+  {{#unless torpor}}<p class="hint diablerie-warn">Tick <strong>&ldquo;Victim is in torpor&rdquo;</strong> above to unlock the theft (Disciplines, Attribute, Generation).</p>{{/unless}}
 
+  {{#if torpor}}
   {{#if genAvailable}}
   <fieldset>
     <legend>Generation</legend>
@@ -50,6 +51,7 @@
     </div>
     {{/if}}
   </fieldset>
+  {{/if}}
 
   <fieldset>
     <legend>Perils — separate throws</legend>
