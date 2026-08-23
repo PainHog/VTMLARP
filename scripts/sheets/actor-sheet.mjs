@@ -547,6 +547,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".power-area", "click", this._onPlacePowerArea.bind(this));
     on(".blood-boost", "click", this._onBloodBoost.bind(this));
     on(".blood-boost-clear", "click", this._onClearBloodBoost.bind(this));
+    on(".spend-willpower", "click", this._onSpendWillpower.bind(this));
+    on(".blush-of-life", "click", this._onBlushOfLife.bind(this));
     on(".item-create", "click", this._onItemCreate.bind(this));
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
@@ -1108,13 +1110,24 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
    * of the conflict. Warns above the generation Trait cap (excess Traits last
    * only one challenge, per the rule).
    */
+  /** Debit Blood, track per-turn spend, warn over the generation limit. Returns true if paid. */
+  async _spendBlood(amount, reason) {
+    const cur = Number(this.actor.system.blood.value) || 0;
+    if (cur < amount) { ui.notifications?.warn(`Not enough Blood (need ${amount}).`); return false; }
+    const spent = (Number(this.actor.system.blood.spentThisTurn) || 0) + amount;
+    await this.actor.update({ "system.blood.value": cur - amount, "system.blood.spentThisTurn": spent });
+    const perTurn = Number(this.actor.system.blood.perTurn) || 0;
+    if (perTurn && spent > perTurn) {
+      ui.notifications?.info(`Over your per-turn Blood limit (${perTurn}); you've now spent ${spent} this turn${reason ? ` (${reason})` : ""}.`);
+    }
+    return true;
+  }
+
   async _onBloodBoost(event) {
     event.preventDefault();
-    const blood = Number(this.actor.system.blood.value) || 0;
-    if (blood <= 0) { ui.notifications?.warn("No Blood to spend."); return; }
     const cap = GENERATION_TABLE[this.actor.system.generation]?.maxTraits;
     const currentTotal = Number(this.actor.system.attributes.physical.total) || 0; // includes existing boosts
-    await this.actor.update({ "system.blood.value": blood - 1 });
+    if (!(await this._spendBlood(1, "Physical boost"))) return;
 
     const existing = this.actor.effects.find(e => e.flags?.vtmlarp?.bloodBoost);
     if (existing) {
@@ -1141,6 +1154,36 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     event.preventDefault();
     const fx = this.actor.effects.filter(e => e.flags?.vtmlarp?.bloodBoost).map(e => e.id);
     if (fx.length) await this.actor.deleteEmbeddedDocuments("ActiveEffect", fx);
+    this.render();
+  }
+
+  /** Spend 1 temporary Willpower Trait (retest, resist a Mental/Social Challenge, etc.). */
+  async _onSpendWillpower(event) {
+    event.preventDefault();
+    const wp = Number(this.actor.system.willpower.value) || 0;
+    if (wp <= 0) { ui.notifications?.warn("No temporary Willpower to spend."); return; }
+    await this.actor.update({ "system.willpower.value": wp - 1 });
+    await logAction(this.actor, "Spent 1 Willpower Trait");
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content: `<p><strong>${this.actor.name}</strong> spends a <strong>Willpower Trait</strong> (${wp - 1} left).</p>`
+    });
+    this.render();
+  }
+
+  /** Blush of Life: toggle passing for mortal, spending 1 Blood to switch it on. */
+  async _onBlushOfLife(event) {
+    event.preventDefault();
+    const on = !this.actor.system.blushOfLife;
+    if (on) {
+      if (!(await this._spendBlood(1, "Blush of Life"))) return;
+    }
+    await this.actor.update({ "system.blushOfLife": on });
+    await logAction(this.actor, on ? "Blush of Life (appears mortal)" : "Ended Blush of Life");
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content: `<p><strong>${this.actor.name}</strong> ${on ? "flushes with the <strong>Blush of Life</strong> — passing for mortal (spends 1 Blood)." : "lets the Blush of Life fade."}</p>`
+    });
     this.render();
   }
 

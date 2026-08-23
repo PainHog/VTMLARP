@@ -132,6 +132,21 @@ Hooks.once("init", () => {
 // palette every time a new token is created from it, giving visual variety
 // (a lot with a fleet) without needing a separate image per color.
 const VEHICLE_TINT_PALETTE = ["#1a1a1a", "#e6e6e6", "#8a0303", "#0d2b4a", "#2f4f2f", "#4a3c1a", "#6b6b6b"];
+// Reset each combatant's per-turn Blood-spend counter when the combat turn or
+// round advances, so the per-turn limit warning is measured per turn. GM only
+// (writes shared actor data).
+for (const hook of ["combatTurn", "combatRound"]) {
+  Hooks.on(hook, (combat) => {
+    if (!game.user.isGM || !combat?.combatants) return;
+    for (const c of combat.combatants) {
+      const a = c.actor;
+      if (a && (Number(a.system?.blood?.spentThisTurn) || 0) > 0) {
+        a.update({ "system.blood.spentThisTurn": 0 }).catch(() => {});
+      }
+    }
+  });
+}
+
 Hooks.on("preCreateToken", (tokenDoc, data) => {
   const actor = tokenDoc.actor;
   if (actor?.type !== "vehicle") return;

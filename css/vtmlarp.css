@@ -1449,6 +1449,8 @@ form.vtmlarp.sheet {
 .blood-boost { margin-left: 6px; color: var(--vtm-red-bright, #b8121a); cursor: pointer; white-space: nowrap; }
 .blood-boost-active { margin-left: 6px; font-size: 11px; color: var(--vtm-red-bright, #b8121a); font-weight: bold; }
 .blood-boost-active a { color: inherit; }
+.spend-willpower, .blush-of-life { margin-left: 6px; color: var(--vtm-red-bright, #b8121a); cursor: pointer; white-space: nowrap; font-size: 12px; }
+.blush-of-life.is-on { color: #4caf50; font-weight: bold; }
 
 /* -------------------------------------------------------------------- */
 /* Afflictions / ST modifiers on the character sheet                     */

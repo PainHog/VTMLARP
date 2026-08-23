@@ -158,6 +158,7 @@
           <label>Willpower</label>
           <input type="number" name="system.willpower.value" value="{{system.willpower.value}}">
           / <input type="number" name="system.willpower.max" value="{{system.willpower.max}}" readonly title="Maximum permanent Willpower is set by your Generation (Laws of the Night Revised, p. 95). Change your Generation to change this cap.">
+          {{#if owner}}<a class="spend-willpower" title="Spend 1 temporary Willpower Trait (retest, resist, etc.) — logged to chat"><i class="fas fa-bolt"></i> Spend</a>{{/if}}
         </div>
         {{#if showBlood}}
         <div class="pool">
@@ -168,6 +169,7 @@
           {{#if owner}}
           <a class="blood-boost" title="Spend 1 Blood for +1 temporary Physical Trait (reflexive; obey your per-turn limit and generation cap)"><i class="fas fa-droplet"></i> +Phys</a>
           {{#if bloodBoost}}<span class="blood-boost-active">+{{bloodBoost}} Phys (blood) <a class="blood-boost-clear" title="End the boost — blood is already spent"><i class="fas fa-times"></i></a></span>{{/if}}
+          <a class="blush-of-life {{#if system.blushOfLife}}is-on{{/if}}" title="Blush of Life — spend 1 Blood to pass for mortal for the scene (toggle)"><i class="fas fa-heart"></i> Blush{{#if system.blushOfLife}} (on){{/if}}</a>
           {{/if}}
         </div>
         {{/if}}

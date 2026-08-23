@@ -164,8 +164,14 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
       blood: new fields.SchemaField({
         value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 10 }),
         max: new fields.NumberField({ required: true, integer: true, min: 0, initial: 10 }),
-        perTurn: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 })
+        perTurn: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 }),
+        // Blood spent so far this combat turn (reset on turn change) - used to
+        // warn when a spend exceeds the generation's per-turn limit.
+        spentThisTurn: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 })
       }),
+
+      // Blush of Life: spend a Blood Trait to pass for mortal for the scene.
+      blushOfLife: new fields.BooleanField({ required: false, initial: false }),
 
       // Armor: `max` is the rating of the worn armor, `value` its current
       // remaining protection (players lower it as it soaks hits).
