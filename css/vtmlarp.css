@@ -1451,6 +1451,11 @@ form.vtmlarp.sheet {
 .blood-boost-active a { color: inherit; }
 .spend-willpower, .blush-of-life { margin-left: 6px; color: var(--vtm-red-bright, #b8121a); cursor: pointer; white-space: nowrap; font-size: 12px; }
 .blush-of-life.is-on { color: #4caf50; font-weight: bold; }
+.diablerie-taint { color: var(--vtm-red-bright, #b8121a); }
+.vtmlarp.diablerie fieldset { border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; margin: 6px 0; padding: 4px 8px; }
+.vtmlarp.diablerie .diablerie-row { align-items: center; gap: 6px; margin: 2px 0; }
+.vtmlarp.diablerie .diablerie-warn { color: var(--vtm-red-bright, #b8121a); font-weight: bold; }
+.vtmlarp.diablerie .diablerie-complete { margin-top: 8px; }
 
 /* -------------------------------------------------------------------- */
 /* Afflictions / ST modifiers on the character sheet                     */

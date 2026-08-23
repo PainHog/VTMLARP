@@ -1,0 +1,65 @@
+<form class="vtmlarp diablerie flexcol" autocomplete="off">
+  <p class="hint"><strong>{{diablerist}}</strong> commits the Amaranth.{{#if taint}} Already tainted &times;{{taint}}.{{/if}}
+    Each throw is a Challenge answered at random — pick your gesture and see if you take the prize.</p>
+
+  <div class="flexrow" style="gap:8px; align-items:center;">
+    <label class="wide">Victim
+      <select name="victim">
+        <option value="">— choose a vampire —</option>
+        {{#each victims as |v|}}<option value="{{v.id}}" {{#if (eq v.id ../victimId)}}selected{{/if}}>{{v.name}}</option>{{/each}}
+      </select>
+    </label>
+    <label class="check" title="The victim must be immobilized in torpor before their soul can be drained."><input type="checkbox" name="torpor" {{#if torpor}}checked{{/if}}> Victim is in torpor</label>
+  </div>
+
+  {{#if victimId}}
+  {{#unless torpor}}<p class="hint diablerie-warn">The victim must be reduced to torpor before you can steal anything.</p>{{/unless}}
+
+  {{#if genAvailable}}
+  <fieldset>
+    <legend>Generation</legend>
+    <p class="hint">{{victimName}} is of lower generation ({{vGen}}th vs your {{myGen}}th). Win to draw one step closer to Caine.</p>
+    <button type="button" data-action="throwGeneration"><i class="fas fa-hand-fist"></i> Throw to steal Generation</button>
+  </fieldset>
+  {{/if}}
+
+  <fieldset>
+    <legend>Disciplines</legend>
+    {{#each disciplines as |d|}}
+    <div class="diablerie-row flexrow">
+      <span class="wide">{{d.name}} <span class="hint">(you {{d.myRating}} / victim {{d.vRating}})</span></span>
+      {{#if d.canGain}}
+      <button type="button" data-action="throwDiscipline" data-name="{{d.name}}" data-level="{{d.targetLevel}}">Throw for level {{d.targetLevel}}</button>
+      {{else}}
+      <span class="hint">Maxed (can't exceed the victim's {{d.vRating}})</span>
+      {{/if}}
+    </div>
+    {{else}}
+    <p class="hint">The victim knows no Disciplines to steal.</p>
+    {{/each}}
+  </fieldset>
+
+  <fieldset>
+    <legend>Attribute Trait (one throw)</legend>
+    {{#if attributeUsed}}
+    <p class="hint">Attribute throw already used this diablerie.</p>
+    {{else}}
+    <div class="flexrow" style="gap:8px; align-items:center;">
+      <label>Pool <select name="attrPool"><option value="physical">Physical</option><option value="social">Social</option><option value="mental">Mental</option></select></label>
+      <button type="button" data-action="throwAttribute">Throw for +1 Trait</button>
+    </div>
+    {{/if}}
+  </fieldset>
+
+  <fieldset>
+    <legend>Perils — separate throws</legend>
+    <div class="flexrow" style="gap:6px; flex-wrap:wrap;">
+      <button type="button" data-action="throwFrenzy"><i class="fas fa-fire"></i> Throw vs Frenzy</button>
+      <button type="button" data-action="throwDerangement"><i class="fas fa-brain"></i> Throw vs Derangement</button>
+      <button type="button" data-action="throwHumanity"><i class="fas fa-heart-crack"></i> Throw vs Humanity loss</button>
+    </div>
+  </fieldset>
+
+  <button type="button" class="diablerie-complete" data-action="complete"><i class="fas fa-skull"></i> Record the Diablerie (taint the blood)</button>
+  {{/if}}
+</form>

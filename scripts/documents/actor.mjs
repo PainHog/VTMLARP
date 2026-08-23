@@ -173,6 +173,15 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
       // Blush of Life: spend a Blood Trait to pass for mortal for the scene.
       blushOfLife: new fields.BooleanField({ required: false, initial: false }),
 
+      // Diablerie taint. Each act of diablerie adds black veins to the aura;
+      // count is how many times committed, lastDate a timestamp. Detectable via
+      // Aura Perception for ~3 months, or via Thaumaturgy's A Taste for Blood
+      // indefinitely (Laws of the Night Revised, p. 216).
+      diablerie: new fields.SchemaField({
+        count: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 }),
+        lastDate: new fields.StringField({ required: false, blank: true, initial: "" })
+      }),
+
       // Armor: `max` is the rating of the worn armor, `value` its current
       // remaining protection (players lower it as it soaks hits).
       armor: new fields.SchemaField({

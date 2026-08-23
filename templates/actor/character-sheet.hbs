@@ -178,6 +178,12 @@
           <input type="number" name="system.armor.value" value="{{system.armor.value}}" min="0">
           / <input type="number" name="system.armor.max" value="{{system.armor.max}}" min="0">
         </div>
+        {{#if system.diablerie.count}}
+        <div class="pool diablerie-taint" title="Black veins in the aura from diablerie — visible to Aura Perception (~3 months) and Thaumaturgy's A Taste for Blood (forever).">
+          <label><i class="fas fa-skull"></i> Diablerie taint</label>
+          <span>&times;{{system.diablerie.count}}{{#if system.diablerie.lastDate}} <span class="hint">(last {{system.diablerie.lastDate}})</span>{{/if}}</span>
+        </div>
+        {{/if}}
         <div class="pool">
           <label>Path Rating</label>
           <input type="number" name="system.morality.rating" value="{{system.morality.rating}}">
@@ -266,6 +272,7 @@
         {{#if showVampireRituals}}
         <button type="button" class="open-frenzy"><i class="fas fa-burst"></i> Frenzy / Rötschreck</button>
         <button type="button" class="open-vaulderie"><i class="fas fa-tint"></i> Vaulderie</button>
+        <button type="button" class="open-diablerie" title="Commit diablerie on a vampire in torpor"><i class="fas fa-skull"></i> Diablerie</button>
         {{/if}}
         <button type="button" class="open-session-log"><i class="fas fa-scroll"></i> Session Log</button>
       </div>

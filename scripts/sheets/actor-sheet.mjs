@@ -4,6 +4,7 @@ import { VaulderieApp } from "../apps/vaulderie.mjs";
 import { checkPrerequisites } from "../apps/prerequisites.mjs";
 import { logAction } from "../apps/action-log.mjs";
 import { SessionLogApp } from "../apps/session-log.mjs";
+import { DiablerieApp } from "../apps/diablerie.mjs";
 import { disciplineFreeDots, disciplineFreebieCost } from "../apps/creation-costs.mjs";
 import { GENERATION_OPTIONS, ARCHETYPE_OPTIONS, PATH_OPTIONS, GENERATION_TABLE } from "../game-data.mjs";
 
@@ -540,6 +541,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".open-challenge", "click", () => new ChallengeApp(this.actor).render(true));
     on(".open-frenzy", "click", () => new FrenzyApp(this.actor).render(true));
     on(".open-vaulderie", "click", () => new VaulderieApp(this.actor).render(true));
+    on(".open-diablerie", "click", () => new DiablerieApp(this.actor).render(true));
     on(".power-toggle", "click", this._onTogglePower.bind(this));
     on(".power-use", "click", this._onUsePower.bind(this));
     on(".power-challenge", "click", this._onInitiatePowerChallenge.bind(this));

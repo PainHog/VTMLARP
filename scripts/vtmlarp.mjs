@@ -25,7 +25,7 @@ for (const appName of [
   "VTMActorSheet", "VTMVehicleSheet", "VTMItemSheet",
   "ChallengeApp", "ChallengeResponseApp", "GMChallengeDashboard", "XPAuditApp",
   "BloodBondOverviewApp", "STPanelApp", "CharacterBuilderApp", "FrenzyApp",
-  "VaulderieApp", "SessionLogApp", "MercantilePanelApp", "ShopBrowserApp"
+  "VaulderieApp", "SessionLogApp", "MercantilePanelApp", "ShopBrowserApp", "DiablerieApp"
 ]) {
   Hooks.on(`render${appName}`, (app, element) => enhanceAccessibility(element));
 }
