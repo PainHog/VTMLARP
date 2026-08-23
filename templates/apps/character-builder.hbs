@@ -14,7 +14,7 @@
       </label>
     </div>
     <div class="builder-toprow flexrow">
-      <label>Clan <span class="sel-info-wrap"><select name="clan"><option value="">—</option>{{#each clans as |c|}}<option value="{{c}}">{{c}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="clan" data-for="clan" title="View this clan's compendium lore"></i></span></label>
+      <label>Clan <span class="sel-info-wrap"><select name="clan"><option value="">—</option>{{#each clans as |c|}}<option value="{{c}}" {{#if (eq c ../initialClan)}}selected{{/if}}>{{c}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="clan" data-for="clan" title="View this clan's compendium lore"></i></span></label>
       <label>Sect <span class="sel-info-wrap"><select name="sect"><option value="">—</option>{{#each sects as |s|}}<option value="{{s}}">{{s}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="sect" data-for="sect" title="View this sect's compendium lore"></i></span></label>
       <label>Path <span class="sel-info-wrap"><select name="path">{{#each paths as |p|}}<option value="{{p}}">{{p}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="path" data-for="path" title="View this path's compendium lore"></i></span></label>
     </div>

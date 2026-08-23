@@ -24,35 +24,46 @@
   <section class="clan-card flexcol">
     {{#with clan}}
     <header class="clan-card-head">
+      <div class="clan-card-label">Clan</div>
       <h2 class="clan-card-name">{{name}}</h2>
       {{#if nickname}}<div class="clan-card-nick">{{nickname}}</div>{{/if}}
     </header>
 
-    <p class="clan-card-blurb">{{blurb}}</p>
-
     {{#if tags.length}}
-    <div class="clan-card-tags">
-      {{#each tags as |t|}}<span class="clan-tag">{{t}}</span>{{/each}}
+    <div class="clan-card-field">
+      <span class="clan-card-label">Playstyle</span>
+      <div class="clan-card-tags">
+        {{#each tags as |t|}}<span class="clan-tag">{{t}}</span>{{/each}}
+      </div>
     </div>
     {{/if}}
 
-    <div class="clan-card-disc">
-      <h3>Signature Disciplines</h3>
+    <div class="clan-card-field">
+      <span class="clan-card-label">About</span>
+      <p class="clan-card-blurb">{{blurb}}</p>
+    </div>
+
+    <div class="clan-card-field clan-card-disc">
+      <span class="clan-card-label">Disciplines</span>
       {{#if clanless}}
       <p class="hint">No fixed Disciplines — a {{name}} character can learn any Disciplines you choose in the Character Builder.</p>
       {{else}}
       <ul>
         {{#each disciplines as |d|}}
-        <li><strong>{{d.name}}</strong> — {{d.blurb}}</li>
+        <li>
+          {{#if d.uuid}}<a data-action="discipline" data-uuid="{{d.uuid}}" class="disc-link" title="Open {{d.name}} in the compendium"><strong>{{d.name}}</strong></a>{{else}}<strong>{{d.name}}</strong>{{/if}}
+          — {{d.blurb}}
+        </li>
         {{/each}}
       </ul>
       {{/if}}
     </div>
 
     <div class="clan-card-actions flexrow">
+      <button type="button" class="select-clan" data-action="selectClan" data-name="{{name}}"><i class="fas fa-user-plus"></i> Select Clan</button>
       <button type="button" data-action="lore" data-name="{{name}}"><i class="fas fa-book-open"></i> Read full lore</button>
     </div>
-    <p class="hint clan-alt-note">Antitribu, revenant, and Dark Ages variants of many clans live in the Clans &amp; Bloodlines compendiums — search a keyword above to find related lineages.</p>
+    <p class="hint clan-alt-note">“Select Clan” opens the Character Builder with {{name}} set and its Disciplines seeded. Antitribu, revenant, and Dark Ages variants live in the Clans &amp; Bloodlines compendiums — search a keyword above to find them.</p>
     {{/with}}
 
     <footer class="clan-card-nav flexrow">

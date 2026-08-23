@@ -1,5 +1,6 @@
 import { CLANS, CLAN_DISCIPLINES } from "./clan-data.mjs";
 import { CLAN_GUIDE, DISCIPLINE_BLURB, searchClans } from "./clan-guide.mjs";
+import { CharacterBuilderApp } from "./character-builder.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
@@ -23,9 +24,15 @@ export class ClanPickerApp extends HandlebarsApplicationMixin(ApplicationV2) {
       next: ClanPickerApp.#onNext,
       jump: ClanPickerApp.#onJump,
       lore: ClanPickerApp.#onLore,
+      discipline: ClanPickerApp.#onDiscipline,
+      selectClan: ClanPickerApp.#onSelectClan,
       clearSearch: ClanPickerApp.#onClearSearch
     }
   };
+
+  /** name -> compendium UUID for the Disciplines pack, built in _prepareContext
+   * so the Discipline links open the right entry. */
+  #discUuid = {};
 
   static PARTS = { form: { template: "systems/vtmlarp/templates/apps/clan-picker.hbs" } };
 
@@ -39,14 +46,28 @@ export class ClanPickerApp extends HandlebarsApplicationMixin(ApplicationV2) {
     return list.length ? list : CLANS;
   }
 
+  /** Build the Discipline-name -> compendium UUID lookup once. */
+  async #ensureDiscUuid() {
+    if (Object.keys(this.#discUuid).length) return;
+    const pack = game.packs?.get("vtmlarp.disciplines");
+    if (!pack) return;
+    for (const e of await pack.getIndex()) {
+      const uuid = e.uuid ?? pack.getUuid?.(e._id) ?? `Compendium.vtmlarp.disciplines.${e._id}`;
+      // Base Disciplines only (skip powers/paths, which carry ( or — in the name).
+      if (!/[(—]/.test(e.name) && !(e.name in this.#discUuid)) this.#discUuid[e.name] = uuid;
+    }
+  }
+
   async _prepareContext() {
+    await this.#ensureDiscUuid();
     const results = this.#results();
     if (this.#index >= results.length) this.#index = 0;
     const name = results[this.#index];
     const guide = CLAN_GUIDE[name] ?? {};
     const disciplines = (CLAN_DISCIPLINES[name] ?? []).map(d => ({
       name: d,
-      blurb: DISCIPLINE_BLURB[d] ?? ""
+      blurb: DISCIPLINE_BLURB[d] ?? "",
+      uuid: this.#discUuid[d] ?? ""
     }));
 
     // Compact list for the "jump to any clan" rail.
@@ -113,6 +134,23 @@ export class ClanPickerApp extends HandlebarsApplicationMixin(ApplicationV2) {
     this.#query = "";
     this.#index = 0;
     this.render();
+  }
+
+  /** Open a Discipline's compendium entry from a clan card link. */
+  static async #onDiscipline(event, target) {
+    const uuid = target.dataset.uuid;
+    if (!uuid) { ui.notifications?.info("No compendium entry linked for that Discipline."); return; }
+    const doc = await fromUuid(uuid).catch(() => null);
+    if (doc?.sheet) doc.sheet.render(true);
+    else ui.notifications?.warn("Couldn't open that Discipline entry.");
+  }
+
+  /** Send the player to the Character Builder with this clan pre-selected. */
+  static #onSelectClan(event, target) {
+    const clan = target.dataset.name;
+    if (!clan) return;
+    new CharacterBuilderApp({ clan }).render(true);
+    this.close();
   }
 
   /** Open the full compendium lore entry for the shown clan, falling back across

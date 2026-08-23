@@ -21,6 +21,15 @@ const SECTS = ["Camarilla", "Sabbat", "Anarch Movement", "Independent Alliance",
 export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV2) {
   #step = 0;
   #stepCount = 0;
+  // A clan pre-selected by the "Select Clan" button in the Clan Picker, applied
+  // once on first render so its in-clan Disciplines are seeded automatically.
+  #initialClan = "";
+  #initialClanApplied = false;
+
+  constructor(options = {}) {
+    super(options);
+    if (options.clan && CLANS.includes(options.clan)) this.#initialClan = options.clan;
+  }
 
   static DEFAULT_OPTIONS = {
     id: "vtmlarp-character-builder",
@@ -94,7 +103,7 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     for (const e of await idx("paths-of-enlightenment")) remember("path", e.name, e.uuid);
 
     return {
-      clans: CLANS, sects: SECTS, paths: PATH_OPTIONS, archetypes: ARCHETYPE_OPTIONS,
+      clans: CLANS, initialClan: this.#initialClan, sects: SECTS, paths: PATH_OPTIONS, archetypes: ARCHETYPE_OPTIONS,
       generations: [...GENERATION_OPTIONS].reverse(),
       abilities, disciplineList, backgrounds, derangements,
       merits: mf.filter(e => e.type === "merit"),
@@ -139,6 +148,12 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     this.element.querySelector('[name="clan"]')?.addEventListener("change", (e) => {
       this.#applyClanDisciplines(e.target.value);
     });
+    // Seed the in-clan Disciplines for a clan pre-selected from the Clan Picker.
+    if (this.#initialClan && !this.#initialClanApplied) {
+      this.#initialClanApplied = true;
+      this.#applyClanDisciplines(this.#initialClan);
+      ui.notifications?.info(`Character Builder started with clan ${this.#initialClan}.`);
+    }
     this.#showStep(this.#step);
     this.#recompute();
   }

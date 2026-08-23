@@ -1599,3 +1599,10 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 .vtmlarp.clan-picker .clan-alt-note { font-size: 11px; margin: 6px 0; }
 .vtmlarp.clan-picker .clan-card-nav { margin-top: auto; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-top: 1px solid rgba(138,3,3,0.3); position: sticky; bottom: 0; background: inherit; }
 .vtmlarp.clan-picker .clan-card-count { font-size: 12px; opacity: 0.7; white-space: nowrap; }
+.vtmlarp.clan-picker .clan-card-label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; font-weight: bold; margin-bottom: 1px; }
+.vtmlarp.clan-picker .clan-card-field { margin: 8px 0; }
+.vtmlarp.clan-picker .clan-card-field .clan-card-blurb { margin: 0; }
+.vtmlarp.clan-picker .disc-link { text-decoration: none; border-bottom: 1px dotted var(--vtm-red, #8a0303); cursor: pointer; }
+.vtmlarp.clan-picker .disc-link:hover { color: var(--vtm-red-bright, #b8121a); }
+.vtmlarp.clan-picker .clan-card-actions { gap: 6px; margin-top: 6px; }
+.vtmlarp.clan-picker .select-clan { font-weight: bold; }
