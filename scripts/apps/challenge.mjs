@@ -13,6 +13,33 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { renderTemplate } = foundry.applications.handlebars;
 
 /**
+ * Soft line-of-sight test between two actors' tokens on the active scene.
+ * Returns "blocked" (a sight-blocking wall is between them), "clear", or
+ * "unknown" (no tokens, no scene, different scenes, or the sight backend isn't
+ * available - in which case we don't warn, to avoid false positives on scenes
+ * that don't use walls). Deliberately defensive: LOS in MET is usually a
+ * roleplay call, so this only ever produces a soft warning, never a hard block.
+ */
+function lineOfSightState(challenger, opponent) {
+  try {
+    const ta = challenger?.getActiveTokens?.()[0];
+    const tb = opponent?.getActiveTokens?.()[0];
+    if (!ta || !tb || !canvas?.ready) return "unknown";
+    if (ta.document?.parent?.id !== tb.document?.parent?.id) return "unknown";
+    const origin = ta.center;
+    const dest = tb.center;
+    if (!origin || !dest) return "unknown";
+    const backend = foundry.canvas?.geometry?.ClockwiseSweepPolygon
+      ?? globalThis.ClockwiseSweepPolygon
+      ?? CONFIG.Canvas?.polygonBackends?.sight;
+    if (typeof backend?.testCollision !== "function") return "unknown";
+    return backend.testCollision(origin, dest, { type: "sight", mode: "any" }) ? "blocked" : "clear";
+  } catch {
+    return "unknown";
+  }
+}
+
+/**
  * A lightweight tool for logging a Trait-bidding challenge to chat.
  * Physical/Social/Mental Challenges send a private request to the opponent's
  * player (or, for an unowned NPC, any GM), who throws their own gesture on
@@ -173,6 +200,16 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     if (!opponentActor) {
       ui.notifications?.warn("Pick an opponent before sending the Challenge.");
       return;
+    }
+
+    // Soft line-of-sight warning: if both tokens are on the scene and a wall
+    // blocks sight between them, confirm before targeting out of line of sight.
+    if (lineOfSightState(this.actor, opponentActor) === "blocked") {
+      const proceed = await foundry.applications.api.DialogV2.confirm({
+        window: { title: "Out of line of sight" },
+        content: `<p><strong>${opponentActor.name}</strong> doesn't appear to be in your line of sight — a wall blocks it. Send the Challenge anyway?</p>`
+      }).catch(() => false);
+      if (!proceed) return;
     }
 
     const recipients = respondingUsers(opponentActor);
