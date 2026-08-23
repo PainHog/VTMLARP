@@ -23,6 +23,18 @@ All notable changes to this system are noted here. Versions are
   generalizing the Vicissitude body-mod to every Discipline.
 - **Line-of-sight warning.** Initiating a Challenge against a token blocked by a
   sight wall now asks for confirmation (soft warning, never a hard block).
+- **Diablerie system.** A per-vampire Diablerie screen (victim must be in
+  torpor): throw one Challenge at a time (opposing gesture at random) to steal
+  each Discipline (first dot of unknown / next dot of known), one Attribute
+  Trait, and — when the victim is lower generation — a Generation; separate
+  throws for the Frenzy, Derangement and Humanity perils. Records blood taint
+  (black veins, detectable via Aura Perception / A Taste for Blood) on the sheet.
+- **Blood/Willpower economy rules.** Spend Blood for +1 temporary Physical Trait
+  (tracked, clearable), Blush of Life toggle, one-click Spend Willpower, and a
+  per-turn Blood-spend warning that resets each combat turn.
+- **Player-authored content + approval.** Players submit homebrew (Thaumaturgy
+  rituals/paths, combination Disciplines, custom powers); the Storyteller
+  approves them into a world "Player Added" compendium.
 
 ## 1.17.x – 1.18.x — Full compendium enrichment
 
