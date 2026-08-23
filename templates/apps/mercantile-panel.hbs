@@ -31,7 +31,13 @@
           <td><input type="number" data-field="price" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" value="{{item.price}}" min="0" class="tiny"></td>
           <td><input type="number" data-field="qty" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" value="{{item.qty}}" title="-1 = unlimited" class="tiny"></td>
           <td><input type="checkbox" data-field="money" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" {{#if item.money}}checked{{/if}}></td>
-          <td><input type="checkbox" data-field="boon" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" {{#if item.boon}}checked{{/if}}></td>
+          <td class="merc-boon-cell"><input type="checkbox" data-field="boon" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" {{#if item.boon}}checked{{/if}}>
+            <select data-field="boonLevel" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" class="tiny" {{#unless item.boon}}style="display:none;"{{/unless}} title="Boon level owed">
+              <option value="minor" {{#if (eq item.boonLevel "minor")}}selected{{/if}}>Minor</option>
+              <option value="major" {{#if (eq item.boonLevel "major")}}selected{{/if}}>Major</option>
+              <option value="blood" {{#if (eq item.boonLevel "blood")}}selected{{/if}}>Blood</option>
+            </select>
+          </td>
           <td><input type="checkbox" data-field="barter" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" {{#if item.barter}}checked{{/if}}></td>
           <td><a data-action="deleteItem" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" title="Remove"><i class="fas fa-times"></i></a></td>
         </tr>

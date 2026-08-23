@@ -1435,14 +1435,22 @@ form.vtmlarp.sheet {
 .vtmlarp.mercantile-panel .merc-stock .tiny { width: 48px; }
 .vtmlarp.mercantile-panel .merc-desc-row input { width: 100%; }
 .vtmlarp.mercantile-panel .merc-toolbar { gap: 6px; align-items: center; margin-bottom: 6px; }
+.vtmlarp.shop-browser { height: 100%; }
+.vtmlarp.shop-browser .shop-scroll { flex: 1; overflow-y: auto; min-height: 0; padding-right: 4px; }
 .vtmlarp.shop-browser .shop { border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; margin: 6px 0; padding: 4px 8px; }
 .vtmlarp.shop-browser .shop-closed { opacity: 0.6; }
 .vtmlarp.shop-browser .shop-stock { list-style: none; margin: 0; padding: 0; }
-.vtmlarp.shop-browser .shop-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px solid rgba(138,3,3,0.3); }
-.vtmlarp.shop-browser .shop-item-img { width: 32px; height: 32px; flex: 0 0 auto; border: none; }
-.vtmlarp.shop-browser .shop-item-body { flex: 1; display: flex; flex-direction: column; }
-.vtmlarp.shop-browser .shop-item-name { font-weight: bold; }
-.vtmlarp.shop-browser .shop-item-desc { font-size: 12px; opacity: 0.85; }
+.vtmlarp.shop-browser .shop-item { padding: 0; border-bottom: 1px solid rgba(138,3,3,0.3); }
+.vtmlarp.shop-browser .shop-item-details > summary { display: flex; align-items: center; gap: 8px; padding: 5px 2px; cursor: pointer; list-style: none; }
+.vtmlarp.shop-browser .shop-item-details > summary::-webkit-details-marker { display: none; }
+.vtmlarp.shop-browser .shop-item-details > summary::before { content: "\25B6"; font-size: 9px; opacity: 0.6; flex: 0 0 auto; transition: transform 0.15s; }
+.vtmlarp.shop-browser .shop-item-details[open] > summary::before { transform: rotate(90deg); }
+.vtmlarp.shop-browser .shop-item-img { width: 28px; height: 28px; flex: 0 0 auto; border: none; }
+.vtmlarp.shop-browser .shop-item-name { font-weight: bold; flex: 1; }
+.vtmlarp.shop-browser .shop-item-pay { flex: 0 0 auto; }
+.vtmlarp.shop-browser .shop-buy-btn { flex: 0 0 auto; width: auto; white-space: nowrap; }
+.vtmlarp.shop-browser .shop-item-desc { font-size: 12px; opacity: 0.9; padding: 4px 8px 8px 24px; }
+.vtmlarp.shop-browser .shop-item-trait { font-size: 12px; padding: 0 8px 6px 24px; }
 .vtmlarp.shop-browser .pay-tag { display: inline-block; font-size: 11px; padding: 1px 6px; margin-right: 4px; border: 1px solid var(--vtm-red, #8a0303); border-radius: 8px; }
 .vtmlarp.shop-browser .pay-tag.qty { opacity: 0.7; }
 .transactions { width: 100%; font-size: 12px; }

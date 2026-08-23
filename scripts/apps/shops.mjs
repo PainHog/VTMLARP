@@ -65,7 +65,8 @@ export async function fulfillPurchase(req) {
     await buyer.update({ "system.money": have - price });
   } else if (method === "boon") {
     const boons = foundry.utils.duplicate(buyer.system.boons ?? []);
-    boons.push({ who: shop.keeper || shop.name, type: "minor", direction: "owed", notes: `For ${item.name}` });
+    const level = ["minor", "major", "blood"].includes(item.boonLevel) ? item.boonLevel : "minor";
+    boons.push({ who: shop.keeper || shop.name, type: level, direction: "owed", notes: `For ${item.name}` });
     await buyer.update({ "system.boons": boons });
   } // barter: no automatic debit - the traded goods/service are recorded in the note.
 
@@ -127,6 +128,15 @@ export class ShopBrowserApp extends HandlebarsApplicationMixin(ApplicationV2) {
   };
 
   static PARTS = { form: { template: "systems/vtmlarp/templates/apps/shop-browser.hbs" } };
+
+  _onRender(context, options) {
+    super._onRender(context, options);
+    // The Buy button lives inside a <summary>; a click there would otherwise
+    // toggle the collapsible open/closed. Keep buying and expanding separate.
+    for (const btn of this.element.querySelectorAll(".shop-buy-btn")) {
+      btn.addEventListener("click", ev => ev.preventDefault());
+    }
+  }
 
   async _prepareContext() {
     const isGM = game.user.isGM;
@@ -242,6 +252,11 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
       shop[field] = value;
     }
     await saveShops(shops);
+    // Show/hide the boon-level select inline without a full re-render.
+    if (field === "boon" && itemId) {
+      const sel = this.element.querySelector(`select[data-field="boonLevel"][data-item-id="${itemId}"]`);
+      if (sel) sel.style.display = value ? "" : "none";
+    }
   }
 
   static async #onAddShop() {
@@ -267,7 +282,7 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
     const shops = getShops();
     const shop = shops.find(s => s.id === target.dataset.shopId);
     if (!shop) return;
-    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: "New Item", category: "Basic Item", description: "", price: 0, qty: -1, money: true, boon: false, barter: false, img: "", traitBonus: "" });
+    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: "New Item", category: "Basic Item", description: "", price: 0, qty: -1, money: true, boon: false, boonLevel: "minor", barter: false, img: "", traitBonus: "" });
     await saveShops(shops);
     this.render();
   }
@@ -290,6 +305,9 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
         <fieldset><legend>Accepted payment</legend>
           <label class="check"><input type="checkbox" name="money" checked> Money</label>
           <label class="check"><input type="checkbox" name="boon"> Boon owed</label>
+          <label class="boon-level-wrap" style="display:none;">Boon level
+            <select name="boonLevel"><option value="minor">Minor</option><option value="major">Major</option><option value="blood">Blood/Life</option></select>
+          </label>
           <label class="check"><input type="checkbox" name="barter"> Barter / trade</label>
         </fieldset>
         <label>Trait bonus (weapons/armor, optional) <input type="text" name="traitBonus" placeholder="e.g. +2 Traits, 2 Health absorbed"></label>
@@ -306,12 +324,19 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
             category: f.category.value,
             price: Number(f.price.value) || 0,
             qty: Number.isFinite(Number(f.qty.value)) ? Number(f.qty.value) : -1,
-            money: f.money.checked, boon: f.boon.checked, barter: f.barter.checked,
+            money: f.money.checked, boon: f.boon.checked, boonLevel: f.boonLevel.value, barter: f.barter.checked,
             traitBonus: f.traitBonus.value.trim(),
             description: f.description.value.trim(),
             img: ""
           };
         }
+      },
+      render: (e, dialog) => {
+        const form = dialog.element.querySelector("form") ?? dialog.element;
+        const boon = form.querySelector('[name="boon"]');
+        const wrap = form.querySelector(".boon-level-wrap");
+        const sync = () => { if (wrap) wrap.style.display = boon.checked ? "" : "none"; };
+        boon?.addEventListener("change", sync); sync();
       }
     }).catch(() => null);
     if (!result) return;
@@ -341,7 +366,7 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
     const shops = getShops();
     const shop = shops.find(s => s.id === shopId) ?? shops[0];
     if (!shop) { ui.notifications?.warn("Create a shop first, then drop items onto it."); return; }
-    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: doc.name, category: "Gear / Tool", description: doc.system.description || "", price: 0, qty: -1, money: true, boon: false, barter: false, img: doc.img, traitBonus: doc.system.traitBonus || "" });
+    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: doc.name, category: "Gear / Tool", description: doc.system.description || "", price: 0, qty: -1, money: true, boon: false, boonLevel: "minor", barter: false, img: doc.img, traitBonus: doc.system.traitBonus || "" });
     await saveShops(shops);
     this.render();
   }

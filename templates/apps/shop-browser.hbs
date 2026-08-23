@@ -3,6 +3,7 @@
   <p class="hint">No shops are open right now. Check back later — the streets change.</p>
   {{/unless}}
 
+  <div class="shop-scroll">
   {{#each shops as |shop|}}
   <fieldset class="shop {{#unless shop.open}}shop-closed{{/unless}}">
     <legend>{{shop.name}} {{#unless shop.open}}<span class="hint">(closed — GM view)</span>{{/unless}}</legend>
@@ -12,18 +13,21 @@
     <ul class="shop-stock">
       {{#each shop.stock as |item|}}
       <li class="shop-item">
-        {{#if item.img}}<img src="{{item.img}}" class="shop-item-img">{{/if}}
-        <span class="shop-item-body">
-          <span class="shop-item-name">{{item.name}}{{#if item.category}} <span class="shop-item-cat">{{item.category}}</span>{{/if}}</span>
-          {{#if item.description}}<span class="shop-item-desc">{{item.description}}</span>{{/if}}
-          <span class="shop-item-pay">
-            {{#if item.money}}<span class="pay-tag">{{item.price}} money</span>{{/if}}
-            {{#if item.boon}}<span class="pay-tag">Boon</span>{{/if}}
-            {{#if item.barter}}<span class="pay-tag">Barter</span>{{/if}}
-            {{#unless (gt item.qty -1)}}{{else}}<span class="pay-tag qty">{{item.qty}} left</span>{{/unless}}
-          </span>
-        </span>
-        <button type="button" data-action="buy" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}"><i class="fas fa-hand-holding-usd"></i> Buy</button>
+        <details class="shop-item-details">
+          <summary class="shop-item-summary">
+            {{#if item.img}}<img src="{{item.img}}" class="shop-item-img">{{/if}}
+            <span class="shop-item-name">{{item.name}}{{#if item.category}} <span class="shop-item-cat">{{item.category}}</span>{{/if}}</span>
+            <span class="shop-item-pay">
+              {{#if item.money}}<span class="pay-tag">{{item.price}} money</span>{{/if}}
+              {{#if item.boon}}<span class="pay-tag">{{#if item.boonLevel}}{{item.boonLevel}} {{/if}}Boon</span>{{/if}}
+              {{#if item.barter}}<span class="pay-tag">Barter</span>{{/if}}
+              {{#if (gt item.qty -1)}}<span class="pay-tag qty">{{item.qty}} left</span>{{/if}}
+            </span>
+            <button type="button" class="shop-buy-btn" data-action="buy" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}"><i class="fas fa-hand-holding-usd"></i> Buy</button>
+          </summary>
+          {{#if item.description}}<div class="shop-item-desc">{{{item.description}}}</div>{{else}}<div class="shop-item-desc hint">No further details.</div>{{/if}}
+          {{#if item.traitBonus}}<div class="shop-item-trait"><strong>Trait bonus:</strong> {{item.traitBonus}}</div>{{/if}}
+        </details>
       </li>
       {{else}}
       <li class="hint">Nothing in stock.</li>
@@ -31,4 +35,5 @@
     </ul>
   </fieldset>
   {{/each}}
+  </div>
 </form>
