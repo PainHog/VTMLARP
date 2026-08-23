@@ -3,6 +3,27 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.20.x — Mercantile, area templates, auto-effects, LOS
+
+- **Mercantile shop system.** A Storyteller-run economy: create any number of
+  shops (street gangs, fixers, pop-up magical merchants), each independently
+  open/closed, each stocking items (typed via a guided **Create Item** form with
+  a type dropdown, or dragged from the Gear compendium) at a price with a
+  quantity and accepted payment methods. Players browse open shops and buy with
+  **money, a Boon owed, or barter**; the Storyteller is the authority (a purchase
+  is applied by the active GM), and every sale is logged to chat and the buyer's
+  Purchase Ledger, with the item added to their sheet. Actors gained a `money`
+  pool and a `transactions` ledger.
+- **Area of effect templates.** Powers/rituals can define an area (circle/cone/
+  ray/rect + size); a **Place Area** button drops a MeasuredTemplate on the
+  canvas at the caster's token.
+- **Generalized auto-apply status effects.** Any power can carry an
+  auto-effect (Physical/Social/Mental/Willpower/Health modifiers) that applies
+  as a tagged Active Effect while the power is toggled on and removes when off —
+  generalizing the Vicissitude body-mod to every Discipline.
+- **Line-of-sight warning.** Initiating a Challenge against a token blocked by a
+  sight wall now asks for confirmation (soft warning, never a hard block).
+
 ## 1.17.x – 1.18.x — Full compendium enrichment
 
 - **Every compendium description brought to a book-grounded standard.** ~380
