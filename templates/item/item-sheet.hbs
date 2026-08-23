@@ -93,6 +93,20 @@
         </select>
       </label>
       <label>Area Size (in grid units, e.g. feet) <input type="number" name="system.area.size" value="{{system.area.size}}" min="0"></label>
+
+      <fieldset class="power-autoeffect">
+        <legend>Auto-Effect while active (toggle/passive powers)</legend>
+        <p class="hint">Applied automatically when the power is switched on, removed when off. Use +/- Traits.</p>
+        <div class="flexrow">
+          <label>Physical <input type="number" name="system.autoEffect.physical" value="{{system.autoEffect.physical}}"></label>
+          <label>Social <input type="number" name="system.autoEffect.social" value="{{system.autoEffect.social}}"></label>
+          <label>Mental <input type="number" name="system.autoEffect.mental" value="{{system.autoEffect.mental}}"></label>
+        </div>
+        <div class="flexrow">
+          <label>Willpower (max) <input type="number" name="system.autoEffect.willpower" value="{{system.autoEffect.willpower}}"></label>
+          <label>Bonus Health levels <input type="number" name="system.autoEffect.health" value="{{system.autoEffect.health}}"></label>
+        </div>
+      </fieldset>
       {{/if}}
 
       {{#if (eq item.type "background")}}

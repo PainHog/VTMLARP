@@ -112,6 +112,19 @@ export class VTMPowerData extends BaseItemData {
       area: new fields.SchemaField({
         shape: new fields.StringField({ required: false, initial: "none", choices: ["none", "circle", "cone", "ray", "rect"] }),
         size: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 })
+      }),
+
+      // A status effect this power applies to its owner WHILE ACTIVE (a
+      // passive/toggle power). Toggling the power on creates a tagged Active
+      // Effect with these trait-pool/Willpower bonuses (and bonus Health
+      // levels); toggling it off removes them. Generalizes the Vicissitude
+      // bodyMod so any Discipline power can auto-apply a modifier.
+      autoEffect: new fields.SchemaField({
+        physical: new fields.NumberField({ required: false, integer: true, initial: 0 }),
+        social: new fields.NumberField({ required: false, integer: true, initial: 0 }),
+        mental: new fields.NumberField({ required: false, integer: true, initial: 0 }),
+        willpower: new fields.NumberField({ required: false, integer: true, initial: 0 }),
+        health: new fields.NumberField({ required: false, integer: true, initial: 0 })
       })
     };
   }

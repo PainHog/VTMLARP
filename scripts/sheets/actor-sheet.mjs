@@ -1036,6 +1036,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // Body-modification powers (Horrid Form, etc.): apply/remove their Physical
     // Traits and bonus Health levels automatically as the power is toggled.
     await this._applyBodyMod(item, turningOn);
+    // General auto-effect: any power carrying trait/Willpower/Health modifiers.
+    await this._applyAutoEffect(item, turningOn);
 
     let bloodSpent = 0;
     if (turningOn && item.system.bloodCost) {
@@ -1087,6 +1089,47 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       if (bm.health) {
         const list = [...(this.actor.system.bonusHealth ?? [])];
         list.splice(-bm.health, bm.health);
+        await this.actor.update({ "system.bonusHealth": list });
+      }
+    }
+  }
+
+  /**
+   * Apply/remove a Power's general auto-effect while it is active: trait-pool
+   * and Willpower-max bonuses via a single tagged Active Effect, plus bonus
+   * Health levels. Mirrors _applyBodyMod but covers all categories, so any
+   * Discipline power (not just Vicissitude) can auto-apply a status modifier.
+   */
+  async _applyAutoEffect(item, turningOn) {
+    const ae = item.system.autoEffect;
+    if (!ae) return;
+    const changes = [];
+    for (const cat of ["physical", "social", "mental"]) {
+      if (ae[cat]) changes.push({ key: `system.attributes.${cat}.total`, mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: ae[cat] });
+    }
+    if (ae.willpower) changes.push({ key: "system.willpower.max", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: ae.willpower });
+    if (!changes.length && !ae.health) return;
+
+    if (turningOn) {
+      if (changes.length) {
+        await this.actor.createEmbeddedDocuments("ActiveEffect", [{
+          name: item.name,
+          icon: item.img, img: item.img,
+          changes,
+          flags: { vtmlarp: { autoEffectPower: item.id } }
+        }]);
+      }
+      if (ae.health) {
+        const list = [...(this.actor.system.bonusHealth ?? [])];
+        for (let k = 0; k < ae.health; k++) list.push("ok");
+        await this.actor.update({ "system.bonusHealth": list });
+      }
+    } else {
+      const fx = this.actor.effects.filter(e => e.flags?.vtmlarp?.autoEffectPower === item.id).map(e => e.id);
+      if (fx.length) await this.actor.deleteEmbeddedDocuments("ActiveEffect", fx);
+      if (ae.health) {
+        const list = [...(this.actor.system.bonusHealth ?? [])];
+        list.splice(-ae.health, ae.health);
         await this.actor.update({ "system.bonusHealth": list });
       }
     }
