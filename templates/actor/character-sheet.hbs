@@ -165,6 +165,10 @@
           <input type="number" name="system.blood.value" value="{{system.blood.value}}">
           / <input type="number" name="system.blood.max" value="{{system.blood.max}}">
           (per turn <input type="number" name="system.blood.perTurn" value="{{system.blood.perTurn}}" class="tiny">)
+          {{#if owner}}
+          <a class="blood-boost" title="Spend 1 Blood for +1 temporary Physical Trait (reflexive; obey your per-turn limit and generation cap)"><i class="fas fa-droplet"></i> +Phys</a>
+          {{#if bloodBoost}}<span class="blood-boost-active">+{{bloodBoost}} Phys (blood) <a class="blood-boost-clear" title="End the boost — blood is already spent"><i class="fas fa-times"></i></a></span>{{/if}}
+          {{/if}}
         </div>
         {{/if}}
         <div class="pool">

@@ -327,6 +327,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     context.PATH_OPTIONS = PATH_OPTIONS.includes(sys.morality.path)
       ? PATH_OPTIONS : [sys.morality.path, ...PATH_OPTIONS].filter(Boolean);
     context.generationInfo = GENERATION_TABLE[sys.generation] ?? null;
+    // Current temporary Physical boost bought with Blood (a tagged Active
+    // Effect), shown next to the Blood pool with a clear button.
+    context.bloodBoost = this.actor.effects
+      .filter(e => e.flags?.vtmlarp?.bloodBoost)
+      .reduce((n, e) => n + (e.changes ?? []).reduce((m, c) => m + (Number(c.value) || 0), 0), 0);
 
     // Lore-linking buttons next to Clan/Sect dropdowns. These are always
     // rendered (rather than conditionally, per an earlier attempt that still
@@ -540,6 +545,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".power-challenge", "click", this._onInitiatePowerChallenge.bind(this));
     on(".power-bodymod", "click", this._onPowerBodyMod.bind(this));
     on(".power-area", "click", this._onPlacePowerArea.bind(this));
+    on(".blood-boost", "click", this._onBloodBoost.bind(this));
+    on(".blood-boost-clear", "click", this._onClearBloodBoost.bind(this));
     on(".item-create", "click", this._onItemCreate.bind(this));
     on(".simple-list-add", "click", this._onSimpleListAdd.bind(this));
     on(".simple-list-remove", "click", this._onSimpleListRemove.bind(this));
@@ -1092,6 +1099,49 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         await this.actor.update({ "system.bonusHealth": list });
       }
     }
+  }
+
+  /**
+   * Spend 1 Blood Trait for +1 temporary Physical Trait for the conflict (Laws
+   * of the Night Revised, p. 158). Tracked as a tagged Active Effect on the
+   * Physical pool so it flows into Challenge bids and can be cleared at the end
+   * of the conflict. Warns above the generation Trait cap (excess Traits last
+   * only one challenge, per the rule).
+   */
+  async _onBloodBoost(event) {
+    event.preventDefault();
+    const blood = Number(this.actor.system.blood.value) || 0;
+    if (blood <= 0) { ui.notifications?.warn("No Blood to spend."); return; }
+    const cap = GENERATION_TABLE[this.actor.system.generation]?.maxTraits;
+    const currentTotal = Number(this.actor.system.attributes.physical.total) || 0; // includes existing boosts
+    await this.actor.update({ "system.blood.value": blood - 1 });
+
+    const existing = this.actor.effects.find(e => e.flags?.vtmlarp?.bloodBoost);
+    if (existing) {
+      const changes = foundry.utils.duplicate(existing.changes ?? []);
+      if (changes[0]) changes[0].value = (Number(changes[0].value) || 0) + 1;
+      await existing.update({ changes });
+    } else {
+      await this.actor.createEmbeddedDocuments("ActiveEffect", [{
+        name: "Blood-boosted Physical",
+        icon: "icons/svg/blood.svg", img: "icons/svg/blood.svg",
+        changes: [{ key: "system.attributes.physical.total", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: 1 }],
+        flags: { vtmlarp: { bloodBoost: true } }
+      }]);
+    }
+    if (cap && currentTotal + 1 > cap) {
+      ui.notifications?.info(`Above your generation's Trait cap (${cap}) — per the rules, Traits beyond the cap last only one challenge.`);
+    }
+    await logAction(this.actor, "Spent 1 Blood for +1 Physical Trait");
+    this.render();
+  }
+
+  /** End the Blood-boost (blood already spent - just removes the temporary Traits). */
+  async _onClearBloodBoost(event) {
+    event.preventDefault();
+    const fx = this.actor.effects.filter(e => e.flags?.vtmlarp?.bloodBoost).map(e => e.id);
+    if (fx.length) await this.actor.deleteEmbeddedDocuments("ActiveEffect", fx);
+    this.render();
   }
 
   /**

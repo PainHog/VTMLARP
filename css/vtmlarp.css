@@ -1446,6 +1446,9 @@ form.vtmlarp.sheet {
 .vtmlarp-create-item textarea { width: 100%; }
 .vtmlarp-create-item fieldset { border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; padding: 4px 8px; }
 .vtmlarp-create-item .check { display: inline-block; margin-right: 10px; }
+.blood-boost { margin-left: 6px; color: var(--vtm-red-bright, #b8121a); cursor: pointer; white-space: nowrap; }
+.blood-boost-active { margin-left: 6px; font-size: 11px; color: var(--vtm-red-bright, #b8121a); font-weight: bold; }
+.blood-boost-active a { color: inherit; }
 
 /* -------------------------------------------------------------------- */
 /* Afflictions / ST modifiers on the character sheet                     */
