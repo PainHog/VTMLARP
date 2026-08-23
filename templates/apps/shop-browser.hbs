@@ -14,7 +14,7 @@
       <li class="shop-item">
         {{#if item.img}}<img src="{{item.img}}" class="shop-item-img">{{/if}}
         <span class="shop-item-body">
-          <span class="shop-item-name">{{item.name}}</span>
+          <span class="shop-item-name">{{item.name}}{{#if item.category}} <span class="shop-item-cat">{{item.category}}</span>{{/if}}</span>
           {{#if item.description}}<span class="shop-item-desc">{{item.description}}</span>{{/if}}
           <span class="shop-item-pay">
             {{#if item.money}}<span class="pay-tag">{{item.price}} money</span>{{/if}}

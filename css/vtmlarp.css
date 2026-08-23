@@ -1441,6 +1441,11 @@ form.vtmlarp.sheet {
 .vtmlarp.shop-browser .pay-tag { display: inline-block; font-size: 11px; padding: 1px 6px; margin-right: 4px; border: 1px solid var(--vtm-red, #8a0303); border-radius: 8px; }
 .vtmlarp.shop-browser .pay-tag.qty { opacity: 0.7; }
 .transactions { width: 100%; font-size: 12px; }
+.vtmlarp.shop-browser .shop-item-cat { font-size: 10px; opacity: 0.7; font-weight: normal; border: 1px solid var(--vtm-red, #8a0303); border-radius: 6px; padding: 0 5px; margin-left: 4px; }
+.vtmlarp-create-item .req { color: var(--vtm-red-bright, #b8121a); }
+.vtmlarp-create-item textarea { width: 100%; }
+.vtmlarp-create-item fieldset { border: 1px solid var(--vtm-red, #8a0303); border-radius: 4px; padding: 4px 8px; }
+.vtmlarp-create-item .check { display: inline-block; margin-right: 10px; }
 
 /* -------------------------------------------------------------------- */
 /* Afflictions / ST modifiers on the character sheet                     */

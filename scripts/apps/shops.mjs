@@ -34,6 +34,13 @@ async function saveShops(shops) {
 
 const PAY_LABELS = { money: "Money", boon: "Boon owed", barter: "Barter/trade" };
 
+// Item categories a shop can stock. A starting set covering the common kinds;
+// tell me what else you need after play and I'll add them here.
+export const ITEM_CATEGORIES = [
+  "Basic Item", "Weapon", "Armor / Shield", "Gear / Tool", "Consumable",
+  "Magical Item", "Relic / Artifact", "Ritual Component", "Information", "Service", "Custom"
+];
+
 /** Apply a validated purchase (GM-side): pay, add the item, decrement stock,
  * log to chat and the buyer's ledger. `req` = { buyerId, shopId, itemId,
  * method, price, note }. Returns a status string. */
@@ -63,11 +70,12 @@ export async function fulfillPurchase(req) {
   } // barter: no automatic debit - the traded goods/service are recorded in the note.
 
   // Add the item to the buyer's sheet (as a Gear item), linking the source if any.
+  const desc = (item.category ? `<p class="hint"><em>${item.category}</em></p>` : "") + (item.description || "");
   const itemData = {
     name: item.name,
     type: "gear",
     img: item.img || "icons/svg/item-bag.svg",
-    system: { description: item.description || "", quantity: 1, traitBonus: item.traitBonus || "" }
+    system: { description: desc, quantity: 1, traitBonus: item.traitBonus || "" }
   };
   await buyer.createEmbeddedDocuments("Item", [itemData]);
 
@@ -191,6 +199,7 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
       deleteShop: MercantilePanelApp.#onDeleteShop,
       toggleOpen: MercantilePanelApp.#onToggleOpen,
       addItem: MercantilePanelApp.#onAddItem,
+      createItem: MercantilePanelApp.#onCreateItem,
       deleteItem: MercantilePanelApp.#onDeleteItem,
       openBrowser: () => new ShopBrowserApp().render(true)
     }
@@ -199,7 +208,7 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
   static PARTS = { form: { template: "systems/vtmlarp/templates/apps/mercantile-panel.hbs" } };
 
   async _prepareContext() {
-    return { shops: getShops() };
+    return { shops: getShops(), categories: ITEM_CATEGORIES };
   }
 
   _onRender(context, options) {
@@ -258,7 +267,58 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
     const shops = getShops();
     const shop = shops.find(s => s.id === target.dataset.shopId);
     if (!shop) return;
-    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: "New Item", description: "", price: 0, qty: -1, money: true, boon: false, barter: false, img: "", traitBonus: "" });
+    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: "New Item", category: "Basic Item", description: "", price: 0, qty: -1, money: true, boon: false, barter: false, img: "", traitBonus: "" });
+    await saveShops(shops);
+    this.render();
+  }
+
+  /** Guided item-creation form: name + type dropdown + the mandatory pricing/
+   * payment fields, with flavor at the bottom. Adds the finished item to stock. */
+  static async #onCreateItem(event, target) {
+    const shopId = target.dataset.shopId;
+    const catOptions = ITEM_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("");
+    const result = await DialogV2.prompt({
+      window: { title: "Create Shop Item" },
+      position: { width: 460 },
+      content: `<div class="flexcol vtmlarp-create-item" style="gap:8px;">
+        <label>Name <span class="req">*</span><input type="text" name="name" autofocus required></label>
+        <label>Type <select name="category">${catOptions}</select></label>
+        <div class="flexrow" style="gap:8px;">
+          <label>Price <span class="req">*</span><input type="number" name="price" value="0" min="0"></label>
+          <label>Quantity <input type="number" name="qty" value="-1" title="-1 = unlimited"></label>
+        </div>
+        <fieldset><legend>Accepted payment</legend>
+          <label class="check"><input type="checkbox" name="money" checked> Money</label>
+          <label class="check"><input type="checkbox" name="boon"> Boon owed</label>
+          <label class="check"><input type="checkbox" name="barter"> Barter / trade</label>
+        </fieldset>
+        <label>Trait bonus (weapons/armor, optional) <input type="text" name="traitBonus" placeholder="e.g. +2 Traits, 2 Health absorbed"></label>
+        <label>Description / flavor <textarea name="description" rows="4" placeholder="What it is, what it does, any rules notes"></textarea></label>
+      </div>`,
+      ok: {
+        label: "Add to shop",
+        callback: (e, btn) => {
+          const f = btn.form.elements;
+          const name = f.name.value.trim();
+          if (!name) return null;
+          return {
+            id: foundry.utils.randomID(), name,
+            category: f.category.value,
+            price: Number(f.price.value) || 0,
+            qty: Number.isFinite(Number(f.qty.value)) ? Number(f.qty.value) : -1,
+            money: f.money.checked, boon: f.boon.checked, barter: f.barter.checked,
+            traitBonus: f.traitBonus.value.trim(),
+            description: f.description.value.trim(),
+            img: ""
+          };
+        }
+      }
+    }).catch(() => null);
+    if (!result) return;
+    const shops = getShops();
+    const shop = shops.find(s => s.id === shopId);
+    if (!shop) return;
+    (shop.stock ??= []).push(result);
     await saveShops(shops);
     this.render();
   }
@@ -281,7 +341,7 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
     const shops = getShops();
     const shop = shops.find(s => s.id === shopId) ?? shops[0];
     if (!shop) { ui.notifications?.warn("Create a shop first, then drop items onto it."); return; }
-    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: doc.name, description: doc.system.description || "", price: 0, qty: -1, money: true, boon: false, barter: false, img: doc.img, traitBonus: doc.system.traitBonus || "" });
+    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: doc.name, category: "Gear / Tool", description: doc.system.description || "", price: 0, qty: -1, money: true, boon: false, barter: false, img: doc.img, traitBonus: doc.system.traitBonus || "" });
     await saveShops(shops);
     this.render();
   }

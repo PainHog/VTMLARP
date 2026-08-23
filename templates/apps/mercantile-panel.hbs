@@ -22,11 +22,12 @@
     <label>Notes <input type="text" data-field="notes" data-shop-id="{{shop.id}}" value="{{shop.notes}}" placeholder="Flavor / where it is / when it appears"></label>
 
     <table class="merc-stock">
-      <thead><tr><th>Item</th><th>Price</th><th>Qty</th><th title="Accept money">$</th><th title="Accept Boon">Boon</th><th title="Accept barter">Barter</th><th></th></tr></thead>
+      <thead><tr><th>Item</th><th>Type</th><th>Price</th><th>Qty</th><th title="Accept money">$</th><th title="Accept Boon">Boon</th><th title="Accept barter">Barter</th><th></th></tr></thead>
       <tbody>
         {{#each shop.stock as |item|}}
         <tr data-item-id="{{item.id}}">
           <td><input type="text" data-field="name" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" value="{{item.name}}"></td>
+          <td><select data-field="category" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}">{{#each ../../categories as |c|}}<option value="{{c}}" {{#if (eq item.category c)}}selected{{/if}}>{{c}}</option>{{/each}}</select></td>
           <td><input type="number" data-field="price" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" value="{{item.price}}" min="0" class="tiny"></td>
           <td><input type="number" data-field="qty" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" value="{{item.qty}}" title="-1 = unlimited" class="tiny"></td>
           <td><input type="checkbox" data-field="money" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" {{#if item.money}}checked{{/if}}></td>
@@ -34,13 +35,16 @@
           <td><input type="checkbox" data-field="barter" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" {{#if item.barter}}checked{{/if}}></td>
           <td><a data-action="deleteItem" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" title="Remove"><i class="fas fa-times"></i></a></td>
         </tr>
-        <tr class="merc-desc-row"><td colspan="7"><input type="text" data-field="description" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" value="{{item.description}}" placeholder="Item description (shown to buyers)"></td></tr>
+        <tr class="merc-desc-row"><td colspan="8"><input type="text" data-field="description" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}" value="{{item.description}}" placeholder="Item description (shown to buyers)"></td></tr>
         {{else}}
-        <tr><td colspan="7" class="hint">No stock yet — click + or drag a Gear item here.</td></tr>
+        <tr><td colspan="8" class="hint">No stock yet — click + or drag a Gear item here.</td></tr>
         {{/each}}
       </tbody>
     </table>
-    <button type="button" data-action="addItem" data-shop-id="{{shop.id}}"><i class="fas fa-plus"></i> Add item</button>
+    <div class="flexrow" style="gap:6px;">
+      <button type="button" data-action="createItem" data-shop-id="{{shop.id}}"><i class="fas fa-wand-magic-sparkles"></i> Create Item…</button>
+      <button type="button" data-action="addItem" data-shop-id="{{shop.id}}" title="Add a blank row to edit inline"><i class="fas fa-plus"></i> Quick add</button>
+    </div>
   </fieldset>
   {{else}}
   <p class="hint">No shops yet. Click <strong>New Shop</strong> to create one — a street-gang fence, a fixer, a pop-up magical merchant — then toggle it OPEN when it's available to players.</p>
