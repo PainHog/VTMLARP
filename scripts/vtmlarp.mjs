@@ -13,6 +13,7 @@ import { XPAuditApp } from "./apps/xp-audit.mjs";
 import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
 import { STPanelApp } from "./apps/st-panel.mjs";
 import { CharacterBuilderApp } from "./apps/character-builder.mjs";
+import { ClanPickerApp } from "./apps/clan-picker.mjs";
 import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 import { enhanceAccessibility } from "./apps/a11y.mjs";
@@ -396,6 +397,7 @@ Hooks.on("getSceneControlButtons", controls => {
 
   // Available to everyone (players included).
   const tools = [
+    tool("vtmlarp-clan-picker", "Help Me Pick a Clan", "fas fa-question-circle", ClanPickerApp),
     tool("vtmlarp-builder", "Character Builder", "fas fa-user-plus", CharacterBuilderApp),
     tool("vtmlarp-shops", "Shops", "fas fa-store", ShopBrowserApp),
     tool("vtmlarp-create", "Create Content (homebrew)", "fas fa-wand-magic-sparkles", HomebrewApp)

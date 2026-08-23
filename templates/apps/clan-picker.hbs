@@ -1,0 +1,64 @@
+<div class="vtmlarp clan-picker flexrow">
+  <aside class="clan-rail">
+    <div class="clan-search-row">
+      <input type="text" name="clan-search" value="{{query}}" placeholder="Try “assassin”, “artist”, “necromancer”…" autocomplete="off">
+      {{#if hasQuery}}<a data-action="clearSearch" title="Clear search"><i class="fas fa-times"></i></a>{{/if}}
+    </div>
+    {{#if hasQuery}}
+    <p class="hint clan-search-count">{{count}} match{{#unless (eq count 1)}}es{{/unless}} for “{{query}}”.</p>
+    {{/if}}
+    <ul class="clan-list">
+      {{#each list as |c|}}
+      <li>
+        <a data-action="jump" data-index="{{@index}}" class="clan-list-item {{#if c.active}}is-active{{/if}} {{#unless c.core}}is-bloodline{{/unless}}">
+          <span class="clan-list-name">{{c.name}}</span>
+          {{#if c.nickname}}<span class="clan-list-nick">{{c.nickname}}</span>{{/if}}
+        </a>
+      </li>
+      {{else}}
+      <li class="hint">No clan matches that. Try a different word, or clear the search.</li>
+      {{/each}}
+    </ul>
+  </aside>
+
+  <section class="clan-card flexcol">
+    {{#with clan}}
+    <header class="clan-card-head">
+      <h2 class="clan-card-name">{{name}}</h2>
+      {{#if nickname}}<div class="clan-card-nick">{{nickname}}</div>{{/if}}
+    </header>
+
+    <p class="clan-card-blurb">{{blurb}}</p>
+
+    {{#if tags.length}}
+    <div class="clan-card-tags">
+      {{#each tags as |t|}}<span class="clan-tag">{{t}}</span>{{/each}}
+    </div>
+    {{/if}}
+
+    <div class="clan-card-disc">
+      <h3>Signature Disciplines</h3>
+      {{#if clanless}}
+      <p class="hint">No fixed Disciplines — a {{name}} character can learn any Disciplines you choose in the Character Builder.</p>
+      {{else}}
+      <ul>
+        {{#each disciplines as |d|}}
+        <li><strong>{{d.name}}</strong> — {{d.blurb}}</li>
+        {{/each}}
+      </ul>
+      {{/if}}
+    </div>
+
+    <div class="clan-card-actions flexrow">
+      <button type="button" data-action="lore" data-name="{{name}}"><i class="fas fa-book-open"></i> Read full lore</button>
+    </div>
+    <p class="hint clan-alt-note">Antitribu, revenant, and Dark Ages variants of many clans live in the Clans &amp; Bloodlines compendiums — search a keyword above to find related lineages.</p>
+    {{/with}}
+
+    <footer class="clan-card-nav flexrow">
+      <button type="button" data-action="prev"><i class="fas fa-chevron-left"></i> Previous</button>
+      <span class="clan-card-count">{{position}} / {{count}}</span>
+      <button type="button" data-action="next">Next <i class="fas fa-chevron-right"></i></button>
+    </footer>
+  </section>
+</div>
