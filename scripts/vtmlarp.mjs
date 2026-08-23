@@ -16,6 +16,7 @@ import { CharacterBuilderApp } from "./apps/character-builder.mjs";
 import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 import { enhanceAccessibility } from "./apps/a11y.mjs";
+import { registerShopSettings, MercantilePanelApp, ShopBrowserApp, fulfillPurchase } from "./apps/shops.mjs";
 
 // Accessibility: after any VTMLARP sheet or dialog renders, give its icon-only
 // controls accessible names (title -> aria-label) and keyboard operability. One
@@ -24,7 +25,7 @@ for (const appName of [
   "VTMActorSheet", "VTMVehicleSheet", "VTMItemSheet",
   "ChallengeApp", "ChallengeResponseApp", "GMChallengeDashboard", "XPAuditApp",
   "BloodBondOverviewApp", "STPanelApp", "CharacterBuilderApp", "FrenzyApp",
-  "VaulderieApp", "SessionLogApp"
+  "VaulderieApp", "SessionLogApp", "MercantilePanelApp", "ShopBrowserApp"
 ]) {
   Hooks.on(`render${appName}`, (app, element) => enhanceAccessibility(element));
 }
@@ -34,6 +35,8 @@ Hooks.once("init", () => {
 
   // Records which system version this world's data was last migrated to.
   registerMigrationSettings();
+  // Mercantile shops (world setting).
+  registerShopSettings();
 
   // Initiative is a flat d20 roll - MET breaks ties/order with a random draw
   // rather than a stat, so the Combat Tracker's "Roll Initiative" just rolls
@@ -166,6 +169,17 @@ Hooks.once("ready", () => {
     document.body.appendChild(btn);
   }
 
+  // Storyteller Mercantile launcher (manage shops).
+  if (game.user.isGM && !document.getElementById("vtmlarp-merc-launcher")) {
+    const mbtn = document.createElement("button");
+    mbtn.id = "vtmlarp-merc-launcher";
+    mbtn.type = "button";
+    mbtn.title = "Open the Mercantile panel (manage shops)";
+    mbtn.innerHTML = `<i class="fas fa-store"></i> Mercantile`;
+    mbtn.addEventListener("click", () => new MercantilePanelApp().render(true));
+    document.body.appendChild(mbtn);
+  }
+
   // A Challenge's opponent side is resolved on the responding player's (or,
   // for an unowned NPC, any GM's) own client rather than the challenger's -
   // this system is played online, not face to face, so the challenger must
@@ -201,6 +215,14 @@ Hooks.once("ready", () => {
         // A player resolved a Challenge but can't delete the challenger's
         // prompt message themselves - a GM does it on their behalf.
         game.messages.get(data.messageId)?.delete().catch(() => {});
+      } else if (data.action === "shopPurchase") {
+        // A player asked to buy from a shop; only the designated active GM
+        // fulfills it (debits/credits, adds the item, decrements stock, logs).
+        if (game.users.activeGM?.id === game.user.id && data.req) {
+          fulfillPurchase(data.req)
+            .then(msg => ui.notifications?.info(msg))
+            .catch(err => console.error("vtmlarp | shopPurchase failed", err));
+        }
       } else if (data.action === "createCharacter") {
         // A player built a character but lacks "Create New Actors" permission,
         // so a GM creates it for them - keeping the requesting player flagged
@@ -351,6 +373,16 @@ Hooks.on("renderActorDirectory", (app, html) => {
   btn.innerHTML = `<i class="fas fa-user-plus"></i> Character Builder`;
   btn.addEventListener("click", () => new CharacterBuilderApp().render(true));
   header.prepend(btn);
+
+  // A "Shops" button so players can browse the open Mercantile shops.
+  if (!header.querySelector(".vtmlarp-shops")) {
+    const shopBtn = document.createElement("button");
+    shopBtn.type = "button";
+    shopBtn.className = "vtmlarp-shops";
+    shopBtn.innerHTML = `<i class="fas fa-store"></i> Shops`;
+    shopBtn.addEventListener("click", () => new ShopBrowserApp().render(true));
+    header.prepend(shopBtn);
+  }
 });
 
 Hooks.on("getSceneNavigationContext", (nav, options) => {

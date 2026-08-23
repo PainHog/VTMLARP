@@ -1,0 +1,34 @@
+<form class="vtmlarp shop-browser flexcol">
+  {{#unless hasShops}}
+  <p class="hint">No shops are open right now. Check back later — the streets change.</p>
+  {{/unless}}
+
+  {{#each shops as |shop|}}
+  <fieldset class="shop {{#unless shop.open}}shop-closed{{/unless}}">
+    <legend>{{shop.name}} {{#unless shop.open}}<span class="hint">(closed — GM view)</span>{{/unless}}</legend>
+    {{#if shop.keeper}}<p class="hint">Keeper: {{shop.keeper}}</p>{{/if}}
+    {{#if shop.notes}}<p class="shop-notes">{{shop.notes}}</p>{{/if}}
+
+    <ul class="shop-stock">
+      {{#each shop.stock as |item|}}
+      <li class="shop-item">
+        {{#if item.img}}<img src="{{item.img}}" class="shop-item-img">{{/if}}
+        <span class="shop-item-body">
+          <span class="shop-item-name">{{item.name}}</span>
+          {{#if item.description}}<span class="shop-item-desc">{{item.description}}</span>{{/if}}
+          <span class="shop-item-pay">
+            {{#if item.money}}<span class="pay-tag">{{item.price}} money</span>{{/if}}
+            {{#if item.boon}}<span class="pay-tag">Boon</span>{{/if}}
+            {{#if item.barter}}<span class="pay-tag">Barter</span>{{/if}}
+            {{#unless (gt item.qty -1)}}{{else}}<span class="pay-tag qty">{{item.qty}} left</span>{{/unless}}
+          </span>
+        </span>
+        <button type="button" data-action="buy" data-shop-id="{{shop.id}}" data-item-id="{{item.id}}"><i class="fas fa-hand-holding-usd"></i> Buy</button>
+      </li>
+      {{else}}
+      <li class="hint">Nothing in stock.</li>
+      {{/each}}
+    </ul>
+  </fieldset>
+  {{/each}}
+</form>

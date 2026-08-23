@@ -226,6 +226,21 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
         notes: new fields.StringField({ required: false, blank: true, initial: "" })
       })),
 
+      // Spending money (the Mercantile system). Free-form pool; Resources
+      // Background still represents lifestyle/standing separately.
+      money: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+
+      // Purchase ledger - every Mercantile transaction is appended here (and
+      // posted to chat) so players and the Storyteller have a record.
+      transactions: new fields.ArrayField(new fields.SchemaField({
+        when: new fields.StringField({ required: false, blank: true, initial: "" }),
+        shop: new fields.StringField({ required: false, blank: true, initial: "" }),
+        item: new fields.StringField({ required: false, blank: true, initial: "" }),
+        method: new fields.StringField({ required: false, blank: true, initial: "" }),
+        cost: new fields.StringField({ required: false, blank: true, initial: "" }),
+        notes: new fields.StringField({ required: false, blank: true, initial: "" })
+      })),
+
       biography: new fields.HTMLField({ required: false, blank: true, initial: "" }),
       notes: new fields.HTMLField({ required: false, blank: true, initial: "" })
     };

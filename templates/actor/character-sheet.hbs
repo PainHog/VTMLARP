@@ -610,6 +610,20 @@
         </div>
         {{/each}}
       </div>
+
+      <h3>Money <span class="hint">Spent at Mercantile shops (browse via the Shops button in the Actors tab).</span></h3>
+      <label class="money-field">Funds <input type="number" name="system.money" value="{{system.money}}" min="0" class="tiny"></label>
+      {{#if system.transactions.length}}
+      <h3>Purchase Ledger</h3>
+      <table class="rated-trait-table transactions">
+        <thead><tr><th>When</th><th>Shop</th><th>Item</th><th>Paid</th></tr></thead>
+        <tbody>
+          {{#each system.transactions as |t|}}
+          <tr><td class="hint">{{t.when}}</td><td>{{t.shop}}</td><td>{{t.item}}</td><td>{{t.cost}}{{#if t.notes}} — {{t.notes}}{{/if}}</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{/if}}
     </div>
 
     <div class="tab {{#if tabs.bio.active}}active{{/if}}" data-group="primary" data-tab="bio">
