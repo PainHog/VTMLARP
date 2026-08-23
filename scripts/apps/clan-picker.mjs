@@ -34,6 +34,57 @@ export class ClanPickerApp extends HandlebarsApplicationMixin(ApplicationV2) {
    * so the Discipline links open the right entry. */
   #discUuid = {};
 
+  /** clan name -> book-sourced "About" blurb, extracted from the compendium
+   * JournalEntry (cached; null means "looked, none found"). */
+  #aboutCache = {};
+
+  /**
+   * Pull the clan's own description straight from its compendium lore entry so
+   * the "About" text is the book's, not hand-written. Takes the first real
+   * descriptive paragraph (skipping the Sect/Disciplines/Advantage label lines),
+   * strips HTML and @UUID enricher links, and trims to the first two sentences.
+   * Returns null if the clan has no dedicated lore entry (caller falls back).
+   */
+  async #bookAbout(name) {
+    if (name in this.#aboutCache) return this.#aboutCache[name];
+    let result = null;
+    for (const pn of ["clans", "antitribu", "revenants"]) {
+      const pack = game.packs?.get(`vtmlarp.${pn}`);
+      if (!pack) continue;
+      const entry = (await pack.getIndex()).find(e => e.name === name);
+      if (!entry) continue;
+      const doc = await pack.getDocument(entry._id);
+      const html = (doc?.pages?.contents ?? []).map(p => p.text?.content ?? "").join("\n");
+      result = ClanPickerApp.#extractAbout(html);
+      break;
+    }
+    this.#aboutCache[name] = result;
+    return result;
+  }
+
+  static #LABEL_RE = /^(Sect|Disciplines?|Advantage|Advantages|Disadvantage|Weakness|Organization|Bloodline|Nickname|Appearance|Haven|Background|Quote|Sobriquet)\b/i;
+
+  static #extractAbout(html) {
+    if (!html) return null;
+    const paras = [...String(html).matchAll(/<p>(.*?)<\/p>/gis)].map(m => m[1]);
+    for (const p of paras) {
+      // Strip @UUID[...]{Label} -> Label, then any remaining tags/entities.
+      const txt = p
+        .replace(/@UUID\[[^\]]+\]\{([^}]+)\}/g, "$1")
+        .replace(/@UUID\[[^\]]+\]/g, "")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&amp;/g, "&").replace(/&nbsp;/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (txt.length < 40 || ClanPickerApp.#LABEL_RE.test(txt)) continue;
+      // Keep the first one or two sentences.
+      const sentences = txt.match(/[^.!?]+[.!?]+/g);
+      if (sentences && sentences.length > 2) return sentences.slice(0, 2).join(" ").trim();
+      return txt;
+    }
+    return null;
+  }
+
   static PARTS = { form: { template: "systems/vtmlarp/templates/apps/clan-picker.hbs" } };
 
   /** Current search text and the index (into the filtered list) being shown. */
@@ -87,7 +138,7 @@ export class ClanPickerApp extends HandlebarsApplicationMixin(ApplicationV2) {
       clan: {
         name,
         nickname: guide.nickname ?? "",
-        blurb: guide.blurb ?? "",
+        blurb: (await this.#bookAbout(name)) || guide.blurb || "",
         tags: guide.tags ?? [],
         clanless: !(CLAN_DISCIPLINES[name] ?? []).length,
         disciplines
