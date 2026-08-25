@@ -142,8 +142,14 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
   _onRender(context, options) {
     super._onRender(context, options);
     this.#stepCount = this.element.querySelectorAll(".builder-step").length;
-    this.element.addEventListener("input", () => this.#recompute());
-    this.element.addEventListener("change", () => this.#recompute());
+    // Bind the root-level recompute listeners once: the AppV2 root element
+    // persists across re-renders, so re-adding them each render would stack a
+    // duplicate #recompute per keystroke (a known source of lag).
+    if (!this.element.dataset.vtmRecomputeBound) {
+      this.element.dataset.vtmRecomputeBound = "1";
+      this.element.addEventListener("input", () => this.#recompute());
+      this.element.addEventListener("change", () => this.#recompute());
+    }
     // Auto-fill in-clan Disciplines when the clan is chosen on the Concept step.
     this.element.querySelector('[name="clan"]')?.addEventListener("change", (e) => {
       this.#applyClanDisciplines(e.target.value);

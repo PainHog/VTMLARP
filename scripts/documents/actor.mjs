@@ -89,16 +89,25 @@ export const GENERATION_WILLPOWER_MAX = Object.fromEntries(
 
 export class VTMCharacterData extends foundry.abstract.TypeDataModel {
   /**
-   * Generation caps maximum permanent Willpower, so derive willpower.max from
-   * the character's generation rather than trusting a manually-entered value,
-   * and clamp the current pool to that ceiling for display.
+   * Generation caps maximum permanent Willpower, so set willpower.max from the
+   * character's generation as the BASE value here — in prepareBaseData, which
+   * runs before Active Effects — so a Power/ST effect that raises willpower.max
+   * adds on top of the generation cap instead of being overwritten afterward.
+   */
+  prepareBaseData() {
+    super.prepareBaseData?.();
+    const cap = GENERATION_WILLPOWER_MAX[this.generation];
+    if (cap != null) this.willpower.max = cap;
+  }
+
+  /**
+   * After Active Effects have applied, clamp the current Willpower pool to the
+   * effective (post-effect) maximum for display.
    */
   prepareDerivedData() {
     super.prepareDerivedData?.();
-    const cap = GENERATION_WILLPOWER_MAX[this.generation];
-    if (cap != null) {
-      this.willpower.max = cap;
-      if (this.willpower.value > cap) this.willpower.value = cap;
+    if (this.willpower.max != null && this.willpower.value > this.willpower.max) {
+      this.willpower.value = this.willpower.max;
     }
   }
 

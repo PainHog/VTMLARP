@@ -1,4 +1,5 @@
 import { GESTURES, unspentCount, respondingUsers, resolveAndPostGestureChallenge, postGestureChallengePrompt } from "./challenge-shared.mjs";
+import { GMChallengeDashboard } from "./gm-dashboard.mjs";
 
 // A standing fake opponent (Storyteller-only; see the GM-gated actorOptions
 // entry below) so a GM can resolve a Challenge solo without a second logged-in
@@ -243,6 +244,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       challengerMod: Number(fd.challengerMod) || 0
     });
 
+    const challengerMod = Number(fd.challengerMod) || 0;
     game.socket.emit("system.vtmlarp", {
       action: "challengeRequest",
       requestId,
@@ -254,8 +256,30 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       opponentActorId: opponentActor.id,
       opponentName: opponentActor.name,
       retest,
-      isRetestThrow: !!this.prefill?.isRetestThrow
+      isRetestThrow: !!this.prefill?.isRetestThrow,
+      challengerMod
     });
+
+    // Foundry does not echo a socket emit back to the sender, so when THIS
+    // client is itself the designated responder for an auto-answering NPC
+    // (the common single-GM case where the GM is the challenger), the socket
+    // handler's NPC block will never run here - resolve it locally instead.
+    if (opponentActor.type === "npc" && opponentActor.system?.autoChallenge
+        && recipients[0]?.id === game.user.id) {
+      const pool = ["rock", "paper", "scissors"];
+      if (opponentActor.system?.bombAccess) pool.push("bomb");
+      const opponentGesture = pool[Math.floor(Math.random() * pool.length)];
+      await resolveAndPostGestureChallenge({
+        challengerActor: this.actor, challengeType, challengerGesture: fd.gesture,
+        opponentActor, opponentGesture, retest, isRetestThrow: !!this.prefill?.isRetestThrow, challengerMod
+      });
+      game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId });
+      GMChallengeDashboard.clearRequest?.(requestId);
+      const prompt = game.messages?.find(m => m.getFlag?.("vtmlarp", "requestId") === requestId);
+      prompt?.delete?.().catch(() => {});
+      this.close();
+      return;
+    }
 
     ui.notifications?.info(`Challenge sent to ${opponentActor.name} - they can respond from the chat log.`);
     this.close();

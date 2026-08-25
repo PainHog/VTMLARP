@@ -40,7 +40,8 @@ export async function enqueueHomebrew(sub) {
   q.push(sub);
   await setQueue(q);
   ui.notifications?.info(`New homebrew submission from ${sub.by}: "${sub.name}".`);
-  for (const app of Object.values(ui.windows)) if (app instanceof HomebrewReviewApp) app.render();
+  // AppV2 instances live in foundry.applications.instances (a Map), not ui.windows (V1 only).
+  for (const app of foundry.applications.instances.values()) if (app instanceof HomebrewReviewApp) app.render();
 }
 
 /** Find or create the world "Player Added" Item compendium. */

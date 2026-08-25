@@ -83,16 +83,25 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
       opponentActor: this.request.opponentActor,
       opponentGesture: fd.gesture,
       retest: this.request.retest,
-      isRetestThrow: !!this.request.isRetestThrow
+      isRetestThrow: !!this.request.isRetestThrow,
+      challengerMod: Number(this.request.challengerMod) || 0,
+      opponentMod: Number(fd.opponentMod) || 0
     });
 
     this._broadcastResolved();
     this.close();
   }
 
-  /** Tell every client (including GMs watching the dashboard) this request is no longer pending. */
+  /** Tell every client (including GMs watching the dashboard) this request is no
+   * longer pending, AND remove the public prompt card so it can't be clicked to
+   * resolve a second time (this popup answered it). */
   _broadcastResolved() {
     if (!this.request.requestId) return;
     game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: this.request.requestId });
+    // Delete the prompt locally if permitted, else ask a GM to (same path the
+    // NPC auto-answer uses); otherwise the chat card stays live and clickable.
+    const prompt = game.messages?.find(m => m.getFlag?.("vtmlarp", "requestId") === this.request.requestId);
+    if (prompt?.canUserModify(game.user, "delete")) prompt.delete().catch(() => {});
+    else game.socket.emit("system.vtmlarp", { action: "deleteChallengePromptByRequest", requestId: this.request.requestId });
   }
 }

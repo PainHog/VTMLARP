@@ -109,8 +109,9 @@ export async function fulfillPurchase(req) {
       + `</div>`
   });
 
-  // Refresh any open Mercantile UIs.
-  for (const app of Object.values(ui.windows)) {
+  // Refresh any open Mercantile UIs. ApplicationV2 instances live in
+  // foundry.applications.instances (a Map), NOT ui.windows (V1 only).
+  for (const app of foundry.applications.instances.values()) {
     if (app instanceof MercantilePanelApp || app instanceof ShopBrowserApp) app.render();
   }
   return `${buyer.name} bought ${item.name} from ${shop.name}.`;

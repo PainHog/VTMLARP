@@ -212,6 +212,10 @@ Hooks.once("ready", () => {
         // A player resolved a Challenge but can't delete the challenger's
         // prompt message themselves - a GM does it on their behalf.
         game.messages.get(data.messageId)?.delete().catch(() => {});
+      } else if (data.action === "markChallengeResponded") {
+        // Backup for the above: flag the prompt responded so it can't resolve
+        // twice even if deletion is delayed or the message lingers on a client.
+        game.messages.get(data.messageId)?.setFlag("vtmlarp", "responded", true).catch(() => {});
       } else if (data.action === "homebrewSubmit") {
         // A player submitted homebrew content; the active GM queues it.
         if (game.users.activeGM?.id === game.user.id && data.sub) {
@@ -268,7 +272,8 @@ Hooks.once("ready", () => {
         opponentActor,
         opponentGesture,
         retest: data.retest,
-        isRetestThrow: !!data.isRetestThrow
+        isRetestThrow: !!data.isRetestThrow,
+        challengerMod: Number(data.challengerMod) || 0
       }).then(() => {
         game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: data.requestId });
         if (game.user.isGM) GMChallengeDashboard.clearRequest?.(data.requestId);
@@ -291,7 +296,8 @@ Hooks.once("ready", () => {
       challengerGesture: data.challengerGesture,
       opponentActor,
       retest: data.retest,
-      isRetestThrow: !!data.isRetestThrow
+      isRetestThrow: !!data.isRetestThrow,
+      challengerMod: Number(data.challengerMod) || 0
     }).render(true);
   });
 });
@@ -500,6 +506,11 @@ document.addEventListener("click", async event => {
     return;
   }
 
+  // Disable this card's controls immediately so a second click on the same
+  // client can't double-resolve while the async resolution is in flight (the
+  // prompt is also deleted/flagged below, but that's async and cross-client).
+  card.querySelectorAll("button, select").forEach(el => { el.disabled = true; });
+
   let gesture;
   if (gestureBtn) {
     gesture = card.querySelector(".vtm-gesture-select")?.value;
@@ -542,13 +553,17 @@ document.addEventListener("click", async event => {
   }
 
   // Now clean up the prompt. If this client may modify the message (author or
-  // GM), do it directly; otherwise ask a GM to, via socket. Wrapped so a
-  // permission error can never surface or undo the resolution above.
+  // GM), delete it and mark it responded directly; otherwise ask a GM to, via
+  // socket. Wrapped so a permission error can never surface or undo the
+  // resolution above. The responded flag backs up deletion for any client that
+  // still holds the message (the guard at the top of this handler reads it).
   try {
     if (message.canUserModify(game.user, "delete")) {
+      await message.setFlag("vtmlarp", "responded", true);
       await message.delete();
     } else {
       game.socket.emit("system.vtmlarp", { action: "deleteChallengePrompt", messageId: message.id });
+      game.socket.emit("system.vtmlarp", { action: "markChallengeResponded", messageId: message.id });
     }
   } catch (err) {
     console.warn("VTMLARP | couldn't remove the challenge prompt (harmless):", err);

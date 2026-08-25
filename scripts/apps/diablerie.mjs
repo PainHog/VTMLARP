@@ -21,12 +21,13 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
   #attributeUsed = false;
 
   constructor(actor, options = {}) {
-    super(options);
+    // Per-instance id so opening Diablerie for a second actor doesn't collide on
+    // one DOM element with an already-open window (AppV2 keys on id).
+    super({ id: `vtmlarp-diablerie-${foundry.utils.randomID()}`, ...options });
     this.actor = actor;
   }
 
   static DEFAULT_OPTIONS = {
-    id: "vtmlarp-diablerie",
     classes: ["vtmlarp", "sheet", "diablerie"],
     position: { width: 560, height: 700 },
     window: { title: "Diablerie — the Amaranth", resizable: true },
