@@ -614,7 +614,13 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (el.disabled || el.readOnly) return;
     let value = el.value;
     if (el.type === "checkbox") value = el.checked;
-    else if (el.type === "number") value = value === "" ? null : Number(value);
+    else if (el.type === "number") {
+      // Most numeric fields here are required (willpower/blood/generation/etc.);
+      // writing null on an emptied box throws a schema validation error and the
+      // box keeps its blank value, so it LOOKS saved but isn't. Revert instead.
+      if (el.value === "") { this.render(); return; }
+      value = Number(value);
+    }
 
     // Guard against Foundry's array-element footgun: updating an ArrayField
     // element by dotted path (e.g. "system.abilities.0.name") does NOT
@@ -658,7 +664,15 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       }
     }
 
-    await this.actor.update({ [el.name]: value });
+    try {
+      await this.actor.update({ [el.name]: value });
+    } catch (err) {
+      // A rejected value (out of range, wrong type) would otherwise leave the
+      // box showing the bad value as if it saved. Surface it and restore.
+      console.warn("VTMLARP | field update rejected:", el.name, value, err);
+      ui.notifications?.warn(`That value isn't allowed for ${el.name.split(".").pop()}.`);
+      this.render();
+    }
   }
 
   /** Remove a Storyteller-applied affliction (Active Effect) from this actor. */

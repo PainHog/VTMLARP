@@ -50,7 +50,8 @@ export class SessionLogApp extends HandlebarsApplicationMixin(foundry.applicatio
     event.preventDefault();
     const confirmed = await foundry.applications.api.DialogV2.confirm({
       window: { title: "Clear Session Log" },
-      content: `<p>Clear the entire session log for ${this.actor.name}? This can't be undone.</p>`
+      content: `<p>Clear the entire session log for ${this.actor.name}? This can't be undone.</p>`,
+      rejectClose: false  // dismissing (Esc/X) returns false instead of rejecting
     });
     if (!confirmed) return;
     await this.actor.update({ "system.actionLog": [] });

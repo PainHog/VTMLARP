@@ -37,3 +37,26 @@ test("combined: a 5-dot plus other Disciplines overrunning the allotment", () =>
   // plus 4th(6) + 5th(9) = 18.
   assert.equal(disciplineFreebieCost([5, 3], BUDGET), 18);
 });
+
+test("edge cases: empty ratings, zeros, and negatives", () => {
+  // No Disciplines: nothing spent.
+  assert.equal(disciplineFreebieCost([], BUDGET), 0);
+  assert.equal(disciplineFreeDots([]), 0);
+  // A 0 rating consumes no free dots and costs nothing.
+  assert.equal(disciplineFreeDots([0, 0]), 0);
+  assert.equal(disciplineFreebieCost([0, 0], BUDGET), 0);
+  // Defensive: a negative rating is clamped to 0, not treated as a credit.
+  assert.equal(disciplineFreeDots([-2]), 0);
+  assert.equal(disciplineFreebieCost([-2], BUDGET), 0);
+});
+
+test("edge case: budget of 0 charges every free-tier dot", () => {
+  // Ratings [3]: 3 free dots, budget 0 → all 3 overrun at 3+6+9 = 18.
+  assert.equal(disciplineFreebieCost([3], 0), 18);
+});
+
+test("edge case: a 5-dot Discipline with zero budget charges all three free-tier dots too", () => {
+  // Ratings [5]: 3 free-tier dots (3+6+9=18) all overrun at budget 0, on top of
+  // the mandatory 4th(6)+5th(9)=15 → 33.
+  assert.equal(disciplineFreebieCost([5], 0), 33);
+});

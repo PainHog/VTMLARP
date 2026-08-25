@@ -273,6 +273,9 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
     const { shopId, itemId, field } = el.dataset;
     let value = el.type === "checkbox" ? el.checked : el.value;
     if (el.type === "number") value = Number(value);
+    // A blank quantity means "unlimited" (-1), not 0 — otherwise clearing the
+    // box would read as sold out. (Number("") is 0.)
+    if (field === "qty" && el.value === "") value = -1;
     // Serialize against concurrent purchases so an edit and a sale don't clobber
     // each other's snapshot of the shops setting.
     await withShopLock(async () => {

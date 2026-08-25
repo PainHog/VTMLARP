@@ -79,8 +79,17 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     if (el.disabled || el.readOnly) return;
     let value = el.value;
     if (el.type === "checkbox") value = el.checked;
-    else if (el.type === "number") value = value === "" ? null : Number(value);
-    await this.item.update({ [el.name]: value });
+    else if (el.type === "number") {
+      if (el.value === "") { this.render(); return; }  // don't write null to a required field
+      value = Number(value);
+    }
+    try {
+      await this.item.update({ [el.name]: value });
+    } catch (err) {
+      console.warn("VTMLARP | item field update rejected:", el.name, value, err);
+      ui.notifications?.warn(`That value isn't allowed for ${el.name.split(".").pop()}.`);
+      this.render();
+    }
   }
 
   /**

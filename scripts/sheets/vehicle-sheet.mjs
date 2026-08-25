@@ -54,8 +54,17 @@ export class VTMVehicleSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (!name) return;
     let value = el.value;
     if (el.type === "checkbox") value = el.checked;
-    else if (el.type === "number") value = value === "" ? null : Number(value);
-    await this.actor.update({ [name]: value });
+    else if (el.type === "number") {
+      if (el.value === "") { this.render(); return; }  // don't write null to a required field
+      value = Number(value);
+    }
+    try {
+      await this.actor.update({ [name]: value });
+    } catch (err) {
+      console.warn("VTMLARP | vehicle field update rejected:", name, value, err);
+      ui.notifications?.warn(`That value isn't allowed for ${name.split(".").pop()}.`);
+      this.render();
+    }
   }
 
   /** Push the Grid Width/Height fields onto this Actor's own prototypeToken, so new tokens dropped from it are already correctly sized. */
