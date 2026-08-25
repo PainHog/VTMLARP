@@ -25,6 +25,15 @@ async function setQueue(submissions) {
   await game.settings.set("vtmlarp", SETTING, { submissions });
 }
 
+// Serialize read-modify-write cycles on the queue so two submissions arriving
+// close together on the GM client don't both read the same snapshot and lose one.
+let _queueMutex = Promise.resolve();
+function withQueueLock(fn) {
+  const run = _queueMutex.then(fn, fn);
+  _queueMutex = run.then(() => {}, () => {});
+  return run;
+}
+
 const TYPES = {
   ritual: "Thaumaturgy Ritual",
   path: "Thaumaturgy Path",
@@ -36,9 +45,11 @@ const TYPES = {
  * or via socket for a player). */
 export async function enqueueHomebrew(sub) {
   if (!game.user.isGM) return;
-  const q = getQueue();
-  q.push(sub);
-  await setQueue(q);
+  await withQueueLock(async () => {
+    const q = getQueue();
+    q.push(sub);
+    await setQueue(q);
+  });
   ui.notifications?.info(`New homebrew submission from ${sub.by}: "${sub.name}".`);
   // AppV2 instances live in foundry.applications.instances (a Map), not ui.windows (V1 only).
   for (const app of foundry.applications.instances.values()) if (app instanceof HomebrewReviewApp) app.render();

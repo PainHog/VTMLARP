@@ -41,11 +41,19 @@ const MIGRATIONS = [
     // because the new ArrayField schema coerces the old {talents,skills,
     // knowledges} object away in the prepared data before this runs.
     version: "1.17.1",
-    async migrate({ updateActors }) {
+    async migrate({ updateActors, updateTokenActors }) {
       await updateActors(actor => {
         const src = actor._source?.system?.abilities;
         const merged = flattenAbilities(src);
         return merged ? { "system.abilities": merged } : null;
+      });
+      // Unlinked token actors carry their own delta; if it overrides the old
+      // {talents,skills,knowledges} shape, flatten that too — the new schema
+      // would otherwise coerce it away and the token would lose its abilities.
+      await updateTokenActors(token => {
+        const src = token.delta?._source?.system?.abilities;
+        const merged = flattenAbilities(src);
+        return merged ? { "delta.system.abilities": merged } : null;
       });
     }
   }
@@ -131,6 +139,24 @@ function makeContext() {
       const updates = await applyDocUpdates(game.scenes, fn, "scene");
       if (updates.length) await Scene.updateDocuments(updates);
       return updates.length;
+    },
+    /** Update the synthetic actor deltas of UNLINKED tokens across every scene.
+     * `fn(token)` returns an update object keyed under "delta.…" (or null).
+     * Linked tokens share the world Actor (handled by updateActors), so only
+     * unlinked tokens — which carry their own overridden data — are visited. */
+    async updateTokenActors(fn) {
+      let count = 0;
+      for (const scene of game.scenes) {
+        const tokenUpdates = [];
+        for (const token of scene.tokens) {
+          if (token.actorLink) continue;
+          let change;
+          try { change = await fn(token); } catch (e) { console.error(`VTMLARP | migration error on token ${token.id}`, e); }
+          if (change && Object.keys(change).length) tokenUpdates.push({ _id: token.id, ...change });
+        }
+        if (tokenUpdates.length) { await scene.updateEmbeddedDocuments("Token", tokenUpdates); count += tokenUpdates.length; }
+      }
+      return count;
     }
   };
 }

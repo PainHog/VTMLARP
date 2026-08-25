@@ -32,6 +32,30 @@ async function saveShops(shops) {
   await game.settings.set("vtmlarp", SETTING, { shops });
 }
 
+// Serialize all read-modify-write cycles against the shops world setting on the
+// GM client. Two purchase requests arriving close together would otherwise both
+// read the same stock snapshot and the second save would clobber the first
+// (overselling limited stock, losing a decrement). Chaining through one promise
+// makes each purchase see the previous one's saved result.
+let _shopMutex = Promise.resolve();
+function withShopLock(fn) {
+  const run = _shopMutex.then(fn, fn);
+  _shopMutex = run.then(() => {}, () => {});
+  return run;
+}
+
+/** Whisper a shop result to the buying player's owners (and the GM), so a
+ * failed or successful purchase is visible to the person who initiated it
+ * rather than only as a GM-side notification. */
+async function notifyBuyer(buyer, text, isFailure) {
+  const recipients = game.users.filter(u => u.isGM || buyer.testUserPermission(u, "OWNER")).map(u => u.id);
+  await ChatMessage.create({
+    whisper: recipients,
+    speaker: { alias: "Mercantile" },
+    content: `<div class="vtmlarp-shared-entry ${isFailure ? "purchase-failed" : ""}"><p>${text}</p></div>`
+  });
+}
+
 const PAY_LABELS = { money: "Money", boon: "Boon owed", barter: "Barter/trade" };
 
 // Item categories a shop can stock. A starting set covering the common kinds;
@@ -43,17 +67,23 @@ export const ITEM_CATEGORIES = [
 
 /** Apply a validated purchase (GM-side): pay, add the item, decrement stock,
  * log to chat and the buyer's ledger. `req` = { buyerId, shopId, itemId,
- * method, price, note }. Returns a status string. */
-export async function fulfillPurchase(req) {
+ * method, price, note }. Returns a status string. Serialized so concurrent
+ * purchases can't oversell shared stock (see withShopLock). */
+export function fulfillPurchase(req) {
+  return withShopLock(() => _fulfillPurchase(req));
+}
+
+async function _fulfillPurchase(req) {
   const buyer = game.actors.get(req.buyerId);
   if (!buyer) return "Buyer not found.";
+  const fail = async (msg) => { await notifyBuyer(buyer, msg, true); return msg; };
   const shops = getShops();
   const shop = shops.find(s => s.id === req.shopId);
-  if (!shop) return "That shop no longer exists.";
-  if (!shop.open) return `${shop.name} is closed.`;
+  if (!shop) return fail("That shop no longer exists.");
+  if (!shop.open) return fail(`${shop.name} is closed.`);
   const item = shop.stock?.find(i => i.id === req.itemId);
-  if (!item) return "That item is no longer in stock.";
-  if (Number.isFinite(item.qty) && item.qty >= 0 && item.qty < 1) return `${item.name} is sold out.`;
+  if (!item) return fail("That item is no longer in stock.");
+  if (Number.isFinite(item.qty) && item.qty >= 0 && item.qty < 1) return fail(`${item.name} is sold out.`);
 
   const method = req.method;
   const price = Number(item.price) || 0;
@@ -61,7 +91,7 @@ export async function fulfillPurchase(req) {
   // Payment.
   if (method === "money") {
     const have = Number(buyer.system.money) || 0;
-    if (have < price) return `${buyer.name} can't afford ${item.name} (needs ${price}, has ${have}).`;
+    if (have < price) return fail(`${buyer.name} can't afford ${item.name} (needs ${price}, has ${have}).`);
     await buyer.update({ "system.money": have - price });
   } else if (method === "boon") {
     const boons = foundry.utils.duplicate(buyer.system.boons ?? []);
@@ -243,16 +273,20 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
     const { shopId, itemId, field } = el.dataset;
     let value = el.type === "checkbox" ? el.checked : el.value;
     if (el.type === "number") value = Number(value);
-    const shops = getShops();
-    const shop = shops.find(s => s.id === shopId);
-    if (!shop) return;
-    if (itemId) {
-      const item = shop.stock?.find(i => i.id === itemId);
-      if (item) item[field] = value;
-    } else {
-      shop[field] = value;
-    }
-    await saveShops(shops);
+    // Serialize against concurrent purchases so an edit and a sale don't clobber
+    // each other's snapshot of the shops setting.
+    await withShopLock(async () => {
+      const shops = getShops();
+      const shop = shops.find(s => s.id === shopId);
+      if (!shop) return;
+      if (itemId) {
+        const item = shop.stock?.find(i => i.id === itemId);
+        if (item) item[field] = value;
+      } else {
+        shop[field] = value;
+      }
+      await saveShops(shops);
+    });
     // Show/hide the boon-level select inline without a full re-render.
     if (field === "boon" && itemId) {
       const sel = this.element.querySelector(`select[data-field="boonLevel"][data-item-id="${itemId}"]`);
