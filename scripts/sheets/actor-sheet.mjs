@@ -664,6 +664,20 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       }
     }
 
+    // The attribute-pool "Total" box displays the DERIVED total (base + any
+    // temporary Active-Effect boost like a Blood buff). Writing that number
+    // straight back would bake the boost into the stored base, permanently
+    // inflating the pool once the boost clears. Subtract the effect delta so we
+    // only ever store the base value the player intended.
+    const attrTotal = el.name.match(/^system\.attributes\.(physical|social|mental)\.total$/);
+    if (attrTotal && el.type === "number" && value != null) {
+      const cat = attrTotal[1];
+      const derived = Number(this.actor.system.attributes[cat]?.total) || 0;
+      const base = Number(this.actor._source.system.attributes[cat]?.total) || 0;
+      const delta = derived - base;  // total contribution of active effects
+      value = Math.max(0, value - delta);
+    }
+
     try {
       await this.actor.update({ [el.name]: value });
     } catch (err) {
@@ -972,11 +986,23 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // A bonus (extra "Healthy") box lives in the system.bonusHealth array by
     // index instead of a named system.health.<level> field.
     const isBonus = bonusIndex !== undefined;
-    const path = isBonus ? `bonusHealth.${bonusIndex}` : `health.${level}`;
     const current = isBonus
       ? this.actor.system.bonusHealth[Number(bonusIndex)]
       : this.actor.system.health[level];
     const idx = DAMAGE_CYCLE.indexOf(current);
+
+    // Build the update. A bonus box lives in the system.bonusHealth ArrayField;
+    // updating it by dotted index ("system.bonusHealth.1") does NOT merge — it
+    // recasts the whole array and can drop/reorder the other bonus boxes (the
+    // same footgun _onFieldChange guards against). So write the full array back.
+    const buildUpdate = (value, extra = {}) => {
+      if (isBonus) {
+        const arr = foundry.utils.duplicate(this.actor.system.bonusHealth ?? []);
+        arr[Number(bonusIndex)] = value;
+        return { "system.bonusHealth": arr, ...extra };
+      }
+      return { [`system.health.${level}`]: value, ...extra };
+    };
 
     // Shift-click heals with Blood instead of worsening: 1 Blood Trait heals one box
     // of bashing or lethal damage. This only spends the character's own Blood pool
@@ -989,15 +1015,12 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         ui.notifications?.warn("Not enough Blood to heal.");
         return;
       }
-      await this.actor.update({
-        [`system.${path}`]: "ok",
-        "system.blood.value": blood - 1
-      });
+      await this.actor.update(buildUpdate("ok", { "system.blood.value": blood - 1 }));
       return;
     }
 
     const next = DAMAGE_CYCLE[(idx + 1) % DAMAGE_CYCLE.length];
-    await this.actor.update({ [`system.${path}`]: next });
+    await this.actor.update(buildUpdate(next));
 
     // Open (never force-resolve) a Frenzy check once real damage crosses
     // into Wounded or worse - exact table rules on when Frenzy applies vary

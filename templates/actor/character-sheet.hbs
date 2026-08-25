@@ -649,9 +649,9 @@
       <h3>Concept</h3>
       <input type="text" name="system.concept" value="{{system.concept}}">
       <h3>Biography</h3>
-      <prose-mirror name="system.biography" value="{{{system.biography}}}" {{#unless owner}}disabled{{/unless}} toggled button></prose-mirror>
+      <prose-mirror name="system.biography" {{#unless owner}}disabled{{/unless}} toggled button>{{{system.biography}}}</prose-mirror>
       <h3>Notes</h3>
-      <prose-mirror name="system.notes" value="{{{system.notes}}}" {{#unless owner}}disabled{{/unless}} toggled button></prose-mirror>
+      <prose-mirror name="system.notes" {{#unless owner}}disabled{{/unless}} toggled button>{{{system.notes}}}</prose-mirror>
     </div>
 
   </section>

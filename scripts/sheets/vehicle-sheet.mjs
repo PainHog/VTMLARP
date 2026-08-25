@@ -1,3 +1,5 @@
+import { browseSheetImage } from "./edit-image.mjs";
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
 
@@ -45,6 +47,10 @@ export class VTMVehicleSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     for (const el of this.element.querySelectorAll("input[name], select[name], textarea[name], prose-mirror[name]")) {
       el.addEventListener("change", this._onFieldChange.bind(this));
     }
+    // Portrait picker: save directly (the core editImage action relies on form
+    // submission, which is off here, so it silently never saved).
+    this.element.querySelector(".profile-img")
+      ?.addEventListener("click", (event) => browseSheetImage(this.actor, this, event.currentTarget));
   }
 
   async _onFieldChange(event) {

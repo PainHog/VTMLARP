@@ -1,3 +1,5 @@
+import { browseSheetImage } from "./edit-image.mjs";
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ItemSheetV2 } = foundry.applications.sheets;
 
@@ -72,6 +74,11 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     this.element
       .querySelectorAll("input[name], select[name], textarea[name], prose-mirror[name]")
       .forEach(node => node.addEventListener("change", handler));
+
+    // Portrait picker: save directly (the core editImage action relies on form
+    // submission, which is off here, so it silently never saved).
+    this.element.querySelector(".profile-img")
+      ?.addEventListener("click", (event) => browseSheetImage(this.item, this, event.currentTarget));
   }
 
   async _onFieldChange(event) {
