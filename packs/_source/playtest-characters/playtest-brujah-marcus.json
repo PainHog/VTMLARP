@@ -1,0 +1,55 @@
+{
+  "_id": "e758a583eb2a40c8",
+  "name": "Playtest — Marcus (Brujah, bonus health)",
+  "type": "character",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ready-made playtest brawler with TWO bonus Health boxes (test that clicking them doesn't wipe each other). Delete after testing.",
+    "clan": "Brujah",
+    "bloodline": "",
+    "sect": "Anarch Movement",
+    "generation": 10,
+    "generationApplied": true,
+    "nature": "Rebel",
+    "demeanor": "Bravo",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": { "priority": "primary", "total": 7, "traits": [ { "name": "Brawny", "spent": false, "negative": false }, { "name": "Tough", "spent": false, "negative": false }, { "name": "Rugged", "spent": false, "negative": false }, { "name": "Quick", "spent": false, "negative": false }, { "name": "Ferocious", "spent": false, "negative": false }, { "name": "Resilient", "spent": false, "negative": false }, { "name": "Wiry", "spent": false, "negative": false } ] },
+      "social": { "priority": "secondary", "total": 5, "traits": [ { "name": "Intimidating", "spent": false, "negative": false }, { "name": "Commanding", "spent": false, "negative": false }, { "name": "Blunt", "spent": false, "negative": false }, { "name": "Impassioned", "spent": false, "negative": false }, { "name": "Bold", "spent": false, "negative": false } ] },
+      "mental": { "priority": "tertiary", "total": 3, "traits": [ { "name": "Determined", "spent": false, "negative": false }, { "name": "Alert", "spent": false, "negative": false }, { "name": "Wary", "spent": false, "negative": false } ] }
+    },
+    "abilities": [
+      { "name": "Brawl", "rating": 4, "max": 4, "notes": "" },
+      { "name": "Dodge", "rating": 3, "max": 3, "notes": "" },
+      { "name": "Intimidation", "rating": 3, "max": 3, "notes": "" },
+      { "name": "Streetwise", "rating": 2, "max": 2, "notes": "" }
+    ],
+    "willpower": { "value": 5, "max": 5 },
+    "blood": { "value": 13, "max": 13, "perTurn": 1 },
+    "morality": { "path": "Humanity", "rating": 5 },
+    "virtues": {
+      "conscienceConviction": { "rating": 3, "temporary": 3 },
+      "selfControlInstinct": { "rating": 2, "temporary": 2 },
+      "courage": { "rating": 5, "temporary": 5 }
+    },
+    "health": { "bruised": "ok", "hurt": "ok", "injured": "ok", "wounded": "ok", "mauled": "ok", "crippled": "ok", "incapacitated": "ok" },
+    "bonusHealth": [ "ok", "ok" ],
+    "backgrounds": [
+      { "name": "Allies", "rating": 2, "max": 2, "notes": "Anarch gang" },
+      { "name": "Contacts", "rating": 2, "max": 2, "notes": "" }
+    ],
+    "biography": "<p>Anarch enforcer. Two \"bonus\" Health boxes from Fortitude for the array-write test.</p>",
+    "notes": "<p>Playtest dummy. Safe to delete.</p>"
+  },
+  "items": [
+    { "_id": "1c931d151c8f4061", "name": "Potence", "type": "discipline", "img": "icons/svg/upgrade.svg", "system": { "description": "<p>Rating tracker for Potence.</p>", "source": "Laws of the Night Revised", "clanAffinity": "Brujah", "rating": 2, "retestAbility": "" } },
+    { "_id": "c0ae11d1296b4825", "name": "Fortitude", "type": "discipline", "img": "icons/svg/shield.svg", "system": { "description": "<p>Rating tracker for Fortitude (grants the bonus Health boxes).</p>", "source": "Laws of the Night Revised", "clanAffinity": "Brujah", "rating": 2, "retestAbility": "" } },
+    { "_id": "1f40f28ab04643bb", "name": "Celerity", "type": "discipline", "img": "icons/svg/upgrade.svg", "system": { "description": "<p>Rating tracker for Celerity.</p>", "source": "Laws of the Night Revised", "clanAffinity": "Brujah", "rating": 1, "retestAbility": "" } }
+  ],
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "sort": 200,
+  "ownership": { "default": 0 }
+}

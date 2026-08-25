@@ -1,0 +1,54 @@
+{
+  "_id": "35f3cda5337241e2",
+  "name": "Playtest — Anya (Toreador)",
+  "type": "character",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Ready-made playtest character. Delete after testing.",
+    "clan": "Toreador",
+    "bloodline": "",
+    "sect": "Camarilla",
+    "generation": 10,
+    "generationApplied": true,
+    "nature": "Gallant",
+    "demeanor": "Bon Vivant",
+    "title": "",
+    "coterie": "",
+    "attributes": {
+      "physical": { "priority": "tertiary", "total": 3, "traits": [ { "name": "Quick", "spent": false, "negative": false }, { "name": "Graceful", "spent": false, "negative": false }, { "name": "Dexterous", "spent": false, "negative": false } ] },
+      "social": { "priority": "primary", "total": 7, "traits": [ { "name": "Beguiling", "spent": false, "negative": false }, { "name": "Charming", "spent": false, "negative": false }, { "name": "Elegant", "spent": false, "negative": false }, { "name": "Gorgeous", "spent": false, "negative": false }, { "name": "Alluring", "spent": false, "negative": false }, { "name": "Eloquent", "spent": false, "negative": false }, { "name": "Genial", "spent": false, "negative": false } ] },
+      "mental": { "priority": "secondary", "total": 5, "traits": [ { "name": "Attentive", "spent": false, "negative": false }, { "name": "Clever", "spent": false, "negative": false }, { "name": "Insightful", "spent": false, "negative": false }, { "name": "Observant", "spent": false, "negative": false }, { "name": "Creative", "spent": false, "negative": false } ] }
+    },
+    "abilities": [
+      { "name": "Alertness", "rating": 2, "max": 2, "notes": "" },
+      { "name": "Empathy", "rating": 3, "max": 3, "notes": "" },
+      { "name": "Expression", "rating": 3, "max": 3, "notes": "" },
+      { "name": "Subterfuge", "rating": 2, "max": 2, "notes": "" }
+    ],
+    "willpower": { "value": 5, "max": 5 },
+    "blood": { "value": 13, "max": 13, "perTurn": 1 },
+    "morality": { "path": "Humanity", "rating": 6 },
+    "virtues": {
+      "conscienceConviction": { "rating": 4, "temporary": 4 },
+      "selfControlInstinct": { "rating": 3, "temporary": 3 },
+      "courage": { "rating": 3, "temporary": 3 }
+    },
+    "health": { "bruised": "ok", "hurt": "ok", "injured": "ok", "wounded": "ok", "mauled": "ok", "crippled": "ok", "incapacitated": "ok" },
+    "bonusHealth": [],
+    "backgrounds": [
+      { "name": "Fame", "rating": 3, "max": 3, "notes": "Celebrated portrait artist" },
+      { "name": "Resources", "rating": 2, "max": 2, "notes": "" }
+    ],
+    "biography": "<p>A gallery darling of the Camarilla. See her <a href=\"https://example.com/anya\">portfolio</a> — this line has a \"quoted\" phrase and a link to prove rich-text saves correctly.</p>",
+    "notes": "<p>Playtest dummy. Safe to delete.</p>"
+  },
+  "items": [
+    { "_id": "b09cc1c07de24182", "name": "Auspex", "type": "discipline", "img": "icons/svg/eye.svg", "system": { "description": "<p>Rating tracker for Auspex. Drag learned powers into the list.</p>", "source": "Laws of the Night Revised", "clanAffinity": "Toreador", "rating": 2, "retestAbility": "" } },
+    { "_id": "23746202be1f4625", "name": "Presence", "type": "discipline", "img": "icons/svg/aura.svg", "system": { "description": "<p>Rating tracker for Presence.</p>", "source": "Laws of the Night Revised", "clanAffinity": "Toreador", "rating": 2, "retestAbility": "" } }
+  ],
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "sort": 100,
+  "ownership": { "default": 0 }
+}
