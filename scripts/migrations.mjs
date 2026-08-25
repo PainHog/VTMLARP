@@ -56,6 +56,19 @@ const MIGRATIONS = [
         return merged ? { "delta.system.abilities": merged } : null;
       });
     }
+  },
+  {
+    // Shops became first-class Actors (type "shop") instead of a world-setting
+    // blob, so they can live in compendiums and be dragged in/out of games.
+    // Convert any shops stored in the old setting into shop Actors, once.
+    version: "1.25.0",
+    async migrate() {
+      // Dynamic import so this module stays loadable in a plain-Node test
+      // context (shops.mjs touches the foundry global at import time).
+      const { migrateSettingShopsToActors } = await import("./apps/shops.mjs");
+      const n = await migrateSettingShopsToActors();
+      if (n) console.log(`VTMLARP | Migrated ${n} shop(s) from the legacy setting to Actors.`);
+    }
   }
 ];
 

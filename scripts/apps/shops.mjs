@@ -5,18 +5,23 @@ const { DialogV2 } = foundry.applications.api;
  * The Mercantile system: a Storyteller creates any number of shops (street
  * gangs, fixers, pop-up magical merchants), each independently open or closed,
  * each stocking real or custom items at a price. Players browse the OPEN shops
- * and buy with money, a Boon owed, or a bartered trade. The Storyteller is the
- * authority for every purchase (they hold the shop stock as a world setting and
- * apply the result), so a purchase a player initiates is sent to the active GM,
- * who debits/credits the buyer, adds the item to their sheet, decrements limited
- * stock, and logs the transaction to chat and the buyer's ledger.
+ * and buy with money, a Boon owed, or a bartered trade.
+ *
+ * A shop is a first-class Actor (type "shop"), so it can be dragged in and out
+ * of games, stored in compendiums, duplicated, and imported/exported like any
+ * document. The Storyteller is the authority for every purchase: a player's
+ * purchase request is sent to the active GM, who debits/credits the buyer, adds
+ * the item to their sheet, decrements limited stock on the shop Actor, and logs
+ * the transaction to chat and the buyer's ledger.
  */
 
 const SETTING = "shops";
 
 export function registerShopSettings() {
+  // Retained only as the source for the one-time migration of pre-Actor shops
+  // (see migrateSettingShopsToActors). New shops are Actors, not this setting.
   game.settings.register("vtmlarp", SETTING, {
-    name: "Mercantile Shops",
+    name: "Mercantile Shops (legacy)",
     scope: "world",
     config: false,
     type: Object,
@@ -24,24 +29,51 @@ export function registerShopSettings() {
   });
 }
 
-export function getShops() {
-  return foundry.utils.duplicate(game.settings.get("vtmlarp", SETTING)?.shops ?? []);
+/** All shop Actors in the world. */
+export function getShopActors() {
+  return game.actors.filter(a => a.type === "shop");
 }
 
-async function saveShops(shops) {
-  await game.settings.set("vtmlarp", SETTING, { shops });
+/** Build a stock-item record with sane defaults; pass overrides for known fields. */
+export function makeStockItem(overrides = {}) {
+  return {
+    id: foundry.utils.randomID(), name: "New Item", category: "Basic Item", description: "",
+    price: 0, qty: -1, money: true, boon: false, boonLevel: "minor", barter: false, img: "", traitBonus: "",
+    ...overrides
+  };
 }
 
-// Serialize all read-modify-write cycles against the shops world setting on the
-// GM client. Two purchase requests arriving close together would otherwise both
-// read the same stock snapshot and the second save would clobber the first
-// (overselling limited stock, losing a decrement). Chaining through one promise
-// makes each purchase see the previous one's saved result.
+// Serialize purchase read-modify-write cycles on the GM client. Two purchase
+// requests arriving close together would otherwise both read the same stock
+// snapshot and the second update would clobber the first (overselling limited
+// stock). Chaining through one promise makes each purchase see the previous
+// one's saved result.
 let _shopMutex = Promise.resolve();
 function withShopLock(fn) {
   const run = _shopMutex.then(fn, fn);
   _shopMutex = run.then(() => {}, () => {});
   return run;
+}
+
+/** One-time migration: turn any shops stored in the legacy world setting into
+ * shop Actors, then clear the setting so it can't be re-imported. Called from
+ * the migration framework. Returns the number of shops migrated. */
+export async function migrateSettingShopsToActors() {
+  const legacy = game.settings.get("vtmlarp", SETTING)?.shops ?? [];
+  if (!legacy.length) return 0;
+  const toCreate = legacy.map(s => ({
+    name: s.name || "Shop",
+    type: "shop",
+    system: {
+      keeper: s.keeper || "",
+      open: !!s.open,
+      notes: s.notes || "",
+      stock: (s.stock ?? []).map(i => makeStockItem(i))
+    }
+  }));
+  await Actor.createDocuments(toCreate);
+  await game.settings.set("vtmlarp", SETTING, { shops: [] });
+  return toCreate.length;
 }
 
 /** Whisper a shop result to the buying player's owners (and the GM), so a
@@ -77,11 +109,12 @@ async function _fulfillPurchase(req) {
   const buyer = game.actors.get(req.buyerId);
   if (!buyer) return "Buyer not found.";
   const fail = async (msg) => { await notifyBuyer(buyer, msg, true); return msg; };
-  const shops = getShops();
-  const shop = shops.find(s => s.id === req.shopId);
-  if (!shop) return fail("That shop no longer exists.");
+  const shopActor = game.actors.get(req.shopId);
+  if (!shopActor || shopActor.type !== "shop") return fail("That shop no longer exists.");
+  const shop = { name: shopActor.name, keeper: shopActor.system.keeper, open: shopActor.system.open };
   if (!shop.open) return fail(`${shop.name} is closed.`);
-  const item = shop.stock?.find(i => i.id === req.itemId);
+  const stock = foundry.utils.duplicate(shopActor.system.stock ?? []);
+  const item = stock.find(i => i.id === req.itemId);
   if (!item) return fail("That item is no longer in stock.");
   if (Number.isFinite(item.qty) && item.qty >= 0 && item.qty < 1) return fail(`${item.name} is sold out.`);
 
@@ -110,10 +143,10 @@ async function _fulfillPurchase(req) {
   };
   await buyer.createEmbeddedDocuments("Item", [itemData]);
 
-  // Decrement limited stock.
+  // Decrement limited stock on the shop Actor.
   if (Number.isFinite(item.qty) && item.qty >= 0) {
     item.qty -= 1;
-    await saveShops(shops);
+    await shopActor.update({ "system.stock": stock });
   }
 
   // Log: buyer ledger + chat.
@@ -171,9 +204,12 @@ export class ShopBrowserApp extends HandlebarsApplicationMixin(ApplicationV2) {
 
   async _prepareContext() {
     const isGM = game.user.isGM;
-    const shops = getShops()
-      .filter(s => isGM || s.open)
-      .map(s => ({ ...s, stock: (s.stock ?? []).filter(i => isGM || !(Number.isFinite(i.qty) && i.qty >= 0 && i.qty < 1)) }));
+    const shops = getShopActors()
+      .filter(a => isGM || a.system.open)
+      .map(a => ({
+        id: a.id, name: a.name, keeper: a.system.keeper, notes: a.system.notes, open: a.system.open,
+        stock: (a.system.stock ?? []).filter(i => isGM || !(Number.isFinite(i.qty) && i.qty >= 0 && i.qty < 1))
+      }));
     // Characters this user could buy for.
     const buyers = game.actors.filter(a => a.type === "character" && a.isOwner)
       .map(a => ({ id: a.id, name: a.name, money: a.system.money ?? 0 }));
@@ -182,8 +218,9 @@ export class ShopBrowserApp extends HandlebarsApplicationMixin(ApplicationV2) {
 
   static async #onBuy(event, target) {
     const { shopId, itemId } = target.dataset;
-    const shop = getShops().find(s => s.id === shopId);
-    const item = shop?.stock?.find(i => i.id === itemId);
+    const shopActor = game.actors.get(shopId);
+    const shop = shopActor ? { name: shopActor.name, keeper: shopActor.system.keeper } : null;
+    const item = shopActor?.system?.stock?.find(i => i.id === itemId);
     if (!item) { ui.notifications?.warn("Item not found."); return; }
 
     // Which of the user's characters is buying?
@@ -227,21 +264,22 @@ export class ShopBrowserApp extends HandlebarsApplicationMixin(ApplicationV2) {
   }
 }
 
-/** Storyteller-only Mercantile panel: create/edit shops, toggle open/closed,
- * manage stock. */
+
+/** Storyteller-only Mercantile overview: lists the world's shop Actors, creates
+ * new ones, toggles open/closed, and opens each shop's sheet to edit its stock.
+ * Editing lives on the ShopSheet (a shop is an Actor), so a shop can also be
+ * dragged into a compendium and back. */
 export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     id: "vtmlarp-mercantile-panel",
     classes: ["vtmlarp", "sheet", "mercantile-panel"],
-    position: { width: 680, height: 720 },
+    position: { width: 520, height: 560 },
     window: { title: "Mercantile — Shops", resizable: true },
     actions: {
       addShop: MercantilePanelApp.#onAddShop,
+      editShop: MercantilePanelApp.#onEditShop,
       deleteShop: MercantilePanelApp.#onDeleteShop,
       toggleOpen: MercantilePanelApp.#onToggleOpen,
-      addItem: MercantilePanelApp.#onAddItem,
-      createItem: MercantilePanelApp.#onCreateItem,
-      deleteItem: MercantilePanelApp.#onDeleteItem,
       openBrowser: () => new ShopBrowserApp().render(true)
     }
   };
@@ -249,163 +287,37 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
   static PARTS = { form: { template: "systems/vtmlarp/templates/apps/mercantile-panel.hbs" } };
 
   async _prepareContext() {
-    return { shops: getShops(), categories: ITEM_CATEGORIES };
-  }
-
-  _onRender(context, options) {
-    super._onRender(context, options);
-    // Persist edits to shop/item fields on change.
-    for (const el of this.element.querySelectorAll("[data-field]")) {
-      el.addEventListener("change", this.#onFieldChange.bind(this));
-    }
-    // Accept Gear items dropped onto a shop as new stock. Bind once per root
-    // (the V2 root element persists across re-renders).
-    const root = this.element;
-    if (!root.dataset.vtmDropBound) {
-      root.dataset.vtmDropBound = "1";
-      root.addEventListener("dragover", ev => ev.preventDefault());
-      root.addEventListener("drop", ev => this._onDrop(ev));
-    }
-  }
-
-  async #onFieldChange(event) {
-    const el = event.currentTarget;
-    const { shopId, itemId, field } = el.dataset;
-    let value = el.type === "checkbox" ? el.checked : el.value;
-    if (el.type === "number") value = Number(value);
-    // A blank quantity means "unlimited" (-1), not 0 — otherwise clearing the
-    // box would read as sold out. (Number("") is 0.)
-    if (field === "qty" && el.value === "") value = -1;
-    // Serialize against concurrent purchases so an edit and a sale don't clobber
-    // each other's snapshot of the shops setting.
-    await withShopLock(async () => {
-      const shops = getShops();
-      const shop = shops.find(s => s.id === shopId);
-      if (!shop) return;
-      if (itemId) {
-        const item = shop.stock?.find(i => i.id === itemId);
-        if (item) item[field] = value;
-      } else {
-        shop[field] = value;
-      }
-      await saveShops(shops);
-    });
-    // Show/hide the boon-level select inline without a full re-render.
-    if (field === "boon" && itemId) {
-      const sel = this.element.querySelector(`select[data-field="boonLevel"][data-item-id="${itemId}"]`);
-      if (sel) sel.style.display = value ? "" : "none";
-    }
+    const shops = getShopActors()
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(a => ({ id: a.id, name: a.name, keeper: a.system.keeper, open: a.system.open, count: (a.system.stock ?? []).length }));
+    return { shops, hasShops: shops.length > 0 };
   }
 
   static async #onAddShop() {
-    const shops = getShops();
-    shops.push({ id: foundry.utils.randomID(), name: "New Shop", keeper: "", open: false, notes: "", stock: [] });
-    await saveShops(shops);
+    const [shop] = await Actor.createDocuments([{ name: "New Shop", type: "shop" }]);
+    shop?.sheet?.render(true);
     this.render();
   }
 
+  static #onEditShop(event, target) {
+    game.actors.get(target.dataset.shopId)?.sheet?.render(true);
+  }
+
   static async #onDeleteShop(event, target) {
-    const shops = getShops().filter(s => s.id !== target.dataset.shopId);
-    await saveShops(shops);
+    const shop = game.actors.get(target.dataset.shopId);
+    if (!shop) return;
+    const ok = await DialogV2.confirm({
+      window: { title: "Delete Shop" },
+      content: `<p>Delete the shop <strong>${shop.name}</strong>? This removes the Actor. (To keep a copy, drag it into a compendium first.)</p>`,
+      rejectClose: false
+    });
+    if (!ok) return;
+    await shop.delete();
     this.render();
   }
 
   static async #onToggleOpen(event, target) {
-    const shops = getShops();
-    const shop = shops.find(s => s.id === target.dataset.shopId);
-    if (shop) { shop.open = !shop.open; await saveShops(shops); this.render(); }
-  }
-
-  static async #onAddItem(event, target) {
-    const shops = getShops();
-    const shop = shops.find(s => s.id === target.dataset.shopId);
-    if (!shop) return;
-    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: "New Item", category: "Basic Item", description: "", price: 0, qty: -1, money: true, boon: false, boonLevel: "minor", barter: false, img: "", traitBonus: "" });
-    await saveShops(shops);
-    this.render();
-  }
-
-  /** Guided item-creation form: name + type dropdown + the mandatory pricing/
-   * payment fields, with flavor at the bottom. Adds the finished item to stock. */
-  static async #onCreateItem(event, target) {
-    const shopId = target.dataset.shopId;
-    const catOptions = ITEM_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("");
-    const result = await DialogV2.prompt({
-      window: { title: "Create Shop Item" },
-      position: { width: 460 },
-      content: `<div class="flexcol vtmlarp-create-item" style="gap:8px;">
-        <label>Name <span class="req">*</span><input type="text" name="name" autofocus required></label>
-        <label>Type <select name="category">${catOptions}</select></label>
-        <div class="flexrow" style="gap:8px;">
-          <label>Price <span class="req">*</span><input type="number" name="price" value="0" min="0"></label>
-          <label>Quantity <input type="number" name="qty" value="-1" title="-1 = unlimited"></label>
-        </div>
-        <fieldset><legend>Accepted payment</legend>
-          <label class="check"><input type="checkbox" name="money" checked> Money</label>
-          <label class="check"><input type="checkbox" name="boon"> Boon owed</label>
-          <label class="boon-level-wrap" style="display:none;">Boon level
-            <select name="boonLevel"><option value="minor">Minor</option><option value="major">Major</option><option value="blood">Blood/Life</option></select>
-          </label>
-          <label class="check"><input type="checkbox" name="barter"> Barter / trade</label>
-        </fieldset>
-        <label>Trait bonus (weapons/armor, optional) <input type="text" name="traitBonus" placeholder="e.g. +2 Traits, 2 Health absorbed"></label>
-        <label>Description / flavor <textarea name="description" rows="4" placeholder="What it is, what it does, any rules notes"></textarea></label>
-      </div>`,
-      ok: {
-        label: "Add to shop",
-        callback: (e, btn) => {
-          const f = btn.form.elements;
-          const name = f.name.value.trim();
-          if (!name) return null;
-          return {
-            id: foundry.utils.randomID(), name,
-            category: f.category.value,
-            price: Number(f.price.value) || 0,
-            qty: Number.isFinite(Number(f.qty.value)) ? Number(f.qty.value) : -1,
-            money: f.money.checked, boon: f.boon.checked, boonLevel: f.boonLevel.value, barter: f.barter.checked,
-            traitBonus: f.traitBonus.value.trim(),
-            description: f.description.value.trim(),
-            img: ""
-          };
-        }
-      },
-      render: (e, dialog) => {
-        const form = dialog.element.querySelector("form") ?? dialog.element;
-        const boon = form.querySelector('[name="boon"]');
-        const wrap = form.querySelector(".boon-level-wrap");
-        const sync = () => { if (wrap) wrap.style.display = boon.checked ? "" : "none"; };
-        boon?.addEventListener("change", sync); sync();
-      }
-    }).catch(() => null);
-    if (!result) return;
-    const shops = getShops();
-    const shop = shops.find(s => s.id === shopId);
-    if (!shop) return;
-    (shop.stock ??= []).push(result);
-    await saveShops(shops);
-    this.render();
-  }
-
-  static async #onDeleteItem(event, target) {
-    const shops = getShops();
-    const shop = shops.find(s => s.id === target.dataset.shopId);
-    if (shop) { shop.stock = (shop.stock ?? []).filter(i => i.id !== target.dataset.itemId); await saveShops(shops); this.render(); }
-  }
-
-  /** Accept a Gear item dropped from a compendium/sidebar as new stock. */
-  async _onDrop(event) {
-    let data;
-    try { data = JSON.parse(event.dataTransfer.getData("text/plain")); } catch { return; }
-    if (data?.type !== "Item") return;
-    const doc = await fromUuid(data.uuid).catch(() => null);
-    if (!doc || doc.type !== "gear") { ui.notifications?.info("Drop a Gear item to add it as stock."); return; }
-    const shopEl = event.target.closest?.("[data-shop-id]");
-    const shopId = shopEl?.dataset?.shopId;
-    const shops = getShops();
-    const shop = shops.find(s => s.id === shopId) ?? shops[0];
-    if (!shop) { ui.notifications?.warn("Create a shop first, then drop items onto it."); return; }
-    (shop.stock ??= []).push({ id: foundry.utils.randomID(), name: doc.name, category: "Gear / Tool", description: doc.system.description || "", price: 0, qty: -1, money: true, boon: false, boonLevel: "minor", barter: false, img: doc.img, traitBonus: doc.system.traitBonus || "" });
-    await saveShops(shops);
-    this.render();
+    const shop = game.actors.get(target.dataset.shopId);
+    if (shop) { await shop.update({ "system.open": !shop.system.open }); this.render(); }
   }
 }

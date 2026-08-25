@@ -318,3 +318,38 @@ export class VTMVehicleData extends foundry.abstract.TypeDataModel {
     };
   }
 }
+
+/**
+ * A Shop is now a first-class Actor (type "shop") rather than an entry in a
+ * world-setting blob, so Storytellers can drag shops in and out of games,
+ * store libraries of them in compendiums, duplicate, and import/export them
+ * like any other document. The stock list is an array of plain item records
+ * (the same shape the Mercantile UI and fulfillPurchase already used).
+ */
+function shopStockField() {
+  return new fields.SchemaField({
+    id: new fields.StringField({ required: true, initial: () => foundry.utils.randomID() }),
+    name: new fields.StringField({ required: true, blank: true, initial: "New Item" }),
+    category: new fields.StringField({ required: false, blank: true, initial: "Basic Item" }),
+    description: new fields.StringField({ required: false, blank: true, initial: "" }),
+    price: new fields.NumberField({ required: true, initial: 0 }),
+    qty: new fields.NumberField({ required: true, integer: true, initial: -1 }),  // -1 = unlimited
+    money: new fields.BooleanField({ required: true, initial: true }),
+    boon: new fields.BooleanField({ required: true, initial: false }),
+    boonLevel: new fields.StringField({ required: false, blank: true, initial: "minor", choices: ["minor", "major", "blood"] }),
+    barter: new fields.BooleanField({ required: true, initial: false }),
+    img: new fields.StringField({ required: false, blank: true, initial: "" }),
+    traitBonus: new fields.StringField({ required: false, blank: true, initial: "" })
+  });
+}
+
+export class VTMShopData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return {
+      keeper: new fields.StringField({ required: false, blank: true, initial: "" }),
+      open: new fields.BooleanField({ required: true, initial: false }),
+      notes: new fields.StringField({ required: false, blank: true, initial: "" }),
+      stock: new fields.ArrayField(shopStockField())
+    };
+  }
+}

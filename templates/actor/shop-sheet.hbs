@@ -1,0 +1,53 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <header class="sheet-header shop-sheet-head">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}">
+    <div class="header-fields flexcol">
+      <input type="text" data-field="name" value="{{actor.name}}" class="shop-name-input" placeholder="Shop name" {{#unless editable}}disabled{{/unless}}>
+      <label class="shop-open-toggle {{#if system.open}}is-open{{/if}}">
+        <input type="checkbox" data-field="open" {{#if system.open}}checked{{/if}} {{#unless editable}}disabled{{/unless}}>
+        {{#if system.open}}OPEN to players{{else}}Closed{{/if}}
+      </label>
+    </div>
+  </header>
+
+  <div class="flexrow">
+    <label class="wide">Keeper <input type="text" data-field="keeper" value="{{system.keeper}}" placeholder="e.g. the Blades street gang" {{#unless editable}}disabled{{/unless}}></label>
+  </div>
+  <label>Notes <input type="text" data-field="notes" value="{{system.notes}}" placeholder="Flavor / where it is / when it appears" {{#unless editable}}disabled{{/unless}}></label>
+
+  <table class="merc-stock">
+    <thead><tr><th>Item</th><th>Type</th><th>Price</th><th>Qty</th><th title="Accept money">$</th><th title="Accept Boon">Boon</th><th title="Accept barter">Barter</th><th></th></tr></thead>
+    <tbody>
+      {{#each stock as |item|}}
+      <tr data-item-id="{{item.id}}">
+        <td><input type="text" data-field="name" data-item-id="{{item.id}}" value="{{item.name}}" {{#unless ../editable}}disabled{{/unless}}></td>
+        <td><select data-field="category" data-item-id="{{item.id}}" {{#unless ../editable}}disabled{{/unless}}>{{#each ../categories as |c|}}<option value="{{c}}" {{#if (eq item.category c)}}selected{{/if}}>{{c}}</option>{{/each}}</select></td>
+        <td><input type="number" data-field="price" data-item-id="{{item.id}}" value="{{item.price}}" min="0" class="tiny" {{#unless ../editable}}disabled{{/unless}}></td>
+        <td><input type="number" data-field="qty" data-item-id="{{item.id}}" value="{{item.qty}}" title="-1 = unlimited" class="tiny" {{#unless ../editable}}disabled{{/unless}}></td>
+        <td><input type="checkbox" data-field="money" data-item-id="{{item.id}}" {{#if item.money}}checked{{/if}} {{#unless ../editable}}disabled{{/unless}}></td>
+        <td class="merc-boon-cell"><input type="checkbox" data-field="boon" data-item-id="{{item.id}}" {{#if item.boon}}checked{{/if}} {{#unless ../editable}}disabled{{/unless}}>
+          <select data-field="boonLevel" data-item-id="{{item.id}}" class="tiny" {{#unless item.boon}}style="display:none;"{{/unless}} title="Boon level owed" {{#unless ../editable}}disabled{{/unless}}>
+            <option value="minor" {{#if (eq item.boonLevel "minor")}}selected{{/if}}>Minor</option>
+            <option value="major" {{#if (eq item.boonLevel "major")}}selected{{/if}}>Major</option>
+            <option value="blood" {{#if (eq item.boonLevel "blood")}}selected{{/if}}>Blood</option>
+          </select>
+        </td>
+        <td><input type="checkbox" data-field="barter" data-item-id="{{item.id}}" {{#if item.barter}}checked{{/if}} {{#unless ../editable}}disabled{{/unless}}></td>
+        <td>{{#if ../editable}}<a data-action="deleteItem" data-item-id="{{item.id}}" title="Remove"><i class="fas fa-times"></i></a>{{/if}}</td>
+      </tr>
+      <tr class="merc-desc-row"><td colspan="8"><input type="text" data-field="description" data-item-id="{{item.id}}" value="{{item.description}}" placeholder="Item description (shown to buyers)" {{#unless ../editable}}disabled{{/unless}}></td></tr>
+      {{else}}
+      <tr><td colspan="8" class="hint">No stock yet — click Create Item / Quick add, or drag a Gear item here.</td></tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{#if editable}}
+  <div class="flexrow" style="gap:6px;">
+    <button type="button" data-action="createItem"><i class="fas fa-wand-magic-sparkles"></i> Create Item…</button>
+    <button type="button" data-action="addItem" title="Add a blank row to edit inline"><i class="fas fa-plus"></i> Quick add</button>
+    <button type="button" data-action="previewShop" title="See the player buy view"><i class="fas fa-eye"></i> Preview</button>
+  </div>
+  <p class="hint">Drag a Gear item from a compendium onto this sheet to add it as stock. Toggle <strong>OPEN to players</strong> when the shop is available. Drag this shop into a compendium to save it for reuse.</p>
+  {{/if}}
+</form>

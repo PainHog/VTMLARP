@@ -1,10 +1,11 @@
-import { VTMCharacterData, VTMNpcData, VTMVehicleData } from "./documents/actor.mjs";
+import { VTMCharacterData, VTMNpcData, VTMVehicleData, VTMShopData } from "./documents/actor.mjs";
 import {
   VTMAttributeData, VTMAbilityData, VTMDisciplineData, VTMPowerData,
   VTMBackgroundData, VTMMeritData, VTMFlawData, VTMVirtueData, VTMRitualData, VTMGearData
 } from "./documents/item.mjs";
 import { VTMActorSheet } from "./sheets/actor-sheet.mjs";
 import { VTMVehicleSheet } from "./sheets/vehicle-sheet.mjs";
+import { ShopSheet } from "./sheets/shop-sheet.mjs";
 import { VTMItemSheet } from "./sheets/item-sheet.mjs";
 import { ChallengeResponseApp } from "./apps/challenge-response.mjs";
 import { ChallengeApp } from "./apps/challenge.mjs";
@@ -24,7 +25,7 @@ import { registerHomebrewSettings, HomebrewApp, HomebrewReviewApp, enqueueHomebr
 // controls accessible names (title -> aria-label) and keyboard operability. One
 // hook per V2 class name; the V2 render hook passes (application, element, ...).
 for (const appName of [
-  "VTMActorSheet", "VTMVehicleSheet", "VTMItemSheet",
+  "VTMActorSheet", "VTMVehicleSheet", "VTMItemSheet", "ShopSheet",
   "ChallengeApp", "ChallengeResponseApp", "GMChallengeDashboard", "XPAuditApp",
   "BloodBondOverviewApp", "STPanelApp", "CharacterBuilderApp", "FrenzyApp",
   "VaulderieApp", "SessionLogApp", "MercantilePanelApp", "ShopBrowserApp", "DiablerieApp",
@@ -51,7 +52,8 @@ Hooks.once("init", () => {
   CONFIG.Actor.dataModels = {
     character: VTMCharacterData,
     npc: VTMNpcData,
-    vehicle: VTMVehicleData
+    vehicle: VTMVehicleData,
+    shop: VTMShopData
   };
 
   CONFIG.Item.dataModels = {
@@ -80,6 +82,7 @@ Hooks.once("init", () => {
   if (BaseActorSheet) ActorsCollection.unregisterSheet("core", BaseActorSheet);
   ActorsCollection.registerSheet("vtmlarp", VTMActorSheet, { types: ["character", "npc"], makeDefault: true });
   ActorsCollection.registerSheet("vtmlarp", VTMVehicleSheet, { types: ["vehicle"], makeDefault: true });
+  ActorsCollection.registerSheet("vtmlarp", ShopSheet, { types: ["shop"], makeDefault: true });
 
   if (BaseItemSheet) ItemsCollection.unregisterSheet("core", BaseItemSheet);
   ItemsCollection.registerSheet("vtmlarp", VTMItemSheet, { makeDefault: true });
