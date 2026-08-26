@@ -281,8 +281,10 @@ export class VTMNpcData extends VTMCharacterData {
     });
     // When set, this NPC answers a Challenge automatically with a random
     // gesture (Storyteller convenience) instead of the GM having to respond in
-    // the dialog. Bomb is only included in the random pick if bombAccess is on.
-    schema.autoChallenge = new fields.BooleanField({ required: false, initial: false });
+    // the dialog. ON by default so NPCs "just work" when challenged; toggle it
+    // off on a specific NPC you want to hand-answer. Bomb is only included in
+    // the random pick if bombAccess is on.
+    schema.autoChallenge = new fields.BooleanField({ required: false, initial: true });
     schema.bombAccess = new fields.BooleanField({ required: false, initial: false });
     return schema;
   }

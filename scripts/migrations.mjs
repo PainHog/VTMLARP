@@ -69,6 +69,18 @@ const MIGRATIONS = [
       const n = await migrateSettingShopsToActors();
       if (n) console.log(`VTMLARP | Migrated ${n} shop(s) from the legacy setting to Actors.`);
     }
+  },
+  {
+    // NPC "Auto-answer challenges" now defaults ON. Enable it on every existing
+    // NPC that doesn't already have it set, so old NPCs auto-respond too. (A GM
+    // can still toggle it off per-NPC afterward; this migration runs once.)
+    version: "1.26.0",
+    async migrate({ updateActors }) {
+      await updateActors(actor => {
+        if (actor.type !== "npc") return null;
+        return actor._source?.system?.autoChallenge ? null : { "system.autoChallenge": true };
+      });
+    }
   }
 ];
 
