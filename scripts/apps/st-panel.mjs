@@ -1,6 +1,7 @@
 import { postGestureChallengePrompt } from "./challenge-shared.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { DialogV2 } = foundry.applications.api;
 
 /**
  * Storyteller Panel - a GM-only toolbox for driving scenes:
@@ -21,7 +22,8 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     actions: {
       postChallenge: STPanelApp.#onPostChallenge,
       applyStatus: STPanelApp.#onApplyStatus,
-      clearStatus: STPanelApp.#onClearStatus
+      clearStatus: STPanelApp.#onClearStatus,
+      bulkNpcAuto: STPanelApp.#onBulkNpcAuto
     }
   };
 
@@ -52,6 +54,43 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     context.gestures = ["rock", "paper", "scissors", "bomb"];
     context.statTargets = Object.entries(STPanelApp.STAT_TARGETS).map(([key, label]) => ({ key, label }));
     return context;
+  }
+
+  /** Bulk-enable NPC auto-answer: switch it on for every NPC, and optionally
+   * convert player-less character actors (typically NPCs built with the
+   * Character Builder, which always made type "character") into NPCs too. */
+  static async #onBulkNpcAuto() {
+    const hasPlayerOwner = a => game.users.some(u => !u.isGM && a.testUserPermission(u, "OWNER"));
+    const npcs = game.actors.filter(a => a.type === "npc");
+    const npcsToFlip = npcs.filter(a => !a.system?.autoChallenge);
+    const orphanChars = game.actors.filter(a => a.type === "character" && !hasPlayerOwner(a));
+    const preview = orphanChars.slice(0, 25).map(a => a.name).join(", ") + (orphanChars.length > 25 ? "…" : "");
+
+    const content = `<div class="flexcol" style="gap:8px;">
+      <p>Turn on <strong>auto-answer</strong> for all <strong>${npcs.length}</strong> NPC(s)${npcsToFlip.length !== npcs.length ? ` (${npcsToFlip.length} not already on)` : ""}.</p>
+      ${orphanChars.length ? `<label class="check"><input type="checkbox" name="convert" checked> Also convert <strong>${orphanChars.length}</strong> player-less character(s) to NPC and enable auto-answer.</label>
+      <p class="hint">These have no assigned player, so they're most likely NPCs built with the Character Builder: ${preview}</p>` : `<p class="hint">No player-less character actors found to convert.</p>`}
+    </div>`;
+
+    const result = await DialogV2.prompt({
+      window: { title: "Bulk NPC Auto-Answer" },
+      position: { width: 460 },
+      content,
+      ok: { label: "Apply", callback: (e, btn) => ({ convert: !!btn.form.elements.convert?.checked }) }
+    }).catch(() => null);
+    if (!result) return;
+
+    if (npcsToFlip.length) {
+      await Actor.updateDocuments(npcsToFlip.map(a => ({ _id: a.id, "system.autoChallenge": true })));
+    }
+    let converted = 0;
+    if (result.convert) {
+      for (const a of orphanChars) {
+        try { await a.update({ type: "npc", "system.autoChallenge": true }); converted++; }
+        catch (err) { console.warn(`VTMLARP | couldn't convert ${a.name} to NPC`, err); }
+      }
+    }
+    ui.notifications?.info(`Auto-answer on for ${npcs.length} NPC(s)${converted ? `; converted ${converted} character(s) to NPC` : ""}.`);
   }
 
   /** Read the challenge section of the form. */
