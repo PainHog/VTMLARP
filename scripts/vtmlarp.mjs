@@ -31,7 +31,42 @@ for (const appName of [
   "VaulderieApp", "SessionLogApp", "MercantilePanelApp", "ShopBrowserApp", "DiablerieApp",
   "HomebrewApp", "HomebrewReviewApp"
 ]) {
-  Hooks.on(`render${appName}`, (app, element) => enhanceAccessibility(element));
+  Hooks.on(`render${appName}`, (app, element) => {
+    enhanceAccessibility(element);
+    restoreWindowPosition(app);
+  });
+  Hooks.on(`close${appName}`, (app) => saveWindowPosition(app));
+}
+
+/**
+ * Per-player window size/position memory. Keyed by the app's class name so all
+ * instances of a window (e.g. every character sheet) share the size the player
+ * last chose, and it survives a reload. Defensive throughout — a bad stored
+ * value must never stop a window from opening.
+ */
+function saveWindowPosition(app) {
+  try {
+    const p = app?.position;
+    if (!p || !game.settings) return;
+    const store = { ...(game.settings.get("vtmlarp", "windowPositions") ?? {}) };
+    store[app.constructor.name] = { top: p.top, left: p.left, width: p.width, height: p.height };
+    game.settings.set("vtmlarp", "windowPositions", store);
+  } catch (err) { console.warn("VTMLARP | couldn't save window position", err); }
+}
+
+function restoreWindowPosition(app) {
+  try {
+    if (app._vtmPosRestored) return;      // only reposition on the first render
+    app._vtmPosRestored = true;
+    const saved = (game.settings.get("vtmlarp", "windowPositions") ?? {})[app.constructor.name];
+    if (!saved) return;
+    // Clamp to the current viewport so a window saved on a bigger screen can't
+    // open entirely off-screen.
+    const pos = { ...saved };
+    if (Number.isFinite(pos.left)) pos.left = Math.max(0, Math.min(pos.left, window.innerWidth - 100));
+    if (Number.isFinite(pos.top)) pos.top = Math.max(0, Math.min(pos.top, window.innerHeight - 60));
+    app.setPosition(pos);
+  } catch (err) { console.warn("VTMLARP | couldn't restore window position", err); }
 }
 
 Hooks.once("init", () => {
@@ -43,6 +78,14 @@ Hooks.once("init", () => {
   registerShopSettings();
   // Player-authored content queue (world setting).
   registerHomebrewSettings();
+
+  // Remembered per-player window sizes/positions (client-scoped): keyed by app
+  // class name, so a sheet/dialog reopens at the size and place the player last
+  // left it instead of snapping back to the default (see the render/close hooks
+  // that read and write this below).
+  game.settings.register("vtmlarp", "windowPositions", {
+    scope: "client", config: false, type: Object, default: {}
+  });
 
   // Initiative is a flat d20 roll - MET breaks ties/order with a random draw
   // rather than a stat, so the Combat Tracker's "Roll Initiative" just rolls
