@@ -1586,7 +1586,7 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 .vtmlarp.clan-picker .clan-list-name { font-weight: bold; font-size: 13px; }
 .vtmlarp.clan-picker .clan-list-item.is-bloodline .clan-list-name { font-weight: normal; font-style: italic; opacity: 0.85; }
 .vtmlarp.clan-picker .clan-list-nick { font-size: 10px; opacity: 0.7; }
-.vtmlarp.clan-picker .clan-card { flex: 1; padding: 4px 8px 0 12px; min-width: 0; overflow-y: auto; }
+.vtmlarp.clan-picker .clan-card { flex: 1; padding: 4px 8px 0 12px; min-width: 0; min-height: 0; overflow-y: auto; }
 .vtmlarp.clan-picker .clan-card-head { border-bottom: 1px solid var(--vtm-red, #8a0303); margin-bottom: 6px; }
 .vtmlarp.clan-picker .clan-card-name { margin: 0; font-size: 22px; }
 .vtmlarp.clan-picker .clan-card-nick { font-style: italic; opacity: 0.8; margin-bottom: 4px; }
