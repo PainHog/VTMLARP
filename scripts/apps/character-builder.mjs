@@ -103,6 +103,7 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     for (const e of await idx("paths-of-enlightenment")) remember("path", e.name, e.uuid);
 
     return {
+      isGM: game.user.isGM,
       clans: CLANS, initialClan: this.#initialClan, sects: SECTS, paths: PATH_OPTIONS, archetypes: ARCHETYPE_OPTIONS,
       generations: [...GENERATION_OPTIONS].reverse(),
       abilities, disciplineList, backgrounds, derangements,
@@ -292,6 +293,8 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const num = (n) => Number(el.querySelector(`[name="${n}"]`)?.value) || 0;
     const name = val("charname").trim();
     if (!name) { ui.notifications?.warn("Give the character a name first."); this.#showStep(0); return; }
+    // GM-only: build the result as an NPC actor instead of a player character.
+    const asNpc = game.user.isGM && !!el.querySelector('[name="asNpc"]')?.checked;
 
     const gen = num("generation") || 13;
     const [bloodMax, perTurn] = GEN_BLOOD[gen] ?? [10, 1];
@@ -355,7 +358,7 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     // they're a player or the Storyteller).
     const OWNER = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
     const actorData = {
-      name, type: "character",
+      name, type: asNpc ? "npc" : "character",
       ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE, [game.user.id]: OWNER },
       system: {
         clan: val("clan"), sect: val("sect"), nature: val("nature"), demeanor: val("demeanor"),

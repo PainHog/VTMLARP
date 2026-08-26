@@ -9,6 +9,7 @@
   <div class="builder-step" data-title="Concept">
     <div class="builder-toprow flexrow">
       <label class="wide">Name <input type="text" name="charname" placeholder="Character name"></label>
+      {{#if isGM}}<label class="check builder-asnpc" title="Create this as an NPC actor instead of a player character (NPCs auto-answer challenges)."><input type="checkbox" name="asNpc"> Build as NPC</label>{{/if}}
       <label>Generation
         <select name="generation">{{#each generations as |g|}}<option value="{{g}}" {{#if (eq g 13)}}selected{{/if}}>{{g}}th</option>{{/each}}</select>
       </label>
