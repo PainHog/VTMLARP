@@ -87,6 +87,13 @@ Hooks.once("init", () => {
     scope: "client", config: false, type: Object, default: {}
   });
 
+  // Remembered per-player collapsed sheet sections (client-scoped), keyed by
+  // actor id then section key. Sections start expanded; this stores the ones a
+  // player has minimized so they stay collapsed across reopens/reloads.
+  game.settings.register("vtmlarp", "collapsedSections", {
+    scope: "client", config: false, type: Object, default: {}
+  });
+
   // Initiative is a flat d20 roll - MET breaks ties/order with a random draw
   // rather than a stat, so the Combat Tracker's "Roll Initiative" just rolls
   // 1d20 for each combatant.

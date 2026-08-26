@@ -109,6 +109,18 @@ export class ClanPickerApp extends HandlebarsApplicationMixin(ApplicationV2) {
     }
   }
 
+  /** Pick up to 3 distinct playstyle words for the card (skip near-duplicate
+   * word-forms so we don't show "assassin, assassination, killer"). */
+  static #displayTags(tags) {
+    const out = [];
+    for (const t of tags) {
+      if (out.length >= 3) break;
+      if (out.some(s => t.startsWith(s) || s.startsWith(t))) continue;
+      out.push(t);
+    }
+    return out;
+  }
+
   async _prepareContext() {
     await this.#ensureDiscUuid();
     const results = this.#results();
@@ -139,7 +151,10 @@ export class ClanPickerApp extends HandlebarsApplicationMixin(ApplicationV2) {
         name,
         nickname: guide.nickname ?? "",
         blurb: (await this.#bookAbout(name)) || guide.blurb || "",
-        tags: guide.tags ?? [],
+        // Show only a few DISTINCT playstyle words on the card to avoid clutter
+        // (skip near-duplicate word-forms like "assassin"/"assassination"); the
+        // full tag list still powers the search box (searchClans reads it directly).
+        tags: ClanPickerApp.#displayTags(guide.tags ?? []),
         clanless: !(CLAN_DISCIPLINES[name] ?? []).length,
         disciplines
       },

@@ -181,11 +181,29 @@ async function onEditImage(event, target) {
 }
 
 export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
-  // Tracks which collapsible sections (attribute/ability categories,
-  // discipline groups) are currently collapsed, keyed by their
-  // data-collapse-key. Kept on the instance rather than in actor data so it
-  // survives re-renders without writing UI state into the document.
+  // Tracks which collapsible sheet sections are currently collapsed, keyed by
+  // their data-collapse-key. Loaded from (and saved to) a per-player client
+  // setting keyed by this actor's id, so a section a player minimizes stays
+  // minimized across reopens and reloads. Sections start expanded by default.
   #collapsedKeys = new Set();
+  #collapsedLoaded = false;
+
+  #loadCollapsed() {
+    if (this.#collapsedLoaded) return;
+    this.#collapsedLoaded = true;
+    try {
+      const store = game.settings?.get("vtmlarp", "collapsedSections") ?? {};
+      this.#collapsedKeys = new Set(store[this.actor?.id] ?? []);
+    } catch { /* keep the empty set */ }
+  }
+
+  #saveCollapsed() {
+    try {
+      const store = { ...(game.settings.get("vtmlarp", "collapsedSections") ?? {}) };
+      store[this.actor.id] = [...this.#collapsedKeys];
+      game.settings.set("vtmlarp", "collapsedSections", store);
+    } catch (err) { console.warn("VTMLARP | couldn't save collapsed sections", err); }
+  }
 
   // The root element the drop listeners are attached to, so they're bound once
   // rather than re-added on every render (ApplicationV2 keeps the root).
@@ -493,6 +511,13 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       el.querySelectorAll(selector).forEach(node => node.addEventListener(event, handler));
     };
 
+    // Turn every plain section header (an <h3> directly under a tab) into a
+    // collapsible section BEFORE the listeners below are bound, so the
+    // .collapsible-header click handler catches these new headers too. Content
+    // is only moved (still under `el`), so every other `on(...)` binding still
+    // finds its elements.
+    this.#makeSectionsCollapsible(el);
+
     // Select the whole existing value when a number/text field gains focus,
     // so a player can just click a total (Physical, Mental, Willpower, Blood,
     // etc.) and type the new number straight over it. Bound per input node
@@ -596,6 +621,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
     // Re-apply whichever sections the user previously collapsed, since a
     // fresh render rebuilds the DOM from scratch and would otherwise forget.
+    // Load the player's saved collapsed set (per actor) on first render.
+    this.#loadCollapsed();
     el.querySelectorAll(".collapsible").forEach(node => {
       const key = node.dataset.collapseKey;
       if (key && this.#collapsedKeys.has(key)) node.classList.add("collapsed");
@@ -697,6 +724,46 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (effect) await effect.delete();
   }
 
+  /**
+   * Wrap each bare section header (`<h3>` directly under a `.tab`) and the
+   * content that follows it into a `.collapsible` block, so any section can be
+   * minimized. The content of a section runs from its header up to the next
+   * `<h3>` or a `.main-actions` row (which is a page-level control bar, not part
+   * of the preceding section). Idempotent per render (the template rebuilds bare
+   * headers each time). Sections start expanded; the reapply loop then restores
+   * whatever the player had collapsed.
+   */
+  #makeSectionsCollapsible(root) {
+    for (const tab of root.querySelectorAll(".sheet-body .tab")) {
+      const children = [...tab.children];
+      for (let i = 0; i < children.length; i++) {
+        const header = children[i];
+        if (header.tagName !== "H3" || header.classList.contains("collapsible-header")) continue;
+        const key = "sec-" + (header.textContent || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
+        const wrapper = document.createElement("div");
+        wrapper.className = "collapsible sheet-section";
+        wrapper.dataset.collapseKey = key || `sec-${i}`;
+        const body = document.createElement("div");
+        body.className = "collapsible-body";
+        // Insert the wrapper where the header is, then move header + following
+        // section content into it.
+        tab.insertBefore(wrapper, header);
+        header.classList.add("collapsible-header");
+        const caret = document.createElement("i");
+        caret.className = "fas fa-caret-down collapse-caret";
+        header.prepend(caret, document.createTextNode(" "));
+        wrapper.appendChild(header);
+        for (let j = i + 1; j < children.length; j++) {
+          const next = children[j];
+          if (next.tagName === "H3" || next.classList.contains("main-actions")) break;
+          body.appendChild(next);  // moves the node out of the tab into the body
+          i = j;                    // advance outer cursor past consumed nodes
+        }
+        wrapper.appendChild(body);
+      }
+    }
+  }
+
   /** Toggle a collapsible section (attribute/ability category, discipline group) open/closed. */
   _onToggleCollapse(event) {
     // Ignore clicks on nested action buttons (edit/delete/add-trait/etc.) or
@@ -710,6 +777,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (!key) return;
     if (collapsed) this.#collapsedKeys.add(key);
     else this.#collapsedKeys.delete(key);
+    this.#saveCollapsed();
   }
 
   /**

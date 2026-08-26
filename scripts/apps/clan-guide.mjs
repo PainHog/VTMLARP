@@ -17,7 +17,7 @@ export const CLAN_GUIDE = {
     nickname: "The Assassins",
     core: true,
     blurb: "Holy killers and hunters who stalk other vampires and drink their souls — disciplined, deadly, and blood-cursed.",
-    tags: ["assassin", "assassination", "killer", "murderer", "hitman", "ninja", "silent", "stealth", "sneaky", "warrior", "hunter", "stalker", "poison", "poisoner", "toxic", "mercenary", "hitwoman", "sniper", "executioner", "judge", "zealot", "blade", "sword", "martial artist", "contract killer", "bounty hunter", "diablerie", "muslim", "middle east"]
+    tags: ["assassin", "assassination", "killer", "murderer", "hitman", "ninja", "silent", "stealth", "sneaky", "warrior", "hunter", "stalker", "poison", "poisoner", "toxic", "mercenary", "hitwoman", "sniper", "executioner", "judge", "zealot", "blade", "sword", "martial artist", "contract killer", "bounty hunter", "diablerie"]
   },
   "Brujah": {
     nickname: "The Rabble",
@@ -29,7 +29,7 @@ export const CLAN_GUIDE = {
     nickname: "The Serpents",
     core: true,
     blurb: "Tempters and corruptors, cultists of the dark god Set who deal in vice, secrets, and the slow ruin of the righteous.",
-    tags: ["tempter", "temptation", "manipulator", "manipulative", "cultist", "cult leader", "corrupter", "corrupting", "seducer", "seductive", "dealer", "drugs", "drug dealer", "pusher", "vice", "smuggler", "blackmailer", "kingpin", "pimp", "crime lord", "con artist", "occultist", "priest", "serpent", "snake", "schemer", "egyptian"]
+    tags: ["tempter", "temptation", "manipulator", "manipulative", "cultist", "cult leader", "corrupter", "corrupting", "seducer", "seductive", "dealer", "drugs", "drug dealer", "pusher", "vice", "smuggler", "blackmailer", "kingpin", "pimp", "crime lord", "con artist", "occultist", "priest", "serpent", "snake", "schemer"]
   },
   "Gangrel": {
     nickname: "The Outlanders",
@@ -41,7 +41,7 @@ export const CLAN_GUIDE = {
     nickname: "The Necromancers",
     core: true,
     blurb: "A wealthy, incestuous merchant family of death-mages who command ghosts and count their money in centuries.",
-    tags: ["necromancer", "necromancy", "money", "rich", "wealthy", "family", "mafia", "mobster", "mob", "don", "gangster", "ghosts", "ghost talker", "spirits", "medium", "seance", "occult", "banker", "financier", "business", "businessman", "merchant", "tycoon", "corporate", "crime family", "undertaker", "mortician", "death", "italian"]
+    tags: ["necromancer", "necromancy", "money", "rich", "wealthy", "family", "mafia", "mobster", "mob", "don", "gangster", "ghosts", "ghost talker", "spirits", "medium", "seance", "occult", "banker", "financier", "business", "businessman", "merchant", "tycoon", "corporate", "crime family", "undertaker", "mortician", "death"]
   },
   "Lasombra": {
     nickname: "The Keepers",
@@ -65,7 +65,7 @@ export const CLAN_GUIDE = {
     nickname: "The Deceivers",
     core: true,
     blurb: "Wandering tricksters and illusionists — masters of misdirection, larceny, and the con, forever on the move.",
-    tags: ["trickster", "trick", "illusion", "illusionist", "magician", "con", "con artist", "conman", "grifter", "swindler", "hustler", "thief", "stealing", "pickpocket", "rogue", "deceiver", "liar", "gypsy", "traveler", "roamer", "wanderer", "nomad", "charlatan", "gambler", "showman", "prankster", "fortune teller", "trickery", "sleight of hand"]
+    tags: ["trickster", "trick", "illusion", "illusionist", "magician", "con", "con artist", "conman", "grifter", "swindler", "hustler", "thief", "stealing", "pickpocket", "rogue", "deceiver", "liar", "traveler", "roamer", "wanderer", "nomad", "charlatan", "gambler", "showman", "prankster", "fortune teller", "trickery", "sleight of hand"]
   },
   "Toreador": {
     nickname: "The Artists",
@@ -157,7 +157,7 @@ export const CLAN_GUIDE = {
   "Samedi": {
     nickname: "The Stiffs",
     blurb: "Rotting, plague-bearing death-priests of the Caribbean who wear their own decay like a mask.",
-    tags: ["death", "rot", "rotting", "decay", "decayed", "mercenary", "horror", "voodoo", "hougan", "plague", "disease", "corpse", "zombie", "undead", "grim", "disgusting", "gross"]
+    tags: ["death", "rot", "rotting", "decay", "decayed", "mercenary", "horror", "plague", "disease", "corpse", "zombie", "undead", "grim", "disgusting", "gross"]
   },
   "Lamia": {
     nickname: "The Deathless",

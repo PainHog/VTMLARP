@@ -1623,3 +1623,7 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 .vtmlarp.shop-sheet .merc-stock { width: 100%; font-size: 12px; border-collapse: collapse; margin-top: 6px; }
 .vtmlarp.shop-sheet .merc-stock .tiny { width: 48px; }
 .vtmlarp.shop-sheet .merc-desc-row input { width: 100%; }
+
+/* Generic collapsible sheet sections (headers wrapped at render). */
+.vtmlarp .sheet-section { margin-bottom: 6px; }
+.vtmlarp .sheet-section > .collapsible-header { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; border-bottom: 1px solid rgba(138,3,3,0.3); padding-bottom: 2px; }
