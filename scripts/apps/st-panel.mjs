@@ -86,8 +86,16 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     let converted = 0;
     if (result.convert) {
       for (const a of orphanChars) {
-        try { await a.update({ type: "npc", "system.autoChallenge": true }); converted++; }
-        catch (err) { console.warn(`VTMLARP | couldn't convert ${a.name} to NPC`, err); }
+        try {
+          // Foundry only allows changing an Actor's type when the whole system
+          // object is force-replaced (the "==" ForcedReplacement operator), not
+          // merged. Carry over the character's existing system data verbatim and
+          // switch auto-answer on; the npc schema fills its extra fields.
+          const sys = foundry.utils.duplicate(a._source.system ?? {});
+          sys.autoChallenge = true;
+          await a.update({ type: "npc", "==system": sys });
+          converted++;
+        } catch (err) { console.warn(`VTMLARP | couldn't convert ${a.name} to NPC`, err); }
       }
     }
     ui.notifications?.info(`Auto-answer on for ${npcs.length} NPC(s)${converted ? `; converted ${converted} character(s) to NPC` : ""}.`);
