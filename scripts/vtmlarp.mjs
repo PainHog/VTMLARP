@@ -295,7 +295,13 @@ Hooks.once("ready", () => {
           }
           Actor.create(payload)
             .then(a => { if (a) ui.notifications?.info(`Added ${a.name} for a player via the Character Builder.`); })
-            .catch(err => console.error("vtmlarp | createCharacter (GM proxy) failed", err));
+            .catch(err => {
+              console.error("vtmlarp | createCharacter (GM proxy) failed", err);
+              // Surface the failure instead of swallowing it, so a rejected
+              // submission (e.g. a value out of the schema's range) is visible
+              // rather than looking like nothing happened.
+              ui.notifications?.error(`Couldn't add the submitted character "${payload.name ?? "?"}": ${err.message}`);
+            });
         }
       }
     }
