@@ -1048,6 +1048,20 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     await item.update({ "system.rating": newRating });
   }
 
+  /** Remove `n` bonus Health boxes, preferring undamaged ("ok") boxes (from the
+   * end) so toggling one power off can't drop a box that's currently taking
+   * damage or strip the boxes a different power/manual add contributed. Returns
+   * the new bonusHealth array. */
+  #removeBonusHealth(n) {
+    const list = [...(this.actor.system.bonusHealth ?? [])];
+    let toRemove = n;
+    for (let k = list.length - 1; k >= 0 && toRemove > 0; k--) {
+      if (list[k] === "ok") { list.splice(k, 1); toRemove--; }
+    }
+    while (toRemove > 0 && list.length) { list.pop(); toRemove--; }
+    return list;
+  }
+
   async _onCycleHealth(event) {
     event.preventDefault();
     const { level, bonusIndex } = event.currentTarget.dataset;
@@ -1090,12 +1104,14 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const next = DAMAGE_CYCLE[(idx + 1) % DAMAGE_CYCLE.length];
     await this.actor.update(buildUpdate(next));
 
-    // Open (never force-resolve) a Frenzy check once real damage crosses
-    // into Wounded or worse - exact table rules on when Frenzy applies vary
-    // too much to hard-enforce a result, but popping the tool pre-filled
-    // beats relying on someone remembering to open it manually mid-combat.
-    // The player/GM can just close it if a check isn't actually called for.
-    if (!isBonus && next !== "ok" && HEALTH_LEVELS.indexOf(level) >= HEALTH_LEVELS.indexOf("wounded")) {
+    // Open (never force-resolve) a Frenzy check only when a box FIRST takes
+    // damage and crosses into Wounded or worse - not on every re-cycle of an
+    // already-damaged box (bashing->lethal->aggravated), and only for player
+    // characters (not while the GM is bookkeeping NPC health). The tool is a
+    // pre-filled reminder; close it if a check isn't actually called for.
+    if (!isBonus && this.actor.type === "character"
+        && current === "ok" && next !== "ok"
+        && HEALTH_LEVELS.indexOf(level) >= HEALTH_LEVELS.indexOf("wounded")) {
       new FrenzyApp(this.actor).render(true);
     }
   }
@@ -1202,11 +1218,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     } else {
       const fx = this.actor.effects.filter(e => e.flags?.vtmlarp?.bodyModPower === item.id).map(e => e.id);
       if (fx.length) await this.actor.deleteEmbeddedDocuments("ActiveEffect", fx);
-      if (bm.health) {
-        const list = [...(this.actor.system.bonusHealth ?? [])];
-        list.splice(-bm.health, bm.health);
-        await this.actor.update({ "system.bonusHealth": list });
-      }
+      if (bm.health) await this.actor.update({ "system.bonusHealth": this.#removeBonusHealth(bm.health) });
     }
   }
 
@@ -1327,11 +1339,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     } else {
       const fx = this.actor.effects.filter(e => e.flags?.vtmlarp?.autoEffectPower === item.id).map(e => e.id);
       if (fx.length) await this.actor.deleteEmbeddedDocuments("ActiveEffect", fx);
-      if (ae.health) {
-        const list = [...(this.actor.system.bonusHealth ?? [])];
-        list.splice(-ae.health, ae.health);
-        await this.actor.update({ "system.bonusHealth": list });
-      }
+      if (ae.health) await this.actor.update({ "system.bonusHealth": this.#removeBonusHealth(ae.health) });
     }
   }
 

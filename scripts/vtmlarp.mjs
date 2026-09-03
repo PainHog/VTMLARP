@@ -316,14 +316,29 @@ Hooks.once("ready", () => {
             payload.ownership[data.requesterId] = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
           }
           Actor.create(payload)
-            .then(a => { if (a) ui.notifications?.info(`Added ${a.name} for a player via the Character Builder.`); })
+            .then(a => {
+              if (!a) return;
+              ui.notifications?.info(`Added ${a.name} for a player via the Character Builder.`);
+              // Tell the requesting player it worked (and let their client open
+              // the new sheet) - otherwise, from their seat, the character just
+              // vanished after "Sent to the Storyteller".
+              game.socket.emit("system.vtmlarp", { action: "characterCreated", requesterId: data.requesterId, actorId: a.id, name: a.name });
+            })
             .catch(err => {
               console.error("vtmlarp | createCharacter (GM proxy) failed", err);
-              // Surface the failure instead of swallowing it, so a rejected
-              // submission (e.g. a value out of the schema's range) is visible
-              // rather than looking like nothing happened.
               ui.notifications?.error(`Couldn't add the submitted character "${payload.name ?? "?"}": ${err.message}`);
+              game.socket.emit("system.vtmlarp", { action: "characterCreateFailed", requesterId: data.requesterId, name: payload.name ?? "your character", reason: err.message });
             });
+        }
+      } else if (data.action === "characterCreated") {
+        // The requesting player learns their submission was created and opens it.
+        if (data.requesterId === game.user.id) {
+          ui.notifications?.info(`Your character "${data.name}" was added by the Storyteller.`);
+          game.actors.get(data.actorId)?.sheet?.render(true);
+        }
+      } else if (data.action === "characterCreateFailed") {
+        if (data.requesterId === game.user.id) {
+          ui.notifications?.error(`The Storyteller couldn't add "${data.name}": ${data.reason}. Adjust it and submit again.`);
         }
       }
     }
@@ -587,11 +602,9 @@ document.addEventListener("click", async event => {
     return;
   }
 
-  // Disable this card's controls immediately so a second click on the same
-  // client can't double-resolve while the async resolution is in flight (the
-  // prompt is also deleted/flagged below, but that's async and cross-client).
-  card.querySelectorAll("button, select").forEach(el => { el.disabled = true; });
-
+  // Validate the gesture BEFORE disabling anything: a player who clicks Respond
+  // without picking a gesture (the select defaults to blank) must get a nudge
+  // and a still-usable card, not a permanently disabled dead-end.
   let gesture;
   if (gestureBtn) {
     gesture = card.querySelector(".vtm-gesture-select")?.value;
@@ -600,6 +613,11 @@ document.addEventListener("click", async event => {
       return;
     }
   }
+
+  // Now disable this card's controls so a second click on the same client can't
+  // double-resolve while the async resolution is in flight (the prompt is also
+  // deleted/flagged below, but that's async and cross-client).
+  card.querySelectorAll("button, select").forEach(el => { el.disabled = true; });
 
   // Resolve and post the result FIRST. Creating a new chat message is always
   // allowed, but updating/deleting the challenger's prompt message is NOT
