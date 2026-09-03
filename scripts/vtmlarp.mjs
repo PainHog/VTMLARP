@@ -207,7 +207,20 @@ for (const hook of ["combatTurn", "combatRound"]) {
 
 Hooks.on("preCreateToken", (tokenDoc, data) => {
   const actor = tokenDoc.actor;
-  if (actor?.type !== "vehicle") return;
+  if (!actor) return;
+
+  // The token nameplate should show the CHARACTER's name. Foundry defaults a
+  // token's name to the actor's, but a prototype token that ended up carrying a
+  // blank or a stray value (e.g. a player's username) would otherwise show that
+  // instead. Correct it when the token has no name or its name matches a
+  // connected user's name; a deliberate custom token name is left alone.
+  if (actor.name) {
+    const nm = tokenDoc.name;
+    const looksWrong = !nm || game.users.some(u => u.name === nm && nm !== actor.name);
+    if (looksWrong) tokenDoc.updateSource({ name: actor.name });
+  }
+
+  if (actor.type !== "vehicle") return;
   const update = {};
   // Always size a vehicle token from its grid footprint, so it drops onto the
   // scene at the right multi-square size regardless of what the prototype token
