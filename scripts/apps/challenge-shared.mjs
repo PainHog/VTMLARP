@@ -36,9 +36,9 @@ export async function resolveAndPostGestureChallenge({
   // opponent) where there's no real Actor to derive a name/pool from.
   opponentName: opponentNameOverride, opponentTraitsBid: opponentTraitsBidOverride, opponentActorId: opponentActorIdOverride,
   // True when this resolution IS itself a Retest throw (opened via the
-  // "Re-throw Retest" button) rather than an original Challenge - a Retest
-  // can only be used once per original Challenge, so the resulting card
-  // still shows what Retest was used, but must not offer another one.
+  // "Re-throw Retest" button) rather than an original Challenge. Retests can be
+  // chained without limit - each one is a fresh Challenge - so this flag is
+  // carried for context/labelling but no longer disables the next retest.
   isRetestThrow = false,
   // A Storyteller "coin toss": pure gesture, no trait pools behind either side.
   // Ties stand as ties (no overbid), and no trait counts are shown.
@@ -99,7 +99,10 @@ export async function resolveAndPostGestureChallenge({
     result,
     resultLabel,
     retest,
-    retestAvailable: !!retest && !isRetestThrow
+    // Offer the retest button whenever a retest ability exists, even on a card
+    // that was itself a retest throw - retests can be re-thrown indefinitely,
+    // each as a new Challenge.
+    retestAvailable: !!retest
   });
 
   await ChatMessage.create({
