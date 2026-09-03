@@ -291,6 +291,11 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const el = this.element;
     const val = (n) => el.querySelector(`[name="${n}"]`)?.value ?? "";
     const num = (n) => Number(el.querySelector(`[name="${n}"]`)?.value) || 0;
+    // Clamp to a legal range so a value the sheet accepts but the data model
+    // rejects (e.g. a Virtue above 5) can't make Actor.create throw — the
+    // character should always build.
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+    const vnum = (n) => clamp(num(n) || 1, 0, 5);   // Virtues are 0–5
     const name = val("charname").trim();
     if (!name) { ui.notifications?.warn("Give the character a name first."); this.#showStep(0); return; }
     // GM-only: build the result as an NPC actor instead of a player character.
@@ -310,9 +315,9 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     // Flat, alphabetical Ability list (MET has no Talent/Skill/Knowledge split).
     const ab = this.#rows("ability")
       .filter(r => r.name)
-      .map(r => ({ name: r.name, rating: r.rating, max: r.rating, notes: "" }))
+      .map(r => ({ name: r.name, rating: Math.max(0, r.rating), max: Math.max(0, r.rating), notes: "" }))
       .sort((a, b) => a.name.localeCompare(b.name));
-    const backgrounds = this.#rows("background").filter(r => r.name).map(r => ({ name: r.name, rating: r.rating, max: r.rating, notes: "" }));
+    const backgrounds = this.#rows("background").filter(r => r.name).map(r => ({ name: r.name, rating: Math.max(0, r.rating), max: Math.max(0, r.rating), notes: "" }));
 
     const items = [];
     // Disciplines: create the container AND auto-pull its core powers up to the
@@ -366,9 +371,9 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
         morality: { path: val("path") || "Path of Humanity", rating: 7 },
         attributes: attrData, abilities: ab, backgrounds,
         virtues: {
-          conscienceConviction: { rating: num("conscience") || 1, temporary: num("conscience") || 1 },
-          selfControlInstinct: { rating: num("selfcontrol") || 1, temporary: num("selfcontrol") || 1 },
-          courage: { rating: num("courage") || 1, temporary: num("courage") || 1 }
+          conscienceConviction: { rating: vnum("conscience"), temporary: vnum("conscience") },
+          selfControlInstinct: { rating: vnum("selfcontrol"), temporary: vnum("selfcontrol") },
+          courage: { rating: vnum("courage"), temporary: vnum("courage") }
         },
         willpower: { value: wpStart, max: wpStart },
         blood: { value: bloodMax, max: bloodMax, perTurn },
