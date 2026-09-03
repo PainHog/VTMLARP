@@ -364,6 +364,11 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const OWNER = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
     const actorData = {
       name, type: asNpc ? "npc" : "character",
+      // Player characters get a LINKED token so the sheet and the token share
+      // one data source - otherwise edits (damage, blood, diablerie gains) go to
+      // the token's delta and are lost on a scene switch. (NPCs stay unlinked so
+      // many copies can differ.)
+      prototypeToken: { actorLink: !asNpc },
       ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE, [game.user.id]: OWNER },
       system: {
         clan: val("clan"), sect: val("sect"), nature: val("nature"), demeanor: val("demeanor"),

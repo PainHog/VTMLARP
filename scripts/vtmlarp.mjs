@@ -207,9 +207,15 @@ for (const hook of ["combatTurn", "combatRound"]) {
     if (!game.user.isGM || !combat?.combatants) return;
     for (const c of combat.combatants) {
       const a = c.actor;
-      if (a && (Number(a.system?.blood?.spentThisTurn) || 0) > 0) {
+      if (!a) continue;
+      if ((Number(a.system?.blood?.spentThisTurn) || 0) > 0) {
         a.update({ "system.blood.spentThisTurn": 0 }).catch(() => {});
       }
+      // Blood-buff Traits last one turn/challenge, so clear any lingering
+      // blood-boost Active Effects when the turn/round advances rather than
+      // relying on the player to remember to clear them.
+      const boosts = a.effects?.filter(e => e.flags?.vtmlarp?.bloodBoost).map(e => e.id) ?? [];
+      if (boosts.length) a.deleteEmbeddedDocuments("ActiveEffect", boosts).catch(() => {});
     }
   });
 }
@@ -549,16 +555,19 @@ document.addEventListener("click", event => {
 
   const { challengerId, opponentId, challengeType, retest } = button.dataset;
   const challengerActor = game.actors.get(challengerId);
-  if (!challengerActor) {
-    ui.notifications?.warn("The challenger for this Retest no longer exists.");
-    return;
-  }
-  if (!challengerActor.isOwner) {
-    ui.notifications?.warn(`You don't control ${challengerActor.name} - only they can throw this Retest.`);
+  const opponentActor = opponentId ? game.actors.get(opponentId) : null;
+  // Either side may call a retest (in MET the loser often does). Whoever clicks
+  // re-throws as the new challenger against the other party; a GM (who owns
+  // both) defaults to re-throwing as the original challenger.
+  let thrower, target;
+  if (challengerActor?.isOwner) { thrower = challengerActor; target = opponentActor; }
+  else if (opponentActor?.isOwner) { thrower = opponentActor; target = challengerActor; }
+  else {
+    ui.notifications?.warn("You don't control either side of this Challenge, so you can't throw the Retest.");
     return;
   }
 
-  new ChallengeApp(challengerActor, {}, { challengeType, retest, opponentActorId: opponentId, isRetestThrow: true }).render(true);
+  new ChallengeApp(thrower, {}, { challengeType, retest, opponentActorId: target?.id, isRetestThrow: true }).render(true);
 });
 
 // Responding to a Challenge directly from its chat card's gesture buttons

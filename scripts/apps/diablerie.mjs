@@ -24,7 +24,11 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
     // Per-instance id so opening Diablerie for a second actor doesn't collide on
     // one DOM element with an already-open window (AppV2 keys on id).
     super({ id: `vtmlarp-diablerie-${foundry.utils.randomID()}`, ...options });
-    this.actor = actor;
+    // Diablerie grants PERMANENT gains, so always operate on the base world
+    // Actor, never an unlinked token's synthetic actor - writing to the latter
+    // only updates that token's delta, so the gains are scene/token-local and
+    // vanish when the player switches scenes or gets a fresh token.
+    this.actor = (actor?.isToken ? game.actors.get(actor.id) : actor) ?? actor;
   }
 
   static DEFAULT_OPTIONS = {

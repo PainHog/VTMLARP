@@ -81,6 +81,18 @@ const MIGRATIONS = [
         return actor._source?.system?.autoChallenge ? null : { "system.autoChallenge": true };
       });
     }
+  },
+  {
+    // Player characters should use LINKED tokens so sheet edits (damage, blood,
+    // diablerie gains) persist instead of living in a token's delta and being
+    // lost on a scene switch. Link every character actor's prototype token.
+    version: "1.31.0",
+    async migrate({ updateActors }) {
+      await updateActors(actor => {
+        if (actor.type !== "character") return null;
+        return actor.prototypeToken?.actorLink ? null : { "prototypeToken.actorLink": true };
+      });
+    }
   }
 ];
 
