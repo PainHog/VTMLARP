@@ -94,10 +94,19 @@ Hooks.once("init", () => {
     scope: "client", config: false, type: Object, default: {}
   });
 
-  // Initiative is a flat d20 roll - MET breaks ties/order with a random draw
-  // rather than a stat, so the Combat Tracker's "Roll Initiative" just rolls
-  // 1d20 for each combatant.
-  CONFIG.Combat.initiative = { formula: "1d20", decimals: 0 };
+  // Initiative order in MET is by the character's Physical Trait pool plus their
+  // Celerity rating, highest first (fastest acts first). "Roll Initiative" fills
+  // in that deterministic value rather than a die, and the tracker sorts on it.
+  CONFIG.Combat.initiative = { formula: "0", decimals: 0 };
+  CONFIG.Combatant.documentClass = class VTMCombatant extends CONFIG.Combatant.documentClass {
+    getInitiativeRoll(formula) {
+      const a = this.actor;
+      const phys = Number(a?.system?.attributes?.physical?.total) || 0;
+      // Celerity is a Discipline item; its rating adds to how early you act.
+      const cel = Number(a?.items?.find(i => i.type === "discipline" && /^celerity$/i.test(i.name))?.system?.rating) || 0;
+      return new Roll(String(phys + cel));
+    }
+  };
 
   CONFIG.Actor.dataModels = {
     character: VTMCharacterData,
