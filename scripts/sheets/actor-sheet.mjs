@@ -43,6 +43,7 @@ const LEVEL_ORDER = { basic: 0, intermediate: 1, advanced: 2, elder: 3 };
 
 const HEALTH_LEVELS = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled", "incapacitated"];
 const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
+const POWER_LEVEL_TIER = { basic: 1, intermediate: 2, advanced: 3, elder: 4 };
 
 const TAB_DEFS = [
   { id: "main", label: "Main" },
@@ -645,7 +646,13 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       // Most numeric fields here are required (willpower/blood/generation/etc.);
       // writing null on an emptied box throws a schema validation error and the
       // box keeps its blank value, so it LOOKS saved but isn't. Revert instead.
-      if (el.value === "") { this.render(); return; }
+      if (el.value === "") {
+        // Required numeric fields can't be blank; explain the snap-back instead
+        // of silently reverting so the player isn't confused.
+        ui.notifications?.info("That field can't be empty — enter a number (use 0 to clear it).");
+        this.render();
+        return;
+      }
       value = Number(value);
     }
 
@@ -1046,6 +1053,38 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const delta = action === "increase" ? 1 : -1;
     const newRating = Math.max(0, item.system.rating + delta);
     await item.update({ "system.rating": newRating });
+    // Leveling a Discipline up pulls its next core power(s) onto the sheet, so
+    // the stepper matches the Character Builder (which auto-adds a power per dot)
+    // instead of leaving a dot with no corresponding power.
+    if (item.type === "discipline" && delta > 0) await this.#pullDisciplinePowers(item.name, newRating);
+  }
+
+  /** Add the first `upto` core powers of a Discipline (in progression order:
+   * level tier, then compendium sort/name), skipping any the actor already owns.
+   * Mirrors the Character Builder's per-dot power pull. */
+  async #pullDisciplinePowers(discName, upto) {
+    const pack = game.packs.get("vtmlarp.disciplines");
+    if (!pack || upto < 1) return;
+    const index = [...(await pack.getIndex({ fields: ["type", "folder", "system.discipline", "system.level", "sort", "flags.vtmlarp.gmOnly"] }))];
+    const folderId = (pack.folders ?? []).find(f => f.name === discName)?.id;
+    const core = index.filter(e => e.type === "power"
+      && !(e.flags?.vtmlarp?.gmOnly && !game.user.isGM)
+      && (folderId ? e.folder === folderId : e.system?.discipline === discName));
+    core.sort((a, b) =>
+      (POWER_LEVEL_TIER[a.system?.level] ?? 9) - (POWER_LEVEL_TIER[b.system?.level] ?? 9)
+      || (a.sort ?? 0) - (b.sort ?? 0)
+      || a.name.localeCompare(b.name));
+    const owned = new Set(this.actor.items.filter(i => i.type === "power").map(i => i.name));
+    const toAdd = [];
+    for (const e of core.slice(0, upto)) {
+      if (owned.has(e.name)) continue;
+      const doc = await pack.getDocument(e._id).catch(() => null);
+      if (doc) { const o = doc.toObject(); delete o._id; toAdd.push(o); }
+    }
+    if (toAdd.length) {
+      await this.actor.createEmbeddedDocuments("Item", toAdd);
+      ui.notifications?.info(`Added ${toAdd.length} ${discName} power(s) for the new dot(s).`);
+    }
   }
 
   /** Remove `n` bonus Health boxes, preferring undamaged ("ok") boxes (from the
