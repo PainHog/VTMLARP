@@ -69,7 +69,7 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
         content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${this.request.challengeType} Challenge - Retest Blocked</span></div>`
           + `<p>${this.request.challengerName}'s retest (<strong>${this.request.retest}</strong>) was blocked by ${opponentName}`
           + (fd.blockSource ? ` using <strong>${fd.blockSource}</strong>` : "") + `.</p>`
-          + `<div class="vtm-result-banner result-Lost">${opponentName} Wins (retest blocked)!</div></div>`
+          + `<div class="vtm-result-banner result-Tied">Retest blocked — the previous result stands.</div></div>`
       });
       this._broadcastResolved();
       this.close();

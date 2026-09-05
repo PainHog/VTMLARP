@@ -99,13 +99,7 @@ Hooks.once("init", () => {
   // in that deterministic value rather than a die, and the tracker sorts on it.
   CONFIG.Combat.initiative = { formula: "0", decimals: 0 };
   CONFIG.Combatant.documentClass = class VTMCombatant extends CONFIG.Combatant.documentClass {
-    getInitiativeRoll(formula) {
-      const a = this.actor;
-      const phys = Number(a?.system?.attributes?.physical?.total) || 0;
-      // Celerity is a Discipline item; its rating adds to how early you act.
-      const cel = Number(a?.items?.find(i => i.type === "discipline" && /^celerity$/i.test(i.name))?.system?.rating) || 0;
-      return new Roll(String(phys + cel));
-    }
+    getInitiativeRoll() { return new Roll(String(vtmInitiativeValue(this.actor))); }
   };
 
   CONFIG.Actor.dataModels = {
@@ -199,6 +193,36 @@ Hooks.once("init", () => {
 // palette every time a new token is created from it, giving visual variety
 // (a lot with a fleet) without needing a separate image per color.
 const VEHICLE_TINT_PALETTE = ["#1a1a1a", "#e6e6e6", "#8a0303", "#0d2b4a", "#2f4f2f", "#4a3c1a", "#6b6b6b"];
+
+// Initiative value = Physical Trait pool + Celerity rating (higher acts first).
+// Shared by the Combatant subclass and the live re-sort below.
+function vtmInitiativeValue(actor) {
+  const phys = Number(actor?.system?.attributes?.physical?.total) || 0;
+  const cel = Number(actor?.items?.find(i => i.type === "discipline" && /^celerity$/i.test(i.name))?.system?.rating) || 0;
+  return phys + cel;
+}
+
+// Live re-sort: if an actor's Physical total or Celerity changes mid-combat
+// (e.g. a Blood buff), recompute its combatant's initiative so the tracker
+// re-orders on the fly. Only touches combatants that have ALREADY rolled
+// initiative, and only the GM writes the shared value. Ties keep their existing
+// order (Foundry just picks one).
+function resortCombatInitiative(actor) {
+  if (!game.user?.isGM || !actor || !game.combat) return;
+  for (const c of game.combat.combatants) {
+    if (c.actor?.id !== actor.id || c.initiative == null) continue;
+    const val = vtmInitiativeValue(actor);
+    if (c.initiative !== val) c.update({ initiative: val }).catch(() => {});
+  }
+}
+Hooks.on("updateActor", (actor) => resortCombatInitiative(actor));
+for (const h of ["createActiveEffect", "deleteActiveEffect", "updateActiveEffect"]) {
+  Hooks.on(h, (effect) => {
+    const parent = effect?.parent;
+    if (parent?.documentName === "Actor") resortCombatInitiative(parent);
+  });
+}
+
 // Reset each combatant's per-turn Blood-spend counter when the combat turn or
 // round advances, so the per-turn limit warning is measured per turn. GM only
 // (writes shared actor data).
@@ -642,7 +666,7 @@ document.addEventListener("click", async event => {
       content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${req.challengeType} Challenge - Retest Cancelled</span></div>`
         + `<p>${challengerActor.name}'s retest (<strong>${req.retest}</strong>) was cancelled by ${opponentActor.name}`
         + (blockSource ? ` giving up <strong>${blockSource}</strong>` : "") + `.</p>`
-        + `<div class="vtm-result-banner result-Lost">${opponentActor.name} Wins (retest cancelled)!</div></div>`
+        + `<div class="vtm-result-banner result-Tied">Retest cancelled — the previous result stands.</div></div>`
     });
   } else {
     const opponentMod = Number(card.querySelector(".vtm-opponent-mod-input")?.value) || 0;

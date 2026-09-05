@@ -90,6 +90,17 @@ export class VaulderieApp extends HandlebarsApplicationMixin(foundry.application
       return;
     }
 
+    // The rite costs Blood: each participant actually spends the Blood Traits
+    // they contribute into the shared vessel. Debit each (never below 0) and
+    // note anyone who couldn't cover their pledge.
+    const short = [];
+    for (const p of participants) {
+      const have = Number(p.actor.system?.blood?.value) || 0;
+      if (have < p.traits) short.push(`${p.actor.name} (${have}/${p.traits})`);
+      await p.actor.update({ "system.blood.value": Math.max(0, have - p.traits) });
+    }
+    if (short.length) ui.notifications?.warn(`Some participants didn't have enough Blood to fully contribute: ${short.join(", ")}.`);
+
     // Build the shared deck: one "card" per Blood Trait contributed, each
     // card just identifying its contributor. Fisher-Yates shuffle, then each
     // participant draws back exactly as many cards as they contributed, in
