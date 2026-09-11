@@ -102,6 +102,18 @@ Hooks.once("init", () => {
     getInitiativeRoll() { return new Roll(String(vtmInitiativeValue(this.actor))); }
   };
 
+  // System conditions as toggleable token status effects, so a Storyteller can
+  // mark Frenzy/Torpor/etc. right on a token. Appended to the core set (dead,
+  // prone, …) rather than replacing it.
+  CONFIG.statusEffects.push(
+    { id: "vtm-frenzy", name: "Frenzy", img: "icons/svg/terror.svg" },
+    { id: "vtm-rotschreck", name: "Rötschreck", img: "icons/svg/fire.svg" },
+    { id: "vtm-torpor", name: "Torpor", img: "icons/svg/sleep.svg" },
+    { id: "vtm-staked", name: "Staked", img: "icons/svg/target.svg" },
+    { id: "vtm-blood-bound", name: "Blood Bound", img: "icons/svg/blood.svg" },
+    { id: "vtm-tainted", name: "Tainted Blood (Diablerie)", img: "icons/svg/poison.svg" }
+  );
+
   CONFIG.Actor.dataModels = {
     character: VTMCharacterData,
     npc: VTMNpcData,

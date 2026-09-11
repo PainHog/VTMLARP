@@ -2,7 +2,7 @@
   "id": "vtmlarp",
   "title": "Mind's Eye Theatre: Laws of the Night",
   "description": "An unofficial Foundry VTT system for Mind's Eye Theatre: Vampire the Masquerade (Laws of the Night Revised), a trait-bidding, Rock-Paper-Scissors based live-action roleplaying game.",
-  "version": "1.33.1",
+  "version": "1.34.0",
   "compatibility": {
     "minimum": "13",
     "verified": "14"
@@ -295,7 +295,11 @@
     "units": "ft"
   },
   "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "blood",
   "url": "https://github.com/PainHog/VTMLARP",
+  "readme": "https://github.com/PainHog/VTMLARP/blob/main/README.md",
+  "changelog": "https://github.com/PainHog/VTMLARP/blob/main/CHANGELOG.md",
+  "bugs": "https://github.com/PainHog/VTMLARP/issues",
   "manifest": "https://raw.githubusercontent.com/PainHog/VTMLARP/claude/foundry-vtt-larp-system-udu9vq/system.json",
   "download": "https://github.com/PainHog/VTMLARP/archive/refs/heads/claude/foundry-vtt-larp-system-udu9vq.zip"
 }
