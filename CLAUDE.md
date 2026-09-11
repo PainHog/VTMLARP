@@ -18,9 +18,9 @@ This runs `tools/build-packs.mjs`, which reads the pack list from `system.json`
 and compiles every `packs/_source/<name>` folder into the corresponding
 `packs/<name>` LevelDB directory (binary files: CURRENT, LOCK, LOG,
 MANIFEST-*, *.log). **The compiled `packs/<name>` output must be committed to
-git** — since the system is distributed as a GitHub branch ZIP download (no
-build step runs on the end user's Foundry server), the repo must ship with
-already-compiled packs.
+git** — since the system is distributed as a tagged GitHub Release zip (built
+by `.github/workflows/release.yml`; no build step runs on the end user's
+Foundry server), the repo must ship with already-compiled packs.
 
 Do not hand-edit anything under `packs/<name>` directly (only `packs/_source/<name>`)
 — it will be overwritten on the next build.

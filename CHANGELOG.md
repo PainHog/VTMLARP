@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.35.1 — Docs & sample-character cleanup
+
+- Reworked the QA "playtest" characters into proper **Sample Characters**
+  (renamed the pack and the two example PCs, removed "delete after testing"
+  flavor) so they read as intentional examples in a live game.
+- Updated README and CLAUDE.md: distribution is now tagged GitHub Releases via
+  the `releases/latest` manifest, not a branch ZIP.
+
 ## 1.35.0 — Localization foundation & tagged releases
 
 - **Tagged GitHub releases with update detection.** `system.json` `manifest`
