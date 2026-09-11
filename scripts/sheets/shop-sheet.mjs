@@ -102,7 +102,7 @@ export class ShopSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   static async #onCreateItem() {
     const catOptions = ITEM_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("");
     const result = await DialogV2.prompt({
-      window: { title: "Create Shop Item" },
+      window: { title: "VTMLARP.App.CreateShopItem" },
       position: { width: 460 },
       content: `<div class="flexcol vtmlarp-create-item" style="gap:8px;">
         <label>Name <span class="req">*</span><input type="text" name="name" autofocus required></label>

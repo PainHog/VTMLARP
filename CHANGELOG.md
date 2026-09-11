@@ -3,6 +3,21 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.35.0 — Localization foundation & tagged releases
+
+- **Tagged GitHub releases with update detection.** `system.json` `manifest`
+  and `download` now point at `releases/latest`, so Foundry can detect and
+  install updates instead of every install being pinned to the branch tip.
+  Pushing a `vX.Y.Z` tag runs the release workflow (validate → rebuild packs →
+  verify tag matches the manifest version → zip runtime files → publish a
+  GitHub Release with `vtmlarp.zip` + `system.json`).
+- **Internationalization (i18n) foundation.** Added a `validate:i18n` CI check
+  (`tools/validate-i18n.mjs`) that fails the build if any `{{localize}}` in a
+  template or `game.i18n.localize/format(...)` in a script references a key
+  missing from `lang/en.json`. First conversion phase: every application window
+  title now resolves through a `VTMLARP.App.*` localization key. (Remaining UI
+  strings are a phased, gameplay-neutral effort tracked for later.)
+
 ## 1.20.x — Mercantile, area templates, auto-effects, LOS
 
 - **Mercantile shop system.** A Storyteller-run economy: create any number of

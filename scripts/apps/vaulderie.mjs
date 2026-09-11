@@ -25,7 +25,7 @@ export class VaulderieApp extends HandlebarsApplicationMixin(foundry.application
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "vaulderie-app", "vtmlarp-vaulderie"],
     position: { width: 480, height: "auto" },
-    window: { title: "Vaulderie", resizable: true }
+    window: { title: "VTMLARP.App.Vaulderie", resizable: true }
   };
 
   static PARTS = {

@@ -12,7 +12,7 @@ export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.app
     id: "vtmlarp-blood-bond-overview",
     classes: ["vtmlarp", "blood-bond-overview"],
     position: { width: 440, height: "auto" },
-    window: { title: "Blood Bonds Overview", resizable: true }
+    window: { title: "VTMLARP.App.BloodBondsOverview", resizable: true }
   };
 
   static PARTS = {
@@ -48,7 +48,7 @@ export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.app
   async _onDecayAll(event) {
     event.preventDefault();
     const confirmed = await foundry.applications.api.DialogV2.confirm({
-      window: { title: "Decay All Blood Bonds" },
+      window: { title: "VTMLARP.App.DecayAllBloodBonds" },
       content: "<p>Reduce every character's Blood Bond/Vinculum ratings by 1, removing any that reach 0? This affects every character actor at once.</p>",
       rejectClose: false  // dismissing (Esc/X) returns false instead of rejecting
     });

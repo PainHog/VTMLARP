@@ -14,7 +14,7 @@ export class XPAuditApp extends HandlebarsApplicationMixin(foundry.applications.
     id: "vtmlarp-xp-audit",
     classes: ["vtmlarp", "xp-audit"],
     position: { width: 420, height: "auto" },
-    window: { title: "Experience Audit", resizable: true }
+    window: { title: "VTMLARP.App.ExperienceAudit", resizable: true }
   };
 
   static PARTS = {

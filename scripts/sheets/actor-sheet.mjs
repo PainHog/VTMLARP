@@ -877,7 +877,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // Shift-click skips the prompt.
     if (!event.shiftKey && entry?.name) {
       const confirmed = await foundry.applications.api.DialogV2.confirm({
-        window: { title: "Remove entry?" },
+        window: { title: "VTMLARP.App.RemoveEntry" },
         content: `<p>Remove <strong>${foundry.utils.escapeHTML?.(entry.name) ?? entry.name}</strong>? (Hold Shift to skip this prompt.)</p>`
       }).catch(() => false);
       if (!confirmed) return;
@@ -943,7 +943,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const { path } = event.currentTarget.dataset;
     const isAttributeCategory = path.startsWith("attributes.") && path.endsWith(".traits");
     const result = await foundry.applications.api.DialogV2.prompt({
-      window: { title: "New Trait" },
+      window: { title: "VTMLARP.App.NewTrait" },
       content: `<input type="text" name="trait" placeholder="Trait name" autofocus>`
         + (isAttributeCategory ? `<label style="display:block;margin-top:6px;"><input type="checkbox" name="negative"> Negative Trait</label>` : ""),
       ok: { callback: (e, btn) => ({ name: btn.form.elements.trait.value, negative: btn.form.elements.negative?.checked ?? false }) }

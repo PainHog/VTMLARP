@@ -18,7 +18,7 @@ export class ClanPickerApp extends HandlebarsApplicationMixin(ApplicationV2) {
     id: "vtmlarp-clan-picker",
     classes: ["vtmlarp", "sheet", "clan-picker"],
     position: { width: 560, height: 620 },
-    window: { title: "Help Me Pick a Clan", resizable: true },
+    window: { title: "VTMLARP.App.ClanPicker", resizable: true },
     actions: {
       prev: ClanPickerApp.#onPrev,
       next: ClanPickerApp.#onNext,

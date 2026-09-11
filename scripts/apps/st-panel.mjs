@@ -18,7 +18,7 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     id: "vtmlarp-st-panel",
     classes: ["vtmlarp", "sheet", "st-panel"],
     position: { width: 480, height: "auto" },
-    window: { title: "Storyteller Panel", resizable: true },
+    window: { title: "VTMLARP.App.StorytellerPanel", resizable: true },
     actions: {
       postChallenge: STPanelApp.#onPostChallenge,
       applyStatus: STPanelApp.#onApplyStatus,
@@ -73,7 +73,7 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     </div>`;
 
     const result = await DialogV2.prompt({
-      window: { title: "Bulk NPC Auto-Answer" },
+      window: { title: "VTMLARP.App.BulkNpcAutoAnswer" },
       position: { width: 460 },
       content,
       ok: { label: "Apply", callback: (e, btn) => ({ convert: !!btn.form.elements.convert?.checked }) }

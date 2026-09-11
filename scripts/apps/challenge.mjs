@@ -75,7 +75,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "challenge-app", "vtmlarp-challenge"],
     position: { width: 420, height: "auto" },
-    window: { title: "Resolve Challenge", resizable: true }
+    window: { title: "VTMLARP.App.ResolveChallenge", resizable: true }
   };
 
   static PARTS = {
@@ -207,7 +207,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     // blocks sight between them, confirm before targeting out of line of sight.
     if (lineOfSightState(this.actor, opponentActor) === "blocked") {
       const proceed = await foundry.applications.api.DialogV2.confirm({
-        window: { title: "Out of line of sight" },
+        window: { title: "VTMLARP.App.OutOfLineOfSight" },
         content: `<p><strong>${opponentActor.name}</strong> doesn't appear to be in your line of sight — a wall blocks it. Send the Challenge anyway?</p>`
       }).catch(() => false);
       if (!proceed) return;

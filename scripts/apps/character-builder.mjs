@@ -35,7 +35,7 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     id: "vtmlarp-character-builder",
     classes: ["vtmlarp", "sheet", "character-builder"],
     position: { width: 700, height: 780 },
-    window: { title: "Character Builder", resizable: true },
+    window: { title: "VTMLARP.App.CharacterBuilder", resizable: true },
     actions: {
       addRow: CharacterBuilderApp.#onAddRow,
       removeRow: CharacterBuilderApp.#onRemoveRow,

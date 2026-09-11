@@ -18,7 +18,7 @@ export class GMChallengeDashboard extends HandlebarsApplicationMixin(foundry.app
     id: "vtmlarp-gm-dashboard",
     classes: ["vtmlarp", "gm-dashboard"],
     position: { width: 360, height: "auto" },
-    window: { title: "Active Challenges", resizable: true }
+    window: { title: "VTMLARP.App.ActiveChallenges", resizable: true }
   };
 
   static PARTS = {

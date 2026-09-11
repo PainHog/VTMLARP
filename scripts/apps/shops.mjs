@@ -187,7 +187,7 @@ export class ShopBrowserApp extends HandlebarsApplicationMixin(ApplicationV2) {
     id: "vtmlarp-shop-browser",
     classes: ["vtmlarp", "sheet", "shop-browser"],
     position: { width: 620, height: 640 },
-    window: { title: "Shops", resizable: true },
+    window: { title: "VTMLARP.App.Shops", resizable: true },
     actions: { buy: ShopBrowserApp.#onBuy }
   };
 
@@ -274,7 +274,7 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
     id: "vtmlarp-mercantile-panel",
     classes: ["vtmlarp", "sheet", "mercantile-panel"],
     position: { width: 520, height: 560 },
-    window: { title: "Mercantile — Shops", resizable: true },
+    window: { title: "VTMLARP.App.Mercantile", resizable: true },
     actions: {
       addShop: MercantilePanelApp.#onAddShop,
       editShop: MercantilePanelApp.#onEditShop,
@@ -307,7 +307,7 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
     const shop = game.actors.get(target.dataset.shopId);
     if (!shop) return;
     const ok = await DialogV2.confirm({
-      window: { title: "Delete Shop" },
+      window: { title: "VTMLARP.App.DeleteShop" },
       content: `<p>Delete the shop <strong>${shop.name}</strong>? This removes the Actor. (To keep a copy, drag it into a compendium first.)</p>`,
       rejectClose: false
     });

@@ -34,7 +34,7 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "sheet", "diablerie"],
     position: { width: 560, height: 700 },
-    window: { title: "Diablerie — the Amaranth", resizable: true },
+    window: { title: "VTMLARP.App.Diablerie", resizable: true },
     actions: {
       throwDiscipline: DiablerieApp.#onThrowDiscipline,
       throwAttribute: DiablerieApp.#onThrowAttribute,

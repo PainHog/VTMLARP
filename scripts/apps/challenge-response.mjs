@@ -21,7 +21,7 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "challenge-app", "vtmlarp-challenge-response"],
     position: { width: 380, height: "auto" },
-    window: { title: "Incoming Challenge", resizable: true }
+    window: { title: "VTMLARP.App.IncomingChallenge", resizable: true }
   };
 
   static PARTS = {

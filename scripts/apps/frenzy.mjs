@@ -28,7 +28,7 @@ export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.a
   static DEFAULT_OPTIONS = {
     classes: ["vtmlarp", "frenzy-app", "vtmlarp-frenzy"],
     position: { width: 380, height: "auto" },
-    window: { title: "Frenzy / Rötschreck Check", resizable: true }
+    window: { title: "VTMLARP.App.FrenzyCheck", resizable: true }
   };
 
   static PARTS = {

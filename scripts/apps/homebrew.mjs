@@ -97,7 +97,7 @@ export class HomebrewApp extends HandlebarsApplicationMixin(ApplicationV2) {
     id: "vtmlarp-homebrew",
     classes: ["vtmlarp", "sheet", "homebrew"],
     position: { width: 560, height: 640 },
-    window: { title: "Create Content (Storyteller approval required)", resizable: true },
+    window: { title: "VTMLARP.App.CreateContent", resizable: true },
     actions: { submit: HomebrewApp.#onSubmit }
   };
 
@@ -147,7 +147,7 @@ export class HomebrewReviewApp extends HandlebarsApplicationMixin(ApplicationV2)
     id: "vtmlarp-homebrew-review",
     classes: ["vtmlarp", "sheet", "homebrew-review"],
     position: { width: 620, height: 680 },
-    window: { title: "Homebrew Review", resizable: true },
+    window: { title: "VTMLARP.App.HomebrewReview", resizable: true },
     actions: {
       approve: HomebrewReviewApp.#onApprove,
       reject: HomebrewReviewApp.#onReject,
