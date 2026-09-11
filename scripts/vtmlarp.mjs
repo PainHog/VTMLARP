@@ -448,7 +448,7 @@ async function postDocumentToChat(doc) {
   let content = `<div class="vtmlarp-shared-entry"><h2>${doc.name}</h2>${body}</div>`;
   try {
     const TE = foundry.applications?.ux?.TextEditor?.implementation ?? globalThis.TextEditor;
-    content = await TE.enrichHTML(content, { async: true });
+    content = await TE.enrichHTML(content);  // enrichment is always async in v13+; the old `async` option is inert
   } catch { /* posting raw HTML is fine if enrichment isn't available */ }
   await ChatMessage.create({ content, speaker: { alias: doc.name } });
 }
@@ -519,11 +519,10 @@ Hooks.on("getSceneNavigationContext", (nav, options) => {
 Hooks.on("getSceneControlButtons", controls => {
   // A dedicated "Mind's Eye Theatre" control group in the left toolbar holds
   // all this system's launchers, so nothing is jammed into the Actors sidebar
-  // or floated over the canvas. Foundry v13 restructured this hook from an
-  // array to an object keyed by control name; support both shapes (v12-v14).
+  // or floated over the canvas. v13+ keys the controls object by control name
+  // and uses onChange for the tool callback (onClick is deprecated).
   const tool = (name, title, icon, App) => ({
     name, title, icon, button: true,
-    onClick: () => new App().render(true),
     onChange: () => new App().render(true)
   });
 
@@ -556,13 +555,9 @@ Hooks.on("getSceneControlButtons", controls => {
   };
   for (const t of tools) group.tools[t.name] = t;
 
-  if (Array.isArray(controls)) {
-    // v12 array shape: tools must be an array.
-    group.tools = tools;
-    controls.push(group);
-  } else {
-    controls[group.name] = group;
-  }
+  // v13+ controls is an object keyed by control name (min compatibility is 13).
+  if (Array.isArray(controls)) controls.push(group);
+  else controls[group.name] = group;
 });
 
 // "Re-throw Retest" button on a resolved Challenge's chat card - there was
