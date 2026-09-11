@@ -44,7 +44,8 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       openInfoSel: CharacterBuilderApp.#onOpenInfoSel,
       next: CharacterBuilderApp.#onNext,
       back: CharacterBuilderApp.#onBack,
-      createCharacter: CharacterBuilderApp.#onCreate
+      createCharacter: CharacterBuilderApp.#onCreate,
+      randomCharacter: CharacterBuilderApp.#onRandom
     }
   };
 
@@ -287,6 +288,85 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     set(".count-freebies", `${freebiesSpent} / ${pool}`, freebiesSpent > pool);
   }
 
+  /** One-click random character: assembles a complete, schema-valid build
+   * (clan, attributes, abilities, the clan's Disciplines with pulled powers,
+   * virtues, backgrounds, archetypes) and creates it through the same persist
+   * path as a manual build, so it saves like any other. Honors the GM's
+   * "Build as NPC" toggle. */
+  static async #onRandom() {
+    const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    const shuffle = (arr) => { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const asNpc = game.user.isGM && !!this.element.querySelector('[name="asNpc"]')?.checked;
+
+    // Clan (only ones with three fixed in-clan Disciplines, so we can seed them).
+    const clanPool = CLANS.filter(c => (CLAN_DISCIPLINES[c] ?? []).length === 3);
+    const clan = rand(clanPool);
+    const gen = rand([13, 12, 11, 10]);
+    const [bloodMax, perTurn] = GEN_BLOOD[gen] ?? [10, 1];
+    const wpStart = GEN_WILLPOWER_START[gen] ?? 2;
+
+    // Attributes: spread 7/5/3 over the three categories at random.
+    const cats = ["physical", "social", "mental"];
+    const totals = shuffle([7, 5, 3]);
+    const prio = ["primary", "secondary", "tertiary"];
+    const order = shuffle(cats);
+    const attrData = {};
+    order.forEach((key, i) => { attrData[key] = { priority: prio[i], total: totals[i], traits: [] }; });
+
+    // Abilities: pick a handful from the compendium, ratings 1-3 summing near budget.
+    let abilityNames = [];
+    const abPack = game.packs.get("vtmlarp.abilities");
+    if (abPack) abilityNames = [...(await abPack.getIndex())].map(e => e.name);
+    if (!abilityNames.length) abilityNames = ["Alertness", "Athletics", "Brawl", "Dodge", "Empathy", "Intimidation", "Streetwise", "Subterfuge", "Awareness", "Investigation"];
+    const abBudget = 11;
+    const abilities = [];
+    let abSpent = 0;
+    for (const name of shuffle(abilityNames)) {
+      if (abSpent >= abBudget) break;
+      const rating = Math.min(1 + Math.floor(Math.random() * 3), abBudget - abSpent);
+      if (rating < 1) continue;
+      abilities.push({ name, rating, max: rating, notes: "" });
+      abSpent += rating;
+    }
+    abilities.sort((a, b) => a.name.localeCompare(b.name));
+
+    // Disciplines: the clan's three, dots spread to a 3-dot budget (e.g. 2/1/0).
+    const discNames = CLAN_DISCIPLINES[clan];
+    const discRatings = shuffle([2, 1, 0]);
+    const discRows = discNames.map((name, i) => ({ name, rating: discRatings[i] })).filter(r => r.rating > 0);
+    const items = await this.#buildDisciplineItems(discRows);
+
+    // A couple of random backgrounds and random archetypes/virtues.
+    const bgNames = shuffle(["Allies", "Contacts", "Resources", "Herd", "Influence", "Mentor", "Retainers", "Status"]).slice(0, 2);
+    const backgrounds = bgNames.map(name => { const rating = 1 + Math.floor(Math.random() * 2); return { name, rating, max: rating, notes: "" }; });
+    const v = () => 1 + Math.floor(Math.random() * 3); // 1-3
+
+    const name = `${rand(["Ashen", "Crimson", "Pale", "Hollow", "Silent", "Grave", "Nocturne", "Sable"])} ${rand(["Stranger", "Wanderer", "Childe", "Revenant", "Scion", "Vagrant", "Envoy"])}`;
+
+    const OWNER = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+    const actorData = {
+      name, type: asNpc ? "npc" : "character",
+      prototypeToken: { actorLink: !asNpc },
+      ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE, [game.user.id]: OWNER },
+      system: {
+        clan, sect: rand(SECTS), nature: rand(ARCHETYPE_OPTIONS), demeanor: rand(ARCHETYPE_OPTIONS),
+        generation: gen, generationApplied: true,
+        morality: { path: "Path of Humanity", rating: 7 },
+        attributes: attrData, abilities, backgrounds,
+        virtues: {
+          conscienceConviction: { rating: v(), temporary: v() },
+          selfControlInstinct: { rating: v(), temporary: v() },
+          courage: { rating: v(), temporary: v() }
+        },
+        willpower: { value: wpStart, max: wpStart },
+        blood: { value: bloodMax, max: bloodMax, perTurn },
+        creationComplete: false, useOriginalRules: false
+      },
+      items
+    };
+    await this.#persistActor(actorData, name, items.length);
+  }
+
   static async #onCreate() {
     const el = this.element;
     const val = (n) => el.querySelector(`[name="${n}"]`)?.value ?? "";
@@ -319,39 +399,7 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       .sort((a, b) => a.name.localeCompare(b.name));
     const backgrounds = this.#rows("background").filter(r => r.name).map(r => ({ name: r.name, rating: Math.max(0, r.rating), max: Math.max(0, r.rating), notes: "" }));
 
-    const items = [];
-    // Disciplines: create the container AND auto-pull its core powers up to the
-    // tier matching the dots assigned (Basic=1, Intermediate=2, Advanced=3...).
-    const discPack = game.packs.get("vtmlarp.disciplines");
-    let discIndex = [];
-    let folderByName = {};
-    if (discPack) {
-      discIndex = [...(await discPack.getIndex({ fields: ["type", "folder", "system.discipline", "system.level", "sort", "flags.vtmlarp.gmOnly"] }))]
-        // Never auto-pull GM-only (unverified/hidden) powers onto a character.
-        .filter(e => !(e.flags?.vtmlarp?.gmOnly && !game.user.isGM));
-      (discPack.folders ?? []).forEach(f => { folderByName[f.name] = f.id; });
-    }
-    for (const r of this.#rows("discipline")) {
-      if (!r.name) continue;
-      items.push({ name: r.name, type: "discipline", img: "icons/svg/upgrade.svg", system: { rating: r.rating, description: `<p>${r.name}.</p>` } });
-      // A Discipline's powers are learned IN ORDER, one per dot. Pull the core
-      // powers (in this Discipline's main folder), sort them by level then their
-      // sort/name so they're in progression order, and take the first `rating`
-      // of them - so 3 dots gives the 1st, 2nd and 3rd powers, not every power
-      // of every tier.
-      const folderId = folderByName[r.name];
-      const core = discIndex.filter(e => e.type === "power"
-        && (folderId ? e.folder === folderId : e.system?.discipline === r.name));
-      core.sort((a, b) =>
-        (LEVEL_TIER[a.system?.level] ?? 9) - (LEVEL_TIER[b.system?.level] ?? 9)
-        || (a.sort ?? 0) - (b.sort ?? 0)
-        || a.name.localeCompare(b.name));
-      const chosen = core.slice(0, Math.max(0, r.rating));
-      const docs = await Promise.all(chosen.map(e => discPack.getDocument(e._id).catch(() => null)));
-      for (const doc of docs) {
-        if (doc) { const o = doc.toObject(); delete o._id; items.push(o); }
-      }
-    }
+    const items = await this.#buildDisciplineItems(this.#rows("discipline").filter(r => r.name));
     for (const r of this.#rows("meritflaw")) {
       if (!r.name) continue;
       const isMerit = r.type === "merit";
@@ -390,27 +438,54 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       items
     };
 
-    // Players don't have the core "Create New Actors" permission by default, so
-    // a direct Actor.create() would throw for them. Try it directly if allowed;
-    // otherwise hand the assembled character off to an online Storyteller (GM)
-    // via socket, who creates it and leaves this user flagged as the owner.
+    await this.#persistActor(actorData, name, items.length);
+  }
+
+  /** Build the Discipline container items plus their auto-pulled core powers
+   * (one power per dot, in progression order). Shared by manual and random
+   * character creation. `discRows` = [{ name, rating }]. */
+  async #buildDisciplineItems(discRows) {
+    const items = [];
+    const discPack = game.packs.get("vtmlarp.disciplines");
+    let discIndex = [];
+    const folderByName = {};
+    if (discPack) {
+      discIndex = [...(await discPack.getIndex({ fields: ["type", "folder", "system.discipline", "system.level", "sort", "flags.vtmlarp.gmOnly"] }))]
+        .filter(e => !(e.flags?.vtmlarp?.gmOnly && !game.user.isGM));
+      (discPack.folders ?? []).forEach(f => { folderByName[f.name] = f.id; });
+    }
+    for (const r of discRows) {
+      if (!r.name) continue;
+      items.push({ name: r.name, type: "discipline", img: "icons/svg/upgrade.svg", system: { rating: r.rating, description: `<p>${r.name}.</p>` } });
+      const folderId = folderByName[r.name];
+      const core = discIndex.filter(e => e.type === "power"
+        && (folderId ? e.folder === folderId : e.system?.discipline === r.name));
+      core.sort((a, b) =>
+        (LEVEL_TIER[a.system?.level] ?? 9) - (LEVEL_TIER[b.system?.level] ?? 9)
+        || (a.sort ?? 0) - (b.sort ?? 0)
+        || a.name.localeCompare(b.name));
+      const docs = await Promise.all(core.slice(0, Math.max(0, r.rating)).map(e => discPack.getDocument(e._id).catch(() => null)));
+      for (const doc of docs) { if (doc) { const o = doc.toObject(); delete o._id; items.push(o); } }
+    }
+    return items;
+  }
+
+  /** Create the assembled actor - directly if this user may, otherwise via the
+   * active Storyteller (GM proxy). Shared by manual and random creation. */
+  async #persistActor(actorData, name, itemCount) {
     const canCreate = game.user.isGM
       || (game.user.can?.("ACTOR_CREATE") ?? game.user.hasPermission?.("ACTOR_CREATE") ?? false);
-
     let actor = null;
     if (canCreate) {
       try { actor = await Actor.create(actorData); }
-      catch (err) { console.error("vtmlarp | character-builder create failed", err); }
+      catch (err) { console.error("vtmlarp | character-builder create failed", err); ui.notifications?.error(`Couldn't create ${name}: ${err.message}`); }
     }
-
     if (actor) {
-      ui.notifications?.info(`Created ${name} with ${items.length} item(s).`);
+      ui.notifications?.info(`Created ${name} with ${itemCount} item(s).`);
       this.close();
       actor.sheet?.render(true);
       return;
     }
-
-    // Fall back to asking a Storyteller to create it.
     if (game.users.activeGM) {
       game.socket.emit("system.vtmlarp", { action: "createCharacter", actorData, requesterId: game.user.id });
       ui.notifications?.info(`Sent ${name} to the Storyteller to add — you'll be set as its owner.`);
