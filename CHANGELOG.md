@@ -3,6 +3,16 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.35.3 — Stay on branch-tip distribution
+
+- Reverted `manifest`/`download` to the branch-tip URLs (raw `system.json` /
+  branch-archive zip): this environment can't push git tags, so the tagged
+  Release couldn't be published here, and branch-tip is the flow that actually
+  works for the live server. The `release.yml` workflow stays in the repo,
+  inert, for cutting versioned Releases later. README/CLAUDE.md updated to match.
+- Fixed the `readme`/`changelog` manifest links, which pointed at a
+  non-existent `main` branch (404), to the active branch.
+
 ## 1.35.2 — Sheet-field save guard
 
 - Added `validate:sheet-fields` (`tools/validate-sheet-fields.mjs`) to the

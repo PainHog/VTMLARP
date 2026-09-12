@@ -16,13 +16,13 @@ An **unofficial** Foundry VTT system for **Mind's Eye Theatre: Vampire the Masqu
 
 ## Installation
 
-This system is distributed as tagged GitHub Releases (compiled packs ship in the release zip — no build runs on the end user's server). In Foundry: **Game Systems → Install System → Manifest URL**, and paste:
+This system is distributed straight from its GitHub branch (compiled packs ship in the repo — no build runs on the end user's server). In Foundry: **Game Systems → Install System → Manifest URL**, and paste:
 
 ```
-https://github.com/PainHog/VTMLARP/releases/latest/download/system.json
+https://raw.githubusercontent.com/PainHog/VTMLARP/claude/foundry-vtt-larp-system-udu9vq/system.json
 ```
 
-That manifest always points at the newest release, so Foundry's built-in update check will offer new versions as they're tagged.
+To update, re-run **Install System** with the same URL (or delete and reinstall) — it always fetches the current branch tip. A tagged-release workflow also lives in `.github/workflows/release.yml` for cutting versioned GitHub Releases later, if this ever moves to release-based distribution.
 
 Compatibility: Foundry **v13** minimum, verified through **v14**. (It uses v13+ ApplicationV2 document sheets, so it will not load on v12.) See `CLAUDE.md` → *Foundry version notes*.
 
