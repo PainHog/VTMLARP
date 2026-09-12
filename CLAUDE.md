@@ -27,9 +27,9 @@ Do not hand-edit anything under `packs/<name>` directly (only `packs/_source/<na
 
 ## Validation & CI (IMPORTANT)
 
-Before committing content changes, run `npm run check`. It runs three
-validators (also enforced in CI via `.github/workflows/ci.yml` on every push
-and PR):
+Before committing content changes, run `npm run check`. It runs lint, the unit
+tests, and a suite of validators (also enforced in CI via
+`.github/workflows/ci.yml` on every push and PR):
 
 - `npm run validate:manifest` (`tools/validate-manifest.mjs`) — sanity-checks
   `system.json`: version is semver, every pack has a source dir, referenced
@@ -38,6 +38,15 @@ and PR):
   well-formed 16-char alphanumeric `_id`, no duplicate `_id` across the whole
   repo, folder files have a `sorting`, and each doc's `type` is a declared
   subtype. This replaces the old manual dupe-scan.
+- `npm run validate:sheet-fields` (`tools/validate-sheet-fields.mjs`) — the
+  document sheets run with `submitOnChange: false` and save via an explicit
+  delegated `change` listener, so a form control must carry the identifier its
+  sheet actually reads or it silently never persists. The actor/item/vehicle
+  sheets save by `name=` (`document.update({ [el.name]: value })`); the shop
+  sheet saves by `data-field`. This validator reads each sheet class to learn
+  its template and mechanism and fails if any control in that template is
+  mis-wired (a bare `name=` on the shop sheet, or a persistent control with no
+  save identifier). A genuinely transient control opts out with `data-transient`.
 - `npm run check:packs` (`tools/check-packs-current.mjs`) — extracts the
   committed compiled packs and compares their documents to source, so "edited
   source but forgot to `npm run build:packs`" is caught. (A raw `git diff` can't

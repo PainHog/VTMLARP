@@ -3,6 +3,20 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.35.2 — Sheet-field save guard
+
+- Added `validate:sheet-fields` (`tools/validate-sheet-fields.mjs`) to the
+  check suite. The document sheets run with `submitOnChange: false` and persist
+  via an explicit delegated `change` listener, so a form control that uses the
+  wrong save mechanism for its sheet (a bare `name=` on the shop sheet, which
+  reads `data-field`, or a persistent control with no save identifier at all)
+  renders fine but silently never saves. The validator reads each sheet's
+  template and mechanism and fails the build on any mis-wired control, closing
+  the "field added but doesn't save" class of bug. `data-transient` opts a
+  genuinely non-persistent control out.
+- Gave the pre-built example PCs their own "Sample Player Characters" folder
+  (distinct from the NPC "Sample Characters" folder).
+
 ## 1.35.1 — Docs & sample-character cleanup
 
 - Reworked the QA "playtest" characters into proper **Sample Characters**
