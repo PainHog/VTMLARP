@@ -3,6 +3,28 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.44.0 — Secret-throw protocol & per-token challenges
+
+**Big change to how Challenges resolve — please smoke-test with two logins.**
+
+- **The challenger's gesture is now truly hidden from the opponent.**
+  Previously it rode along in the public prompt card's flags and the socket
+  broadcast, so a determined opponent could read it before choosing their
+  counter. Now the gesture is *sealed* in a whisper only the challenger and
+  Storytellers receive; the opponent's answer is sent to a **resolver** (the
+  challenger, or a GM if they're offline) who holds the sealed gesture and posts
+  the result. The opponent's client never receives the challenger's throw.
+- **Single-resolver design removes double-resolution entirely** — because only
+  one elected client resolves, two responders (or two GMs) can no longer post
+  contradictory result cards.
+- **Answers survive an offline resolver** — each answer is also persisted as a
+  whisper and reconciled when the challenger/GM next loads, so a throw isn't
+  lost if the resolver was briefly away.
+- **Challenges now target a specific token instance.** Targeting one of several
+  identical unlinked NPC tokens threads that token through the whole exchange,
+  so its own Trait pool, `auto-answer`/Bomb toggles, and action log are used —
+  not the shared base actor's.
+
 ## 1.43.4 — Duplicate NPC token initiative fix
 
 - **Buffing one of several identical NPC tokens no longer overwrites the

@@ -15,7 +15,7 @@ import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
 import { STPanelApp } from "./apps/st-panel.mjs";
 import { CharacterBuilderApp } from "./apps/character-builder.mjs";
 import { ClanPickerApp } from "./apps/clan-picker.mjs";
-import { resolveAndPostGestureChallenge, claimChallenge, releaseChallenge, closeResponseApps, isChallengeResolved } from "./apps/challenge-shared.mjs";
+import { claimChallenge, closeResponseApps, isChallengeResolved, submitChallengeAnswer, tryResolveChallengeAnswer, resolveChallengeActor, reconcileAnsweredChallenges } from "./apps/challenge-shared.mjs";
 import { logAction } from "./apps/action-log.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 import { enhanceAccessibility } from "./apps/a11y.mjs";
@@ -533,60 +533,80 @@ Hooks.once("ready", () => {
       else ui.notifications?.warn(`Your homebrew "${data.name}" was declined by the Storyteller.`);
     }
 
+    // An opponent's answer, routed to the elected resolver (challenger, else a
+    // GM) who holds the sealed gesture. Runs on every client; tryResolve no-ops
+    // unless this client is the resolver.
+    if (data.action === "challengeAnswer") { tryResolveChallengeAnswer(data); return; }
+
     if (data.action !== "challengeRequest") return;
     if (!Array.isArray(data.targetUserIds) || !data.targetUserIds.includes(game.user.id)) return;
+    handleChallengeRequest(data);
+  });
 
-    const challengerActor = game.actors.get(data.challengerActorId);
-    const opponentActor = game.actors.get(data.opponentActorId);
-    if (!challengerActor || !opponentActor) return;
+  // Reconcile any challenges that were answered while this (resolver) client was
+  // offline - resolve them now that we're back and hold the sealed gesture.
+  reconcileAnsweredChallenges().catch(err => console.warn("VTMLARP | challenge reconcile failed:", err));
+});
 
-    // NPC auto-response: when the opposed NPC is set to auto-randomize, resolve
-    // the throw automatically with a random gesture instead of popping the
-    // response dialog - so the Storyteller doesn't have to answer (and re-answer
-    // on retests) every Challenge. It still bids the NPC's real Trait pool
-    // (resolveAndPostGestureChallenge derives that from the actor). Only the
-    // first designated responder acts, so multiple GMs don't double-resolve.
-    if (opponentActor.type === "npc" && opponentActor.system?.autoChallenge
-        && data.targetUserIds[0] === game.user.id) {
-      const pool = ["rock", "paper", "scissors"];
-      if (opponentActor.system?.bombAccess) pool.push("bomb");
-      const opponentGesture = pool[Math.floor(Math.random() * pool.length)];
-      resolveAndPostGestureChallenge({
-        challengerActor,
-        challengeType: data.challengeType,
-        challengerGesture: data.challengerGesture,
-        opponentActor,
-        opponentGesture,
-        retest: data.retest,
-        isRetestThrow: !!data.isRetestThrow,
-        challengerMod: Number(data.challengerMod) || 0
-      }).then(() => {
-        game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: data.requestId });
-        if (game.user.isGM) GMChallengeDashboard.clearRequest?.(data.requestId);
-        // Remove the public chat prompt for this Challenge so it can't be
-        // clicked to resolve a second time. Try locally (this GM can delete
-        // it), and broadcast so whoever authored it (the challenger) also
-        // removes it, in case the message hasn't synced to this client yet.
-        const prompt = game.messages?.find(m => m.getFlag?.("vtmlarp", "requestId") === data.requestId);
-        prompt?.delete?.().catch(() => {});
-        game.socket.emit("system.vtmlarp", { action: "deleteChallengePromptByRequest", requestId: data.requestId });
-      }).catch(err => console.error("VTMLARP | NPC auto-challenge failed", err));
-      return;
-    }
+/** Handle an incoming challengeRequest on a designated responder's client:
+ * either answer automatically for an auto-answer NPC, or pop the response
+ * dialog. Neither path resolves here - resolution happens on the resolver
+ * client that holds the challenger's sealed gesture. */
+async function handleChallengeRequest(data) {
+  const challengerActor = game.actors.get(data.challengerActorId);
+  if (!challengerActor) return;
+  const opponentInstance = (await resolveChallengeActor(data.opponentActorId, data.opponentTokenUuid))
+    ?? (data.opponentActorId ? game.actors.get(data.opponentActorId) : null);
+  if (!opponentInstance) return;
 
-    new ChallengeResponseApp({
+  // NPC auto-answer: pick a random gesture and SEND an answer (this responder
+  // doesn't hold the challenger's gesture, so it can't resolve). Only the first
+  // designated responder acts. Also attempt to resolve locally in case this
+  // client is itself the elected resolver (e.g. the challenger is offline and
+  // this GM must resolve) - tryResolve is idempotent.
+  if (opponentInstance.type === "npc" && opponentInstance.system?.autoChallenge
+      && data.targetUserIds[0] === game.user.id) {
+    const pool = ["rock", "paper", "scissors"];
+    if (opponentInstance.system?.bombAccess) pool.push("bomb");
+    const answer = {
       requestId: data.requestId,
-      challengerActor,
-      challengerName: data.challengerName,
+      resolverUserId: data.resolverUserId,
       challengeType: data.challengeType,
-      challengerGesture: data.challengerGesture,
-      opponentActor,
+      challengerActorId: data.challengerActorId,
+      challengerTokenUuid: data.challengerTokenUuid || "",
+      challengerMod: Number(data.challengerMod) || 0,
+      opponentActorId: data.opponentActorId,
+      opponentTokenUuid: data.opponentTokenUuid || "",
+      opponentName: data.opponentName || opponentInstance.name,
+      opponentGesture: pool[Math.floor(Math.random() * pool.length)],
+      opponentMod: 0,
       retest: data.retest,
       isRetestThrow: !!data.isRetestThrow,
-      challengerMod: Number(data.challengerMod) || 0
-    }).render(true);
-  });
-});
+      coinToss: !!data.coinToss
+    };
+    await submitChallengeAnswer(answer, challengerActor);
+    tryResolveChallengeAnswer(answer);
+    return;
+  }
+
+  new ChallengeResponseApp({
+    requestId: data.requestId,
+    resolverUserId: data.resolverUserId,
+    challengerActor,
+    challengerActorId: data.challengerActorId,
+    challengerTokenUuid: data.challengerTokenUuid || "",
+    challengerName: data.challengerName,
+    challengeType: data.challengeType,
+    opponentActor: opponentInstance,
+    opponentActorId: data.opponentActorId,
+    opponentTokenUuid: data.opponentTokenUuid || "",
+    opponentName: data.opponentName,
+    retest: data.retest,
+    isRetestThrow: !!data.isRetestThrow,
+    coinToss: !!data.coinToss,
+    challengerMod: Number(data.challengerMod) || 0
+  }).render(true);
+}
 
 // Add an "Activate Scene" entry to the right-click menu on the top scene
 // navigation tabs, so a GM can pull everyone to a scene straight from the nav
@@ -761,9 +781,10 @@ document.addEventListener("click", event => {
 // chat history loading, not on a live socket push actually reaching the
 // opponent's client, which testing showed isn't reliable on every setup.
 // The message is public (anyone can see a Challenge is happening) but only
-// the opponent's own owner (or a GM) is permitted to actually click a
-// response - the challenger's own gesture stays hidden in the message's
-// flags, never rendered into the visible card, until it resolves.
+// the opponent's own owner (or a GM) is permitted to click a response, and it
+// carries NO challenger gesture. Clicking sends an ANSWER to the resolver (the
+// challenger, else a GM) who holds the sealed gesture and posts the result —
+// this client never sees the challenger's throw.
 document.addEventListener("click", async event => {
   const gestureBtn = event.target.closest(".vtm-gesture-respond");
   const blockBtn = event.target.closest(".vtm-retest-block-submit");
@@ -821,86 +842,60 @@ document.addEventListener("click", async event => {
     }
   }
 
-  // Claim this Challenge on this client so the OTHER answer surface - the instant
-  // ChallengeResponseApp popup, which is also open on this same responder's
-  // client - can't resolve it a second time (double result cards). If a surface
-  // already claimed it, bail. Then close the popup so it can't linger.
+  // Local guard so this card and a popup on the same client can't both send an
+  // answer; the cross-client result-card guard catches the rest.
   if (!claimChallenge(req.requestId)) {
     ui.notifications?.info("This Challenge is already being answered.");
     return;
   }
-  // Cross-client guard: another client (e.g. a second GM, or the owner on a
-  // different device) may have already posted a result for this request. The
-  // local claim Set can't see that; a posted result card can.
   if (isChallengeResolved(req.requestId)) {
     ui.notifications?.info("This Challenge has already been resolved.");
     return;
   }
   closeResponseApps(req.requestId);
 
-  // Now disable this card's controls so a second click on the same client can't
-  // double-resolve while the async resolution is in flight (the prompt is also
-  // deleted/flagged below, but that's async and cross-client).
+  // Disable this card so it can't be clicked again while the answer is in flight.
   card.querySelectorAll("button, select").forEach(el => { el.disabled = true; });
 
-  // Resolve and post the result FIRST. Creating a new chat message is always
-  // allowed, but updating/deleting the challenger's prompt message is NOT
-  // permitted for a different player (only its author or a GM) - so that
-  // cleanup must never come before, or block, the actual resolution.
+  // Send the answer to the resolver (challenger, else a GM) - the opponent's
+  // client does NOT resolve, because it never holds the challenger's sealed
+  // gesture. This is the whole point of the secret-throw protocol.
+  const opponentMod = blockBtn ? 0 : (Number(card.querySelector(".vtm-opponent-mod-input")?.value) || 0);
+  const blockSource = blockBtn ? (card.querySelector(".vtm-retest-block-source")?.value?.trim() || "") : "";
   try {
-  if (blockBtn) {
-    // Retests can be blocked by an opponent who can match its conditions
-    // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw
-    // entirely rather than resolving a gesture exchange.
-    const blockSource = card.querySelector(".vtm-retest-block-source")?.value?.trim();
-    await ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: challengerActor }),
-      content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${req.challengeType} Challenge - Retest Cancelled</span></div>`
-        + `<p>${challengerActor.name}'s retest (<strong>${req.retest}</strong>) was cancelled by ${opponentActor.name}`
-        + (blockSource ? ` giving up <strong>${blockSource}</strong>` : "") + `.</p>`
-        + `<div class="vtm-result-banner result-Tied">Retest cancelled — the previous result stands.</div></div>`
-    });
-  } else {
-    const opponentMod = Number(card.querySelector(".vtm-opponent-mod-input")?.value) || 0;
-    await resolveAndPostGestureChallenge({
-      challengerActor,
+    await submitChallengeAnswer({
+      requestId: req.requestId,
+      resolverUserId: req.resolverUserId,
       challengeType: req.challengeType,
-      challengerGesture: req.challengerGesture,
-      opponentActor,
-      opponentGesture: gesture,
-      retest: req.retest,
-      isRetestThrow: req.isRetestThrow,
-      coinToss: req.coinToss,
-      challengerMod: req.challengerMod,
+      challengerActorId: req.challengerActorId,
+      challengerTokenUuid: req.challengerTokenUuid || "",
+      challengerMod: Number(req.challengerMod) || 0,
+      opponentActorId: req.opponentActorId,
+      opponentTokenUuid: req.opponentTokenUuid || "",
+      opponentName: opponentActor.name,
+      opponentGesture: blockBtn ? "" : gesture,
       opponentMod,
-      requestId: req.requestId
-    });
-  }
+      retest: req.retest,
+      isRetestThrow: !!req.isRetestThrow,
+      coinToss: !!req.coinToss,
+      block: !!blockBtn,
+      blockSource
+    }, challengerActor);
   } catch (err) {
-    // Resolution failed: release the claim and re-enable the card so the
-    // responder can try again, rather than leaving the Challenge un-answerable.
-    console.error("VTMLARP | challenge resolution failed:", err);
-    releaseChallenge(req.requestId);
+    console.error("VTMLARP | couldn't send challenge answer:", err);
     card.querySelectorAll("button, select").forEach(el => { el.disabled = false; });
-    ui.notifications?.error("Couldn't resolve the Challenge — try again.");
+    ui.notifications?.error("Couldn't send your answer — try again.");
     return;
   }
 
-  // Now clean up the prompt. If this client may modify the message (author or
-  // GM), delete it and mark it responded directly; otherwise ask a GM to, via
-  // socket. Wrapped so a permission error can never surface or undo the
-  // resolution above. The responded flag backs up deletion for any client that
-  // still holds the message (the guard at the top of this handler reads it).
+  // Mark the prompt answered so it can't be re-used (best effort - author/GM
+  // sets the flag directly, else asks a GM to). The resolver deletes the prompt
+  // once it posts the result.
   try {
-    if (message.canUserModify(game.user, "delete")) {
-      await message.setFlag("vtmlarp", "responded", true);
-      await message.delete();
-    } else {
-      game.socket.emit("system.vtmlarp", { action: "deleteChallengePrompt", messageId: message.id });
-      game.socket.emit("system.vtmlarp", { action: "markChallengeResponded", messageId: message.id });
-    }
+    if (message.canUserModify(game.user, "update")) await message.setFlag("vtmlarp", "responded", true);
+    else game.socket.emit("system.vtmlarp", { action: "markChallengeResponded", messageId: message.id });
   } catch (err) {
-    console.warn("VTMLARP | couldn't remove the challenge prompt (harmless):", err);
+    console.warn("VTMLARP | couldn't flag the challenge prompt (harmless):", err);
   }
-  if (req.requestId) game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: req.requestId });
+  ui.notifications?.info("Answer sent — resolving…");
 });

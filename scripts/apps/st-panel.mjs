@@ -1,4 +1,4 @@
-import { postGestureChallengePrompt } from "./challenge-shared.mjs";
+import { postGestureChallengePrompt, sealChallengerGesture } from "./challenge-shared.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { DialogV2 } = foundry.applications.api;
@@ -137,14 +137,18 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     }
     const coinToss = mode === "coinToss";
     const surprise = mode === "surprise";
+    const requestId = foundry.utils.randomID();
+    // Seal the ST's chosen gesture (whispered to GMs) so it's hidden from the
+    // opponent; this GM is the resolver and reads it back when the opponent
+    // answers the public card.
+    await sealChallengerGesture({ requestId, challengerGesture, challengerActor });
     await postGestureChallengePrompt({
       challengerActor,
       challengeType: coinToss ? "coin toss" : challengeType,
-      challengerGesture,
       opponentActor,
       opponentName: opponentActor.name,
       retest: coinToss ? "" : retest,
-      requestId: foundry.utils.randomID(),
+      requestId,
       surprise,
       coinToss
     });

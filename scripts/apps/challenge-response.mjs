@@ -1,4 +1,4 @@
-import { GESTURES, resolveAndPostGestureChallenge, claimChallenge, releaseChallenge, isChallengeResolved } from "./challenge-shared.mjs";
+import { GESTURES, claimChallenge, isChallengeResolved, submitChallengeAnswer } from "./challenge-shared.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -71,75 +71,43 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
       return;
     }
 
-    // Claim this Challenge on this client so the chat-card answer surface (also
-    // open on this same responder's client) can't resolve it a second time. If
-    // the card already claimed it, this popup is stale - just close it.
+    // Local guard so this popup and the chat card on the same client can't both
+    // send an answer; the cross-client result-card guard catches the rest.
     if (!claimChallenge(this.request.requestId)) {
       ui.notifications?.info("This Challenge is already being answered.");
       this.close();
       return;
     }
-    // Cross-client guard: a result card for this request may already exist
-    // (another responder/GM answered it), which the local claim can't see.
     if (isChallengeResolved(this.request.requestId)) {
       ui.notifications?.info("This Challenge has already been resolved.");
       this.close();
       return;
     }
 
-    // Retests can be blocked by an opponent who can match its conditions
-    // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw
-    // entirely rather than resolving a gesture exchange.
-    if (this.request.retest && fd.block) {
-      const opponentName = this.request.opponentActor?.name ?? "Opponent";
-      await ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this.request.challengerActor }),
-        content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${this.request.challengeType} Challenge - Retest Blocked</span></div>`
-          + `<p>${this.request.challengerName}'s retest (<strong>${this.request.retest}</strong>) was blocked by ${opponentName}`
-          + (fd.blockSource ? ` using <strong>${fd.blockSource}</strong>` : "") + `.</p>`
-          + `<div class="vtm-result-banner result-Tied">Retest blocked — the previous result stands.</div></div>`
-      });
-      this._broadcastResolved();
-      this.close();
-      return;
-    }
+    const r = this.request;
+    const challengerActor = r.challengerActor ?? (r.challengerActorId ? game.actors.get(r.challengerActorId) : null);
+    // Send the answer to the resolver (the challenger, else a GM) - this popup
+    // never resolves, because it does NOT hold the challenger's sealed gesture.
+    await submitChallengeAnswer({
+      requestId: r.requestId,
+      resolverUserId: r.resolverUserId,
+      challengeType: r.challengeType,
+      challengerActorId: r.challengerActorId ?? challengerActor?.id ?? "",
+      challengerTokenUuid: r.challengerTokenUuid ?? "",
+      challengerMod: Number(r.challengerMod) || 0,
+      opponentActorId: r.opponentActorId ?? r.opponentActor?.id ?? "",
+      opponentTokenUuid: r.opponentTokenUuid ?? "",
+      opponentName: r.opponentActor?.name ?? r.opponentName ?? "Opponent",
+      opponentGesture: isBlock ? "" : fd.gesture,
+      opponentMod: Number(fd.opponentMod) || 0,
+      retest: r.retest,
+      isRetestThrow: !!r.isRetestThrow,
+      coinToss: !!r.coinToss,
+      block: !!isBlock,
+      blockSource: fd.blockSource || ""
+    }, challengerActor);
 
-    try {
-      await resolveAndPostGestureChallenge({
-        challengerActor: this.request.challengerActor,
-        challengeType: this.request.challengeType,
-        challengerGesture: this.request.challengerGesture,
-        opponentActor: this.request.opponentActor,
-        opponentGesture: fd.gesture,
-        retest: this.request.retest,
-        isRetestThrow: !!this.request.isRetestThrow,
-        challengerMod: Number(this.request.challengerMod) || 0,
-        opponentMod: Number(fd.opponentMod) || 0,
-        requestId: this.request.requestId
-      });
-    } catch (err) {
-      // Release the claim so the responder can retry from either surface rather
-      // than being locked out of answering the Challenge entirely.
-      console.error("VTMLARP | challenge resolution failed:", err);
-      releaseChallenge(this.request.requestId);
-      ui.notifications?.error("Couldn't resolve the Challenge — try again.");
-      return;
-    }
-
-    this._broadcastResolved();
+    ui.notifications?.info("Answer sent — resolving…");
     this.close();
-  }
-
-  /** Tell every client (including GMs watching the dashboard) this request is no
-   * longer pending, AND remove the public prompt card so it can't be clicked to
-   * resolve a second time (this popup answered it). */
-  _broadcastResolved() {
-    if (!this.request.requestId) return;
-    game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId: this.request.requestId });
-    // Delete the prompt locally if permitted, else ask a GM to (same path the
-    // NPC auto-answer uses); otherwise the chat card stays live and clickable.
-    const prompt = game.messages?.find(m => m.getFlag?.("vtmlarp", "requestId") === this.request.requestId);
-    if (prompt?.canUserModify(game.user, "delete")) prompt.delete().catch(() => {});
-    else game.socket.emit("system.vtmlarp", { action: "deleteChallengePromptByRequest", requestId: this.request.requestId });
   }
 }

@@ -1,4 +1,4 @@
-import { GESTURES, unspentCount, respondingUsers, resolveAndPostGestureChallenge, postGestureChallengePrompt } from "./challenge-shared.mjs";
+import { GESTURES, unspentCount, respondingUsers, resolveAndPostGestureChallenge, postGestureChallengePrompt, sealChallengerGesture } from "./challenge-shared.mjs";
 import { GMChallengeDashboard } from "./gm-dashboard.mjs";
 
 // A standing fake opponent (Storyteller-only; see the GM-gated actorOptions
@@ -233,77 +233,89 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       if (!proceed) return;
     }
 
-    const recipients = respondingUsers(opponentActor);
+    // Resolve the SPECIFIC opponent instance: if the challenger has exactly one
+    // token targeted and it's this opponent, use that token's actor (so one of
+    // several identical unlinked NPC tokens is distinguished from its
+    // duplicates). Otherwise fall back to the base actor from the dropdown.
+    const targets = Array.from(game.user?.targets ?? []);
+    const targetedToken = targets.length === 1 && targets[0]?.actor?.id === opponentActorId ? targets[0] : null;
+    const opponentInstance = targetedToken?.actor ?? opponentActor;
+    const opponentTokenUuid = targetedToken?.document?.uuid ?? "";
+    const challengerTokenUuid = this.actor.isToken ? (this.actor.token?.uuid ?? "") : "";
+
+    const recipients = respondingUsers(opponentInstance);
     if (!recipients.length) {
-      ui.notifications?.warn(`No player or GM is set up to respond for ${opponentActor.name}.`);
+      ui.notifications?.warn(`No player or GM is set up to respond for ${opponentInstance.name}.`);
       return;
     }
 
-    // requestId lets every client (not just the responding one) track and
-    // later clear this specific request from the GM dashboard - broadcast
-    // unfiltered, unlike targetUserIds above which only the responder acts on.
     const requestId = foundry.utils.randomID();
+    const challengerMod = Number(fd.challengerMod) || 0;
 
-    // Primary path: a public chat message with clickable gesture buttons
-    // (see postGestureChallengePrompt) that the opponent can respond to
-    // whenever they next load chat, regardless of whether a live socket
-    // push actually reaches their client - confirmed via testing that it
-    // doesn't reliably for every setup. The socket broadcast below is kept
-    // as a bonus instant-popup for clients where it does work, and to keep
-    // the GM dashboard's pending-request tracking functioning; it's not
-    // required for the Challenge to actually be answerable.
+    // SEAL the challenger's gesture in a whisper only the challenger + GMs
+    // receive, so it never reaches the opponent's client. The public prompt
+    // card below carries NO gesture - resolution happens on a resolver client
+    // (this challenger, else a GM) that holds the seal.
+    await sealChallengerGesture({ requestId, challengerGesture: fd.gesture, challengerActor: this.actor });
+
+    // Primary answer surface: a public chat card with gesture buttons the
+    // opponent can use whenever they load chat (no live socket needed). It holds
+    // no secret - just the request metadata and token refs.
     await postGestureChallengePrompt({
       challengerActor: this.actor,
       challengeType,
-      challengerGesture: fd.gesture,
-      opponentActor,
-      opponentName: opponentActor.name,
+      opponentActor: opponentInstance,
+      opponentName: opponentInstance.name,
+      challengerTokenUuid,
+      opponentTokenUuid,
       retest,
       isRetestThrow: !!this.prefill?.isRetestThrow,
       requestId,
-      challengerMod: Number(fd.challengerMod) || 0
-    });
-
-    const challengerMod = Number(fd.challengerMod) || 0;
-    game.socket.emit("system.vtmlarp", {
-      action: "challengeRequest",
-      requestId,
-      targetUserIds: recipients.map(u => u.id),
-      challengerActorId: this.actor.id,
-      challengerName: this.actor.name,
-      challengeType,
-      challengerGesture: fd.gesture,
-      opponentActorId: opponentActor.id,
-      opponentName: opponentActor.name,
-      retest,
-      isRetestThrow: !!this.prefill?.isRetestThrow,
       challengerMod
     });
 
-    // Foundry does not echo a socket emit back to the sender, so when THIS
-    // client is itself the designated responder for an auto-answering NPC
-    // (the common single-GM case where the GM is the challenger), the socket
-    // handler's NPC block will never run here - resolve it locally instead.
-    // Also resolve locally when the NPC auto-answers but NObody who could
-    // respond for it is currently online (e.g. a player challenges an
-    // auto-answer NPC while the ST is offline) - otherwise the throw would sit
-    // in chat forever waiting on someone who can't act. The challenger's client
-    // can post the result (log writes fall back to a GM whisper).
+    // Bonus instant-popup + GM dashboard tracking. No challenger gesture on the
+    // wire; carries the resolver id and token refs so the answer can route back.
+    game.socket.emit("system.vtmlarp", {
+      action: "challengeRequest",
+      requestId,
+      resolverUserId: game.user.id,
+      targetUserIds: recipients.map(u => u.id),
+      challengerActorId: this.actor.id,
+      challengerTokenUuid,
+      challengerName: this.actor.name,
+      challengeType,
+      opponentActorId: opponentInstance.id,
+      opponentTokenUuid,
+      opponentName: opponentInstance.name,
+      retest,
+      isRetestThrow: !!this.prefill?.isRetestThrow,
+      coinToss: false,
+      challengerMod
+    });
+
+    // Auto-answer NPC: the CHALLENGER's own client holds the gesture, so it can
+    // resolve locally right away (no leak - nothing is sent to an opponent). Do
+    // this when this client is the designated responder OR nobody who could
+    // respond for the NPC is online, so an auto-answer NPC never strands.
     const anyResponderOnline = recipients.some(u => u.active);
-    if (opponentActor.type === "npc" && opponentActor.system?.autoChallenge
+    if (opponentInstance.type === "npc" && opponentInstance.system?.autoChallenge
         && (recipients[0]?.id === game.user.id || !anyResponderOnline)) {
       const pool = ["rock", "paper", "scissors"];
-      if (opponentActor.system?.bombAccess) pool.push("bomb");
+      if (opponentInstance.system?.bombAccess) pool.push("bomb");
       const opponentGesture = pool[Math.floor(Math.random() * pool.length)];
       await resolveAndPostGestureChallenge({
         challengerActor: this.actor, challengeType, challengerGesture: fd.gesture,
-        opponentActor, opponentGesture, retest, isRetestThrow: !!this.prefill?.isRetestThrow, challengerMod,
+        opponentActor: opponentInstance, opponentGesture, retest, isRetestThrow: !!this.prefill?.isRetestThrow, challengerMod,
         requestId
       });
       game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId });
       GMChallengeDashboard.clearRequest?.(requestId);
-      const prompt = game.messages?.find(m => m.getFlag?.("vtmlarp", "requestId") === requestId);
-      prompt?.delete?.().catch(() => {});
+      for (const m of game.messages ?? []) {
+        if (m.getFlag?.("vtmlarp", "requestId") === requestId && (m.getFlag("vtmlarp", "promptCard") || m.getFlag("vtmlarp", "sealedThrow"))) {
+          m.delete?.().catch(() => {});
+        }
+      }
       this.close();
       return;
     }

@@ -196,13 +196,16 @@ export function respondingUsers(actor) {
  * chat - this doesn't depend on a live socket push to work at all, only on
  * normal chat history loading, which happens regardless of real-time
  * connectivity between clients. The challenger's own gesture is stored in
- * the message's flags (not rendered into the visible text) so it isn't
- * revealed until the opponent actually responds and the result posts -
- * anyone can see that a Challenge is happening, but only the opponent's
- * owner (or a GM) is permitted to actually click a response.
+ * a SEPARATE sealed whisper (see sealChallengerGesture) that the opponent never
+ * receives - anyone can see that a Challenge is happening, but only the
+ * opponent's owner (or a GM) is permitted to actually click a response, and the
+ * challenger's gesture is never carried on this public card.
  */
 export async function postGestureChallengePrompt({
-  challengerActor, challengeType, challengerGesture, opponentActor, opponentName, retest, isRetestThrow, requestId,
+  challengerActor, challengeType, opponentActor, opponentName, retest, isRetestThrow, requestId,
+  // Token UUIDs let resolution target a SPECIFIC unlinked token instance rather
+  // than the shared base actor (so duplicate NPC tokens don't collapse together).
+  challengerTokenUuid = "", opponentTokenUuid = "",
   // Storyteller-initiated flavours: a "surprise" note on the card, and a
   // no-traits coin toss (gesture decides, no pools).
   surprise = false, coinToss = false, challengerMod = 0
@@ -218,16 +221,24 @@ export async function postGestureChallengePrompt({
     gestures: GESTURES
   });
 
+  // The challenger's gesture is SEALED separately (see sealChallengerGesture) and
+  // is NOT placed in this public prompt's flags — a public message document syncs
+  // to every client, so storing the gesture here would leak it to the opponent
+  // before they answer. This card is public only so the opponent can pick a
+  // gesture; it carries no secret.
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor: challengerActor }),
     content,
     flags: {
       vtmlarp: {
+        promptCard: true,
         requestId,
+        resolverUserId: game.user.id,
         challengerActorId: challengerActor.id,
+        challengerTokenUuid,
         challengeType,
-        challengerGesture,
         opponentActorId: opponentActor?.id ?? "",
+        opponentTokenUuid,
         opponentName,
         retest: retest ?? "",
         isRetestThrow: !!isRetestThrow,
@@ -237,4 +248,154 @@ export async function postGestureChallengePrompt({
       }
     }
   });
+}
+
+// === Secret-throw protocol =================================================
+// The challenger's gesture must never reach the opponent's client, so:
+//  - it is SEALED in a whisper only the challenger's owners + GMs receive;
+//  - the opponent's answer is sent to a RESOLVER (the challenger, else a GM)
+//    who holds the sealed gesture and computes the result.
+// The opponent's client never sees the challenger's gesture and never resolves.
+
+/** Users allowed to hold the sealed throw / resolve: the challenger's own
+ * owners plus every GM (never the opponent). */
+export function challengeSealRecipients(challengerActor) {
+  const gmIds = game.users.filter(u => u.isGM).map(u => u.id);
+  const ownerIds = game.users.filter(u => !u.isGM && challengerActor?.testUserPermission?.(u, "OWNER")).map(u => u.id);
+  return Array.from(new Set([game.user.id, ...ownerIds, ...gmIds]));
+}
+
+/** Store the challenger's gesture in a whisper only the challenger+GMs receive. */
+export async function sealChallengerGesture({ requestId, challengerGesture, challengerActor }) {
+  await ChatMessage.create({
+    whisper: challengeSealRecipients(challengerActor),
+    speaker: { alias: "Sealed Throw" },
+    content: `<div class="vtmlarp-shared-entry hint"><i class="fas fa-lock"></i> Your sealed throw for a pending Challenge (revealed when it's answered).</div>`,
+    flags: { vtmlarp: { sealedThrow: true, requestId, challengerGesture } }
+  });
+}
+
+/** Read a sealed gesture on this client (only present if we're a recipient). */
+export function readSealedGesture(requestId) {
+  const msg = game.messages?.find(m => m.getFlag?.("vtmlarp", "sealedThrow") && m.getFlag("vtmlarp", "requestId") === requestId);
+  return msg ? { gesture: msg.getFlag("vtmlarp", "challengerGesture"), messageId: msg.id } : null;
+}
+
+/** Elect the single client that resolves an answered challenge: the throwing
+ * user if online, else the lowest-id active GM. Returns a userId or null. */
+export function challengeResolverId(resolverUserId) {
+  const thrower = game.users.get(resolverUserId);
+  if (thrower?.active) return resolverUserId;
+  const gm = game.users.filter(u => u.isGM && u.active).sort((a, b) => a.id.localeCompare(b.id))[0];
+  return gm?.id ?? null;
+}
+
+/** Resolve an actor from a token UUID (specific instance) if given, else the
+ * base actor by id. */
+export async function resolveChallengeActor(actorId, tokenUuid) {
+  if (tokenUuid) {
+    const doc = await fromUuid(tokenUuid).catch(() => null);
+    if (doc?.actor) return doc.actor;
+  }
+  return actorId ? game.actors.get(actorId) : null;
+}
+
+/** Opponent side: record + send an answer to the resolver. Persists the answer
+ * as a whisper (so it survives the resolver being briefly offline) AND emits it
+ * over the socket for instant resolution. Never resolves locally. */
+export async function submitChallengeAnswer(answer, challengerActor) {
+  const payload = { action: "challengeAnswer", ...answer };
+  // Persist for reconciliation (whisper to the challenger's owners + GMs).
+  await ChatMessage.create({
+    whisper: challengeSealRecipients(challengerActor),
+    speaker: { alias: "Challenge Answer" },
+    content: `<div class="vtmlarp-shared-entry hint">Answer recorded for a pending Challenge.</div>`,
+    flags: { vtmlarp: { challengeAnswer: true, ...answer } }
+  });
+  game.socket.emit("system.vtmlarp", payload);
+}
+
+/** Resolver side: given an answer (from socket or a reconciliation scan),
+ * resolve the challenge if this client is the elected resolver and holds the
+ * sealed gesture. Idempotent — guarded by the local claim and the result card. */
+export async function tryResolveChallengeAnswer(answer) {
+  const { requestId, resolverUserId } = answer;
+  if (challengeResolverId(resolverUserId) !== game.user.id) return;
+  if (isChallengeResolved(requestId)) { await cleanupChallengeArtifacts(requestId); return; }
+  if (!claimChallenge(requestId)) return;
+  const sealed = readSealedGesture(requestId);
+  if (!sealed) { releaseChallenge(requestId); return; }
+
+  try {
+    const challengerActor = await resolveChallengeActor(answer.challengerActorId, answer.challengerTokenUuid);
+    const opponentActor = await resolveChallengeActor(answer.opponentActorId, answer.opponentTokenUuid);
+    if (!challengerActor) { releaseChallenge(requestId); return; }
+
+    if (answer.block) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: challengerActor }),
+        content: `<div class="vtmlarp-challenge-card"><div class="vtm-clash-header"><span>${answer.challengeType} Challenge - Retest Cancelled</span></div>`
+          + `<p>${challengerActor.name}'s retest (<strong>${answer.retest || ""}</strong>) was cancelled by ${answer.opponentName || "the opponent"}`
+          + (answer.blockSource ? ` giving up <strong>${answer.blockSource}</strong>` : "") + `.</p>`
+          + `<div class="vtm-result-banner result-Tied">Retest cancelled — the previous result stands.</div></div>`,
+        flags: { vtmlarp: { resolvedRequestId: requestId } }
+      });
+    } else {
+      await resolveAndPostGestureChallenge({
+        challengerActor,
+        challengeType: answer.challengeType,
+        challengerGesture: sealed.gesture,
+        opponentActor,
+        opponentGesture: answer.opponentGesture,
+        retest: answer.retest,
+        isRetestThrow: answer.isRetestThrow,
+        coinToss: answer.coinToss,
+        challengerMod: answer.challengerMod,
+        opponentMod: answer.opponentMod,
+        requestId
+      });
+    }
+  } catch (err) {
+    console.error("VTMLARP | challenge resolution failed:", err);
+    releaseChallenge(requestId);
+    return;
+  }
+  await cleanupChallengeArtifacts(requestId);
+  // Clear the request from the GM dashboard (locally if we're a GM, and broadcast
+  // so any GM tracking it drops it too).
+  game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId });
+}
+
+/** Delete this challenge's prompt card and sealed-throw whisper (best effort;
+ * the resolver authored the seal or is a GM). Answer-record whispers are left —
+ * they're whispered, harmless, and the result card blocks any re-resolve. */
+export async function cleanupChallengeArtifacts(requestId) {
+  for (const m of game.messages ?? []) {
+    const f = m.getFlag?.("vtmlarp", "requestId");
+    if (f !== requestId) continue;
+    const isArtifact = m.getFlag("vtmlarp", "promptCard") || m.getFlag("vtmlarp", "sealedThrow") || m.getFlag("vtmlarp", "challengeAnswer");
+    if (!isArtifact) continue;
+    try {
+      // The resolver authored the seal (if challenger) or is a GM, so it can
+      // delete the prompt/seal directly; the answer record was authored by the
+      // opponent, so a player-resolver can't delete it (a GM can) — ask a GM via
+      // socket in that case. All best-effort; the result card is what matters.
+      if (m.canUserModify(game.user, "delete")) await m.delete();
+      else game.socket.emit("system.vtmlarp", { action: "deleteChallengePrompt", messageId: m.id });
+    } catch { /* harmless */ }
+  }
+}
+
+/** On load, the elected resolver resolves any answered-but-unresolved challenge
+ * (e.g. the resolver was offline when the opponent answered). */
+export async function reconcileAnsweredChallenges() {
+  const answers = (game.messages ?? []).filter(m => m.getFlag?.("vtmlarp", "challengeAnswer"));
+  const seen = new Set();
+  for (const m of answers) {
+    const data = m.flags?.vtmlarp;
+    if (!data?.requestId || seen.has(data.requestId)) continue;
+    seen.add(data.requestId);
+    if (isChallengeResolved(data.requestId)) continue;
+    await tryResolveChallengeAnswer(data);
+  }
 }
