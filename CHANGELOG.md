@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.44.2 — Clan picker layout fix
+
+- **"Help me pick a clan" no longer stacks its two panes.** A CSS rule was
+  forcing the picker's root (the rail-beside-card row) into a column, so the
+  clan list sat on top of the borderless detail card and looked jammed
+  together. The picker is now a proper two-column layout again, with the rail's
+  right border as the divider.
+
 ## 1.44.1 — Mass-target Challenges
 
 - **Challenge multiple targets at once** for area/multi-target Disciplines and
