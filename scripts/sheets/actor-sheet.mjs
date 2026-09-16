@@ -1218,10 +1218,14 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         }
         if (extra) { clear(extra[0] === "bonus" ? extra[1] : null, extra[0] === "fixed" ? extra[1] : null); healedTwo = true; }
       }
-      const update = { "system.blood.value": blood - 1 };
+      // Spend through _spendBlood so healing counts toward the generation's
+      // per-turn Blood limit and warns past it, like every other Blood spend
+      // (the reference caps how much a young vampire can heal per turn).
+      if (!(await this._spendBlood(1, "Heal"))) return;
+      const update = {};
       for (const [k, v] of Object.entries(healthPatch)) update[`system.health.${k}`] = v;
       if (bonus.length) update["system.bonusHealth"] = bonus;
-      await this.actor.update(update);
+      if (Object.keys(update).length) await this.actor.update(update);
       if (healedTwo) ui.notifications?.info("Healed 2 bashing levels for 1 Blood.");
       return;
     }
@@ -1646,15 +1650,12 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       }).catch(() => false);
       if (!confirmed) return;
     }
-    // If an active power carries a body-mod / auto-effect, strip its tagged
-    // Active Effects and bonus Health boxes BEFORE deleting the item. Those
-    // effects live on the ACTOR (not the item), so deleting the item without
-    // this would orphan them: permanent stat inflation and bonus Health boxes
-    // with no remaining control to clear them. Reuses the toggle-off path.
-    if (item.type === "power" && item.system?.active) {
-      await this._applyBodyMod(item, false);
-      await this._applyAutoEffect(item, false);
-    }
+    // An active power's body-mod / auto-effect Active Effects and bonus Health
+    // boxes live on the ACTOR (not the item), so they must be stripped when the
+    // power is removed or they orphan (permanent stat inflation + bonus Health
+    // boxes with no control to clear them). That cleanup is centralized on the
+    // deleteItem hook (scripts/vtmlarp.mjs) so it runs for EVERY deletion route
+    // — this sheet button, the Items sidebar, a macro — not just here.
     await item.delete();
     this.render();
   }

@@ -3,6 +3,19 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.42.1 — Health/effect cleanup & data fixes
+
+- **Deleting an active body-mod power now cleans up no matter how it's deleted.**
+  Its bonus Physical Traits and extra Health boxes live on the actor, so
+  removing the power from the Items sidebar or via a macro (not just the sheet's
+  delete button) used to strand them — permanent stat inflation and orphaned
+  Health boxes. A deletion hook now strips them for every deletion route.
+- **Blood spent to heal now counts toward your per-turn Blood limit** and warns
+  past it, like every other Blood expenditure (previously healing bypassed the
+  tracker).
+- Fixed two city NPCs stored with an invalid generation of 0 (which the schema
+  silently clamped on load).
+
 ## 1.42.0 — Sabbat content & builder improvements
 
 - **Starting Morality/Path rating is now a Character Builder choice.** A new

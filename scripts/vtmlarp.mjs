@@ -229,6 +229,39 @@ function resortCombatInitiative(actor) {
   }
 }
 Hooks.on("updateActor", (actor) => resortCombatInitiative(actor));
+
+// Safety net: when an active power that carries a body-mod / auto-effect is
+// deleted by ANY route (sheet button, Items sidebar, drag-off, macro), strip
+// the tagged Active Effects and trim the bonus Health boxes it added — they
+// live on the ACTOR, not the item, so item deletion alone orphans them
+// (permanent stat inflation + extra Health boxes with no control to clear).
+// Runs only on the deleting client (which owns the actor), after deletion, so
+// the actor-side AEs still exist to remove.
+Hooks.on("deleteItem", async (item, options, userId) => {
+  if (game.user.id !== userId) return;
+  const actor = item.parent;
+  if (!actor || actor.documentName !== "Actor") return;
+  if (item.type !== "power" || !item.system?.active) return;
+  if (!actor.isOwner) return;
+
+  const fx = actor.effects.filter(e => {
+    const f = e.flags?.vtmlarp;
+    return f && (f.bodyModPower === item.id || f.autoEffectPower === item.id);
+  }).map(e => e.id);
+  if (fx.length) await actor.deleteEmbeddedDocuments("ActiveEffect", fx);
+
+  let toRemove = (Number(item.system.bodyMod?.health) || 0) + (Number(item.system.autoEffect?.health) || 0);
+  if (toRemove > 0) {
+    // Remove the boxes preferring undamaged ("ok") from the end, so a deletion
+    // can't drop a box currently taking damage or another power's boxes.
+    const list = [...(actor.system.bonusHealth ?? [])];
+    for (let k = list.length - 1; k >= 0 && toRemove > 0; k--) {
+      if (list[k] === "ok") { list.splice(k, 1); toRemove--; }
+    }
+    while (toRemove > 0 && list.length) { list.pop(); toRemove--; }
+    await actor.update({ "system.bonusHealth": list });
+  }
+});
 for (const h of ["createActiveEffect", "deleteActiveEffect", "updateActiveEffect"]) {
   Hooks.on(h, (effect) => {
     const parent = effect?.parent;
