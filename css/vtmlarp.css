@@ -1818,3 +1818,14 @@ form.shop-sheet .shop-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 .vtmlarp .merc-stock { table-layout: fixed; width: 100%; }
 .vtmlarp .merc-stock th:first-child, .vtmlarp .merc-stock td:first-child { width: 30%; }
 .vtmlarp .merc-stock input[type="text"], .vtmlarp .merc-stock select { min-width: 0; }
+
+/* Vaulderie participant rows: keep the select, Blood-Traits field and remove
+   icon on one aligned line instead of stacking loosely. */
+.vtmlarp-vaulderie .vaulderie-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+.vtmlarp-vaulderie .vaulderie-row > select { flex: 1 1 140px; min-width: 0; }
+.vtmlarp-vaulderie .vaulderie-row label { display: flex; align-items: center; gap: 4px; margin: 0; }
+.vtmlarp-vaulderie .vaulderie-row label input { width: 3.5em; }
+
+/* An active toggled power gets a green "on" tint, matching the shop is-open /
+   blush-of-life convention (previously only the icon glyph changed). */
+.vtmlarp .power-toggle.is-on { color: #4caf50; }

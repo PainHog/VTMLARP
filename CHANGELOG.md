@@ -3,6 +3,13 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.5 — Vaulderie row & power-toggle polish
+
+- Vaulderie participant rows now sit on one aligned line (select, Blood-Traits
+  field, remove icon) instead of stacking loosely.
+- An active toggled power now shows a green "on" tint, matching the shop
+  open / Blush of Life convention.
+
 ## 1.45.4 — Visual polish (pass 3)
 
 - **Checkboxes in the Frenzy / Challenge-Response / Vaulderie dialogs** no longer
