@@ -904,15 +904,21 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ui.notifications?.warn("No Generation chart data below 5th generation - set Blood/Willpower manually.");
       return;
     }
-    // Deliberate (re)seed to this generation's starting values - unlike the
-    // automatic on-change seeding, this always resets to the chart's starting
-    // Willpower/Blood, so it's the way to reset an established character.
+    // Update this generation's Blood pool size / regen and Willpower cap, then
+    // CLAMP the current pools down if they now exceed the new maximum - matching
+    // the button's tooltip. This is non-destructive: it never refills Blood to
+    // full or resets spent Willpower (an accidental click mid-session must not
+    // erase what a player has spent). The starting values are seeded once,
+    // automatically, when Generation is first set (see _onFieldChange).
+    const curBlood = Number(this.actor._source.system.blood.value) || 0;
+    const curWp = Number(this.actor._source.system.willpower.value) || 0;
+    const wpCap = info.willpowerMax ?? curWp;
     await this.actor.update({
       "system.generationApplied": true,
       "system.blood.max": info.bloodMax,
       "system.blood.perTurn": info.bloodPerTurn,
-      "system.blood.value": info.bloodMax,
-      "system.willpower.value": info.willpowerStart
+      "system.blood.value": Math.min(curBlood, info.bloodMax),
+      "system.willpower.value": Math.min(curWp, wpCap)
     });
   }
 

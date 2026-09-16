@@ -3,6 +3,17 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.3 — "Apply to Blood/Willpower" no longer wipes pools
+
+- The "Apply to Blood/Willpower" button on the character sheet reset Blood to
+  full and Willpower to its starting value, despite a tooltip promising it only
+  "clamps current values down if needed." An accidental click mid-session
+  refilled Blood and erased spent Willpower with no undo. It now does exactly
+  what the tooltip says — updates the max/regen and clamps current pools down
+  only if they exceed the new maximum, never refilling or resetting upward.
+  (Starting values are still seeded automatically the first time Generation is
+  set.)
+
 ## 1.36.2 — Player character-create hand-back
 
 - When a player without "Create New Actors" permission submitted a character,
