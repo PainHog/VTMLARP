@@ -3,6 +3,20 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.5 — Purchase integrity
+
+- **Purchases now verify the buyer's owner.** Fulfillment runs with GM
+  authority and previously trusted the buyer id on the wire, so a crafted
+  socket message could charge another player's money / mint boons in their
+  name. The request now carries the requesting user and fulfillment refuses it
+  unless that user actually owns the buyer actor.
+- **No more "charged but no item" half-state.** Payment ran before the item was
+  added, so a failure mid-purchase could debit the buyer with nothing to show.
+  The item is now created first and the debit is rolled back (item deleted) if
+  payment fails — nothing is charged unless the item lands.
+- Buyers now get a personal "purchase complete" whisper (they previously only
+  saw "request sent").
+
 ## 1.36.4 — Challenge double-answer guard
 
 - **A responder could answer the same Challenge twice.** When the challenger and

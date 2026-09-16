@@ -115,6 +115,13 @@ async function _fulfillPurchase(req) {
   const buyer = game.actors.get(req.buyerId);
   if (!buyer) return "Buyer not found.";
   const fail = async (msg) => { await notifyBuyer(buyer, msg, true); return msg; };
+  // The requester must actually own the buyer actor. The buyer dropdown already
+  // restricts this in the UI, but fulfillment runs with GM authority, so it must
+  // re-verify rather than trust the socket payload.
+  const requester = req.requesterId ? game.users.get(req.requesterId) : null;
+  if (requester && !buyer.testUserPermission(requester, CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER)) {
+    return `${requester.name} doesn't own ${buyer.name} — purchase refused.`;
+  }
   const shopActor = game.actors.get(req.shopId);
   if (!shopActor || shopActor.type !== "shop") return fail("That shop no longer exists.");
   const shop = { name: shopActor.name, keeper: shopActor.system.keeper, open: shopActor.system.open };
@@ -127,19 +134,15 @@ async function _fulfillPurchase(req) {
   const method = req.method;
   const price = Number(item.price) || 0;
 
-  // Payment.
-  if (method === "money") {
-    const have = Number(buyer.system.money) || 0;
-    if (have < price) return fail(`${buyer.name} can't afford ${item.name} (needs ${price}, has ${have}).`);
-    await buyer.update({ "system.money": have - price });
-  } else if (method === "boon") {
-    const boons = foundry.utils.duplicate(buyer.system.boons ?? []);
-    const level = ["minor", "major", "blood"].includes(item.boonLevel) ? item.boonLevel : "minor";
-    boons.push({ who: shop.keeper || shop.name, type: level, direction: "owed", notes: `For ${item.name}` });
-    await buyer.update({ "system.boons": boons });
-  } // barter: no automatic debit - the traded goods/service are recorded in the note.
+  // Affordability is a read-only check, so do it up front before changing any
+  // state (nothing to roll back if they can't pay).
+  if (method === "money" && (Number(buyer.system.money) || 0) < price) {
+    return fail(`${buyer.name} can't afford ${item.name} (needs ${price}, has ${Number(buyer.system.money) || 0}).`);
+  }
 
-  // Add the item to the buyer's sheet (as a Gear item), linking the source if any.
+  // Add the item to the buyer's sheet FIRST. This is the operation most likely
+  // to fail, so doing it before any debit means a failure can't leave the buyer
+  // charged with nothing to show for it.
   const desc = (item.category ? `<p class="hint"><em>${item.category}</em></p>` : "") + (item.description || "");
   const itemData = {
     name: item.name,
@@ -147,7 +150,30 @@ async function _fulfillPurchase(req) {
     img: item.img || "icons/svg/item-bag.svg",
     system: { description: desc, quantity: 1, traitBonus: item.traitBonus || "" }
   };
-  await buyer.createEmbeddedDocuments("Item", [itemData]);
+  let createdItem;
+  try {
+    createdItem = (await buyer.createEmbeddedDocuments("Item", [itemData]))?.[0];
+  } catch (err) {
+    console.error("vtmlarp | purchase item-create failed", err);
+    return fail(`Couldn't add ${item.name} to ${buyer.name} — nothing was charged.`);
+  }
+
+  // Payment. If the debit fails, roll the item back so there's no free purchase.
+  try {
+    if (method === "money") {
+      const have = Number(buyer.system.money) || 0;
+      await buyer.update({ "system.money": Math.max(0, have - price) });
+    } else if (method === "boon") {
+      const boons = foundry.utils.duplicate(buyer.system.boons ?? []);
+      const level = ["minor", "major", "blood"].includes(item.boonLevel) ? item.boonLevel : "minor";
+      boons.push({ who: shop.keeper || shop.name, type: level, direction: "owed", notes: `For ${item.name}` });
+      await buyer.update({ "system.boons": boons });
+    } // barter: no automatic debit - the traded goods/service are recorded in the note.
+  } catch (err) {
+    console.error("vtmlarp | purchase payment failed", err);
+    await createdItem?.delete().catch(() => {});
+    return fail(`Payment failed for ${item.name} — nothing was charged.`);
+  }
 
   // Decrement limited stock on the shop Actor.
   if (Number.isFinite(item.qty) && item.qty >= 0) {
@@ -177,6 +203,10 @@ async function _fulfillPurchase(req) {
       + (req.note ? `<p><em>${req.note}</em></p>` : "")
       + `</div>`
   });
+
+  // Personal confirmation to the buyer's owner - the player only ever saw
+  // "request sent," so whisper them that it actually went through.
+  await notifyBuyer(buyer, `Purchase complete: ${item.name} for ${costLabel} from ${shop.name}.`, false);
 
   // Refresh any open Mercantile UIs. ApplicationV2 instances live in
   // foundry.applications.instances (a Map), NOT ui.windows (V1 only).
@@ -256,7 +286,11 @@ export class ShopBrowserApp extends HandlebarsApplicationMixin(ApplicationV2) {
     }).catch(() => null);
     if (!result) return;
 
-    const req = { buyerId: result.buyerId, shopId, itemId, method: result.method, price: Number(item.price) || 0, note: result.note };
+    // Stamp the requesting user so the GM-side fulfillment can verify they
+    // actually own the buyer actor (the dropdown restricts this, but the GM
+    // authority must not trust the wire - a crafted socket could otherwise
+    // charge another player). Present in both the direct-GM and socket paths.
+    const req = { buyerId: result.buyerId, shopId, itemId, method: result.method, price: Number(item.price) || 0, note: result.note, requesterId: game.user.id };
 
     if (game.user.isGM) {
       const msg = await fulfillPurchase(req);
