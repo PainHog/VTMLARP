@@ -79,31 +79,43 @@ export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.a
     } else {
       const rating = Number(this.actor.system.virtues[virtueKey].rating) || 0;
       // Static Challenge: throw vs the stimulus. A win resists; a tie is decided
-      // by trait comparison (Virtue must exceed Difficulty to win the tie); a
-      // loss may be retested by expending a Virtue Trait (temporary pool), each
-      // retest a fresh throw, until a win or the Virtue Traits run out.
+      // by trait comparison (Virtue must exceed Difficulty to win the tie). The
+      // book allows exactly ONE retest on a failed Virtue Test, by risking a
+      // (temporary) Virtue Trait; losing that retest also inflicts a temporary
+      // Derangement. Uncapped re-throws would badly inflate resist odds.
       const startTemp = Math.max(0, Number(this.actor.system.virtues[virtueKey].temporary) || 0);
       const rnd = () => ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
-      const throwsLog = [];
-      let retestsLeft = startTemp;
-      let resisted = false;
-      for (;;) {
+      const throwOnce = () => {
         const mine = rnd(), stim = rnd();
         const r = beats(mine, stim);
         const win = r === "win" || (r === "tie" && rating > difficulty);
         throwsLog.push(`${mine} vs ${stim}${r === "tie" ? ` (tie→${rating > difficulty ? "win" : "loss"})` : ""}`);
-        if (win) { resisted = true; break; }
-        if (retestsLeft > 0) { retestsLeft--; continue; }  // retest by expending a Virtue Trait
-        break;
+        return win;
+      };
+      const throwsLog = [];
+      let resisted = throwOnce();
+      let spent = 0;
+      let retestLost = false;
+      // One retest only, and only if a temporary Virtue Trait is available to risk.
+      if (!resisted && startTemp > 0) {
+        spent = 1;
+        resisted = throwOnce();
+        if (!resisted) retestLost = true;
+        await this.actor.update({ [`system.virtues.${virtueKey}.temporary`]: Math.max(0, startTemp - 1) });
       }
-      const spent = startTemp - retestsLeft;
-      if (spent > 0) {
-        await this.actor.update({ [`system.virtues.${virtueKey}.temporary`]: Math.max(0, startTemp - spent) });
+      // Losing the retest scars the mind: gain a temporary Derangement.
+      let derangementNote = "";
+      if (retestLost) {
+        const list = foundry.utils.duplicate(this.actor.system.derangements ?? []);
+        list.push({ name: "Temporary Derangement (Storyteller's choice)", description: "Gained from a lost Virtue retest during frenzy/Rötschreck." });
+        await this.actor.update({ "system.derangements": list });
+        derangementNote = " Gained a temporary Derangement for the lost retest.";
       }
       outcome = resisted ? "Resisted" : failLabel;
       detail = `${virtueLabel} ${rating} Static Challenge vs Difficulty ${difficulty}`
-        + (spent > 0 ? `, expended ${spent} Virtue Trait${spent === 1 ? "" : "s"} on retests` : "")
-        + `. [${throwsLog.join("; ")}]`;
+        + (spent > 0 ? `, risked ${spent} Virtue Trait on a retest` : "")
+        + `. [${throwsLog.join("; ")}]`
+        + derangementNote;
     }
 
     const content = await renderTemplate("systems/vtmlarp/templates/apps/frenzy-card.hbs", {

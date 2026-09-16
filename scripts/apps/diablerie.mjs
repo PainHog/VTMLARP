@@ -200,15 +200,18 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
   }
 
   static async #onThrowHumanity() {
-    const res = await this.#throw("Diablerie — resist losing Humanity/Path");
-    if (!res) return;
-    if (res.win) {
-      await this.#post(`<p><strong>${this.actor.name}</strong> holds onto their remaining conscience. <em>(${res.pick} vs ${res.opp})</em></p>`);
+    // NOT a test: the book is explicit that committing diablerie costs at least
+    // one Humanity/Path Trait "no test, no appeal" (Laws of the Night Revised).
+    // The Storyteller may impose more; this applies the mandatory single point.
+    const path = this.actor.system.morality?.path || "Humanity";
+    const cur = Number(this.actor.system.morality?.rating) || 0;
+    if (cur <= 0) {
+      await this.#post(`<p><strong>${this.actor.name}</strong> has no <strong>${path}</strong> left to lose to the Amaranth.</p>`);
       return;
     }
-    const cur = Number(this.actor.system.morality?.rating) || 0;
-    await this.actor.update({ "system.morality.rating": Math.max(0, cur - 1) });
-    await this.#post(`<p><strong>${this.actor.name}</strong> loses a point of <strong>${this.actor.system.morality?.path || "Humanity"}</strong> (now ${Math.max(0, cur - 1)}) for the Amaranth. <em>(${res.pick} vs ${res.opp})</em></p>`);
+    const next = cur - 1;
+    await this.actor.update({ "system.morality.rating": next });
+    await this.#post(`<p><strong>${this.actor.name}</strong> automatically loses a point of <strong>${path}</strong> (now ${next}) for the Amaranth — no test, no appeal. <span class="hint">The Storyteller may rule more is lost.</span></p>`);
     this.render();
   }
 
@@ -250,7 +253,7 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
     });
     await this.#post(`<div class="vtmlarp-shared-entry"><h3>Diablerie committed</h3>`
       + `<p><strong>${this.actor.name}</strong> has consumed a soul. Black veins now run through their aura — visible to Aura Perception for about three months, and to Thaumaturgy's <em>A Taste for Blood</em> forever.</p>`
-      + `<p class="hint">Storyteller: if the victim was of <em>lower generation</em>, award <strong>+2 Experience</strong> at the end of the session (book p.124).</p></div>`);
+      + `<p class="hint">Storyteller: if the victim was of <em>lower generation</em>, award <strong>+2 Experience</strong> at the end of the session.</p></div>`);
     ui.notifications?.info(`${this.actor.name}'s diablerie is recorded (taint x${(Number(d.count) || 0) + 1}).`);
     this.render();
   }

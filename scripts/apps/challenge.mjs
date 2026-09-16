@@ -95,7 +95,11 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       .map(i => `${i.name}: ${i.system.traitBonus}`);
 
     context.actor = this.actor;
-    context.gestures = GESTURES;
+    // Bomb isn't a universal throw: the book grants it only via Rapidity
+    // (Celerity) / Vigor (Potence). Only offer it when this actor is flagged as
+    // able to throw Bomb (the sheet's "…can throw Bomb" toggle), matching how
+    // the NPC auto-answer path already gates on system.bombAccess.
+    context.gestures = this.actor?.system?.bombAccess ? GESTURES : GESTURES.filter(g => g !== "bomb");
     context.challengeTypes = ["physical", "social", "mental", "static"];
     context.equipmentBonuses = equipmentBonuses;
     context.prefill = this.prefill;

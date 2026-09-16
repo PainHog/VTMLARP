@@ -31,7 +31,9 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
   /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    context.gestures = GESTURES;
+    // Bomb is offered only to a responder flagged as able to throw it (Celerity/
+    // Potence), matching the challenger side and the NPC auto-answer gate.
+    context.gestures = this.request.opponentActor?.system?.bombAccess ? GESTURES : GESTURES.filter(g => g !== "bomb");
     context.challengerName = this.request.challengerName;
     context.challengeType = this.request.challengeType;
     context.opponentActorName = this.request.opponentActor?.name ?? "";

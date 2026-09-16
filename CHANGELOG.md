@@ -3,6 +3,28 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.41.0 — Challenge rules-accuracy fixes
+
+Corrected four places where the resolution mechanics diverged from Laws of
+the Night Revised (verified against the sourcebook):
+
+- **Diablerie now always costs a Humanity/Path Trait — "no test, no appeal."**
+  The button no longer rolls a resistable throw (which let the diablerist keep
+  the point ~half the time); it deducts one point automatically, and the ST may
+  rule more is lost.
+- **Frenzy/Rötschreck retests are capped at one**, matching the book (a single
+  retest by risking a temporary Virtue Trait). Previously a character could
+  re-throw once per temporary Virtue Trait, badly inflating resist odds.
+  Losing that retest now also inflicts a temporary Derangement, as written.
+- **Bomb is no longer a universal throw.** It's offered in the challenge and
+  response gesture pickers only to a character flagged as able to throw Bomb
+  (the sheet's "…can throw Bomb" toggle, representing Celerity/Potence),
+  matching how the NPC auto-answer already gated it.
+- Removed an incorrect page citation from the Diablerie +2 XP reminder.
+
+The RPS+Bomb win/tie table and tie-by-Traits resolution were audited and
+confirmed already faithful to the book.
+
 ## 1.40.2 — World-migration single-authority guard
 
 - **World data migrations now run on only the single active Storyteller
