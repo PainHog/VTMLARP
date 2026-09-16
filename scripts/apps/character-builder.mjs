@@ -302,6 +302,15 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const gen = this.#num('[name="generation"]') || 13;
     set(".count-willpower", `${GEN_WILLPOWER_START[gen] ?? 2}`);
 
+    // Show the generation's per-category Trait cap and flag any category over it,
+    // and keep the number inputs' max in step with the chosen Generation.
+    const genMax = GENERATION_TABLE[gen]?.maxTraits ?? 10;
+    set(".gen-max-traits", `${genMax}`);
+    for (const nm of ["phys", "soc", "ment"]) {
+      const inp = el.querySelector(`[name="${nm}"]`);
+      if (inp) { inp.max = String(genMax); inp.classList.toggle("over-cap", this.#num(`[name="${nm}"]`) > genMax); }
+    }
+
     const over = (s, b) => Math.max(0, s - b);
     // Discipline Freebie cost: dots 4 and 5 always cost 6 and 9; and any
     // free-tier dots (<=3) beyond the allotment cost tiered (3/6/9), cheapest

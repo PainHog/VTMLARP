@@ -3,6 +3,13 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.46.2 — Character Builder shows the generation Trait cap
+
+- The Attributes step now shows the **per-category Trait maximum for the chosen
+  Generation** (e.g. 10 at 13th, 12 at 10th), updates live when you change
+  Generation, sets each category input's max accordingly, and flags a category
+  raised over the cap.
+
 ## 1.46.1 — Fortitude extra health level auto-applies
 
 - Basic Fortitude (**Mettle**) grants "+1 health level, permanent and passive."
