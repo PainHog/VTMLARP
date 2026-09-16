@@ -3,6 +3,21 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.3 — Visual polish (pass 2)
+
+- **Shop sheet now scrolls** — a shop with a long stock list no longer clips its
+  Create/Quick-add/Preview buttons off the bottom of the window.
+- **Explanatory hints inside section headers read normally** again instead of
+  rendering as spaced small-caps (they were inheriting the header's styling).
+- **Health track boxes no longer wrap into wildly different sizes** — the
+  "Incapacitated" box and bonus levels shrink/ellipsis instead of forcing an
+  uneven second row.
+- The small system chat notes (sealed throw / answer recorded) now render as
+  muted italic asides instead of full-weight clutter.
+- Buttons on the Blood-Bond Overview and Session Log windows now match the
+  themed style; "Browse Merits & Flaws" is a proper button; and adjacent
+  controls in a row get a small gutter instead of sitting flush.
+
 ## 1.45.2 — Challenge protocol hardening
 
 From a review of the secret-throw rewrite (still worth smoke-testing):

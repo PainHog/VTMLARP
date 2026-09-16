@@ -15,7 +15,7 @@ export class SessionLogApp extends HandlebarsApplicationMixin(foundry.applicatio
   }
 
   static DEFAULT_OPTIONS = {
-    classes: ["vtmlarp", "session-log"],
+    classes: ["vtmlarp", "sheet", "session-log"],
     position: { width: 400, height: 500 },
     window: { resizable: true }
   };

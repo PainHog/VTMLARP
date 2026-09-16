@@ -10,7 +10,7 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
 export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   static DEFAULT_OPTIONS = {
     id: "vtmlarp-blood-bond-overview",
-    classes: ["vtmlarp", "blood-bond-overview"],
+    classes: ["vtmlarp", "sheet", "blood-bond-overview"],
     position: { width: 440, height: "auto" },
     window: { title: "VTMLARP.App.BloodBondsOverview", resizable: true }
   };

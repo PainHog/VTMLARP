@@ -456,6 +456,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  /* Small default gutter so adjacent controls in a row don't sit flush against
+     each other. Rows that set their own gap (header-grid, main-actions, inline
+     style="gap:…") override this. */
+  gap: 6px;
 }
 form.vtmlarp.sheet {
   /* As a flex item of .window-content (below), height:100% alone is not
@@ -756,7 +760,11 @@ form.vtmlarp.sheet {
 }
 
 .vtmlarp .health-box {
-  flex: 1;
+  flex: 1 1 60px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   text-align: center;
   border: 1px solid var(--vtm-border-light);
   border-radius: 3px;
@@ -961,7 +969,13 @@ form.vtmlarp.sheet {
   font-size: 13px;
   font-style: italic;
   color: var(--vtm-text-muted);
+  /* Hints often sit inside an <h3> (which is small-caps + tracked); reset those
+     so full-sentence hints read as normal prose, not spaced small-caps. */
+  font-variant: normal;
+  letter-spacing: normal;
+  text-transform: none;
 }
+.vtmlarp .hint i { margin-right: 3px; }
 
 .vtmlarp .generation-reference {
   margin: -4px 0 10px 0;
@@ -1684,6 +1698,11 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 .vtmlarp.merit-flaw-browser .mfb-source { flex: 0 0 auto; color: var(--vtm-red, #8a0303); cursor: pointer; }
 .vtmlarp.merit-flaw-browser .mfb-add { flex: 0 0 auto; white-space: nowrap; }
 .vtmlarp-shared-entry.purchase-failed { border-left: 3px solid var(--vtm-red-bright, #b8121a); padding-left: 6px; opacity: 0.95; }
+/* Muted styling for the small system whisper notes posted straight into the
+   chat log (sealed-throw / answer-recorded / diablerie asides). These aren't
+   inside a `.vtmlarp` ancestor, so the scoped `.hint` rule never reaches them. */
+.vtmlarp-shared-entry.hint { font-style: italic; opacity: 0.72; font-size: 12px; }
+.vtmlarp-shared-entry.hint i { margin-right: 3px; }
 
 /* Mercantile overview (shop list) + Shop Actor sheet */
 .vtmlarp.mercantile-panel .merc-shop-list { list-style: none; margin: 6px 0 0; padding: 0; }
@@ -1734,3 +1753,9 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 /* Rated-trait tables (Abilities, Backgrounds): keep the −/dots/+ stepper and the
    restore icon on one vertically-centered line instead of stair-stepping. */
 .vtmlarp .rated-trait-table td:has(.rating-stepper) { display: flex; align-items: center; gap: 6px; }
+
+/* Shop actor sheet: the header stays put and the body (keeper/notes, the stock
+   table, and the action buttons) scrolls, so a long stock list can't clip the
+   controls off the bottom of the fixed-height window. */
+.vtmlarp.sheet.shop-sheet .shop-body,
+form.shop-sheet .shop-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
