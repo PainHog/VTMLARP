@@ -149,7 +149,7 @@ export class VaulderieApp extends HandlebarsApplicationMixin(foundry.application
     });
 
     const content = await renderTemplate("systems/vtmlarp/templates/apps/vaulderie-card.hbs", { draws });
-    await ChatMessage.create({ content });
+    await ChatMessage.create({ speaker: { alias: "The Vaulderie" }, content });
 
     this.close();
   }

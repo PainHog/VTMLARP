@@ -3,6 +3,16 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.37.2 — Chat-card polish
+
+- Frenzy/Rötschreck result banner now uses a valid status class so it's colored
+  correctly (it was emitting an invalid CSS class for Rötschreck).
+- Coin-toss challenge cards no longer show empty "( )" trait counts.
+- Vaulderie result card is now attributed to "The Vaulderie" rather than the
+  runner. (Lifecycle + chat-card audits otherwise found no crashes, dead
+  handlers, or rendering breaks — the delegated challenge-card handler correctly
+  survives reload and late-join.)
+
 ## 1.37.1 — Revert Sabbat allotment special-casing
 
 - Reverted the 1.37.0 Sabbat chargen change. The table's house rules already

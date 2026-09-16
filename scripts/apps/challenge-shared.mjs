@@ -123,6 +123,7 @@ export async function resolveAndPostGestureChallenge({
     challengerActorId: challengerActor.id,
     challengeType,
     traitsBid,
+    coinToss,
     isStatic: false,
     gesture: challengerGesture,
     opponentName,

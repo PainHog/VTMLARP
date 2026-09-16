@@ -111,6 +111,9 @@ export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.a
       trigger,
       difficulty,
       outcome,
+      // Map the free-form outcome to a valid banner status token for CSS
+      // (result-Won/Lost/Tied are the styled classes; "Rötschreck!" etc. aren't).
+      banner: outcome === "Resisted" ? "Won" : "Lost",
       detail
     });
 
