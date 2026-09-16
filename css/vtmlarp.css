@@ -1788,8 +1788,7 @@ form.shop-sheet .shop-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 
 /* Themed thin scrollbars for the internal scroll regions (dark theme). */
 .vtmlarp *::-webkit-scrollbar,
-.vtmlarp-session-log *::-webkit-scrollbar,
-.application [data-application-part]::-webkit-scrollbar { width: 10px; height: 10px; }
+.vtmlarp-session-log *::-webkit-scrollbar { width: 10px; height: 10px; }
 .vtmlarp *::-webkit-scrollbar-track,
 .vtmlarp-session-log *::-webkit-scrollbar-track { background: var(--vtm-bg-inset, #0a0a0a); }
 .vtmlarp *::-webkit-scrollbar-thumb,
@@ -1829,3 +1828,26 @@ form.shop-sheet .shop-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 /* An active toggled power gets a green "on" tint, matching the shop is-open /
    blush-of-life convention (previously only the icon glyph changed). */
 .vtmlarp .power-toggle.is-on { color: #4caf50; }
+
+/* ============================ Visual audit pass 4 ============================ */
+
+/* Discipline header rows aren't inside `.item-list`, so they missed the pass-3
+   wrap/shrink fix — give them the same so the trailing edit/delete icons can't
+   clip on a narrowed sheet. */
+.vtmlarp .discipline-header { flex-wrap: wrap; }
+.vtmlarp .discipline-header .item-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+/* The challenge PROMPT card renders in the chat log (outside any `.vtmlarp`
+   ancestor), so its `.hint` lines got no styling — mirror the vaulderie card. */
+.vtmlarp-challenge-card .hint,
+.vtmlarp-challenge-prompt .hint { color: #55493c; font-style: italic; font-size: 12px; }
+
+/* Shop stock table: center the single-checkbox cells under their centered
+   headers and keep those + the delete column narrow so Type/Price/Qty reclaim
+   room (the fixed layout otherwise split all 7 non-name columns evenly). */
+.vtmlarp .merc-stock th:nth-child(5), .vtmlarp .merc-stock td:nth-child(5),
+.vtmlarp .merc-stock th:nth-child(6), .vtmlarp .merc-stock td:nth-child(6),
+.vtmlarp .merc-stock th:nth-child(7), .vtmlarp .merc-stock td:nth-child(7),
+.vtmlarp .merc-stock th:nth-child(8), .vtmlarp .merc-stock td:nth-child(8) { width: 7%; text-align: center; }
+.vtmlarp .merc-stock th:nth-child(3), .vtmlarp .merc-stock td:nth-child(3),
+.vtmlarp .merc-stock th:nth-child(4), .vtmlarp .merc-stock td:nth-child(4) { width: 9%; }

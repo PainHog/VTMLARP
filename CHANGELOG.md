@@ -3,6 +3,15 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.6 — Visual polish (pass 4, converged)
+
+- Discipline header rows now wrap/shrink like the power rows below them, so
+  their edit/delete icons can't clip on a narrowed sheet.
+- The Challenge prompt card's hint lines now render as muted italic (they were
+  unstyled in the chat log).
+- Stopped the themed scrollbar width from leaking onto core Foundry windows.
+- Tidied the shop stock table's checkbox column widths/alignment.
+
 ## 1.45.5 — Vaulderie row & power-toggle polish
 
 - Vaulderie participant rows now sit on one aligned line (select, Blood-Traits
