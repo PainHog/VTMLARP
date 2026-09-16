@@ -1,19 +1,22 @@
 import { logAction } from "./action-log.mjs";
+import { beats } from "./gesture.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { renderTemplate } = foundry.applications.handlebars;
 
 /**
- * Frenzy and Rötschreck are both resolved as a static/uncontested Virtue Test
- * against a Difficulty (the stimulus the Storyteller assigns) - there is no
- * opposing party throwing gestures against you, so unlike a Trait challenge
- * this is safe to resolve automatically. Standard frenzy (anger, hunger,
- * provocation) tests Self-Control/Instinct; Rötschreck (fire/sunlight) tests
- * Courage instead - the rulebook's own worked example resolves them the same
- * way, just against a different Virtue. Per that example, a tie is NOT
- * enough to resist ("his Self-Control of two Traits is insufficient" when
- * tied with the stimulus) - the Virtue rating must exceed the Difficulty.
- * Willpower can be spent instead to automatically resist either one.
+ * Frenzy and Rötschreck are resolved as a Static Challenge against a Difficulty
+ * (the stimulus the Storyteller assigns), per Laws of the Night Revised: the
+ * character throws, and on a WIN resists; on a TIE the higher trait total wins,
+ * so the Virtue rating must EXCEED the Difficulty to survive a tie ("his
+ * Self-Control of two Traits is insufficient" when tied with a Difficulty-3
+ * stimulus); on a LOSS the character may RETEST by expending a Virtue Trait
+ * (each retest a fresh throw), retesting until they win or run out of Virtue
+ * Traits to spend. Standard frenzy (anger/hunger/provocation) tests
+ * Self-Control/Instinct; Rötschreck (fire/sunlight) tests Courage. Spending a
+ * Willpower Trait instead resists automatically. There is no opposing player
+ * throwing against the character, so the static side is resolved with a random
+ * gesture and the whole thing is safe to resolve on the character's own client.
  */
 export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   constructor(actor, options = {}) {
@@ -74,11 +77,33 @@ export class FrenzyApp extends HandlebarsApplicationMixin(foundry.applications.a
       outcome = "Resisted";
       detail = "Spent 1 Willpower Trait to automatically resist.";
     } else {
-      const rating = this.actor.system.virtues[virtueKey].rating;
-      // A tie does not resist - the Virtue rating must exceed the Difficulty.
-      const resisted = rating > difficulty;
+      const rating = Number(this.actor.system.virtues[virtueKey].rating) || 0;
+      // Static Challenge: throw vs the stimulus. A win resists; a tie is decided
+      // by trait comparison (Virtue must exceed Difficulty to win the tie); a
+      // loss may be retested by expending a Virtue Trait (temporary pool), each
+      // retest a fresh throw, until a win or the Virtue Traits run out.
+      const startTemp = Math.max(0, Number(this.actor.system.virtues[virtueKey].temporary) || 0);
+      const rnd = () => ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
+      const throwsLog = [];
+      let retestsLeft = startTemp;
+      let resisted = false;
+      for (;;) {
+        const mine = rnd(), stim = rnd();
+        const r = beats(mine, stim);
+        const win = r === "win" || (r === "tie" && rating > difficulty);
+        throwsLog.push(`${mine} vs ${stim}${r === "tie" ? ` (tie→${rating > difficulty ? "win" : "loss"})` : ""}`);
+        if (win) { resisted = true; break; }
+        if (retestsLeft > 0) { retestsLeft--; continue; }  // retest by expending a Virtue Trait
+        break;
+      }
+      const spent = startTemp - retestsLeft;
+      if (spent > 0) {
+        await this.actor.update({ [`system.virtues.${virtueKey}.temporary`]: Math.max(0, startTemp - spent) });
+      }
       outcome = resisted ? "Resisted" : failLabel;
-      detail = `${virtueLabel} ${rating} vs Difficulty ${difficulty}.`;
+      detail = `${virtueLabel} ${rating} Static Challenge vs Difficulty ${difficulty}`
+        + (spent > 0 ? `, expended ${spent} Virtue Trait${spent === 1 ? "" : "s"} on retests` : "")
+        + `. [${throwsLog.join("; ")}]`;
     }
 
     const content = await renderTemplate("systems/vtmlarp/templates/apps/frenzy-card.hbs", {

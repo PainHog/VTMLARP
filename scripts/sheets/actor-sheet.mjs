@@ -41,7 +41,20 @@ const DEFAULT_ITEM_ICONS = {
 // dragged in.
 const LEVEL_ORDER = { basic: 0, intermediate: 1, advanced: 2, elder: 3 };
 
-const HEALTH_LEVELS = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled", "incapacitated"];
+// Laws of the Night Revised health track (p.190): 2 Healthy, 3 Bruised, 2
+// Wounded, Incapacitated. Unique keys, repeating display labels.
+const HEALTH_LEVELS = [
+  { key: "healthy1", label: "Healthy" },
+  { key: "healthy2", label: "Healthy" },
+  { key: "bruised1", label: "Bruised" },
+  { key: "bruised2", label: "Bruised" },
+  { key: "bruised3", label: "Bruised" },
+  { key: "wounded1", label: "Wounded" },
+  { key: "wounded2", label: "Wounded" },
+  { key: "incapacitated", label: "Incapacitated" }
+];
+const HEALTH_KEYS = HEALTH_LEVELS.map(l => l.key);
+const WOUNDED_INDEX = HEALTH_KEYS.indexOf("wounded1");
 const DAMAGE_CYCLE = ["ok", "bashing", "lethal", "aggravated"];
 const POWER_LEVEL_TIER = { basic: 1, intermediate: 2, advanced: 3, elder: 4 };
 
@@ -265,10 +278,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const bonusLevels = (sys.bonusHealth ?? []).map((state, i) => ({
       key: `bonus-${i}`, label: "Healthy", state, bonus: true, bonusIndex: i
     }));
-    const fixedLevels = HEALTH_LEVELS.map(level => ({
-      key: level,
-      label: level.charAt(0).toUpperCase() + level.slice(1),
-      state: sys.health[level],
+    const fixedLevels = HEALTH_LEVELS.map(({ key, label }) => ({
+      key,
+      label,
+      state: sys.health[key],
       bonus: false
     }));
     context.healthLevels = [...bonusLevels, ...fixedLevels];
@@ -1136,10 +1149,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       return { [`system.health.${level}`]: value, ...extra };
     };
 
-    // Shift-click heals with Blood instead of worsening: 1 Blood Trait heals one box
-    // of bashing or lethal damage. This only spends the character's own Blood pool
-    // and isn't contested by anyone, so it's safe to automate. Aggravated damage
-    // cannot be healed this way and must be healed through other means (rest, etc.).
+    // Shift-click heals with Blood instead of worsening. Laws of the Night
+    // Revised (p.190): one Blood Trait heals ONE level of lethal damage OR TWO
+    // levels of bashing damage. This only spends the character's own Blood and
+    // isn't contested, so it's safe to automate. Aggravated can't be healed this
+    // way (needs rest + Willpower over days).
     if (event.shiftKey) {
       if (current === "ok" || current === "aggravated") return;
       const blood = this.actor.system.blood.value;
@@ -1147,7 +1161,26 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         ui.notifications?.warn("Not enough Blood to heal.");
         return;
       }
-      await this.actor.update(buildUpdate("ok", { "system.blood.value": blood - 1 }));
+      // Heal the clicked box, spending 1 Blood.
+      const bonus = foundry.utils.duplicate(this.actor.system.bonusHealth ?? []);
+      const healthPatch = {};
+      const clear = (bIdx, key) => { if (bIdx !== null) bonus[bIdx] = "ok"; else healthPatch[key] = "ok"; };
+      clear(isBonus ? Number(bonusIndex) : null, isBonus ? null : level);
+      // Bashing is the lesser injury: 1 Blood clears a SECOND bashing level too.
+      let healedTwo = false;
+      if (current === "bashing") {
+        let extra = null;
+        for (let i = 0; i < bonus.length; i++) if (bonus[i] === "bashing") { extra = ["bonus", i]; break; }
+        if (!extra) for (const { key } of HEALTH_LEVELS) {
+          if ((healthPatch[key] ?? this.actor.system.health[key]) === "bashing") { extra = ["fixed", key]; break; }
+        }
+        if (extra) { clear(extra[0] === "bonus" ? extra[1] : null, extra[0] === "fixed" ? extra[1] : null); healedTwo = true; }
+      }
+      const update = { "system.blood.value": blood - 1 };
+      for (const [k, v] of Object.entries(healthPatch)) update[`system.health.${k}`] = v;
+      if (bonus.length) update["system.bonusHealth"] = bonus;
+      await this.actor.update(update);
+      if (healedTwo) ui.notifications?.info("Healed 2 bashing levels for 1 Blood.");
       return;
     }
 
@@ -1161,7 +1194,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // pre-filled reminder; close it if a check isn't actually called for.
     if (!isBonus && this.actor.type === "character"
         && current === "ok" && next !== "ok"
-        && HEALTH_LEVELS.indexOf(level) >= HEALTH_LEVELS.indexOf("wounded")) {
+        && HEALTH_KEYS.indexOf(level) >= WOUNDED_INDEX) {
       new FrenzyApp(this.actor).render(true);
     }
   }

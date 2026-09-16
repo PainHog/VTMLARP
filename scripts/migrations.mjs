@@ -109,6 +109,27 @@ const MIGRATIONS = [
         return cur >= OBSERVER ? null : { "ownership.default": OBSERVER };
       });
     }
+  },
+  {
+    // Health track moved from the tabletop 7-level wound names (bruised, hurt,
+    // injured, wounded, mauled, crippled, incapacitated) to the Laws of the
+    // Night Revised 8-level MET track (healthy1/2, bruised1-3, wounded1/2,
+    // incapacitated). Remap existing damage, BOTTOM-ALIGNED so severity is
+    // preserved (the Incapacitated box maps straight across); the new top
+    // Healthy box starts undamaged. Reads _source because the new schema coerces
+    // the old keys away in prepared data before this runs (same as 1.17.1).
+    version: "1.36.9",
+    async migrate({ updateActors, updateTokenActors }) {
+      await updateActors(actor => {
+        if (!["character", "npc"].includes(actor.type)) return null;
+        const mapped = remapHealthTrack(actor._source?.system?.health);
+        return mapped ? { "system.health": mapped } : null;
+      });
+      await updateTokenActors(token => {
+        const mapped = remapHealthTrack(token.delta?._source?.system?.health);
+        return mapped ? { "delta.system.health": mapped } : null;
+      });
+    }
   }
 ];
 
@@ -128,6 +149,36 @@ export function flattenAbilities(src) {
       notes: a.notes ?? ""
     }))
     .sort((a, b) => String(a.name).localeCompare(String(b.name)));
+}
+
+/**
+ * Remap the legacy 7-level tabletop wound track (bruised, hurt, injured,
+ * wounded, mauled, crippled, incapacitated) onto the Laws of the Night Revised
+ * 8-level MET track (healthy1/2, bruised1-3, wounded1/2, incapacitated).
+ * BOTTOM-ALIGNED so severity is preserved: the old Incapacitated maps straight
+ * to the new Incapacitated and the extra box appears as a fresh undamaged
+ * Healthy line at the top. Returns null when the input isn't the old shape
+ * (already migrated, missing, or junk) so the migration is idempotent.
+ */
+export function remapHealthTrack(src) {
+  const STATES = ["ok", "bashing", "lethal", "aggravated"];
+  if (!src || typeof src !== "object" || Array.isArray(src)) return null;
+  // Detect the OLD shape by a key that exists ONLY on the old track - note
+  // "incapacitated" is shared with the new track, so it can't be the tell, or a
+  // freshly-migrated actor would look old and get re-remapped (wiping damage).
+  const OLD_ONLY = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled"];
+  if (!OLD_ONLY.some(k => k in src)) return null;
+  const v = (k) => (STATES.includes(src[k]) ? src[k] : "ok");
+  return {
+    healthy1: "ok",
+    healthy2: v("bruised"),
+    bruised1: v("hurt"),
+    bruised2: v("injured"),
+    bruised3: v("wounded"),
+    wounded1: v("mauled"),
+    wounded2: v("crippled"),
+    incapacitated: v("incapacitated")
+  };
 }
 
 /** Semver-ish compare: returns <0, 0, >0. Non-numeric/junk segments sort as 0. */

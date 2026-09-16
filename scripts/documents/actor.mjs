@@ -43,8 +43,13 @@ function attributeCategorySchema() {
   });
 }
 
+// Laws of the Night Revised health track (p.190): eight levels in three penalty
+// tiers - two Healthy, three Bruised, two Wounded, and Incapacitated. Keys are
+// unique (the labels repeat); the display labels live in the sheet.
+export const HEALTH_LEVEL_KEYS = ["healthy1", "healthy2", "bruised1", "bruised2", "bruised3", "wounded1", "wounded2", "incapacitated"];
+
 function healthTrackSchema() {
-  const levelNames = ["bruised", "hurt", "injured", "wounded", "mauled", "crippled", "incapacitated"];
+  const levelNames = HEALTH_LEVEL_KEYS;
   const fieldsObj = {};
   for (const level of levelNames) {
     fieldsObj[level] = new fields.StringField({
@@ -61,7 +66,7 @@ function healthTrackSchema() {
  * additional health level, which functions just like an extra Healthy line
  * on your health level chart") genuinely add boxes to the track, rather
  * than being some abstract bonus - this array holds those bonus boxes,
- * each tracked with the same damage-state string as the 7 fixed levels.
+ * each tracked with the same damage-state string as the fixed levels.
  */
 function bonusHealthLevelField() {
   return new fields.StringField({

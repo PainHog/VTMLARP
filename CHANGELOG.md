@@ -3,7 +3,23 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
-## 1.36.8 — Salubri Discipline fix, NPC/targeting polish
+## 1.36.9 — Book-correct combat: health track, healing, frenzy
+
+- **Health track rebuilt to the Laws of the Night Revised model.** It used the
+  tabletop 7-level wound names (Bruised/Hurt/Injured/Wounded/Mauled/Crippled/
+  Incapacitated); the book (p.190) uses **8 levels in three tiers — 2 Healthy,
+  3 Bruised, 2 Wounded, Incapacitated**. The schema, sheet, and all sample
+  content now use the correct track, and a migration remaps every existing
+  character/NPC's damage (bottom-aligned, so severity — including Incapacitated
+  — is preserved; the extra box appears as a fresh Healthy line).
+- **Bashing damage heals correctly.** 1 Blood Trait now heals **two** levels of
+  bashing (or one lethal), per the book's healing rules — it previously charged
+  1 Blood per level for both.
+- **Frenzy / Rötschreck is now a real Static Challenge.** It was a deterministic
+  Virtue-vs-Difficulty comparison; it now throws a Static Challenge (win
+  resists; a tie is won only if the Virtue exceeds the Difficulty; a loss
+  retests by expending Virtue Traits until a win or the Traits run out).
+  Spending a Willpower Trait still auto-resists.
 
 - **Salubri in-clan Disciplines corrected** to Auspex / Fortitude / **Obeah**
   (was Valeren) — Obeah is the Salubri Discipline in Laws of the Night Revised;
