@@ -223,8 +223,20 @@ function vtmInitiativeValue(actor) {
 function resortCombatInitiative(actor) {
   if (!game.user?.isGM || !actor || !game.combat) return;
   for (const c of game.combat.combatants) {
-    if (c.actor?.id !== actor.id || c.initiative == null) continue;
-    const val = vtmInitiativeValue(actor);
+    if (c.initiative == null) continue;
+    const cActor = c.actor;
+    if (!cActor) continue;
+    // Match the SPECIFIC actor instance that changed, not every combatant that
+    // merely shares a base id. Two unlinked tokens of the same NPC share
+    // `actor.id`, so keying on id alone would write one token's buffed
+    // initiative onto all its duplicates. An unlinked-token edit fires with the
+    // synthetic token actor (isToken) — match it by token id; a linked/base
+    // actor edit matches base combatants by id, excluding unlinked siblings.
+    const sameInstance = actor.isToken
+      ? (cActor.isToken && cActor.token?.id === actor.token?.id)
+      : (!cActor.isToken && cActor.id === actor.id);
+    if (!sameInstance) continue;
+    const val = vtmInitiativeValue(cActor);
     if (c.initiative !== val) c.update({ initiative: val }).catch(() => {});
   }
 }

@@ -3,6 +3,13 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.43.4 — Duplicate NPC token initiative fix
+
+- **Buffing one of several identical NPC tokens no longer overwrites the
+  others' initiative.** The live initiative re-sort now matches the specific
+  token instance that changed (by token id for unlinked tokens) instead of every
+  combatant sharing the same base actor id.
+
 ## 1.43.3 — Challenge double-resolution & void guards
 
 - **A Challenge can no longer be resolved twice.** Result cards now carry their
