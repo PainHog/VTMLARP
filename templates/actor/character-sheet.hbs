@@ -39,7 +39,7 @@
           <span class="flexrow dropdown-with-lore">
             <select name="system.nature">
               <option value="">—</option>
-              {{#each ARCHETYPE_OPTIONS as |a|}}
+              {{#each NATURE_OPTIONS as |a|}}
               <option value="{{a}}" {{#if (eq ../system.nature a)}}selected{{/if}}>{{a}}</option>
               {{/each}}
             </select>
@@ -52,7 +52,7 @@
           <span class="flexrow dropdown-with-lore">
             <select name="system.demeanor">
               <option value="">—</option>
-              {{#each ARCHETYPE_OPTIONS as |a|}}
+              {{#each DEMEANOR_OPTIONS as |a|}}
               <option value="{{a}}" {{#if (eq ../system.demeanor a)}}selected{{/if}}>{{a}}</option>
               {{/each}}
             </select>
@@ -156,14 +156,14 @@
       <div class="pools flexrow">
         <div class="pool">
           <label>Willpower</label>
-          <input type="number" name="system.willpower.value" value="{{system.willpower.value}}">
+          <input type="number" name="system.willpower.value" value="{{system.willpower.value}}" min="0">
           / <input type="number" name="system.willpower.max" value="{{system.willpower.max}}" readonly title="Maximum permanent Willpower is set by your Generation (Laws of the Night Revised, p. 95). Change your Generation to change this cap.">
           {{#if owner}}<a class="spend-willpower" title="Spend 1 temporary Willpower Trait (retest, resist, etc.) — logged to chat"><i class="fas fa-bolt"></i> Spend</a>{{/if}}
         </div>
         {{#if showBlood}}
         <div class="pool">
           <label>Blood</label>
-          <input type="number" name="system.blood.value" value="{{system.blood.value}}">
+          <input type="number" name="system.blood.value" value="{{system.blood.value}}" min="0">
           / <input type="number" name="system.blood.max" value="{{system.blood.max}}">
           (per turn <input type="number" name="system.blood.perTurn" value="{{system.blood.perTurn}}" class="tiny">)
           {{#if owner}}
@@ -186,7 +186,7 @@
         {{/if}}
         <div class="pool">
           <label>Path Rating</label>
-          <input type="number" name="system.morality.rating" value="{{system.morality.rating}}">
+          <input type="number" name="system.morality.rating" value="{{system.morality.rating}}" min="0" max="10">
           <select name="system.morality.path" class="tiny">
             {{#each PATH_OPTIONS as |p|}}
             <option value="{{p}}" {{#if (eq ../system.morality.path p)}}selected{{/if}}>{{p}}</option>
@@ -235,19 +235,19 @@
           <label>Conscience/Conviction
             <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
           </label>
-          <input type="number" name="system.virtues.conscienceConviction.rating" value="{{system.virtues.conscienceConviction.rating}}">
+          <input type="number" name="system.virtues.conscienceConviction.rating" value="{{system.virtues.conscienceConviction.rating}}" min="0" max="5">
         </div>
         <div class="virtue">
           <label>Self-Control/Instinct
             <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
           </label>
-          <input type="number" name="system.virtues.selfControlInstinct.rating" value="{{system.virtues.selfControlInstinct.rating}}">
+          <input type="number" name="system.virtues.selfControlInstinct.rating" value="{{system.virtues.selfControlInstinct.rating}}" min="0" max="5">
         </div>
         <div class="virtue">
           <label>Courage
             <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
           </label>
-          <input type="number" name="system.virtues.courage.rating" value="{{system.virtues.courage.rating}}">
+          <input type="number" name="system.virtues.courage.rating" value="{{system.virtues.courage.rating}}" min="0" max="5">
         </div>
       </div>
 

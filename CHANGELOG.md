@@ -3,6 +3,20 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.42.2 — Sheet dropdown & template fixes
+
+- **Clan / Sect / Nature / Demeanor dropdowns no longer render blank** for a
+  value that isn't in the built-in list (a revenant, Dark-Ages, or homebrew
+  clan, or any imported actor). The sheet now injects the actor's own stored
+  value into each list — matching the guard the Path dropdown already had — so
+  touching the dropdown can't silently overwrite a real value.
+- **Shop item descriptions are now HTML-escaped** in the buyer's browse dialog
+  (they're entered as plain text), so a `<` in a description can't break the
+  layout or inject markup into other players' buy windows.
+- Added `min`/`max` to the Willpower, Blood, Path-rating and Virtue number
+  inputs so out-of-range typing is caught inline.
+- Removed a dead builder action entry.
+
 ## 1.42.1 — Health/effect cleanup & data fixes
 
 - **Deleting an active body-mod power now cleans up no matter how it's deleted.**

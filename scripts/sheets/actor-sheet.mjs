@@ -373,14 +373,20 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       });
     context.xpSpent = Math.max(0, (sys.experience.total ?? 0) - (sys.experience.value ?? 0));
     context.NPC_TYPE_OPTIONS = ["vampire", "ghoul", "mortal", "spirit", "other"];
-    context.CLAN_OPTIONS = CLAN_OPTIONS;
-    context.SECT_OPTIONS = SECT_OPTIONS;
     context.GENERATION_OPTIONS = GENERATION_OPTIONS;
+    // Always include the actor's own stored value in each of these option lists,
+    // even if it predates the list, is a revenant/Dark-Ages/homebrew entry, or
+    // came in on an imported actor — otherwise the <select> renders blank and
+    // touching it silently overwrites the real stored value. (Same guard the
+    // Path dropdown already used; extended to clan/sect/nature/demeanor.)
+    const withCurrent = (list, current) => list.includes(current) || !current
+      ? list : [current, ...list];
+    context.CLAN_OPTIONS = withCurrent(CLAN_OPTIONS, sys.clan);
+    context.SECT_OPTIONS = withCurrent(SECT_OPTIONS, sys.sect);
     context.ARCHETYPE_OPTIONS = ARCHETYPE_OPTIONS;
-    // Always include the actor's current Path, even if it predates this list
-    // or is a homebrew Path, so the dropdown never silently swaps it out.
-    context.PATH_OPTIONS = PATH_OPTIONS.includes(sys.morality.path)
-      ? PATH_OPTIONS : [sys.morality.path, ...PATH_OPTIONS].filter(Boolean);
+    context.NATURE_OPTIONS = withCurrent(ARCHETYPE_OPTIONS, sys.nature);
+    context.DEMEANOR_OPTIONS = withCurrent(ARCHETYPE_OPTIONS, sys.demeanor);
+    context.PATH_OPTIONS = withCurrent(PATH_OPTIONS, sys.morality.path);
     context.generationInfo = GENERATION_TABLE[sys.generation] ?? null;
     // Current temporary Physical boost bought with Blood (a tagged Active
     // Effect), shown next to the Blood pool with a clear button.

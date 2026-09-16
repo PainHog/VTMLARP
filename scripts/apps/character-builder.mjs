@@ -39,7 +39,6 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     position: { width: 700, height: 780 },
     window: { title: "VTMLARP.App.CharacterBuilder", resizable: true },
     actions: {
-      addRow: CharacterBuilderApp.#onAddRow,
       removeRow: CharacterBuilderApp.#onRemoveRow,
       pickAdd: CharacterBuilderApp.#onPickAdd,
       openInfo: CharacterBuilderApp.#onOpenInfo,
@@ -182,8 +181,6 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
 
   static #onNext() { this.#showStep(this.#step + 1); }
   static #onBack() { this.#showStep(this.#step - 1); }
-
-  static #onAddRow(event, target) { this.#addRow(target.dataset.kind); this.#recompute(); }
 
   #addRow(kind, prefill = {}) {
     const tpl = this.element.querySelector(`template.row-${kind}`);
