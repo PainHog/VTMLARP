@@ -3,6 +3,15 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.12 — Background text corrections
+
+- Every Laws of the Night Revised Merit/Flaw point value and category was
+  verified correct against the book (creation budgets are sound). Two Background
+  text fixes: the **Influence** background was missing the **Health** sphere
+  (the book lists 15 areas; it had 14), and **Resources** mislabeled the income
+  scale ($200/Poverty is the no-Traits level, not one Trait — one Trait is
+  $500).
+
 ## 1.36.11 — Deleting an active power cleans up its effects
 
 - Deleting a body-mod / auto-effect power while it was toggled ON left its
