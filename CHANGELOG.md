@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.14 — Clan Picker scroll fix
+
+- The "Help Me Pick a Clan" window showed only the search box — the scrollable
+  clan roster (the left rail) collapsed to zero height because the inner flex
+  layout had no bounded height. Gave the window-content and part wrapper a
+  full-height flex column so the clan list gets real height and scrolls, and
+  players can browse the whole roster again.
+
 ## 1.36.13 — Final robustness nits
 
 - A convergence sweep across the whole codebase came back clean (ownership,
