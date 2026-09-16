@@ -15,7 +15,7 @@ import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
 import { STPanelApp } from "./apps/st-panel.mjs";
 import { CharacterBuilderApp } from "./apps/character-builder.mjs";
 import { ClanPickerApp } from "./apps/clan-picker.mjs";
-import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
+import { resolveAndPostGestureChallenge, claimChallenge, releaseChallenge, closeResponseApps } from "./apps/challenge-shared.mjs";
 import { logAction } from "./apps/action-log.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 import { enhanceAccessibility } from "./apps/a11y.mjs";
@@ -312,6 +312,22 @@ Hooks.once("ready", () => {
       return;
     }
 
+    // Prompt cleanup by messageId - handled by whichever client can modify the
+    // message (its author, the challenger, OR a GM), NOT only a GM. Keeping
+    // these GM-only meant that with no GM online the challenger could never
+    // clear or flag their own prompt, leaving it re-clickable. Guarded by
+    // canUserModify so only the permitted client acts.
+    if (data.action === "deleteChallengePrompt") {
+      const msg = game.messages.get(data.messageId);
+      if (msg?.canUserModify(game.user, "delete")) msg.delete().catch(() => {});
+      return;
+    }
+    if (data.action === "markChallengeResponded") {
+      const msg = game.messages.get(data.messageId);
+      if (msg?.canUserModify(game.user, "update")) msg.setFlag("vtmlarp", "responded", true).catch(() => {});
+      return;
+    }
+
     // Every GM client tracks the request/resolution pair for the Active
     // Challenges dashboard, regardless of whether this particular GM is the
     // one who'll actually respond - a busy session can have several
@@ -326,14 +342,6 @@ Hooks.once("ready", () => {
         });
       } else if (data.action === "challengeResolved") {
         GMChallengeDashboard.clearRequest(data.requestId);
-      } else if (data.action === "deleteChallengePrompt") {
-        // A player resolved a Challenge but can't delete the challenger's
-        // prompt message themselves - a GM does it on their behalf.
-        game.messages.get(data.messageId)?.delete().catch(() => {});
-      } else if (data.action === "markChallengeResponded") {
-        // Backup for the above: flag the prompt responded so it can't resolve
-        // twice even if deletion is delayed or the message lingers on a client.
-        game.messages.get(data.messageId)?.setFlag("vtmlarp", "responded", true).catch(() => {});
       } else if (data.action === "homebrewSubmit") {
         // A player submitted homebrew content; the active GM queues it.
         if (game.users.activeGM?.id === game.user.id && data.sub) {
@@ -672,6 +680,16 @@ document.addEventListener("click", async event => {
     }
   }
 
+  // Claim this Challenge on this client so the OTHER answer surface - the instant
+  // ChallengeResponseApp popup, which is also open on this same responder's
+  // client - can't resolve it a second time (double result cards). If a surface
+  // already claimed it, bail. Then close the popup so it can't linger.
+  if (!claimChallenge(req.requestId)) {
+    ui.notifications?.info("This Challenge is already being answered.");
+    return;
+  }
+  closeResponseApps(req.requestId);
+
   // Now disable this card's controls so a second click on the same client can't
   // double-resolve while the async resolution is in flight (the prompt is also
   // deleted/flagged below, but that's async and cross-client).
@@ -681,6 +699,7 @@ document.addEventListener("click", async event => {
   // allowed, but updating/deleting the challenger's prompt message is NOT
   // permitted for a different player (only its author or a GM) - so that
   // cleanup must never come before, or block, the actual resolution.
+  try {
   if (blockBtn) {
     // Retests can be blocked by an opponent who can match its conditions
     // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw
@@ -707,6 +726,15 @@ document.addEventListener("click", async event => {
       challengerMod: req.challengerMod,
       opponentMod
     });
+  }
+  } catch (err) {
+    // Resolution failed: release the claim and re-enable the card so the
+    // responder can try again, rather than leaving the Challenge un-answerable.
+    console.error("VTMLARP | challenge resolution failed:", err);
+    releaseChallenge(req.requestId);
+    card.querySelectorAll("button, select").forEach(el => { el.disabled = false; });
+    ui.notifications?.error("Couldn't resolve the Challenge — try again.");
+    return;
   }
 
   // Now clean up the prompt. If this client may modify the message (author or

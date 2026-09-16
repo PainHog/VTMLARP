@@ -3,6 +3,22 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.4 — Challenge double-answer guard
+
+- **A responder could answer the same Challenge twice.** When the challenger and
+  an online responder are both players, the responder gets TWO answer surfaces
+  at once — the instant response popup and the clickable chat-card prompt — and
+  neither disabled the other, so answering both produced two contradictory
+  result cards and duplicate log entries. Added a synchronous client-side claim
+  (keyed by the Challenge's requestId): exactly one surface can resolve a given
+  Challenge, and resolving the card now also closes any open response popup. On
+  a resolution error the claim is released so the responder can retry.
+- **Prompt cleanup no longer requires a GM.** The `deleteChallengePrompt` /
+  `markChallengeResponded` socket handlers were GM-only, so with no GM online
+  the challenger couldn't clear or flag their own prompt and it stayed
+  re-clickable. They now run on whichever client can modify the message (its
+  author or a GM), guarded by `canUserModify`.
+
 ## 1.36.3 — "Apply to Blood/Willpower" no longer wipes pools
 
 - The "Apply to Blood/Willpower" button on the character sheet reset Blood to

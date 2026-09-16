@@ -7,6 +7,39 @@ const { renderTemplate } = foundry.applications.handlebars;
 // keep importing GESTURES from here; the definitions now live in gesture.mjs.
 export { GESTURES, beats };
 
+// A responder can have TWO answer surfaces open at once for the same Challenge:
+// the instant ChallengeResponseApp popup (pushed over the socket) AND the
+// clickable chat-card prompt. Both live on the responder's own client, and
+// neither disables the other, so without a guard the responder could resolve
+// the same Challenge twice (two contradictory result cards + duplicate log
+// entries). This client-local claim, keyed by requestId and set synchronously,
+// lets exactly one surface resolve a given Challenge. (Cross-client double
+// resolution - a GM and the owner both clicking - is a separate concern.)
+const _claimedChallenges = new Set();
+/** Try to claim a Challenge for resolution on this client. Returns false if it
+ * was already claimed here (so the caller should abort). A missing requestId
+ * (legacy prompts) is never blocked. */
+export function claimChallenge(requestId) {
+  if (!requestId) return true;
+  if (_claimedChallenges.has(requestId)) return false;
+  _claimedChallenges.add(requestId);
+  return true;
+}
+/** Release a claim so a failed resolution can be retried. */
+export function releaseChallenge(requestId) {
+  if (requestId) _claimedChallenges.delete(requestId);
+}
+/** Close any open ChallengeResponseApp answering this requestId - used when the
+ * OTHER surface (the chat card) resolved it, so a stale popup doesn't linger. */
+export function closeResponseApps(requestId) {
+  if (!requestId) return;
+  for (const app of foundry.applications.instances.values()) {
+    if (app?.constructor?.name === "ChallengeResponseApp" && app.request?.requestId === requestId) {
+      app.close().catch(() => {});
+    }
+  }
+}
+
 /**
  * Traits an actor can bid in one attribute category (Physical/Social/Mental).
  * The bid pool is the category's Total (what players actually fill in: 7/5/3),

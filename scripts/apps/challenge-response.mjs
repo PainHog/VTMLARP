@@ -1,4 +1,4 @@
-import { GESTURES, resolveAndPostGestureChallenge } from "./challenge-shared.mjs";
+import { GESTURES, resolveAndPostGestureChallenge, claimChallenge, releaseChallenge } from "./challenge-shared.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -56,6 +56,10 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
 
   async _onSubmit(event) {
     event.preventDefault();
+    // Claim this Challenge on this client so the chat-card answer surface (also
+    // open on this same responder's client) can't resolve it a second time. If
+    // the card already claimed it, this popup is stale - just close it.
+    if (!claimChallenge(this.request.requestId)) { this.close(); return; }
     const form = event.currentTarget.closest("form");
     const fd = new foundry.applications.ux.FormDataExtended(form).object;
 
@@ -76,17 +80,26 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
       return;
     }
 
-    await resolveAndPostGestureChallenge({
-      challengerActor: this.request.challengerActor,
-      challengeType: this.request.challengeType,
-      challengerGesture: this.request.challengerGesture,
-      opponentActor: this.request.opponentActor,
-      opponentGesture: fd.gesture,
-      retest: this.request.retest,
-      isRetestThrow: !!this.request.isRetestThrow,
-      challengerMod: Number(this.request.challengerMod) || 0,
-      opponentMod: Number(fd.opponentMod) || 0
-    });
+    try {
+      await resolveAndPostGestureChallenge({
+        challengerActor: this.request.challengerActor,
+        challengeType: this.request.challengeType,
+        challengerGesture: this.request.challengerGesture,
+        opponentActor: this.request.opponentActor,
+        opponentGesture: fd.gesture,
+        retest: this.request.retest,
+        isRetestThrow: !!this.request.isRetestThrow,
+        challengerMod: Number(this.request.challengerMod) || 0,
+        opponentMod: Number(fd.opponentMod) || 0
+      });
+    } catch (err) {
+      // Release the claim so the responder can retry from either surface rather
+      // than being locked out of answering the Challenge entirely.
+      console.error("VTMLARP | challenge resolution failed:", err);
+      releaseChallenge(this.request.requestId);
+      ui.notifications?.error("Couldn't resolve the Challenge — try again.");
+      return;
+    }
 
     this._broadcastResolved();
     this.close();
