@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.40.2 — World-migration single-authority guard
+
+- **World data migrations now run on only the single active Storyteller
+  client**, matching every other authority-mutating path. Previously any GM
+  client that loaded the world ran the pending migrations; with two GMs
+  logging in at once a document-creating migration (e.g. the shop conversion)
+  could run on both and create duplicate documents. Elects exactly one runner.
+
 ## 1.40.1 — Silent-failure & error-feedback fixes
 
 - **Purchases and homebrew submissions that fail on the Storyteller's side no

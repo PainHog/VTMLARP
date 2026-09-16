@@ -295,12 +295,20 @@ function makeContext() {
 }
 
 /**
- * Run any pending migrations for this world. Only a GM performs migrations
- * (they write to shared world data); other clients no-op. Safe to call on every
- * load — nothing runs once the world is at the current version.
+ * Run any pending migrations for this world. Only the single ACTIVE GM performs
+ * migrations (they write to shared world data); other clients no-op. Safe to
+ * call on every load — nothing runs once the world is at the current version.
+ *
+ * The active-GM guard (not merely isGM) matches every mutating socket path in
+ * vtmlarp.mjs and is load-bearing here: with two GM clients loading at once,
+ * an unguarded runner would run the pending set on both concurrently. The
+ * field-remap migrations are idempotent, but a document-CREATING migration
+ * (e.g. the 1.25.0 shop conversion) is not — both GMs would read the legacy
+ * source before either cleared it and each create a duplicate set. Gating on
+ * activeGM elects exactly one runner.
  */
 export async function migrateWorldIfNeeded() {
-  if (!game.user?.isGM) return;
+  if (!game.user?.isGM || game.users?.activeGM?.id !== game.user.id) return;
 
   const current = game.system.version;
   const last = game.settings.get("vtmlarp", SETTING_KEY) || "";
