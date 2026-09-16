@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.11 — Deleting an active power cleans up its effects
+
+- Deleting a body-mod / auto-effect power while it was toggled ON left its
+  Active Effects and bonus Health boxes orphaned on the character (permanent
+  stat inflation and Health boxes with no way to remove them). Deleting an
+  active power now strips its tagged effects and bonus Health first, matching
+  the toggle-off path. Removed a stale unused field while there.
+
 ## 1.36.10 — Discipline activation challenge-types
 
 - Fixed misleading challenge types on a few powers (the core Discipline set was

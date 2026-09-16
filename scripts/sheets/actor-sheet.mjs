@@ -1295,8 +1295,6 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         const list = [...(this.actor.system.bonusHealth ?? [])];
         for (let k = 0; k < bm.health; k++) list.push("ok");
         await this.actor.update({ "system.bonusHealth": list });
-        this._bodyModHealth ??= {};
-        this._bodyModHealth[item.id] = bm.health;
       }
     } else {
       const fx = this.actor.effects.filter(e => e.flags?.vtmlarp?.bodyModPower === item.id).map(e => e.id);
@@ -1587,6 +1585,15 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         content: `<p>Remove <strong>${foundry.utils.escapeHTML?.(item.name) ?? item.name}</strong> from ${this.actor.name}? This cannot be undone. (Hold Shift when clicking to skip this prompt.)</p>`
       }).catch(() => false);
       if (!confirmed) return;
+    }
+    // If an active power carries a body-mod / auto-effect, strip its tagged
+    // Active Effects and bonus Health boxes BEFORE deleting the item. Those
+    // effects live on the ACTOR (not the item), so deleting the item without
+    // this would orphan them: permanent stat inflation and bonus Health boxes
+    // with no remaining control to clear them. Reuses the toggle-off path.
+    if (item.type === "power" && item.system?.active) {
+      await this._applyBodyMod(item, false);
+      await this._applyAutoEffect(item, false);
     }
     await item.delete();
     this.render();
