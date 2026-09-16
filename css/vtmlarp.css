@@ -1443,6 +1443,13 @@ form.vtmlarp.sheet {
 .vtmlarp.shop-browser .shop-item { padding: 0; border-bottom: 1px solid rgba(138,3,3,0.3); }
 .vtmlarp.shop-browser .shop-item-details > summary { display: flex; align-items: center; gap: 8px; padding: 5px 2px; cursor: pointer; list-style: none; }
 .vtmlarp.shop-browser .shop-item-details > summary::-webkit-details-marker { display: none; }
+/* Same bounded-flex-height fix as the clan picker: give the window-content and
+   the AppV2 part wrapper a full-height flex column so `.shop-scroll`
+   (flex:1; overflow-y:auto) gets real height and its list scrolls internally
+   instead of overflowing the window / hiding the search header. */
+.application.shop-browser .window-content { display: flex; flex-direction: column; min-height: 0; }
+.application.shop-browser .window-content > [data-application-part] { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.vtmlarp.shop-browser { flex: 1 1 auto; min-height: 0; }
 .vtmlarp.shop-browser .shop-item-details > summary::before { content: "\25B6"; font-size: 9px; opacity: 0.6; flex: 0 0 auto; transition: transform 0.15s; }
 .vtmlarp.shop-browser .shop-item-details[open] > summary::before { transform: rotate(90deg); }
 .vtmlarp.shop-browser .shop-item-img { width: 28px; height: 28px; flex: 0 0 auto; border: none; }

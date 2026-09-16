@@ -3,6 +3,17 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.15 — Shop browser scroll + NPC tab fixes
+
+- **Shop browser** had the same collapsed-flex-height bug the Clan Picker did
+  (its item list could overflow the window / hide the search header instead of
+  scrolling internally). Applied the same bounded-flex-height fix. A deep audit
+  confirmed the Clan Picker fix is correct and that shop-browser was the only
+  other window with this structure.
+- **Mortal/ghoul NPC sheet**: if the last-viewed tab was Disciplines & Powers
+  (whose nav item is hidden for non-vampires), the sheet could show an orphaned
+  empty Powers tab. It now falls back to the Main tab.
+
 ## 1.36.14 — Clan Picker scroll fix
 
 - The "Help Me Pick a Clan" window showed only the search box — the scrollable

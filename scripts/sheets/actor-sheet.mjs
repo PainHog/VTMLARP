@@ -267,7 +267,14 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     context.cssClass = `vtmlarp sheet actor ${this.isEditable ? "editable" : "locked"}`;
     const sys = context.system;
 
-    const active = this.tabGroups.primary ?? "main";
+    // The Disciplines & Powers tab's NAV item is hidden for non-vampires
+    // (mortal NPCs). If a persisted active tab is one that's now hidden, fall
+    // back to Main so the body doesn't show an orphaned, un-closable tab. Mirror
+    // showDisciplines' derivation (computed later in context) from the actor.
+    const _npcType = this.actor.type === "npc" ? sys.npcType : "vampire";
+    const showPowers = this.actor.type === "character" || ["vampire", "ghoul"].includes(_npcType);
+    let active = this.tabGroups.primary ?? "main";
+    if (active === "powers" && !showPowers) active = "main";
     context.tabs = {};
     for (const { id, label } of TAB_DEFS) {
       context.tabs[id] = { id, group: "primary", label, active: active === id };
