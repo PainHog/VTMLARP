@@ -1851,3 +1851,10 @@ form.shop-sheet .shop-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 .vtmlarp .merc-stock th:nth-child(8), .vtmlarp .merc-stock td:nth-child(8) { width: 7%; text-align: center; }
 .vtmlarp .merc-stock th:nth-child(3), .vtmlarp .merc-stock td:nth-child(3),
 .vtmlarp .merc-stock th:nth-child(4), .vtmlarp .merc-stock td:nth-child(4) { width: 9%; }
+
+/* Boon cell: the revealed boonLevel select must fit its fixed column instead of
+   its hard 48px width bleeding into the Barter column. */
+.vtmlarp .merc-stock td:nth-child(6) select { width: 100%; max-width: 100%; }
+/* Make the discipline-header name actually fill/ellipsis (it's not in .item-list
+   so it never got flex:1). */
+.vtmlarp .discipline-header .item-name { flex: 1 1 auto; white-space: nowrap; }

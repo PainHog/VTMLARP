@@ -3,6 +3,13 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.7 — Visual sweep converged
+
+- Final convergence fixes: the shop stock table's Boon-level select now fits its
+  column instead of bleeding into the next one when Boon is ticked, and the
+  discipline-header name fills/ellipsises properly. Five visual audit passes
+  went from many defects to none major; the sweep has converged.
+
 ## 1.45.6 — Visual polish (pass 4, converged)
 
 - Discipline header rows now wrap/shrink like the power rows below them, so
