@@ -1,6 +1,7 @@
 import { disciplineFreeDots, disciplineFreebieCost } from "./creation-costs.mjs";
 import { CLANS, CLAN_DISCIPLINES } from "./clan-data.mjs";
 import { GENERATION_TABLE, GENERATION_OPTIONS, PATH_OPTIONS, ARCHETYPE_OPTIONS } from "../game-data.mjs";
+import { clampWindowHeight } from "./window-util.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
@@ -29,6 +30,7 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
   constructor(options = {}) {
     super(options);
     if (options.clan && CLANS.includes(options.clan)) this.#initialClan = options.clan;
+    clampWindowHeight(this);
   }
 
   static DEFAULT_OPTIONS = {

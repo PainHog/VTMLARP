@@ -3,6 +3,19 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.40.0 — Tablet/small-screen & readability fixes
+
+- **Action buttons no longer fall off-screen on a tablet.** The Character
+  Builder ("Add Character"/"Next") and the Diablerie window ("Record the
+  Diablerie") could extend below a short/tablet viewport, putting their buttons
+  out of reach. Both now clamp their height to the viewport and scroll their
+  body internally, so the controls stay reachable.
+- Blood Bond / Boon / Status rows now **wrap** instead of overflowing
+  horizontally on a narrow sheet, and the tab bar wraps to a second line.
+- **Result banners are more readable** — the "Won/Resisted" green and "Tied"
+  gold were washed out on the cream card and are now darker; also fixed the
+  Frenzy banner losing its color after an earlier change.
+
 ## 1.39.1 — Shop boon-tier schema fix
 
 - Fixed a regression from 1.39.0: the shop stock schema still only allowed the

@@ -1,4 +1,5 @@
 import { beats } from "./gesture.mjs";
+import { clampWindowHeight } from "./window-util.mjs";
 
 const { HandlebarsApplicationMixin, ApplicationV2, DialogV2 } = foundry.applications.api;
 
@@ -29,6 +30,7 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
     // only updates that token's delta, so the gains are scene/token-local and
     // vanish when the player switches scenes or gets a fresh token.
     this.actor = (actor?.isToken ? game.actors.get(actor.id) : actor) ?? actor;
+    clampWindowHeight(this);
   }
 
   static DEFAULT_OPTIONS = {
