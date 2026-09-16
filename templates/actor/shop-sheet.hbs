@@ -27,9 +27,10 @@
         <td><input type="checkbox" data-field="money" data-item-id="{{item.id}}" {{#if item.money}}checked{{/if}} {{#unless ../editable}}disabled{{/unless}}></td>
         <td class="merc-boon-cell"><input type="checkbox" data-field="boon" data-item-id="{{item.id}}" {{#if item.boon}}checked{{/if}} {{#unless ../editable}}disabled{{/unless}}>
           <select data-field="boonLevel" data-item-id="{{item.id}}" class="tiny" {{#unless item.boon}}style="display:none;"{{/unless}} title="Boon level owed" {{#unless ../editable}}disabled{{/unless}}>
+            <option value="trivial" {{#if (eq item.boonLevel "trivial")}}selected{{/if}}>Trivial</option>
             <option value="minor" {{#if (eq item.boonLevel "minor")}}selected{{/if}}>Minor</option>
             <option value="major" {{#if (eq item.boonLevel "major")}}selected{{/if}}>Major</option>
-            <option value="blood" {{#if (eq item.boonLevel "blood")}}selected{{/if}}>Blood</option>
+            <option value="life" {{#if (eq item.boonLevel "life")}}selected{{/if}}>Life</option>
           </select>
         </td>
         <td><input type="checkbox" data-field="barter" data-item-id="{{item.id}}" {{#if item.barter}}checked{{/if}} {{#unless ../editable}}disabled{{/unless}}></td>

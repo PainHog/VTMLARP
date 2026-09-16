@@ -3,6 +3,23 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.39.0 — Social systems: Vinculum, boon tiers, Status
+
+- **"Decay All" no longer erodes Sabbat Vinculum.** Blood Bond entries now carry
+  a Bond/Vinculum type; ordinary Bonds decay as before, Vinculum rows are left
+  untouched (per the book, Vinculum doesn't fade with time — only a further
+  Vaulderie lowers it). The Blood Bond Overview shows the type, and the sheet has
+  a per-row Bond/Vinculum selector.
+- **Boon tiers now follow the canonical Prestation ladder** — trivial / minor /
+  major / **life** (the "life boon" was missing; the non-canonical "blood" tier
+  is migrated to "life"). Updated on the character sheet, the shop stock editor,
+  and purchase fulfillment.
+- **Status Traits tracker added.** A new sheet section (Social tab) lists a
+  character's sect Status Traits (Acknowledged, etc.) with a live count —
+  Status is standing gained/lost in play, correctly not a purchasable Background.
+- The Character Builder now warns if a **Malkavian** is built without a
+  derangement (their clan weakness).
+
 ## 1.38.0 — Socket-payload hardening
 
 - Defense-in-depth on the GM-proxy socket handlers (a player's browser console

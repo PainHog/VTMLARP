@@ -25,7 +25,7 @@ export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.app
     context.rows = [];
     for (const actor of game.actors.filter(a => a.type === "character")) {
       for (const bond of actor.system.bloodBonds ?? []) {
-        context.rows.push({ actorName: actor.name, actorUuid: actor.uuid, boundTo: bond.name, level: bond.level, notes: bond.notes });
+        context.rows.push({ actorName: actor.name, actorUuid: actor.uuid, boundTo: bond.name, level: bond.level, kind: bond.kind ?? "bond", isVinculum: bond.kind === "vinculum", notes: bond.notes });
       }
     }
     context.rows.sort((a, b) => a.actorName.localeCompare(b.actorName));
@@ -49,7 +49,7 @@ export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.app
     event.preventDefault();
     const confirmed = await foundry.applications.api.DialogV2.confirm({
       window: { title: "VTMLARP.App.DecayAllBloodBonds" },
-      content: "<p>Reduce every character's Blood Bond/Vinculum ratings by 1, removing any that reach 0? This affects every character actor at once.</p>",
+      content: "<p>Reduce every ordinary Blood Bond by 1, removing any that reach 0? Sabbat <strong>Vinculum</strong> rows are left untouched (they don't fade with time — only a further Vaulderie lowers them). This affects every character actor at once.</p>",
       rejectClose: false  // dismissing (Esc/X) returns false instead of rejecting
     });
     if (!confirmed) return;
@@ -61,9 +61,11 @@ export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.app
     for (const actor of game.actors.filter(a => a.type === "character")) {
       const bonds = actor.system.bloodBonds ?? [];
       if (!bonds.length) continue;
+      // Only ordinary Bonds decay; Vinculum rows pass through unchanged (and a
+      // decayed ordinary bond at 0 is dropped).
       const decayed = bonds
-        .map(b => ({ ...b, level: b.level - 1 }))
-        .filter(b => b.level > 0);
+        .map(b => (b.kind === "vinculum" ? { ...b } : { ...b, level: b.level - 1 }))
+        .filter(b => b.kind === "vinculum" || b.level > 0);
       try {
         await actor.update({ "system.bloodBonds": decayed });
       } catch (err) {

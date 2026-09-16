@@ -241,13 +241,26 @@ export class VTMCharacterData extends foundry.abstract.TypeDataModel {
         // Vinculum, resolved through the Vaulderie rite, uses the full 1-10
         // scale, so this can't be capped at 3 the way an ordinary bond is.
         level: new fields.NumberField({ required: true, integer: true, min: 1, max: 10, initial: 1 }),
+        // Ordinary Blood Bonds fade without reinforcement; Sabbat Vinculum does
+        // NOT fade with time (only a further Vaulderie lowers it). The "Decay
+        // All" tool skips Vinculum rows, so they must be distinguishable.
+        kind: new fields.StringField({ required: true, initial: "bond", choices: ["bond", "vinculum"] }),
         notes: new fields.StringField({ required: false, blank: true, initial: "" })
+      })),
+
+      // Sect standing (Acknowledged, Well-Known, etc.) - in Laws of the Night
+      // Revised, Status is a set of named Traits gained and lost in play, NOT a
+      // purchasable Background, so it lives in its own list here.
+      statusTraits: new fields.ArrayField(new fields.SchemaField({
+        name: new fields.StringField({ required: true, blank: true, initial: "" })
       })),
 
       boons: new fields.ArrayField(new fields.SchemaField({
         who: new fields.StringField({ required: true, initial: "" }),
+        // Prestation ladder (Laws of the Night Revised / Camarilla): trivial,
+        // minor, major, life. "blood" from older data migrates to "life".
         type: new fields.StringField({
-          required: true, initial: "minor", choices: ["minor", "major", "blood"]
+          required: true, initial: "minor", choices: ["trivial", "minor", "major", "life"]
         }),
         direction: new fields.StringField({
           required: true, initial: "owed", choices: ["owed", "owedToMe"]

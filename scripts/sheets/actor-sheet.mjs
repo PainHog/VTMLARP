@@ -137,8 +137,9 @@ const CLAN_LORE_LOOKUP = {
 
 const SIMPLE_LIST_DEFAULTS = {
   derangements: { name: "", description: "" },
-  bloodBonds: { name: "", level: 1, notes: "" },
-  boons: { who: "", type: "minor", direction: "owed", notes: "" }
+  bloodBonds: { name: "", level: 1, kind: "bond", notes: "" },
+  boons: { who: "", type: "minor", direction: "owed", notes: "" },
+  statusTraits: { name: "" }
 };
 
 /**

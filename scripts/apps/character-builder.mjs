@@ -440,6 +440,12 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       items
     };
 
+    // Malkavians suffer a permanent derangement as their clan weakness; remind
+    // the builder if none was chosen (non-blocking - the ST may add it later).
+    if (val("clan") === "Malkavian" && !val("derangement")) {
+      ui.notifications?.warn("Malkavians have a permanent derangement (clan weakness) — none was selected. Add one on the Concept step or the sheet.");
+    }
+
     await this.#persistActor(actorData, name, items.length);
   }
 

@@ -168,7 +168,9 @@ async function _fulfillPurchase(req) {
       await buyer.update({ "system.money": Math.max(0, have - price) });
     } else if (method === "boon") {
       const boons = foundry.utils.duplicate(buyer.system.boons ?? []);
-      const level = ["minor", "major", "blood"].includes(item.boonLevel) ? item.boonLevel : "minor";
+      // Map legacy "blood" stock to the canonical "life" tier, then validate.
+      const raw = item.boonLevel === "blood" ? "life" : item.boonLevel;
+      const level = ["trivial", "minor", "major", "life"].includes(raw) ? raw : "minor";
       boons.push({ who: shop.keeper || shop.name, type: level, direction: "owed", notes: `For ${item.name}` });
       await buyer.update({ "system.boons": boons });
     } // barter: no automatic debit - the traded goods/service are recorded in the note.

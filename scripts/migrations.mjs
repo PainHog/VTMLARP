@@ -130,6 +130,20 @@ const MIGRATIONS = [
         return mapped ? { "delta.system.health": mapped } : null;
       });
     }
+  },
+  {
+    // Boon tiers changed from minor/major/blood to the canonical Prestation
+    // ladder trivial/minor/major/life. Remap any stored "blood" boon to "life"
+    // (the schema's choices would otherwise coerce the now-invalid value away).
+    version: "1.39.0",
+    async migrate({ updateActors }) {
+      await updateActors(actor => {
+        if (actor.type !== "character") return null;
+        const boons = actor._source?.system?.boons;
+        if (!Array.isArray(boons) || !boons.some(b => b?.type === "blood")) return null;
+        return { "system.boons": boons.map(b => (b?.type === "blood" ? { ...b, type: "life" } : b)) };
+      });
+    }
   }
 ];
 

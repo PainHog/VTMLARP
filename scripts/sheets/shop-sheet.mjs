@@ -115,7 +115,7 @@ export class ShopSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           <label class="check"><input type="checkbox" name="money" checked> Money</label>
           <label class="check"><input type="checkbox" name="boon"> Boon owed</label>
           <label class="boon-level-wrap" style="display:none;">Boon level
-            <select name="boonLevel"><option value="minor">Minor</option><option value="major">Major</option><option value="blood">Blood/Life</option></select>
+            <select name="boonLevel"><option value="trivial">Trivial</option><option value="minor" selected>Minor</option><option value="major">Major</option><option value="life">Life</option></select>
           </label>
           <label class="check"><input type="checkbox" name="barter"> Barter / trade</label>
         </fieldset>

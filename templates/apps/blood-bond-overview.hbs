@@ -1,12 +1,13 @@
 <div class="vtmlarp-blood-bond-overview">
-  <p class="hint">Every character's current Blood Bonds/Vinculum, camp-wide. Bonds fade without reinforcement - Decay All reduces every rating by 1 and drops any that reach 0.</p>
-  <button type="button" class="decay-all"><i class="fas fa-hourglass-half"></i> Decay All (-1)</button>
+  <p class="hint">Every character's current Blood Bonds/Vinculum, camp-wide. Ordinary Bonds fade without reinforcement - Decay All reduces each ordinary Bond by 1 and drops any that reach 0. Vinculum rows are left untouched.</p>
+  <button type="button" class="decay-all"><i class="fas fa-hourglass-half"></i> Decay All Bonds (-1)</button>
   {{#if rows.length}}
   <table class="rated-trait-table">
     <thead>
       <tr>
         <th>Character</th>
         <th>Bound To</th>
+        <th>Type</th>
         <th>Level</th>
         <th>Notes</th>
       </tr>
@@ -16,6 +17,7 @@
       <tr>
         <td><a class="vtm-open-actor" data-uuid="{{row.actorUuid}}" title="Open {{row.actorName}}'s sheet">{{row.actorName}}</a></td>
         <td>{{row.boundTo}}</td>
+        <td>{{#if row.isVinculum}}Vinculum{{else}}Bond{{/if}}</td>
         <td>{{row.level}}</td>
         <td>{{row.notes}}</td>
       </tr>
