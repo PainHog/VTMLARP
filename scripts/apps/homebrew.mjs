@@ -11,6 +11,32 @@ const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 const SETTING = "homebrewQueue";
 const PACK_NAME = "player-added";
 const PACK_LABEL = "Player Added";
+const PENDING_KEY = "vtmlarp.pendingHomebrew";
+
+// A player's homebrew submission is world-write (only the GM can queue it), so
+// it must be relayed over the socket. To make sure a player's typed work is
+// never lost if that relay silently strands, stash unacknowledged submissions
+// in this client's localStorage until the GM confirms receipt. All access is
+// wrapped in try/catch since localStorage can throw (private mode, etc.).
+export function stashPendingHomebrew(sub) {
+  try {
+    const list = JSON.parse(localStorage.getItem(PENDING_KEY) || "[]");
+    list.push(sub);
+    // Keep only the most recent few so repeated no-GM strands can't grow this
+    // unbounded; a player never has many drafts in flight at once.
+    localStorage.setItem(PENDING_KEY, JSON.stringify(list.slice(-5)));
+  } catch { /* non-fatal */ }
+}
+export function clearPendingHomebrew(id) {
+  try {
+    const list = JSON.parse(localStorage.getItem(PENDING_KEY) || "[]").filter(s => s.id !== id);
+    localStorage.setItem(PENDING_KEY, JSON.stringify(list));
+  } catch { /* non-fatal */ }
+}
+export function getPendingHomebrew() {
+  try { return JSON.parse(localStorage.getItem(PENDING_KEY) || "[]"); }
+  catch { return []; }
+}
 
 export function registerHomebrewSettings() {
   game.settings.register("vtmlarp", SETTING, {
@@ -107,6 +133,22 @@ export class HomebrewApp extends HandlebarsApplicationMixin(ApplicationV2) {
     return { types: TYPES };
   }
 
+  _onRender(context, options) {
+    super._onRender?.(context, options);
+    // If a previous submission was never confirmed by the Storyteller, its draft
+    // was stashed locally — restore it into the form so the player can resend
+    // instead of retyping. Use the most recent pending draft.
+    const pending = getPendingHomebrew();
+    if (!pending.length) return;
+    const draft = pending[pending.length - 1];
+    const el = this.element;
+    for (const field of ["name", "type", "level", "prereqs", "bloodCost", "challengeType", "description"]) {
+      const input = el.querySelector(`[name="${field}"]`);
+      if (input && draft[field] != null && draft[field] !== "") input.value = draft[field];
+    }
+    ui.notifications?.info("Restored an unconfirmed homebrew draft — submit again to resend.");
+  }
+
   static async #onSubmit() {
     const el = this.element;
     const v = (n) => el.querySelector(`[name="${n}"]`)?.value ?? "";
@@ -130,8 +172,17 @@ export class HomebrewApp extends HandlebarsApplicationMixin(ApplicationV2) {
       await enqueueHomebrew(sub);
       ui.notifications?.info("Added to the review queue (open Homebrew Review to approve).");
     } else if (game.users.activeGM) {
+      // World-write, so it must be relayed to the GM. Stash the draft locally
+      // first; it's cleared when the GM confirms receipt (homebrewSubmitReceived)
+      // or reports failure. If no confirmation arrives, warn and keep the draft.
+      stashPendingHomebrew(sub);
       game.socket.emit("system.vtmlarp", { action: "homebrewSubmit", sub });
-      ui.notifications?.info("Sent to the Storyteller for approval.");
+      ui.notifications?.info("Sent to the Storyteller — waiting for confirmation…");
+      setTimeout(() => {
+        if (getPendingHomebrew().some(s => s.id === sub.id)) {
+          ui.notifications?.warn(`No confirmation from the Storyteller that "${sub.name}" was received. Your draft is saved — reopen Homebrew to resend.`);
+        }
+      }, 8000);
     } else {
       ui.notifications?.error("No Storyteller is online to receive your submission.");
       return;

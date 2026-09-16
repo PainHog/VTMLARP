@@ -22,6 +22,16 @@ export async function logAction(actor, summary) {
       await actor.update({ "system.actionLog": updated });
     } else if (game.users?.activeGM) {
       game.socket.emit("system.vtmlarp", { action: "logActorAction", actorId: actor.id, summary });
+    } else {
+      // We don't own the actor and no GM is online to append on our behalf, so
+      // the per-actor log entry can't be written. Rather than silently drop the
+      // record, persist it as a GM-whispered chat message so it survives in the
+      // chat log for the Storyteller to see whenever they next connect.
+      await ChatMessage.create({
+        whisper: game.users.filter(u => u.isGM).map(u => u.id),
+        speaker: { alias: "Action Log" },
+        content: `<div class="vtmlarp-shared-entry"><p><em>(no Storyteller online to log to ${actor.name}'s sheet)</em> ${summary}</p></div>`
+      });
     }
   } catch (err) {
     console.warn("VTMLARP | logAction failed (non-fatal):", err);

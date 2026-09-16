@@ -3,6 +3,23 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.43.1 — Harden the remaining Storyteller-relayed flows
+
+These three actions touch things a player doesn't own (a world compendium,
+another player's actor, the shared log), so they still route through the
+Storyteller — but they no longer silently strand:
+
+- **Homebrew submissions can't be lost.** The draft is saved locally the moment
+  you submit; it's cleared only when the Storyteller's client confirms it
+  reached the queue. If no confirmation arrives you're warned, and reopening
+  the Homebrew window restores the draft so you can resend.
+- **The Vaulderie now reports** when a participant's Blood couldn't be spent
+  (no owner/Storyteller available to apply it) instead of revealing the rite as
+  if it had been.
+- **Action-log entries survive a missing Storyteller** — when no GM is online to
+  write to an unowned actor's log, the entry is posted as a GM-whispered chat
+  message so the record isn't lost.
+
 ## 1.43.0 — Shop purchases no longer require the Storyteller
 
 - **Buying from a shop now happens instantly on the player's own client** with

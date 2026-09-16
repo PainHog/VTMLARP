@@ -107,7 +107,7 @@ export class VaulderieApp extends HandlebarsApplicationMixin(foundry.application
       const newValue = Math.max(0, have - p.traits);
       try {
         if (p.actor.isOwner) await p.actor.update({ "system.blood.value": newValue });
-        else if (game.users?.activeGM) game.socket.emit("system.vtmlarp", { action: "debitBlood", actorId: p.actor.id, value: newValue });
+        else if (game.users?.activeGM) game.socket.emit("system.vtmlarp", { action: "debitBlood", actorId: p.actor.id, value: newValue, requesterId: game.user.id, actorName: p.actor.name });
         // Not our actor and no GM online to relay the debit to: the draw below
         // still happens, but this participant's Blood was never actually spent.
         else undeducted.push(`${p.actor.name} (${p.traits})`);

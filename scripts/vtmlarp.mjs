@@ -20,7 +20,7 @@ import { logAction } from "./apps/action-log.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 import { enhanceAccessibility } from "./apps/a11y.mjs";
 import { registerShopSettings, MercantilePanelApp, ShopBrowserApp, fulfillPurchase } from "./apps/shops.mjs";
-import { registerHomebrewSettings, HomebrewApp, HomebrewReviewApp, enqueueHomebrew } from "./apps/homebrew.mjs";
+import { registerHomebrewSettings, HomebrewApp, HomebrewReviewApp, enqueueHomebrew, clearPendingHomebrew } from "./apps/homebrew.mjs";
 
 // Accessibility: after any VTMLARP sheet or dialog renders, give its icon-only
 // controls accessible names (title -> aria-label) and keyboard operability. One
@@ -378,12 +378,18 @@ Hooks.once("ready", () => {
       } else if (data.action === "homebrewSubmit") {
         // A player submitted homebrew content; the active GM queues it.
         if (game.users.activeGM?.id === game.user.id && data.sub) {
-          enqueueHomebrew(data.sub).catch(err => {
-            console.error("vtmlarp | homebrewSubmit failed", err);
-            // Hand the failure back so the submitter isn't left thinking their
-            // creation is queued after "sent to the Storyteller".
-            game.socket.emit("system.vtmlarp", { action: "homebrewSubmitFailed", byUserId: data.sub.byUserId, name: data.sub.name ?? "your submission", reason: err.message });
-          });
+          enqueueHomebrew(data.sub)
+            .then(() => {
+              // Confirm receipt so the submitter's client can clear its local
+              // safety stash and know it actually reached the queue.
+              game.socket.emit("system.vtmlarp", { action: "homebrewSubmitReceived", byUserId: data.sub.byUserId, name: data.sub.name ?? "your submission", id: data.sub.id });
+            })
+            .catch(err => {
+              console.error("vtmlarp | homebrewSubmit failed", err);
+              // Hand the failure back so the submitter isn't left thinking their
+              // creation is queued after "sent to the Storyteller".
+              game.socket.emit("system.vtmlarp", { action: "homebrewSubmitFailed", byUserId: data.sub.byUserId, name: data.sub.name ?? "your submission", id: data.sub.id, reason: err.message });
+            });
         }
       } else if (data.action === "shopPurchase") {
         // A player asked to buy from a shop; only the designated active GM
@@ -459,7 +465,15 @@ Hooks.once("ready", () => {
           if (a) {
             const max = Number(a.system?.blood?.max);
             const value = Number.isFinite(max) ? Math.min(data.value, max) : data.value;
-            a.update({ "system.blood.value": value }).catch(err => console.warn("VTMLARP | debitBlood failed:", err));
+            a.update({ "system.blood.value": value }).catch(err => {
+              console.warn("VTMLARP | debitBlood failed:", err);
+              // Hand the failure back so the participant who ran the rite knows
+              // this actor's Blood wasn't actually spent (the rite reveals its
+              // result regardless), instead of the debit vanishing silently.
+              game.socket.emit("system.vtmlarp", { action: "debitBloodFailed", requesterId: data.requesterId, actorName: data.actorName ?? a.name });
+            });
+          } else if (data.requesterId) {
+            game.socket.emit("system.vtmlarp", { action: "debitBloodFailed", requesterId: data.requesterId, actorName: data.actorName ?? "a participant" });
           }
         }
       } else if (data.action === "logActorAction") {
@@ -489,7 +503,15 @@ Hooks.once("ready", () => {
     } else if (data.action === "shopPurchaseFailed" && data.requesterId === game.user.id) {
       ui.notifications?.error(`The Storyteller couldn't complete your purchase: ${data.reason}. Try again or ask your ST.`);
     } else if (data.action === "homebrewSubmitFailed" && data.byUserId === game.user.id) {
+      clearPendingHomebrew(data.id);
       ui.notifications?.error(`The Storyteller couldn't queue your homebrew "${data.name}": ${data.reason}. Adjust it and submit again.`);
+    } else if (data.action === "debitBloodFailed" && data.requesterId === game.user.id) {
+      ui.notifications?.warn(`The Vaulderie couldn't spend ${data.actorName}'s Blood (no owner/Storyteller could apply it). Deduct it manually.`);
+    } else if (data.action === "homebrewSubmitReceived" && data.byUserId === game.user.id) {
+      // The active GM confirmed the homebrew reached the review queue. Clear the
+      // local safety stash so it isn't offered for resend.
+      clearPendingHomebrew(data.id);
+      ui.notifications?.info(`Your homebrew "${data.name}" reached the Storyteller's review queue.`);
     } else if (data.action === "homebrewReviewed" && data.byUserId === game.user.id) {
       // The submitting player learns the Storyteller's decision on their homebrew.
       if (data.approved) ui.notifications?.info(`Your homebrew "${data.name}" was approved by the Storyteller.`);
