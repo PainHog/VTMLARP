@@ -54,16 +54,26 @@ export class BloodBondOverviewApp extends HandlebarsApplicationMixin(foundry.app
     });
     if (!confirmed) return;
 
+    // Per-actor try/catch: if one update throws, keep going rather than aborting
+    // the batch half-done (which would leave some characters decayed and others
+    // not, and a re-run would then double-decay the ones already done).
+    const failed = [];
     for (const actor of game.actors.filter(a => a.type === "character")) {
       const bonds = actor.system.bloodBonds ?? [];
       if (!bonds.length) continue;
       const decayed = bonds
         .map(b => ({ ...b, level: b.level - 1 }))
         .filter(b => b.level > 0);
-      await actor.update({ "system.bloodBonds": decayed });
+      try {
+        await actor.update({ "system.bloodBonds": decayed });
+      } catch (err) {
+        console.error("VTMLARP | Blood Bond decay failed for", actor.name, err);
+        failed.push(actor.name);
+      }
     }
 
-    ui.notifications?.info("Blood Bonds decayed by 1 across all characters.");
+    if (failed.length) ui.notifications?.warn(`Blood Bonds decayed, except: ${failed.join(", ")} (see console).`);
+    else ui.notifications?.info("Blood Bonds decayed by 1 across all characters.");
     this.render();
   }
 }

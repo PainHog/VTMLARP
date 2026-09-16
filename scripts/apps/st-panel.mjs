@@ -172,16 +172,24 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
     // An Active Effect that adds/subtracts Traits from the chosen trait. For
     // Attributes, system.attributes.<x>.total is exactly what Challenges read,
     // so the modifier flows straight into trait bidding while active.
+    const changes = [{
+      key: `system.${stat}`,
+      mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+      value: amount
+    }];
+    // Willpower's current value is clamped to its max in prepareDerivedData, so
+    // a positive buff on willpower.value alone is applied and then immediately
+    // clamped away (does nothing). Move the cap by the same amount too, so a
+    // "+2 Willpower" is actually usable (and a penalty lowers the cap as well).
+    if (stat === "willpower.value") {
+      changes.push({ key: "system.willpower.max", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: amount });
+    }
     const effectData = {
       name,
       label: name,
       icon: "icons/svg/aura.svg",
       img: "icons/svg/aura.svg",
-      changes: [{
-        key: `system.${stat}`,
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-        value: amount
-      }],
+      changes,
       duration: rounds > 0 ? { rounds } : {},
       flags: { vtmlarp: { stTemp: true, statLabel } }
     };

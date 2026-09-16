@@ -3,6 +3,20 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.7 — Storyteller-tool fixes
+
+- **A positive Willpower status effect now works.** The ST Panel could apply a
+  Willpower modifier, but a *buff* on `willpower.value` was immediately clamped
+  back down to the max in derived data — so "+2 Willpower" did nothing.
+  Willpower effects now also move the cap by the same amount, so a buff is
+  actually usable (and a penalty lowers the cap too). Attribute/Virtue effects
+  were already correct.
+- **"Decay All" Blood Bonds is now retry-safe.** The decay loop had no
+  per-actor error handling, so a single failing update would abort it half-done
+  — leaving some characters decayed and others not, and a re-run would
+  double-decay the finished ones. Each actor is now handled independently and
+  any failures are reported.
+
 ## 1.36.6 — Homebrew queue integrity & feedback
 
 - **A player's homebrew submission could silently vanish.** The Storyteller's
