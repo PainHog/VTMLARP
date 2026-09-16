@@ -259,15 +259,20 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const abil = this.#rows("ability").reduce((n, r) => n + r.rating, 0);
     const abilB = this.#orig() ? 5 : 11;
     set(".count-abilities", `${abil} / ${abilB}`, abil > abilB);
+    // Sabbat characters get one extra Basic Discipline and NO free Backgrounds
+    // (they must buy Backgrounds with Free Traits) - Laws of the Night Revised
+    // chargen chart, p.66. Every other sect uses the standard allotment.
+    const isSabbat = (el.querySelector('[name="sect"]')?.value ?? "") === "Sabbat";
     const dRows = this.#rows("discipline");
     const discRatings = dRows.map(r => r.rating);
     // Only dots up to 3 per Discipline draw from the free-dot allotment; dots 4
     // and 5 are freebie-only.
     const freeDots = disciplineFreeDots(discRatings);
-    const discB = this.#orig() ? 3 : 5;
+    const discB = (this.#orig() ? 3 : 5) + (isSabbat ? 1 : 0);
     set(".count-disciplines", `${freeDots} / ${discB}`, freeDots > discB);
+    const bgB = isSabbat ? 0 : 5;
     const bg = this.#rows("background").reduce((n, r) => n + r.rating, 0);
-    set(".count-backgrounds", `${bg} / 5`, bg > 5);
+    set(".count-backgrounds", `${bg} / ${bgB}`, bg > bgB);
     const virt = this.#num('[name="conscience"]') + this.#num('[name="selfcontrol"]') + this.#num('[name="courage"]');
     set(".count-virtues", `${virt} / 10`, virt > 10);
     const gen = this.#num('[name="generation"]') || 13;
@@ -281,7 +286,7 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const mf = this.#rows("meritflaw");
     const meritCost = mf.filter(r => r.type === "merit").reduce((n, r) => n + r.cost, 0);
     const flawValue = mf.filter(r => r.type === "flaw").reduce((n, r) => n + r.cost, 0);
-    const freebiesSpent = over(attr, 15) + over(abil, abilB) + over(bg, 5) + over(virt, 10) * 2 + discFree + meritCost;
+    const freebiesSpent = over(attr, 15) + over(abil, abilB) + over(bg, bgB) + over(virt, 10) * 2 + discFree + meritCost;
     const base = this.#orig() ? 5 : 12;
     const derange = el.querySelector('[name="derangement"]')?.value ? 2 : 0;
     const pool = Math.min(21, base + Math.min(7, flawValue) + derange);
@@ -349,7 +354,10 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       prototypeToken: { actorLink: !asNpc },
       ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE, [game.user.id]: OWNER },
       system: {
-        clan, sect: rand(SECTS), nature: rand(ARCHETYPE_OPTIONS), demeanor: rand(ARCHETYPE_OPTIONS),
+        // The random build uses the standard (non-Sabbat) allotment - Disciplines
+        // to a 3-dot spread plus Backgrounds - so pick a non-Sabbat sect to keep
+        // the generated character internally consistent with the creation budget.
+        clan, sect: rand(SECTS.filter(s => s !== "Sabbat")), nature: rand(ARCHETYPE_OPTIONS), demeanor: rand(ARCHETYPE_OPTIONS),
         generation: gen, generationApplied: true,
         morality: { path: "Path of Humanity", rating: 7 },
         attributes: attrData, abilities, backgrounds,

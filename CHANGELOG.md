@@ -3,6 +3,21 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.37.0 — Sabbat character creation
+
+- **Sabbat characters now use the correct creation allotment.** The builder
+  ignored Sect entirely, so a Sabbat character got the Camarilla allotment (3
+  Disciplines + 5 free Backgrounds). Per the book, Sabbat get **one extra Basic
+  Discipline and no free Backgrounds** (Backgrounds must be bought with Free
+  Traits). Both the Character Builder's live budget and the character sheet's
+  creation tracker now apply the Sabbat allotment when Sect = Sabbat (+1
+  Discipline, 0 free Backgrounds), so a correctly-built Sabbat is no longer
+  flagged over budget. The Random Character generator picks a non-Sabbat sect so
+  its Camarilla-style build stays consistent.
+- Under the expanded house-rule default, Sabbat get one more than the expanded
+  Discipline allotment (6) and still 0 free Backgrounds; tick "Original rules"
+  for the strict book values (4 Disciplines).
+
 ## 1.36.17 — Aggravated healing rules-text fix
 
 - The Player Rules Reference said aggravated damage costs "three Blood Traits,
