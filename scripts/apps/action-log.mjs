@@ -7,7 +7,23 @@ const MAX_ENTRIES = 200;
 
 export async function logAction(actor, summary) {
   if (!actor) return;
-  const current = actor.system.actionLog ?? [];
-  const updated = [{ timestamp: Date.now(), summary }, ...current].slice(0, MAX_ENTRIES);
-  await actor.update({ "system.actionLog": updated });
+  // This must NEVER throw: it's called mid-resolution (e.g. right after a
+  // Challenge result is posted), and an exception here would abort the caller's
+  // remaining cleanup - leaving the Challenge prompt live and re-clickable. In
+  // a multiplayer game the resolving client often does NOT own one side of the
+  // Challenge (a player resolving vs. another player's actor), so a direct
+  // actor.update() on the un-owned actor would be rejected for lack of
+  // permission. When we don't own the actor, hand the append to the GM (who
+  // owns every actor) over the socket instead.
+  try {
+    if (actor.isOwner) {
+      const current = actor.system.actionLog ?? [];
+      const updated = [{ timestamp: Date.now(), summary }, ...current].slice(0, MAX_ENTRIES);
+      await actor.update({ "system.actionLog": updated });
+    } else if (game.users?.activeGM) {
+      game.socket.emit("system.vtmlarp", { action: "logActorAction", actorId: actor.id, summary });
+    }
+  } catch (err) {
+    console.warn("VTMLARP | logAction failed (non-fatal):", err);
+  }
 }

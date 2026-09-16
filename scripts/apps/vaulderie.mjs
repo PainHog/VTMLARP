@@ -93,11 +93,23 @@ export class VaulderieApp extends HandlebarsApplicationMixin(foundry.application
     // The rite costs Blood: each participant actually spends the Blood Traits
     // they contribute into the shared vessel. Debit each (never below 0) and
     // note anyone who couldn't cover their pledge.
+    // A non-GM may run the Vaulderie from their own sheet but add other
+    // players' actors as participants, which this client can't update. Debiting
+    // such an actor directly would throw mid-loop and abort the whole rite
+    // (partial debit, no result posted). Debit actors we own directly; hand the
+    // rest to the GM (who owns every actor) over the socket; never let a
+    // failure abort the draw/reveal below.
     const short = [];
     for (const p of participants) {
       const have = Number(p.actor.system?.blood?.value) || 0;
       if (have < p.traits) short.push(`${p.actor.name} (${have}/${p.traits})`);
-      await p.actor.update({ "system.blood.value": Math.max(0, have - p.traits) });
+      const newValue = Math.max(0, have - p.traits);
+      try {
+        if (p.actor.isOwner) await p.actor.update({ "system.blood.value": newValue });
+        else if (game.users?.activeGM) game.socket.emit("system.vtmlarp", { action: "debitBlood", actorId: p.actor.id, value: newValue });
+      } catch (err) {
+        console.warn("VTMLARP | Vaulderie blood debit failed (non-fatal):", err);
+      }
     }
     if (short.length) ui.notifications?.warn(`Some participants didn't have enough Blood to fully contribute: ${short.join(", ")}.`);
 

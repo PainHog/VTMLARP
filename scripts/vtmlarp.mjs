@@ -16,6 +16,7 @@ import { STPanelApp } from "./apps/st-panel.mjs";
 import { CharacterBuilderApp } from "./apps/character-builder.mjs";
 import { ClanPickerApp } from "./apps/clan-picker.mjs";
 import { resolveAndPostGestureChallenge } from "./apps/challenge-shared.mjs";
+import { logAction } from "./apps/action-log.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 import { enhanceAccessibility } from "./apps/a11y.mjs";
 import { registerShopSettings, MercantilePanelApp, ShopBrowserApp, fulfillPurchase } from "./apps/shops.mjs";
@@ -371,6 +372,21 @@ Hooks.once("ready", () => {
               ui.notifications?.error(`Couldn't add the submitted character "${payload.name ?? "?"}": ${err.message}`);
               game.socket.emit("system.vtmlarp", { action: "characterCreateFailed", requesterId: data.requesterId, name: payload.name ?? "your character", reason: err.message });
             });
+        }
+      } else if (data.action === "debitBlood") {
+        // A player ran the Vaulderie with a participant actor they don't own;
+        // the active GM applies the Blood debit on their behalf.
+        if (game.users.activeGM?.id === game.user.id && data.actorId) {
+          const a = game.actors.get(data.actorId);
+          if (a) a.update({ "system.blood.value": data.value }).catch(err => console.warn("VTMLARP | debitBlood failed:", err));
+        }
+      } else if (data.action === "logActorAction") {
+        // A player resolved something (e.g. a Challenge) involving an actor they
+        // don't own; the GM owns every actor, so the active GM appends the log
+        // entry on their behalf. Single-GM guard prevents duplicate entries.
+        if (game.users.activeGM?.id === game.user.id && data.actorId) {
+          const a = game.actors.get(data.actorId);
+          if (a) logAction(a, data.summary).catch(err => console.warn("VTMLARP | logActorAction failed:", err));
         }
       } else if (data.action === "characterCreated") {
         // The requesting player learns their submission was created and opens it.

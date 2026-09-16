@@ -3,6 +3,30 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.0 — Multiplayer challenge/rite fixes (critical audit)
+
+- **BLOCKER: player-vs-player Challenges could resolve twice and threw a
+  permission error.** Resolving a Challenge logs an action entry to *both*
+  actors, but the resolving client rarely owns the *other* player's actor, so
+  `actor.update()` was rejected — the exception aborted the handler before its
+  cleanup, leaving the prompt card live and re-clickable (duplicate results on
+  reload). `logAction` now never throws and routes an un-owned actor's log
+  through the GM (who owns every actor) over the socket. This affected nearly
+  every non-GM-vs-non-GM challenge — the mechanic that runs all session.
+- **Vaulderie no longer silently fails for non-owned participants.** The rite
+  debits each participant's Blood; a player adding another player's actor hit
+  the same permission wall mid-loop, so the draw never posted and Blood was
+  partially spent. Debits now apply to owned actors directly and route the rest
+  through the GM, and never abort the draw/reveal.
+- **Willpower spend no longer corrupts the pool under a reducing effect.**
+  "Spend Willpower" read the display-clamped value; under a max-lowering effect
+  that permanently destroyed stored Willpower. It now spends from the stored
+  base.
+- **Editing a buffed stat no longer bakes the buff into the base.** The
+  de-bake-on-save guard (previously attribute-totals only) now covers any field
+  currently under an active effect — Willpower and the three Virtues included,
+  which the Storyteller Panel can also buff.
+
 ## 1.35.3 — Stay on branch-tip distribution
 
 - Reverted `manifest`/`download` to the branch-tip URLs (raw `system.json` /

@@ -698,18 +698,23 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       }
     }
 
-    // The attribute-pool "Total" box displays the DERIVED total (base + any
-    // temporary Active-Effect boost like a Blood buff). Writing that number
-    // straight back would bake the boost into the stored base, permanently
-    // inflating the pool once the boost clears. Subtract the effect delta so we
-    // only ever store the base value the player intended.
-    const attrTotal = el.name.match(/^system\.attributes\.(physical|social|mental)\.total$/);
-    if (attrTotal && el.type === "number" && value != null) {
-      const cat = attrTotal[1];
-      const derived = Number(this.actor.system.attributes[cat]?.total) || 0;
-      const base = Number(this.actor._source.system.attributes[cat]?.total) || 0;
-      const delta = derived - base;  // total contribution of active effects
-      value = Math.max(0, value - delta);
+    // Any numeric field CURRENTLY targeted by an active effect displays the
+    // DERIVED value (base + the effect's contribution) — e.g. an attribute
+    // "Total" under a Blood buff, or Willpower/a Virtue under a Storyteller
+    // buff. Writing that number straight back would bake the effect into the
+    // stored base, permanently inflating the stat once the effect clears.
+    // Subtract the effect's contribution so we only ever store the base the
+    // player intended. Only subtract a POSITIVE contribution: a reducing effect
+    // (or a display clamp) makes derived < base, and adding that back would be
+    // its own corruption, so those write through unchanged.
+    if (el.type === "number" && value != null && el.name.startsWith("system.")) {
+      const path = el.name.slice("system.".length);
+      const hasEffect = this.actor.effects.some(e => !e.disabled && e.changes?.some(c => c.key === el.name));
+      if (hasEffect) {
+        const derived = Number(foundry.utils.getProperty(this.actor.system, path)) || 0;
+        const base = Number(foundry.utils.getProperty(this.actor._source.system, path)) || 0;
+        value = Math.max(0, value - Math.max(0, derived - base));
+      }
     }
 
     try {
@@ -1318,7 +1323,11 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** Spend 1 temporary Willpower Trait (retest, resist a Mental/Social Challenge, etc.). */
   async _onSpendWillpower(event) {
     event.preventDefault();
-    const wp = Number(this.actor.system.willpower.value) || 0;
+    // Spend from the STORED (base) Willpower, not the derived value: an active
+    // effect that lowers the effective max clamps the derived value down in
+    // prepareDerivedData, and writing that clamped number back would permanently
+    // destroy stored Willpower the character regains when the effect ends.
+    const wp = Number(this.actor._source.system.willpower.value) || 0;
     if (wp <= 0) { ui.notifications?.warn("No temporary Willpower to spend."); return; }
     await this.actor.update({ "system.willpower.value": wp - 1 });
     await logAction(this.actor, "Spent 1 Willpower Trait");
