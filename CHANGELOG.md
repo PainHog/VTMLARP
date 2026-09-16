@@ -3,6 +3,24 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.40.1 — Silent-failure & error-feedback fixes
+
+- **Purchases and homebrew submissions that fail on the Storyteller's side no
+  longer vanish silently.** When a shop purchase or a homebrew submission is
+  relayed to the ST and something goes wrong fulfilling it, the requesting
+  player now gets an explicit error instead of the request appearing to still
+  be pending after "sent to the Storyteller."
+- **Editing a value a sheet rejects now snaps back with a warning** instead of
+  leaving the rejected value visible as if it had saved — this now covers the
+  actor sheet's list-row (Blood Bond / Boon / Status) fields and every field on
+  the shop sheet.
+- **Toggling a power you can't afford is refused up front.** Activating a
+  Blood-costing power with too little Blood used to silently clamp the pool to 0
+  as if you'd paid full price; it now warns and leaves the power off.
+- **The Vaulderie warns when no Storyteller is online to spend a participant's
+  Blood** (previously that participant's Blood was quietly never deducted), and
+  answering an already-claimed Challenge now says so instead of just closing.
+
 ## 1.40.0 — Tablet/small-screen & readability fixes
 
 - **Action buttons no longer fall off-screen on a tablet.** The Character

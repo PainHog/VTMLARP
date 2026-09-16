@@ -100,6 +100,7 @@ export class VaulderieApp extends HandlebarsApplicationMixin(foundry.application
     // rest to the GM (who owns every actor) over the socket; never let a
     // failure abort the draw/reveal below.
     const short = [];
+    const undeducted = [];
     for (const p of participants) {
       const have = Number(p.actor.system?.blood?.value) || 0;
       if (have < p.traits) short.push(`${p.actor.name} (${have}/${p.traits})`);
@@ -107,11 +108,15 @@ export class VaulderieApp extends HandlebarsApplicationMixin(foundry.application
       try {
         if (p.actor.isOwner) await p.actor.update({ "system.blood.value": newValue });
         else if (game.users?.activeGM) game.socket.emit("system.vtmlarp", { action: "debitBlood", actorId: p.actor.id, value: newValue });
+        // Not our actor and no GM online to relay the debit to: the draw below
+        // still happens, but this participant's Blood was never actually spent.
+        else undeducted.push(`${p.actor.name} (${p.traits})`);
       } catch (err) {
         console.warn("VTMLARP | Vaulderie blood debit failed (non-fatal):", err);
       }
     }
     if (short.length) ui.notifications?.warn(`Some participants didn't have enough Blood to fully contribute: ${short.join(", ")}.`);
+    if (undeducted.length) ui.notifications?.warn(`No GM online to spend Blood for: ${undeducted.join(", ")}. Deduct these Blood Traits manually.`);
 
     // Build the shared deck: one "card" per Blood Trait contributed, each
     // card just identifying its contributor. Fisher-Yates shuffle, then each

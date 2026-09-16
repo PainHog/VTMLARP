@@ -59,7 +59,11 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
     // Claim this Challenge on this client so the chat-card answer surface (also
     // open on this same responder's client) can't resolve it a second time. If
     // the card already claimed it, this popup is stale - just close it.
-    if (!claimChallenge(this.request.requestId)) { this.close(); return; }
+    if (!claimChallenge(this.request.requestId)) {
+      ui.notifications?.info("This Challenge is already being answered.");
+      this.close();
+      return;
+    }
     const form = event.currentTarget.closest("form");
     const fd = new foundry.applications.ux.FormDataExtended(form).object;
 

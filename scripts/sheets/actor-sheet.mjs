@@ -692,7 +692,16 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         const idx = Number(idxStr);
         if (copy[idx] != null) {
           foundry.utils.setProperty(copy[idx], leaf, value);
-          await this.actor.update({ [`system.${arrPath}`]: copy });
+          // Same schema-rejection safety as the scalar path below: a bad value
+          // would otherwise throw unhandled here and leave the box showing the
+          // rejected value as if it saved.
+          try {
+            await this.actor.update({ [`system.${arrPath}`]: copy });
+          } catch (err) {
+            console.warn("VTMLARP | array-field update rejected:", el.name, value, err);
+            ui.notifications?.warn(`That value isn't allowed for ${leaf}.`);
+            this.render();
+          }
           return;
         }
       }
@@ -1261,6 +1270,20 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (!item || !["passive", "toggle"].includes(item.system.activation)) return;
 
     const turningOn = !item.system.active;
+
+    // Gate activation on affordability BEFORE flipping any state: if the power
+    // costs more Blood than the actor has, refuse rather than silently clamping
+    // the pool to 0 (which would look like a full-price activation on an empty
+    // pool). Deactivation is always allowed and never touches Blood.
+    if (turningOn && item.system.bloodCost) {
+      const cost = Number(item.system.bloodCost);
+      if (Number.isInteger(cost) && cost > 0 && this.actor.system.blood.value < cost) {
+        ui.notifications?.warn(`${this.actor.name} doesn't have ${cost} Blood to activate ${item.name}.`);
+        this.render();
+        return;
+      }
+    }
+
     await item.update({ "system.active": turningOn });
 
     // Body-modification powers (Horrid Form, etc.): apply/remove their Physical

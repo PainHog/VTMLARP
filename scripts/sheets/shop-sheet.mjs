@@ -64,21 +64,30 @@ export class ShopSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (el.type === "number") value = Number(value);
     if (field === "qty" && el.value === "") value = -1;  // blank qty = unlimited
 
-    if (itemId) {
-      const stock = foundry.utils.duplicate(this.actor.system.stock ?? []);
-      const item = stock.find(i => i.id === itemId);
-      if (!item) return;
-      item[field] = value;
-      await this.actor.update({ "system.stock": stock });
-      if (field === "boon") {
-        const sel = this.element.querySelector(`select[data-field="boonLevel"][data-item-id="${itemId}"]`);
-        if (sel) sel.style.display = value ? "" : "none";
+    try {
+      if (itemId) {
+        const stock = foundry.utils.duplicate(this.actor.system.stock ?? []);
+        const item = stock.find(i => i.id === itemId);
+        if (!item) return;
+        item[field] = value;
+        await this.actor.update({ "system.stock": stock });
+        if (field === "boon") {
+          const sel = this.element.querySelector(`select[data-field="boonLevel"][data-item-id="${itemId}"]`);
+          if (sel) sel.style.display = value ? "" : "none";
+        }
+      } else if (field === "name") {
+        // The shop's display name is the Actor's own name, not a system field.
+        await this.actor.update({ name: value });
+      } else {
+        await this.actor.update({ [`system.${field}`]: value });
       }
-    } else if (field === "name") {
-      // The shop's display name is the Actor's own name, not a system field.
-      await this.actor.update({ name: value });
-    } else {
-      await this.actor.update({ [`system.${field}`]: value });
+    } catch (err) {
+      // A schema-rejected value would otherwise throw unhandled and leave the
+      // control showing the rejected value as if it had saved. Warn and re-render
+      // so the field snaps back to the stored value.
+      console.warn("VTMLARP | shop field update rejected:", field, value, err);
+      ui.notifications?.warn(`That value isn't allowed for ${field}.`);
+      this.render();
     }
   }
 

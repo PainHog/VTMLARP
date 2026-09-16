@@ -345,7 +345,12 @@ Hooks.once("ready", () => {
       } else if (data.action === "homebrewSubmit") {
         // A player submitted homebrew content; the active GM queues it.
         if (game.users.activeGM?.id === game.user.id && data.sub) {
-          enqueueHomebrew(data.sub).catch(err => console.error("vtmlarp | homebrewSubmit failed", err));
+          enqueueHomebrew(data.sub).catch(err => {
+            console.error("vtmlarp | homebrewSubmit failed", err);
+            // Hand the failure back so the submitter isn't left thinking their
+            // creation is queued after "sent to the Storyteller".
+            game.socket.emit("system.vtmlarp", { action: "homebrewSubmitFailed", byUserId: data.sub.byUserId, name: data.sub.name ?? "your submission", reason: err.message });
+          });
         }
       } else if (data.action === "shopPurchase") {
         // A player asked to buy from a shop; only the designated active GM
@@ -353,7 +358,13 @@ Hooks.once("ready", () => {
         if (game.users.activeGM?.id === game.user.id && data.req) {
           fulfillPurchase(data.req)
             .then(msg => ui.notifications?.info(msg))
-            .catch(err => console.error("vtmlarp | shopPurchase failed", err));
+            .catch(err => {
+              console.error("vtmlarp | shopPurchase failed", err);
+              ui.notifications?.error(`Couldn't complete a shop purchase: ${err.message}`);
+              // Hand the failure back so the buyer isn't left thinking the
+              // request is still pending after "sent to the Storyteller".
+              game.socket.emit("system.vtmlarp", { action: "shopPurchaseFailed", requesterId: data.req.requesterId, reason: err.message });
+            });
         }
       } else if (data.action === "createCharacter") {
         // A player built a character but lacks "Create New Actors" permission,
@@ -426,6 +437,10 @@ Hooks.once("ready", () => {
       game.actors.get(data.actorId)?.sheet?.render(true);
     } else if (data.action === "characterCreateFailed" && data.requesterId === game.user.id) {
       ui.notifications?.error(`The Storyteller couldn't add "${data.name}": ${data.reason}. Adjust it and submit again.`);
+    } else if (data.action === "shopPurchaseFailed" && data.requesterId === game.user.id) {
+      ui.notifications?.error(`The Storyteller couldn't complete your purchase: ${data.reason}. Try again or ask your ST.`);
+    } else if (data.action === "homebrewSubmitFailed" && data.byUserId === game.user.id) {
+      ui.notifications?.error(`The Storyteller couldn't queue your homebrew "${data.name}": ${data.reason}. Adjust it and submit again.`);
     } else if (data.action === "homebrewReviewed" && data.byUserId === game.user.id) {
       // The submitting player learns the Storyteller's decision on their homebrew.
       if (data.approved) ui.notifications?.info(`Your homebrew "${data.name}" was approved by the Storyteller.`);
