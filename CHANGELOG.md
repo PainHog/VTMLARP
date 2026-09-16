@@ -3,6 +3,13 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.46.0 — Merits & Flaws search/filter in the Character Builder
+
+- The Character Builder's Merits & Flaws step now has the same **keyword search**
+  (name + category + rules text, partial/multi-word) and **category dropdown**
+  (Physical / Social / Mental / Supernatural) as the sheet's browser, filtering
+  the pick lists live instead of scrolling ~260 entries.
+
 ## 1.45.8 — Stepper visibility fix
 
 - The − / + stepper buttons were dark red on the dark panel (near-invisible).

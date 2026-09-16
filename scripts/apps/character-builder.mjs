@@ -88,8 +88,20 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       .map(e => { remember("background", e.name, e.uuid); return { name: e.name, uuid: e.uuid, info: blurb(e.system?.description) }; })
       .sort((a, b) => a.name.localeCompare(b.name));
 
-    const mf = (await idx("merits-flaws", ["type", "system.cost", "system.bonus", "system.description"]))
-      .map(e => { remember("meritflaw", e.name, e.uuid); return { name: e.name, type: e.type, cost: e.type === "flaw" ? (e.system?.bonus ?? 1) : (e.system?.cost ?? 1), uuid: e.uuid, info: blurb(e.system?.description) }; })
+    const mf = (await idx("merits-flaws", ["type", "system.cost", "system.bonus", "system.category", "system.description"]))
+      .map(e => {
+        remember("meritflaw", e.name, e.uuid);
+        const category = e.system?.category ?? "";
+        const descText = String(e.system?.description ?? "").replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/g, " ");
+        return {
+          name: e.name, type: e.type,
+          cost: e.type === "flaw" ? (e.system?.bonus ?? 1) : (e.system?.cost ?? 1),
+          uuid: e.uuid, info: blurb(e.system?.description),
+          category,
+          // Everything the builder's search box scans (name + category + rules text).
+          search: `${e.name} ${category} ${descText}`.replace(/\s+/g, " ").trim().toLowerCase()
+        };
+      })
       .sort((a, b) => a.name.localeCompare(b.name));
 
     // Derangements are JournalEntries; offer them as a dropdown so a player can
@@ -157,6 +169,11 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     this.element.querySelector('[name="clan"]')?.addEventListener("change", (e) => {
       this.#applyClanDisciplines(e.target.value);
     });
+    // Live search + category filter over the Merits & Flaws pick lists.
+    const mfSearch = this.element.querySelector('[name="mf-search"]');
+    const mfCat = this.element.querySelector('[name="mf-category"]');
+    mfSearch?.addEventListener("input", () => this.#applyMeritFlawFilter());
+    mfCat?.addEventListener("change", () => this.#applyMeritFlawFilter());
     // Seed the in-clan Disciplines for a clan pre-selected from the Clan Picker.
     if (this.#initialClan && !this.#initialClanApplied) {
       this.#initialClanApplied = true;
@@ -165,6 +182,19 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     }
     this.#showStep(this.#step);
     this.#recompute();
+  }
+
+  /** Show/hide the Merit & Flaw pick links by the search box (name + category +
+   * rules text; every whitespace term must match) and the category dropdown. */
+  #applyMeritFlawFilter() {
+    const terms = (this.element.querySelector('[name="mf-search"]')?.value ?? "").trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const cat = this.element.querySelector('[name="mf-category"]')?.value ?? "";
+    for (const pick of this.element.querySelectorAll('.pick[data-kind="meritflaw"]')) {
+      const hay = pick.dataset.search ?? "";
+      const okTerms = terms.every(t => hay.includes(t));
+      const okCat = !cat || (pick.dataset.category ?? "") === cat;
+      pick.style.display = (okTerms && okCat) ? "" : "none";
+    }
   }
 
   #showStep(n) {

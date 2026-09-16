@@ -103,14 +103,24 @@
   <div class="builder-step" data-title="Merits, Flaws & Derangement">
     <h3>Merits &amp; Flaws</h3>
     <p class="hint">Click to add. Flaws grant Freebies (max 7); Merits cost Freebies.</p>
+    <div class="mf-filter-row flexrow">
+      <input type="text" name="mf-search" placeholder="Search name or rules text — e.g. “blood”, “extra trait”…" autocomplete="off">
+      <select name="mf-category">
+        <option value="">All categories</option>
+        <option value="Physical">Physical</option>
+        <option value="Social">Social</option>
+        <option value="Mental">Mental</option>
+        <option value="Supernatural">Supernatural</option>
+      </select>
+    </div>
     <div class="pick-columns flexrow">
       <div class="pick-col">
         <div class="pick-col-title">Merits</div>
-        <div class="pick-list">{{#each merits as |m|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{m.name}}" data-type="merit" data-cost="{{m.cost}}" {{#if m.info}}data-tooltip="{{m.info}}"{{/if}}>{{m.name}} ({{m.cost}}){{#if m.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{m.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}</div>
+        <div class="pick-list">{{#each merits as |m|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{m.name}}" data-type="merit" data-cost="{{m.cost}}" data-category="{{m.category}}" data-search="{{m.search}}" {{#if m.info}}data-tooltip="{{m.info}}"{{/if}}>{{m.name}} ({{m.cost}}){{#if m.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{m.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}</div>
       </div>
       <div class="pick-col">
         <div class="pick-col-title">Flaws</div>
-        <div class="pick-list">{{#each flaws as |f|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{f.name}}" data-type="flaw" data-cost="{{f.cost}}" {{#if f.info}}data-tooltip="{{f.info}}"{{/if}}>{{f.name}} ({{f.cost}}){{#if f.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{f.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}</div>
+        <div class="pick-list">{{#each flaws as |f|}}<a class="pick" data-action="pickAdd" data-kind="meritflaw" data-name="{{f.name}}" data-type="flaw" data-cost="{{f.cost}}" data-category="{{f.category}}" data-search="{{f.search}}" {{#if f.info}}data-tooltip="{{f.info}}"{{/if}}>{{f.name}} ({{f.cost}}){{#if f.uuid}} <i class="fas fa-circle-info pick-info" data-action="openInfo" data-uuid="{{f.uuid}}" title="View compendium entry"></i>{{/if}}</a>{{/each}}</div>
       </div>
     </div>
     <div class="rows-meritflaw"></div>

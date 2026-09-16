@@ -1623,6 +1623,9 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 .vtmlarp.character-builder .pick-list .pick { display: inline-block; padding: 2px 7px; border: 1px solid var(--vtm-red, #8a0303); border-radius: 10px; font-size: 12px; cursor: pointer; white-space: nowrap; }
 .vtmlarp.character-builder .pick-list .pick:hover { background: var(--vtm-red, #8a0303); color: #fff; }
 .vtmlarp.character-builder .pick-columns { gap: 8px; align-items: flex-start; }
+.vtmlarp.character-builder .mf-filter-row { gap: 6px; margin: 4px 0; align-items: center; }
+.vtmlarp.character-builder .mf-filter-row input[name="mf-search"] { flex: 1 1 auto; min-width: 0; }
+.vtmlarp.character-builder .mf-filter-row select { flex: 0 0 auto; }
 .vtmlarp.character-builder .pick-col { flex: 1; }
 .vtmlarp.character-builder .pick-col-title { font-weight: bold; margin-bottom: 2px; }
 .vtmlarp.character-builder .builder-nav { margin-top: 8px; gap: 8px; border-top: 1px solid var(--vtm-red, #8a0303); padding-top: 6px; }
