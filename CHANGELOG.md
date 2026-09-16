@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.46.1 — Fortitude extra health level auto-applies
+
+- Basic Fortitude (**Mettle**) grants "+1 health level, permanent and passive."
+  Its extra Healthy box now applies **automatically** when the power is on the
+  character (via its autoEffect + a new create-item hook for passive powers),
+  instead of doing nothing. It's removed cleanly if the power is deleted or
+  toggled off.
+
 ## 1.46.0 — Merits & Flaws search/filter in the Character Builder
 
 - The Character Builder's Merits & Flaws step now has the same **keyword search**

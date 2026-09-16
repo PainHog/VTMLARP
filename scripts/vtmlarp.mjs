@@ -274,6 +274,44 @@ Hooks.on("deleteItem", async (item, options, userId) => {
     await actor.update({ "system.bonusHealth": list });
   }
 });
+// Auto-apply a PASSIVE power's permanent bonus the moment it's added to an
+// actor — e.g. basic Fortitude (Mettle) grants "one additional health level …
+// permanent and passive," so the extra Healthy box should just appear, not wait
+// for a manual toggle. Only passive powers carrying a real bodyMod/autoEffect
+// are touched; the deleteItem hook above (and the power toggle) reverse it.
+Hooks.on("createItem", async (item, options, userId) => {
+  if (game.user.id !== userId) return;
+  const actor = item.parent;
+  if (!actor || actor.documentName !== "Actor" || !actor.isOwner) return;
+  if (item.type !== "power" || item.system?.activation !== "passive" || item.system?.active) return;
+
+  const bm = item.system.bodyMod, ae = item.system.autoEffect;
+  const bmChanges = [];
+  if (bm?.physical) bmChanges.push({ key: "system.attributes.physical.total", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: bm.physical });
+  const aeChanges = [];
+  for (const cat of ["physical", "social", "mental"]) {
+    if (ae?.[cat]) aeChanges.push({ key: `system.attributes.${cat}.total`, mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: ae[cat] });
+  }
+  if (ae?.willpower) aeChanges.push({ key: "system.willpower.max", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: ae.willpower });
+  const healthAdd = (Number(bm?.health) || 0) + (Number(ae?.health) || 0);
+  if (!bmChanges.length && !aeChanges.length && healthAdd <= 0) return;  // nothing to auto-apply
+
+  try {
+    const effects = [];
+    if (bmChanges.length) effects.push({ name: `${item.name} (body)`, icon: item.img, img: item.img, changes: bmChanges, flags: { vtmlarp: { bodyModPower: item.id } } });
+    if (aeChanges.length) effects.push({ name: item.name, icon: item.img, img: item.img, changes: aeChanges, flags: { vtmlarp: { autoEffectPower: item.id } } });
+    if (effects.length) await actor.createEmbeddedDocuments("ActiveEffect", effects);
+    if (healthAdd > 0) {
+      const list = [...(actor.system.bonusHealth ?? [])];
+      for (let k = 0; k < healthAdd; k++) list.push("ok");
+      await actor.update({ "system.bonusHealth": list });
+    }
+    await item.update({ "system.active": true });
+  } catch (err) {
+    console.warn("VTMLARP | auto-apply passive power failed (non-fatal):", err);
+  }
+});
+
 for (const h of ["createActiveEffect", "deleteActiveEffect", "updateActiveEffect"]) {
   Hooks.on(h, (effect) => {
     const parent = effect?.parent;
