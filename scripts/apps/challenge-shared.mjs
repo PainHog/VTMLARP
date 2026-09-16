@@ -98,6 +98,14 @@ export async function resolveAndPostGestureChallenge({
         result = "Tied";
         resultLabel = "Tied — throw again";
       }
+      // If either side has no resolvable Trait pool (e.g. an actorless opponent
+      // with no bid override), there's nothing to overbid with, so a matched
+      // gesture just stands as a tie rather than letting a null pool coerce to 0
+      // and hand the challenger a spurious win.
+      else if (traitsBid == null || opponentTraitsBid == null) {
+        result = "Tied";
+        resultLabel = "Tied";
+      }
       // Playing remotely, not face to face, so there's no table to visibly
       // compare trait piles - per the rulebook, a matched gesture is broken
       // by whoever bid more Traits; a genuine tie (equal gesture AND equal

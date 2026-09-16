@@ -234,43 +234,59 @@ export function registerMigrationSettings() {
 /** Batched helper factory: collect {_id, ...update} objects and apply them via
  * one embedded/document updateAll per collection. */
 function makeContext() {
+  // Collect {_id, ...update} objects. If any per-doc callback THROWS, apply the
+  // good updates but record the failure so the caller can raise — otherwise the
+  // enclosing migration would resolve "successfully", its version would get
+  // stamped, and the failed document would be permanently stranded on the old
+  // schema (the migration never runs again). Re-running from the unstamped
+  // version is safe because every migrate() is idempotent.
   const applyDocUpdates = async (collection, fn, label) => {
     const updates = [];
+    const failed = [];
     for (const doc of collection) {
       let change;
-      try { change = await fn(doc); } catch (e) { console.error(`VTMLARP | migration error on ${label} ${doc.id}`, e); }
+      try { change = await fn(doc); }
+      catch (e) { console.error(`VTMLARP | migration error on ${label} ${doc.id}`, e); failed.push(doc.id); }
       if (change && Object.keys(change).length) updates.push({ _id: doc.id, ...change });
     }
-    return updates;
+    return { updates, failed };
+  };
+  const failIfAny = (failed, label) => {
+    if (failed.length) throw new Error(`${failed.length} ${label}(s) failed to migrate (${failed.join(", ")}) — halting so the migration re-runs on next load.`);
   };
 
   return {
-    /** Update world Actors (and, if your fn returns embedded item updates via
-     * the `items` key, those are applied too). */
+    /** Update world Actors. */
     async updateActors(fn) {
-      const updates = await applyDocUpdates(game.actors, fn, "actor");
+      const { updates, failed } = await applyDocUpdates(game.actors, fn, "actor");
       if (updates.length) await Actor.updateDocuments(updates);
+      failIfAny(failed, "actor");
       return updates.length;
     },
     /** Update world-level Items (items in the Items sidebar, not owned items). */
     async updateItems(fn) {
-      const updates = await applyDocUpdates(game.items, fn, "item");
+      const { updates, failed } = await applyDocUpdates(game.items, fn, "item");
       if (updates.length) await Item.updateDocuments(updates);
+      failIfAny(failed, "item");
       return updates.length;
     },
     /** Update owned items across every world Actor. */
     async updateOwnedItems(fn) {
       let count = 0;
+      const allFailed = [];
       for (const actor of game.actors) {
-        const updates = await applyDocUpdates(actor.items, fn, "owned-item");
+        const { updates, failed } = await applyDocUpdates(actor.items, fn, "owned-item");
         if (updates.length) { await actor.updateEmbeddedDocuments("Item", updates); count += updates.length; }
+        allFailed.push(...failed);
       }
+      failIfAny(allFailed, "owned-item");
       return count;
     },
     /** Update Scenes (e.g. token/prototype data). */
     async updateScenes(fn) {
-      const updates = await applyDocUpdates(game.scenes, fn, "scene");
+      const { updates, failed } = await applyDocUpdates(game.scenes, fn, "scene");
       if (updates.length) await Scene.updateDocuments(updates);
+      failIfAny(failed, "scene");
       return updates.length;
     },
     /** Update the synthetic actor deltas of UNLINKED tokens across every scene.
@@ -279,16 +295,18 @@ function makeContext() {
      * unlinked tokens — which carry their own overridden data — are visited. */
     async updateTokenActors(fn) {
       let count = 0;
+      const allFailed = [];
       for (const scene of game.scenes) {
         const tokenUpdates = [];
         for (const token of scene.tokens) {
           if (token.actorLink) continue;
           let change;
-          try { change = await fn(token); } catch (e) { console.error(`VTMLARP | migration error on token ${token.id}`, e); }
+          try { change = await fn(token); } catch (e) { console.error(`VTMLARP | migration error on token ${token.id}`, e); allFailed.push(token.id); }
           if (change && Object.keys(change).length) tokenUpdates.push({ _id: token.id, ...change });
         }
         if (tokenUpdates.length) { await scene.updateEmbeddedDocuments("Token", tokenUpdates); count += tokenUpdates.length; }
       }
+      failIfAny(allFailed, "token");
       return count;
     }
   };

@@ -3,6 +3,26 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.41.1 — Deep function-audit fixes
+
+From a line-by-line audit of the data models, sheets, dialogs, and core plumbing:
+
+- **Using or activating a Blood-costing power now respects your Blood and the
+  per-turn limit.** The reflexive "use power" path could clamp your pool to 0
+  yet report the full cost as paid; both the toggle and use paths now refuse
+  when short and count the spend against your generation's per-turn Blood limit
+  (previously only Blood Boost / Blush of Life did).
+- **Clicking a Discipline's dots to raise it now pulls its next core power(s)**
+  onto the sheet, matching the +/- stepper and the Character Builder instead of
+  leaving a raised dot with no matching power.
+- **Migrations no longer silently strand a document.** If migrating one actor
+  or item throws, the migration now re-runs on next load instead of stamping
+  itself complete and leaving that document on the old schema forever.
+- **Random-build Virtues** now use one rolled value for both the permanent
+  rating and the spendable pool (they could previously differ).
+- Hardened a tie-break edge case and a couple of list handlers against
+  malformed input. No behavior change in normal play.
+
 ## 1.41.0 — Challenge rules-accuracy fixes
 
 Corrected four places where the resolution mechanics diverged from Laws of

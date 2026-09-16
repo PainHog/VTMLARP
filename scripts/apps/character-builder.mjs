@@ -357,11 +357,17 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
         generation: gen, generationApplied: true,
         morality: { path: "Path of Humanity", rating: 7 },
         attributes: attrData, abilities, backgrounds,
-        virtues: {
-          conscienceConviction: { rating: v(), temporary: v() },
-          selfControlInstinct: { rating: v(), temporary: v() },
-          courage: { rating: v(), temporary: v() }
-        },
+        // Roll each Virtue once and use it for both fields: at creation the
+        // spendable (temporary) pool equals the permanent rating. Rolling the
+        // two independently could hand out temporary > rating.
+        virtues: (() => {
+          const cc = v(), sc = v(), co = v();
+          return {
+            conscienceConviction: { rating: cc, temporary: cc },
+            selfControlInstinct: { rating: sc, temporary: sc },
+            courage: { rating: co, temporary: co }
+          };
+        })(),
         willpower: { value: wpStart, max: wpStart },
         blood: { value: bloodMax, max: bloodMax, perTurn },
         creationComplete: false, useOriginalRules: false

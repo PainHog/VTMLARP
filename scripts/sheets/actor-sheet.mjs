@@ -981,7 +981,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   async _onToggleTrait(event) {
     event.preventDefault();
     const { path, index } = event.currentTarget.dataset;
-    const list = foundry.utils.getProperty(this.actor.system, path);
+    const list = foundry.utils.getProperty(this.actor.system, path) ?? [];
     const updated = list.map((t, i) => i === Number(index) ? { ...t, spent: !t.spent } : t);
     await this.actor.update({ [`system.${path}`]: updated });
   }
@@ -1012,7 +1012,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   async _onDeleteTrait(event) {
     event.preventDefault();
     const { path, index } = event.currentTarget.dataset;
-    const list = foundry.utils.getProperty(this.actor.system, path);
+    const list = foundry.utils.getProperty(this.actor.system, path) ?? [];
     const updated = list.filter((_, i) => i !== Number(index));
     await this.actor.update({ [`system.${path}`]: updated });
   }
@@ -1057,8 +1057,12 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       const item = this.actor.items.get(itemId);
       if (!item) return;
       const current = Number(item.system.rating) || 0;
-      const newRating = value === current ? value - 1 : value;
-      await item.update({ "system.rating": Math.max(0, newRating) });
+      const newRating = Math.max(0, value === current ? value - 1 : value);
+      await item.update({ "system.rating": newRating });
+      // Clicking a dot is the live way players raise a Discipline, so pull its
+      // next core power(s) here too — matching the +/- stepper and the Character
+      // Builder, rather than leaving a raised dot with no corresponding power.
+      if (item.type === "discipline" && newRating > current) await this.#pullDisciplinePowers(item.name, newRating);
       return;
     }
     if (path) {
@@ -1296,9 +1300,9 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (turningOn && item.system.bloodCost) {
       const cost = Number(item.system.bloodCost);
       if (Number.isInteger(cost) && cost > 0) {
-        const current = this.actor.system.blood.value;
-        await this.actor.update({ "system.blood.value": Math.max(0, current - cost) });
-        bloodSpent = cost;
+        // Affordability was already gated above; route through _spendBlood so the
+        // spend counts toward the per-turn Blood limit (raw update bypassed it).
+        if (await this._spendBlood(cost, item.name)) bloodSpent = cost;
       }
     }
     const summary = `${turningOn ? "Activated" : "Deactivated"} ${item.name}${bloodSpent ? ` (spent ${bloodSpent} Blood)` : ""}`;
@@ -1534,8 +1538,10 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (item.system.bloodCost) {
       const cost = Number(item.system.bloodCost);
       if (Number.isInteger(cost) && cost > 0) {
-        const current = this.actor.system.blood.value;
-        await this.actor.update({ "system.blood.value": Math.max(0, current - cost) });
+        // Route through _spendBlood so this refuses when short (instead of
+        // clamping to 0 and reporting the full cost as paid) and so the spend
+        // counts against the per-turn Blood limit like every other expenditure.
+        if (!(await this._spendBlood(cost, item.name))) return;
         bloodSpent = cost;
       }
     }
