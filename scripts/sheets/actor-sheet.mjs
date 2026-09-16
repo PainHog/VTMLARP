@@ -1532,7 +1532,9 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const size = Number(area.size) || 5;
     const data = {
       t: area.shape,
-      user: game.user.id,
+      // v13+ renamed the MeasuredTemplate creator field user -> author (the old
+      // key is deprecated and dropped by DataModel cleaning).
+      author: game.user.id,
       x: origin.x,
       y: origin.y,
       distance: size,

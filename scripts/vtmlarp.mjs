@@ -416,7 +416,7 @@ Hooks.once("ready", () => {
     }
 
     if (data.action !== "challengeRequest") return;
-    if (!data.targetUserIds.includes(game.user.id)) return;
+    if (!Array.isArray(data.targetUserIds) || !data.targetUserIds.includes(game.user.id)) return;
 
     const challengerActor = game.actors.get(data.challengerActorId);
     const opponentActor = game.actors.get(data.opponentActorId);

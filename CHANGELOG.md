@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.13 — Final robustness nits
+
+- A convergence sweep across the whole codebase came back clean (ownership,
+  null-safety, socket handling, number parsing all verified sound). Two tiny
+  hardening fixes: the area-of-effect template now uses the v13+ `author` field
+  instead of the deprecated `user`, and the challenge-request socket handler
+  guards `targetUserIds` against a malformed payload before dereferencing it.
+
 ## 1.36.12 — Background text corrections
 
 - Every Laws of the Night Revised Merit/Flaw point value and category was
