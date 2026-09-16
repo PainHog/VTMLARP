@@ -3,6 +3,18 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.17 — Aggravated healing rules-text fix
+
+- The Player Rules Reference said aggravated damage costs "three Blood Traits,
+  one Willpower Trait, and a night of rest" per level. Per the book, the first
+  aggravated level each rest period costs 3 Blood + a day's rest (no Willpower);
+  a Willpower Trait is required only for each *additional* level healed in the
+  same rest. Corrected — it also now agrees with the Feeding & Hunger journal,
+  which already stated it correctly. A full journal-content audit otherwise
+  verified all 13 clan Disciplines and weaknesses and every core rule (challenge
+  resolution, the MET health track, frenzy, feeding, diablerie, chargen)
+  accurate against the book.
+
 ## 1.36.16 — Item/Vehicle portrait double-picker
 
 - Clicking an Item or Vehicle portrait opened TWO file pickers — a manual one
