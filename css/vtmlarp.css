@@ -1565,7 +1565,9 @@ form.vtmlarp.sheet {
 .vtmlarp .rating-stepper .step-up,
 .vtmlarp .rating-stepper .step-down {
   cursor: pointer;
-  color: var(--vtm-red, #8a0303);
+  /* Bright red so the glyph is clearly visible on the dark panel (the plain
+     --vtm-red is near-black against #1c1c1c). */
+  color: var(--vtm-red-bright, #b8121a);
   font-size: 11px;
   line-height: 1;
   width: 16px;
@@ -1573,14 +1575,14 @@ form.vtmlarp.sheet {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(138, 3, 3, 0.4);
+  border: 1px solid var(--vtm-red-bright, #b8121a);
   border-radius: 3px;
   flex: 0 0 auto;
 }
 .vtmlarp .rating-stepper .step-up:hover,
 .vtmlarp .rating-stepper .step-down:hover {
   color: #fff;
-  background: var(--vtm-red, #8a0303);
+  background: var(--vtm-red-bright, #b8121a);
 }
 
 /* -------------------------------------------------------------------- */

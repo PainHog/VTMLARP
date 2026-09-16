@@ -3,6 +3,11 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.8 — Stepper visibility fix
+
+- The − / + stepper buttons were dark red on the dark panel (near-invisible).
+  They now use the bright red used elsewhere, so they're clearly visible.
+
 ## 1.45.7 — Visual sweep converged
 
 - Final convergence fixes: the shop stock table's Boon-level select now fits its
