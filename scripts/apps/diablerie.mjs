@@ -247,7 +247,8 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
       "system.diablerie.lastDate": new Date().toLocaleString()
     });
     await this.#post(`<div class="vtmlarp-shared-entry"><h3>Diablerie committed</h3>`
-      + `<p><strong>${this.actor.name}</strong> has consumed a soul. Black veins now run through their aura — visible to Aura Perception for about three months, and to Thaumaturgy's <em>A Taste for Blood</em> forever.</p></div>`);
+      + `<p><strong>${this.actor.name}</strong> has consumed a soul. Black veins now run through their aura — visible to Aura Perception for about three months, and to Thaumaturgy's <em>A Taste for Blood</em> forever.</p>`
+      + `<p class="hint">Storyteller: if the victim was of <em>lower generation</em>, award <strong>+2 Experience</strong> at the end of the session (book p.124).</p></div>`);
     ui.notifications?.info(`${this.actor.name}'s diablerie is recorded (taint x${(Number(d.count) || 0) + 1}).`);
     this.render();
   }

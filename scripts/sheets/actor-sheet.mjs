@@ -954,6 +954,13 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ok: { callback: (e, btn) => Number(btn.form.elements.amount.value) || 0 }
     }).catch(() => null);
     if (!amount) return;
+    // A negative amount would otherwise be added and then clamped by the schema
+    // (min:0), silently zeroing BOTH the pool and the lifetime total. Reject it -
+    // to correct an over-award, edit the Experience fields directly.
+    if (amount < 0) {
+      ui.notifications?.warn("Award amount must be positive — edit the Experience fields directly to deduct.");
+      return;
+    }
     const sys = this.actor.system;
     await this.actor.update({
       "system.experience.value": sys.experience.value + amount,

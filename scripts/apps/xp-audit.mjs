@@ -4,10 +4,13 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
  * GM-only report of every character's Experience: current pool, lifetime
  * total awarded (via the "Award XP" star button on the actor sheet), and
  * spent (total - value). Since the ratings +/- controls no longer block a
- * purchase when Experience is insufficient (players are trusted not to
- * abuse it), this recovers the visibility a hard block used to provide -
- * a GM can see at a glance who's spent more than they've been awarded,
- * without a full transaction ledger.
+ * purchase when Experience is insufficient (players are trusted not to abuse
+ * it), this recovers the visibility a hard block used to provide, without a
+ * full transaction ledger. Because current pool can't drop below 0 (schema
+ * min:0), true overspending isn't representable here; instead the audit flags
+ * the one anomaly it CAN detect - a current pool LARGER than the recorded
+ * lifetime total, which means XP was added directly to the pool instead of
+ * through the Award button (`unrecordedAward`).
  */
 export class XPAuditApp extends HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   static DEFAULT_OPTIONS = {
@@ -29,7 +32,7 @@ export class XPAuditApp extends HandlebarsApplicationMixin(foundry.applications.
       .map(a => {
         const value = a.system.experience.value;
         const total = a.system.experience.total ?? 0;
-        return { name: a.name, uuid: a.uuid, value, total, spent: Math.max(0, total - value), overspent: total - value < 0 };
+        return { name: a.name, uuid: a.uuid, value, total, spent: Math.max(0, total - value), unrecordedAward: value > total };
       })
       .sort((a, b) => a.name.localeCompare(b.name));
     return context;

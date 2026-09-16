@@ -3,6 +3,22 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.37.3 — XP audit clarity & guards
+
+- Combat/weapons/gear and XP/advancement audited against the book: combat is
+  correctly fully manual (gear values, armor, and the combat rules journal all
+  accurate), and the XP flow (award math, self-managed spend, audit) is sound.
+- The XP Audit's anomaly flag is now named for what it actually detects — a
+  **current pool larger than the recorded total** (XP added directly instead of
+  via Award XP), which the UI already labeled "unrecorded award." Fixed the
+  misleading internal name/docstring.
+- **Award XP now rejects a negative amount** (it would previously add it and let
+  the schema clamp both pool and total to 0, silently wiping a character's XP).
+  To deduct, edit the Experience fields directly.
+- Diablerie's completion card now reminds the Storyteller to award +2 Experience
+  if the victim was of lower generation (the book's award, which is
+  ST-adjudicated so it isn't applied automatically).
+
 ## 1.37.2 — Chat-card polish
 
 - Frenzy/Rötschreck result banner now uses a valid status class so it's colored
