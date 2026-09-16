@@ -3,6 +3,18 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.0 — Merits & Flaws browser
+
+- **New "Browse Merits & Flaws" button** on the Merits & Flaws tab opens a
+  searchable browser for the whole compendium:
+  - **Keyword search** that matches partial input across the name *and the
+    rules text* (so "blood" or "extra trait" finds the right entries, not just
+    title matches).
+  - **Filters** for type (Merits / Flaws / both) and category
+    (Physical / Social / Mental / Supernatural).
+  - An **Add** button drops the chosen Merit or Flaw onto the character (keeping
+    its compendium link), and a book icon opens the full text.
+
 ## 1.44.3 — +/- steppers on rated traits
 
 - **Abilities, Disciplines, and Backgrounds now have − / + buttons** beside their

@@ -5,6 +5,7 @@ import { checkPrerequisites } from "../apps/prerequisites.mjs";
 import { logAction } from "../apps/action-log.mjs";
 import { SessionLogApp } from "../apps/session-log.mjs";
 import { DiablerieApp } from "../apps/diablerie.mjs";
+import { MeritFlawBrowserApp } from "../apps/merit-flaw-browser.mjs";
 import { disciplineFreeDots, disciplineFreebieCost } from "../apps/creation-costs.mjs";
 import { GENERATION_OPTIONS, ARCHETYPE_OPTIONS, PATH_OPTIONS, GENERATION_TABLE } from "../game-data.mjs";
 
@@ -602,6 +603,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     // pencil icon separately.
     on(".item-name", "click", this._onItemEdit.bind(this));
     on(".item-delete", "click", this._onItemDelete.bind(this));
+    on(".mf-browse", "click", () => new MeritFlawBrowserApp(this.actor).render(true));
     on(".rated-trait-control", "click", this._onRatedTraitControl.bind(this));
     on(".dot", "click", this._onSetDots.bind(this));
     on(".trait-restore", "click", this._onRestoreTrait.bind(this));

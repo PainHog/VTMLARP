@@ -1,0 +1,41 @@
+<div class="vtmlarp merit-flaw-browser flexcol">
+  <div class="mfb-controls">
+    <div class="mfb-search-row">
+      <input type="text" name="mf-search" value="{{query}}" placeholder="Search name or rules text — e.g. “blood”, “extra trait”…" autocomplete="off">
+      {{#if hasQuery}}<a data-action="clearSearch" title="Clear search"><i class="fas fa-times"></i></a>{{/if}}
+    </div>
+    <div class="mfb-filter-row">
+      <label>Type
+        <select name="mf-kind">
+          <option value="" {{#unless kind}}selected{{/unless}}>Merits &amp; Flaws</option>
+          <option value="merit" {{#if (eq kind "merit")}}selected{{/if}}>Merits only</option>
+          <option value="flaw" {{#if (eq kind "flaw")}}selected{{/if}}>Flaws only</option>
+        </select>
+      </label>
+      <label>Category
+        <select name="mf-category">
+          <option value="" {{#unless category}}selected{{/unless}}>All categories</option>
+          {{#each categories as |c|}}
+          <option value="{{c}}" {{#if (eq c ../category)}}selected{{/if}}>{{c}}</option>
+          {{/each}}
+        </select>
+      </label>
+    </div>
+    <p class="hint mfb-count">{{count}} result{{#unless (eq count 1)}}s{{/unless}}{{#if hasQuery}} for “{{query}}”{{/if}}.</p>
+  </div>
+
+  <ul class="mfb-list">
+    {{#each list as |e|}}
+    <li class="mfb-row {{#if e.isMerit}}is-merit{{else}}is-flaw{{/if}}">
+      <span class="mfb-kind-badge" title="{{#if e.isMerit}}Merit{{else}}Flaw{{/if}}">{{#if e.isMerit}}M{{else}}F{{/if}}</span>
+      <span class="mfb-name">{{e.name}}</span>
+      {{#if e.category}}<span class="mfb-cat">{{e.category}}</span>{{/if}}
+      <span class="mfb-value" title="{{#if e.isMerit}}Merit cost{{else}}Flaw bonus{{/if}}">{{e.value}}</span>
+      <a class="mfb-source" data-action="openSource" data-uuid="{{e.uuid}}" title="Read full text"><i class="fas fa-book"></i></a>
+      <button type="button" class="mfb-add" data-action="add" data-uuid="{{e.uuid}}" title="Add to {{../actorName}}"><i class="fas fa-plus"></i> Add</button>
+    </li>
+    {{else}}
+    <li class="hint mfb-empty">No Merits or Flaws match. Try a different word or category.</li>
+    {{/each}}
+  </ul>
+</div>
