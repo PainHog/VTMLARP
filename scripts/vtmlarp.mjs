@@ -388,17 +388,19 @@ Hooks.once("ready", () => {
           const a = game.actors.get(data.actorId);
           if (a) logAction(a, data.summary).catch(err => console.warn("VTMLARP | logActorAction failed:", err));
         }
-      } else if (data.action === "characterCreated") {
-        // The requesting player learns their submission was created and opens it.
-        if (data.requesterId === game.user.id) {
-          ui.notifications?.info(`Your character "${data.name}" was added by the Storyteller.`);
-          game.actors.get(data.actorId)?.sheet?.render(true);
-        }
-      } else if (data.action === "characterCreateFailed") {
-        if (data.requesterId === game.user.id) {
-          ui.notifications?.error(`The Storyteller couldn't add "${data.name}": ${data.reason}. Adjust it and submit again.`);
-        }
       }
+    }
+
+    // The character-create replies are addressed to the requesting PLAYER (a
+    // non-GM), so they must live OUTSIDE the isGM block above - otherwise the
+    // requester never receives their "character was added" hand-back and the new
+    // sheet never auto-opens. Guarded by requesterId so only the actual
+    // requester acts; sockets don't echo to the emitting GM.
+    if (data.action === "characterCreated" && data.requesterId === game.user.id) {
+      ui.notifications?.info(`Your character "${data.name}" was added by the Storyteller.`);
+      game.actors.get(data.actorId)?.sheet?.render(true);
+    } else if (data.action === "characterCreateFailed" && data.requesterId === game.user.id) {
+      ui.notifications?.error(`The Storyteller couldn't add "${data.name}": ${data.reason}. Adjust it and submit again.`);
     }
 
     if (data.action !== "challengeRequest") return;

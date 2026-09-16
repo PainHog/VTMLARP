@@ -3,6 +3,16 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.2 — Player character-create hand-back
+
+- When a player without "Create New Actors" permission submitted a character,
+  the Storyteller-side proxy created it correctly, but the `characterCreated` /
+  `characterCreateFailed` replies were nested inside a GM-only branch — so the
+  player never got the "your character was added" confirmation and the new
+  sheet never auto-opened (on failure they saw nothing at all). Moved both
+  replies out to run on the requesting player's client. The actor was always
+  created and owned by them; this restores the promised hand-back.
+
 ## 1.36.1 — Shops visible to players; diablerie attribute fix
 
 - **Players couldn't see any shop.** Shop Actors were created with no
