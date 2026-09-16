@@ -3,6 +3,16 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.10 — Discipline activation challenge-types
+
+- Fixed misleading challenge types on a few powers (the core Discipline set was
+  otherwise verified fully accurate vs the book): **Fortitude Resilience &
+  Resistance** are reflexive damage-soak Simple Tests, not contested Physical
+  Challenges, so they're now "static"; **Celerity Alacrity / Swiftness /
+  Legerity** just grant actions and "do not draw retests from any Ability"
+  (book p.~4548), so they're now "none" instead of implying a Physical
+  Challenge to activate.
+
 ## 1.36.9 — Book-correct combat: health track, healing, frenzy
 
 - **Health track rebuilt to the Laws of the Night Revised model.** It used the
