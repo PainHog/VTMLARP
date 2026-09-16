@@ -3,6 +3,15 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.44.1 — Mass-target Challenges
+
+- **Challenge multiple targets at once** for area/multi-target Disciplines and
+  abilities: target 2 or more tokens (Foundry targeting) before sending a
+  Physical/Social/Mental Challenge and one independent Challenge fires per
+  target — the same throw tested against each defender, who each answer
+  separately. The Challenge dialog notes this, and the opponent dropdown is
+  ignored while 2+ tokens are targeted.
+
 ## 1.44.0 — Secret-throw protocol & per-token challenges
 
 **Big change to how Challenges resolve — please smoke-test with two logins.**

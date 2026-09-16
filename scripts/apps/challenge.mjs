@@ -217,9 +217,40 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       return;
     }
 
+    const challengerTokenUuid = this.actor.isToken ? (this.actor.token?.uuid ?? "") : "";
+    const opts = {
+      challengeType,
+      gesture: fd.gesture,
+      retest,
+      challengerMod: Number(fd.challengerMod) || 0,
+      isRetestThrow: !!this.prefill?.isRetestThrow,
+      challengerTokenUuid
+    };
+
+    // MASS TARGETING: some Disciplines/abilities strike several targets at once.
+    // When the challenger has 2+ tokens targeted (Foundry targeting), fire one
+    // INDEPENDENT Challenge per target — the same single throw tested against
+    // each defender, who each answer separately (matching how a mass effect
+    // resolves in MET). The dropdown opponent is ignored in this mode.
+    const targets = Array.from(game.user?.targets ?? []);
+    const massTokens = targets.filter(t => t?.actor && t.actor.id !== this.actor.id);
+    if (massTokens.length >= 2) {
+      let fired = 0;
+      for (const t of massTokens) {
+        const outcome = await this.#fireOneChallenge(t.actor, t.document?.uuid ?? "", opts);
+        if (outcome !== null) fired++;
+      }
+      if (fired) ui.notifications?.info(`Mass Challenge sent to ${fired} target${fired === 1 ? "" : "s"} — each answers separately.`);
+      else ui.notifications?.warn("No valid targets could be challenged.");
+      this.close();
+      return;
+    }
+
+    // Single opponent: the dropdown pick, upgraded to the specific targeted
+    // token instance when exactly one matching token is targeted.
     const opponentActor = opponentActorId ? game.actors.get(opponentActorId) : null;
     if (!opponentActor) {
-      ui.notifications?.warn("Pick an opponent before sending the Challenge.");
+      ui.notifications?.warn("Pick an opponent (or target 2+ tokens for a mass Challenge) before sending.");
       return;
     }
 
@@ -233,34 +264,37 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       if (!proceed) return;
     }
 
-    // Resolve the SPECIFIC opponent instance: if the challenger has exactly one
-    // token targeted and it's this opponent, use that token's actor (so one of
-    // several identical unlinked NPC tokens is distinguished from its
-    // duplicates). Otherwise fall back to the base actor from the dropdown.
-    const targets = Array.from(game.user?.targets ?? []);
     const targetedToken = targets.length === 1 && targets[0]?.actor?.id === opponentActorId ? targets[0] : null;
     const opponentInstance = targetedToken?.actor ?? opponentActor;
     const opponentTokenUuid = targetedToken?.document?.uuid ?? "";
-    const challengerTokenUuid = this.actor.isToken ? (this.actor.token?.uuid ?? "") : "";
 
+    const outcome = await this.#fireOneChallenge(opponentInstance, opponentTokenUuid, opts);
+    if (outcome === null) return;  // no one set up to respond; #fireOneChallenge warned
+    if (outcome) ui.notifications?.info(`Challenge sent to ${opponentInstance.name} - they can respond from the chat log.`);
+    else ui.notifications?.warn(`Challenge posted for ${opponentInstance.name}, but no one who can answer for it is online right now. It will wait in the chat log until they log in.`);
+    this.close();
+  }
+
+  /**
+   * Post ONE Challenge against a single opponent instance (seal the gesture,
+   * post the public prompt, broadcast the request, and locally resolve an
+   * auto-answer NPC). Does not close the app. Returns:
+   *   null  - no user is set up to respond for this opponent (warned);
+   *   true  - a responder is currently online;
+   *   false - posted, but nobody who can answer is online right now.
+   */
+  async #fireOneChallenge(opponentInstance, opponentTokenUuid, { challengeType, gesture, retest, challengerMod, isRetestThrow, challengerTokenUuid }) {
     const recipients = respondingUsers(opponentInstance);
     if (!recipients.length) {
       ui.notifications?.warn(`No player or GM is set up to respond for ${opponentInstance.name}.`);
-      return;
+      return null;
     }
-
     const requestId = foundry.utils.randomID();
-    const challengerMod = Number(fd.challengerMod) || 0;
 
     // SEAL the challenger's gesture in a whisper only the challenger + GMs
-    // receive, so it never reaches the opponent's client. The public prompt
-    // card below carries NO gesture - resolution happens on a resolver client
-    // (this challenger, else a GM) that holds the seal.
-    await sealChallengerGesture({ requestId, challengerGesture: fd.gesture, challengerActor: this.actor });
+    // receive, so it never reaches the opponent's client.
+    await sealChallengerGesture({ requestId, challengerGesture: gesture, challengerActor: this.actor });
 
-    // Primary answer surface: a public chat card with gesture buttons the
-    // opponent can use whenever they load chat (no live socket needed). It holds
-    // no secret - just the request metadata and token refs.
     await postGestureChallengePrompt({
       challengerActor: this.actor,
       challengeType,
@@ -269,13 +303,11 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       challengerTokenUuid,
       opponentTokenUuid,
       retest,
-      isRetestThrow: !!this.prefill?.isRetestThrow,
+      isRetestThrow,
       requestId,
       challengerMod
     });
 
-    // Bonus instant-popup + GM dashboard tracking. No challenger gesture on the
-    // wire; carries the resolver id and token refs so the answer can route back.
     game.socket.emit("system.vtmlarp", {
       action: "challengeRequest",
       requestId,
@@ -289,15 +321,14 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       opponentTokenUuid,
       opponentName: opponentInstance.name,
       retest,
-      isRetestThrow: !!this.prefill?.isRetestThrow,
+      isRetestThrow,
       coinToss: false,
       challengerMod
     });
 
-    // Auto-answer NPC: the CHALLENGER's own client holds the gesture, so it can
-    // resolve locally right away (no leak - nothing is sent to an opponent). Do
-    // this when this client is the designated responder OR nobody who could
-    // respond for the NPC is online, so an auto-answer NPC never strands.
+    // Auto-answer NPC: the challenger's own client holds the gesture, so resolve
+    // locally when this client is the designated responder or nobody who could
+    // respond is online (so it never strands).
     const anyResponderOnline = recipients.some(u => u.active);
     if (opponentInstance.type === "npc" && opponentInstance.system?.autoChallenge
         && (recipients[0]?.id === game.user.id || !anyResponderOnline)) {
@@ -305,8 +336,8 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       if (opponentInstance.system?.bombAccess) pool.push("bomb");
       const opponentGesture = pool[Math.floor(Math.random() * pool.length)];
       await resolveAndPostGestureChallenge({
-        challengerActor: this.actor, challengeType, challengerGesture: fd.gesture,
-        opponentActor: opponentInstance, opponentGesture, retest, isRetestThrow: !!this.prefill?.isRetestThrow, challengerMod,
+        challengerActor: this.actor, challengeType, challengerGesture: gesture,
+        opponentActor: opponentInstance, opponentGesture, retest, isRetestThrow, challengerMod,
         requestId
       });
       game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId });
@@ -316,19 +347,7 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
           m.delete?.().catch(() => {});
         }
       }
-      this.close();
-      return;
     }
-
-    // Honest feedback: the prompt card persists in chat and is answerable
-    // whenever a responder loads it, but if NOBODY who can answer for this
-    // opponent is online right now, say so plainly instead of implying it will
-    // be answered promptly.
-    if (anyResponderOnline) {
-      ui.notifications?.info(`Challenge sent to ${opponentActor.name} - they can respond from the chat log.`);
-    } else {
-      ui.notifications?.warn(`Challenge posted for ${opponentActor.name}, but no one who can answer for it is online right now. It will wait in the chat log until they log in.`);
-    }
-    this.close();
+    return anyResponderOnline;
   }
 }
