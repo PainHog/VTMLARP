@@ -281,7 +281,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     }
 
     // Bonus Health Levels (e.g. from basic Fortitude) act as extra "Healthy"
-    // boxes ahead of the fixed 7-level track, per the rulebook.
+    // boxes ahead of the fixed 8-level track, per the rulebook.
     const bonusLevels = (sys.bonusHealth ?? []).map((state, i) => ({
       key: `bonus-${i}`, label: "Healthy", state, bonus: true, bonusIndex: i
     }));
