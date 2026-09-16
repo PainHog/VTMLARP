@@ -3,6 +3,16 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.16 — Item/Vehicle portrait double-picker
+
+- Clicking an Item or Vehicle portrait opened TWO file pickers — a manual one
+  that saves and the inherited core one that doesn't persist under this system's
+  form handling (so picking an image in the wrong dialog silently did nothing).
+  Removed the stray `editImage` action from those portraits so only the working
+  picker fires, matching the actor and shop sheets. A broad integration +
+  compendium-integrity sweep (2,188 docs, 2,670 lore links) otherwise came back
+  clean.
+
 ## 1.36.15 — Shop browser scroll + NPC tab fixes
 
 - **Shop browser** had the same collapsed-flex-height bug the Clan Picker did
