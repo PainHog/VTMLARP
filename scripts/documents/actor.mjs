@@ -356,7 +356,10 @@ function shopStockField() {
     qty: new fields.NumberField({ required: true, integer: true, initial: -1 }),  // -1 = unlimited
     money: new fields.BooleanField({ required: true, initial: true }),
     boon: new fields.BooleanField({ required: true, initial: false }),
-    boonLevel: new fields.StringField({ required: false, blank: true, initial: "minor", choices: ["minor", "major", "blood"] }),
+    // Prestation ladder (trivial/minor/major/life); "blood" is tolerated only so
+    // legacy shop stock loads and re-saves without a validation throw - the
+    // editor UI no longer offers it, and it maps to "life" on purchase.
+    boonLevel: new fields.StringField({ required: false, blank: true, initial: "minor", choices: ["trivial", "minor", "major", "life", "blood"] }),
     barter: new fields.BooleanField({ required: true, initial: false }),
     img: new fields.StringField({ required: false, blank: true, initial: "" }),
     traitBonus: new fields.StringField({ required: false, blank: true, initial: "" })

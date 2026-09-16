@@ -144,6 +144,21 @@ const MIGRATIONS = [
         return { "system.boons": boons.map(b => (b?.type === "blood" ? { ...b, type: "life" } : b)) };
       });
     }
+  },
+  {
+    // Companion to 1.39.0: shop stock stored the boon tier as boonLevel "blood",
+    // which the new Prestation ladder renames to "life". Remap it on shop actors
+    // so the stock editor shows the right tier (separate version so it runs even
+    // on a world already stamped 1.39.0).
+    version: "1.39.1",
+    async migrate({ updateActors }) {
+      await updateActors(actor => {
+        if (actor.type !== "shop") return null;
+        const stock = actor._source?.system?.stock;
+        if (!Array.isArray(stock) || !stock.some(s => s?.boonLevel === "blood")) return null;
+        return { "system.stock": stock.map(s => (s?.boonLevel === "blood" ? { ...s, boonLevel: "life" } : s)) };
+      });
+    }
   }
 ];
 

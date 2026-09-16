@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.39.1 — Shop boon-tier schema fix
+
+- Fixed a regression from 1.39.0: the shop stock schema still only allowed the
+  old boon levels, so selecting the new **Trivial** or **Life** tier on a shop
+  item silently failed to save. The stock field now accepts the full ladder, and
+  a migration remaps any existing shop stock still holding the old "blood" level
+  to "life".
+
 ## 1.39.0 — Social systems: Vinculum, boon tiers, Status
 
 - **"Decay All" no longer erodes Sabbat Vinculum.** Blood Bond entries now carry
