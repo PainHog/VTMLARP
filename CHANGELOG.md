@@ -3,6 +3,17 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.1 — Window scroll & alignment fixes
+
+- **Fixed-size windows now scroll internally** instead of clipping their bottom
+  controls when their content grows: the Mercantile panel (shop list), Session
+  Log (entries), and the Homebrew create/review windows. (Same
+  bounded-flex-height fix already used elsewhere.)
+- The clan picker's sticky Previous/Next footer now has an **opaque background**,
+  so scrolling Discipline text no longer bleeds through it.
+- The Abilities/Backgrounds − / + steppers and the restore icon now sit on **one
+  vertically-centered line** instead of stair-stepping.
+
 ## 1.45.0 — Merits & Flaws browser
 
 - **New "Browse Merits & Flaws" button** on the Merits & Flaws tab opens a

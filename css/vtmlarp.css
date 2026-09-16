@@ -451,6 +451,7 @@
   display: flex;
   flex-direction: column;
 }
+.vtmlarp.flexrow,
 .vtmlarp .flexrow {
   display: flex;
   flex-direction: row;
@@ -1649,7 +1650,7 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 .vtmlarp.clan-picker .clan-card-disc ul { margin: 0; padding-left: 18px; }
 .vtmlarp.clan-picker .clan-card-disc li { margin-bottom: 3px; font-size: 13px; line-height: 1.35; }
 .vtmlarp.clan-picker .clan-alt-note { font-size: 11px; margin: 6px 0; }
-.vtmlarp.clan-picker .clan-card-nav { margin-top: auto; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-top: 1px solid rgba(138,3,3,0.3); position: sticky; bottom: 0; background: inherit; }
+.vtmlarp.clan-picker .clan-card-nav { margin-top: auto; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-top: 1px solid rgba(138,3,3,0.3); position: sticky; bottom: 0; background: var(--vtm-bg-panel, #1c1c1c); }
 .vtmlarp.clan-picker .clan-card-count { font-size: 12px; opacity: 0.7; white-space: nowrap; }
 .vtmlarp.clan-picker .clan-card-label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; font-weight: bold; margin-bottom: 1px; }
 .vtmlarp.clan-picker .clan-card-field { margin: 8px 0; }
@@ -1703,3 +1704,33 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
 /* Generic collapsible sheet sections (headers wrapped at render). */
 .vtmlarp .sheet-section { margin-bottom: 6px; }
 .vtmlarp .sheet-section > .collapsible-header { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; border-bottom: 1px solid rgba(138,3,3,0.3); padding-bottom: 2px; }
+
+/* =========================================================================
+   Bounded-flex-height scroll chains for fixed-size app windows whose template
+   root IS the AppV2 part element. Without these, a growing list (shops, log
+   entries, homebrew submissions) or a tall form overflows the fixed window
+   with no internal scrollbar and its bottom controls become unreachable.
+   (shop-browser / diablerie / clan-picker already have their own rules.)
+   ========================================================================= */
+
+/* Mercantile panel — scroll the shop list. */
+.application.mercantile-panel .window-content { display: flex; flex-direction: column; min-height: 0; }
+.application.mercantile-panel .window-content > [data-application-part] { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.vtmlarp.mercantile-panel { flex: 1 1 auto; min-height: 0; }
+.vtmlarp.mercantile-panel .merc-shop-list { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+
+/* Session log — scroll the entry list. */
+.application.session-log .window-content { display: flex; flex-direction: column; min-height: 0; }
+.application.session-log .window-content > [data-application-part] { flex: 1 1 auto; min-height: 0; }
+.vtmlarp-session-log { display: flex; flex-direction: column; min-height: 0; height: 100%; }
+.vtmlarp-session-log .item-list { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+
+/* Homebrew create + review — scroll the whole form (fields / submission list). */
+.application.homebrew .window-content,
+.application.homebrew-review .window-content { display: flex; flex-direction: column; min-height: 0; }
+.application.homebrew .window-content > [data-application-part],
+.application.homebrew-review .window-content > [data-application-part] { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+
+/* Rated-trait tables (Abilities, Backgrounds): keep the −/dots/+ stepper and the
+   restore icon on one vertically-centered line instead of stair-stepping. */
+.vtmlarp .rated-trait-table td:has(.rating-stepper) { display: flex; align-items: center; gap: 6px; }
