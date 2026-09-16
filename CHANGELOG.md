@@ -3,6 +3,19 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.2 — Challenge protocol hardening
+
+From a review of the secret-throw rewrite (still worth smoke-testing):
+
+- **An answered Challenge no longer strands if the answer's live socket is
+  dropped.** The persisted answer whisper is now consumed the moment it syncs in
+  (via a chat-message hook), not only on a page reload — closing the exact
+  "socket isn't reliable" gap the redesign exists to defeat.
+- **Two Storytellers no longer both get a response popup** for the same NPC and
+  race to answer it — only the first designated responder gets the instant
+  dialog; the others still have the chat prompt card.
+- A static Challenge's card no longer shows a dead "Re-throw Retest" button.
+
 ## 1.45.1 — Window scroll & alignment fixes
 
 - **Fixed-size windows now scroll internally** instead of clipping their bottom

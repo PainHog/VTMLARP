@@ -281,6 +281,20 @@ for (const h of ["createActiveEffect", "deleteActiveEffect", "updateActiveEffect
   });
 }
 
+// Live consumer of a persisted challenge ANSWER whisper. The answer is also
+// emitted over the socket for instant resolution, but a socket push isn't
+// reliable on every setup (the whole reason the prompt card is chat-backed), so
+// if that emit is dropped while the resolver stays online, this fires when the
+// answer whisper syncs in and resolves it. tryResolveChallengeAnswer is
+// idempotent (resolver-election + claim + result-card guards), so it's safe that
+// this runs on every recipient and alongside the socket path.
+Hooks.on("createChatMessage", (msg) => {
+  const f = msg?.flags?.vtmlarp;
+  if (!f?.challengeAnswer || !f.requestId) return;
+  if (isChallengeResolved(f.requestId)) return;
+  tryResolveChallengeAnswer(f);
+});
+
 // Reset each combatant's per-turn Blood-spend counter when the combat turn or
 // round advances, so the per-turn limit warning is measured per turn. GM only
 // (writes shared actor data).
@@ -588,6 +602,12 @@ async function handleChallengeRequest(data) {
     tryResolveChallengeAnswer(answer);
     return;
   }
+
+  // Only the FIRST designated responder gets the instant popup, so two GMs (or
+  // two co-owners) don't each get a dialog and race to answer for the same
+  // opponent (whichever answer reaches the resolver first wins, nondeterministic).
+  // The persistent chat prompt card remains available to the others as fallback.
+  if (data.targetUserIds?.[0] !== game.user.id) return;
 
   new ChallengeResponseApp({
     requestId: data.requestId,

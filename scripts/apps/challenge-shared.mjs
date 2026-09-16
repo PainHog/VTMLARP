@@ -366,9 +366,12 @@ export async function tryResolveChallengeAnswer(answer) {
   game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId });
 }
 
-/** Delete this challenge's prompt card and sealed-throw whisper (best effort;
- * the resolver authored the seal or is a GM). Answer-record whispers are left —
- * they're whispered, harmless, and the result card blocks any re-resolve. */
+/** Delete this challenge's leftover artifacts — the public prompt card, the
+ * sealed-throw whisper, and the answer-record whisper — best effort. The resolver
+ * authored the prompt/seal (if the challenger) or is a GM, so it removes those
+ * directly; the answer whisper was authored by the opponent, so a player-resolver
+ * asks a GM to delete it over the socket (if none is online it lingers harmlessly
+ * as a whisper — the result card already blocks any re-resolve). */
 export async function cleanupChallengeArtifacts(requestId) {
   for (const m of game.messages ?? []) {
     const f = m.getFlag?.("vtmlarp", "requestId");
