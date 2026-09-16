@@ -1,0 +1,259 @@
+{
+  "_id": "595af51f552b4045",
+  "name": "Sister Valentina (Tzimisce)",
+  "type": "character",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "concept": "Sabbat pack priest and flesh-sculptor — a ready-made example Tzimisce fiend.",
+    "clan": "Tzimisce",
+    "bloodline": "",
+    "sect": "Sabbat",
+    "generation": 10,
+    "generationApplied": true,
+    "nature": "Fanatic",
+    "demeanor": "Director",
+    "title": "Pack Priest",
+    "coterie": "",
+    "attributes": {
+      "physical": {
+        "priority": "tertiary",
+        "total": 3,
+        "traits": [
+          {
+            "name": "Tough",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Quick",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Resilient",
+            "spent": false,
+            "negative": false
+          }
+        ]
+      },
+      "social": {
+        "priority": "primary",
+        "total": 7,
+        "traits": [
+          {
+            "name": "Commanding",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Intimidating",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Eloquent",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Dignified",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Magnetic",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Impassioned",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Manipulative",
+            "spent": false,
+            "negative": false
+          }
+        ]
+      },
+      "mental": {
+        "priority": "secondary",
+        "total": 5,
+        "traits": [
+          {
+            "name": "Clever",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Determined",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Insightful",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Observant",
+            "spent": false,
+            "negative": false
+          },
+          {
+            "name": "Patient",
+            "spent": false,
+            "negative": false
+          }
+        ]
+      }
+    },
+    "abilities": [
+      {
+        "name": "Occult",
+        "rating": 4,
+        "max": 4,
+        "notes": "Sabbat rites & Vicissitude lore"
+      },
+      {
+        "name": "Medicine",
+        "rating": 3,
+        "max": 3,
+        "notes": "Body Crafts"
+      },
+      {
+        "name": "Leadership",
+        "rating": 3,
+        "max": 3,
+        "notes": ""
+      },
+      {
+        "name": "Intimidation",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Empathy",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      },
+      {
+        "name": "Awareness",
+        "rating": 2,
+        "max": 2,
+        "notes": ""
+      }
+    ],
+    "willpower": {
+      "value": 6,
+      "max": 6
+    },
+    "blood": {
+      "value": 13,
+      "max": 13,
+      "perTurn": 1
+    },
+    "morality": {
+      "path": "Path of Caine",
+      "rating": 5
+    },
+    "virtues": {
+      "conscienceConviction": {
+        "rating": 4,
+        "temporary": 4
+      },
+      "selfControlInstinct": {
+        "rating": 3,
+        "temporary": 3
+      },
+      "courage": {
+        "rating": 4,
+        "temporary": 4
+      }
+    },
+    "health": {
+      "healthy1": "ok",
+      "healthy2": "ok",
+      "bruised1": "ok",
+      "bruised2": "ok",
+      "bruised3": "ok",
+      "wounded1": "ok",
+      "wounded2": "ok",
+      "incapacitated": "ok"
+    },
+    "bonusHealth": [],
+    "backgrounds": [
+      {
+        "name": "Status",
+        "rating": 2,
+        "max": 2,
+        "notes": "Sabbat (Pack Priest)"
+      },
+      {
+        "name": "Allies",
+        "rating": 2,
+        "max": 2,
+        "notes": "Pack mates"
+      },
+      {
+        "name": "Resources",
+        "rating": 1,
+        "max": 1,
+        "notes": ""
+      }
+    ],
+    "biography": "<p>A devout Tzimisce priest of a militant Sabbat pack, Valentina leads the Vaulderie and sculpts her packmates' flesh into instruments of war. She walks the Path of Caine with cold conviction.</p>",
+    "notes": ""
+  },
+  "items": [
+    {
+      "_id": "7c75f6fc66324ebf",
+      "name": "Vicissitude",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "<p>Rating tracker for Vicissitude.</p>",
+        "source": "Laws of the Night Revised",
+        "clanAffinity": "Tzimisce",
+        "rating": 3,
+        "retestAbility": ""
+      }
+    },
+    {
+      "_id": "49545f7583f848d8",
+      "name": "Auspex",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "<p>Rating tracker for Auspex.</p>",
+        "source": "Laws of the Night Revised",
+        "clanAffinity": "Tzimisce",
+        "rating": 2,
+        "retestAbility": ""
+      }
+    },
+    {
+      "_id": "590f848e0b1a4ae9",
+      "name": "Animalism",
+      "type": "discipline",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": "<p>Rating tracker for Animalism.</p>",
+        "source": "Laws of the Night Revised",
+        "clanAffinity": "Tzimisce",
+        "rating": 1,
+        "retestAbility": ""
+      }
+    }
+  ],
+  "effects": [],
+  "flags": {},
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

@@ -431,7 +431,10 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       system: {
         clan: val("clan"), sect: val("sect"), nature: val("nature"), demeanor: val("demeanor"),
         generation: gen, generationApplied: true,
-        morality: { path: val("path") || "Path of Humanity", rating: 7 },
+        // Starting morality rating is a creation choice: Path of Humanity
+        // usually begins at 7, but a Path of Enlightenment typically starts
+        // lower, so read the builder's input (default 7) rather than forcing 7.
+        morality: { path: val("path") || "Path of Humanity", rating: clamp(num("moralityRating") || 7, 0, 10) },
         attributes: attrData, abilities: ab, backgrounds,
         virtues: {
           conscienceConviction: { rating: vnum("conscience"), temporary: vnum("conscience") },

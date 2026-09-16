@@ -163,6 +163,56 @@ export const CLAN_GUIDE = {
     nickname: "The Deathless",
     blurb: "A bloodline of plague-priestess warriors devoted to a dark mother of death — guardians of the Cappadocians.",
     tags: ["warrior", "priestess", "priest", "devout", "death", "plague", "disease", "protector", "bodyguard", "guardian", "defender", "cult", "sisterhood", "dark mother"]
+  },
+  "Assamite Antitribu": {
+    nickname: "Sabbat Assamites",
+    blurb: "Assamite warriors who broke to the Sabbat — fanatic holy killers who hunt for the sect rather than the clan's distant elders.",
+    tags: ["sabbat", "antitribu", "assassin", "killer", "warrior", "hunter", "zealot", "fanatic", "convert", "crusader", "blade", "poison", "diablerie"]
+  },
+  "Brujah Antitribu": {
+    nickname: "Sabbat Brujah",
+    blurb: "True believers of the Sabbat who fight with the old Brujah fire — passionate, loyal pack soldiers and rabble-rousers.",
+    tags: ["sabbat", "antitribu", "rebel", "fighter", "brawler", "zealot", "fanatic", "soldier", "loyalist", "firebrand", "passionate", "pack", "warrior"]
+  },
+  "Gangrel Antitribu": {
+    nickname: "Sabbat Gangrel",
+    blurb: "Feral Sabbat shapeshifters — City and Country strains who bring the Beast to bear for the sword-arm of the sect.",
+    tags: ["sabbat", "antitribu", "feral", "shapeshifter", "beast", "savage", "wild", "pack", "scout", "predator", "warrior", "primal"]
+  },
+  "Malkavian Antitribu": {
+    nickname: "Sabbat Malkavians",
+    blurb: "Deliberately, weaponized-mad Sabbat seers who spread their derangements like a plague through the sect's enemies.",
+    tags: ["sabbat", "antitribu", "madness", "insane", "seer", "prophet", "chaos", "trickster", "dementation", "unhinged", "visionary", "plague"]
+  },
+  "Nosferatu Antitribu": {
+    nickname: "Sabbat Nosferatu",
+    blurb: "Monstrous Sabbat spies and infiltrators — hideous, unseen, and utterly devoted to the sect's war effort.",
+    tags: ["sabbat", "antitribu", "spy", "infiltrator", "stealth", "hidden", "monster", "hideous", "scout", "information", "sewer", "sneaky"]
+  },
+  "Ravnos Antitribu": {
+    nickname: "Sabbat Ravnos",
+    blurb: "Sabbat tricksters and deceivers who weave illusions for the pack — wanderers who found a home in the sword of Caine.",
+    tags: ["sabbat", "antitribu", "trickster", "illusion", "deceiver", "con artist", "wanderer", "chimerstry", "thief", "charlatan", "nomad"]
+  },
+  "Salubri Antitribu": {
+    nickname: "The Warriors",
+    blurb: "Militant Salubri who command Valeren, the martial third-eye path — righteous Sabbat crusaders and defenders of the pack.",
+    tags: ["sabbat", "antitribu", "warrior", "crusader", "healer", "righteous", "protector", "guardian", "valeren", "third eye", "avenger", "defender"]
+  },
+  "Serpents of the Light": {
+    nickname: "Sabbat Setites",
+    blurb: "The Sabbat's own Followers of Set — voodoo-steeped corrupters and tempters who serpent-charm the sect's foes.",
+    tags: ["sabbat", "antitribu", "tempter", "corrupter", "cultist", "voodoo", "serpent", "seducer", "manipulator", "occultist", "priest", "schemer"]
+  },
+  "Toreador Antitribu": {
+    nickname: "Sabbat Toreador",
+    blurb: "Decadent Sabbat artists who make cruelty their masterpiece — charming, beautiful, and merciless.",
+    tags: ["sabbat", "antitribu", "artist", "decadent", "beautiful", "charming", "cruel", "seducer", "sadist", "aesthete", "performer", "social"]
+  },
+  "Ventrue Antitribu": {
+    nickname: "Sabbat Ventrue",
+    blurb: "Iron-willed Sabbat commanders who lead packs and templars — born rulers who turned their command to the sword of Caine.",
+    tags: ["sabbat", "antitribu", "leader", "commander", "ruler", "noble", "templar", "strategist", "authority", "dominate", "general", "loyalist"]
   }
 };
 

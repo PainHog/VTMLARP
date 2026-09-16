@@ -3,6 +3,24 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.42.0 — Sabbat content & builder improvements
+
+- **Starting Morality/Path rating is now a Character Builder choice.** A new
+  "Morality start" field (default 7) means a Sabbat character on a Path of
+  Enlightenment no longer has to be built at 7 and corrected by hand — set the
+  Path-appropriate starting rating at creation.
+- **The ten Sabbat antitribu are now selectable clans** (Assamite, Brujah,
+  Gangrel, Malkavian, Nosferatu, Ravnos, and Salubri Antitribu, Serpents of
+  the Light, Toreador and Ventrue Antitribu), each with its correct in-clan
+  Disciplines, clan-guide search entry, and lore button wired to its journal —
+  so their built lore is reachable from the sheet and builder instead of only
+  through base-clan + Sabbat sect.
+- **Ignoblis Ritae** are now written up in the Sabbat sect journal (the pack's
+  minor rites and how Storytellers can reward them), alongside the existing
+  Auctoritas Ritae / Vaulderie / Monomacy coverage.
+- **Added a ready-to-play Sabbat pregen** (Sister Valentina, a Tzimisce pack
+  priest on the Path of Caine) so a player can jump in without building.
+
 ## 1.41.1 — Deep function-audit fixes
 
 From a line-by-line audit of the data models, sheets, dialogs, and core plumbing:

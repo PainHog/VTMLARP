@@ -81,7 +81,11 @@ const CLAN_OPTIONS = [
   // Other canonical bloodlines (categorization only for now - no dedicated
   // Discipline/mechanics content built yet)
   "Gargoyle", "Daughters of Cacophony", "True Brujah", "Nagaraja", "Samedi", "Lamia",
-  "Caitiff"
+  "Caitiff",
+  // Sabbat antitribu with dedicated lore in packs/antitribu
+  "Assamite Antitribu", "Brujah Antitribu", "Gangrel Antitribu", "Malkavian Antitribu",
+  "Nosferatu Antitribu", "Ravnos Antitribu", "Salubri Antitribu", "Serpents of the Light",
+  "Toreador Antitribu", "Ventrue Antitribu"
 ];
 
 const SECT_OPTIONS = [
@@ -129,7 +133,17 @@ const CLAN_LORE_LOOKUP = {
   "Nagaraja": { pack: "clans", name: "Nagaraja" },
   "Samedi": { pack: "clans", name: "Samedi" },
   "Lamia": { pack: "clans", name: "Lamia (Dark Ages)" },
-  "Caitiff": { pack: "clans", name: "Caitiff" }
+  "Caitiff": { pack: "clans", name: "Caitiff" },
+  "Assamite Antitribu": { pack: "antitribu", name: "Assamite Antitribu" },
+  "Brujah Antitribu": { pack: "antitribu", name: "Brujah Antitribu" },
+  "Gangrel Antitribu": { pack: "antitribu", name: "Gangrel Antitribu" },
+  "Malkavian Antitribu": { pack: "antitribu", name: "Malkavian Antitribu" },
+  "Nosferatu Antitribu": { pack: "antitribu", name: "Nosferatu Antitribu" },
+  "Ravnos Antitribu": { pack: "antitribu", name: "Ravnos Antitribu" },
+  "Salubri Antitribu": { pack: "antitribu", name: "Salubri Antitribu" },
+  "Serpents of the Light": { pack: "antitribu", name: "Serpents of the Light" },
+  "Toreador Antitribu": { pack: "antitribu", name: "Toreador Antitribu" },
+  "Ventrue Antitribu": { pack: "antitribu", name: "Ventrue Antitribu" }
 };
 
 // Path/archetype/generation reference data lives in scripts/game-data.mjs (one

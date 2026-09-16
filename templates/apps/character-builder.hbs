@@ -18,6 +18,7 @@
       <label>Clan <span class="sel-info-wrap"><select name="clan"><option value="">—</option>{{#each clans as |c|}}<option value="{{c}}" {{#if (eq c ../initialClan)}}selected{{/if}}>{{c}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="clan" data-for="clan" title="View this clan's compendium lore"></i></span></label>
       <label>Sect <span class="sel-info-wrap"><select name="sect"><option value="">—</option>{{#each sects as |s|}}<option value="{{s}}">{{s}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="sect" data-for="sect" title="View this sect's compendium lore"></i></span></label>
       <label>Path <span class="sel-info-wrap"><select name="path">{{#each paths as |p|}}<option value="{{p}}">{{p}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="path" data-for="path" title="View this path's compendium lore"></i></span></label>
+      <label title="Starting Humanity/Path rating. Path of Humanity characters usually begin at 7; a Path of Enlightenment often starts lower — set per your Storyteller.">Morality start <input type="number" name="moralityRating" value="7" min="0" max="10" style="width:3.5em;"></label>
     </div>
     <div class="builder-toprow flexrow">
       <label>Nature <select name="nature"><option value="">—</option>{{#each archetypes as |a|}}<option value="{{a}}">{{a}}</option>{{/each}}</select></label>
