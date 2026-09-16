@@ -3,6 +3,13 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.46.3 — "Max Traits" line under the builder Attributes
+
+- A **"Max Traits: N per category at this Generation"** line now sits directly
+  underneath the Physical/Social/Mental boxes, with N pulled live from the set
+  Generation. An info button next to it opens a popup listing the Trait (and
+  Ability) maximums for every Generation.
+
 ## 1.46.2 — Character Builder shows the generation Trait cap
 
 - The Attributes step now shows the **per-category Trait maximum for the chosen

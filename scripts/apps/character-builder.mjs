@@ -46,7 +46,8 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
       next: CharacterBuilderApp.#onNext,
       back: CharacterBuilderApp.#onBack,
       createCharacter: CharacterBuilderApp.#onCreate,
-      randomCharacter: CharacterBuilderApp.#onRandom
+      randomCharacter: CharacterBuilderApp.#onRandom,
+      genMaxTable: CharacterBuilderApp.#onGenMaxTable
     }
   };
 
@@ -246,6 +247,21 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
   }
 
   static #onRemoveRow(event, target) { target.closest(".builder-row")?.remove(); this.#recompute(); }
+
+  /** Popup listing the per-category Trait maximum for every Generation. */
+  static #onGenMaxTable() {
+    const rows = Object.entries(GENERATION_TABLE)
+      .sort((a, b) => Number(b[0]) - Number(a[0]))
+      .map(([g, info]) => `<tr><td style="text-align:center;">${g}th</td><td style="text-align:center;">${info.maxTraits}</td><td style="text-align:center;">${info.maxAbilities}</td></tr>`)
+      .join("");
+    foundry.applications.api.DialogV2.prompt({
+      window: { title: "Trait Maximums by Generation" },
+      content: `<table style="width:100%;border-collapse:collapse;">`
+        + `<thead><tr><th>Generation</th><th>Max Traits / category</th><th>Max Ability rating</th></tr></thead>`
+        + `<tbody>${rows}</tbody></table>`,
+      ok: { label: "Close" }
+    }).catch(() => {});
+  }
 
   /** Click an entry in a pick-list to add a pre-filled row for it. */
   static #onPickAdd(event, target) {
