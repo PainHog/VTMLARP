@@ -12,6 +12,7 @@
 
   <label>Your Gesture
     <select name="gesture">
+      <option value="">— Choose a Gesture —</option>
       {{#each gestures as |g|}}
       <option value="{{g}}">{{vtmCapitalize g}}</option>
       {{/each}}

@@ -3,6 +3,23 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.43.2 — Challenge live-play & visibility fixes
+
+- **The Challenge response popup no longer silently throws Rock.** Its gesture
+  dropdown now defaults to a blank "— Choose a Gesture —" and requires a
+  deliberate pick, matching the chat-card path — clicking Throw without picking
+  can't commit an unintended Rock.
+- **Auto-answer NPCs resolve even when the Storyteller is offline.** If a player
+  challenges an auto-answering NPC and no one who could respond for it is
+  online, the challenger's own client resolves it (instead of the throw waiting
+  forever), and the player is told honestly when a challenge is posted with no
+  one online to answer it.
+- **The "Storyteller Only" rules compendium is now hidden from players** (it was
+  readable by anyone from the Compendium sidebar).
+- Clicking "clear affliction" on someone else's sheet (as a non-owner) now says
+  so instead of silently doing nothing.
+- Bootstrap: the socket dispatcher ignores malformed payloads defensively.
+
 ## 1.43.1 — Harden the remaining Storyteller-relayed flows
 
 These three actions touch things a player doesn't own (a world compendium,

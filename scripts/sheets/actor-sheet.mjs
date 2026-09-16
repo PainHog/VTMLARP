@@ -781,6 +781,15 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   /** Remove a Storyteller-applied affliction (Active Effect) from this actor. */
   async _onRemoveAffliction(event) {
     event.preventDefault();
+    // This handler is deliberately bound above the isEditable guard so an OWNER
+    // can clear a Storyteller-applied affliction on their own sheet. But a
+    // non-owner viewing the sheet with Observer rights also gets the button, and
+    // their delete would be silently rejected by core with no feedback. Refuse
+    // with an explicit message for non-owners instead.
+    if (!this.actor.isOwner) {
+      ui.notifications?.warn("Only the owner can clear an affliction on this sheet.");
+      return;
+    }
     const id = event.currentTarget.dataset.effectId;
     const effect = this.actor.effects.get(id);
     if (effect) await effect.delete();

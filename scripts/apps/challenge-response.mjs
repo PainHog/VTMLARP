@@ -58,6 +58,19 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
 
   async _onSubmit(event) {
     event.preventDefault();
+    const form = event.currentTarget.closest("form");
+    const fd = new foundry.applications.ux.FormDataExtended(form).object;
+
+    // Require a deliberate gesture pick before doing anything (the select now
+    // defaults to a blank "— Choose a Gesture —"), so clicking Throw without
+    // touching the dropdown can't silently commit a Rock. A retest BLOCK needs
+    // no gesture. Validate BEFORE claiming so a mis-click doesn't lock the card.
+    const isBlock = this.request.retest && fd.block;
+    if (!isBlock && !fd.gesture) {
+      ui.notifications?.warn("Choose a Gesture first.");
+      return;
+    }
+
     // Claim this Challenge on this client so the chat-card answer surface (also
     // open on this same responder's client) can't resolve it a second time. If
     // the card already claimed it, this popup is stale - just close it.
@@ -66,8 +79,6 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
       this.close();
       return;
     }
-    const form = event.currentTarget.closest("form");
-    const fd = new foundry.applications.ux.FormDataExtended(form).object;
 
     // Retests can be blocked by an opponent who can match its conditions
     // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw

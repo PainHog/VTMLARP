@@ -284,8 +284,14 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     // client is itself the designated responder for an auto-answering NPC
     // (the common single-GM case where the GM is the challenger), the socket
     // handler's NPC block will never run here - resolve it locally instead.
+    // Also resolve locally when the NPC auto-answers but NObody who could
+    // respond for it is currently online (e.g. a player challenges an
+    // auto-answer NPC while the ST is offline) - otherwise the throw would sit
+    // in chat forever waiting on someone who can't act. The challenger's client
+    // can post the result (log writes fall back to a GM whisper).
+    const anyResponderOnline = recipients.some(u => u.active);
     if (opponentActor.type === "npc" && opponentActor.system?.autoChallenge
-        && recipients[0]?.id === game.user.id) {
+        && (recipients[0]?.id === game.user.id || !anyResponderOnline)) {
       const pool = ["rock", "paper", "scissors"];
       if (opponentActor.system?.bombAccess) pool.push("bomb");
       const opponentGesture = pool[Math.floor(Math.random() * pool.length)];
@@ -301,7 +307,15 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       return;
     }
 
-    ui.notifications?.info(`Challenge sent to ${opponentActor.name} - they can respond from the chat log.`);
+    // Honest feedback: the prompt card persists in chat and is answerable
+    // whenever a responder loads it, but if NOBODY who can answer for this
+    // opponent is online right now, say so plainly instead of implying it will
+    // be answered promptly.
+    if (anyResponderOnline) {
+      ui.notifications?.info(`Challenge sent to ${opponentActor.name} - they can respond from the chat log.`);
+    } else {
+      ui.notifications?.warn(`Challenge posted for ${opponentActor.name}, but no one who can answer for it is online right now. It will wait in the chat log until they log in.`);
+    }
     this.close();
   }
 }

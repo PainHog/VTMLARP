@@ -335,6 +335,9 @@ Hooks.once("ready", () => {
   // this event; every connected client receives it and only the intended
   // recipient(s) actually pop the response dialog.
   game.socket.on("system.vtmlarp", data => {
+    // Cheap guard against a malformed/empty payload so a stray emit can't throw
+    // out of the dispatcher and kill later handlers.
+    if (!data?.action) return;
     // Delete a Challenge prompt message by its requestId - runs on every
     // client, but only the message's author (the challenger) or a GM actually
     // has permission, so exactly the right client removes it. Used by the NPC
