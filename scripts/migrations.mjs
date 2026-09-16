@@ -93,6 +93,22 @@ const MIGRATIONS = [
         return actor.prototypeToken?.actorLink ? null : { "prototypeToken.actorLink": true };
       });
     }
+  },
+  {
+    // Shops created before 1.36.1 have default ownership NONE, which hides them
+    // from every non-GM client — players open the shop browser and see nothing.
+    // Grant OBSERVER by default so players can browse and buy (purchases stay
+    // GM-fulfilled). Only touch shops still at NONE, so a GM's deliberate
+    // per-shop restriction isn't clobbered.
+    version: "1.36.1",
+    async migrate({ updateActors }) {
+      const OBSERVER = CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER;
+      await updateActors(actor => {
+        if (actor.type !== "shop") return null;
+        const cur = actor.ownership?.default ?? CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE;
+        return cur >= OBSERVER ? null : { "ownership.default": OBSERVER };
+      });
+    }
   }
 ];
 

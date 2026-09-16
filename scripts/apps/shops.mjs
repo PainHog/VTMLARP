@@ -64,6 +64,12 @@ export async function migrateSettingShopsToActors() {
   const toCreate = legacy.map(s => ({
     name: s.name || "Shop",
     type: "shop",
+    // Players must be able to SEE a shop to browse/buy from it: an actor with
+    // default ownership NONE is hidden from non-GM clients entirely, so the
+    // shop browser would be empty for players. OBSERVER lets everyone read the
+    // stock; purchases are still GM-fulfilled over the socket, so players can't
+    // edit anything.
+    ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER },
     system: {
       keeper: s.keeper || "",
       open: !!s.open,
@@ -294,7 +300,9 @@ export class MercantilePanelApp extends HandlebarsApplicationMixin(ApplicationV2
   }
 
   static async #onAddShop() {
-    const [shop] = await Actor.createDocuments([{ name: "New Shop", type: "shop" }]);
+    // OBSERVER by default so players can see and browse it (see the note in
+    // migrateSettingShopsToActors); a GM can still restrict a specific shop.
+    const [shop] = await Actor.createDocuments([{ name: "New Shop", type: "shop", ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER } }]);
     shop?.sheet?.render(true);
     this.render();
   }

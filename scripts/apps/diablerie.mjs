@@ -158,7 +158,11 @@ export class DiablerieApp extends HandlebarsApplicationMixin(ApplicationV2) {
     if (!res) return;
     this.#attributeUsed = true;
     const cap = (await import("../game-data.mjs")).GENERATION_TABLE[this.actor.system.generation]?.maxTraits;
-    const cur = Number(this.actor.system.attributes[pool]?.total) || 0;
+    // Read the STORED base, not the derived total: if the diablerist has a
+    // temporary attribute buff active (Blood, Celerity, a Storyteller effect),
+    // the derived total includes it, and writing base+1 as derived+1 would bake
+    // the buff permanently into the attribute once the effect clears.
+    const cur = Number(this.actor._source.system.attributes[pool]?.total) || 0;
     if (res.win) {
       if (cap && cur >= cap) {
         await this.#post(`<p><strong>${this.actor.name}</strong> wins the Trait, but is already at their generation cap (${cap}) for ${pool}.</p>`);

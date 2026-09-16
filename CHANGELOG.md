@@ -3,6 +3,20 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.1 — Shops visible to players; diablerie attribute fix
+
+- **Players couldn't see any shop.** Shop Actors were created with no
+  ownership, so they defaulted to NONE — which hides an actor from every non-GM
+  client, leaving the shop browser empty for players (nobody could buy
+  anything). New shops are now created with default OBSERVER, and a migration
+  (1.36.1) grants OBSERVER to existing shops still at NONE (a GM's deliberate
+  per-shop restriction is left alone). Purchases remain GM-fulfilled, so
+  read-only visibility is all players need.
+- **Diablerie's Attribute throw** read the derived attribute total, so a
+  diablerist with an active attribute buff (Blood/Celerity/Storyteller effect)
+  would bake that buff permanently into the base on a win. It now reads the
+  stored base.
+
 ## 1.36.0 — Multiplayer challenge/rite fixes (critical audit)
 
 - **BLOCKER: player-vs-player Challenges could resolve twice and threw a
