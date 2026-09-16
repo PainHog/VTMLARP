@@ -1759,3 +1759,62 @@ button.vtmlarp-build-character { flex: 0 0 auto; }
    controls off the bottom of the fixed-height window. */
 .vtmlarp.sheet.shop-sheet .shop-body,
 form.shop-sheet .shop-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+
+/* ============================ Visual audit pass 3 ============================ */
+
+/* Checkboxes inside a stacking dialog label must stay inline, not become a
+   full-width block (that rule is meant for text/number/select fields only). */
+.vtmlarp-frenzy label input[type="checkbox"],
+.vtmlarp-challenge label input[type="checkbox"],
+.vtmlarp-vaulderie label input[type="checkbox"] { display: inline; width: auto; margin: 0 4px 0 0 !important; }
+
+/* Disabled controls (locked shop, non-owner sheet) must LOOK disabled — the
+   global white/black !important field styling otherwise hides the browser cue. */
+.application input:disabled,
+.application select:disabled,
+.application textarea:disabled { background: #e2ded6 !important; color: #666 !important; cursor: not-allowed; opacity: 0.8; }
+
+/* Item/power/background list rows: let the name shrink and the row wrap so
+   trailing controls (edit/delete/toggle) can't push off the right edge on a
+   narrowed sheet window (the old wrap only fired below a 700px VIEWPORT). */
+.vtmlarp .item-list .item { flex-wrap: wrap; }
+.vtmlarp .item-list .item-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+/* Keyboard focus ring for the many button/anchor controls that had none. */
+.vtmlarp button:focus-visible,
+.vtmlarp a:focus-visible,
+.vtmlarp .dot:focus-visible,
+.vtmlarp .sheet-tabs .item:focus-visible { outline: 2px solid var(--vtm-red-bright, #b8121a); outline-offset: 1px; }
+
+/* Themed thin scrollbars for the internal scroll regions (dark theme). */
+.vtmlarp *::-webkit-scrollbar,
+.vtmlarp-session-log *::-webkit-scrollbar,
+.application [data-application-part]::-webkit-scrollbar { width: 10px; height: 10px; }
+.vtmlarp *::-webkit-scrollbar-track,
+.vtmlarp-session-log *::-webkit-scrollbar-track { background: var(--vtm-bg-inset, #0a0a0a); }
+.vtmlarp *::-webkit-scrollbar-thumb,
+.vtmlarp-session-log *::-webkit-scrollbar-thumb { background: var(--vtm-red-dim, #4a0808); border-radius: 5px; border: 2px solid var(--vtm-bg-inset, #0a0a0a); }
+.vtmlarp *::-webkit-scrollbar-thumb:hover { background: var(--vtm-red, #8a0303); }
+
+/* Item-sheet auto-effect / body-mod trait rows: distribute the Phys/Soc/Ment
+   (and Willpower/Health) labels evenly instead of bunching at the left. */
+.vtmlarp-item-sheet .flexrow label { flex: 1; }
+
+/* Storyteller Panel: scroll its body when the resizable window is dragged
+   shorter, instead of clipping the lower sections/Apply buttons. */
+.application.st-panel .window-content { display: flex; flex-direction: column; min-height: 0; }
+.application.st-panel .window-content > [data-application-part] { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+
+/* Keep a select and its trailing lore book-icon on one line (the new default
+   .flexrow wrap could otherwise drop the icon below the dropdown). */
+.vtmlarp .dropdown-with-lore { flex-wrap: nowrap; }
+
+/* The retest "cancel" button may wrap in the narrow chat sidebar rather than
+   overflowing the card / crushing its adjacent input. */
+.vtmlarp .vtm-retest-block-submit { white-space: normal; }
+
+/* Shop stock table: fixed layout so ticking a Boon (which reveals an inline
+   level select) can't widen a column and push the 8-column row past the window. */
+.vtmlarp .merc-stock { table-layout: fixed; width: 100%; }
+.vtmlarp .merc-stock th:first-child, .vtmlarp .merc-stock td:first-child { width: 30%; }
+.vtmlarp .merc-stock input[type="text"], .vtmlarp .merc-stock select { min-width: 0; }

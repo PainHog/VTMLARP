@@ -83,7 +83,7 @@
     <template class="row-background"><div class="builder-row flexrow">
       <input type="text" name="name" placeholder="Background" class="wide">
       <input type="number" name="rating" value="1" min="0" max="5" class="tiny">
-      <a data-action="removeRow"><i class="fas fa-times"></i></a>
+      <a data-action="removeRow" title="Remove"><i class="fas fa-times"></i></a>
     </div></template>
   </div>
 
@@ -118,7 +118,7 @@
       <select name="type"><option value="merit">Merit</option><option value="flaw">Flaw</option></select>
       <input type="text" name="name" placeholder="Name" class="wide">
       <input type="number" name="cost" value="1" min="0" max="7" class="tiny">
-      <a data-action="removeRow"><i class="fas fa-times"></i></a>
+      <a data-action="removeRow" title="Remove"><i class="fas fa-times"></i></a>
     </div></template>
     <label>Derangement (+2 Freebies)
       <span class="sel-info-wrap"><select name="derangement"><option value="">— none —</option>{{#each derangements as |d|}}<option value="{{d}}">{{d}}</option>{{/each}}</select><i class="fas fa-circle-info sel-info" data-action="openInfoSel" data-kind="derangement" data-for="derangement" title="View this Derangement's compendium entry"></i></span>

@@ -3,6 +3,20 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.45.4 — Visual polish (pass 3)
+
+- **Checkboxes in the Frenzy / Challenge-Response / Vaulderie dialogs** no longer
+  render as a big empty full-width box detached from their label text.
+- **Disabled fields now look disabled** (greyed, not-allowed cursor) on a locked
+  shop or a non-owner's sheet, instead of looking editable.
+- **Discipline/Power/Item rows wrap and shrink** so trailing controls
+  (edit/delete/toggle) can't push off the edge when a sheet window is narrowed.
+- **Keyboard focus rings** on buttons/links/dots/steppers/tabs; **themed dark
+  scrollbars** for the internal scroll regions.
+- **Storyteller Panel scrolls** when dragged shorter; the shop stock table uses a
+  fixed layout so ticking Boon can't overflow the row; item-sheet auto-effect
+  labels spread evenly; and several icon buttons gained tooltips.
+
 ## 1.45.3 — Visual polish (pass 2)
 
 - **Shop sheet now scrolls** — a shop with a long stock list no longer clips its

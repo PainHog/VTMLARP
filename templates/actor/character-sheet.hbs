@@ -526,7 +526,7 @@
             </span>
             {{#if (gt bg.max bg.rating)}}<a class="trait-restore" data-path="backgrounds" data-index="{{i}}" title="Restore to maximum ({{bg.max}})"><i class="fas fa-rotate-left"></i></a>{{/if}}
           </td>
-          <td><a class="rated-trait-control" data-action="remove" data-path="backgrounds" data-index="{{i}}"><i class="fas fa-times"></i></a></td>
+          <td><a class="rated-trait-control" data-action="remove" title="Remove" data-path="backgrounds" data-index="{{i}}"><i class="fas fa-times"></i></a></td>
         </tr>
         {{/each}}
       </table>
@@ -604,18 +604,18 @@
     </div>
 
     <div class="tab {{#if tabs.social.active}}active{{/if}}" data-group="primary" data-tab="social">
-      <h3>Derangements <a class="simple-list-add" data-path="derangements"><i class="fas fa-plus"></i></a></h3>
+      <h3>Derangements <a class="simple-list-add" title="Add" data-path="derangements"><i class="fas fa-plus"></i></a></h3>
       <div class="simple-list">
         {{#each system.derangements as |d i|}}
         <div class="simple-list-row">
           <input type="text" name="system.derangements.{{i}}.name" value="{{d.name}}" placeholder="Derangement name" class="tiny">
           <input type="text" name="system.derangements.{{i}}.description" value="{{d.description}}" placeholder="Trigger/description" class="wide">
-          <a class="simple-list-remove" data-path="derangements" data-index="{{i}}"><i class="fas fa-times"></i></a>
+          <a class="simple-list-remove" title="Remove" data-path="derangements" data-index="{{i}}"><i class="fas fa-times"></i></a>
         </div>
         {{/each}}
       </div>
 
-      <h3>Blood Bonds <span class="hint">1-3 = ordinary Blood Bond (3 = Full Bond); Sabbat Vinculum uses the full 1-10 scale, resolved via the Vaulderie tool</span> <a class="simple-list-add" data-path="bloodBonds"><i class="fas fa-plus"></i></a></h3>
+      <h3>Blood Bonds <span class="hint">1-3 = ordinary Blood Bond (3 = Full Bond); Sabbat Vinculum uses the full 1-10 scale, resolved via the Vaulderie tool</span> <a class="simple-list-add" title="Add" data-path="bloodBonds"><i class="fas fa-plus"></i></a></h3>
       <div class="simple-list">
         {{#each system.bloodBonds as |b i|}}
         <div class="simple-list-row">
@@ -626,12 +626,12 @@
             <option value="vinculum" {{#if (eq b.kind "vinculum")}}selected{{/if}}>Vinculum</option>
           </select>
           <input type="text" name="system.bloodBonds.{{i}}.notes" value="{{b.notes}}" placeholder="Notes" class="wide">
-          <a class="simple-list-remove" data-path="bloodBonds" data-index="{{i}}"><i class="fas fa-times"></i></a>
+          <a class="simple-list-remove" title="Remove" data-path="bloodBonds" data-index="{{i}}"><i class="fas fa-times"></i></a>
         </div>
         {{/each}}
       </div>
 
-      <h3>Boons <a class="simple-list-add" data-path="boons"><i class="fas fa-plus"></i></a></h3>
+      <h3>Boons <a class="simple-list-add" title="Add" data-path="boons"><i class="fas fa-plus"></i></a></h3>
       <div class="simple-list">
         {{#each system.boons as |bo i|}}
         <div class="simple-list-row">
@@ -647,17 +647,17 @@
             <option value="life" {{#if (eq bo.type "life")}}selected{{/if}}>Life</option>
           </select>
           <input type="text" name="system.boons.{{i}}.notes" value="{{bo.notes}}" placeholder="Notes" class="wide">
-          <a class="simple-list-remove" data-path="boons" data-index="{{i}}"><i class="fas fa-times"></i></a>
+          <a class="simple-list-remove" title="Remove" data-path="boons" data-index="{{i}}"><i class="fas fa-times"></i></a>
         </div>
         {{/each}}
       </div>
 
-      <h3>Status Traits <span class="hint">Sect standing (Acknowledged, Well-Known, …) — gained and lost in play, not bought. {{system.statusTraits.length}} total.</span> <a class="simple-list-add" data-path="statusTraits"><i class="fas fa-plus"></i></a></h3>
+      <h3>Status Traits <span class="hint">Sect standing (Acknowledged, Well-Known, …) — gained and lost in play, not bought. {{system.statusTraits.length}} total.</span> <a class="simple-list-add" title="Add" data-path="statusTraits"><i class="fas fa-plus"></i></a></h3>
       <div class="simple-list">
         {{#each system.statusTraits as |s i|}}
         <div class="simple-list-row">
           <input type="text" name="system.statusTraits.{{i}}.name" value="{{s.name}}" placeholder="e.g. Acknowledged, Respected, Feared" class="wide">
-          <a class="simple-list-remove" data-path="statusTraits" data-index="{{i}}"><i class="fas fa-times"></i></a>
+          <a class="simple-list-remove" title="Remove" data-path="statusTraits" data-index="{{i}}"><i class="fas fa-times"></i></a>
         </div>
         {{/each}}
       </div>
