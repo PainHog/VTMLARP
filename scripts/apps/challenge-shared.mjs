@@ -159,7 +159,13 @@ export async function resolveAndPostGestureChallenge({
 export function respondingUsers(actor) {
   const owners = game.users.filter(u => !u.isGM && actor.testUserPermission(u, "OWNER"));
   if (owners.length) return owners;
-  return game.users.filter(u => u.isGM);
+  // For an unowned NPC the GM answers. Prefer ONLINE GMs so the first designated
+  // responder (targetUserIds[0], which the auto-answer keys on) is a live client
+  // that can actually throw - otherwise, in a multi-GM game, an offline GM at
+  // index 0 would leave the auto-answer to no one. Fall back to all GMs only if
+  // none are online (the persistent chat card still waits for one to log in).
+  const activeGMs = game.users.filter(u => u.isGM && u.active);
+  return activeGMs.length ? activeGMs : game.users.filter(u => u.isGM);
 }
 
 /**

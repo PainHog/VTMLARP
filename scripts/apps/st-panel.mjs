@@ -93,7 +93,11 @@ export class STPanelApp extends HandlebarsApplicationMixin(foundry.applications.
           // switch auto-answer on; the npc schema fills its extra fields.
           const sys = foundry.utils.duplicate(a._source.system ?? {});
           sys.autoChallenge = true;
-          await a.update({ type: "npc", "==system": sys });
+          // Unlink the prototype token: NPCs are meant to be unlinked so many
+          // copies can differ (characters are forced LINKED, and that carries
+          // over unless we clear it here - otherwise every dropped copy of this
+          // converted NPC would share one data source).
+          await a.update({ type: "npc", "==system": sys, "prototypeToken.actorLink": false });
           converted++;
         } catch (err) { console.warn(`VTMLARP | couldn't convert ${a.name} to NPC`, err); }
       }

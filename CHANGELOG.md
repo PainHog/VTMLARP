@@ -3,6 +3,24 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.8 — Salubri Discipline fix, NPC/targeting polish
+
+- **Salubri in-clan Disciplines corrected** to Auspex / Fortitude / **Obeah**
+  (was Valeren) — Obeah is the Salubri Discipline in Laws of the Night Revised;
+  Valeren is a different-sourcebook Discipline and stays available as content,
+  just not the base clan's trio. Verified the rest of the creation math and the
+  full generation chart against the book — all correct.
+- **Character→NPC conversion now unlinks the prototype token**, matching the
+  intended NPC model (many independent copies) instead of leaving it linked so
+  every dropped copy shared one data source.
+- **NPC auto-answer prefers online Storytellers** when picking the responder,
+  so a multi-GM game can't hand the auto-throw to an offline GM. (Single-GM
+  games were already fine.)
+- **Challenges honor Foundry's native token targeting:** if you have exactly
+  one token targeted when you open a Challenge, that token's actor is
+  pre-selected as the opponent. The dropdown stays editable; no target keeps
+  the old manual pick.
+
 ## 1.36.7 — Storyteller-tool fixes
 
 - **A positive Willpower status effect now works.** The ST Panel could apply a

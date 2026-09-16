@@ -99,6 +99,22 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     context.challengeTypes = ["physical", "social", "mental", "static"];
     context.equipmentBonuses = equipmentBonuses;
     context.prefill = this.prefill;
+    // Natural "target then challenge" flow: if the challenger has exactly one
+    // token targeted (Foundry's native targeting) and it isn't their own token,
+    // pre-select it as the opponent. The dropdown stays fully editable, so this
+    // is a convenience only. token.actor.id resolves to the base actor id (even
+    // for an unlinked NPC token), which is exactly what the opponent dropdown
+    // and the socket resolution (game.actors.get) expect. Don't override an
+    // explicit prefill (e.g. a retest that already names the opponent).
+    if (!context.prefill?.opponentActorId) {
+      const targets = Array.from(game.user.targets ?? []);
+      if (targets.length === 1) {
+        const tActor = targets[0]?.actor;
+        if (tActor && tActor.id !== this.actor.id && ["character", "npc"].includes(tActor.type)) {
+          context.prefill = { ...context.prefill, opponentActorId: tActor.id };
+        }
+      }
+    }
     context.actorOptions = [
       // The fake practice opponent is a testing aid — show it only to the
       // Storyteller so players don't see a "TEST (always Rock)" entry in their

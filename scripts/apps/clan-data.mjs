@@ -32,7 +32,7 @@ export const CLAN_DISCIPLINES = {
   "Ventrue": ["Dominate", "Fortitude", "Presence"],
   "Baali": ["Daimoinon", "Obfuscate", "Presence"],
   "Cappadocian": ["Auspex", "Fortitude", "Mortis"],
-  "Salubri": ["Auspex", "Fortitude", "Valeren"],
+  "Salubri": ["Auspex", "Fortitude", "Obeah"],
   "Blood Brothers": ["Fortitude", "Potence", "Sanguinus"],
   "Harbingers of Skulls": ["Auspex", "Fortitude", "Necromancy"],
   "Kiasyd": ["Dominate", "Mytherceria", "Obtenebration"],
