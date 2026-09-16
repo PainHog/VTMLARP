@@ -489,25 +489,36 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
   /** Create the assembled actor - directly if this user may, otherwise via the
    * active Storyteller (GM proxy). Shared by manual and random creation. */
   async #persistActor(actorData, name, itemCount) {
-    const canCreate = game.user.isGM
-      || (game.user.can?.("ACTOR_CREATE") ?? game.user.hasPermission?.("ACTOR_CREATE") ?? false);
+    // Just attempt the create. Foundry enforces the real "Create New Actors"
+    // (ACTOR_CREATE) permission server-side, so this succeeds directly for the
+    // GM AND for any player who has that permission — which, on a normal table,
+    // players do. We deliberately do NOT gate on a client-side permission guess:
+    // the old check called game.user.can("ACTOR_CREATE") (the wrong API — that
+    // tests a document action, not a world permission) and, because `??` only
+    // falls through on null/undefined, never reached hasPermission. The result
+    // was that permitted players were misdetected and their character was
+    // needlessly bounced to the Storyteller (and could silently vanish).
     let actor = null;
-    if (canCreate) {
-      try { actor = await Actor.create(actorData); }
-      catch (err) { console.error("vtmlarp | character-builder create failed", err); ui.notifications?.error(`Couldn't create ${name}: ${err.message}`); }
-    }
+    let createErr = null;
+    try { actor = await Actor.create(actorData); }
+    catch (err) { createErr = err; console.error("vtmlarp | character-builder create failed", err); }
+
     if (actor) {
       ui.notifications?.info(`Created ${name} with ${itemCount} item(s).`);
       this.close();
       actor.sheet?.render(true);
       return;
     }
+
+    // Only reached if the direct create was refused (this player genuinely lacks
+    // "Create New Actors"). Fall back to the active Storyteller as a last resort,
+    // but be explicit so the player is NEVER left thinking it silently worked.
     if (game.users.activeGM) {
       game.socket.emit("system.vtmlarp", { action: "createCharacter", actorData, requesterId: game.user.id });
-      ui.notifications?.info(`Sent ${name} to the Storyteller to add — you'll be set as its owner.`);
+      ui.notifications?.warn(`You don't have permission to add actors here, so ${name} was sent to the Storyteller. Ask your ST to enable "Create New Actors" for players so this happens instantly next time.`);
       this.close();
     } else {
-      ui.notifications?.error("Couldn't create the character: no Storyteller (GM) is online. Ask your ST to be online, or to grant you \"Create New Actors\" permission.");
+      ui.notifications?.error(`Couldn't create ${name}: ${createErr?.message ?? "you lack \"Create New Actors\" permission and no Storyteller is online"}. Ask your ST to enable "Create New Actors" for players.`);
     }
   }
 }

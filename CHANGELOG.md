@@ -3,6 +3,19 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.42.3 — Character creation no longer bounces permitted players to the ST
+
+- **Fixed the bug where a player who finished the Character Builder saw "sent
+  to the Storyteller" and the character was lost.** The builder used a broken
+  client-side permission check (`game.user.can("ACTOR_CREATE")` — the wrong
+  API — combined with a `??` that never reached the correct check), so a player
+  who *does* have "Create New Actors" was misdetected and needlessly routed
+  through a Storyteller socket proxy that could silently fail. The builder now
+  just attempts the create directly and lets Foundry enforce the real
+  permission — so a permitted player's character is created instantly, on their
+  own client, with no ST involvement. The ST fallback remains only for a player
+  who genuinely lacks the permission, now with honest wording.
+
 ## 1.42.2 — Sheet dropdown & template fixes
 
 - **Clan / Sect / Nature / Demeanor dropdowns no longer render blank** for a
