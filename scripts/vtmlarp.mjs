@@ -409,6 +409,10 @@ Hooks.once("ready", () => {
       game.actors.get(data.actorId)?.sheet?.render(true);
     } else if (data.action === "characterCreateFailed" && data.requesterId === game.user.id) {
       ui.notifications?.error(`The Storyteller couldn't add "${data.name}": ${data.reason}. Adjust it and submit again.`);
+    } else if (data.action === "homebrewReviewed" && data.byUserId === game.user.id) {
+      // The submitting player learns the Storyteller's decision on their homebrew.
+      if (data.approved) ui.notifications?.info(`Your homebrew "${data.name}" was approved by the Storyteller.`);
+      else ui.notifications?.warn(`Your homebrew "${data.name}" was declined by the Storyteller.`);
     }
 
     if (data.action !== "challengeRequest") return;

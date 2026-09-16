@@ -3,6 +3,23 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.36.6 — Homebrew queue integrity & feedback
+
+- **A player's homebrew submission could silently vanish.** The Storyteller's
+  Approve/Reject did a read-modify-write of the submission queue outside the
+  lock that submissions arrive under, so a submission landing mid-approval was
+  overwritten and lost (the player only ever saw "Sent to the Storyteller").
+  Approve/Reject now run inside that lock and re-read the queue before writing,
+  and two fast approve clicks on the same entry no longer double-process it.
+- **Players now hear back on review decisions.** A rejection previously gave the
+  submitting player no feedback at all; both approval and rejection now notify
+  them.
+
+(Noted, single-GM games unaffected: two Storytellers approving the same entry
+simultaneously could still duplicate it — that needs cross-client coordination
+the world-setting queue doesn't provide. Frenzy's Willpower-spend update is an
+unguarded direct write but is unreachable on a non-owned actor.)
+
 ## 1.36.5 — Purchase integrity
 
 - **Purchases now verify the buyer's owner.** Fulfillment runs with GM

@@ -162,28 +162,48 @@ export class HomebrewReviewApp extends HandlebarsApplicationMixin(ApplicationV2)
   }
 
   static async #onApprove(event, target) {
-    const q = getQueue();
-    const sub = q.find(s => s.id === target.dataset.id);
-    if (!sub) return;
-    try {
-      const pack = await ensurePack();
-      const data = submissionToItemData(sub);
-      await Item.createDocuments([data], { pack: pack.collection });
-      await setQueue(q.filter(s => s.id !== sub.id));
-      ui.notifications?.info(`Approved "${sub.name}" into the ${PACK_LABEL} compendium.`);
-      ChatMessage.create({ speaker: { alias: "Storyteller" }, content: `<p>Approved <strong>${sub.name}</strong> (${TYPES[sub.type] ?? sub.type}) by ${sub.by} into the ${PACK_LABEL} compendium.</p>` });
-    } catch (err) {
-      console.error("vtmlarp | homebrew approve failed", err);
-      ui.notifications?.error("Couldn't create the compendium entry — see the console.");
+    const id = target.dataset.id;
+    let approved = null;
+    // Run under the same lock as enqueue, and re-read the queue INSIDE the lock
+    // before writing it back - otherwise a submission that arrives (via the
+    // socket enqueue, on this same GM client) between our read and write is
+    // silently overwritten and lost. A second approve of the same entry finds
+    // it already gone and no-ops.
+    await withQueueLock(async () => {
+      const sub = getQueue().find(s => s.id === id);
+      if (!sub) return;
+      try {
+        const pack = await ensurePack();
+        await Item.createDocuments([submissionToItemData(sub)], { pack: pack.collection });
+      } catch (err) {
+        console.error("vtmlarp | homebrew approve failed", err);
+        ui.notifications?.error("Couldn't create the compendium entry — see the console.");
+        return;  // leave the submission in the queue
+      }
+      await setQueue(getQueue().filter(s => s.id !== id));
+      approved = sub;
+    });
+    if (approved) {
+      ui.notifications?.info(`Approved "${approved.name}" into the ${PACK_LABEL} compendium.`);
+      ChatMessage.create({ speaker: { alias: "Storyteller" }, content: `<p>Approved <strong>${approved.name}</strong> (${TYPES[approved.type] ?? approved.type}) by ${approved.by} into the ${PACK_LABEL} compendium.</p>` });
+      if (approved.byUserId) game.socket.emit("system.vtmlarp", { action: "homebrewReviewed", byUserId: approved.byUserId, name: approved.name, approved: true });
     }
     this.render();
   }
 
   static async #onReject(event, target) {
-    const q = getQueue();
-    const sub = q.find(s => s.id === target.dataset.id);
-    await setQueue(q.filter(s => s.id !== target.dataset.id));
-    if (sub) ui.notifications?.info(`Rejected "${sub.name}".`);
+    const id = target.dataset.id;
+    let rejected = null;
+    await withQueueLock(async () => {
+      const q = getQueue();
+      rejected = q.find(s => s.id === id) ?? null;
+      if (rejected) await setQueue(q.filter(s => s.id !== id));
+    });
+    if (rejected) {
+      ui.notifications?.info(`Rejected "${rejected.name}".`);
+      // The player otherwise gets no feedback at all on a rejection.
+      if (rejected.byUserId) game.socket.emit("system.vtmlarp", { action: "homebrewReviewed", byUserId: rejected.byUserId, name: rejected.name, approved: false });
+    }
     this.render();
   }
 
