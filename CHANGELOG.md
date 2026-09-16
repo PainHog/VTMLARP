@@ -3,6 +3,13 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.44.3 — +/- steppers on rated traits
+
+- **Abilities, Disciplines, and Backgrounds now have − / + buttons** beside their
+  dots, so you can nudge a rating up or down without clicking the exact dot.
+  Steps are clamped to 0–5, keep the permanent max in sync, and raising a
+  Discipline still pulls its next power.
+
 ## 1.44.2 — Clan picker layout fix
 
 - **"Help me pick a clan" no longer stacks its two panes.** A CSS rule was

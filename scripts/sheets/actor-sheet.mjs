@@ -1057,10 +1057,16 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       list.push({ name: "New Trait", rating: 1, notes: "" });
     } else if (action === "remove") {
       list.splice(Number(index), 1);
-    } else if (action === "increase") {
-      list[Number(index)].rating = list[Number(index)].rating + 1;
-    } else if (action === "decrease") {
-      list[Number(index)].rating = Math.max(0, list[Number(index)].rating - 1);
+    } else if (action === "increase" || action === "decrease") {
+      const row = list[Number(index)];
+      if (!row) return;
+      const cur = Number(row.rating) || 0;
+      // Permanent step, clamped to 0–5 (the rated-trait dot scale). Keep `max`
+      // in step with `rating` like a normal dot click, so a permanent raise/
+      // lower doesn't leave a stray "restore to max" marker behind.
+      const next = action === "increase" ? Math.min(5, cur + 1) : Math.max(0, cur - 1);
+      row.rating = next;
+      row.max = next;
     }
 
     update[`system.${path}`] = list;
@@ -1132,7 +1138,8 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const item = this.actor.items.get(itemId);
     if (!item) return;
     const delta = action === "increase" ? 1 : -1;
-    const newRating = Math.max(0, item.system.rating + delta);
+    const newRating = Math.min(5, Math.max(0, (Number(item.system.rating) || 0) + delta));
+    if (newRating === (Number(item.system.rating) || 0)) return;
     await item.update({ "system.rating": newRating });
     // Leveling a Discipline up pulls its next core power(s) onto the sheet, so
     // the stepper matches the Character Builder (which auto-adds a power per dot)

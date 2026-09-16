@@ -317,8 +317,12 @@
           <tr>
             <td><input type="text" name="system.abilities.{{i}}.name" value="{{ability.name}}"></td>
             <td>
-              <span class="dots" data-path="abilities" data-index="{{i}}" title="Click to set. Shift-click to mark a temporary loss (keeps the max).">
-                {{#each (vtmDotsMax ability.rating ability.max 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}} {{#if dot.lost}}lost{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+              <span class="rating-stepper">
+                <a class="rated-trait-control step-down" data-action="decrease" data-path="abilities" data-index="{{i}}" title="Lower by 1"><i class="fas fa-minus"></i></a>
+                <span class="dots" data-path="abilities" data-index="{{i}}" title="Click to set. Shift-click to mark a temporary loss (keeps the max).">
+                  {{#each (vtmDotsMax ability.rating ability.max 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}} {{#if dot.lost}}lost{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+                </span>
+                <a class="rated-trait-control step-up" data-action="increase" data-path="abilities" data-index="{{i}}" title="Raise by 1"><i class="fas fa-plus"></i></a>
               </span>
               {{#if (gt ability.max ability.rating)}}<a class="trait-restore" data-path="abilities" data-index="{{i}}" title="Restore to maximum ({{ability.max}})"><i class="fas fa-rotate-left"></i></a>{{/if}}
             </td>
@@ -348,8 +352,12 @@
           {{#if group.discipline.system.stApprovalRequired}}
           <span class="st-approval-badge" title="Storyteller Approval Required"><i class="fas fa-user-shield"></i> ST</span>
           {{/if}}
-          <span class="dots" data-item-id="{{group.discipline.id}}">
-            {{#each (vtmDots group.discipline.system.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+          <span class="rating-stepper">
+            <a class="item-rating-control step-down" data-action="decrease" data-item-id="{{group.discipline.id}}" title="Lower by 1"><i class="fas fa-minus"></i></a>
+            <span class="dots" data-item-id="{{group.discipline.id}}">
+              {{#each (vtmDots group.discipline.system.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            </span>
+            <a class="item-rating-control step-up" data-action="increase" data-item-id="{{group.discipline.id}}" title="Raise by 1 (adds its next power)"><i class="fas fa-plus"></i></a>
           </span>
           {{#if group.discipline._stats.compendiumSource}}
           <a class="open-source" data-uuid="{{group.discipline._stats.compendiumSource}}" title="Open compendium source"><i class="fas fa-book"></i></a>
@@ -488,8 +496,12 @@
           {{#if item.system.stApprovalRequired}}
           <span class="st-approval-badge" title="Storyteller Approval Required"><i class="fas fa-user-shield"></i> ST</span>
           {{/if}}
-          <span class="dots" data-item-id="{{item.id}}">
-            {{#each (vtmDots item.system.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+          <span class="rating-stepper">
+            <a class="item-rating-control step-down" data-action="decrease" data-item-id="{{item.id}}" title="Lower by 1"><i class="fas fa-minus"></i></a>
+            <span class="dots" data-item-id="{{item.id}}">
+              {{#each (vtmDots item.system.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            </span>
+            <a class="item-rating-control step-up" data-action="increase" data-item-id="{{item.id}}" title="Raise by 1"><i class="fas fa-plus"></i></a>
           </span>
           {{#if item._stats.compendiumSource}}
           <a class="open-source" data-uuid="{{item._stats.compendiumSource}}" title="Open compendium source"><i class="fas fa-book"></i></a>
@@ -505,8 +517,12 @@
         <tr>
           <td><input type="text" name="system.backgrounds.{{i}}.name" value="{{bg.name}}"></td>
           <td>
-            <span class="dots" data-path="backgrounds" data-index="{{i}}" title="Click to set. Shift-click to mark a temporary loss (keeps the max).">
-              {{#each (vtmDotsMax bg.rating bg.max 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}} {{#if dot.lost}}lost{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            <span class="rating-stepper">
+              <a class="rated-trait-control step-down" data-action="decrease" data-path="backgrounds" data-index="{{i}}" title="Lower by 1"><i class="fas fa-minus"></i></a>
+              <span class="dots" data-path="backgrounds" data-index="{{i}}" title="Click to set. Shift-click to mark a temporary loss (keeps the max).">
+                {{#each (vtmDotsMax bg.rating bg.max 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}} {{#if dot.lost}}lost{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+              </span>
+              <a class="rated-trait-control step-up" data-action="increase" data-path="backgrounds" data-index="{{i}}" title="Raise by 1"><i class="fas fa-plus"></i></a>
             </span>
             {{#if (gt bg.max bg.rating)}}<a class="trait-restore" data-path="backgrounds" data-index="{{i}}" title="Restore to maximum ({{bg.max}})"><i class="fas fa-rotate-left"></i></a>{{/if}}
           </td>
