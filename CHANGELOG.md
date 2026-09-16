@@ -3,6 +3,19 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.43.0 — Shop purchases no longer require the Storyteller
+
+- **Buying from a shop now happens instantly on the player's own client** with
+  no "sent to the Storyteller" round-trip. Every charge — the purchased item,
+  the money/boon debit, and the transaction ledger — is on the buyer's own
+  character, which the player owns, so it just works. Previously a purchase was
+  routed to the active Storyteller and could hard-block ("No Storyteller is
+  online") or silently vanish if the ST's client didn't process it.
+- The only shared write, decrementing the shop's stock count, is handled
+  best-effort (directly if you own the shop, else via an online GM); if nobody
+  can update it the sale still completes and stock can be corrected later. No
+  purchase is ever lost or blocked over shared stock.
+
 ## 1.42.3 — Character creation no longer bounces permitted players to the ST
 
 - **Fixed the bug where a player who finished the Character Builder saw "sent

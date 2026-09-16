@@ -180,10 +180,20 @@ async function _fulfillPurchase(req) {
     return fail(`Payment failed for ${item.name} — nothing was charged.`);
   }
 
-  // Decrement limited stock on the shop Actor.
+  // Decrement limited stock on the shop Actor. Everything above writes to the
+  // BUYER's own actor (which the player owns), but the shop Actor usually isn't
+  // owned by the buyer. Try to update it directly (works for the GM / shop
+  // owner); if that's refused, ask an online GM to do just the decrement; if
+  // nobody can, the sale still stands (stock is a soft cap the ST can correct)
+  // — we never block or lose the purchase over shared stock.
   if (Number.isFinite(item.qty) && item.qty >= 0) {
     item.qty -= 1;
-    await shopActor.update({ "system.stock": stock });
+    if (shopActor.isOwner) {
+      try { await shopActor.update({ "system.stock": stock }); }
+      catch (err) { console.warn("vtmlarp | stock decrement failed (non-fatal)", err); }
+    } else if (game.users.activeGM) {
+      game.socket.emit("system.vtmlarp", { action: "decrementShopStock", shopId: req.shopId, itemId: req.itemId });
+    }
   }
 
   // Log: buyer ledger + chat.
@@ -291,21 +301,16 @@ export class ShopBrowserApp extends HandlebarsApplicationMixin(ApplicationV2) {
     }).catch(() => null);
     if (!result) return;
 
-    // Stamp the requesting user so the GM-side fulfillment can verify they
-    // actually own the buyer actor (the dropdown restricts this, but the GM
-    // authority must not trust the wire - a crafted socket could otherwise
-    // charge another player). Present in both the direct-GM and socket paths.
     const req = { buyerId: result.buyerId, shopId, itemId, method: result.method, price: Number(item.price) || 0, note: result.note, requesterId: game.user.id };
 
-    if (game.user.isGM) {
-      const msg = await fulfillPurchase(req);
-      ui.notifications?.info(msg);
-    } else if (game.users.activeGM) {
-      game.socket.emit("system.vtmlarp", { action: "shopPurchase", req });
-      ui.notifications?.info(`Purchase request for ${item.name} sent to the Storyteller.`);
-    } else {
-      ui.notifications?.error("No Storyteller is online to complete the purchase.");
-    }
+    // Fulfill directly on this client. Every charge (the new item, money/boon
+    // debit, transaction ledger) is on the buyer's OWN actor, which the player
+    // owns, so it just works with no Storyteller involvement — no "sent to the
+    // Storyteller" round-trip that could silently strand the buyer. The only
+    // shared write (shop-stock decrement) is handled best-effort inside
+    // fulfillPurchase. fulfillPurchase re-verifies buyer ownership itself.
+    const msg = await fulfillPurchase(req);
+    ui.notifications?.info(msg);
   }
 }
 

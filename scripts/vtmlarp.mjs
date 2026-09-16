@@ -399,6 +399,22 @@ Hooks.once("ready", () => {
               game.socket.emit("system.vtmlarp", { action: "shopPurchaseFailed", requesterId: data.req.requesterId, reason: err.message });
             });
         }
+      } else if (data.action === "decrementShopStock") {
+        // A player fulfilled a purchase on their own client (buyer-side writes
+        // are on their own actor) but doesn't own the shop Actor, so the active
+        // GM applies just the shared stock decrement on their behalf. Best-effort:
+        // if it fails the sale still stands; stock is a soft cap.
+        if (game.users.activeGM?.id === game.user.id && data.shopId && data.itemId) {
+          const shopActor = game.actors.get(data.shopId);
+          if (shopActor?.type === "shop") {
+            const stock = foundry.utils.duplicate(shopActor.system.stock ?? []);
+            const line = stock.find(i => i.id === data.itemId);
+            if (line && Number.isFinite(line.qty) && line.qty >= 0 && line.qty > 0) {
+              line.qty -= 1;
+              shopActor.update({ "system.stock": stock }).catch(err => console.warn("VTMLARP | decrementShopStock failed:", err));
+            }
+          }
+        }
       } else if (data.action === "createCharacter") {
         // A player built a character but lacks "Create New Actors" permission,
         // so a GM creates it for them - keeping the requesting player flagged
