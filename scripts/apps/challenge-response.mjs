@@ -1,4 +1,4 @@
-import { GESTURES, resolveAndPostGestureChallenge, claimChallenge, releaseChallenge } from "./challenge-shared.mjs";
+import { GESTURES, resolveAndPostGestureChallenge, claimChallenge, releaseChallenge, isChallengeResolved } from "./challenge-shared.mjs";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -79,6 +79,13 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
       this.close();
       return;
     }
+    // Cross-client guard: a result card for this request may already exist
+    // (another responder/GM answered it), which the local claim can't see.
+    if (isChallengeResolved(this.request.requestId)) {
+      ui.notifications?.info("This Challenge has already been resolved.");
+      this.close();
+      return;
+    }
 
     // Retests can be blocked by an opponent who can match its conditions
     // (e.g., Dodge blocking a Firearms retest) - blocking skips the throw
@@ -107,7 +114,8 @@ export class ChallengeResponseApp extends HandlebarsApplicationMixin(foundry.app
         retest: this.request.retest,
         isRetestThrow: !!this.request.isRetestThrow,
         challengerMod: Number(this.request.challengerMod) || 0,
-        opponentMod: Number(fd.opponentMod) || 0
+        opponentMod: Number(fd.opponentMod) || 0,
+        requestId: this.request.requestId
       });
     } catch (err) {
       // Release the claim so the responder can retry from either surface rather

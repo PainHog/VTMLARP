@@ -3,6 +3,20 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.43.3 — Challenge double-resolution & void guards
+
+- **A Challenge can no longer be resolved twice.** Result cards now carry their
+  request id, and every answer surface (chat card and popup) refuses to resolve
+  if a result for that request already exists — closing the window where two
+  Storytellers, or an owner on two devices, could both answer and post
+  contradictory result cards.
+- **A Challenge whose participant was deleted mid-throw is now voided** with a
+  clear "Challenge void — X no longer exists" card and the prompt is cleaned up,
+  instead of the responder getting a misleading "you don't control this" message
+  and the prompt sitting dead forever.
+- The "Re-throw Retest" button disables on click so a double-click can't spawn
+  two parallel retest challenges.
+
 ## 1.43.2 — Challenge live-play & visibility fixes
 
 - **The Challenge response popup no longer silently throws Rock.** Its gesture

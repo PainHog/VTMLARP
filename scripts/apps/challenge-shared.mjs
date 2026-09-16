@@ -29,6 +29,14 @@ export function claimChallenge(requestId) {
 export function releaseChallenge(requestId) {
   if (requestId) _claimedChallenges.delete(requestId);
 }
+/** True if a result card for this requestId already exists in chat. Unlike the
+ * client-local claim Set, a posted result message is visible to EVERY client, so
+ * this catches a cross-client double-resolution (two GMs, or a GM and the owner,
+ * both answering) that the local claim can't. */
+export function isChallengeResolved(requestId) {
+  if (!requestId) return false;
+  return !!game.messages?.find(m => m.getFlag?.("vtmlarp", "resolvedRequestId") === requestId);
+}
 /** Close any open ChallengeResponseApp answering this requestId - used when the
  * OTHER surface (the chat card) resolved it, so a stale popup doesn't linger. */
 export function closeResponseApps(requestId) {
@@ -79,7 +87,11 @@ export async function resolveAndPostGestureChallenge({
   // Flat bonus/penalty Traits each side adds to their bid (equipment, powers,
   // situational modifiers) - entered on the Challenge form / response card.
   challengerMod = 0,
-  opponentMod = 0
+  opponentMod = 0,
+  // The originating request's id, stamped onto the result card's flags so any
+  // client can detect "this Challenge already produced a result" and refuse a
+  // second resolution (cross-client double-resolve guard).
+  requestId = ""
 }) {
   const challengerName = challengerActor.name;
   const opponentName = opponentNameOverride ?? opponentActor?.name ?? "Opponent";
@@ -149,7 +161,8 @@ export async function resolveAndPostGestureChallenge({
 
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor: challengerActor }),
-    content
+    content,
+    flags: requestId ? { vtmlarp: { resolvedRequestId: requestId } } : {}
   });
 
   if (result) {

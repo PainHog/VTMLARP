@@ -297,7 +297,8 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       const opponentGesture = pool[Math.floor(Math.random() * pool.length)];
       await resolveAndPostGestureChallenge({
         challengerActor: this.actor, challengeType, challengerGesture: fd.gesture,
-        opponentActor, opponentGesture, retest, isRetestThrow: !!this.prefill?.isRetestThrow, challengerMod
+        opponentActor, opponentGesture, retest, isRetestThrow: !!this.prefill?.isRetestThrow, challengerMod,
+        requestId
       });
       game.socket.emit("system.vtmlarp", { action: "challengeResolved", requestId });
       GMChallengeDashboard.clearRequest?.(requestId);

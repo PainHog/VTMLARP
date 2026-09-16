@@ -15,7 +15,7 @@ import { BloodBondOverviewApp } from "./apps/blood-bond-overview.mjs";
 import { STPanelApp } from "./apps/st-panel.mjs";
 import { CharacterBuilderApp } from "./apps/character-builder.mjs";
 import { ClanPickerApp } from "./apps/clan-picker.mjs";
-import { resolveAndPostGestureChallenge, claimChallenge, releaseChallenge, closeResponseApps } from "./apps/challenge-shared.mjs";
+import { resolveAndPostGestureChallenge, claimChallenge, releaseChallenge, closeResponseApps, isChallengeResolved } from "./apps/challenge-shared.mjs";
 import { logAction } from "./apps/action-log.mjs";
 import { registerMigrationSettings, migrateWorldIfNeeded } from "./migrations.mjs";
 import { enhanceAccessibility } from "./apps/a11y.mjs";
@@ -734,6 +734,12 @@ document.addEventListener("click", event => {
     return;
   }
 
+  // Disable this card's retest button once opened so a double-click (or the same
+  // person clicking again) can't spawn two parallel retest challenges from this
+  // client. Other clients still have their own button; the new challenge each
+  // would create carries its own requestId, and the winner is resolved normally.
+  button.disabled = true;
+
   new ChallengeApp(thrower, {}, { challengeType, retest, opponentActorId: target?.id, isRetestThrow: true }).render(true);
 });
 
@@ -766,15 +772,28 @@ document.addEventListener("click", async event => {
     return;
   }
 
+  // If a participant's actor was deleted between the prompt posting and now, the
+  // Challenge can never be answered. Post a "void" card (any client may create a
+  // message) so the challenger gets closure instead of a silent dead prompt, and
+  // clean the prompt up. Distinguish this from a live actor the clicker simply
+  // doesn't own.
   const opponentActor = req.opponentActorId ? game.actors.get(req.opponentActorId) : null;
-  if (!opponentActor?.isOwner) {
-    ui.notifications?.warn(`You don't control ${req.opponentName || "this actor"} - only they (or a GM) can respond to this Challenge.`);
+  const challengerActor = game.actors.get(req.challengerActorId);
+  if ((req.opponentActorId && !opponentActor) || !challengerActor) {
+    const gone = !challengerActor ? (req.challengerName || "the challenger") : (req.opponentName || "the opponent");
+    await ChatMessage.create({
+      speaker: { alias: "Challenge" },
+      content: `<div class="vtmlarp-challenge-card"><div class="vtm-result-banner result-Tied">Challenge void — ${gone} no longer exists.</div></div>`,
+      flags: req.requestId ? { vtmlarp: { resolvedRequestId: req.requestId } } : {}
+    });
+    try {
+      if (message.canUserModify(game.user, "delete")) await message.delete();
+      else game.socket.emit("system.vtmlarp", { action: "deleteChallengePrompt", messageId: message.id });
+    } catch { /* harmless */ }
     return;
   }
-
-  const challengerActor = game.actors.get(req.challengerActorId);
-  if (!challengerActor) {
-    ui.notifications?.warn("The challenger for this Challenge no longer exists.");
+  if (!opponentActor.isOwner) {
+    ui.notifications?.warn(`You don't control ${req.opponentName || "this actor"} - only they (or a GM) can respond to this Challenge.`);
     return;
   }
 
@@ -796,6 +815,13 @@ document.addEventListener("click", async event => {
   // already claimed it, bail. Then close the popup so it can't linger.
   if (!claimChallenge(req.requestId)) {
     ui.notifications?.info("This Challenge is already being answered.");
+    return;
+  }
+  // Cross-client guard: another client (e.g. a second GM, or the owner on a
+  // different device) may have already posted a result for this request. The
+  // local claim Set can't see that; a posted result card can.
+  if (isChallengeResolved(req.requestId)) {
+    ui.notifications?.info("This Challenge has already been resolved.");
     return;
   }
   closeResponseApps(req.requestId);
@@ -834,7 +860,8 @@ document.addEventListener("click", async event => {
       isRetestThrow: req.isRetestThrow,
       coinToss: req.coinToss,
       challengerMod: req.challengerMod,
-      opponentMod
+      opponentMod,
+      requestId: req.requestId
     });
   }
   } catch (err) {
