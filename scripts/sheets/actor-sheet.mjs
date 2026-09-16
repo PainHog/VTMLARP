@@ -422,11 +422,6 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const B = original
       ? { abilities: 5, disciplines: 3, freebieBase: 5 }
       : { abilities: 11, disciplines: 5, freebieBase: 12 };
-    // Sabbat: +1 Basic Discipline and NO free Backgrounds (bought with Freebies),
-    // per the chargen chart. Every other sect uses the standard allotment.
-    const isSabbat = sys.sect === "Sabbat";
-    const discBudget = B.disciplines + (isSabbat ? 1 : 0);
-    const bgBudget = isSabbat ? 0 : 5;
     // Attributes: don't police which category is which - just that the total
     // across Physical/Social/Mental equals 7 + 5 + 3 = 15. Anything past 15 is
     // overspend (drawn from Freebies), anything under still needs distributing.
@@ -456,15 +451,15 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const rows = [
       { key: "attributes", label: "Attributes (15 total)", spent: attributesTotal, budget: 15, cost: 1 },
       { key: "abilities", label: "Abilities", spent: abilitiesSpent, budget: B.abilities, cost: 1 },
-      { key: "disciplines", label: "Disciplines", spent: disciplinesSpent, budget: discBudget, cost: 3 },
-      { key: "backgrounds", label: "Backgrounds", spent: backgroundsSpent, budget: bgBudget, cost: 1 },
+      { key: "disciplines", label: "Disciplines", spent: disciplinesSpent, budget: B.disciplines, cost: 3 },
+      { key: "backgrounds", label: "Backgrounds", spent: backgroundsSpent, budget: 5, cost: 1 },
       { key: "virtues", label: "Virtues", spent: virtuesSpent, budget: 10, cost: 2 },
       { key: "willpower", label: "Willpower", spent: willpowerSpent, budget: willpowerBudget, cost: 3 }
     ];
 
     // Discipline Freebies = the mandatory 4th/5th-dot costs, plus any free-tier
     // dots that overran the allotment (cheapest charged first).
-    const disciplineFreebies = disciplineFreebieCost(discRatings, discBudget);
+    const disciplineFreebies = disciplineFreebieCost(discRatings, B.disciplines);
 
     // Annotate each row with over/under and freebie cost of any overspend.
     let freebiesSpent = 0;

@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.37.1 — Revert Sabbat allotment special-casing
+
+- Reverted the 1.37.0 Sabbat chargen change. The table's house rules already
+  account for Sabbat players under the uniform (expanded) allotment, so
+  special-casing Sabbat in the builder/sheet would have misflagged a
+  correctly-built Sabbat character as over budget. The allotment is uniform
+  again for all sects.
+
 ## 1.37.0 — Sabbat character creation
 
 - **Sabbat characters now use the correct creation allotment.** The builder
