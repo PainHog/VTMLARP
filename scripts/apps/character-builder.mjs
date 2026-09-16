@@ -337,7 +337,9 @@ export class CharacterBuilderApp extends HandlebarsApplicationMixin(ApplicationV
     const items = await this.#buildDisciplineItems(discRows);
 
     // A couple of random backgrounds and random archetypes/virtues.
-    const bgNames = shuffle(["Allies", "Contacts", "Resources", "Herd", "Influence", "Mentor", "Retainers", "Status"]).slice(0, 2);
+    // Status is NOT a purchasable Background in Laws of the Night Revised (it's
+    // sect standing gained/lost in play), so it's excluded from the random pool.
+    const bgNames = shuffle(["Allies", "Contacts", "Resources", "Herd", "Influence", "Mentor", "Retainers"]).slice(0, 2);
     const backgrounds = bgNames.map(name => { const rating = 1 + Math.floor(Math.random() * 2); return { name, rating, max: rating, notes: "" }; });
     const v = () => 1 + Math.floor(Math.random() * 3); // 1-3
 

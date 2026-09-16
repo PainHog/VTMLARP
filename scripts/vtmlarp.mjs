@@ -361,11 +361,17 @@ Hooks.once("ready", () => {
         // as the OWNER. Only the single designated active GM acts, so multiple
         // connected GMs don't each create a duplicate.
         if (game.users.activeGM?.id === game.user.id && data.actorData) {
+          // The socket payload is attacker-controllable, so constrain it under
+          // GM authority: only ever create a CHARACTER (never a shop/npc/other
+          // type), grant OWNER to exactly the requesting user and nobody else
+          // (discard any wire-supplied ownership, which could grant default/all),
+          // and require the requester to be a real user. This blocks
+          // type/ownership escalation via the GM proxy.
+          const requester = data.requesterId ? game.users.get(data.requesterId) : null;
+          if (!requester) { console.warn("vtmlarp | createCharacter: unknown requester, ignored"); return; }
           const payload = foundry.utils.duplicate(data.actorData);
-          if (data.requesterId) {
-            payload.ownership = payload.ownership ?? {};
-            payload.ownership[data.requesterId] = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
-          }
+          payload.type = "character";
+          payload.ownership = { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE, [requester.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER };
           Actor.create(payload)
             .then(a => {
               if (!a) return;
@@ -384,17 +390,28 @@ Hooks.once("ready", () => {
       } else if (data.action === "debitBlood") {
         // A player ran the Vaulderie with a participant actor they don't own;
         // the active GM applies the Blood debit on their behalf.
-        if (game.users.activeGM?.id === game.user.id && data.actorId) {
+        // Validate the payload: only apply a sane, non-negative integer Blood
+        // value (the wire value is attacker-controllable and could be NaN/junk/
+        // huge, corrupting the pool). Also clamp to the actor's max.
+        if (game.users.activeGM?.id === game.user.id && data.actorId
+            && Number.isInteger(data.value) && data.value >= 0) {
           const a = game.actors.get(data.actorId);
-          if (a) a.update({ "system.blood.value": data.value }).catch(err => console.warn("VTMLARP | debitBlood failed:", err));
+          if (a) {
+            const max = Number(a.system?.blood?.max);
+            const value = Number.isFinite(max) ? Math.min(data.value, max) : data.value;
+            a.update({ "system.blood.value": value }).catch(err => console.warn("VTMLARP | debitBlood failed:", err));
+          }
         }
       } else if (data.action === "logActorAction") {
         // A player resolved something (e.g. a Challenge) involving an actor they
         // don't own; the GM owns every actor, so the active GM appends the log
         // entry on their behalf. Single-GM guard prevents duplicate entries.
+        // Coerce the summary to a bounded plain string (wire content is
+        // attacker-controllable; the log is rendered on the sheet).
         if (game.users.activeGM?.id === game.user.id && data.actorId) {
           const a = game.actors.get(data.actorId);
-          if (a) logAction(a, data.summary).catch(err => console.warn("VTMLARP | logActorAction failed:", err));
+          const summary = String(data.summary ?? "").slice(0, 300);
+          if (a && summary) logAction(a, summary).catch(err => console.warn("VTMLARP | logActorAction failed:", err));
         }
       }
     }

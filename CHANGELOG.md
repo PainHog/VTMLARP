@@ -3,6 +3,24 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.38.0 — Socket-payload hardening
+
+- Defense-in-depth on the GM-proxy socket handlers (a player's browser console
+  can craft `system.vtmlarp` messages; Foundry's raw socket can't authenticate
+  the sender, so these constrain the payload):
+  - **createCharacter** now only ever creates a `character` (never a shop/npc/
+    other type via the proxy), grants OWNER to exactly the requesting user and
+    discards any wire-supplied ownership (no granting default/all-users), and
+    requires the requester to be a real user.
+  - **debitBlood** (Vaulderie) now applies only a valid non-negative integer,
+    clamped to the actor's max — a crafted NaN/huge value can no longer corrupt
+    a blood pool.
+  - **logActorAction** coerces the summary to a bounded plain string.
+  - **shopPurchase** now rejects a missing/unknown requester (previously an
+    omitted requesterId skipped the buyer-ownership check).
+- Removed "Status" from the Random Character background pool — Status isn't a
+  purchasable Background in this edition.
+
 ## 1.37.3 — XP audit clarity & guards
 
 - Combat/weapons/gear and XP/advancement audited against the book: combat is

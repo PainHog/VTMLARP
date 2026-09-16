@@ -119,8 +119,11 @@ async function _fulfillPurchase(req) {
   // restricts this in the UI, but fulfillment runs with GM authority, so it must
   // re-verify rather than trust the socket payload.
   const requester = req.requesterId ? game.users.get(req.requesterId) : null;
-  if (requester && !buyer.testUserPermission(requester, CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER)) {
-    return `${requester.name} doesn't own ${buyer.name} — purchase refused.`;
+  // Require a valid requester who owns the buyer. Missing/unknown requesterId is
+  // rejected too (otherwise a crafted socket could omit it to skip the check and
+  // still force a purchase onto another player's actor).
+  if (!requester || !buyer.testUserPermission(requester, CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER)) {
+    return `${requester?.name ?? "That user"} doesn't own ${buyer.name} — purchase refused.`;
   }
   const shopActor = game.actors.get(req.shopId);
   if (!shopActor || shopActor.type !== "shop") return fail("That shop no longer exists.");
