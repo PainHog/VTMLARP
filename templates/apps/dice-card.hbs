@@ -1,0 +1,47 @@
+<div class="vtmlarp-challenge-card vtmlarp-dice-card">
+  <div class="vtm-clash-header">
+    <span><i class="fas fa-dice-d10"></i> {{attributeLabel}} + {{abilityLabel}} — d10 Pool</span>
+    <span>{{poolTotal}} dice</span>
+  </div>
+
+  {{#if opposed}}
+  <div class="vtm-clash">
+    <div class="vtm-combatant">
+      <span class="vtm-combatant-name">{{actorName}}</span>
+      <span class="dice-successes">{{challenger.successes}}</span>
+      <span class="hint">success{{#unless (eq challenger.successes 1)}}es{{/unless}}</span>
+    </div>
+    <span class="vtm-vs">VS</span>
+    <div class="vtm-combatant">
+      <span class="vtm-combatant-name">Opposing pool ({{oppPoolTotal}})</span>
+      <span class="dice-successes">{{opponent.successes}}</span>
+      <span class="hint">success{{#unless (eq opponent.successes 1)}}es{{/unless}}</span>
+    </div>
+  </div>
+  {{else}}
+  <div class="vtm-static-test">
+    <span class="vtm-combatant-name">{{actorName}}</span>
+    <span class="vtm-static-vs"><strong>{{challenger.successes}}</strong> success{{#unless (eq challenger.successes 1)}}es{{/unless}} vs Difficulty {{difficulty}}</span>
+  </div>
+  {{/if}}
+
+  <div class="dice-faces">
+    {{#each challengerDice as |d|}}
+    <span class="die {{#if d.hunger}}die-hunger{{/if}} {{#if d.success}}die-success{{/if}} {{#if d.ten}}die-ten{{/if}} {{#if d.one}}die-one{{/if}}">{{d.value}}</span>
+    {{/each}}
+  </div>
+  {{#if opposed}}
+  <div class="dice-faces dice-faces-opp">
+    <span class="hint">Opp:</span>
+    {{#each opponentDice as |d|}}
+    <span class="die {{#if d.hunger}}die-hunger{{/if}} {{#if d.success}}die-success{{/if}} {{#if d.ten}}die-ten{{/if}} {{#if d.one}}die-one{{/if}}">{{d.value}}</span>
+    {{/each}}
+  </div>
+  {{/if}}
+
+  <div class="vtm-result-banner result-{{result}}">{{resultLabel}}</div>
+
+  {{#if challenger.messy}}<p class="vtm-retest dice-flag dice-messy"><i class="fas fa-droplet"></i> <strong>Messy Critical</strong> — a 10 landed on a Hunger die.</p>{{/if}}
+  {{#if challenger.bestial}}<p class="vtm-retest dice-flag dice-bestial"><i class="fas fa-skull"></i> <strong>Bestial Failure</strong> — a Hunger die came up 1 on a failed roll.</p>{{/if}}
+  {{#if challenger.critical}}{{#unless challenger.messy}}<p class="vtm-retest dice-flag dice-crit"><i class="fas fa-star"></i> <strong>Critical</strong> — a pair of 10s counted as 4 successes.</p>{{/unless}}{{/if}}
+</div>

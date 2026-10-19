@@ -3,6 +3,30 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.47.0 — Optional d10 dice-pool mode (V5 rules) in the Challenge tool
+
+- The **Resolve Challenge** tool now has a **Resolution** toggle at the top:
+  the default **Rock-Paper-Scissors (MET)** flow is untouched, and a new
+  **d10 Dice Pool (V5 rules)** mode rolls open dice instead.
+- Dice mode builds the pool as **chosen Attribute's Trait total + the
+  associated Ability's rating (+ a modifier)**, rolls that many d10s, and posts
+  an open result card. Scoring follows Vampire 5th Edition:
+  - each die showing **6+** is one success;
+  - every **pair of 10s** counts as **4** successes (a critical);
+  - **Difficulty** = the number of successes the roll must meet or beat;
+  - **total failure** at zero successes.
+- Supports both a **static roll vs a Difficulty** and an **opposed roll**
+  (enter the opposing pool; both sides are rolled here since dice are open and
+  the higher success count wins).
+- V5 **Hunger** dice are supported as an *optional manual input* (default 0):
+  this system tracks a Blood pool, not a Hunger stat, so Hunger is only used
+  for **messy critical** (a 10 on a Hunger die) and **bestial failure** (a 1 on
+  a Hunger die on a failed roll) flavor. Leave it at 0 to ignore it.
+- There is **no retest button** on the dice card (by design — retests are
+  handled at the table).
+- The pure success/critical/messy/bestial math lives in `scripts/apps/dice.mjs`
+  and is covered by 15 unit tests.
+
 ## 1.46.3 — "Max Traits" line under the builder Attributes
 
 - A **"Max Traits: N per category at this Generation"** line now sits directly

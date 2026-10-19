@@ -1,5 +1,6 @@
 import { GESTURES, unspentCount, respondingUsers, resolveAndPostGestureChallenge, postGestureChallengePrompt, sealChallengerGesture } from "./challenge-shared.mjs";
 import { GMChallengeDashboard } from "./gm-dashboard.mjs";
+import { rollPool, evaluateRoll, compareOpposed } from "./dice.mjs";
 
 // A standing fake opponent (Storyteller-only; see the GM-gated actorOptions
 // entry below) so a GM can resolve a Challenge solo without a second logged-in
@@ -134,6 +135,19 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       social: unspentCount(this.actor, "social"),
       mental: unspentCount(this.actor, "mental")
     };
+    // Optional d10 dice-pool mode (V5 rules): offer the three Attribute Trait
+    // totals and the actor's Abilities so the pool can be assembled as
+    // Attribute total + Ability rating (+ modifier).
+    const attrs = this.actor?.system?.attributes ?? {};
+    context.attributes = [
+      { key: "physical", label: "Physical", total: Number(attrs.physical?.total) || 0 },
+      { key: "social", label: "Social", total: Number(attrs.social?.total) || 0 },
+      { key: "mental", label: "Mental", total: Number(attrs.mental?.total) || 0 }
+    ];
+    context.abilities = (this.actor?.system?.abilities ?? [])
+      .filter(a => a?.name)
+      .map(a => ({ name: a.name, rating: Number(a.rating) || 0 }))
+      .sort((a, b) => a.name.localeCompare(b.name));
     return context;
   }
 
@@ -159,6 +173,46 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     };
     challengeTypeSelect?.addEventListener("change", syncChallengeType);
     syncChallengeType();
+
+    // ---- d10 dice-pool mode wiring (independent of the RPS flow) ----
+    const resolutionSelect = root.querySelector("select[name='resolution']");
+    const modeRps = root.querySelector(".mode-rps");
+    const modeDice = root.querySelector(".mode-dice");
+    const submitLabel = root.querySelector(".vtm-submit-label");
+    const syncResolution = () => {
+      const dice = resolutionSelect?.value === "dice";
+      if (modeRps) modeRps.style.display = dice ? "none" : "";
+      if (modeDice) modeDice.style.display = dice ? "" : "none";
+      if (submitLabel) submitLabel.textContent = dice ? "Roll Dice" : "Send Challenge";
+    };
+    resolutionSelect?.addEventListener("change", syncResolution);
+    syncResolution();
+
+    const diceAttr = root.querySelector("select[name='diceAttribute']");
+    const diceAbility = root.querySelector("select[name='diceAbility']");
+    const diceMod = root.querySelector("input[name='diceMod']");
+    const dicePoolTotal = root.querySelector(".dice-pool-total");
+    const diceOpposed = root.querySelector("input[name='diceOpposed']");
+    const vsDifficulty = root.querySelector(".dice-vs-difficulty");
+    const vsOpposed = root.querySelector(".dice-vs-opposed");
+    const attrTotals = Object.fromEntries((context.attributes ?? []).map(a => [a.key, a.total]));
+    const syncDicePool = () => {
+      const attr = Number(attrTotals[diceAttr?.value]) || 0;
+      const abil = Number(diceAbility?.value) || 0;
+      const mod = Number(diceMod?.value) || 0;
+      if (dicePoolTotal) dicePoolTotal.textContent = String(Math.max(0, attr + abil + mod));
+    };
+    const syncOpposed = () => {
+      const opp = !!diceOpposed?.checked;
+      if (vsDifficulty) vsDifficulty.style.display = opp ? "none" : "";
+      if (vsOpposed) vsOpposed.style.display = opp ? "" : "none";
+    };
+    [diceAttr, diceAbility, diceMod].forEach(el => el?.addEventListener("input", syncDicePool));
+    diceAttr?.addEventListener("change", syncDicePool);
+    diceAbility?.addEventListener("change", syncDicePool);
+    diceOpposed?.addEventListener("change", syncOpposed);
+    syncDicePool();
+    syncOpposed();
   }
 
   async _onSubmit(event) {
@@ -166,6 +220,15 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     const form = event.currentTarget.closest("form");
     const fd = new foundry.applications.ux.FormDataExtended(form).object;
     const { challengeType, retest } = fd;
+
+    // d10 DICE-POOL MODE (V5 rules): a fully independent branch that rolls
+    // openly and posts a result card. It never touches the RPS seal/socket
+    // machinery (dice are not secret), so it can't disturb that flow.
+    if (fd.resolution === "dice") {
+      await this.#rollDicePool(fd);
+      this.close();
+      return;
+    }
 
     // Static Challenges (an Ability used against a set Difficulty, no
     // opposing throw) resolve like a Virtue Test: the bid must exceed the
@@ -273,6 +336,73 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     if (outcome) ui.notifications?.info(`Challenge sent to ${opponentInstance.name} - they can respond from the chat log.`);
     else ui.notifications?.warn(`Challenge posted for ${opponentInstance.name}, but no one who can answer for it is online right now. It will wait in the chat log until they log in.`);
     this.close();
+  }
+
+  /**
+   * Roll an open d10 dice pool per V5 rules and post the result card. Static
+   * (vs a Difficulty) or opposed (vs a second pool rolled here, since dice are
+   * open). Pure math lives in dice.mjs; this only gathers inputs and renders.
+   */
+  async #rollDicePool(fd) {
+    const attrs = this.actor?.system?.attributes ?? {};
+    const attrKey = fd.diceAttribute || "physical";
+    const attrTotal = Number(attrs[attrKey]?.total) || 0;
+    const abilRating = Number(fd.diceAbility) || 0;   // the option value IS the rating
+    const mod = Number(fd.diceMod) || 0;
+    const pool = Math.max(0, attrTotal + abilRating + mod);
+    const hunger = Math.max(0, Math.min(Number(fd.diceHunger) || 0, pool));
+    const opposed = !!fd.diceOpposed;
+
+    const attributeLabel = attrKey.charAt(0).toUpperCase() + attrKey.slice(1);
+    // Resolve the ability's name from its rating for the card label (the select
+    // carries only the rating as its value); fall back to a generic label.
+    const abilityLabel = (() => {
+      if (!abilRating) return "no Ability";
+      const match = (this.actor?.system?.abilities ?? []).find(a => (Number(a.rating) || 0) === abilRating && a.name);
+      return match?.name ?? `Ability ${abilRating}`;
+    })();
+
+    const faceList = (reg, hun) => [
+      ...hun.map(v => ({ value: v, hunger: true, success: v >= 6, ten: v === 10, one: v === 1 })),
+      ...reg.map(v => ({ value: v, hunger: false, success: v >= 6, ten: v === 10, one: v === 1 }))
+    ];
+
+    const difficulty = opposed ? null : (Number(fd.diceDifficulty) || 1);
+    const myRoll = rollPool(pool, hunger);
+    const challenger = evaluateRoll(myRoll.regularDice, myRoll.hungerDice, difficulty);
+    const challengerDice = faceList(myRoll.regularDice, myRoll.hungerDice);
+
+    const cardData = {
+      actorName: this.actor.name, attributeLabel, abilityLabel,
+      poolTotal: pool, opposed, challenger, challengerDice
+    };
+
+    if (opposed) {
+      const oppPool = Math.max(0, Number(fd.diceOppPool) || 0);
+      const oppHunger = Math.max(0, Math.min(Number(fd.diceOppHunger) || 0, oppPool));
+      const oppRoll = rollPool(oppPool, oppHunger);
+      const opponent = evaluateRoll(oppRoll.regularDice, oppRoll.hungerDice, null);
+      const cmp = compareOpposed(challenger.successes, opponent.successes);
+      // A failed opposed roll with a Hunger 1 is still a bestial failure.
+      challenger.bestial = cmp.winner !== "challenger" && myRoll.hungerDice.includes(1);
+      cardData.opponent = opponent;
+      cardData.opponentDice = faceList(oppRoll.regularDice, oppRoll.hungerDice);
+      cardData.oppPoolTotal = oppPool;
+      cardData.result = cmp.winner === "challenger" ? "Won" : cmp.winner === "opponent" ? "Lost" : "Tied";
+      cardData.resultLabel = cmp.winner === "challenger"
+        ? `${this.actor.name} wins by ${cmp.margin}!`
+        : cmp.winner === "opponent" ? `${this.actor.name} loses by ${cmp.margin}.` : "Tie — no winner.";
+    } else {
+      cardData.difficulty = difficulty;
+      cardData.result = challenger.win ? "Won" : "Lost";
+      cardData.resultLabel = challenger.win
+        ? `${this.actor.name} succeeds (${challenger.successes} vs ${difficulty})!`
+        : challenger.totalFailure ? `${this.actor.name} — total failure.`
+        : `${this.actor.name} fails (${challenger.successes} vs ${difficulty}).`;
+    }
+
+    const content = await renderTemplate("systems/vtmlarp/templates/apps/dice-card.hbs", cardData);
+    await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: this.actor }), content });
   }
 
   /**

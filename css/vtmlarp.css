@@ -1294,6 +1294,47 @@ form.vtmlarp.sheet {
   cursor: pointer;
 }
 
+/* ---- d10 dice-pool (V5) result card ---- */
+.vtmlarp-dice-card .dice-successes {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--vtm-red-bright, #b8121a);
+}
+.vtmlarp-dice-card .dice-faces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin: 8px 0 2px;
+}
+.vtmlarp-dice-card .dice-faces-opp { opacity: 0.85; }
+.vtmlarp-dice-card .die {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 3px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  color: #cfc9c0;
+  font-size: 13px;
+  font-weight: bold;
+}
+.vtmlarp-dice-card .die.die-success { border-color: #2e7d32; color: #8fe196; }
+.vtmlarp-dice-card .die.die-ten { border-color: #d4a72c; color: #f0d98a; }
+.vtmlarp-dice-card .die.die-hunger {
+  background: rgba(120, 10, 14, 0.55);
+  border-color: var(--vtm-red-bright, #b8121a);
+}
+.vtmlarp-dice-card .die.die-one { color: #f0a0a0; }
+.vtmlarp-dice-card .dice-flag { text-align: center; font-size: 12px; }
+.vtmlarp-dice-card .dice-flag.dice-messy { color: var(--vtm-red-bright, #b8121a); }
+.vtmlarp-dice-card .dice-flag.dice-bestial { color: #f0a0a0; }
+.vtmlarp-dice-card .dice-flag.dice-crit { color: #d4a72c; }
+
 .vtmlarp-challenge-prompt .vtm-gesture-response-row {
   display: flex;
   gap: 6px;

@@ -1,4 +1,13 @@
 <form class="vtmlarp-challenge flexcol">
+  <label>Resolution
+    <select name="resolution">
+      <option value="rps" selected>Rock-Paper-Scissors (MET default)</option>
+      <option value="dice">d10 Dice Pool (V5 rules)</option>
+    </select>
+  </label>
+
+  <!-- ============ RPS / static mode (the MET default) ============ -->
+  <div class="mode-rps">
   <p class="hint">For a Physical/Social/Mental Challenge, pick your opponent and gesture below - they'll get a private popup to choose their own gesture, and the result posts to chat once both sides are in. Each side's Traits Bid is always their full remaining pool of the matching Attribute category.</p>
 
   {{#if prefill.powerName}}
@@ -54,6 +63,49 @@
   <label>Retest Used <input type="text" name="retest" value="{{prefill.retest}}" placeholder="e.g. Willpower, Brawl Ability"></label>
 
   <label>Bonus / Penalty Traits <input type="number" name="challengerMod" value="0" title="Extra Traits added to (or removed from) your bid - equipment, powers, situational modifiers, etc."></label>
+  </div>
 
-  <button type="submit" class="vtm-submit"><i class="fas fa-bullhorn"></i> Send Challenge</button>
+  <!-- ============ d10 dice-pool mode (V5 rules) ============ -->
+  <div class="mode-dice" style="display:none;">
+    <p class="hint">Roll a pool of d10s. The pool is your chosen Attribute's Trait total + the associated Ability's rating (+ any modifier). Each die showing <strong>6 or higher</strong> is a success; every pair of 10s counts as <strong>4</strong> successes (a critical). The result posts openly to chat.</p>
+
+    <label>Attribute
+      <select name="diceAttribute">
+        {{#each attributes as |a|}}
+        <option value="{{a.key}}">{{a.label}} ({{a.total}})</option>
+        {{/each}}
+      </select>
+    </label>
+
+    <label>Associated Ability
+      <select name="diceAbility">
+        <option value="">— none (0) —</option>
+        {{#each abilities as |ab|}}
+        <option value="{{ab.rating}}">{{ab.name}} ({{ab.rating}})</option>
+        {{/each}}
+      </select>
+    </label>
+
+    <label>Modifier <input type="number" name="diceMod" value="0" title="Extra dice added to (or removed from) the pool."></label>
+
+    <label>Hunger <span class="hint" style="font-weight:normal;">(V5 flavor — this system has no Hunger stat, so set it by hand if you use it)</span>
+      <input type="number" name="diceHunger" value="0" min="0" max="5" title="How many of the pool's dice are Hunger dice (messy criticals / bestial failures). Leave 0 if unused.">
+    </label>
+
+    <p class="hint dice-pool-preview">Dice pool: <strong><span class="dice-pool-total">0</span></strong></p>
+
+    <label class="dice-opposed-toggle"><input type="checkbox" name="diceOpposed"> Opposed roll (compare successes against another pool)</label>
+
+    <div class="dice-vs-difficulty">
+      <label>Difficulty (successes needed) <input type="number" name="diceDifficulty" value="3" min="1"></label>
+    </div>
+
+    <div class="dice-vs-opposed" style="display:none;">
+      <label>Opposing dice pool <input type="number" name="diceOppPool" value="0" min="0"></label>
+      <label>Opposing Hunger <input type="number" name="diceOppHunger" value="0" min="0" max="5"></label>
+      <p class="hint">Both pools are rolled here and the higher number of successes wins — dice are open, so rolling both sides on one client is fine.</p>
+    </div>
+  </div>
+
+  <button type="submit" class="vtm-submit"><i class="fas fa-bullhorn"></i> <span class="vtm-submit-label">Send Challenge</span></button>
 </form>
