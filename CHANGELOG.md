@@ -3,6 +3,18 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.48.0 — Powers can name a Pool Ability for dice mode
+
+- Power items gain a **Pool Ability** field (on the item sheet, next to Retest
+  Ability). When a Challenge is launched from that Power and switched to **Dice**
+  mode, the dice **Associated Ability now pre-selects** from this field (matched
+  case-insensitively against the actor's own Abilities) — so the whole d10 pool
+  comes up ready from a discipline button.
+- The field is free text and defaults blank; blank simply leaves the Ability
+  for the player to pick, so existing powers are unaffected (no migration). The
+  bundled compendium powers are not auto-filled — set the Pool Ability per power
+  as you want them used in dice mode.
+
 ## 1.47.1 — Dice mode inherits the Power's context
 
 - When the Challenge tool is opened from a Discipline/Power's **Challenge**

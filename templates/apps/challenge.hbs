@@ -85,7 +85,7 @@
       <select name="diceAbility">
         <option value="">— none (0) —</option>
         {{#each abilities as |ab|}}
-        <option value="{{ab.rating}}">{{ab.name}} ({{ab.rating}})</option>
+        <option value="{{ab.rating}}" {{#if ab.selected}}selected{{/if}}>{{ab.name}} ({{ab.rating}})</option>
         {{/each}}
       </select>
     </label>

@@ -144,9 +144,13 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       { key: "social", label: "Social", total: Number(attrs.social?.total) || 0 },
       { key: "mental", label: "Mental", total: Number(attrs.mental?.total) || 0 }
     ];
+    // Pre-pick the pool Ability when the Challenge was launched from a Power
+    // that names one (system.poolAbility), matched case-insensitively against
+    // the actor's own Ability names.
+    const wantAbility = (context.prefill?.poolAbility ?? "").trim().toLowerCase();
     context.abilities = (this.actor?.system?.abilities ?? [])
       .filter(a => a?.name)
-      .map(a => ({ name: a.name, rating: Number(a.rating) || 0 }))
+      .map(a => ({ name: a.name, rating: Number(a.rating) || 0, selected: wantAbility !== "" && a.name.trim().toLowerCase() === wantAbility }))
       .sort((a, b) => a.name.localeCompare(b.name));
     return context;
   }

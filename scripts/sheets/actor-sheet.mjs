@@ -1649,6 +1649,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     new ChallengeApp(this.actor, {}, {
       challengeType: item.system.challengeType,
       retest: item.system.retestAbility,
+      poolAbility: item.system.poolAbility,
       powerName: item.name
     }).render(true);
   }

@@ -78,6 +78,11 @@ export class VTMPowerData extends BaseItemData {
       }),
       bloodCost: new fields.StringField({ required: false, blank: true, initial: "" }),
       retestAbility: new fields.StringField({ required: false, blank: true, initial: "" }),
+      // The Ability whose rating joins the Attribute total to form the d10 dice
+      // pool in the optional V5 dice-pool Challenge mode (e.g. "Occult",
+      // "Intimidation"). Free text matched against the actor's Ability names so
+      // the dice dialog can pre-pick it; blank = none / let the player choose.
+      poolAbility: new fields.StringField({ required: false, blank: true, initial: "" }),
       duration: new fields.StringField({ required: false, blank: true, initial: "" }),
       activation: new fields.StringField({
         required: true,
