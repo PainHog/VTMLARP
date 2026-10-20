@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.47.1 — Dice mode inherits the Power's context
+
+- When the Challenge tool is opened from a Discipline/Power's **Challenge**
+  button and switched to **Dice** mode, the dice **Attribute now pre-selects**
+  from the Power's challenge type, and the Power name (and suggested retest) are
+  shown in dice mode too. The associated **Ability stays a manual pick** (a
+  Power stores no pool Ability, so there is nothing reliable to auto-fill).
+
 ## 1.47.0 — Optional d10 dice-pool mode (V5 rules) in the Challenge tool
 
 - The **Resolve Challenge** tool now has a **Resolution** toggle at the top:

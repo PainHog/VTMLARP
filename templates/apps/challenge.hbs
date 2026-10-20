@@ -69,10 +69,14 @@
   <div class="mode-dice" style="display:none;">
     <p class="hint">Roll a pool of d10s. The pool is your chosen Attribute's Trait total + the associated Ability's rating (+ any modifier). Each die showing <strong>6 or higher</strong> is a success; every pair of 10s counts as <strong>4</strong> successes (a critical). The result posts openly to chat.</p>
 
+    {{#if prefill.powerName}}
+    <p class="hint">Using: <strong>{{prefill.powerName}}</strong>{{#if prefill.retest}} — suggested retest: {{prefill.retest}}{{/if}}</p>
+    {{/if}}
+
     <label>Attribute
       <select name="diceAttribute">
         {{#each attributes as |a|}}
-        <option value="{{a.key}}">{{a.label}} ({{a.total}})</option>
+        <option value="{{a.key}}" {{#if (eq a.key ../prefill.challengeType)}}selected{{/if}}>{{a.label}} ({{a.total}})</option>
         {{/each}}
       </select>
     </label>
