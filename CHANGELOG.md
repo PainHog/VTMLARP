@@ -3,6 +3,25 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.48.2 — Finish Pool Ability across every challenge Discipline power
+
+- Completed the dice-mode **Pool Ability** pass begun in 1.48.1. Of the **573**
+  challenge-type Discipline powers, **542** now carry a Pool Ability.
+- Filled the remaining ones by best judgement: compound/either-or retests
+  resolved to a single Ability (e.g. "Occult (or Vampire Lore)" → Occult,
+  "Brawl (or appropriate combat Ability)" → Brawl), and powers with no retest
+  given their Discipline's clear thematic Ability — grounded in the dominant
+  retest Ability already used by that Discipline's other powers (Animalism →
+  Animal Ken, Auspex → Investigation, Dominate → Intimidation, Presence →
+  Leadership, Obfuscate → Stealth, Thaumaturgy/Necromancy → Occult, Potence →
+  Brawl, Celerity/Gargoyle Flight → Athletics, Vicissitude → Crafts, …).
+- **31 remain intentionally blank:** 26 are innate / Willpower-retest / Virtue
+  (Path/Via) powers that have no associated Ability by nature, and **5** are
+  genuinely ambiguous — the dice tool lets the player pick the Ability for
+  these at roll time: *Flesh of Marble* (Protean), *Soul Painting* and
+  *Heart's Desire* and *Bliss* (Combination), and *Madman's Quill* (retest is
+  literally "Crafts, Linguistics, or Performance").
+
 ## 1.48.1 — Seed Pool Ability on compendium powers from their retest
 
 - Bulk-populated **Pool Ability** on **385** compendium Discipline powers by
