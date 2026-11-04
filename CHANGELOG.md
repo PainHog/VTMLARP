@@ -3,6 +3,18 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.48.1 — Seed Pool Ability on compendium powers from their retest
+
+- Bulk-populated **Pool Ability** on **385** compendium Discipline powers by
+  copying each one's retest Ability where that retest is a single, real Ability
+  name (Occult, Subterfuge, Empathy, Animal Ken, …). So those powers now bring
+  up their full d10 pool ready in dice mode straight from the power button.
+- **Deliberately left blank** (for a human call): **44** powers whose retest is
+  a resource/virtue or a compound/either-or value (Willpower, "None (innate)",
+  Path/Via Rating, "Occult (or Vampire Lore)", "Brawl (or appropriate combat
+  Ability)", "Crafts: Body Crafts", etc.) and the **144** challenge powers that
+  have no retest at all. These still let the player pick the Ability by hand.
+
 ## 1.48.0 — Powers can name a Pool Ability for dice mode
 
 - Power items gain a **Pool Ability** field (on the item sheet, next to Retest
