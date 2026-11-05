@@ -3,6 +3,20 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.50.0 — d10 dice is now the default; powers show their dice resolution
+
+- **The d10 Dice Pool (V5 rules) mode is now the default** in the Challenge
+  tool. Rock-Paper-Scissors is still there — one dropdown away — but a freshly
+  opened Challenge (including from a Power button) starts in dice mode.
+- Power item sheets now show a derived **"d10 Dice Pool"** line under the
+  challenge fields: the Attribute (from the power's challenge type) + its Pool
+  Ability, vs a Difficulty/opponent set at roll time — so each compendium power
+  shows how it resolves under the alternative system. Passive/innate powers
+  (no challenge) show no dice line.
+- NOTE: because dice is now the default, challenging an auto-answer NPC no
+  longer auto-throws a gesture by default (that is the RPS path); switch the
+  dropdown to Rock-Paper-Scissors to use NPC auto-answer and retests.
+
 ## 1.49.0 — Virtues and Path rating now use dots
 
 - **Virtues** (Conscience/Conviction, Self-Control/Instinct, Courage) and the

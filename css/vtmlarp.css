@@ -1579,6 +1579,16 @@ form.vtmlarp.sheet {
 .vtmlarp .dots { display: inline-flex; gap: 3px; align-items: center; }
 /* Virtue and Path-rating dot rows can wrap rather than overflow their column. */
 .vtmlarp .virtue .dots, .vtmlarp .pool .dots { flex-wrap: wrap; }
+
+/* Derived "how this Power rolls under the dice system" line on the item sheet. */
+.vtmlarp .dice-resolution-note {
+  margin: 4px 0;
+  padding: 5px 8px;
+  border-left: 3px solid var(--vtm-red-bright, #b8121a);
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  border-radius: 3px;
+}
 .vtmlarp .dots .dot {
   width: 13px;
   height: 13px;

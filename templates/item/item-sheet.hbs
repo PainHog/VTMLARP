@@ -72,6 +72,9 @@
       </label>
       <label>Retest Ability <input type="text" name="system.retestAbility" value="{{system.retestAbility}}"></label>
       <label>Pool Ability <input type="text" name="system.poolAbility" value="{{system.poolAbility}}" placeholder="e.g. Occult — for d10 dice mode" title="Ability added to the Attribute total to form the d10 dice pool in V5 dice mode. Matched by name against the actor's Abilities."></label>
+      {{#if diceResolution}}
+      <p class="dice-resolution-note" data-transient><i class="fas fa-dice-d10"></i> <strong>d10 Dice Pool:</strong> {{diceResolution.attribute}} + {{diceResolution.ability}}{{#if diceResolution.static}} vs set Difficulty{{else}} vs Difficulty / opponent{{/if}}{{#unless diceResolution.hasPoolAbility}} <span class="hint">(set a Pool Ability above, or the player picks at roll time)</span>{{/unless}}</p>
+      {{/if}}
       <label>Blood Cost <input type="text" name="system.bloodCost" value="{{system.bloodCost}}"></label>
       <label>Duration <input type="text" name="system.duration" value="{{system.duration}}"></label>
       <label>Activation

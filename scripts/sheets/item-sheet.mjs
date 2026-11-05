@@ -49,6 +49,25 @@ export class VTMItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       description: { id: "description", group: "primary", label: "Description", active: active === "description" },
       details: { id: "details", group: "primary", label: "Details", active: active === "details" }
     };
+
+    // Derived "alternative system" (d10 dice-pool) resolution line for Powers
+    // that actually resolve with a challenge. Shows how the power rolls under
+    // the dice system: the Attribute (from its challenge type) + its Pool
+    // Ability, vs a Difficulty set at roll time. Passive/innate powers
+    // (challengeType "none") don't roll, so they get no dice line.
+    if (this.item.type === "power") {
+      const ct = this.item.system.challengeType;
+      if (ct && ct !== "none") {
+        const attr = ct === "static" ? "chosen Attribute" : `${ct.charAt(0).toUpperCase()}${ct.slice(1)}`;
+        const abil = (this.item.system.poolAbility || "").trim() || "chosen Ability";
+        context.diceResolution = {
+          attribute: attr,
+          ability: abil,
+          hasPoolAbility: !!(this.item.system.poolAbility || "").trim(),
+          static: ct === "static"
+        };
+      }
+    }
     return context;
   }
 
