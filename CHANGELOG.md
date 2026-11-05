@@ -3,6 +3,14 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.51.0 — Opposed dice rolls can auto-fill the opponent's pool
+
+- In dice mode's **Opposed** option, a new **Opponent** dropdown auto-fills the
+  opposing dice pool from that actor's matching Attribute Trait total (the one
+  you chose for your own roll). It stays editable so the ST can add the
+  opponent's Ability or situational modifiers by hand. Leave it on "none" to
+  type the pool manually as before.
+
 ## 1.50.0 — d10 dice is now the default; powers show their dice resolution
 
 - **The d10 Dice Pool (V5 rules) mode is now the default** in the Challenge

@@ -105,9 +105,17 @@
     </div>
 
     <div class="dice-vs-opposed" style="display:none;">
+      <label>Opponent (auto-fills pool from their Attribute)
+        <select name="diceOppActor">
+          <option value="">— none / enter manually —</option>
+          {{#each actorOptions as |a|}}
+          <option value="{{a.id}}">{{a.name}}</option>
+          {{/each}}
+        </select>
+      </label>
       <label>Opposing dice pool <input type="number" name="diceOppPool" value="0" min="0"></label>
       <label>Opposing Hunger <input type="number" name="diceOppHunger" value="0" min="0" max="5"></label>
-      <p class="hint">Both pools are rolled here and the higher number of successes wins — dice are open, so rolling both sides on one client is fine.</p>
+      <p class="hint">Pick an opponent to auto-fill their pool from the matching Attribute Trait total (add their Ability by hand). Both pools are rolled here and the higher number of successes wins — dice are open, so rolling both sides on one client is fine.</p>
     </div>
   </div>
 

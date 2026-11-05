@@ -152,6 +152,18 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       .filter(a => a?.name)
       .map(a => ({ name: a.name, rating: Number(a.rating) || 0, selected: wantAbility !== "" && a.name.trim().toLowerCase() === wantAbility }))
       .sort((a, b) => a.name.localeCompare(b.name));
+    // For dice opposed rolls: each potential opponent's Attribute Trait totals,
+    // so the dialog can auto-fill the opposing pool from the chosen actor (the
+    // ST still adds the opponent's Ability by hand, since that isn't knowable).
+    context.opponentPools = {};
+    for (const a of game.actors.filter(a => ["character", "npc"].includes(a.type))) {
+      const at = a.system?.attributes ?? {};
+      context.opponentPools[a.id] = {
+        physical: Number(at.physical?.total) || 0,
+        social: Number(at.social?.total) || 0,
+        mental: Number(at.mental?.total) || 0
+      };
+    }
     return context;
   }
 
@@ -217,6 +229,18 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     diceOpposed?.addEventListener("change", syncOpposed);
     syncDicePool();
     syncOpposed();
+
+    // Auto-fill the opposing pool from a chosen opponent's matching Attribute
+    // Trait total (the ST adds the opponent's Ability by hand). Stays editable.
+    const diceOppActor = root.querySelector("select[name='diceOppActor']");
+    const diceOppPool = root.querySelector("input[name='diceOppPool']");
+    const oppPools = context.opponentPools ?? {};
+    const syncOppActor = () => {
+      const id = diceOppActor?.value;
+      if (id && oppPools[id] && diceOppPool) diceOppPool.value = oppPools[id][diceAttr?.value] ?? 0;
+    };
+    diceOppActor?.addEventListener("change", syncOppActor);
+    diceAttr?.addEventListener("change", syncOppActor);
   }
 
   async _onSubmit(event) {
