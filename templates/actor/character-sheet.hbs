@@ -186,7 +186,13 @@
         {{/if}}
         <div class="pool">
           <label>Path Rating</label>
-          <input type="number" name="system.morality.rating" value="{{system.morality.rating}}" min="0" max="10">
+          <span class="rating-stepper">
+            <a class="field-rating-control step-down" data-action="decrease" data-field="system.morality.rating" data-max="10" title="Lower by 1"><i class="fas fa-minus"></i></a>
+            <span class="dots" data-field="system.morality.rating" data-max="10">
+              {{#each (vtmDots system.morality.rating 10) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            </span>
+            <a class="field-rating-control step-up" data-action="increase" data-field="system.morality.rating" data-max="10" title="Raise by 1"><i class="fas fa-plus"></i></a>
+          </span>
           <select name="system.morality.path" class="tiny">
             {{#each PATH_OPTIONS as |p|}}
             <option value="{{p}}" {{#if (eq ../system.morality.path p)}}selected{{/if}}>{{p}}</option>
@@ -235,19 +241,37 @@
           <label>Conscience/Conviction
             <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
           </label>
-          <input type="number" name="system.virtues.conscienceConviction.rating" value="{{system.virtues.conscienceConviction.rating}}" min="0" max="5">
+          <span class="rating-stepper">
+            <a class="field-rating-control step-down" data-action="decrease" data-field="system.virtues.conscienceConviction.rating" data-max="5" title="Lower by 1"><i class="fas fa-minus"></i></a>
+            <span class="dots" data-field="system.virtues.conscienceConviction.rating" data-max="5">
+              {{#each (vtmDots system.virtues.conscienceConviction.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            </span>
+            <a class="field-rating-control step-up" data-action="increase" data-field="system.virtues.conscienceConviction.rating" data-max="5" title="Raise by 1"><i class="fas fa-plus"></i></a>
+          </span>
         </div>
         <div class="virtue">
           <label>Self-Control/Instinct
             <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
           </label>
-          <input type="number" name="system.virtues.selfControlInstinct.rating" value="{{system.virtues.selfControlInstinct.rating}}" min="0" max="5">
+          <span class="rating-stepper">
+            <a class="field-rating-control step-down" data-action="decrease" data-field="system.virtues.selfControlInstinct.rating" data-max="5" title="Lower by 1"><i class="fas fa-minus"></i></a>
+            <span class="dots" data-field="system.virtues.selfControlInstinct.rating" data-max="5">
+              {{#each (vtmDots system.virtues.selfControlInstinct.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            </span>
+            <a class="field-rating-control step-up" data-action="increase" data-field="system.virtues.selfControlInstinct.rating" data-max="5" title="Raise by 1"><i class="fas fa-plus"></i></a>
+          </span>
         </div>
         <div class="virtue">
           <label>Courage
             <a class="open-lore" data-pack="{{virtuesLoreEntry.pack}}" data-name="{{virtuesLoreEntry.name}}" title="Open Virtues lore"><i class="fas fa-book"></i></a>
           </label>
-          <input type="number" name="system.virtues.courage.rating" value="{{system.virtues.courage.rating}}" min="0" max="5">
+          <span class="rating-stepper">
+            <a class="field-rating-control step-down" data-action="decrease" data-field="system.virtues.courage.rating" data-max="5" title="Lower by 1"><i class="fas fa-minus"></i></a>
+            <span class="dots" data-field="system.virtues.courage.rating" data-max="5">
+              {{#each (vtmDots system.virtues.courage.rating 5) as |dot|}}<a class="dot {{#if dot.filled}}filled{{/if}}" data-value="{{dot.value}}"></a>{{/each}}
+            </span>
+            <a class="field-rating-control step-up" data-action="increase" data-field="system.virtues.courage.rating" data-max="5" title="Raise by 1"><i class="fas fa-plus"></i></a>
+          </span>
         </div>
       </div>
 

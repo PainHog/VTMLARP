@@ -1577,6 +1577,8 @@ form.vtmlarp.sheet {
 /* Clickable rating dots (abilities, disciplines, backgrounds)           */
 /* -------------------------------------------------------------------- */
 .vtmlarp .dots { display: inline-flex; gap: 3px; align-items: center; }
+/* Virtue and Path-rating dot rows can wrap rather than overflow their column. */
+.vtmlarp .virtue .dots, .vtmlarp .pool .dots { flex-wrap: wrap; }
 .vtmlarp .dots .dot {
   width: 13px;
   height: 13px;

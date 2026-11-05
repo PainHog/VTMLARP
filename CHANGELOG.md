@@ -3,6 +3,16 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.49.0 — Virtues and Path rating now use dots
+
+- **Virtues** (Conscience/Conviction, Self-Control/Instinct, Courage) and the
+  **Path rating** on the character sheet now use the same clickable **dot**
+  display as Abilities/Disciplines/Backgrounds — empty circle, red when filled —
+  each flanked by the – / + steppers. Click a dot to set the rating (clicking
+  the current value lowers it by one); the steppers nudge by one. Virtues cap at
+  5 dots, Path at 10.
+- Replaces the old number-entry boxes for these ratings, for a consistent sheet.
+
 ## 1.48.3 — Pool Ability for the last ambiguous Combination powers
 
 - Set Pool Ability on the Combination powers flagged in 1.48.2, per the

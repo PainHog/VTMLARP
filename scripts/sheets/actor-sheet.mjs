@@ -605,6 +605,7 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     on(".item-delete", "click", this._onItemDelete.bind(this));
     on(".mf-browse", "click", () => new MeritFlawBrowserApp(this.actor).render(true));
     on(".rated-trait-control", "click", this._onRatedTraitControl.bind(this));
+    on(".field-rating-control", "click", this._onFieldRatingControl.bind(this));
     on(".dot", "click", this._onSetDots.bind(this));
     on(".trait-restore", "click", this._onRestoreTrait.bind(this));
     on(".open-challenge", "click", () => new ChallengeApp(this.actor).render(true));
@@ -1119,7 +1120,29 @@ export class VTMActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         list[i].max = newRating;
       }
       await this.actor.update({ [`system.${path}`]: list });
+      return;
     }
+    // A scalar rating stored at a dotted field path (Virtues, Path rating).
+    // Clicking the current value lowers it by one, matching the other dots.
+    const field = container.dataset.field;
+    if (field) {
+      const max = Number(container.dataset.max) || 5;
+      const current = Number(foundry.utils.getProperty(this.actor, field)) || 0;
+      const newRating = Math.min(max, Math.max(0, value === current ? value - 1 : value));
+      await this.actor.update({ [field]: newRating });
+    }
+  }
+
+  /** Manual +/- for a scalar rating at a dotted field path (Virtues, Path rating). */
+  async _onFieldRatingControl(event) {
+    event.preventDefault();
+    const { field, action, max } = event.currentTarget.dataset;
+    if (!field) return;
+    const cap = Number(max) || 5;
+    const cur = Number(foundry.utils.getProperty(this.actor, field)) || 0;
+    const next = Math.min(cap, Math.max(0, action === "increase" ? cur + 1 : cur - 1));
+    if (next === cur) return;
+    await this.actor.update({ [field]: next });
   }
 
   /** Restore a temporarily-reduced rated trait back to its permanent max. */
