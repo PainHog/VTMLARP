@@ -3,6 +3,19 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.48.3 — Pool Ability for the last ambiguous Combination powers
+
+- Set Pool Ability on the Combination powers flagged in 1.48.2, per the
+  Storyteller's call: **Soul Painting → Crafts**, **Heart's Desire → Empathy**,
+  **Bliss → Empathy**.
+- **Madman's Quill** stays blank by choice (its retest is "Crafts, Linguistics,
+  or Performance" — the player picks the Ability at roll time).
+- **Flesh of Marble** (Protean) stays blank: it is a passive, blood-activated
+  defense (halve incoming physical damage for the scene), not a contested test,
+  so it has no Attribute+Ability dice pool.
+- Net: **545 of 573** challenge-type powers carry a Pool Ability; the remaining
+  28 are innate/activation/Willpower/Virtue powers with no associated Ability.
+
 ## 1.48.2 — Finish Pool Ability across every challenge Discipline power
 
 - Completed the dice-mode **Pool Ability** pass begun in 1.48.1. Of the **573**
