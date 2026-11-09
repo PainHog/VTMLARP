@@ -3,6 +3,16 @@
 All notable changes to this system are noted here. Versions are
 `major.minor.patch`; the manifest `system.json` is the source of truth.
 
+## 1.51.1 — Dice-mode polish from the audit pass
+
+- The dice **Associated Ability** dropdown is now keyed by Ability name, so the
+  result card always names the exact Ability chosen even when two Abilities
+  share the same rating (the pool math was always correct; only the label could
+  previously mislabel).
+- When a Challenge is launched from a **static**-type power in dice mode, a hint
+  now prompts the player to pick the fitting Attribute (a static power has no
+  inherent Attribute for the pool), instead of silently defaulting to Physical.
+
 ## 1.51.0 — Opposed dice rolls can auto-fill the opponent's pool
 
 - In dice mode's **Opposed** option, a new **Opponent** dropdown auto-fills the

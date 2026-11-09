@@ -73,6 +73,10 @@
     <p class="hint">Using: <strong>{{prefill.powerName}}</strong>{{#if prefill.retest}} — suggested retest: {{prefill.retest}}{{/if}}</p>
     {{/if}}
 
+    {{#if diceStaticHint}}
+    <p class="hint">This power is a <strong>static</strong> test — pick the Attribute that best fits the action.</p>
+    {{/if}}
+
     <label>Attribute
       <select name="diceAttribute">
         {{#each attributes as |a|}}
@@ -85,7 +89,7 @@
       <select name="diceAbility">
         <option value="">— none (0) —</option>
         {{#each abilities as |ab|}}
-        <option value="{{ab.rating}}" {{#if ab.selected}}selected{{/if}}>{{ab.name}} ({{ab.rating}})</option>
+        <option value="{{ab.name}}" {{#if ab.selected}}selected{{/if}}>{{ab.name}} ({{ab.rating}})</option>
         {{/each}}
       </select>
     </label>

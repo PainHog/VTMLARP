@@ -152,6 +152,9 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
       .filter(a => a?.name)
       .map(a => ({ name: a.name, rating: Number(a.rating) || 0, selected: wantAbility !== "" && a.name.trim().toLowerCase() === wantAbility }))
       .sort((a, b) => a.name.localeCompare(b.name));
+    // A static-type power has no inherent Attribute for the dice pool, so prompt
+    // the player to choose one rather than silently leaving it on the first.
+    context.diceStaticHint = context.prefill?.challengeType === "static";
     // For dice opposed rolls: each potential opponent's Attribute Trait totals,
     // so the dialog can auto-fill the opposing pool from the chosen actor (the
     // ST still adds the opponent's Ability by hand, since that isn't knowable).
@@ -212,9 +215,12 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     const vsDifficulty = root.querySelector(".dice-vs-difficulty");
     const vsOpposed = root.querySelector(".dice-vs-opposed");
     const attrTotals = Object.fromEntries((context.attributes ?? []).map(a => [a.key, a.total]));
+    // Ability dropdown values are Ability NAMES (so the result card can name the
+    // exact Ability even when two share a rating); map name -> rating here.
+    const abilityRatings = Object.fromEntries((context.abilities ?? []).map(a => [a.name, a.rating]));
     const syncDicePool = () => {
       const attr = Number(attrTotals[diceAttr?.value]) || 0;
-      const abil = Number(diceAbility?.value) || 0;
+      const abil = Number(abilityRatings[diceAbility?.value]) || 0;
       const mod = Number(diceMod?.value) || 0;
       if (dicePoolTotal) dicePoolTotal.textContent = String(Math.max(0, attr + abil + mod));
     };
@@ -375,20 +381,17 @@ export class ChallengeApp extends HandlebarsApplicationMixin(foundry.application
     const attrs = this.actor?.system?.attributes ?? {};
     const attrKey = fd.diceAttribute || "physical";
     const attrTotal = Number(attrs[attrKey]?.total) || 0;
-    const abilRating = Number(fd.diceAbility) || 0;   // the option value IS the rating
+    // The Ability dropdown value is the Ability NAME; resolve its rating and keep
+    // the exact name for the card (no rating-collision ambiguity).
+    const abilEntry = (this.actor?.system?.abilities ?? []).find(a => a.name === fd.diceAbility);
+    const abilRating = Number(abilEntry?.rating) || 0;
     const mod = Number(fd.diceMod) || 0;
     const pool = Math.max(0, attrTotal + abilRating + mod);
     const hunger = Math.max(0, Math.min(Number(fd.diceHunger) || 0, pool));
     const opposed = !!fd.diceOpposed;
 
     const attributeLabel = attrKey.charAt(0).toUpperCase() + attrKey.slice(1);
-    // Resolve the ability's name from its rating for the card label (the select
-    // carries only the rating as its value); fall back to a generic label.
-    const abilityLabel = (() => {
-      if (!abilRating) return "no Ability";
-      const match = (this.actor?.system?.abilities ?? []).find(a => (Number(a.rating) || 0) === abilRating && a.name);
-      return match?.name ?? `Ability ${abilRating}`;
-    })();
+    const abilityLabel = abilEntry?.name || "no Ability";
 
     const faceList = (reg, hun) => [
       ...hun.map(v => ({ value: v, hunger: true, success: v >= 6, ten: v === 10, one: v === 1 })),
